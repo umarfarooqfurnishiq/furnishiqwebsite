@@ -6,7 +6,10 @@
       "Bash(git commit -m ' *)",
       "Bash(git config *)",
       "Bash(python -c ' *)",
-      "Bash(python -c \"import sys; data=sys.stdin.read\\(\\); idx=data.find\\('max-height'\\); print\\(data[max\\(0,idx-300\\):idx+300]\\) if idx>=0 else print\\('NOT FOUND'\\)\")"
+      "Bash(python -c \"import sys; data=sys.stdin.read\\(\\); idx=data.find\\('max-height'\\); print\\(data[max\\(0,idx-300\\):idx+300]\\) if idx>=0 else print\\('NOT FOUND'\\)\")",
+      "Bash(git checkout *)",
+      "Bash(python \"C:\\\\Users\\\\UMARFA~1\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\d--ProjectsClaude-FurnishIQ\\\\73119076-f515-49b9-a04f-2ab06e1982bf\\\\scratchpad\\\\swap_sections.py\")",
+      "Bash(python \"C:\\\\Users\\\\UMARFA~1\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\d--ProjectsClaude-FurnishIQ\\\\73119076-f515-49b9-a04f-2ab06e1982bf\\\\scratchpad\\\\fix_home_dc.py\")"
     ]
   }
 }
