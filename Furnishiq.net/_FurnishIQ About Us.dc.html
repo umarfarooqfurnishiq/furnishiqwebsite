@@ -28,7 +28,14 @@
       51% { transform: scaleY(1); transform-origin: bottom; }
       100%{ transform: scaleY(0); transform-origin: bottom; }
     }
-
+    @keyframes fiq-ring-pulse {
+      0%   { opacity: 0.75; transform: scale(1); }
+      100% { opacity: 0;    transform: scale(5); }
+    }
+    .journey-ring {
+      animation: fiq-ring-pulse 2.6s ease-out infinite;
+      animation-play-state: paused;
+    }
     @media(max-width:960px){
       .fiq-nav-links { display: none !important; }
       .fiq-nav-cta   { display: none !important; }
@@ -76,7 +83,6 @@
   <div style="position:absolute;inset:0;z-index:0;">
     <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&w=1920&q=80" alt="" style="width:100%;height:100%;object-fit:cover;object-position:center center;filter:sepia(0.1) saturate(0.5) brightness(0.82) hue-rotate(185deg);">
     <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(58,45,37,0.92) 0%,rgba(58,45,37,0.22) 50%,rgba(58,45,37,0.55) 100%);"></div>
-    <div style="position:absolute;inset:0;background:rgba(28,16,8,0.52);"></div>
   </div>
   <div style="max-width:1280px;margin:0 auto;position:relative;z-index:1;">
     <div data-reveal style="opacity:0;transform:translateY(12px);transition:opacity 0.7s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;align-items:center;gap:10px;margin-bottom:52px;">
@@ -121,7 +127,7 @@
       <h2 data-reveal data-reveal-delay="0.1" style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Lama Sans',sans-serif;font-size:clamp(30px,4vw,60px);font-weight:500;color:#3A2D25;line-height:1.1;">The FurnishIQ Edge</h2>
     </div>
     <div class="about-pillars-grid" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;">
-      <div class="about-pillar" data-reveal style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);padding:clamp(36px,4vw,56px) clamp(28px,3.5vw,52px);border-right:1px solid rgba(58,45,37,0.13);">
+      <div class="about-pillar" data-reveal style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);padding:clamp(36px,4vw,56px) clamp(28px,3.5vw,52px) clamp(36px,4vw,56px) 0;border-right:1px solid rgba(58,45,37,0.13);">
         <div style="font-family:'Lama Sans',sans-serif;font-size:clamp(52px,5.5vw,80px);font-weight:500;color:#3A2D25;line-height:1;margin-bottom:24px;letter-spacing:-0.02em;">01</div>
         <div style="width:100%;height:1px;background:#3A2D25;margin-bottom:28px;opacity:0.14;"></div>
         <h3 style="font-family:'Lama Sans',sans-serif;font-size:clamp(15px,1.6vw,20px);font-weight:500;color:#1F1F1F;margin-bottom:14px;line-height:1.25;">Visual Certainty Through Photorealism</h3>
@@ -133,7 +139,7 @@
         <h3 style="font-family:'Lama Sans',sans-serif;font-size:clamp(15px,1.6vw,20px);font-weight:500;color:#1F1F1F;margin-bottom:14px;line-height:1.25;">Strategic DNA &amp; Brand-Led Planning</h3>
         <p style="font-family:'Lama Sans',sans-serif;font-size:14px;line-height:1.8;color:#5B4636;">Design should serve a purpose. Our approach incorporates brand-led planning, where every layout and traffic flow is strategically engineered to reflect your unique identity and optimise daily operations — balancing high-end aesthetics with practical, high-performance functionality.</p>
       </div>
-      <div class="about-pillar" data-reveal data-reveal-delay="0.24" style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);padding:clamp(36px,4vw,56px) clamp(28px,3.5vw,52px);">
+      <div class="about-pillar" data-reveal data-reveal-delay="0.24" style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);padding:clamp(36px,4vw,56px) 0 clamp(36px,4vw,56px) clamp(28px,3.5vw,52px);">
         <div style="font-family:'Lama Sans',sans-serif;font-size:clamp(52px,5.5vw,80px);font-weight:500;color:#3A2D25;line-height:1;margin-bottom:24px;letter-spacing:-0.02em;">03</div>
         <div style="width:100%;height:1px;background:#3A2D25;margin-bottom:28px;opacity:0.14;"></div>
         <h3 style="font-family:'Lama Sans',sans-serif;font-size:clamp(15px,1.6vw,20px);font-weight:500;color:#1F1F1F;margin-bottom:14px;line-height:1.25;">The Zero-Snag Promise</h3>
@@ -153,29 +159,29 @@
             <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
             <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#8B6B4A;">Our Disciplines</span>
           </div>
-          <div style="opacity:{{ leftOpacity }};transition:opacity 0.22s ease;">
-            <sc-if value="{{ showDefault }}" hint-placeholder-val="{{ true }}">
-              <h2 style="font-family:'Lama Sans',sans-serif;font-size:clamp(26px,3.2vw,52px);font-weight:500;color:#3A2D25;line-height:1.1;margin-bottom:28px;">Integrated Expertise.<br>One Point of Accountability.</h2>
-              <p style="font-family:'Lama Sans',sans-serif;font-size:16px;line-height:1.8;color:#5B4636;margin-bottom:20px;">One of the greatest challenges in construction is the disconnect between designers and contractors. FurnishIQ solves this by providing a comprehensive ecosystem of design and build services under one roof.</p>
-              <p style="font-family:'Lama Sans',sans-serif;font-size:16px;line-height:1.8;color:#5B4636;">This integrated approach ensures your vision is never lost in translation — from the first sketch to the final handover.</p>
-            </sc-if>
-            <sc-if value="{{ showDiscipline }}" hint-placeholder-val="{{ false }}">
-              <h2 style="font-family:'Lama Sans',sans-serif;font-size:clamp(26px,3.2vw,52px);font-weight:500;color:#3A2D25;line-height:1.1;margin-bottom:28px;">{{ activeTitle }}</h2>
-              <p style="font-family:'Lama Sans',sans-serif;font-size:16px;line-height:1.8;color:#5B4636;margin-bottom:36px;">{{ activeBody }}</p>
-              <a href="/projects" onMouseEnter="{{ ctaMouseEnter }}" onMouseLeave="{{ ctaMouseLeave }}" style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#3A2D25;background:#D6C2A8;padding:14px 32px;text-decoration:none;display:inline-block;transition:background 0.3s,color 0.3s;">Explore Projects</a>
-            </sc-if>
-          </div>
+          <h2 style="font-family:'Lama Sans',sans-serif;font-size:clamp(26px,3.2vw,52px);font-weight:500;color:#3A2D25;line-height:1.1;margin-bottom:28px;">Integrated Expertise.<br>One Point of Accountability.</h2>
+          <p style="font-family:'Lama Sans',sans-serif;font-size:16px;line-height:1.8;color:#5B4636;margin-bottom:20px;">One of the greatest challenges in construction is the disconnect between designers and contractors. FurnishIQ solves this by providing a comprehensive ecosystem of design and build services under one roof.</p>
+          <p style="font-family:'Lama Sans',sans-serif;font-size:16px;line-height:1.8;color:#5B4636;">This integrated approach ensures your vision is never lost in translation — from the first sketch to the final handover.</p>
         </div>
       </div>
       <div style="flex:5;flex-shrink:0;">
         <div data-reveal data-reveal-delay="0.14" style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);">
-          <sc-for list="{{ disciplines }}" as="disc" hint-placeholder-count="4">
-            <div onClick="{{ disc.onClick }}" onMouseEnter="{{ disc.onMouseEnter }}" onMouseLeave="{{ disc.onMouseLeave }}" style="border-top:1px solid #D6C2A8;border-left:{{ disc.activeBorder }};padding:22px 16px;cursor:pointer;background:{{ disc.bg }};transition:background 0.22s;">
-              <div style="font-family:'Lama Sans',sans-serif;font-size:13px;font-weight:500;color:{{ disc.titleColor }};margin-bottom:7px;letter-spacing:0.02em;">{{ disc.title }}</div>
-              <div style="font-family:'Lama Sans',sans-serif;font-size:13px;color:#8B6B4A;line-height:1.65;">{{ disc.tagline }}</div>
-            </div>
-          </sc-for>
-          <div style="border-top:1px solid #D6C2A8;"></div>
+          <div style="border-top:1px solid #D6C2A8;padding:26px 0;">
+            <div style="font-family:'Lama Sans',sans-serif;font-size:13px;font-weight:500;color:#1F1F1F;margin-bottom:7px;letter-spacing:0.02em;">Architecture &amp; Interior Design</div>
+            <div style="font-family:'Lama Sans',sans-serif;font-size:13px;color:#8B6B4A;line-height:1.65;">Bespoke spaces that maximise property value</div>
+          </div>
+          <div style="border-top:1px solid #D6C2A8;padding:26px 0;">
+            <div style="font-family:'Lama Sans',sans-serif;font-size:13px;font-weight:500;color:#1F1F1F;margin-bottom:7px;letter-spacing:0.02em;">Fit-Out &amp; Turnkey</div>
+            <div style="font-family:'Lama Sans',sans-serif;font-size:13px;color:#8B6B4A;line-height:1.65;">Raw shells transformed into masterpieces</div>
+          </div>
+          <div style="border-top:1px solid #D6C2A8;padding:26px 0;">
+            <div style="font-family:'Lama Sans',sans-serif;font-size:13px;font-weight:500;color:#1F1F1F;margin-bottom:7px;letter-spacing:0.02em;">Engineering &amp; MEP</div>
+            <div style="font-family:'Lama Sans',sans-serif;font-size:13px;color:#8B6B4A;line-height:1.65;">The precision backbone of Mechanical, Electrical &amp; Plumbing systems</div>
+          </div>
+          <div style="border-top:1px solid #D6C2A8;border-bottom:1px solid #D6C2A8;padding:26px 0;">
+            <div style="font-family:'Lama Sans',sans-serif;font-size:13px;font-weight:500;color:#1F1F1F;margin-bottom:7px;letter-spacing:0.02em;">Furniture Procurement</div>
+            <div style="font-family:'Lama Sans',sans-serif;font-size:13px;color:#8B6B4A;line-height:1.65;">Pieces strategically sourced to align with your scale, budget, and aesthetic</div>
+          </div>
         </div>
       </div>
     </div>
@@ -183,57 +189,46 @@
 </section>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ FOUR-STEP PROCESS ━ -->
-<section id="journey-section" style="position:relative;overflow:hidden;background:#3A2D25;padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px);">
-  <!-- Tech / AI neurolink background -->
-  <div style="position:absolute;inset:0;z-index:0;pointer-events:none;">
-    <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&w=1920&q=80" alt="" style="width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(0.15) brightness(0.28) sepia(0.3);">
-    <div style="position:absolute;inset:0;background:linear-gradient(160deg,rgba(22,12,5,0.82) 0%,rgba(38,24,12,0.70) 50%,rgba(22,12,5,0.80) 100%);"></div>
-  </div>
-  <div style="max-width:1280px;margin:0 auto;position:relative;z-index:1;">
+<section style="background:#3A2D25;padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px);">
+  <div style="max-width:1280px;margin:0 auto;">
     <div style="text-align:center;margin-bottom:clamp(56px,7vw,88px);">
       <span data-reveal style="opacity:0;transition:opacity 0.7s;font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:rgba(214,194,168,0.48);display:block;margin-bottom:18px;">Our Methodology</span>
       <h2 data-reveal data-reveal-delay="0.1" style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Lama Sans',sans-serif;font-size:clamp(30px,4vw,60px);font-weight:500;color:#D6C2A8;line-height:1.1;">A Transparent Journey</h2>
     </div>
     <!-- Journey signal infographic -->
     <div id="journey-svg-wrap" style="margin-bottom:clamp(28px,3.5vw,44px);overflow:visible;">
-      <svg id="journey-svg" viewBox="0 0 1000 130" preserveAspectRatio="none" style="width:100%;height:clamp(90px,11vw,155px);overflow:visible;display:block;">
+      <svg id="journey-svg" viewBox="0 0 1000 112" preserveAspectRatio="none" style="width:100%;height:clamp(72px,9vw,124px);overflow:visible;display:block;">
         <defs>
-          <filter id="fiq-aura-blur" x="-400%" y="-400%" width="900%" height="900%">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="6"/>
+          <filter id="fiq-dot-glow" x="-300%" y="-300%" width="700%" height="700%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
           </filter>
           <filter id="fiq-path-glow" x="-5%" y="-500%" width="110%" height="1100%">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="5"/>
+            <feGaussianBlur in="SourceGraphic" stdDeviation="7"/>
           </filter>
         </defs>
         <!-- Vertical dashed connectors from dot down into step content -->
-        <line x1="125" y1="12" x2="125" y2="160" stroke="rgba(214,194,168,0.18)" stroke-width="1" stroke-dasharray="3,6"/>
-        <line x1="375" y1="116" x2="375" y2="160" stroke="rgba(214,194,168,0.18)" stroke-width="1" stroke-dasharray="3,6"/>
-        <line x1="625" y1="12" x2="625" y2="160" stroke="rgba(214,194,168,0.18)" stroke-width="1" stroke-dasharray="3,6"/>
-        <line x1="875" y1="116" x2="875" y2="160" stroke="rgba(214,194,168,0.18)" stroke-width="1" stroke-dasharray="3,6"/>
+        <line x1="125" y1="80" x2="125" y2="145" stroke="rgba(214,194,168,0.18)" stroke-width="1" stroke-dasharray="3,6"/>
+        <line x1="375" y1="32" x2="375" y2="145" stroke="rgba(214,194,168,0.18)" stroke-width="1" stroke-dasharray="3,6"/>
+        <line x1="625" y1="84" x2="625" y2="145" stroke="rgba(214,194,168,0.18)" stroke-width="1" stroke-dasharray="3,6"/>
+        <line x1="875" y1="24" x2="875" y2="145" stroke="rgba(214,194,168,0.18)" stroke-width="1" stroke-dasharray="3,6"/>
         <!-- Blurred glow path behind the line -->
-        <path d="M 125,8 C 210,8 275,112 375,112 C 475,112 540,8 625,8 C 710,8 780,112 875,112"
-              fill="none" stroke="rgba(214,194,168,0.15)" stroke-width="10" filter="url(#fiq-path-glow)"/>
+        <path d="M 125,76 C 215,76 285,28 375,28 C 465,28 535,80 625,80 C 715,80 785,20 875,20"
+              fill="none" stroke="rgba(214,194,168,0.28)" stroke-width="14" filter="url(#fiq-path-glow)"/>
         <!-- Main signal path (drawn by JS on scroll) -->
         <path id="journey-path"
-              d="M 125,8 C 210,8 275,112 375,112 C 475,112 540,8 625,8 C 710,8 780,112 875,112"
-              fill="none" stroke="rgba(214,194,168,0.78)" stroke-width="0.9"/>
-        <!-- Golden aura dots — revealed sequentially as line draws -->
-        <g class="journey-dot-group" style="opacity:0;">
-          <circle cx="125" cy="8" r="11" fill="rgba(210,168,55,0.28)" filter="url(#fiq-aura-blur)"/>
-          <circle cx="125" cy="8" r="3" fill="#D4B264"/>
-        </g>
-        <g class="journey-dot-group" style="opacity:0;">
-          <circle cx="375" cy="112" r="11" fill="rgba(210,168,55,0.28)" filter="url(#fiq-aura-blur)"/>
-          <circle cx="375" cy="112" r="3" fill="#D4B264"/>
-        </g>
-        <g class="journey-dot-group" style="opacity:0;">
-          <circle cx="625" cy="8" r="11" fill="rgba(210,168,55,0.28)" filter="url(#fiq-aura-blur)"/>
-          <circle cx="625" cy="8" r="3" fill="#D4B264"/>
-        </g>
-        <g class="journey-dot-group" style="opacity:0;">
-          <circle cx="875" cy="112" r="11" fill="rgba(210,168,55,0.28)" filter="url(#fiq-aura-blur)"/>
-          <circle cx="875" cy="112" r="3" fill="#D4B264"/>
-        </g>
+              d="M 125,76 C 215,76 285,28 375,28 C 465,28 535,80 625,80 C 715,80 785,20 875,20"
+              fill="none" stroke="rgba(214,194,168,0.7)" stroke-width="1.5"/>
+        <!-- Expanding pulse rings (CSS animated, paused until scroll) -->
+        <circle class="journey-ring" cx="125" cy="76" r="7" fill="none" stroke="#D6C2A8" stroke-width="1.2" style="opacity:0;transform-box:fill-box;transform-origin:center;animation-delay:0s;"/>
+        <circle class="journey-ring" cx="375" cy="28" r="7" fill="none" stroke="#D6C2A8" stroke-width="1.2" style="opacity:0;transform-box:fill-box;transform-origin:center;animation-delay:0.65s;"/>
+        <circle class="journey-ring" cx="625" cy="80" r="7" fill="none" stroke="#D6C2A8" stroke-width="1.2" style="opacity:0;transform-box:fill-box;transform-origin:center;animation-delay:1.3s;"/>
+        <circle class="journey-ring" cx="875" cy="20" r="7" fill="none" stroke="#D6C2A8" stroke-width="1.2" style="opacity:0;transform-box:fill-box;transform-origin:center;animation-delay:1.95s;"/>
+        <!-- Solid glowing dots (fade in via JS) -->
+        <circle class="journey-dot" cx="125" cy="76" r="5" fill="#D6C2A8" style="opacity:0;" filter="url(#fiq-dot-glow)"/>
+        <circle class="journey-dot" cx="375" cy="28" r="5" fill="#D6C2A8" style="opacity:0;" filter="url(#fiq-dot-glow)"/>
+        <circle class="journey-dot" cx="625" cy="80" r="5" fill="#D6C2A8" style="opacity:0;" filter="url(#fiq-dot-glow)"/>
+        <circle class="journey-dot" cx="875" cy="20" r="5" fill="#D6C2A8" style="opacity:0;" filter="url(#fiq-dot-glow)"/>
       </svg>
     </div>
 
@@ -416,7 +411,7 @@
           </div>
           <div>
             <div style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(214,194,168,0.35);margin-bottom:5px;">Email</div>
-            <a href="/cdn-cgi/l/email-protection#ccbcbea3a6a9afb8bf8caab9bea2a5bfa4a5bde2a2a9b8" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;"><span class="__cf_email__" data-cfemail="2050524f4a45435453604655524e49534849510e4e4554">[email&#160;protected]</span></a>
+            <a href="/cdn-cgi/l/email-protection#6c1c1e0306090f181f2c0a191e02051f04051d42020918" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;"><span class="__cf_email__" data-cfemail="5525273a3f30362126153320273b3c263d3c247b3b3021">[email&#160;protected]</span></a>
           </div>
           <div>
             <div style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(214,194,168,0.35);margin-bottom:5px;">Phone</div>
@@ -436,56 +431,11 @@
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1440}}">
 
 class Component extends DCLogic {
-  state = { newsletterEmail: '', newsletterStatus: null, activeDiscipline: -1, leftOpacity: 1 };
-
-  _disciplines = [
-    {
-      title: 'Architecture & Interior Design',
-      tagline: 'Bespoke spaces that maximise property value',
-      body: 'Every FurnishIQ project begins with a rigorous discovery of your brief, your brand, and the behaviours of the people who will inhabit the space. Our design team translates that understanding into bespoke spatial concepts — developing layouts, material specifications, and lighting strategies that balance aesthetic ambition with practical performance. Full photoreal 3D renders are produced for client approval before construction begins, ensuring the final environment is built exactly as envisioned, with no surprises and no compromises.'
-    },
-    {
-      title: 'Fit-Out & Turnkey Solutions',
-      tagline: 'Raw shells transformed into masterpieces',
-      body: 'FurnishIQ takes complete responsibility for the build — from initial partitioning, flooring, and ceilings through to bespoke joinery, specialist finishes, and final handover. Because our fit-out team operates alongside our designers and engineers under one roof, coordination is resolved in the model rather than on-site, protecting both programme and budget. Every project concludes with a structured snagging process and a defined aftercare period, so the space you receive is complete, compliant, and ready for immediate occupation.'
-    },
-    {
-      title: 'Engineering & MEP',
-      tagline: 'The precision backbone of Mechanical, Electrical & Plumbing systems',
-      body: 'Our Mechanical, Electrical, and Plumbing engineering is delivered by the same integrated team responsible for your design and fit-out — not an external subcontractor working from a separate drawing set. This in-house coordination eliminates clashes before they reach the site and ensures that every electrical system, HVAC installation, plumbing network, fire-fighting provision, and low-current infrastructure is designed and installed as a coherent whole. All systems are tested, commissioned, and fully documented to Saudi and international compliance standards prior to handover.'
-    },
-    {
-      title: 'Furniture Procurement',
-      tagline: 'Pieces strategically sourced to align with your scale, budget, and aesthetic',
-      body: 'Furniture selections at FurnishIQ are developed in parallel with spatial planning, not after it — ensuring every piece is aligned with the design intent, the end-user requirement, and the project budget from the outset. We source across the full market, from bespoke custom joinery to internationally procured FF&E, and manage the entire process in-house: purchase orders, delivery scheduling, quality inspection, warehousing, and installation. The result is a furnished environment where every piece belongs — proportionally, materially, and functionally — to the space it occupies.'
-    }
-  ];
+  state = { newsletterEmail: '', newsletterStatus: null };
 
   renderVals() {
-    const active = this.state.activeDiscipline;
-    const disc   = active >= 0 ? this._disciplines[active] : null;
     return {
-      showDefault:    active === -1,
-      showDiscipline: active >= 0,
-      activeTitle: disc ? disc.title : '',
-      activeBody:  disc ? disc.body  : '',
-      leftOpacity: this.state.leftOpacity,
-      disciplines: this._disciplines.map((d, i) => ({
-        title:        d.title,
-        tagline:      d.tagline,
-        bg:           i === active ? '#F5F2ED' : 'transparent',
-        titleColor:   i === active ? '#8B6B4A' : '#1F1F1F',
-        activeBorder: i === active ? '3px solid #8B6B4A' : '3px solid transparent',
-        onClick: () => {
-          if (i === this.state.activeDiscipline) return;
-          this.setState({ leftOpacity: 0 });
-          setTimeout(() => this.setState({ activeDiscipline: i, leftOpacity: 1 }), 230);
-        },
-        onMouseEnter: (e) => { if (i !== this.state.activeDiscipline) e.currentTarget.style.background = '#F5F2ED'; },
-        onMouseLeave: (e) => { if (i !== this.state.activeDiscipline) e.currentTarget.style.background = 'transparent'; }
-      })),
-      ctaMouseEnter: (e) => { e.currentTarget.style.background = '#3A2D25'; e.currentTarget.style.color = '#D6C2A8'; },
-      ctaMouseLeave: (e) => { e.currentTarget.style.background = '#D6C2A8'; e.currentTarget.style.color = '#3A2D25'; },
+      newsletterEmail: this.state.newsletterEmail,
       newsletterStatus: this.state.newsletterStatus,
       onNewsletterChange: (e) => this.setState({ newsletterEmail: e.target.value }),
       onNewsletterSubmit: () => {
@@ -561,57 +511,51 @@ class Component extends DCLogic {
       document.querySelectorAll('[data-reveal]').forEach(el => obs.observe(el));
     }
 
-    // ── JOURNEY SVG ANIMATION (scroll-driven) ───────────────────────────────
-    const journeyPath  = document.getElementById('journey-path');
-    const journeyDotGs = document.querySelectorAll('.journey-dot-group');
+    // ── JOURNEY SVG ANIMATION ───────────────────────────────────────────────
+    const journeyPath = document.getElementById('journey-path');
+    const journeyDots = document.querySelectorAll('.journey-dot');
+    const journeyRings = document.querySelectorAll('.journey-ring');
 
     if (journeyPath) {
-      const totalLen = journeyPath.getTotalLength();
-      journeyPath.style.strokeDasharray  = totalLen;
-      journeyPath.style.strokeDashoffset = totalLen;
+      const len = journeyPath.getTotalLength();
+      journeyPath.style.strokeDasharray = len;
+      journeyPath.style.strokeDashoffset = len;
 
-      const dotThresholds = [0.03, 0.34, 0.65, 0.96];
-      const dotRevealed   = [false, false, false, false];
-
-      const resetJourney = () => {
-        journeyPath.style.transition       = 'none';
-        journeyPath.style.strokeDashoffset = totalLen;
-        dotRevealed.fill(false);
-        journeyDotGs.forEach(g => { g.style.transition = 'none'; g.style.opacity = '0'; });
-      };
-
-      const updateJourney = () => {
-        const section = document.getElementById('journey-section');
-        if (!section) return;
-        const rect = section.getBoundingClientRect();
-        const vh   = window.innerHeight;
-        const rawProgress = (vh - rect.top) / (vh * 0.85);
-        const progress    = Math.max(0, Math.min(1, rawProgress));
-
-        journeyPath.style.strokeDashoffset = totalLen * (1 - progress);
-
-        dotThresholds.forEach((threshold, i) => {
-          if (!dotRevealed[i] && progress >= threshold) {
-            dotRevealed[i] = true;
-            const g = journeyDotGs[i];
-            if (g) { g.style.transition = 'opacity 0.55s ease'; g.style.opacity = '1'; }
-          }
+      const revealJourney = () => {
+        // Draw path left→right
+        setTimeout(() => {
+          journeyPath.style.transition = 'stroke-dashoffset 1.9s cubic-bezier(0.4,0,0.2,1)';
+          journeyPath.style.strokeDashoffset = '0';
+        }, 100);
+        // Reveal each dot + start its ring as path reaches it
+        journeyDots.forEach((dot, i) => {
+          const delay = 280 + i * 420;
+          setTimeout(() => {
+            dot.style.transition = 'opacity 0.5s ease';
+            dot.style.opacity = '1';
+            const ring = journeyRings[i];
+            if (ring) {
+              ring.style.opacity = '';          // remove inline override
+              ring.style.animationPlayState = 'running';
+            }
+          }, delay);
         });
       };
 
       if (reduced) {
         journeyPath.style.strokeDashoffset = '0';
-        journeyDotGs.forEach(g => { g.style.opacity = '1'; });
+        journeyDots.forEach(d => { d.style.opacity = '1'; });
+        journeyRings.forEach(r => { r.style.opacity = ''; r.style.animationPlayState = 'running'; });
       } else {
-        // Reset each time section scrolls out of view so animation replays on re-entry
-        const sectionEl = document.getElementById('journey-section');
-        if (sectionEl) {
-          new IntersectionObserver((entries) => {
-            if (!entries[0].isIntersecting) resetJourney();
-          }, { threshold: 0 }).observe(sectionEl);
-        }
-        // Only fire on scroll — never pre-reveal on mount
-        window.addEventListener('scroll', updateJourney, { passive: true });
+        const journeyObs = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            journeyObs.unobserve(entry.target);
+            revealJourney();
+          });
+        }, { threshold: 0.25 });
+        const svgWrap = document.getElementById('journey-svg-wrap');
+        if (svgWrap) journeyObs.observe(svgWrap);
       }
     }
 
