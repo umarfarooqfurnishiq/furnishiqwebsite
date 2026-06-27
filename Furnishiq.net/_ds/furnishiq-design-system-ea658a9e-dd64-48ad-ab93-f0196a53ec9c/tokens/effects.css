@@ -1,0 +1,81 @@
+/* FurnishIQ — Effects Tokens
+   Shadows, radii, borders, transitions, and motion.
+   The brand uses sharp corners (radius-none is the default) 
+   and subtle warm shadows — never blue-tinted. */
+
+:root {
+  /* ── Border Radius ───────────────────────────────────── */
+  --radius-none:   0px;     /* Default for brand — sharp luxury */
+  --radius-sm:     2px;     /* Subtle softening */
+  --radius-md:     4px;     /* Input fields */
+  --radius-lg:     8px;     /* Cards (rare) */
+  --radius-full:   9999px;  /* Pills, avatars */
+
+  /* ── Shadows (warm-toned, no cold grays) ─────────────── */
+  --shadow-xs:     0 1px 2px rgba(58, 45, 37, 0.06);
+  --shadow-sm:     0 2px 8px rgba(58, 45, 37, 0.08);
+  --shadow-md:     0 4px 20px rgba(58, 45, 37, 0.10);
+  --shadow-lg:     0 8px 40px rgba(58, 45, 37, 0.12);
+  --shadow-xl:     0 16px 60px rgba(58, 45, 37, 0.15);
+  --shadow-luxury: 0 24px 80px rgba(58, 45, 37, 0.20);
+
+  /* ── Green Shadows (forest-toned) ─────────────────────── */
+  --shadow-green-xs:     0 1px 2px rgba(15, 61, 34, 0.06);
+  --shadow-green-sm:     0 2px 8px rgba(15, 61, 34, 0.08);
+  --shadow-green-md:     0 4px 20px rgba(15, 61, 34, 0.10);
+  --shadow-green-lg:     0 8px 40px rgba(15, 61, 34, 0.12);
+  --shadow-green-xl:     0 16px 60px rgba(15, 61, 34, 0.15);
+  --shadow-green-luxury: 0 24px 80px rgba(15, 61, 34, 0.18);
+
+  /* Inset shadows */
+  --shadow-inset-sm: inset 0 1px 3px rgba(58, 45, 37, 0.08);
+  --shadow-inset-md: inset 0 2px 8px rgba(58, 45, 37, 0.12);
+
+  /* ── Border Widths ───────────────────────────────────── */
+  --border-0:      0px;
+  --border-thin:   1px;
+  --border-base:   1.5px;
+  --border-thick:  2px;
+  --border-heavy:  3px;
+
+  /* ── Transitions ─────────────────────────────────────── */
+  --ease-linear:   linear; /* @kind other */
+  --ease-in:       cubic-bezier(0.4, 0, 1, 1); /* @kind other */
+  --ease-out:      cubic-bezier(0, 0, 0.2, 1); /* @kind other */
+  --ease-inout:    cubic-bezier(0.4, 0, 0.2, 1); /* @kind other */
+  --ease-luxury:   cubic-bezier(0.25, 0.46, 0.45, 0.94); /* @kind other */
+
+  --duration-instant: 0ms; /* @kind other */
+  --duration-fast:    100ms; /* @kind other */
+  --duration-base:    200ms; /* @kind other */
+  --duration-slow:    350ms; /* @kind other */
+  --duration-slower:  500ms; /* @kind other */
+  --duration-luxury:  700ms; /* @kind other */
+
+  --transition-fast:    var(--duration-fast) var(--ease-out); /* @kind other */
+  --transition-base:    var(--duration-base) var(--ease-out); /* @kind other */
+  --transition-slow:    var(--duration-slow) var(--ease-luxury); /* @kind other */
+  --transition-luxury:  var(--duration-luxury) var(--ease-luxury); /* @kind other */
+
+  /* ── Opacity ─────────────────────────────────────────── */
+  --opacity-full:    1; /* @kind other */
+  --opacity-muted:   0.6; /* @kind other */
+  --opacity-subtle:  0.4; /* @kind other */
+  --opacity-faint:   0.15; /* @kind other */
+  --opacity-ghost:   0.08; /* @kind other */
+
+  /* ── Blur ────────────────────────────────────────────── */
+  --blur-sm:   4px; /* @kind other */
+  --blur-md:   12px; /* @kind other */
+  --blur-lg:   24px; /* @kind other */
+  --blur-xl:   40px; /* @kind other */
+
+  /* ── Z-Index ─────────────────────────────────────────── */
+  --z-below:    -1; /* @kind other */
+  --z-base:      0; /* @kind other */
+  --z-raised:    10; /* @kind other */
+  --z-overlay:   100; /* @kind other */
+  --z-nav:       200; /* @kind other */
+  --z-modal:     300; /* @kind other */
+  --z-toast:     400; /* @kind other */
+}

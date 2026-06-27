@@ -1,0 +1,75 @@
+/* FurnishIQ — Color Tokens
+   Luxury interior design brand palette.
+   Primary system: warm walnut & bronze luxury tones.
+   Brand green (#1C6B35) is reserved for logo use ONLY. */
+
+:root {
+  /* ── Luxury Brown Palette ────────────────────────────── */
+  --color-walnut:        #5B4636;  /* Primary walnut — main CTA, headings */
+  --color-walnut-dark:   #3A2D25;  /* Dark walnut — deep backgrounds, nav */
+  --color-bronze:        #8B6B4A;  /* Bronze — accents, secondary elements */
+  --color-taupe:         #B8A08C;  /* Warm taupe — dividers, subtle borders */
+  --color-champagne:     #D6C2A8;  /* Champagne — light borders, highlights */
+  --color-stone:         #F5F2ED;  /* Stone — section backgrounds, cards */
+  --color-charcoal:      #1F1F1F;  /* Near black — primary text */
+  --color-white:         #FFFFFF;  /* Pure white — page background */
+
+  /* ── Brand Green Palette ─────────────────────────────── */
+  --color-green-deep:    #0A2918;  /* Forest deep — dark surfaces */
+  --color-green-dark:    #0F3D22;  /* Forest dark — hero BG, headers */
+  --color-brand-green:   #1C6B35;  /* Logo accent + primary green */
+  --color-green-forest:  #247A3C;  /* Forest — buttons, CTAs (green mode) */
+  --color-green-mid:     #2E9E4F;  /* Mid green — hover states */
+  --color-green-sage:    #5AB872;  /* Sage — muted accents */
+  --color-green-mint:    #8ED4A0;  /* Mint — light accents */
+  --color-green-pale:    #B8E4C6;  /* Pale — subtle highlights */
+  --color-green-mist:    #D5EFD9;  /* Mist — tinted backgrounds */
+  --color-green-stone:   #EBF5EE;  /* Green stone — section BGs */
+
+  /* ── Green Semantic Aliases ──────────────────────────── */
+  --surface-green:       var(--color-green-dark);   /* Dark green surface */
+  --surface-green-light: var(--color-green-stone);  /* Light green surface */
+  --text-on-green:       #FFFFFF;                   /* On dark green */
+  --text-green-accent:   var(--color-brand-green);  /* Green in light contexts */
+  --border-green:        var(--color-green-sage);   /* Green borders */
+  --color-green-action:  var(--color-green-forest); /* Green CTA */
+  --color-green-hover:   var(--color-green-dark);   /* Green CTA hover */
+
+  --color-brand-dark:    #1A1A1A;  /* ⚠ Logo background only */
+
+  /* ── Extended Palette ────────────────────────────────── */
+  --color-walnut-10:     #F4F0EC;  /* Walnut tint 10% */
+  --color-walnut-20:     #E8DFD8;  /* Walnut tint 20% */
+  --color-walnut-40:     #AD9484;  /* Walnut tint 40% */
+  --color-walnut-60:     #876B59;  /* Walnut tint 60% */
+  --color-bronze-light:  #C4A882;  /* Bronze light */
+  --color-bronze-muted:  #A07D5C;  /* Bronze muted */
+
+  /* ── Semantic: Surfaces ──────────────────────────────── */
+  --surface-primary:     var(--color-white);
+  --surface-secondary:   var(--color-stone);
+  --surface-dark:        var(--color-charcoal);
+  --surface-walnut:      var(--color-walnut-dark);
+  --surface-warm:        var(--color-champagne);
+
+  /* ── Semantic: Text ──────────────────────────────────── */
+  --text-primary:        var(--color-charcoal);
+  --text-secondary:      var(--color-walnut);
+  --text-muted:          var(--color-bronze);
+  --text-subtle:         var(--color-taupe);
+  --text-on-dark:        var(--color-white);
+  --text-on-walnut:      var(--color-champagne);
+  --text-display:        var(--color-walnut-dark);
+
+  /* ── Semantic: Borders ───────────────────────────────── */
+  --border-light:        var(--color-champagne);
+  --border-medium:       var(--color-taupe);
+  --border-dark:         var(--color-walnut);
+  --border-subtle:       var(--color-stone);
+
+  /* ── Semantic: Interactive ───────────────────────────── */
+  --color-action:        var(--color-walnut);
+  --color-action-hover:  var(--color-walnut-dark);
+  --color-action-muted:  var(--color-bronze);
+  --color-focus:         var(--color-bronze);
+}

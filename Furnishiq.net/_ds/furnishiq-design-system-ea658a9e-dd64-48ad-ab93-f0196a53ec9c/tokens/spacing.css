@@ -1,0 +1,65 @@
+/* FurnishIQ — Spacing & Layout Tokens
+   Based on a 4px base unit. Section spacing is generous — 
+   luxury brands breathe with white space. */
+
+:root {
+  /* ── Base Scale ──────────────────────────────────────── */
+  --space-0:   0px;
+  --space-1:   4px;
+  --space-2:   8px;
+  --space-3:   12px;
+  --space-4:   16px;
+  --space-5:   20px;
+  --space-6:   24px;
+  --space-8:   32px;
+  --space-10:  40px;
+  --space-12:  48px;
+  --space-14:  56px;
+  --space-16:  64px;
+  --space-20:  80px;
+  --space-24:  96px;
+  --space-28:  112px;
+  --space-32:  128px;
+  --space-40:  160px;
+  --space-48:  192px;
+  --space-56:  224px;
+  --space-64:  256px;
+
+  /* ── Fluid Spacing ───────────────────────────────────── */
+  --space-section:    clamp(64px, 8vw, 128px);  /* Between major sections */
+  --space-component:  clamp(32px, 4vw, 64px);   /* Between components */
+  --space-element:    clamp(16px, 2vw, 32px);   /* Within components */
+  --space-inline:     clamp(8px, 1vw, 16px);    /* Inline gaps */
+
+  /* ── Layout ──────────────────────────────────────────── */
+  --container-max:     1440px;   /* Max site width */
+  --container-wide:    1280px;   /* Wide content */
+  --container-base:    1080px;   /* Standard content */
+  --container-narrow:  720px;    /* Editorial / article */
+  --container-xs:      480px;    /* Forms, modals */
+
+  --gutter:            clamp(20px, 5vw, 80px);  /* @kind spacing */
+  --gutter-sm:         clamp(16px, 3vw, 40px); /* @kind spacing */
+
+  /* ── Grid ────────────────────────────────────────────── */
+  --grid-cols-12:   repeat(12, 1fr); /* @kind other */
+  --grid-cols-6:    repeat(6, 1fr); /* @kind other */
+  --grid-cols-4:    repeat(4, 1fr); /* @kind other */
+  --grid-cols-3:    repeat(3, 1fr); /* @kind other */
+  --grid-cols-2:    repeat(2, 1fr); /* @kind other */
+  --grid-gap:       var(--space-8);
+  --grid-gap-lg:    var(--space-12);
+  --grid-gap-sm:    var(--space-4);
+
+  /* ── Component Sizes ─────────────────────────────────── */
+  --btn-height-sm:   36px;
+  --btn-height-md:   48px;
+  --btn-height-lg:   56px;
+
+  --input-height-sm:  40px;
+  --input-height-md:  50px;
+  --input-height-lg:  60px;
+
+  --nav-height:       80px;
+  --nav-height-sm:    64px;
+}

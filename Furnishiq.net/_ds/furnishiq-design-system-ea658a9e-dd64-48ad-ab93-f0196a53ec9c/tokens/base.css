@@ -1,0 +1,88 @@
+/* FurnishIQ — Base Reset & Global Defaults */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-relaxed);
+  color: var(--text-primary);
+  background: var(--surface-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-wrap: pretty;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: var(--weight-medium);
+  line-height: var(--leading-tight);
+  color: var(--text-display);
+}
+
+h1 { font-size: var(--text-3xl); letter-spacing: var(--tracking-tight); }
+h2 { font-size: var(--text-2xl); }
+h3 { font-size: var(--text-xl); }
+h4 { font-family: var(--font-body); font-size: var(--text-lg); font-weight: var(--weight-medium); letter-spacing: var(--tracking-wide); }
+h5 { font-family: var(--font-body); font-size: var(--text-md); font-weight: var(--weight-medium); }
+h6 { font-family: var(--font-body); font-size: var(--text-base); font-weight: var(--weight-semibold); letter-spacing: var(--tracking-widest); text-transform: uppercase; }
+
+p {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  color: var(--text-primary);
+}
+
+a {
+  color: var(--color-walnut);
+  text-decoration: none;
+  transition: color var(--transition-base);
+}
+
+a:hover {
+  color: var(--color-walnut-dark);
+}
+
+img, video {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+input, select, textarea {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  border: var(--border-thin) solid var(--border-light);
+  outline: none;
+  background: var(--surface-primary);
+  color: var(--text-primary);
+  border-radius: var(--radius-none);
+  transition: border-color var(--transition-fast);
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--color-walnut);
+}
+
+::selection {
+  background: var(--color-champagne);
+  color: var(--color-walnut-dark);
+}

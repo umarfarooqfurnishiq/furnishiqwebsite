@@ -1,0 +1,123 @@
+/* FurnishIQ — Typography Tokens
+   Display / Body (English): Lama Sans Medium — refined geometric sans-serif
+   Arabic: GE SS Two Medium — matching Arabic companion for bilingual layouts
+   Both fonts provided as brand assets; local files only. */
+
+@font-face {
+  font-family: 'Lama Sans';
+  src: url('../uploads/LamaSans-Medium_English.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GE SS Two';
+  src: url('../uploads/GE_SS_Two_Medium_Arabic.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* ── Font Families ───────────────────────────────────── */
+  --font-display:  'Lama Sans', 'Helvetica Neue', 'Arial', sans-serif;
+  --font-body:     'Lama Sans', 'Helvetica Neue', 'Arial', sans-serif;
+  --font-arabic:   'GE SS Two', 'Arial', sans-serif;
+
+  /* ── Font Sizes (px, fluid where appropriate) ────────── */
+  --text-4xl:   clamp(56px, 6vw, 96px);   /* Hero / Landmark */
+  --text-3xl:   clamp(40px, 4.5vw, 72px); /* H1 */
+  --text-2xl:   clamp(30px, 3.5vw, 56px); /* H2 */
+  --text-xl:    clamp(24px, 2.5vw, 40px); /* H3 */
+  --text-lg:    clamp(18px, 2vw, 28px);   /* H4 */
+  --text-md:    20px;                      /* Lead paragraph */
+  --text-base:  16px;                      /* Body */
+  --text-sm:    14px;                      /* Small body */
+  --text-xs:    12px;                      /* Captions, labels */
+  --text-2xs:   10px;                      /* Micro labels */
+
+  /* ── Line Heights ────────────────────────────────────── */
+  --leading-none:     1;
+  --leading-tight:    1.1;
+  --leading-snug:     1.25;
+  --leading-normal:   1.5;
+  --leading-relaxed:  1.7;
+  --leading-loose:    2;
+
+  /* ── Letter Spacing ──────────────────────────────────── */
+  --tracking-tightest: -0.03em;
+  --tracking-tight:    -0.01em;
+  --tracking-normal:    0em;
+  --tracking-wide:      0.06em;
+  --tracking-wider:     0.12em;
+  --tracking-widest:    0.2em;
+  --tracking-ultra:     0.3em;
+
+  /* ── Font Weights ────────────────────────────────────── */
+  --weight-light:    300;
+  --weight-regular:  400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+
+  /* ── Type Scale Aliases ──────────────────────────────── */
+  /* H1: Brand landmark heading */
+  --type-h1-family:   var(--font-display);
+  --type-h1-size:     var(--text-3xl);
+  --type-h1-weight:   var(--weight-medium);
+  --type-h1-leading:  var(--leading-tight);
+  --type-h1-tracking: var(--tracking-tight);
+
+  /* H2: Section heading */
+  --type-h2-family:   var(--font-display);
+  --type-h2-size:     var(--text-2xl);
+  --type-h2-weight:   var(--weight-medium);
+  --type-h2-leading:  var(--leading-snug);
+  --type-h2-tracking: var(--tracking-normal);
+
+  /* H3: Sub-section heading */
+  --type-h3-family:   var(--font-display);
+  --type-h3-size:     var(--text-xl);
+  --type-h3-weight:   var(--weight-medium);
+  --type-h3-leading:  var(--leading-snug);
+  --type-h3-tracking: var(--tracking-normal);
+
+  /* H4: Component heading */
+  --type-h4-family:   var(--font-body);
+  --type-h4-size:     var(--text-lg);
+  --type-h4-weight:   var(--weight-medium);
+  --type-h4-leading:  var(--leading-normal);
+  --type-h4-tracking: var(--tracking-wide);
+
+  /* Body */
+  --type-body-family:  var(--font-body);
+  --type-body-size:    var(--text-base);
+  --type-body-weight:  var(--weight-regular);
+  --type-body-leading: var(--leading-relaxed);
+
+  /* Caption */
+  --type-caption-family:   var(--font-body);
+  --type-caption-size:     var(--text-xs);
+  --type-caption-weight:   var(--weight-regular);
+  --type-caption-tracking: var(--tracking-wider);
+
+  /* Label / eyebrow */
+  --type-label-family:   var(--font-body);
+  --type-label-size:     var(--text-xs);
+  --type-label-weight:   var(--weight-semibold);
+  --type-label-tracking: var(--tracking-widest);
+
+  /* Quote */
+  --type-quote-family:   var(--font-display);
+  --type-quote-size:     var(--text-2xl);
+  --type-quote-weight:   var(--weight-medium);
+  --type-quote-style:    normal;
+  --type-quote-leading:  var(--leading-snug);
+
+  /* Arabic */
+  --type-arabic-family:  var(--font-arabic);
+  --type-arabic-size:    var(--text-base);
+  --type-arabic-weight:  var(--weight-medium);
+  --type-arabic-leading: var(--leading-relaxed);
+}
