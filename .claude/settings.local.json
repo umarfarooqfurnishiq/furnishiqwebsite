@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git init *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git config *)",
+      "Bash(python -c ' *)",
+      "Bash(python -c \"import sys; data=sys.stdin.read\\(\\); idx=data.find\\('max-height'\\); print\\(data[max\\(0,idx-300\\):idx+300]\\) if idx>=0 else print\\('NOT FOUND'\\)\")"
+    ]
+  }
+}
