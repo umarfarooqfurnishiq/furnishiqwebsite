@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/furnishiq-design-system-ea658a9e-dd64-48ad-ab93-f0196a53ec9c/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/furnishiq-design-system-ea658a9e-dd64-48ad-ab93-f0196a53ec9c/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/furnishiq-design-system-ea658a9e-dd64-48ad-ab93-f0196a53ec9c/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/furnishiq-design-system-ea658a9e-dd64-48ad-ab93-f0196a53ec9c/tokens/effects.css">
+  <link rel="stylesheet" href="_ds/furnishiq-design-system-ea658a9e-dd64-48ad-ab93-f0196a53ec9c/tokens/base.css">
+  <style>
+    @keyframes fiq-pulse-dot {
+      0%{box-shadow:0 0 0 0 rgba(214,194,168,0.45);}
+      70%{box-shadow:0 0 0 9px rgba(214,194,168,0);}
+      100%{box-shadow:0 0 0 0 rgba(214,194,168,0);}
+    }
+    @media(max-width:960px){
+      .fiq-nav-links{display:none!important;}
+      .fiq-nav-cta-btn{display:none!important;}
+      .fiq-hero-grid{grid-template-columns:1fr!important;}
+      .fiq-hero-side{border-left:none!important;border-top:1px solid rgba(214,194,168,0.14)!important;padding-left:0!important;padding-top:36px!important;margin-top:44px!important;}
+      .fiq-channel-strip{grid-template-columns:1fr 1fr!important;}
+      .fiq-contact-cols{grid-template-columns:1fr!important;}
+      .fiq-contact-left{position:static!important;}
+      .fiq-form-names{grid-template-columns:1fr!important;}
+      .fiq-next-steps{flex-direction:column!important;gap:40px!important;}
+      .fiq-next-connector{display:none!important;}
+      .fiq-visit-grid{grid-template-columns:1fr!important;}
+      .fiq-visit-left{grid-column:1!important;padding-left:clamp(24px,5vw,80px)!important;padding-right:clamp(24px,5vw,80px)!important;}
+      .fiq-visit-map{grid-column:1!important;min-height:320px!important;}
+      .fiq-footer-grid{grid-template-columns:1fr 1fr!important;gap:48px!important;}
+      .fiq-footer-brand{grid-column:1/-1!important;}
+    }
+    @media(max-width:600px){
+      .fiq-channel-strip{grid-template-columns:1fr!important;}
+      .fiq-footer-grid{grid-template-columns:1fr!important;}
+    }
+  </style>
+</helmet>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ NAV ━━ -->
+<nav id="id-nav" style="position:fixed;top:0;left:0;right:0;height:80px;z-index:200;display:flex;align-items:center;background:transparent;border-bottom:1px solid transparent;transition:background 0.55s cubic-bezier(0.25,0.46,0.45,0.94),border-color 0.55s,box-shadow 0.55s;">
+  <div style="max-width:1440px;margin:0 auto;width:100%;padding:0 clamp(20px,5vw,64px);display:flex;align-items:center;justify-content:space-between;gap:24px;">
+    <a href="FurnishIQ Home.dc.html" style="flex-shrink:0;position:relative;height:36px;width:172px;display:block;text-decoration:none;">
+      <img id="id-logo-w" src="assets/logo-default.png" alt="FurnishIQ" style="position:absolute;inset:0;height:36px;width:auto;max-width:172px;object-fit:contain;object-position:left center;transition:opacity 0.4s cubic-bezier(0.25,0.46,0.45,0.94);">
+      <img id="id-logo-d" src="assets/logo-scrolled.png" alt="FurnishIQ" style="position:absolute;inset:0;height:36px;width:auto;max-width:172px;object-fit:contain;object-position:left center;opacity:0;transition:opacity 0.4s cubic-bezier(0.25,0.46,0.45,0.94);">
+    </a>
+    <div class="fiq-nav-links" style="display:flex;gap:clamp(24px,3.5vw,48px);align-items:center;flex:1;justify-content:center;">
+      <a href="/#services" data-nav-link style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;transition:color 0.25s,opacity 0.25s;opacity:0.8;">Services</a>
+      <a href="/#portfolio" data-nav-link style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;transition:color 0.25s,opacity 0.25s;opacity:0.8;">Portfolio</a>
+      <a href="/#process" data-nav-link style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;transition:color 0.25s,opacity 0.25s;opacity:0.8;">Process</a>
+      <a id="id-nav-contact" href="#" data-nav-link style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;transition:color 0.25s,opacity 0.25s;opacity:1;border-bottom:1px solid rgba(214,194,168,0.55);padding-bottom:2px;">Contact</a>
+    </div>
+    <a href="#form" class="fiq-nav-cta-btn" id="id-nav-cta" style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;border:1px solid rgba(214,194,168,0.5);padding:12px 28px;flex-shrink:0;transition:all 0.3s cubic-bezier(0.25,0.46,0.45,0.94);white-space:nowrap;background:transparent;">Request a Consultation</a>
+  </div>
+</nav>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ HERO ━━ -->
+<section data-screen-label="Hero" data-contact-hero style="position:relative;background:#1E1610;overflow:hidden;padding:clamp(150px,18vh,200px) clamp(24px,5vw,80px) clamp(72px,9vw,120px);">
+  <!-- Photographic texture -->
+  <div style="position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2400&q=80');background-size:cover;background-position:center 60%;opacity:0.16;pointer-events:none;"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(115deg,rgba(30,22,16,0.96) 0%,rgba(30,22,16,0.72) 55%,rgba(30,22,16,0.94) 100%);pointer-events:none;"></div>
+  <!-- Decorative rings -->
+  <div style="position:absolute;top:-140px;right:-100px;width:480px;height:480px;border:1px solid rgba(214,194,168,0.06);border-radius:50%;pointer-events:none;"></div>
+  <div style="position:absolute;top:-60px;right:20px;width:280px;height:280px;border:1px solid rgba(214,194,168,0.045);border-radius:50%;pointer-events:none;"></div>
+
+  <div style="position:relative;z-index:1;max-width:1280px;margin:0 auto;">
+    <div class="fiq-hero-grid" style="display:grid;grid-template-columns:1.6fr 1fr;gap:clamp(48px,7vw,110px);align-items:end;">
+
+      <!-- Headline -->
+      <div>
+        <div data-hero-eyebrow style="opacity:0;transition:opacity 0.6s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;align-items:center;gap:16px;margin-bottom:28px;">
+          <span data-hero-eyebrow-line style="display:block;width:0px;height:1px;background:#D6C2A8;flex-shrink:0;transition:width 0.7s cubic-bezier(0.25,0.46,0.45,0.94);"></span>
+          <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:rgba(214,194,168,0.75);">Contact FurnishIQ</span>
+        </div>
+        <h1 style="font-family:'Lama Sans',sans-serif;font-size:clamp(36px,4.2vw,58px);font-weight:600;line-height:1.05;letter-spacing:-0.01em;color:#FFFFFF;margin:0;text-wrap:balance;">
+          <span style="display:block;overflow:hidden;"><span data-hero-word style="display:block;transform:translateY(112%);transition:transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);">Every great space</span></span>
+          <span style="display:block;overflow:hidden;"><span data-hero-word style="display:block;transform:translateY(112%);transition:transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);">begins with a</span></span>
+          <span style="display:block;overflow:hidden;"><span data-hero-word style="display:block;transform:translateY(112%);transition:transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);color:#D6C2A8;">conversation.</span></span>
+        </h1>
+      </div>
+
+      <!-- Side: availability + breadcrumb -->
+      <div class="fiq-hero-side" data-reveal data-reveal-delay="0.5" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);border-left:1px solid rgba(214,194,168,0.18);padding-left:clamp(24px,2.5vw,40px);">
+        <div style="display:flex;align-items:center;gap:11px;margin-bottom:18px;">
+          <span style="width:7px;height:7px;border-radius:50%;background:#D6C2A8;flex-shrink:0;animation:fiq-pulse-dot 2.4s cubic-bezier(0.25,0.46,0.45,0.94) infinite;"></span>
+          <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.24em;text-transform:uppercase;color:rgba(214,194,168,0.8);">Now accepting projects</span>
+        </div>
+        <p style="font-family:'Lama Sans',sans-serif;font-size:13.5px;line-height:1.85;color:rgba(214,194,168,0.55);margin-bottom:24px;">Tell us what you're planning — a villa, an office, a full commercial fit-out. A senior consultant replies within one working day.</p>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <a href="/" style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.26em;text-transform:uppercase;color:rgba(214,194,168,0.5);text-decoration:none;transition:color 0.25s;">Home</a>
+          <span style="font-family:'Lama Sans',sans-serif;font-size:9px;color:rgba(214,194,168,0.3);">/</span>
+          <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.26em;text-transform:uppercase;color:rgba(214,194,168,0.85);">Contact</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━ CHANNEL STRIP ━━━━━━━━━━━ -->
+<section data-screen-label="Channels" style="background:#3A2D25;border-top:1px solid rgba(214,194,168,0.12);padding:0 clamp(24px,5vw,80px);">
+  <div class="fiq-channel-strip" style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);">
+
+    <a href="mailto:projects@furnishiq.net" data-channel style="display:block;text-decoration:none;padding:clamp(32px,3.5vw,48px) clamp(24px,3vw,44px);border-right:1px solid rgba(214,194,168,0.1);transition:background 0.35s cubic-bezier(0.25,0.46,0.45,0.94);">
+      <div style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.26em;text-transform:uppercase;color:rgba(214,194,168,0.45);margin-bottom:14px;">Email</div>
+      <div style="font-family:'Lama Sans',sans-serif;font-size:clamp(15px,1.3vw,18px);color:#FFFFFF;letter-spacing:0.01em;margin-bottom:8px;">projects@furnishiq.net</div>
+      <div data-channel-hint style="font-family:'Lama Sans',sans-serif;font-size:11.5px;color:rgba(214,194,168,0.45);transition:color 0.3s;">Briefs, drawings &amp; RFPs</div>
+    </a>
+
+    <a href="tel:+966580330627" data-channel style="display:block;text-decoration:none;padding:clamp(32px,3.5vw,48px) clamp(24px,3vw,44px);border-right:1px solid rgba(214,194,168,0.1);transition:background 0.35s cubic-bezier(0.25,0.46,0.45,0.94);">
+      <div style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.26em;text-transform:uppercase;color:rgba(214,194,168,0.45);margin-bottom:14px;">Phone</div>
+      <div style="font-family:'Lama Sans',sans-serif;font-size:clamp(15px,1.3vw,18px);color:#FFFFFF;letter-spacing:0.01em;margin-bottom:8px;">+966 58 033 0627</div>
+      <div data-channel-hint style="font-family:'Lama Sans',sans-serif;font-size:11.5px;color:rgba(214,194,168,0.45);transition:color 0.3s;">Ibrahim Al Ali — Projects</div>
+    </a>
+
+    <a href="https://wa.me/966580330627" data-channel style="display:block;text-decoration:none;padding:clamp(32px,3.5vw,48px) clamp(24px,3vw,44px);border-right:1px solid rgba(214,194,168,0.1);transition:background 0.35s cubic-bezier(0.25,0.46,0.45,0.94);">
+      <div style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.26em;text-transform:uppercase;color:rgba(214,194,168,0.45);margin-bottom:14px;">WhatsApp</div>
+      <div style="font-family:'Lama Sans',sans-serif;font-size:clamp(15px,1.3vw,18px);color:#FFFFFF;letter-spacing:0.01em;margin-bottom:8px;">Message us directly</div>
+      <div data-channel-hint style="font-family:'Lama Sans',sans-serif;font-size:11.5px;color:rgba(214,194,168,0.45);transition:color 0.3s;">Fastest first response</div>
+    </a>
+
+    <div style="padding:clamp(32px,3.5vw,48px) clamp(24px,3vw,44px);">
+      <div style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.26em;text-transform:uppercase;color:rgba(214,194,168,0.45);margin-bottom:14px;">Studio Hours</div>
+      <div style="font-family:'Lama Sans',sans-serif;font-size:clamp(15px,1.3vw,18px);color:#FFFFFF;letter-spacing:0.01em;margin-bottom:8px;">Sun – Thu · 9:00 – 18:00</div>
+      <div style="font-family:'Lama Sans',sans-serif;font-size:11.5px;color:rgba(214,194,168,0.45);">Riyadh, Saudi Arabia (AST)</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━ FORM ━━━━━━━━━━━━━━━━ -->
+<section id="form" data-screen-label="Form" style="background:#F5F2ED;padding:clamp(80px,10vw,136px) clamp(24px,5vw,80px);">
+  <div style="max-width:1280px;margin:0 auto;">
+    <div class="fiq-contact-cols" style="display:grid;grid-template-columns:1fr 1.35fr;gap:clamp(48px,7vw,110px);align-items:start;">
+
+      <!-- LEFT: intro + direct details -->
+      <div class="fiq-contact-left" style="position:sticky;top:112px;">
+        <div data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;align-items:center;gap:16px;margin-bottom:24px;">
+          <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
+          <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#8B6B4A;">Start Your Project</span>
+        </div>
+        <h2 data-reveal data-reveal-delay="0.08" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Lama Sans',sans-serif;font-size:clamp(28px,3.4vw,48px);font-weight:500;color:#1F1F1F;line-height:1.12;letter-spacing:-0.015em;margin-bottom:22px;text-wrap:balance;">Tell us about the space you're imagining.</h2>
+        <p data-reveal data-reveal-delay="0.15" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Lama Sans',sans-serif;font-size:15px;line-height:1.85;color:#5B4636;margin-bottom:44px;">Share a few details and we'll come back with a clear point of view — scope, timeline, and a budget roadmap. No obligation, no generic sales deck.</p>
+
+        <div data-reveal data-reveal-delay="0.22" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;flex-direction:column;">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:18px 0;border-top:1px solid #D6C2A8;">
+            <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.24em;text-transform:uppercase;color:#8B6B4A;flex-shrink:0;">Response</span>
+            <span style="font-family:'Lama Sans',sans-serif;font-size:14px;color:#1F1F1F;text-align:right;">Within one working day</span>
+          </div>
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:18px 0;border-top:1px solid #D6C2A8;">
+            <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.24em;text-transform:uppercase;color:#8B6B4A;flex-shrink:0;">Coverage</span>
+            <span style="font-family:'Lama Sans',sans-serif;font-size:14px;color:#1F1F1F;text-align:right;">All regions of Saudi Arabia</span>
+          </div>
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:18px 0;border-top:1px solid #D6C2A8;border-bottom:1px solid #D6C2A8;">
+            <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.24em;text-transform:uppercase;color:#8B6B4A;flex-shrink:0;">Languages</span>
+            <span style="font-family:'Lama Sans',sans-serif;font-size:14px;color:#1F1F1F;text-align:right;">English &amp; العربية</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: the form -->
+      <div data-reveal data-reveal-delay="0.18" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);background:#FFFFFF;border:1px solid #E8DFD8;padding:clamp(32px,4vw,60px);box-shadow:0 24px 64px rgba(58,45,37,0.07);">
+
+        <sc-if value="{{ formNotDone }}" hint-placeholder-val="{{ true }}">
+        <form onSubmit="{{ onFormSubmit }}" style="display:flex;flex-direction:column;">
+
+          <!-- Service chips -->
+          <div style="margin-bottom:38px;">
+            <div style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:#8B6B4A;margin-bottom:16px;">I'm interested in *</div>
+            <div style="display:flex;flex-wrap:wrap;gap:10px;">
+              <sc-for list="{{ serviceChips }}" as="chip" hint-placeholder-count="5">
+                <button type="button" onClick="{{ chip.onClick }}" style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;padding:12px 20px;cursor:pointer;transition:all 0.3s cubic-bezier(0.25,0.46,0.45,0.94);background:{{ chip.bg }};color:{{ chip.color }};border:1px solid {{ chip.border }};">{{ chip.label }}</button>
+              </sc-for>
+            </div>
+          </div>
+
+          <!-- Name row -->
+          <div class="fiq-form-names" style="display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:32px;">
+            <div style="display:flex;flex-direction:column;gap:7px;">
+              <label style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:#8B6B4A;">Full Name *</label>
+              <input type="text" required placeholder="Sarah Al-Rashid" value="{{ formName }}" onChange="{{ onNameChange }}" style="background:transparent;border:none;border-bottom:1px solid #D6C2A8;padding:11px 0;font-family:'Lama Sans',sans-serif;font-size:15px;color:#1F1F1F;outline:none;width:100%;transition:border-color 0.25s;" style-focus="border-bottom-color:#5B4636;">
+            </div>
+            <div style="display:flex;flex-direction:column;gap:7px;">
+              <label style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:#8B6B4A;">Company <span style="color:#B8A08C;text-transform:none;letter-spacing:0;">(optional)</span></label>
+              <input type="text" placeholder="Company name" value="{{ formCompany }}" onChange="{{ onCompanyChange }}" style="background:transparent;border:none;border-bottom:1px solid #D6C2A8;padding:11px 0;font-family:'Lama Sans',sans-serif;font-size:15px;color:#1F1F1F;outline:none;width:100%;transition:border-color 0.25s;" style-focus="border-bottom-color:#5B4636;">
+            </div>
+          </div>
+
+          <!-- Email + phone row -->
+          <div class="fiq-form-names" style="display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:32px;">
+            <div style="display:flex;flex-direction:column;gap:7px;">
+              <label style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:#8B6B4A;">Email Address *</label>
+              <input type="email" required placeholder="sarah@company.com" value="{{ formEmail }}" onChange="{{ onEmailChange }}" style="background:transparent;border:none;border-bottom:1px solid #D6C2A8;padding:11px 0;font-family:'Lama Sans',sans-serif;font-size:15px;color:#1F1F1F;outline:none;width:100%;transition:border-color 0.25s;" style-focus="border-bottom-color:#5B4636;">
+            </div>
+            <div style="display:flex;flex-direction:column;gap:7px;">
+              <label style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:#8B6B4A;">Phone Number *</label>
+              <div id="id-phone-wrapper" style="display:flex;align-items:center;border-bottom:1px solid #D6C2A8;transition:border-color 0.25s;">
+                {{ phoneSelect }}
+                <svg width="8" height="5" viewBox="0 0 8 5" fill="none" style="flex-shrink:0;pointer-events:none;margin:0 10px 0 3px;"><path d="M1 1l3 3 3-3" stroke="#8B6B4A" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                <span style="width:1px;height:16px;background:#D6C2A8;flex-shrink:0;margin-right:14px;"></span>
+                <input id="id-phone-input" type="tel" required placeholder="58 033 0627" value="{{ formPhone }}" onChange="{{ onPhoneChange }}" style="flex:1;background:transparent;border:none;padding:11px 0;font-family:'Lama Sans',sans-serif;font-size:15px;color:#1F1F1F;outline:none;min-width:0;">
+              </div>
+            </div>
+          </div>
+
+          <!-- Budget chips -->
+          <div style="margin-bottom:38px;">
+            <div style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:#8B6B4A;margin-bottom:16px;">Estimated budget <span style="color:#B8A08C;text-transform:none;letter-spacing:0;">(SAR, optional)</span></div>
+            <div style="display:flex;flex-wrap:wrap;gap:10px;">
+              <sc-for list="{{ budgetChips }}" as="chip" hint-placeholder-count="4">
+                <button type="button" onClick="{{ chip.onClick }}" style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.06em;padding:12px 20px;cursor:pointer;transition:all 0.3s cubic-bezier(0.25,0.46,0.45,0.94);background:{{ chip.bg }};color:{{ chip.color }};border:1px solid {{ chip.border }};">{{ chip.label }}</button>
+              </sc-for>
+            </div>
+          </div>
+
+          <!-- Message -->
+          <div style="display:flex;flex-direction:column;gap:7px;margin-bottom:44px;">
+            <label style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:#8B6B4A;">About your project *</label>
+            <textarea required rows="4" placeholder="Location, approximate size, and what you'd like to achieve…" value="{{ formMessage }}" onChange="{{ onMessageChange }}" style="background:transparent;border:none;border-bottom:1px solid #D6C2A8;padding:11px 0;font-family:'Lama Sans',sans-serif;font-size:15px;line-height:1.7;color:#1F1F1F;outline:none;width:100%;resize:vertical;min-height:96px;transition:border-color 0.25s;" style-focus="border-bottom-color:#5B4636;"></textarea>
+          </div>
+
+          <!-- Submit -->
+          <button type="submit" id="id-submit-btn" style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#FFFFFF;background:#3A2D25;padding:19px 36px;border:1px solid #3A2D25;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:12px;width:100%;transition:all 0.3s cubic-bezier(0.25,0.46,0.45,0.94);" style-hover="background:#5B4636;border-color:#5B4636;">
+            Send Inquiry
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </button>
+          <p style="font-family:'Lama Sans',sans-serif;font-size:11px;color:#B8A08C;margin-top:16px;text-align:center;letter-spacing:0.03em;">Your details stay with FurnishIQ. Never shared, never spammed.</p>
+
+        </form>
+        </sc-if>
+
+        <sc-if value="{{ formDone }}" hint-placeholder-val="{{ null }}">
+          <div style="display:flex;flex-direction:column;align-items:center;text-align:center;padding:clamp(32px,4vw,56px) 0;">
+            <svg width="64" height="64" viewBox="0 0 28 28" fill="none" style="display:block;margin-bottom:28px;">
+              <circle cx="14" cy="14" r="12" stroke="#8B6B4A" stroke-width="0.7"></circle>
+              <path d="M9 14.2l3.4 3.4L19.5 11" stroke="#8B6B4A" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            <h3 style="font-family:'Lama Sans',sans-serif;font-size:clamp(22px,2.4vw,30px);font-weight:500;color:#1F1F1F;margin-bottom:14px;letter-spacing:-0.01em;">Thank you, {{ doneName }}.</h3>
+            <p style="font-family:'Lama Sans',sans-serif;font-size:14.5px;line-height:1.85;color:#5B4636;max-width:380px;margin-bottom:32px;">Your inquiry is with our consulting team. Expect a personal reply within one working day — usually much sooner.</p>
+            <button onClick="{{ onFormReset }}" style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#5B4636;background:transparent;padding:14px 28px;border:1px solid #B8A08C;cursor:pointer;transition:all 0.3s;" style-hover="border-color:#5B4636;">Send another inquiry</button>
+          </div>
+        </sc-if>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━ WHAT HAPPENS NEXT ━━━━━━━ -->
+<section data-screen-label="Next Steps" style="background:#FFFFFF;padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px);">
+  <div style="max-width:1280px;margin:0 auto;">
+    <div data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;align-items:center;gap:16px;margin-bottom:20px;">
+      <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
+      <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#8B6B4A;">After You Reach Out</span>
+    </div>
+    <h2 data-reveal data-reveal-delay="0.1" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Lama Sans',sans-serif;font-size:clamp(26px,3.2vw,44px);font-weight:500;color:#1F1F1F;line-height:1.15;letter-spacing:-0.015em;margin-bottom:clamp(48px,6vw,80px);">What happens next.</h2>
+
+    <div class="fiq-next-steps" style="display:flex;align-items:flex-start;">
+
+      <div data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);flex:1;padding-right:clamp(20px,3vw,44px);">
+        <div style="font-family:'Lama Sans',sans-serif;font-size:clamp(64px,7.5vw,100px);font-weight:500;color:rgba(91,70,54,0.07);line-height:1;letter-spacing:-0.03em;margin-bottom:4px;">01</div>
+        <div style="width:36px;height:1px;background:#D6C2A8;margin-bottom:26px;"></div>
+        <h4 style="font-family:'Lama Sans',sans-serif;font-size:17px;font-weight:500;color:#1F1F1F;margin-bottom:6px;letter-spacing:0.05em;">We Listen</h4>
+        <p style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:#8B6B4A;margin-bottom:14px;">Within 24 Hours</p>
+        <p style="font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.8;color:#5B4636;">A senior consultant — not a call center — reviews your inquiry and schedules a discovery conversation at a time that suits you.</p>
+      </div>
+
+      <div class="fiq-next-connector" style="flex-shrink:0;width:clamp(16px,2.5vw,36px);padding-top:52px;">
+        <div style="height:1px;width:100%;background-image:repeating-linear-gradient(90deg,#D6C2A8 0,#D6C2A8 4px,transparent 4px,transparent 7px);"></div>
+      </div>
+
+      <div data-reveal data-reveal-delay="0.1" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);flex:1;padding:0 clamp(20px,3vw,44px);">
+        <div style="font-family:'Lama Sans',sans-serif;font-size:clamp(64px,7.5vw,100px);font-weight:500;color:rgba(91,70,54,0.07);line-height:1;letter-spacing:-0.03em;margin-bottom:4px;">02</div>
+        <div style="width:36px;height:1px;background:#D6C2A8;margin-bottom:26px;"></div>
+        <h4 style="font-family:'Lama Sans',sans-serif;font-size:17px;font-weight:500;color:#1F1F1F;margin-bottom:6px;letter-spacing:0.05em;">We Visit</h4>
+        <p style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:#8B6B4A;margin-bottom:14px;">Site &amp; Scope</p>
+        <p style="font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.8;color:#5B4636;">We survey the space, understand how you'll use it, and align on ambition, constraints, and timeline — face to face where possible.</p>
+      </div>
+
+      <div class="fiq-next-connector" style="flex-shrink:0;width:clamp(16px,2.5vw,36px);padding-top:52px;">
+        <div style="height:1px;width:100%;background-image:repeating-linear-gradient(90deg,#D6C2A8 0,#D6C2A8 4px,transparent 4px,transparent 7px);"></div>
+      </div>
+
+      <div data-reveal data-reveal-delay="0.2" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);flex:1;padding-left:clamp(20px,3vw,44px);">
+        <div style="font-family:'Lama Sans',sans-serif;font-size:clamp(64px,7.5vw,100px);font-weight:500;color:rgba(91,70,54,0.07);line-height:1;letter-spacing:-0.03em;margin-bottom:4px;">03</div>
+        <div style="width:36px;height:1px;background:#5B4636;margin-bottom:26px;"></div>
+        <h4 style="font-family:'Lama Sans',sans-serif;font-size:17px;font-weight:500;color:#1F1F1F;margin-bottom:6px;letter-spacing:0.05em;">We Propose</h4>
+        <p style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:#8B6B4A;margin-bottom:14px;">Plan &amp; Roadmap</p>
+        <p style="font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.8;color:#5B4636;">You receive a clear proposal — scope, photoreal direction, and a comprehensive budget roadmap — before committing to anything.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━ VISIT ━━━━━━━━━━━━━━━ -->
+<section data-screen-label="Visit" style="position:relative;background:#1E1610;overflow:hidden;">
+  <div class="fiq-visit-grid" style="display:grid;grid-template-columns:minmax(clamp(24px,5vw,80px),1fr) minmax(0,640px) 50%;min-height:480px;">
+
+    <!-- LEFT: studio details -->
+    <div class="fiq-visit-left" style="grid-column:2;padding:clamp(64px,8vw,110px) clamp(40px,5vw,72px) clamp(64px,8vw,110px) 0;display:flex;flex-direction:column;justify-content:center;">
+      <div data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;align-items:center;gap:16px;margin-bottom:22px;">
+        <span style="display:block;width:32px;height:1px;background:#D6C2A8;flex-shrink:0;"></span>
+        <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:rgba(214,194,168,0.7);">Visit the Studio</span>
+      </div>
+      <h2 data-reveal data-reveal-delay="0.08" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Lama Sans',sans-serif;font-size:clamp(26px,3.2vw,44px);font-weight:500;color:#FFFFFF;line-height:1.12;letter-spacing:-0.015em;margin-bottom:20px;">See materials.<br>Touch finishes.</h2>
+      <p data-reveal data-reveal-delay="0.15" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Lama Sans',sans-serif;font-size:14px;line-height:1.85;color:rgba(214,194,168,0.6);margin-bottom:40px;max-width:380px;">Some decisions deserve to be made in person. Book a studio session to explore material libraries, finish samples, and past project work.</p>
+
+      <div data-reveal data-reveal-delay="0.2" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;flex-direction:column;gap:22px;margin-bottom:44px;">
+        <div>
+          <div style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.24em;text-transform:uppercase;color:rgba(214,194,168,0.4);margin-bottom:6px;">Address</div>
+          <p style="font-family:'Lama Sans',sans-serif;font-size:14px;color:rgba(214,194,168,0.85);line-height:1.7;">Riyadh, Kingdom of Saudi Arabia</p>
+        </div>
+        <div>
+          <div style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.24em;text-transform:uppercase;color:rgba(214,194,168,0.4);margin-bottom:6px;">By Appointment</div>
+          <p style="font-family:'Lama Sans',sans-serif;font-size:14px;color:rgba(214,194,168,0.85);line-height:1.7;">Sunday – Thursday · 9:00 – 18:00</p>
+        </div>
+      </div>
+
+      <a href="#form" id="id-visit-cta" style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#1E1610;background:#D6C2A8;padding:17px 34px;border:1px solid #D6C2A8;text-decoration:none;display:inline-flex;align-items:center;gap:12px;align-self:flex-start;transition:all 0.3s cubic-bezier(0.25,0.46,0.45,0.94);" style-hover="background:#FFFFFF;border-color:#FFFFFF;">
+        Book a Studio Visit
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+      </a>
+    </div>
+
+    <!-- RIGHT: imagery -->
+    <div class="fiq-visit-map" style="grid-column:3;position:relative;min-height:480px;overflow:hidden;">
+      <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1600&q=80" alt="FurnishIQ studio interior with material samples" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;">
+      <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(30,22,16,0.55) 0%,rgba(30,22,16,0) 45%);pointer-events:none;"></div>
+      <div style="position:absolute;left:clamp(20px,3vw,40px);bottom:clamp(20px,3vw,40px);background:rgba(30,22,16,0.85);backdrop-filter:blur(12px);border:1px solid rgba(214,194,168,0.2);padding:18px 24px;display:flex;align-items:center;gap:14px;">
+        <span style="width:7px;height:7px;border-radius:50%;background:#D6C2A8;flex-shrink:0;animation:fiq-pulse-dot 2.4s cubic-bezier(0.25,0.46,0.45,0.94) infinite;"></span>
+        <span style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(214,194,168,0.9);">Riyadh · 24.7136° N, 46.6753° E</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ FOOTER ━━━━━━━━━━━ -->
+<footer style="background:#1F1F1F;padding:clamp(64px,8vw,96px) clamp(24px,5vw,80px) 40px;border-top:1px solid rgba(91,70,54,0.25);">
+  <div style="max-width:1280px;margin:0 auto;">
+    <div class="fiq-footer-grid" style="display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:clamp(28px,4vw,64px);margin-bottom:64px;">
+
+      <div class="fiq-footer-brand">
+        <a href="FurnishIQ Home.dc.html" style="display:block;text-decoration:none;"><img src="assets/logo-default.png" alt="FurnishIQ" style="height:36px;width:auto;max-width:160px;object-fit:contain;object-position:left center;margin-bottom:22px;display:block;"></a>
+        <p style="font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.8;color:rgba(214,194,168,0.55);margin-bottom:32px;max-width:260px;">Integrated Design–Build solutions transforming ambitious architectural concepts into inspiring realities across Saudi Arabia.</p>
+        <div style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(214,194,168,0.4);margin-bottom:14px;">Join the IQ</div>
+        <div style="display:flex;border:1px solid rgba(214,194,168,0.2);">
+          <input type="email" placeholder="Your email address" value="{{ newsletterEmail }}" onChange="{{ onNewsletterChange }}" style="flex:1;background:transparent;border:none;padding:13px 16px;font-family:'Lama Sans',sans-serif;font-size:13px;color:#FFFFFF;outline:none;min-width:0;">
+          <button onClick="{{ onNewsletterSubmit }}" style="background:#5B4636;border:none;padding:13px 20px;cursor:pointer;font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:#D6C2A8;flex-shrink:0;transition:background 0.3s;">Subscribe</button>
+        </div>
+        <sc-if value="{{ newsletterStatus }}" hint-placeholder-val="{{ null }}">
+          <p style="font-family:'Lama Sans',sans-serif;font-size:12px;color:rgba(214,194,168,0.65);margin-top:10px;">Thank you — monthly updates, strictly no spam.</p>
+        </sc-if>
+      </div>
+
+      <div>
+        <div style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.26em;text-transform:uppercase;color:rgba(214,194,168,0.4);margin-bottom:22px;">Services</div>
+        <nav style="display:flex;flex-direction:column;gap:13px;">
+          <a href="#" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Interior Design</a>
+          <a href="#" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Fit-Out</a>
+          <a href="#" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Engineering &amp; MEP</a>
+          <a href="#" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Furniture Solutions</a>
+          <a href="#" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Project Management</a>
+        </nav>
+      </div>
+
+      <div>
+        <div style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.26em;text-transform:uppercase;color:rgba(214,194,168,0.4);margin-bottom:22px;">Company</div>
+        <nav style="display:flex;flex-direction:column;gap:13px;">
+          <a href="FurnishIQ About Us.dc.html" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">About Us</a>
+          <a href="#" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">All Services</a>
+          <a href="#" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Terms &amp; Conditions</a>
+          <a href="#" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:#D6C2A8;text-decoration:none;">Contact</a>
+          <a href="#" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Insights</a>
+        </nav>
+      </div>
+
+      <div>
+        <div style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.26em;text-transform:uppercase;color:rgba(214,194,168,0.4);margin-bottom:22px;">Find Us</div>
+        <div style="display:flex;flex-direction:column;gap:20px;">
+          <div>
+            <div style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(214,194,168,0.35);margin-bottom:5px;">Address</div>
+            <p style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);line-height:1.65;">Riyadh, KSA.</p>
+          </div>
+          <div>
+            <div style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(214,194,168,0.35);margin-bottom:5px;">Email</div>
+            <a href="mailto:projects@furnishiq.net" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">projects@furnishiq.net</a>
+          </div>
+          <div>
+            <div style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(214,194,168,0.35);margin-bottom:5px;">Phone — Ibrahim Al Ali</div>
+            <a href="tel:+966580330627" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">+966 58 033 0627</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div style="border-top:1px solid rgba(214,194,168,0.1);padding-top:28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+      <p style="font-family:'Lama Sans',sans-serif;font-size:11px;color:rgba(214,194,168,0.3);letter-spacing:0.04em;">© 2026 FurnishIQ. All rights reserved.</p>
+      <p style="font-family:'Lama Sans',sans-serif;font-size:11px;color:rgba(214,194,168,0.3);letter-spacing:0.04em;">Crafted with precision in Saudi Arabia.</p>
+    </div>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1440}}">
+class Component extends DCLogic {
+  state = {
+    formName: '', formCompany: '', formEmail: '', formPhone: '',
+    formMessage: '', formCountryCode: '+966',
+    selectedService: null, selectedBudget: null,
+    formDone: false, doneName: '',
+    newsletterEmail: '', newsletterStatus: null,
+  };
+
+  SERVICES = ['Interior Design', 'Fit-Out', 'Engineering & MEP', 'Furniture', 'Full Turnkey'];
+  BUDGETS = ['Under 250K', '250K – 1M', '1M – 5M', '5M+'];
+
+  COUNTRY_CODES = [
+    { code: 'SA', dial: '+966', name: 'Saudi Arabia' },
+    { code: 'AE', dial: '+971', name: 'UAE' },
+    { code: 'QA', dial: '+974', name: 'Qatar' },
+    { code: 'KW', dial: '+965', name: 'Kuwait' },
+    { code: 'BH', dial: '+973', name: 'Bahrain' },
+    { code: 'OM', dial: '+968', name: 'Oman' },
+    { code: 'EG', dial: '+20', name: 'Egypt' },
+    { code: 'JO', dial: '+962', name: 'Jordan' },
+    { code: 'GB', dial: '+44', name: 'UK' },
+    { code: 'US', dial: '+1', name: 'USA' },
+  ];
+
+  renderVals() {
+    const self = this;
+
+    const chip = (label, isSelected, onClick) => ({
+      label,
+      bg: isSelected ? '#3A2D25' : 'transparent',
+      color: isSelected ? '#D6C2A8' : '#5B4636',
+      border: isSelected ? '#3A2D25' : '#D6C2A8',
+      onClick,
+    });
+
+    const phoneSelect = React.createElement('select', {
+      value: self.state.formCountryCode,
+      onChange: (e) => self.setState({ formCountryCode: e.target.value }),
+      style: {
+        background: 'transparent', border: 'none',
+        padding: '11px 0', fontFamily: "'Lama Sans', sans-serif",
+        fontSize: '15px', color: '#5B4636', outline: 'none',
+        cursor: 'pointer', appearance: 'none', WebkitAppearance: 'none',
+        flexShrink: 0, maxWidth: '80px',
+      }
+    }, self.COUNTRY_CODES.map(cc =>
+      React.createElement('option', { key: cc.code, value: cc.dial }, cc.dial)
+    ));
+
+    return {
+      phoneSelect,
+      serviceChips: self.SERVICES.map(s =>
+        chip(s, self.state.selectedService === s,
+          () => self.setState({ selectedService: self.state.selectedService === s ? null : s }))),
+      budgetChips: self.BUDGETS.map(b =>
+        chip(b, self.state.selectedBudget === b,
+          () => self.setState({ selectedBudget: self.state.selectedBudget === b ? null : b }))),
+
+      formName: self.state.formName,
+      formCompany: self.state.formCompany,
+      formEmail: self.state.formEmail,
+      formPhone: self.state.formPhone,
+      formMessage: self.state.formMessage,
+      formDone: self.state.formDone,
+      formNotDone: !self.state.formDone,
+      doneName: (self.state.doneName || '').split(' ')[0] || 'friend',
+
+      onNameChange: (e) => self.setState({ formName: e.target.value }),
+      onCompanyChange: (e) => self.setState({ formCompany: e.target.value }),
+      onEmailChange: (e) => self.setState({ formEmail: e.target.value }),
+      onPhoneChange: (e) => self.setState({ formPhone: e.target.value }),
+      onMessageChange: (e) => self.setState({ formMessage: e.target.value }),
+      onFormSubmit: (e) => {
+        e.preventDefault();
+        self.setState({
+          formDone: true, doneName: self.state.formName,
+          formName: '', formCompany: '', formEmail: '', formPhone: '', formMessage: '',
+          selectedService: null, selectedBudget: null,
+        });
+      },
+      onFormReset: () => self.setState({ formDone: false }),
+
+      newsletterEmail: self.state.newsletterEmail,
+      newsletterStatus: self.state.newsletterStatus,
+      onNewsletterChange: (e) => self.setState({ newsletterEmail: e.target.value }),
+      onNewsletterSubmit: () => {
+        if (self.state.newsletterEmail && self.state.newsletterEmail.includes('@')) {
+          self.setState({ newsletterStatus: 'success', newsletterEmail: '' });
+        }
+      },
+    };
+  }
+
+  componentDidMount() {
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // ── NAV SCROLL ─────────────────────────────────────────
+    const nav = document.getElementById('id-nav');
+    const logoW = document.getElementById('id-logo-w');
+    const logoD = document.getElementById('id-logo-d');
+    const navLinks = document.querySelectorAll('[data-nav-link]');
+    const navContactLink = document.getElementById('id-nav-contact');
+    const navCta = document.getElementById('id-nav-cta');
+
+    const syncNav = () => {
+      const s = window.scrollY > 60;
+      if (!nav) return;
+      nav.style.background = s ? 'rgba(255,255,255,0.96)' : 'transparent';
+      nav.style.borderBottomColor = s ? '#D6C2A8' : 'transparent';
+      nav.style.backdropFilter = s ? 'blur(16px)' : 'none';
+      nav.style.boxShadow = s ? '0 2px 16px rgba(58,45,37,0.06)' : 'none';
+      if (logoW) logoW.style.opacity = s ? '0' : '1';
+      if (logoD) logoD.style.opacity = s ? '1' : '0';
+      navLinks.forEach(l => {
+        l.style.color = s ? '#1F1F1F' : '#FFFFFF';
+        if (l !== navContactLink) l.style.opacity = s ? '1' : '0.8';
+      });
+      if (navContactLink) {
+        navContactLink.style.borderBottomColor = s ? 'rgba(91,70,54,0.45)' : 'rgba(214,194,168,0.55)';
+      }
+      if (navCta) {
+        navCta.style.color = s ? '#1F1F1F' : '#FFFFFF';
+        navCta.style.borderColor = s ? 'rgba(91,70,54,0.35)' : 'rgba(214,194,168,0.5)';
+      }
+    };
+    window.addEventListener('scroll', syncNav, { passive: true });
+    syncNav();
+
+    navLinks.forEach(l => {
+      if (l === navContactLink) return;
+      l.addEventListener('mouseenter', () => { l.style.opacity = '1'; });
+      l.addEventListener('mouseleave', () => { l.style.opacity = window.scrollY > 60 ? '1' : '0.8'; });
+    });
+    if (navCta) {
+      navCta.addEventListener('mouseenter', () => {
+        navCta.style.background = window.scrollY > 60 ? '#3A2D25' : 'rgba(255,255,255,0.1)';
+        navCta.style.color = '#D6C2A8';
+      });
+      navCta.addEventListener('mouseleave', () => { navCta.style.background = 'transparent'; syncNav(); });
+    }
+
+    // ── HERO ENTRANCE ──────────────────────────────────────
+    const hero = document.querySelector('[data-contact-hero]');
+    if (hero) {
+      const eyebrow = hero.querySelector('[data-hero-eyebrow]');
+      const eyebrowLine = hero.querySelector('[data-hero-eyebrow-line]');
+      const words = hero.querySelectorAll('[data-hero-word]');
+      if (reduced) {
+        if (eyebrow) eyebrow.style.opacity = '1';
+        if (eyebrowLine) eyebrowLine.style.width = '32px';
+        words.forEach(w => { w.style.transform = 'translateY(0)'; });
+      } else {
+        setTimeout(() => { if (eyebrow) eyebrow.style.opacity = '1'; }, 100);
+        setTimeout(() => { if (eyebrowLine) eyebrowLine.style.width = '32px'; }, 180);
+        words.forEach((w, i) => {
+          setTimeout(() => { w.style.transform = 'translateY(0)'; }, 320 + i * 160);
+        });
+      }
+    }
+
+    // ── SCROLL REVEAL ──────────────────────────────────────
+    if (reduced) {
+      document.querySelectorAll('[data-reveal]').forEach(el => { el.style.opacity = '1'; el.style.transform = 'none'; });
+    } else {
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          const el = entry.target;
+          const delay = parseFloat(el.dataset.revealDelay || '0') * 1000;
+          setTimeout(() => { el.style.opacity = '1'; el.style.transform = 'translateY(0)'; }, delay);
+          obs.unobserve(el);
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -24px 0px' });
+      document.querySelectorAll('[data-reveal]').forEach(el => obs.observe(el));
+    }
+
+    // ── CHANNEL CARD HOVER ─────────────────────────────────
+    document.querySelectorAll('[data-channel]').forEach(card => {
+      const hint = card.querySelector('[data-channel-hint]');
+      card.addEventListener('mouseenter', () => {
+        card.style.background = 'rgba(214,194,168,0.06)';
+        if (hint) hint.style.color = '#D6C2A8';
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.background = 'transparent';
+        if (hint) hint.style.color = 'rgba(214,194,168,0.45)';
+      });
+    });
+
+    // ── PHONE WRAPPER FOCUS ────────────────────────────────
+    const phoneWrapper = document.getElementById('id-phone-wrapper');
+    const phoneInput = document.getElementById('id-phone-input');
+    if (phoneWrapper && phoneInput) {
+      phoneInput.addEventListener('focus', () => { phoneWrapper.style.borderBottomColor = '#5B4636'; });
+      phoneInput.addEventListener('blur', () => { phoneWrapper.style.borderBottomColor = '#D6C2A8'; });
+    }
+
+    // ── COUNTRY CODE AUTO-DETECT ───────────────────────────
+    fetch('https://ipapi.co/json/')
+      .then(r => r.json())
+      .then(data => {
+        const cc = data.country_calling_code;
+        if (cc) {
+          const dial = cc.startsWith('+') ? cc : '+' + cc;
+          const found = this.COUNTRY_CODES.find(c => c.dial === dial);
+          if (found) this.setState({ formCountryCode: found.dial });
+        }
+      })
+      .catch(() => {});
+
+    // ── FOOTER LINK HOVERS ─────────────────────────────────
+    document.querySelectorAll('footer a').forEach(a => {
+      if (a.style.color === 'rgb(214, 194, 168)') return;
+      a.addEventListener('mouseenter', () => { a.style.color = '#D6C2A8'; });
+      a.addEventListener('mouseleave', () => { a.style.color = 'rgba(214,194,168,0.65)'; });
+    });
+  }
+}
+</script>
+</body>
+</html>
