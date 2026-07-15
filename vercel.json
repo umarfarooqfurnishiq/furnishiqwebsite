@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/", "destination": "/Furnishiq.net/FurnishIQ Home.html" },
+    { "source": "/:path*", "destination": "/Furnishiq.net/:path*" }
+  ]
+}
