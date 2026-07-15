@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/furnishiq-design-system-ea658a9e-dd64-48ad-ab93-f0196a53ec9c/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/furnishiq-design-system-ea658a9e-dd64-48ad-ab93-f0196a53ec9c/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/furnishiq-design-system-ea658a9e-dd64-48ad-ab93-f0196a53ec9c/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/furnishiq-design-system-ea658a9e-dd64-48ad-ab93-f0196a53ec9c/tokens/effects.css">
+  <link rel="stylesheet" href="_ds/furnishiq-design-system-ea658a9e-dd64-48ad-ab93-f0196a53ec9c/tokens/base.css">
+  <style>
+    @media(max-width:960px){
+      .fiq-nav-links{display:none!important;}
+      .fiq-nav-cta-btn{display:none!important;}
+      .fiq-article-grid{grid-template-columns:1fr!important;}
+      .fiq-article-rail{position:static!important;display:none!important;}
+      .fiq-related-grid{grid-template-columns:1fr!important;}
+      .fiq-author-card{flex-direction:column!important;align-items:flex-start!important;}
+      .fiq-footer-grid{grid-template-columns:1fr 1fr!important;gap:48px!important;}
+      .fiq-footer-brand{grid-column:1/-1!important;}
+    }
+    @media(max-width:600px){
+      .fiq-footer-grid{grid-template-columns:1fr!important;}
+    }
+  </style>
+</helmet>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━ READING PROGRESS ━━━━━━━━━━━━ -->
+<div style="position:fixed;top:0;left:0;right:0;height:3px;z-index:300;background:transparent;">
+  <div id="id-progress" style="height:100%;width:0%;background:#8B6B4A;transition:width 0.1s linear;"></div>
+</div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ NAV ━━ -->
+<nav id="id-nav" style="position:fixed;top:0;left:0;right:0;height:80px;z-index:200;display:flex;align-items:center;background:transparent;border-bottom:1px solid transparent;transition:background 0.55s cubic-bezier(0.25,0.46,0.45,0.94),border-color 0.55s,box-shadow 0.55s;">
+  <div style="max-width:1440px;margin:0 auto;width:100%;padding:0 clamp(20px,5vw,64px);display:flex;align-items:center;justify-content:space-between;gap:24px;">
+    <a href="FurnishIQ Blog.dc.html" style="flex-shrink:0;position:relative;height:36px;width:172px;display:block;text-decoration:none;">
+      <img id="id-logo-w" src="assets/logo-default.png" alt="FurnishIQ" style="position:absolute;inset:0;height:36px;width:auto;max-width:172px;object-fit:contain;object-position:left center;transition:opacity 0.4s cubic-bezier(0.25,0.46,0.45,0.94);">
+      <img id="id-logo-d" src="assets/logo-scrolled.png" alt="FurnishIQ" style="position:absolute;inset:0;height:36px;width:auto;max-width:172px;object-fit:contain;object-position:left center;opacity:0;transition:opacity 0.4s cubic-bezier(0.25,0.46,0.45,0.94);">
+    </a>
+    <div class="fiq-nav-links" style="display:flex;gap:clamp(24px,3.5vw,48px);align-items:center;flex:1;justify-content:center;">
+      <a href="/#services" data-nav-link style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;transition:color 0.25s,opacity 0.25s;opacity:0.8;">Services</a>
+      <a href="/#portfolio" data-nav-link style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;transition:color 0.25s,opacity 0.25s;opacity:0.8;">Portfolio</a>
+      <a href="/#process" data-nav-link style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;transition:color 0.25s,opacity 0.25s;opacity:0.8;">Process</a>
+      <a id="id-nav-blog" href="FurnishIQ Blog.dc.html" data-nav-link style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;transition:color 0.25s,opacity 0.25s;opacity:1;border-bottom:1px solid rgba(214,194,168,0.55);padding-bottom:2px;">Blog</a>
+      <a href="FurnishIQ Contact.dc.html" data-nav-link style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;transition:color 0.25s,opacity 0.25s;opacity:0.8;">Contact</a>
+    </div>
+    <a href="FurnishIQ Contact.dc.html" class="fiq-nav-cta-btn" id="id-nav-cta" style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;border:1px solid rgba(214,194,168,0.5);padding:12px 28px;flex-shrink:0;transition:all 0.3s cubic-bezier(0.25,0.46,0.45,0.94);white-space:nowrap;background:transparent;">Request a Consultation</a>
+  </div>
+</nav>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ HERO ━━ -->
+<section data-screen-label="Post Hero" style="position:relative;background:#1E1610;overflow:hidden;min-height:min(92vh,860px);display:flex;flex-direction:column;justify-content:flex-end;">
+  <div id="id-hero-img" style="position:absolute;inset:-60px 0 0 0;background-image:url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=2400&q=80');background-size:cover;background-position:center 40%;will-change:transform;"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(30,22,16,0.97) 0%,rgba(30,22,16,0.55) 45%,rgba(30,22,16,0.35) 100%);"></div>
+
+  <div style="position:relative;z-index:1;max-width:1280px;margin:0 auto;width:100%;padding:200px clamp(24px,5vw,80px) clamp(64px,8vw,96px);">
+    <div data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;align-items:center;gap:12px;margin-bottom:28px;flex-wrap:wrap;">
+      <a href="FurnishIQ Blog.dc.html" style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.26em;text-transform:uppercase;color:rgba(214,194,168,0.55);text-decoration:none;transition:color 0.25s;">Blog</a>
+      <span style="font-family:'Lama Sans',sans-serif;font-size:9px;color:rgba(214,194,168,0.35);">/</span>
+      <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.26em;text-transform:uppercase;color:rgba(214,194,168,0.9);">Interior Design</span>
+    </div>
+
+    <h1 style="max-width:920px;font-family:'Lama Sans',sans-serif;font-size:clamp(34px,4.4vw,62px);font-weight:600;line-height:1.08;letter-spacing:-0.015em;color:#FFFFFF;margin:0 0 36px;text-wrap:balance;">
+      <span style="display:block;overflow:hidden;"><span data-hero-word style="display:block;transform:translateY(112%);transition:transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);">Material honesty: why the finishes</span></span>
+      <span style="display:block;overflow:hidden;"><span data-hero-word style="display:block;transform:translateY(112%);transition:transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);">you <span style="color:#D6C2A8;">touch</span> matter more than</span></span>
+      <span style="display:block;overflow:hidden;"><span data-hero-word style="display:block;transform:translateY(112%);transition:transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);">the ones you see.</span></span>
+    </h1>
+
+    <div data-reveal data-reveal-delay="0.5" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+      <div style="display:flex;align-items:center;gap:14px;">
+        <div style="width:44px;height:44px;border-radius:50%;background:#3A2D25;border:1px solid rgba(214,194,168,0.35);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <span style="font-family:'Lama Sans',sans-serif;font-size:12px;letter-spacing:0.08em;color:#D6C2A8;">SA</span>
+        </div>
+        <div>
+          <div style="font-family:'Lama Sans',sans-serif;font-size:13px;color:#FFFFFF;">Sara Al-Rashid</div>
+          <div style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(214,194,168,0.6);">Head of Interior Design</div>
+        </div>
+      </div>
+      <span style="width:1px;height:32px;background:rgba(214,194,168,0.25);"></span>
+      <div style="display:flex;align-items:center;gap:14px;">
+        <span style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(214,194,168,0.75);">June 22, 2026</span>
+        <span style="width:3px;height:3px;border-radius:50%;background:rgba(214,194,168,0.5);"></span>
+        <span style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(214,194,168,0.75);">8 min read</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━ ARTICLE ━━━━━━━━━━━━━━━━━ -->
+<section data-screen-label="Article" style="background:#F5F2ED;padding:clamp(72px,9vw,120px) clamp(24px,5vw,80px);">
+  <div class="fiq-article-grid" style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:260px minmax(0,720px);gap:clamp(48px,6vw,96px);justify-content:center;align-items:start;">
+
+    <!-- LEFT RAIL -->
+    <aside class="fiq-article-rail" style="position:sticky;top:120px;">
+      <div style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:#8B6B4A;margin-bottom:24px;">In this story</div>
+      <nav style="display:flex;flex-direction:column;border-left:1px solid #D9CDBF;">
+        <a href="#s1" data-toc data-toc-target="s1" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:#5B4636;text-decoration:none;padding:10px 0 10px 20px;border-left:2px solid transparent;margin-left:-1px;transition:all 0.3s;line-height:1.4;">The surfaces we remember</a>
+        <a href="#s2" data-toc data-toc-target="s2" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:#5B4636;text-decoration:none;padding:10px 0 10px 20px;border-left:2px solid transparent;margin-left:-1px;transition:all 0.3s;line-height:1.4;">Specifying for the hand</a>
+        <a href="#s3" data-toc data-toc-target="s3" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:#5B4636;text-decoration:none;padding:10px 0 10px 20px;border-left:2px solid transparent;margin-left:-1px;transition:all 0.3s;line-height:1.4;">What honesty costs — and returns</a>
+        <a href="#s4" data-toc data-toc-target="s4" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:#5B4636;text-decoration:none;padding:10px 0 10px 20px;border-left:2px solid transparent;margin-left:-1px;transition:all 0.3s;line-height:1.4;">Our selection ritual</a>
+      </nav>
+
+      <div style="margin-top:44px;padding-top:28px;border-top:1px solid #D9CDBF;">
+        <div style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:#8B6B4A;margin-bottom:18px;">Share</div>
+        <div style="display:flex;gap:10px;">
+          <a href="#" data-share style="width:40px;height:40px;border:1px solid #D9CDBF;display:flex;align-items:center;justify-content:center;color:#5B4636;transition:all 0.3s;" aria-label="Share on X">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 1.15h3.68l-8.04 9.19L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.47l8.6-9.83L0 1.15h7.59l5.24 6.93 6.07-6.93Zm-1.29 19.5h2.04L6.49 3.24H4.3l13.31 17.41Z"></path></svg>
+          </a>
+          <a href="#" data-share style="width:40px;height:40px;border:1px solid #D9CDBF;display:flex;align-items:center;justify-content:center;color:#5B4636;transition:all 0.3s;" aria-label="Share on LinkedIn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.55V9h3.57v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0Z"></path></svg>
+          </a>
+          <a href="#" data-share style="width:40px;height:40px;border:1px solid #D9CDBF;display:flex;align-items:center;justify-content:center;color:#5B4636;transition:all 0.3s;" aria-label="Copy link">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+          </a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- BODY -->
+    <article>
+      <p style="font-family:'Lama Sans',sans-serif;font-size:clamp(17px,1.5vw,20px);line-height:1.85;color:#3A2D25;margin-bottom:44px;font-weight:500;">Walk into any space six months after handover and ask its people what they love about it. Nobody mentions the ceiling detail. They talk about the weight of the door handle, the warmth of the timber desk, the stone that stays cool under the palm.</p>
+
+      <h2 id="s1" style="font-family:'Lama Sans',sans-serif;font-size:clamp(22px,2.2vw,30px);font-weight:600;color:#1F1F1F;letter-spacing:-0.01em;line-height:1.2;margin:0 0 24px;display:flex;align-items:baseline;gap:18px;scroll-margin-top:120px;"><span style="font-size:13px;color:#8B6B4A;letter-spacing:0.1em;">01</span>The surfaces we remember</h2>
+      <p style="font-family:'Lama Sans',sans-serif;font-size:15.5px;line-height:1.95;color:#4A3B2E;margin-bottom:24px;">Vision is how we judge a space in photographs. Touch is how we judge it in life. The materials within arm's reach — worktops, handles, rails, seat edges, the first metre of every wall — carry a disproportionate share of how a space is experienced, and they are precisely the surfaces where value engineering does its quietest damage.</p>
+      <p style="font-family:'Lama Sans',sans-serif;font-size:15.5px;line-height:1.95;color:#4A3B2E;margin-bottom:44px;">Laminate that photographs like oak still feels like laminate. Powder-coated aluminium that reads as bronze on a mood board never fools a hand. Over years of post-occupancy visits we've found the correlation is stubborn: the spaces clients describe as "quality" are the ones where the touched surfaces are what they appear to be.</p>
+
+      <figure style="margin:0 0 44px;">
+        <div style="position:relative;overflow:hidden;aspect-ratio:16/9;">
+          <img src="https://images.unsplash.com/photo-1615529182904-14819c35db37?auto=format&fit=crop&w=1600&q=80" alt="Hand-finished walnut joinery detail" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+        </div>
+        <figcaption style="font-family:'Lama Sans',sans-serif;font-size:12px;color:#8B6B4A;letter-spacing:0.06em;margin-top:14px;display:flex;align-items:center;gap:12px;"><span style="display:block;width:20px;height:1px;background:#B8A08C;"></span>Hand-finished walnut joinery, private residence, Riyadh — 2025.</figcaption>
+      </figure>
+
+      <h2 id="s2" style="font-family:'Lama Sans',sans-serif;font-size:clamp(22px,2.2vw,30px);font-weight:600;color:#1F1F1F;letter-spacing:-0.01em;line-height:1.2;margin:0 0 24px;display:flex;align-items:baseline;gap:18px;scroll-margin-top:120px;"><span style="font-size:13px;color:#8B6B4A;letter-spacing:0.1em;">02</span>Specifying for the hand, not the eye</h2>
+      <p style="font-family:'Lama Sans',sans-serif;font-size:15.5px;line-height:1.95;color:#4A3B2E;margin-bottom:24px;">Our specification process splits every room into two zones. The <em>contact zone</em> — everything routinely touched — gets genuine material: solid timber, real stone, full-grain leather, unplated brass. The <em>visual zone</em> — ceilings, high walls, distant planes — is where engineered alternatives earn their place without anyone ever knowing.</p>
+      <p style="font-family:'Lama Sans',sans-serif;font-size:15.5px;line-height:1.95;color:#4A3B2E;margin-bottom:44px;">This isn't purism; it's allocation. Budgets are finite. Spending them where fingertips land, rather than evenly across every surface, is how a mid-range budget produces a space that feels far above it.</p>
+
+      <blockquote style="margin:0 0 44px;padding:clamp(32px,4vw,48px) clamp(28px,4vw,56px);background:#3A2D25;position:relative;overflow:hidden;">
+        <span style="position:absolute;top:-30px;left:18px;font-family:Georgia,serif;font-size:160px;line-height:1;color:rgba(214,194,168,0.12);pointer-events:none;">&ldquo;</span>
+        <p style="position:relative;font-family:'Lama Sans',sans-serif;font-size:clamp(19px,2vw,26px);font-weight:500;line-height:1.5;color:#FFFFFF;letter-spacing:-0.005em;margin-bottom:18px;text-wrap:balance;">A space is remembered by what the hand touched, not what the eye admired.</p>
+        <footer style="position:relative;font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.24em;text-transform:uppercase;color:#D6C2A8;">Sara Al-Rashid — Head of Interior Design</footer>
+      </blockquote>
+
+      <h2 id="s3" style="font-family:'Lama Sans',sans-serif;font-size:clamp(22px,2.2vw,30px);font-weight:600;color:#1F1F1F;letter-spacing:-0.01em;line-height:1.2;margin:0 0 24px;display:flex;align-items:baseline;gap:18px;scroll-margin-top:120px;"><span style="font-size:13px;color:#8B6B4A;letter-spacing:0.1em;">03</span>What honesty costs — and returns</h2>
+      <p style="font-family:'Lama Sans',sans-serif;font-size:15.5px;line-height:1.95;color:#4A3B2E;margin-bottom:24px;">Genuine materials in the contact zone typically add 8–14% to a fit-out's finishes package. What they return is harder to put on an invoice but easy to observe: honest materials age into character where imitations age into shabbiness. Solid oak scratches and mellows; foil-wrapped board chips and exposes itself. One patinates, the other deteriorates.</p>
+      <p style="font-family:'Lama Sans',sans-serif;font-size:15.5px;line-height:1.95;color:#4A3B2E;margin-bottom:44px;">On commercial projects the arithmetic is even clearer. Reception desks, meeting tables, and door hardware take the highest traffic of any surface in a building. Specifying them honestly is the difference between a refresh at year twelve and one at year five.</p>
+
+      <h2 id="s4" style="font-family:'Lama Sans',sans-serif;font-size:clamp(22px,2.2vw,30px);font-weight:600;color:#1F1F1F;letter-spacing:-0.01em;line-height:1.2;margin:0 0 24px;display:flex;align-items:baseline;gap:18px;scroll-margin-top:120px;"><span style="font-size:13px;color:#8B6B4A;letter-spacing:0.1em;">04</span>Our selection ritual</h2>
+      <p style="font-family:'Lama Sans',sans-serif;font-size:15.5px;line-height:1.95;color:#4A3B2E;margin-bottom:28px;">Every FurnishIQ material board is reviewed twice: once on the wall, and once blindfolded. Clients handle each sample without seeing it — worktop candidates, handle finishes, seat fabrics — and rank them purely by feel. The results routinely overturn the visual shortlist, and the space is better for it.</p>
+
+      <div style="border:1px solid #D9CDBF;background:#FFFFFF;padding:clamp(28px,3vw,40px);margin-bottom:0;">
+        <div style="display:flex;align-items:center;gap:16px;margin-bottom:22px;">
+          <span style="display:block;width:28px;height:1px;background:#8B6B4A;"></span>
+          <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:#8B6B4A;">The short version</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <div style="display:flex;gap:16px;align-items:baseline;"><span style="font-family:'Lama Sans',sans-serif;font-size:12px;color:#B8A08C;flex-shrink:0;">01</span><p style="font-family:'Lama Sans',sans-serif;font-size:14px;line-height:1.7;color:#4A3B2E;">Touch, not sight, decides how a space is remembered.</p></div>
+          <div style="display:flex;gap:16px;align-items:baseline;"><span style="font-family:'Lama Sans',sans-serif;font-size:12px;color:#B8A08C;flex-shrink:0;">02</span><p style="font-family:'Lama Sans',sans-serif;font-size:14px;line-height:1.7;color:#4A3B2E;">Spend on the contact zone; engineer the visual zone.</p></div>
+          <div style="display:flex;gap:16px;align-items:baseline;"><span style="font-family:'Lama Sans',sans-serif;font-size:12px;color:#B8A08C;flex-shrink:0;">03</span><p style="font-family:'Lama Sans',sans-serif;font-size:14px;line-height:1.7;color:#4A3B2E;">Honest materials patinate; imitations deteriorate.</p></div>
+        </div>
+      </div>
+
+      <!-- AUTHOR -->
+      <div class="fiq-author-card" style="margin-top:clamp(48px,6vw,72px);padding-top:clamp(36px,4vw,48px);border-top:1px solid #D9CDBF;display:flex;align-items:center;gap:28px;">
+        <div style="width:72px;height:72px;border-radius:50%;background:#3A2D25;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <span style="font-family:'Lama Sans',sans-serif;font-size:18px;letter-spacing:0.08em;color:#D6C2A8;">SA</span>
+        </div>
+        <div style="flex:1;">
+          <div style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:#8B6B4A;margin-bottom:8px;">Written by</div>
+          <div style="font-family:'Lama Sans',sans-serif;font-size:17px;font-weight:600;color:#1F1F1F;margin-bottom:6px;">Sara Al-Rashid</div>
+          <p style="font-family:'Lama Sans',sans-serif;font-size:13.5px;line-height:1.75;color:#5B4636;max-width:480px;">Head of Interior Design at FurnishIQ. Fifteen years specifying materials across hospitality, workplace, and private residences in the Gulf.</p>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━ RELATED ━━━━━━━━━━━━━━━━━━━━ -->
+<section data-screen-label="Related" style="background:#FFFFFF;padding:clamp(80px,10vw,120px) clamp(24px,5vw,80px);">
+  <div style="max-width:1280px;margin:0 auto;">
+    <div data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:clamp(40px,5vw,56px);">
+      <div>
+        <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;">
+          <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
+          <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#8B6B4A;">Keep Reading</span>
+        </div>
+        <h2 style="font-family:'Lama Sans',sans-serif;font-size:clamp(24px,3vw,40px);font-weight:500;color:#1F1F1F;line-height:1.15;letter-spacing:-0.015em;">More from the journal.</h2>
+      </div>
+      <a href="FurnishIQ Blog.dc.html" data-related-all style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#5B4636;text-decoration:none;display:inline-flex;align-items:center;gap:12px;border:1px solid #D9CDBF;padding:14px 26px;transition:all 0.3s;">
+        All articles
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+      </a>
+    </div>
+
+    <div class="fiq-related-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,3vw,40px);">
+      <sc-for list="{{ related }}" as="post" hint-placeholder-count="3">
+        <a href="#" data-feature-card style="display:block;text-decoration:none;">
+          <div style="position:relative;overflow:hidden;aspect-ratio:16/10;margin-bottom:20px;">
+            <img data-feature-img src="{{ post.image }}" alt="{{ post.title }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.1s cubic-bezier(0.25,0.46,0.45,0.94);">
+            <div style="position:absolute;left:16px;top:16px;background:rgba(30,22,16,0.8);backdrop-filter:blur(10px);padding:8px 14px;">
+              <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.24em;text-transform:uppercase;color:#D6C2A8;">{{ post.category }}</span>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:10px;">
+            <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:#8B6B4A;">{{ post.date }}</span>
+            <span style="width:3px;height:3px;border-radius:50%;background:#B8A08C;"></span>
+            <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:#B8A08C;">{{ post.read }}</span>
+          </div>
+          <h3 style="font-family:'Lama Sans',sans-serif;font-size:clamp(16px,1.5vw,20px);font-weight:500;color:#1F1F1F;line-height:1.35;letter-spacing:-0.01em;text-wrap:balance;">{{ post.title }}</h3>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━ NEWSLETTER BAND ━━━━━━━━━━━━ -->
+<section data-screen-label="Newsletter" style="background:#3A2D25;border-top:1px solid rgba(214,194,168,0.12);padding:clamp(64px,8vw,100px) clamp(24px,5vw,80px);">
+  <div style="max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:clamp(32px,5vw,80px);flex-wrap:wrap;">
+    <div style="flex:1;min-width:280px;">
+      <div data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;align-items:center;gap:16px;margin-bottom:20px;">
+        <span style="display:block;width:32px;height:1px;background:#D6C2A8;flex-shrink:0;"></span>
+        <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:rgba(214,194,168,0.7);">Join the IQ</span>
+      </div>
+      <h2 data-reveal data-reveal-delay="0.08" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Lama Sans',sans-serif;font-size:clamp(24px,2.8vw,38px);font-weight:500;color:#FFFFFF;line-height:1.15;letter-spacing:-0.015em;">One thoughtful email a month.<br><span style="color:rgba(214,194,168,0.6);">No noise, ever.</span></h2>
+    </div>
+    <div data-reveal data-reveal-delay="0.15" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);flex:1;min-width:300px;max-width:460px;">
+      <div style="display:flex;border:1px solid rgba(214,194,168,0.25);">
+        <input type="email" placeholder="Your email address" value="{{ newsletterEmail }}" onChange="{{ onNewsletterChange }}" style="flex:1;background:transparent;border:none;padding:17px 20px;font-family:'Lama Sans',sans-serif;font-size:14px;color:#FFFFFF;outline:none;min-width:0;">
+        <button onClick="{{ onNewsletterSubmit }}" style="background:#D6C2A8;border:none;padding:17px 28px;cursor:pointer;font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#1E1610;flex-shrink:0;transition:background 0.3s;" style-hover="background:#FFFFFF;">Subscribe</button>
+      </div>
+      <sc-if value="{{ newsletterStatus }}" hint-placeholder-val="{{ null }}">
+        <p style="font-family:'Lama Sans',sans-serif;font-size:12px;color:rgba(214,194,168,0.65);margin-top:12px;">Thank you — monthly insights, strictly no spam.</p>
+      </sc-if>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ FOOTER ━━━━━━━━━━━ -->
+<footer style="background:#1F1F1F;padding:clamp(64px,8vw,96px) clamp(24px,5vw,80px) 40px;border-top:1px solid rgba(91,70,54,0.25);">
+  <div style="max-width:1280px;margin:0 auto;">
+    <div class="fiq-footer-grid" style="display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:clamp(28px,4vw,64px);margin-bottom:64px;">
+
+      <div class="fiq-footer-brand">
+        <a href="FurnishIQ Home.dc.html" style="display:block;text-decoration:none;"><img src="assets/logo-default.png" alt="FurnishIQ" style="height:36px;width:auto;max-width:160px;object-fit:contain;object-position:left center;margin-bottom:22px;display:block;"></a>
+        <p style="font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.8;color:rgba(214,194,168,0.55);margin-bottom:0;max-width:260px;">Integrated Design–Build solutions transforming ambitious architectural concepts into inspiring realities across Saudi Arabia.</p>
+      </div>
+
+      <div>
+        <div style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.26em;text-transform:uppercase;color:rgba(214,194,168,0.4);margin-bottom:22px;">Services</div>
+        <nav style="display:flex;flex-direction:column;gap:13px;">
+          <a href="FurnishIQ Services Interior Design.dc.html" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Interior Design</a>
+          <a href="FurnishIQ Services Fitout.dc.html" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Fit-Out</a>
+          <a href="FurnishIQ Services MEP.dc.html" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Engineering &amp; MEP</a>
+          <a href="FurnishIQ Services Furniture.dc.html" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Furniture Solutions</a>
+          <a href="#" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Project Management</a>
+        </nav>
+      </div>
+
+      <div>
+        <div style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.26em;text-transform:uppercase;color:rgba(214,194,168,0.4);margin-bottom:22px;">Company</div>
+        <nav style="display:flex;flex-direction:column;gap:13px;">
+          <a href="FurnishIQ About Us.dc.html" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">About Us</a>
+          <a href="#" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">All Services</a>
+          <a href="#" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Terms &amp; Conditions</a>
+          <a href="FurnishIQ Contact.dc.html" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Contact</a>
+          <a href="FurnishIQ Blog.dc.html" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:#D6C2A8;text-decoration:none;">Insights</a>
+        </nav>
+      </div>
+
+      <div>
+        <div style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.26em;text-transform:uppercase;color:rgba(214,194,168,0.4);margin-bottom:22px;">Find Us</div>
+        <div style="display:flex;flex-direction:column;gap:20px;">
+          <div>
+            <div style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(214,194,168,0.35);margin-bottom:5px;">Address</div>
+            <p style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);line-height:1.65;">Riyadh, KSA.</p>
+          </div>
+          <div>
+            <div style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(214,194,168,0.35);margin-bottom:5px;">Email</div>
+            <a href="mailto:projects@furnishiq.net" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">projects@furnishiq.net</a>
+          </div>
+          <div>
+            <div style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(214,194,168,0.35);margin-bottom:5px;">Phone — Ibrahim Al Ali</div>
+            <a href="tel:+966580330627" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">+966 58 033 0627</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div style="border-top:1px solid rgba(214,194,168,0.1);padding-top:28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+      <p style="font-family:'Lama Sans',sans-serif;font-size:11px;color:rgba(214,194,168,0.3);letter-spacing:0.04em;">© 2026 FurnishIQ. All rights reserved.</p>
+      <p style="font-family:'Lama Sans',sans-serif;font-size:11px;color:rgba(214,194,168,0.3);letter-spacing:0.04em;">Crafted with precision in Saudi Arabia.</p>
+    </div>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1440}}">
+class Component extends DCLogic {
+  state = { newsletterEmail: '', newsletterStatus: null };
+
+  renderVals() {
+    const self = this;
+    return {
+      related: [
+        {
+          category: 'Fit-Out', date: 'June 10, 2026', read: '6 min read',
+          title: 'The 90-day office: compressing commercial fit-out timelines without cutting corners',
+          image: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=900&q=80',
+        },
+        {
+          category: 'Engineering & MEP', date: 'May 28, 2026', read: '7 min read',
+          title: 'Invisible infrastructure: designing MEP systems you\u2019ll never notice — by design',
+          image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=900&q=80',
+        },
+        {
+          category: 'Furniture', date: 'April 30, 2026', read: '5 min read',
+          title: 'Beyond the catalogue: when custom furniture earns its price',
+          image: 'https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&w=900&q=80',
+        },
+      ],
+      newsletterEmail: this.state.newsletterEmail,
+      newsletterStatus: this.state.newsletterStatus,
+      onNewsletterChange: (e) => self.setState({ newsletterEmail: e.target.value }),
+      onNewsletterSubmit: () => {
+        if (self.state.newsletterEmail && self.state.newsletterEmail.includes('@')) {
+          self.setState({ newsletterStatus: 'success', newsletterEmail: '' });
+        }
+      },
+    };
+  }
+
+  componentDidMount() {
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // ── NAV SCROLL ─────────────────────────────────────────
+    const nav = document.getElementById('id-nav');
+    const logoW = document.getElementById('id-logo-w');
+    const logoD = document.getElementById('id-logo-d');
+    const navLinks = document.querySelectorAll('[data-nav-link]');
+    const navBlogLink = document.getElementById('id-nav-blog');
+    const navCta = document.getElementById('id-nav-cta');
+
+    const syncNav = () => {
+      const s = window.scrollY > 60;
+      if (!nav) return;
+      nav.style.background = s ? 'rgba(255,255,255,0.96)' : 'transparent';
+      nav.style.borderBottomColor = s ? '#D6C2A8' : 'transparent';
+      nav.style.backdropFilter = s ? 'blur(16px)' : 'none';
+      nav.style.boxShadow = s ? '0 2px 16px rgba(58,45,37,0.06)' : 'none';
+      if (logoW) logoW.style.opacity = s ? '0' : '1';
+      if (logoD) logoD.style.opacity = s ? '1' : '0';
+      navLinks.forEach(l => {
+        l.style.color = s ? '#1F1F1F' : '#FFFFFF';
+        if (l !== navBlogLink) l.style.opacity = s ? '1' : '0.8';
+      });
+      if (navBlogLink) navBlogLink.style.borderBottomColor = s ? 'rgba(91,70,54,0.45)' : 'rgba(214,194,168,0.55)';
+      if (navCta) {
+        navCta.style.color = s ? '#1F1F1F' : '#FFFFFF';
+        navCta.style.borderColor = s ? 'rgba(91,70,54,0.35)' : 'rgba(214,194,168,0.5)';
+      }
+    };
+    window.addEventListener('scroll', syncNav, { passive: true });
+    syncNav();
+
+    navLinks.forEach(l => {
+      if (l === navBlogLink) return;
+      l.addEventListener('mouseenter', () => { l.style.opacity = '1'; });
+      l.addEventListener('mouseleave', () => { l.style.opacity = window.scrollY > 60 ? '1' : '0.8'; });
+    });
+    if (navCta) {
+      navCta.addEventListener('mouseenter', () => {
+        navCta.style.background = window.scrollY > 60 ? '#3A2D25' : 'rgba(255,255,255,0.1)';
+        navCta.style.color = '#D6C2A8';
+      });
+      navCta.addEventListener('mouseleave', () => { navCta.style.background = 'transparent'; syncNav(); });
+    }
+
+    // ── READING PROGRESS ───────────────────────────────────
+    const bar = document.getElementById('id-progress');
+    const syncProgress = () => {
+      if (!bar) return;
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+    };
+    window.addEventListener('scroll', syncProgress, { passive: true });
+    syncProgress();
+
+    // ── HERO PARALLAX + WORDS ──────────────────────────────
+    const heroImg = document.getElementById('id-hero-img');
+    if (heroImg && !reduced) {
+      window.addEventListener('scroll', () => {
+        const y = window.scrollY;
+        if (y < window.innerHeight * 1.2) heroImg.style.transform = 'translateY(' + y * 0.18 + 'px)';
+      }, { passive: true });
+    }
+    const words = document.querySelectorAll('[data-hero-word]');
+    if (reduced) {
+      words.forEach(w => { w.style.transform = 'translateY(0)'; });
+    } else {
+      words.forEach((w, i) => setTimeout(() => { w.style.transform = 'translateY(0)'; }, 250 + i * 150));
+    }
+
+    // ── SCROLL REVEAL ──────────────────────────────────────
+    if (reduced) {
+      document.querySelectorAll('[data-reveal]').forEach(el => { el.style.opacity = '1'; el.style.transform = 'none'; });
+    } else {
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          const el = entry.target;
+          const delay = parseFloat(el.dataset.revealDelay || '0') * 1000;
+          setTimeout(() => { el.style.opacity = '1'; el.style.transform = 'translateY(0)'; }, delay);
+          obs.unobserve(el);
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -24px 0px' });
+      document.querySelectorAll('[data-reveal]').forEach(el => obs.observe(el));
+    }
+
+    // ── TOC ACTIVE STATE ───────────────────────────────────
+    const tocLinks = [...document.querySelectorAll('[data-toc]')];
+    const sections = tocLinks.map(l => document.getElementById(l.dataset.tocTarget)).filter(Boolean);
+    const syncToc = () => {
+      let active = 0;
+      sections.forEach((s, i) => { if (s.getBoundingClientRect().top < 160) active = i; });
+      tocLinks.forEach((l, i) => {
+        const on = i === active;
+        l.style.color = on ? '#1F1F1F' : '#5B4636';
+        l.style.borderLeftColor = on ? '#8B6B4A' : 'transparent';
+        l.style.fontWeight = on ? '600' : '400';
+      });
+    };
+    window.addEventListener('scroll', syncToc, { passive: true });
+    syncToc();
+
+    // ── HOVERS ─────────────────────────────────────────────
+    document.querySelectorAll('[data-share]').forEach(a => {
+      a.addEventListener('mouseenter', () => { a.style.background = '#3A2D25'; a.style.color = '#D6C2A8'; a.style.borderColor = '#3A2D25'; });
+      a.addEventListener('mouseleave', () => { a.style.background = 'transparent'; a.style.color = '#5B4636'; a.style.borderColor = '#D9CDBF'; });
+    });
+    const relAll = document.querySelector('[data-related-all]');
+    if (relAll) {
+      relAll.addEventListener('mouseenter', () => { relAll.style.background = '#3A2D25'; relAll.style.color = '#D6C2A8'; relAll.style.borderColor = '#3A2D25'; });
+      relAll.addEventListener('mouseleave', () => { relAll.style.background = 'transparent'; relAll.style.color = '#5B4636'; relAll.style.borderColor = '#D9CDBF'; });
+    }
+    document.querySelectorAll('[data-feature-card]').forEach(card => {
+      const img = card.querySelector('[data-feature-img]');
+      card.addEventListener('mouseenter', () => { if (img) img.style.transform = 'scale(1.045)'; });
+      card.addEventListener('mouseleave', () => { if (img) img.style.transform = 'scale(1)'; });
+    });
+    document.querySelectorAll('footer a').forEach(a => {
+      if (a.style.color === 'rgb(214, 194, 168)') return;
+      a.addEventListener('mouseenter', () => { a.style.color = '#D6C2A8'; });
+      a.addEventListener('mouseleave', () => { a.style.color = 'rgba(214,194,168,0.65)'; });
+    });
+  }
+}
+</script>
+</body>
+</html>

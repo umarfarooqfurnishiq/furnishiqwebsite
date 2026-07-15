@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/furnishiq-design-system-ea658a9e-dd64-48ad-ab93-f0196a53ec9c/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/furnishiq-design-system-ea658a9e-dd64-48ad-ab93-f0196a53ec9c/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/furnishiq-design-system-ea658a9e-dd64-48ad-ab93-f0196a53ec9c/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/furnishiq-design-system-ea658a9e-dd64-48ad-ab93-f0196a53ec9c/tokens/effects.css">
+  <link rel="stylesheet" href="_ds/furnishiq-design-system-ea658a9e-dd64-48ad-ab93-f0196a53ec9c/tokens/base.css">
+  <script src="_ds/furnishiq-design-system-ea658a9e-dd64-48ad-ab93-f0196a53ec9c/_ds_bundle.js"></script>
+  <style>
+    @keyframes fiq-scroll-line {
+      0%{transform:scaleY(0);transform-origin:top;}
+      50%{transform:scaleY(1);transform-origin:top;}
+      51%{transform:scaleY(1);transform-origin:bottom;}
+      100%{transform:scaleY(0);transform-origin:bottom;}
+    }
+    @media(max-width:960px){
+      .fiq-nav-links{display:none!important;}
+      .fiq-nav-cta-btn{display:none!important;}
+      .fiq-intro-cols{flex-direction:column!important;gap:36px!important;}
+      .fiq-intro-left{width:100%!important;}
+      .fiq-adv-cards{flex-direction:column!important;}
+      .fiq-adv-col-first{padding-right:0!important;padding-bottom:48px!important;}
+      .fiq-adv-col-mid{border-left:none!important;border-right:none!important;border-top:1px solid rgba(214,194,168,0.12)!important;border-bottom:1px solid rgba(214,194,168,0.12)!important;padding-left:0!important;padding-right:0!important;padding-top:48px!important;padding-bottom:48px!important;}
+      .fiq-adv-col-last{padding-left:0!important;padding-top:48px!important;}
+      .fiq-disc-grid{grid-template-columns:1fr 1fr!important;}
+      .fiq-mep-steps{flex-direction:column!important;gap:40px!important;}
+      .fiq-mep-connector{display:none!important;}
+      .fiq-sectors-grid{grid-template-columns:1fr 1fr!important;}
+      .fiq-footer-grid{grid-template-columns:1fr 1fr!important;gap:48px!important;}
+      .fiq-footer-brand{grid-column:1/-1!important;}
+      .fiq-cta-row{flex-direction:column!important;align-items:flex-start!important;}
+      .fiq-form-names{grid-template-columns:1fr!important;}
+    }
+    @media(max-width:600px){
+      .fiq-disc-grid{grid-template-columns:1fr!important;}
+      .fiq-sectors-grid{grid-template-columns:1fr!important;}
+      .fiq-footer-grid{grid-template-columns:1fr!important;}
+    }
+  </style>
+</helmet>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ NAV ━━ -->
+<nav id="mep-nav" style="position:fixed;top:0;left:0;right:0;height:80px;z-index:200;display:flex;align-items:center;background:transparent;border-bottom:1px solid transparent;transition:background 0.55s cubic-bezier(0.25,0.46,0.45,0.94),border-color 0.55s,box-shadow 0.55s;">
+  <div style="max-width:1440px;margin:0 auto;width:100%;padding:0 clamp(20px,5vw,64px);display:flex;align-items:center;justify-content:space-between;gap:24px;">
+    <a href="FurnishIQ Home.dc.html" style="flex-shrink:0;position:relative;height:36px;width:172px;display:block;text-decoration:none;">
+      <img id="mep-logo-w" src="assets/logo-default.png" alt="FurnishIQ" style="position:absolute;inset:0;height:36px;width:auto;max-width:172px;object-fit:contain;object-position:left center;transition:opacity 0.4s cubic-bezier(0.25,0.46,0.45,0.94);">
+      <img id="mep-logo-d" src="assets/logo-scrolled.png" alt="FurnishIQ" style="position:absolute;inset:0;height:36px;width:auto;max-width:172px;object-fit:contain;object-position:left center;opacity:0;transition:opacity 0.4s cubic-bezier(0.25,0.46,0.45,0.94);">
+    </a>
+    <div class="fiq-nav-links" style="display:flex;gap:clamp(24px,3.5vw,48px);align-items:center;flex:1;justify-content:center;">
+      <a id="mep-nav-services" href="/#services" data-nav-link style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;transition:color 0.25s,opacity 0.25s;opacity:1;border-bottom:1px solid rgba(214,194,168,0.55);padding-bottom:2px;">Services</a>
+      <a href="/#portfolio" data-nav-link style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;transition:color 0.25s,opacity 0.25s;opacity:0.8;">Portfolio</a>
+      <a href="/#process" data-nav-link style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;transition:color 0.25s,opacity 0.25s;opacity:0.8;">Process</a>
+      <a href="FurnishIQ Blog.dc.html" data-nav-link style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;transition:color 0.25s,opacity 0.25s;opacity:0.8;">Insights</a>
+    </div>
+    <a href="#contact" class="fiq-nav-cta-btn" id="mep-nav-cta" style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;border:1px solid rgba(214,194,168,0.5);padding:12px 28px;flex-shrink:0;transition:all 0.3s cubic-bezier(0.25,0.46,0.45,0.94);white-space:nowrap;background:transparent;">Request a Consultation</a>
+  </div>
+</nav>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ HERO ━━ -->
+<section data-screen-label="Hero" style="position:relative;min-height:58vh;background:#3A2D25;display:flex;align-items:flex-end;overflow:hidden;">
+  <!-- Full-bleed photographic background -->
+  <div style="position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=2400&q=80');background-size:cover;background-position:center;"></div>
+  <!-- Reference-style overlay: dark top/bottom, clear through the middle -->
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.82) 0%,rgba(0,0,0,0.15) 28.5%,rgba(0,0,0,0.15) 61%,rgba(0,0,0,0.85) 100%);pointer-events:none;"></div>
+  <div style="position:relative;z-index:1;max-width:1440px;margin:0 auto;width:100%;padding:0 clamp(24px,5vw,64px) clamp(48px,6vh,72px);">
+    <h1 data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Lama Sans',sans-serif;font-size:clamp(36px,4.2vw,58px);font-weight:600;line-height:1.05;letter-spacing:-0.01em;color:#FFFFFF;margin-bottom:14px;text-wrap:balance;">Engineering &amp; MEP</h1>
+    <div data-reveal data-reveal-delay="0.08" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;align-items:center;gap:12px;">
+      <a href="/#services" style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.26em;text-transform:uppercase;color:rgba(214,194,168,0.55);text-decoration:none;transition:color 0.25s;">Services</a>
+      <span style="font-family:'Lama Sans',sans-serif;font-size:9px;color:rgba(214,194,168,0.3);">/</span>
+      <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.26em;text-transform:uppercase;color:rgba(214,194,168,0.8);">Engineering &amp; MEP</span>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ INTRO ━━━━━ -->
+<section data-screen-label="Intro" style="background:#F5F2ED;padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px);">
+  <div style="max-width:1280px;margin:0 auto;">
+    <div class="fiq-intro-cols" style="display:flex;gap:clamp(48px,7vw,120px);align-items:flex-start;">
+      <div class="fiq-intro-left" style="flex:0 0 auto;width:clamp(240px,36%,460px);">
+        <div data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;align-items:center;gap:16px;margin-bottom:24px;">
+          <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
+          <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#8B6B4A;">Our Engineering Services</span>
+        </div>
+        <h2 data-reveal data-reveal-delay="0.1" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Lama Sans',sans-serif;font-size:clamp(26px,3.2vw,44px);font-weight:500;color:#1F1F1F;line-height:1.15;letter-spacing:-0.015em;text-wrap:balance;">The Foundation of High-Performance Environments</h2>
+      </div>
+      <div style="flex:1;padding-top:clamp(0px,3.5vw,52px);">
+        <p data-reveal data-reveal-delay="0.15" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Lama Sans',sans-serif;font-size:15px;line-height:1.85;color:#5B4636;margin-bottom:22px;">True luxury and functionality depend on the invisible systems that keep a building running. At FurnishIQ, our Engineering &amp; MEP (Mechanical, Electrical, and Plumbing) services provide the high-performance infrastructure required to bring your interior vision to life.</p>
+        <p data-reveal data-reveal-delay="0.22" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Lama Sans',sans-serif;font-size:15px;line-height:1.85;color:#5B4636;">We treat engineering not as a separate phase, but as a vital component of our integrated design–build approach — ensuring every utility is woven seamlessly into the architectural fabric of your space.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ ADVANTAGE ━━━━━━━ -->
+<section data-screen-label="Advantage" style="background:#FFFFFF;">
+
+  <!-- Section header -->
+  <div style="padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px) clamp(52px,6vw,80px);">
+    <div style="max-width:1280px;margin:0 auto;">
+      <div data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;align-items:center;gap:16px;margin-bottom:20px;">
+        <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
+        <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#8B6B4A;">The FurnishIQ Engineering Advantage</span>
+      </div>
+      <h2 data-reveal data-reveal-delay="0.1" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Lama Sans',sans-serif;font-size:clamp(26px,3.2vw,48px);font-weight:500;color:#1F1F1F;line-height:1.1;letter-spacing:-0.015em;">Three Pillars of<br>Engineering Excellence</h2>
+    </div>
+  </div>
+
+  <!-- Pillar 01: image LEFT · text RIGHT -->
+  <div data-adv-row style="display:grid;grid-template-columns:1fr 1fr;margin-bottom:0;">
+    <div data-slide-from="left" style="overflow:hidden;min-height:clamp(320px,36vw,440px);opacity:0;transform:translateX(-52px);transition:opacity 0.9s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);">
+      <img src="uploads/mep.png" alt="MEP systems integrated into a space" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;">
+    </div>
+    <div data-slide-from="right" style="display:flex;flex-direction:column;justify-content:flex-start;padding:clamp(40px,5vw,64px) clamp(40px,10vw,152px) clamp(48px,6vw,80px) clamp(48px,5vw,80px);background:#FFFFFF;opacity:0;transform:translateX(52px);transition:opacity 0.9s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);">
+      <div style="font-family:'Lama Sans',sans-serif;font-size:clamp(72px,8.5vw,108px);font-weight:500;color:rgba(139,107,74,0.22);line-height:1;letter-spacing:-0.03em;margin-bottom:4px;">01</div>
+      <div style="width:36px;height:2px;background:#8B6B4A;margin-bottom:28px;"></div>
+      <h3 style="font-family:'Lama Sans',sans-serif;font-size:clamp(18px,2vw,26px);font-weight:500;color:#1F1F1F;margin-bottom:18px;line-height:1.2;">Seamless Utility Integration</h3>
+      <p style="font-family:'Lama Sans',sans-serif;font-size:15px;line-height:1.85;color:#5B4636;">We eliminate the technical conflicts that often plague multi-vendor projects. By integrating Mechanical, Electrical, and Plumbing systems during the design phase, we ensure climate control, power distribution, and plumbing are perfectly aligned with your spatial layout — preventing costly on-site adjustments and keeping your design uncompromised.</p>
+    </div>
+  </div>
+
+  <!-- Pillar 02: text LEFT · image RIGHT -->
+  <div data-adv-row style="display:grid;grid-template-columns:1fr 1fr;margin-bottom:0;">
+    <div data-slide-from="left" style="display:flex;flex-direction:column;justify-content:flex-start;padding:clamp(40px,5vw,64px) clamp(48px,5vw,80px) clamp(48px,6vw,80px) clamp(40px,10vw,152px);background:#FFFFFF;opacity:0;transform:translateX(-52px);transition:opacity 0.9s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);">
+      <div style="font-family:'Lama Sans',sans-serif;font-size:clamp(72px,8.5vw,108px);font-weight:500;color:rgba(139,107,74,0.22);line-height:1;letter-spacing:-0.03em;margin-bottom:4px;">02</div>
+      <div style="width:36px;height:2px;background:#8B6B4A;margin-bottom:28px;"></div>
+      <h3 style="font-family:'Lama Sans',sans-serif;font-size:clamp(18px,2vw,26px);font-weight:500;color:#1F1F1F;margin-bottom:18px;line-height:1.2;">Structural &amp; Operational Integrity</h3>
+      <p style="font-family:'Lama Sans',sans-serif;font-size:15px;line-height:1.85;color:#5B4636;">Our engineering team designs for the long term, enhancing building performance and energy efficiency while ensuring the structural integrity of your environment meets the highest professional standards.</p>
+    </div>
+    <div data-slide-from="right" style="overflow:hidden;min-height:clamp(320px,36vw,440px);opacity:0;transform:translateX(52px);transition:opacity 0.9s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);">
+      <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=1200&q=80" alt="Structural architecture" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;">
+    </div>
+  </div>
+
+  <!-- Pillar 03: image LEFT · text RIGHT -->
+  <div data-adv-row style="display:grid;grid-template-columns:1fr 1fr;margin-bottom:0;">
+    <div data-slide-from="left" style="overflow:hidden;min-height:clamp(320px,36vw,440px);opacity:0;transform:translateX(-52px);transition:opacity 0.9s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);">
+      <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80" alt="On-site quality and safety oversight" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;">
+    </div>
+    <div data-slide-from="right" style="display:flex;flex-direction:column;justify-content:flex-start;padding:clamp(40px,5vw,64px) clamp(40px,10vw,152px) clamp(48px,6vw,80px) clamp(48px,5vw,80px);background:#FFFFFF;opacity:0;transform:translateX(52px);transition:opacity 0.9s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);">
+      <div style="font-family:'Lama Sans',sans-serif;font-size:clamp(72px,8.5vw,108px);font-weight:500;color:rgba(139,107,74,0.22);line-height:1;letter-spacing:-0.03em;margin-bottom:4px;">03</div>
+      <div style="width:36px;height:2px;background:#8B6B4A;margin-bottom:28px;"></div>
+      <h3 style="font-family:'Lama Sans',sans-serif;font-size:clamp(18px,2vw,26px);font-weight:500;color:#1F1F1F;margin-bottom:18px;line-height:1.2;">Uncompromising Safety &amp; Quality</h3>
+      <p style="font-family:'Lama Sans',sans-serif;font-size:15px;line-height:1.85;color:#5B4636;margin-bottom:32px;">Every installation is governed by our signature standards, combining rigorous protocols with continuous on-site oversight from start to handover.</p>
+      <div style="display:flex;flex-direction:column;gap:20px;">
+        <div style="display:flex;align-items:flex-start;gap:16px;">
+          <span style="width:1px;min-height:44px;background:rgba(91,70,54,0.2);flex-shrink:0;margin-top:3px;"></span>
+          <div>
+            <div style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#3A2D25;margin-bottom:7px;">Strict QA/QC</div>
+            <p style="font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.75;color:rgba(91,70,54,0.6);">Rigorous Quality Assurance and Quality Control protocols ensure every component meets industry benchmarks.</p>
+          </div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:16px;">
+          <span style="width:1px;min-height:44px;background:rgba(91,70,54,0.2);flex-shrink:0;margin-top:3px;"></span>
+          <div>
+            <div style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#3A2D25;margin-bottom:7px;">HSE Monitoring</div>
+            <p style="font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.75;color:rgba(91,70,54,0.6);">Continuous Health, Safety, and Environment monitoring is mandatory throughout the installation phase.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA button -->
+  <div data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;justify-content:center;padding:clamp(56px,7vw,96px) clamp(24px,5vw,80px);">
+    <a href="/#portfolio" id="adv-cta-btn" style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#FFFFFF;background:#3A2D25;padding:16px 44px;text-decoration:none;display:inline-block;border:1px solid #3A2D25;transition:background 0.3s cubic-bezier(0.25,0.46,0.45,0.94),color 0.3s;white-space:nowrap;">Discover Projects</a>
+  </div>
+
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ DISCIPLINES ━━━━━━━ -->
+<section data-screen-label="Disciplines" style="position:relative;background:#2A2018;overflow:hidden;">
+  <!-- Background image layer -->
+  <div style="position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=2400&q=80');background-size:cover;background-position:center;opacity:0.42;pointer-events:none;mix-blend-mode:luminosity;"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(160deg,rgba(42,32,24,0.42) 0%,rgba(42,32,24,0.78) 60%,rgba(42,32,24,0.92) 100%);pointer-events:none;"></div>
+
+  <!-- Section header -->
+  <div style="position:relative;z-index:1;padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px) clamp(52px,6vw,72px);">
+    <div style="max-width:1280px;margin:0 auto;">
+    <div style="margin-bottom:clamp(48px,6vw,80px);">
+      <div data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;align-items:center;gap:16px;margin-bottom:20px;">
+        <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
+        <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#8B6B4A;">Our MEP Disciplines</span>
+      </div>
+      <h2 data-reveal data-reveal-delay="0.1" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Lama Sans',sans-serif;font-size:clamp(28px,3.5vw,52px);font-weight:500;color:#FFFFFF;line-height:1.1;letter-spacing:-0.015em;">Full-Spectrum Technical<br>Capabilities.</h2>
+    </div>
+  </div>
+
+  <!-- Accordion row -->
+  <div style="position:relative;z-index:1;display:flex;border-top:1px solid rgba(214,194,168,0.12);">
+
+    <!-- 01 Electrical Systems -->
+    <div onClick="{{ onDisc0 }}" style="flex:{{ disc0Flex }};border-right:1px solid rgba(214,194,168,0.12);cursor:pointer;padding:clamp(28px,3.5vw,44px) clamp(20px,2.5vw,36px);transition:background 0.3s,flex 0.4s cubic-bezier(0.25,0.46,0.45,0.94);">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;padding-bottom:24px;border-bottom:1px solid rgba(214,194,168,0.1);">
+        <h4 style="font-family:'Lama Sans',sans-serif;font-size:clamp(18px,2.1vw,26px);font-weight:500;color:#FFFFFF;line-height:1.25;letter-spacing:0.005em;">Electrical<br>Systems</h4>
+        <span style="font-family:'Lama Sans',sans-serif;font-size:18px;color:#8B6B4A;line-height:1;flex-shrink:0;margin-top:1px;font-weight:300;">{{ disc0Icon }}</span>
+      </div>
+      <div style="display:grid;grid-template-rows:{{ disc0Rows }};opacity:{{ disc0Opacity }};transition:opacity 0.4s ease;">
+        <div style="overflow:hidden;">
+        <div style="padding-top:32px;">
+          <svg width="72" height="72" viewBox="0 0 28 28" fill="none" style="display:block;margin-bottom:28px;opacity:0.85;">
+            <path d="M16 3L7 15.5h8L13 25l12-13.5H17L16 3Z" stroke="#D6C2A8" stroke-width="0.65" stroke-linejoin="round"></path>
+          </svg>
+          <div style="display:flex;flex-direction:column;gap:9px;">
+            <span style="font-family:'Lama Sans',sans-serif;font-size:12.5px;color:rgba(214,194,168,0.65);line-height:1.6;">Power Distribution</span>
+            <span style="font-family:'Lama Sans',sans-serif;font-size:12.5px;color:rgba(214,194,168,0.65);line-height:1.6;">Lighting Systems</span>
+            <span style="font-family:'Lama Sans',sans-serif;font-size:12.5px;color:rgba(214,194,168,0.65);line-height:1.6;">Emergency Power</span>
+            <span style="font-family:'Lama Sans',sans-serif;font-size:12.5px;color:rgba(214,194,168,0.65);line-height:1.6;">Cable Management</span>
+            <span style="font-family:'Lama Sans',sans-serif;font-size:12.5px;color:rgba(214,194,168,0.65);line-height:1.6;">Earthing &amp; Protection</span>
+          </div>
+        </div>
+        </div>
+      </div>
+          </div>
+
+    <!-- 02 Plumbing Systems -->
+    <div onClick="{{ onDisc1 }}" style="flex:{{ disc1Flex }};border-right:1px solid rgba(214,194,168,0.12);cursor:pointer;padding:clamp(28px,3.5vw,44px) clamp(20px,2.5vw,36px);transition:background 0.3s,flex 0.4s cubic-bezier(0.25,0.46,0.45,0.94);">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;padding-bottom:24px;border-bottom:1px solid rgba(214,194,168,0.1);">
+        <h4 style="font-family:'Lama Sans',sans-serif;font-size:clamp(18px,2.1vw,26px);font-weight:500;color:#FFFFFF;line-height:1.25;letter-spacing:0.005em;">Plumbing<br>Systems</h4>
+        <span style="font-family:'Lama Sans',sans-serif;font-size:18px;color:#8B6B4A;line-height:1;flex-shrink:0;margin-top:1px;font-weight:300;">{{ disc1Icon }}</span>
+      </div>
+      <div style="display:grid;grid-template-rows:{{ disc1Rows }};opacity:{{ disc1Opacity }};transition:opacity 0.4s ease;">
+        <div style="overflow:hidden;">
+        <div style="padding-top:32px;">
+          <svg width="72" height="72" viewBox="0 0 28 28" fill="none" style="display:block;margin-bottom:28px;opacity:0.85;">
+            <path d="M14 3C14 3 8 12 8 17a6 6 0 0 0 12 0c0-5-6-14-6-14Z" stroke="#D6C2A8" stroke-width="0.65"></path>
+            <path d="M11.5 19a3 3 0 0 0 3 1.5" stroke="#D6C2A8" stroke-width="0.65" stroke-linecap="round"></path>
+          </svg>
+          <div style="display:flex;flex-direction:column;gap:9px;">
+            <span style="font-family:'Lama Sans',sans-serif;font-size:12.5px;color:rgba(214,194,168,0.65);line-height:1.6;">Water Supply Networks</span>
+            <span style="font-family:'Lama Sans',sans-serif;font-size:12.5px;color:rgba(214,194,168,0.65);line-height:1.6;">Drainage Systems</span>
+            <span style="font-family:'Lama Sans',sans-serif;font-size:12.5px;color:rgba(214,194,168,0.65);line-height:1.6;">Sewage Systems</span>
+            <span style="font-family:'Lama Sans',sans-serif;font-size:12.5px;color:rgba(214,194,168,0.65);line-height:1.6;">Water Heaters</span>
+            <span style="font-family:'Lama Sans',sans-serif;font-size:12.5px;color:rgba(214,194,168,0.65);line-height:1.6;">Pump Installations</span>
+          </div>
+        </div>
+        </div>
+      </div>
+          </div>
+
+    <!-- 03 HVAC Systems -->
+    <div onClick="{{ onDisc2 }}" style="flex:{{ disc2Flex }};border-right:1px solid rgba(214,194,168,0.12);cursor:pointer;padding:clamp(28px,3.5vw,44px) clamp(20px,2.5vw,36px);transition:background 0.3s,flex 0.4s cubic-bezier(0.25,0.46,0.45,0.94);">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;padding-bottom:24px;border-bottom:1px solid rgba(214,194,168,0.1);">
+        <h4 style="font-family:'Lama Sans',sans-serif;font-size:clamp(18px,2.1vw,26px);font-weight:500;color:#FFFFFF;line-height:1.25;letter-spacing:0.005em;">HVAC<br>Systems</h4>
+        <span style="font-family:'Lama Sans',sans-serif;font-size:18px;color:#8B6B4A;line-height:1;flex-shrink:0;margin-top:1px;font-weight:300;">{{ disc2Icon }}</span>
+      </div>
+      <div style="display:grid;grid-template-rows:{{ disc2Rows }};opacity:{{ disc2Opacity }};transition:opacity 0.4s ease;">
+        <div style="overflow:hidden;">
+        <div style="padding-top:32px;">
+          <svg width="72" height="72" viewBox="0 0 28 28" fill="none" style="display:block;margin-bottom:28px;opacity:0.85;">
+            <circle cx="14" cy="14" r="3.5" stroke="#D6C2A8" stroke-width="0.65"></circle>
+            <path d="M14 3v5M14 20v5M3 14h5M20 14h5M6.2 6.2l3.5 3.5M18.3 18.3l3.5 3.5M21.8 6.2l-3.5 3.5M9.7 18.3l-3.5 3.5" stroke="#D6C2A8" stroke-width="0.65" stroke-linecap="round"></path>
+          </svg>
+          <div style="display:flex;flex-direction:column;gap:9px;">
+            <span style="font-family:'Lama Sans',sans-serif;font-size:12.5px;color:rgba(214,194,168,0.65);line-height:1.6;">Air Conditioning</span>
+            <span style="font-family:'Lama Sans',sans-serif;font-size:12.5px;color:rgba(214,194,168,0.65);line-height:1.6;">Ventilation Systems</span>
+            <span style="font-family:'Lama Sans',sans-serif;font-size:12.5px;color:rgba(214,194,168,0.65);line-height:1.6;">Ductwork Installation</span>
+            <span style="font-family:'Lama Sans',sans-serif;font-size:12.5px;color:rgba(214,194,168,0.65);line-height:1.6;">Exhaust Systems</span>
+            <span style="font-family:'Lama Sans',sans-serif;font-size:12.5px;color:rgba(214,194,168,0.65);line-height:1.6;">Testing &amp; Balancing</span>
+          </div>
+        </div>
+        </div>
+      </div>
+          </div>
+
+    <!-- 04 Fire Fighting -->
+    <div onClick="{{ onDisc3 }}" style="flex:{{ disc3Flex }};border-right:1px solid rgba(214,194,168,0.12);cursor:pointer;padding:clamp(28px,3.5vw,44px) clamp(20px,2.5vw,36px);transition:background 0.3s,flex 0.4s cubic-bezier(0.25,0.46,0.45,0.94);">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;padding-bottom:24px;border-bottom:1px solid rgba(214,194,168,0.1);">
+        <h4 style="font-family:'Lama Sans',sans-serif;font-size:clamp(18px,2.1vw,26px);font-weight:500;color:#FFFFFF;line-height:1.25;letter-spacing:0.005em;">Fire<br>Fighting Systems</h4>
+        <span style="font-family:'Lama Sans',sans-serif;font-size:18px;color:#8B6B4A;line-height:1;flex-shrink:0;margin-top:1px;font-weight:300;">{{ disc3Icon }}</span>
+      </div>
+      <div style="display:grid;grid-template-rows:{{ disc3Rows }};opacity:{{ disc3Opacity }};transition:opacity 0.4s ease;">
+        <div style="overflow:hidden;">
+        <div style="padding-top:32px;">
+          <svg width="72" height="72" viewBox="0 0 28 28" fill="none" style="display:block;margin-bottom:28px;opacity:0.85;">
+            <path d="M14 3c0 0-2 4.5-2 8.5 0 1.7.6 3 2 3s2-1.3 2-3c0-4-2-8.5-2-8.5Z" stroke="#D6C2A8" stroke-width="0.65"></path>
+            <path d="M9 15c-2 2-3 4-3 6a8 8 0 0 0 16 0c0-2-.8-4-3-6" stroke="#D6C2A8" stroke-width="0.65" stroke-linecap="round"></path>
+            <circle cx="14" cy="21" r="2" stroke="#D6C2A8" stroke-width="0.65"></circle>
+          </svg>
+          <div style="display:flex;flex-direction:column;gap:9px;">
+            <span style="font-family:'Lama Sans',sans-serif;font-size:12.5px;color:rgba(214,194,168,0.65);line-height:1.6;">Fire Alarm Systems</span>
+            <span style="font-family:'Lama Sans',sans-serif;font-size:12.5px;color:rgba(214,194,168,0.65);line-height:1.6;">Fire Suppression Systems</span>
+            <span style="font-family:'Lama Sans',sans-serif;font-size:12.5px;color:rgba(214,194,168,0.65);line-height:1.6;">Sprinkler Networks</span>
+            <span style="font-family:'Lama Sans',sans-serif;font-size:12.5px;color:rgba(214,194,168,0.65);line-height:1.6;">Emergency Systems</span>
+            <span style="font-family:'Lama Sans',sans-serif;font-size:12.5px;color:rgba(214,194,168,0.65);line-height:1.6;">Civil Defense Compliance</span>
+          </div>
+        </div>
+        </div>
+      </div>
+          </div>
+
+    <!-- 05 Low Current -->
+    <div onClick="{{ onDisc4 }}" style="flex:{{ disc4Flex }};border-right:1px solid rgba(214,194,168,0.12);cursor:pointer;padding:clamp(28px,3.5vw,44px) clamp(20px,2.5vw,36px);transition:background 0.3s,flex 0.4s cubic-bezier(0.25,0.46,0.45,0.94);">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;padding-bottom:24px;border-bottom:1px solid rgba(214,194,168,0.1);">
+        <h4 style="font-family:'Lama Sans',sans-serif;font-size:clamp(18px,2.1vw,26px);font-weight:500;color:#FFFFFF;line-height:1.25;letter-spacing:0.005em;">Low<br>Current Systems</h4>
+        <span style="font-family:'Lama Sans',sans-serif;font-size:18px;color:#8B6B4A;line-height:1;flex-shrink:0;margin-top:1px;font-weight:300;">{{ disc4Icon }}</span>
+      </div>
+      <div style="display:grid;grid-template-rows:{{ disc4Rows }};opacity:{{ disc4Opacity }};transition:opacity 0.4s ease;">
+        <div style="overflow:hidden;">
+        <div style="padding-top:32px;">
+          <svg width="72" height="72" viewBox="0 0 28 28" fill="none" style="display:block;margin-bottom:28px;opacity:0.85;">
+            <circle cx="14" cy="14" r="1.5" fill="#D6C2A8"></circle>
+            <path d="M10.5 10.5a4.95 4.95 0 0 0 0 7" stroke="#D6C2A8" stroke-width="0.65" stroke-linecap="round"></path>
+            <path d="M17.5 10.5a4.95 4.95 0 0 1 0 7" stroke="#D6C2A8" stroke-width="0.65" stroke-linecap="round"></path>
+            <path d="M7 7a9.9 9.9 0 0 0 0 14" stroke="#D6C2A8" stroke-width="0.65" stroke-linecap="round"></path>
+            <path d="M21 7a9.9 9.9 0 0 1 0 14" stroke="#D6C2A8" stroke-width="0.65" stroke-linecap="round"></path>
+          </svg>
+          <div style="display:flex;flex-direction:column;gap:9px;">
+            <span style="font-family:'Lama Sans',sans-serif;font-size:12.5px;color:rgba(214,194,168,0.65);line-height:1.6;">Structured Cabling</span>
+            <span style="font-family:'Lama Sans',sans-serif;font-size:12.5px;color:rgba(214,194,168,0.65);line-height:1.6;">CCTV Systems</span>
+            <span style="font-family:'Lama Sans',sans-serif;font-size:12.5px;color:rgba(214,194,168,0.65);line-height:1.6;">Access Control</span>
+            <span style="font-family:'Lama Sans',sans-serif;font-size:12.5px;color:rgba(214,194,168,0.65);line-height:1.6;">Public Address Systems</span>
+            <span style="font-family:'Lama Sans',sans-serif;font-size:12.5px;color:rgba(214,194,168,0.65);line-height:1.6;">Smart Building Integration</span>
+          </div>
+        </div>
+        </div>
+      </div>
+          </div>
+
+    <!-- 06 Testing & Commissioning -->
+    <div onClick="{{ onDisc5 }}" style="flex:{{ disc5Flex }};cursor:pointer;padding:clamp(28px,3.5vw,44px) clamp(20px,2.5vw,36px);transition:background 0.3s,flex 0.4s cubic-bezier(0.25,0.46,0.45,0.94);">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;padding-bottom:24px;border-bottom:1px solid rgba(214,194,168,0.1);">
+        <h4 style="font-family:'Lama Sans',sans-serif;font-size:clamp(18px,2.1vw,26px);font-weight:500;color:#FFFFFF;line-height:1.25;letter-spacing:0.005em;">Testing<br>&amp; Commissioning</h4>
+        <span style="font-family:'Lama Sans',sans-serif;font-size:18px;color:#8B6B4A;line-height:1;flex-shrink:0;margin-top:1px;font-weight:300;">{{ disc5Icon }}</span>
+      </div>
+      <div style="display:grid;grid-template-rows:{{ disc5Rows }};opacity:{{ disc5Opacity }};transition:opacity 0.4s ease;">
+        <div style="overflow:hidden;">
+        <div style="padding-top:32px;">
+          <svg width="72" height="72" viewBox="0 0 28 28" fill="none" style="display:block;margin-bottom:28px;opacity:0.85;">
+            <circle cx="14" cy="14" r="9.5" stroke="#D6C2A8" stroke-width="0.65"></circle>
+            <path d="M9.5 14l3.5 3.5L19 11" stroke="#D6C2A8" stroke-width="0.65" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+          <div style="display:flex;flex-direction:column;gap:9px;">
+            <span style="font-family:'Lama Sans',sans-serif;font-size:12.5px;color:rgba(214,194,168,0.65);line-height:1.6;">Functional Testing</span>
+            <span style="font-family:'Lama Sans',sans-serif;font-size:12.5px;color:rgba(214,194,168,0.65);line-height:1.6;">System Verification</span>
+            <span style="font-family:'Lama Sans',sans-serif;font-size:12.5px;color:rgba(214,194,168,0.65);line-height:1.6;">Performance Validation</span>
+            <span style="font-family:'Lama Sans',sans-serif;font-size:12.5px;color:rgba(214,194,168,0.65);line-height:1.6;">Compliance Certification</span>
+            <span style="font-family:'Lama Sans',sans-serif;font-size:12.5px;color:rgba(214,194,168,0.65);line-height:1.6;">Final Handover Documentation</span>
+          </div>
+        </div>
+        </div>
+      </div>
+          </div>
+
+  </div>
+  <div style="height:clamp(64px,8vw,96px);"></div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ LIFECYCLE ━━━━━━━ -->
+<section data-screen-label="Lifecycle" data-mep-lifecycle style="background:#F5F2ED;padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px);overflow:hidden;">
+  <div style="max-width:1280px;margin:0 auto;">
+    <div style="margin-bottom:clamp(52px,7vw,88px);">
+      <div data-mep-eyebrow style="opacity:0;display:flex;align-items:center;gap:16px;margin-bottom:20px;transition:opacity 0.6s cubic-bezier(0.25,0.46,0.45,0.94);">
+        <span data-mep-eyebrow-line style="display:block;width:0px;height:1px;background:#8B6B4A;flex-shrink:0;transition:width 0.7s cubic-bezier(0.25,0.46,0.45,0.94);"></span>
+        <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#8B6B4A;">Our Process</span>
+      </div>
+      <div style="font-family:'Lama Sans',sans-serif;font-size:clamp(28px,3.5vw,52px);font-weight:500;color:#1F1F1F;line-height:1.15;letter-spacing:-0.015em;">
+        <div style="overflow:hidden;display:block;"><span data-mep-word style="display:block;transform:translateY(110%);transition:transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);">Precision in</span></div>
+        <div style="overflow:hidden;display:block;"><span data-mep-word style="display:block;transform:translateY(110%);transition:transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);">4 Steps.</span></div>
+      </div>
+    </div>
+    <div class="fiq-mep-steps" style="display:flex;align-items:flex-start;">
+
+      <div data-mep-step="0" style="flex:1;padding-right:clamp(20px,3vw,44px);opacity:0;transform:translateY(28px);transition:opacity 0.6s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);">
+        <div data-mep-num style="font-family:'Lama Sans',sans-serif;font-size:clamp(72px,8.5vw,112px);font-weight:500;color:rgba(91,70,54,0.07);line-height:1;letter-spacing:-0.03em;margin-bottom:4px;transition:color 0.5s cubic-bezier(0.25,0.46,0.45,0.94);">01</div>
+        <div data-mep-rule style="width:0%;height:1px;background:#D6C2A8;margin-bottom:28px;transition:width 0.65s cubic-bezier(0.25,0.46,0.45,0.94);"></div>
+        <h4 style="font-family:'Lama Sans',sans-serif;font-size:17px;font-weight:500;color:#1F1F1F;margin-bottom:6px;letter-spacing:0.05em;">Discover</h4>
+        <p style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:#8B6B4A;margin-bottom:14px;">Technical Alignment</p>
+        <p style="font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.8;color:#5B4636;">In-depth site surveys and goal-setting sessions to understand the technical demands of your space. Requirements are aligned with a firm budget roadmap to ensure high-performance results delivered cost-effectively.</p>
+      </div>
+
+      <div class="fiq-mep-connector" style="flex-shrink:0;width:clamp(16px,2.5vw,36px);padding-top:56px;">
+        <div data-mep-dash style="height:1px;width:0%;background-image:repeating-linear-gradient(90deg,#D6C2A8 0,#D6C2A8 4px,transparent 4px,transparent 7px);transition:width 0.5s cubic-bezier(0.25,0.46,0.45,0.94);"></div>
+      </div>
+
+      <div data-mep-step="1" style="flex:1;padding:0 clamp(20px,3vw,44px);opacity:0;transform:translateY(28px);transition:opacity 0.6s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);">
+        <div data-mep-num style="font-family:'Lama Sans',sans-serif;font-size:clamp(72px,8.5vw,112px);font-weight:500;color:rgba(91,70,54,0.07);line-height:1;letter-spacing:-0.03em;margin-bottom:4px;transition:color 0.5s cubic-bezier(0.25,0.46,0.45,0.94);">02</div>
+        <div data-mep-rule style="width:0%;height:1px;background:#D6C2A8;margin-bottom:28px;transition:width 0.65s cubic-bezier(0.25,0.46,0.45,0.94);"></div>
+        <h4 style="font-family:'Lama Sans',sans-serif;font-size:17px;font-weight:500;color:#1F1F1F;margin-bottom:6px;letter-spacing:0.05em;">Design</h4>
+        <p style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:#8B6B4A;margin-bottom:14px;">Systems Integration</p>
+        <p style="font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.8;color:#5B4636;">Engineering plans developed alongside photoreal 3D visuals, ensuring utility points, HVAC vents, and lighting systems are aesthetically integrated into the approved layout.</p>
+      </div>
+
+      <div class="fiq-mep-connector" style="flex-shrink:0;width:clamp(16px,2.5vw,36px);padding-top:56px;">
+        <div data-mep-dash style="height:1px;width:0%;background-image:repeating-linear-gradient(90deg,#D6C2A8 0,#D6C2A8 4px,transparent 4px,transparent 7px);transition:width 0.5s cubic-bezier(0.25,0.46,0.45,0.94);"></div>
+      </div>
+
+      <div data-mep-step="2" style="flex:1;padding:0 clamp(20px,3vw,44px);opacity:0;transform:translateY(28px);transition:opacity 0.6s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);">
+        <div data-mep-num style="font-family:'Lama Sans',sans-serif;font-size:clamp(72px,8.5vw,112px);font-weight:500;color:rgba(91,70,54,0.07);line-height:1;letter-spacing:-0.03em;margin-bottom:4px;transition:color 0.5s cubic-bezier(0.25,0.46,0.45,0.94);">03</div>
+        <div data-mep-rule style="width:0%;height:1px;background:#D6C2A8;margin-bottom:28px;transition:width 0.65s cubic-bezier(0.25,0.46,0.45,0.94);"></div>
+        <h4 style="font-family:'Lama Sans',sans-serif;font-size:17px;font-weight:500;color:#1F1F1F;margin-bottom:6px;letter-spacing:0.05em;">Build</h4>
+        <p style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:#8B6B4A;margin-bottom:14px;">Technical Execution</p>
+        <p style="font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.8;color:#5B4636;">Complex integration of MEP systems managed with strict program certainty — constant quality and safety monitoring throughout the construction phase to ensure zero deviation from specification.</p>
+      </div>
+
+      <div class="fiq-mep-connector" style="flex-shrink:0;width:clamp(16px,2.5vw,36px);padding-top:56px;">
+        <div data-mep-dash style="height:1px;width:0%;background-image:repeating-linear-gradient(90deg,#D6C2A8 0,#D6C2A8 4px,transparent 4px,transparent 7px);transition:width 0.5s cubic-bezier(0.25,0.46,0.45,0.94);"></div>
+      </div>
+
+      <div data-mep-step="3" style="flex:1;padding-left:clamp(20px,3vw,44px);opacity:0;transform:translateY(28px);transition:opacity 0.6s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);">
+        <div data-mep-num style="font-family:'Lama Sans',sans-serif;font-size:clamp(72px,8.5vw,112px);font-weight:500;color:rgba(91,70,54,0.07);line-height:1;letter-spacing:-0.03em;margin-bottom:4px;transition:color 0.5s cubic-bezier(0.25,0.46,0.45,0.94);">04</div>
+        <div data-mep-rule style="width:0%;height:1px;background:#5B4636;margin-bottom:28px;transition:width 0.65s cubic-bezier(0.25,0.46,0.45,0.94);"></div>
+        <h4 style="font-family:'Lama Sans',sans-serif;font-size:17px;font-weight:500;color:#1F1F1F;margin-bottom:6px;letter-spacing:0.05em;">Handover</h4>
+        <p style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:#8B6B4A;margin-bottom:14px;">Zero-Snag Technical Completion</p>
+        <p style="font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.8;color:#5B4636;">Every system — from power grids to water flow — is fully tested before handover. Dedicated aftercare ensures your infrastructure remains reliable long after completion.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ SECTORS ━━━━━━━━━ -->
+<section data-screen-label="Sectors" style="background:#F0EDE8;padding:clamp(52px,6vw,80px) clamp(24px,5vw,80px);">
+  <div style="max-width:1440px;margin:0 auto;display:flex;align-items:center;gap:clamp(40px,6vw,96px);flex-wrap:wrap;">
+    <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:#9B7B5A;flex-shrink:0;white-space:nowrap;">Sectors We Serve</span>
+    <div style="display:flex;align-items:center;">
+      <span style="font-family:'Lama Sans',sans-serif;font-size:clamp(26px,2.6vw,38px);font-weight:400;color:#2A1E14;letter-spacing:-0.02em;padding-right:clamp(24px,3vw,48px);">Commercial</span>
+      <span style="width:1px;height:28px;background:rgba(91,70,54,0.3);flex-shrink:0;"></span>
+      <span style="font-family:'Lama Sans',sans-serif;font-size:clamp(26px,2.6vw,38px);font-weight:400;color:#2A1E14;letter-spacing:-0.02em;padding:0 clamp(24px,3vw,48px);">Hospitality</span>
+      <span style="width:1px;height:28px;background:rgba(91,70,54,0.3);flex-shrink:0;"></span>
+      <span style="font-family:'Lama Sans',sans-serif;font-size:clamp(26px,2.6vw,38px);font-weight:400;color:#2A1E14;letter-spacing:-0.02em;padding:0 clamp(24px,3vw,48px);">Residential</span>
+      <span style="width:1px;height:28px;background:rgba(91,70,54,0.3);flex-shrink:0;"></span>
+      <span style="font-family:'Lama Sans',sans-serif;font-size:clamp(26px,2.6vw,38px);font-weight:400;color:#2A1E14;letter-spacing:-0.02em;padding-left:clamp(24px,3vw,48px);">Government</span>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ CTA ━━━━━━━━━━━━━ -->
+<section id="contact" data-screen-label="CTA" style="position:relative;overflow:hidden;padding:clamp(80px,10vw,120px) clamp(24px,5vw,80px);">
+  <!-- Dark base -->
+  <div style="position:absolute;inset:0;background:#1E1610;"></div>
+  <!-- Construction site background -->
+  <div style="position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=2400&q=80');background-size:cover;background-position:center 40%;opacity:0.28;pointer-events:none;"></div>
+  <!-- Gradient veil for depth & legibility -->
+  <div style="position:absolute;inset:0;background:linear-gradient(110deg,rgba(18,12,6,0.92) 0%,rgba(18,12,6,0.78) 55%,rgba(18,12,6,0.88) 100%);pointer-events:none;"></div>
+  <!-- Decorative rings -->
+  <div style="position:absolute;top:-100px;right:-80px;width:420px;height:420px;border:1px solid rgba(214,194,168,0.05);border-radius:50%;pointer-events:none;"></div>
+  <div style="position:absolute;bottom:-60px;left:-40px;width:300px;height:300px;border:1px solid rgba(214,194,168,0.04);border-radius:50%;pointer-events:none;"></div>
+  <div style="position:relative;z-index:1;max-width:1280px;margin:0 auto;">
+    <div class="fiq-cta-row" style="display:flex;justify-content:space-between;align-items:flex-start;gap:clamp(48px,8vw,100px);flex-wrap:wrap;">
+
+      <!-- LEFT: headline -->
+      <div data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);flex:2;">
+        <div style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:rgba(214,194,168,0.5);margin-bottom:16px;">Ready to Begin</div>
+        <h2 style="font-family:'Lama Sans',sans-serif;font-size:clamp(26px,4vw,52px);font-weight:500;color:#FFFFFF;line-height:1.05;letter-spacing:-0.02em;margin-bottom:18px;">Build with Confidence —<br>From the Inside Out.</h2>
+        <p style="font-family:'Lama Sans',sans-serif;font-size:14px;line-height:1.75;color:rgba(214,194,168,0.65);margin-bottom:36px;">Clear ideas. Clean builds. Zero-snag handovers.</p>
+        <div style="display:flex;align-items:flex-start;gap:14px;">
+          <span style="width:1px;min-height:52px;background:rgba(214,194,168,0.3);flex-shrink:0;margin-top:3px;"></span>
+          <p style="font-family:'Lama Sans',sans-serif;font-size:12px;line-height:1.85;color:rgba(214,194,168,0.48);">Download our comprehensive MEP services brochure and discover how FurnishIQ engineers the invisible backbone of world-class spaces across Saudi Arabia.</p>
+        </div>
+      </div>
+
+      <!-- RIGHT: contact form -->
+      <div data-reveal data-reveal-delay="0.15" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);flex:1;min-width:280px;max-width:500px;">
+        <form id="mep-brochure-form" onSubmit="{{ onBrochureSubmit }}" style="display:flex;flex-direction:column;gap:0;">
+
+          <!-- Name row -->
+          <div class="fiq-form-names" style="display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:28px;">
+            <div style="display:flex;flex-direction:column;gap:7px;">
+              <label style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(214,194,168,0.55);">First Name *</label>
+              <input type="text" required placeholder="Sarah" value="{{ formFirstName }}" onChange="{{ onFirstNameChange }}" style="background:transparent;border:none;border-bottom:1px solid rgba(214,194,168,0.22);padding:10px 0;font-family:'Lama Sans',sans-serif;font-size:14px;color:#FFFFFF;outline:none;width:100%;transition:border-color 0.25s;" style-focus="border-bottom-color:rgba(214,194,168,0.7);">
+            </div>
+            <div style="display:flex;flex-direction:column;gap:7px;">
+              <label style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(214,194,168,0.55);">Last Name *</label>
+              <input type="text" required placeholder="Al-Rashid" value="{{ formLastName }}" onChange="{{ onLastNameChange }}" style="background:transparent;border:none;border-bottom:1px solid rgba(214,194,168,0.22);padding:10px 0;font-family:'Lama Sans',sans-serif;font-size:14px;color:#FFFFFF;outline:none;width:100%;transition:border-color 0.25s;" style-focus="border-bottom-color:rgba(214,194,168,0.7);">
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div style="display:flex;flex-direction:column;gap:7px;margin-bottom:28px;">
+            <label style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(214,194,168,0.55);">Email Address *</label>
+            <input type="email" required placeholder="sarah@company.com" value="{{ formEmail }}" onChange="{{ onEmailChange }}" style="background:transparent;border:none;border-bottom:1px solid rgba(214,194,168,0.22);padding:10px 0;font-family:'Lama Sans',sans-serif;font-size:14px;color:#FFFFFF;outline:none;width:100%;transition:border-color 0.25s;" style-focus="border-bottom-color:rgba(214,194,168,0.7);">
+          </div>
+
+          <!-- Phone with country code -->
+          <div style="display:flex;flex-direction:column;gap:7px;margin-bottom:40px;">
+            <label style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(214,194,168,0.55);">Phone Number *</label>
+            <div id="mep-phone-wrapper" style="display:flex;align-items:center;border-bottom:1px solid rgba(214,194,168,0.22);transition:border-color 0.25s;">
+              {{ phoneSelect }}
+              <svg width="8" height="5" viewBox="0 0 8 5" fill="none" style="flex-shrink:0;pointer-events:none;margin:0 10px 0 3px;"><path d="M1 1l3 3 3-3" stroke="rgba(214,194,168,0.6)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              <span style="width:1px;height:16px;background:rgba(214,194,168,0.2);flex-shrink:0;margin-right:14px;"></span>
+              <input type="tel" required placeholder="58 033 0627" value="{{ formPhone }}" onChange="{{ onPhoneChange }}" id="mep-phone-input" style="flex:1;background:transparent;border:none;padding:10px 0;font-family:'Lama Sans',sans-serif;font-size:14px;color:#FFFFFF;outline:none;min-width:0;">
+            </div>
+          </div>
+
+          <!-- CTA button -->
+          <button type="submit" id="mep-download-btn" style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#1E1610;background:#D6C2A8;padding:18px 36px;border:1px solid #D6C2A8;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:12px;width:100%;transition:all 0.3s cubic-bezier(0.25,0.46,0.45,0.94);">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            Download Brochure
+          </button>
+
+          <sc-if value="{{ brochureSuccess }}" hint-placeholder-val="{{ null }}">
+            <p style="font-family:'Lama Sans',sans-serif;font-size:12px;color:rgba(214,194,168,0.7);margin-top:16px;text-align:center;letter-spacing:0.04em;line-height:1.65;">Thank you — your request has been received. We'll be in touch shortly.</p>
+          </sc-if>
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ FOOTER ━━━━━━━━━━━ -->
+<footer style="background:#1F1F1F;padding:clamp(64px,8vw,96px) clamp(24px,5vw,80px) 40px;border-top:1px solid rgba(91,70,54,0.25);">
+  <div style="max-width:1280px;margin:0 auto;">
+    <div class="fiq-footer-grid" style="display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:clamp(28px,4vw,64px);margin-bottom:64px;">
+
+      <div class="fiq-footer-brand">
+        <a href="FurnishIQ Home.dc.html" style="display:block;text-decoration:none;"><img src="assets/logo-default.png" alt="FurnishIQ" style="height:36px;width:auto;max-width:160px;object-fit:contain;object-position:left center;margin-bottom:22px;display:block;"></a>
+        <p style="font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.8;color:rgba(214,194,168,0.55);margin-bottom:32px;max-width:260px;">Integrated Design–Build solutions transforming ambitious architectural concepts into inspiring realities across Saudi Arabia.</p>
+        <div style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(214,194,168,0.4);margin-bottom:14px;">Join the IQ</div>
+        <div style="display:flex;border:1px solid rgba(214,194,168,0.2);">
+          <input type="email" placeholder="Your email address" value="{{ newsletterEmail }}" onChange="{{ onNewsletterChange }}" style="flex:1;background:transparent;border:none;padding:13px 16px;font-family:'Lama Sans',sans-serif;font-size:13px;color:#FFFFFF;outline:none;min-width:0;">
+          <button onClick="{{ onNewsletterSubmit }}" style="background:#5B4636;border:none;padding:13px 20px;cursor:pointer;font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:#D6C2A8;flex-shrink:0;transition:background 0.3s,flex 0.4s cubic-bezier(0.25,0.46,0.45,0.94);">Subscribe</button>
+        </div>
+        <sc-if value="{{ newsletterStatus }}" hint-placeholder-val="{{ null }}">
+          <p style="font-family:'Lama Sans',sans-serif;font-size:12px;color:rgba(214,194,168,0.65);margin-top:10px;">Thank you — monthly updates, strictly no spam.</p>
+        </sc-if>
+      </div>
+
+      <div>
+        <div style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.26em;text-transform:uppercase;color:rgba(214,194,168,0.4);margin-bottom:22px;">Services</div>
+        <nav style="display:flex;flex-direction:column;gap:13px;">
+          <a href="FurnishIQ Services Interior Design.dc.html" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Interior Design</a>
+          <a href="FurnishIQ Services Fitout.dc.html" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Fit-Out</a>
+          <a href="FurnishIQ Services MEP.dc.html" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:#D6C2A8;text-decoration:none;">Engineering &amp; MEP</a>
+          <a href="FurnishIQ Services Furniture.dc.html" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Furniture Solutions</a>
+          <a href="#" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Project Management</a>
+        </nav>
+      </div>
+
+      <div>
+        <div style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.26em;text-transform:uppercase;color:rgba(214,194,168,0.4);margin-bottom:22px;">Company</div>
+        <nav style="display:flex;flex-direction:column;gap:13px;">
+          <a href="FurnishIQ About Us.dc.html" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">About Us</a>
+          <a href="#" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">All Services</a>
+          <a href="#" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Terms &amp; Conditions</a>
+          <a href="FurnishIQ Contact.dc.html" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Contact</a>
+          <a href="FurnishIQ Blog.dc.html" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Insights</a>
+        </nav>
+      </div>
+
+      <div>
+        <div style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.26em;text-transform:uppercase;color:rgba(214,194,168,0.4);margin-bottom:22px;">Find Us</div>
+        <div style="display:flex;flex-direction:column;gap:20px;">
+          <div>
+            <div style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(214,194,168,0.35);margin-bottom:5px;">Address</div>
+            <p style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);line-height:1.65;">Riyadh, KSA.</p>
+          </div>
+          <div>
+            <div style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(214,194,168,0.35);margin-bottom:5px;">Email</div>
+            <a href="mailto:projects@furnishiq.net" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">projects@furnishiq.net</a>
+          </div>
+          <div>
+            <div style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(214,194,168,0.35);margin-bottom:5px;">Phone — Ibrahim Al Ali</div>
+            <a href="tel:+966580330627" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">+966 58 033 0627</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div style="border-top:1px solid rgba(214,194,168,0.1);padding-top:28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+      <p style="font-family:'Lama Sans',sans-serif;font-size:11px;color:rgba(214,194,168,0.3);letter-spacing:0.04em;">© 2026 FurnishIQ. All rights reserved.</p>
+      <p style="font-family:'Lama Sans',sans-serif;font-size:11px;color:rgba(214,194,168,0.3);letter-spacing:0.04em;">Crafted with precision in Saudi Arabia.</p>
+    </div>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1440}}">
+class Component extends DCLogic {
+  state = {
+    newsletterEmail: '', newsletterStatus: null,
+    formFirstName: '', formLastName: '', formEmail: '', formPhone: '',
+    formCountryCode: '+966',
+    brochureSuccess: false,
+    openDisc: 0,
+  };
+
+  COUNTRY_CODES = [
+    { code: 'SA', dial: '+966', name: 'Saudi Arabia' },
+    { code: 'AE', dial: '+971', name: 'UAE' },
+    { code: 'QA', dial: '+974', name: 'Qatar' },
+    { code: 'KW', dial: '+965', name: 'Kuwait' },
+    { code: 'BH', dial: '+973', name: 'Bahrain' },
+    { code: 'OM', dial: '+968', name: 'Oman' },
+    { code: 'EG', dial: '+20', name: 'Egypt' },
+    { code: 'JO', dial: '+962', name: 'Jordan' },
+    { code: 'LB', dial: '+961', name: 'Lebanon' },
+    { code: 'IN', dial: '+91', name: 'India' },
+    { code: 'PK', dial: '+92', name: 'Pakistan' },
+    { code: 'TR', dial: '+90', name: 'Turkey' },
+    { code: 'US', dial: '+1', name: 'USA' },
+    { code: 'GB', dial: '+44', name: 'UK' },
+    { code: 'DE', dial: '+49', name: 'Germany' },
+    { code: 'FR', dial: '+33', name: 'France' },
+  ];
+
+  renderVals() {
+    const self = this;
+    const phoneSelect = React.createElement('select', {
+      value: self.state.formCountryCode,
+      onChange: (e) => self.setState({ formCountryCode: e.target.value }),
+      style: {
+        background: 'transparent', border: 'none',
+        padding: '10px 0', fontFamily: "'Lama Sans', sans-serif",
+        fontSize: '14px', color: 'rgba(214,194,168,0.85)', outline: 'none',
+        cursor: 'pointer', appearance: 'none', WebkitAppearance: 'none',
+        flexShrink: 0, maxWidth: '80px',
+      }
+    }, self.COUNTRY_CODES.map(cc =>
+      React.createElement('option', { key: cc.code, value: cc.dial }, cc.dial)
+    ));
+
+    return {
+      newsletterEmail: self.state.newsletterEmail,
+      newsletterStatus: self.state.newsletterStatus,
+      onNewsletterChange: (e) => self.setState({ newsletterEmail: e.target.value }),
+      onNewsletterSubmit: () => {
+        if (self.state.newsletterEmail && self.state.newsletterEmail.includes('@')) {
+          self.setState({ newsletterStatus: 'success', newsletterEmail: '' });
+        }
+      },
+      // disc accordion
+      disc0Open: self.state.openDisc === 0,
+      disc1Open: self.state.openDisc === 1,
+      disc2Open: self.state.openDisc === 2,
+      disc0Rows: self.state.openDisc === 0 ? '1fr' : '0fr',
+      disc1Rows: self.state.openDisc === 1 ? '1fr' : '0fr',
+      disc2Rows: self.state.openDisc === 2 ? '1fr' : '0fr',
+      disc3Rows: self.state.openDisc === 3 ? '1fr' : '0fr',
+      disc4Rows: self.state.openDisc === 4 ? '1fr' : '0fr',
+      disc5Rows: self.state.openDisc === 5 ? '1fr' : '0fr',
+      disc0Opacity: self.state.openDisc === 0 ? 1 : 0,
+      disc1Opacity: self.state.openDisc === 1 ? 1 : 0,
+      disc2Opacity: self.state.openDisc === 2 ? 1 : 0,
+      disc3Opacity: self.state.openDisc === 3 ? 1 : 0,
+      disc4Opacity: self.state.openDisc === 4 ? 1 : 0,
+      disc5Opacity: self.state.openDisc === 5 ? 1 : 0,
+      disc3Open: self.state.openDisc === 3,
+      disc4Open: self.state.openDisc === 4,
+      disc5Open: self.state.openDisc === 5,
+      disc0Icon: self.state.openDisc === 0 ? '−' : '+',
+      disc1Icon: self.state.openDisc === 1 ? '−' : '+',
+      disc2Icon: self.state.openDisc === 2 ? '−' : '+',
+      disc3Icon: self.state.openDisc === 3 ? '−' : '+',
+      disc4Icon: self.state.openDisc === 4 ? '−' : '+',
+      disc5Icon: self.state.openDisc === 5 ? '−' : '+',
+      onDisc0: () => self.setState({ openDisc: self.state.openDisc === 0 ? -1 : 0 }),
+      onDisc1: () => self.setState({ openDisc: self.state.openDisc === 1 ? -1 : 1 }),
+      onDisc2: () => self.setState({ openDisc: self.state.openDisc === 2 ? -1 : 2 }),
+      onDisc3: () => self.setState({ openDisc: self.state.openDisc === 3 ? -1 : 3 }),
+      onDisc4: () => self.setState({ openDisc: self.state.openDisc === 4 ? -1 : 4 }),
+      onDisc5: () => self.setState({ openDisc: self.state.openDisc === 5 ? -1 : 5 }),
+      disc0Flex: self.state.openDisc === 0 ? 1.5 : 1,
+      disc1Flex: self.state.openDisc === 1 ? 1.5 : 1,
+      disc2Flex: self.state.openDisc === 2 ? 1.5 : 1,
+      disc3Flex: self.state.openDisc === 3 ? 1.5 : 1,
+      disc4Flex: self.state.openDisc === 4 ? 1.5 : 1,
+      disc5Flex: self.state.openDisc === 5 ? 1.5 : 1,
+      // form fields
+      formFirstName: self.state.formFirstName,
+      formLastName: self.state.formLastName,
+      formEmail: self.state.formEmail,
+      formPhone: self.state.formPhone,
+      brochureSuccess: self.state.brochureSuccess,
+      phoneSelect,
+      onFirstNameChange: (e) => self.setState({ formFirstName: e.target.value }),
+      onLastNameChange: (e) => self.setState({ formLastName: e.target.value }),
+      onEmailChange: (e) => self.setState({ formEmail: e.target.value }),
+      onPhoneChange: (e) => self.setState({ formPhone: e.target.value }),
+      onBrochureSubmit: (e) => {
+        e.preventDefault();
+        self.setState({
+          brochureSuccess: true,
+          formFirstName: '', formLastName: '', formEmail: '', formPhone: '',
+        });
+        setTimeout(() => self.setState({ brochureSuccess: false }), 6000);
+      },
+    };
+  }
+
+  componentDidMount() {
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // ── NAV SCROLL ─────────────────────────────────────────────────────────
+    const nav = document.getElementById('mep-nav');
+    const logoW = document.getElementById('mep-logo-w');
+    const logoD = document.getElementById('mep-logo-d');
+    const navLinks = document.querySelectorAll('[data-nav-link]');
+    const navServicesLink = document.getElementById('mep-nav-services');
+    const navCta = document.getElementById('mep-nav-cta');
+
+    const syncNav = () => {
+      const s = window.scrollY > 60;
+      if (!nav) return;
+      nav.style.background = s ? 'rgba(255,255,255,0.96)' : 'transparent';
+      nav.style.borderBottomColor = s ? '#D6C2A8' : 'transparent';
+      nav.style.backdropFilter = s ? 'blur(16px)' : 'none';
+      nav.style.boxShadow = s ? '0 2px 16px rgba(58,45,37,0.06)' : 'none';
+      if (logoW) logoW.style.opacity = s ? '0' : '1';
+      if (logoD) logoD.style.opacity = s ? '1' : '0';
+      navLinks.forEach(l => {
+        l.style.color = s ? '#1F1F1F' : '#FFFFFF';
+        if (l !== navServicesLink) l.style.opacity = s ? '1' : '0.8';
+      });
+      if (navServicesLink) {
+        navServicesLink.style.borderBottomColor = s ? 'rgba(91,70,54,0.45)' : 'rgba(214,194,168,0.55)';
+      }
+      if (navCta) {
+        navCta.style.color = s ? '#1F1F1F' : '#FFFFFF';
+        navCta.style.borderColor = s ? 'rgba(91,70,54,0.35)' : 'rgba(214,194,168,0.5)';
+      }
+    };
+    window.addEventListener('scroll', syncNav, { passive: true });
+    syncNav();
+
+    navLinks.forEach(l => {
+      if (l === navServicesLink) return;
+      l.addEventListener('mouseenter', () => { l.style.opacity = '1'; });
+      l.addEventListener('mouseleave', () => { l.style.opacity = window.scrollY > 60 ? '1' : '0.8'; });
+    });
+    if (navCta) {
+      navCta.addEventListener('mouseenter', () => {
+        navCta.style.background = window.scrollY > 60 ? '#3A2D25' : 'rgba(255,255,255,0.1)';
+        navCta.style.color = '#D6C2A8';
+      });
+      navCta.addEventListener('mouseleave', () => { navCta.style.background = 'transparent'; syncNav(); });
+    }
+
+    // ── SCROLL REVEAL ──────────────────────────────────────────────────────
+    if (reduced) {
+      document.querySelectorAll('[data-reveal]').forEach(el => { el.style.opacity = '1'; el.style.transform = 'none'; });
+      document.querySelectorAll('[data-slide-from]').forEach(el => { el.style.opacity = '1'; el.style.transform = 'none'; });
+    } else {
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          const el = entry.target;
+          const delay = parseFloat(el.dataset.revealDelay || '0') * 1000;
+          setTimeout(() => { el.style.opacity = '1'; el.style.transform = 'translateY(0)'; }, delay);
+          obs.unobserve(el);
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -24px 0px' });
+      document.querySelectorAll('[data-reveal]').forEach(el => obs.observe(el));
+
+      // ── PILLAR SLIDE-IN ────────────────────────────────────────────────
+      const advObs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          entry.target.querySelectorAll('[data-slide-from]').forEach((col, i) => {
+            setTimeout(() => { col.style.opacity = '1'; col.style.transform = 'translateX(0)'; }, i * 100);
+          });
+          advObs.unobserve(entry.target);
+        });
+      }, { threshold: 0.06, rootMargin: '0px 0px -24px 0px' });
+      document.querySelectorAll('[data-adv-row]').forEach(r => advObs.observe(r));
+    }
+
+    // ── DISCIPLINE CARD HOVER ──────────────────────────────────────────────
+    document.querySelectorAll('[data-disc-card]').forEach(card => {
+      card.addEventListener('mouseenter', () => { card.style.background = '#F5F2ED'; });
+      card.addEventListener('mouseleave', () => { card.style.background = '#FFFFFF'; });
+    });
+
+    // ── SECTOR ITEM HOVER ──────────────────────────────────────────────────
+    document.querySelectorAll('[data-sector-item]').forEach(item => {
+      const num = item.querySelector('[data-sector-num]');
+      item.addEventListener('mouseenter', () => {
+        item.style.background = 'rgba(214,194,168,0.04)';
+        if (num) num.style.color = 'rgba(214,194,168,0.09)';
+      });
+      item.addEventListener('mouseleave', () => {
+        item.style.background = 'transparent';
+        if (num) num.style.color = 'rgba(214,194,168,0.04)';
+      });
+    });
+
+    // ── MEP LIFECYCLE ANIMATION ────────────────────────────────────────────
+    const mepProc = document.querySelector('[data-mep-lifecycle]');
+    if (mepProc) {
+      const showAll = () => {
+        const eyebrow = mepProc.querySelector('[data-mep-eyebrow]');
+        const eyebrowLine = mepProc.querySelector('[data-mep-eyebrow-line]');
+        if (eyebrow) eyebrow.style.opacity = '1';
+        if (eyebrowLine) eyebrowLine.style.width = '32px';
+        mepProc.querySelectorAll('[data-mep-word]').forEach(w => { w.style.transform = 'translateY(0)'; });
+        mepProc.querySelectorAll('[data-mep-step]').forEach(s => { s.style.opacity = '1'; s.style.transform = 'translateY(0)'; });
+        mepProc.querySelectorAll('[data-mep-rule]').forEach(r => { r.style.width = '100%'; });
+        mepProc.querySelectorAll('[data-mep-dash]').forEach(d => { d.style.width = '100%'; });
+      };
+
+      const countUp = (el, target, duration) => {
+        const steps = 10;
+        const ms = duration / steps;
+        const targetNum = parseInt(target, 10);
+        let i = 0;
+        const timer = setInterval(() => {
+          i++;
+          el.textContent = String(Math.ceil(Math.random() * Math.max(targetNum, 4))).padStart(2, '0');
+          if (i >= steps) { clearInterval(timer); el.textContent = target; }
+        }, ms);
+      };
+
+      if (reduced) {
+        showAll();
+      } else {
+        const runSequence = () => {
+          const eyebrow = mepProc.querySelector('[data-mep-eyebrow]');
+          const eyebrowLine = mepProc.querySelector('[data-mep-eyebrow-line]');
+          const words = mepProc.querySelectorAll('[data-mep-word]');
+          const steps = mepProc.querySelectorAll('[data-mep-step]');
+          const dashes = mepProc.querySelectorAll('[data-mep-dash]');
+
+          setTimeout(() => { if (eyebrow) eyebrow.style.opacity = '1'; }, 0);
+          setTimeout(() => { if (eyebrowLine) eyebrowLine.style.width = '32px'; }, 80);
+          setTimeout(() => { if (words[0]) words[0].style.transform = 'translateY(0)'; }, 220);
+          setTimeout(() => { if (words[1]) words[1].style.transform = 'translateY(0)'; }, 440);
+
+          steps.forEach((step, i) => {
+            const base = 780 + i * 380;
+            const num = step.querySelector('[data-mep-num]');
+            const rule = step.querySelector('[data-mep-rule]');
+            setTimeout(() => { step.style.opacity = '1'; step.style.transform = 'translateY(0)'; }, base);
+            setTimeout(() => {
+              if (num) {
+                countUp(num, String(i + 1).padStart(2, '0'), 320);
+                setTimeout(() => {
+                  num.style.color = 'rgba(139,107,74,0.45)';
+                  setTimeout(() => { num.style.color = 'rgba(91,70,54,0.07)'; }, 420);
+                }, 330);
+              }
+            }, base + 80);
+            setTimeout(() => { if (rule) rule.style.width = '100%'; }, base + 200);
+            if (dashes[i]) setTimeout(() => { dashes[i].style.width = '100%'; }, base + 390);
+          });
+        };
+
+        const procObs = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            procObs.unobserve(entry.target);
+            runSequence();
+          });
+        }, { threshold: 0.18 });
+        procObs.observe(mepProc);
+      }
+
+      // Per-step hover replay
+      const allDashes = mepProc.querySelectorAll('[data-mep-dash]');
+      mepProc.querySelectorAll('[data-mep-step]').forEach((step, i) => {
+        const num = step.querySelector('[data-mep-num]');
+        const rule = step.querySelector('[data-mep-rule]');
+        const dash = allDashes[i];
+        step.style.cursor = 'default';
+        step.addEventListener('mouseenter', () => {
+          if (num) {
+            countUp(num, String(i + 1).padStart(2, '0'), 280);
+            setTimeout(() => {
+              num.style.color = 'rgba(139,107,74,0.45)';
+              setTimeout(() => { num.style.color = 'rgba(91,70,54,0.07)'; }, 380);
+            }, 290);
+          }
+          if (rule) {
+            rule.style.transition = 'none';
+            rule.style.width = '0%';
+            requestAnimationFrame(() => requestAnimationFrame(() => {
+              rule.style.transition = 'width 0.65s cubic-bezier(0.25,0.46,0.45,0.94)';
+              rule.style.width = '100%';
+            }));
+          }
+          if (dash) {
+            dash.style.transition = 'none';
+            dash.style.width = '0%';
+            requestAnimationFrame(() => requestAnimationFrame(() => {
+              dash.style.transition = 'width 0.5s cubic-bezier(0.25,0.46,0.45,0.94)';
+              setTimeout(() => { dash.style.width = '100%'; }, 180);
+            }));
+          }
+        });
+      });
+    }
+
+    // ── ADVANTAGE CTA HOVER ────────────────────────────────────────────────
+    const advCta = document.getElementById('adv-cta-btn');
+    if (advCta) {
+      advCta.addEventListener('mouseenter', () => { advCta.style.background = '#5B4636'; advCta.style.borderColor = '#5B4636'; });
+      advCta.addEventListener('mouseleave', () => { advCta.style.background = '#3A2D25'; advCta.style.borderColor = '#3A2D25'; });
+    }
+
+    // ── BUTTON HOVERS ──────────────────────────────────────────────────────
+    const heroCta = document.getElementById('mep-hero-cta');
+    if (heroCta) {
+      heroCta.addEventListener('mouseenter', () => { heroCta.style.background = '#FFFFFF'; heroCta.style.color = '#3A2D25'; heroCta.style.borderColor = '#FFFFFF'; });
+      heroCta.addEventListener('mouseleave', () => { heroCta.style.background = '#D6C2A8'; heroCta.style.color = '#3A2D25'; heroCta.style.borderColor = '#D6C2A8'; });
+    }
+    // ── DOWNLOAD BUTTON HOVER ────────────────────────────────────────────────
+    const dlBtn = document.getElementById('mep-download-btn');
+    if (dlBtn) {
+      dlBtn.addEventListener('mouseenter', () => { dlBtn.style.background = '#FFFFFF'; dlBtn.style.borderColor = '#FFFFFF'; });
+      dlBtn.addEventListener('mouseleave', () => { dlBtn.style.background = '#D6C2A8'; dlBtn.style.borderColor = '#D6C2A8'; });
+    }
+
+    // ── PHONE WRAPPER FOCUS ──────────────────────────────────────────────────
+    const phoneWrapper = document.getElementById('mep-phone-wrapper');
+    const phoneInput = document.getElementById('mep-phone-input');
+    if (phoneWrapper && phoneInput) {
+      phoneInput.addEventListener('focus', () => { phoneWrapper.style.borderBottomColor = 'rgba(214,194,168,0.7)'; });
+      phoneInput.addEventListener('blur', () => { phoneWrapper.style.borderBottomColor = 'rgba(214,194,168,0.22)'; });
+    }
+
+    // ── COUNTRY CODE AUTO-DETECT ─────────────────────────────────────────────
+    fetch('https://ipapi.co/json/')
+      .then(r => r.json())
+      .then(data => {
+        const cc = data.country_calling_code;
+        if (cc) {
+          const dial = cc.startsWith('+') ? cc : '+' + cc;
+          const found = this.COUNTRY_CODES.find(c => c.dial === dial);
+          if (found) this.setState({ formCountryCode: found.dial });
+        }
+      })
+      .catch(() => {});
+
+    // ── FOOTER LINK HOVERS ────────────────────────────────────────────────
+    document.querySelectorAll('footer a').forEach(a => {
+      if (a.style.color === 'rgb(214, 194, 168)') return;
+      a.addEventListener('mouseenter', () => { a.style.color = '#D6C2A8'; });
+      a.addEventListener('mouseleave', () => { a.style.color = 'rgba(214,194,168,0.65)'; });
+    });
+  }
+}
+</script>
+</body>
+</html>
