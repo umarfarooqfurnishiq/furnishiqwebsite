@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /FurnishIQ%20Home.html
+Disallow: /_FurnishIQ%20About%20Us.dc.html
+
+Sitemap: https://www.furnishiq.net/sitemap.xml
