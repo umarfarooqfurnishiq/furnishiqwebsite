@@ -293,18 +293,18 @@
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"></line><line x1="18" y1="6" x2="6" y2="18"></line></svg>
   </button>
   <div style="max-width:1100px;width:100%;max-height:88vh;display:flex;flex-direction:column;align-items:center;">
-    <div style="width:100%;aspect-ratio:3/2;overflow:hidden;background:#000;">
+    <div style="position:relative;width:100%;aspect-ratio:3/2;overflow:hidden;background:#000;">
       <img id="pd-lightbox-img" src="" alt="" style="display:block;width:100%;height:100%;object-fit:cover;">
+      <button type="button" id="pd-lightbox-prev" aria-label="Previous image" style="position:absolute;top:50%;left:16px;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:rgba(15,11,8,0.55);border:1px solid rgba(214,194,168,0.4);display:flex;align-items:center;justify-content:center;cursor:pointer;color:#D6C2A8;transition:all 0.3s;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+      <button type="button" id="pd-lightbox-next" aria-label="Next image" style="position:absolute;top:50%;right:16px;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:rgba(15,11,8,0.55);border:1px solid rgba(214,194,168,0.4);display:flex;align-items:center;justify-content:center;cursor:pointer;color:#D6C2A8;transition:all 0.3s;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
     </div>
-    <div style="width:100%;display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;padding-top:24px;">
-      <div>
-        <span id="pd-lightbox-caption" style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.24em;text-transform:uppercase;color:rgba(214,194,168,0.55);display:block;margin-bottom:8px;"></span>
-        <h3 id="pd-lightbox-title" style="font-family:'Lama Sans',sans-serif;font-size:clamp(18px,2.2vw,26px);font-weight:500;color:#FFFFFF;line-height:1.3;margin:0;text-wrap:balance;"></h3>
-      </div>
-      <a href="#pd-details-anchor" id="pd-lightbox-view-details" style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#D6C2A8;text-decoration:none;border:1px solid rgba(214,194,168,0.4);padding:14px 26px;display:inline-flex;align-items:center;gap:10px;transition:all 0.3s;white-space:nowrap;flex-shrink:0;">
-        View Details
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-      </a>
+    <div style="width:100%;padding-top:24px;">
+      <span id="pd-lightbox-caption" style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.24em;text-transform:uppercase;color:rgba(214,194,168,0.55);display:block;margin-bottom:8px;"></span>
+      <h3 id="pd-lightbox-title" style="font-family:'Lama Sans',sans-serif;font-size:clamp(18px,2.2vw,26px);font-weight:500;color:#FFFFFF;line-height:1.3;margin:0;text-wrap:balance;"></h3>
     </div>
   </div>
 </div>
@@ -551,13 +551,24 @@ class Component extends DCLogic {
     const lightboxCaption = document.getElementById('pd-lightbox-caption');
     const lightboxTitle = document.getElementById('pd-lightbox-title');
     const lightboxClose = document.getElementById('pd-lightbox-close');
+    const lightboxPrev = document.getElementById('pd-lightbox-prev');
+    const lightboxNext = document.getElementById('pd-lightbox-next');
 
-    const openLightbox = (item) => {
-      if (!lightbox) return;
+    const galleryItems = Array.from(document.querySelectorAll('[data-gallery-item]'));
+    let galleryIndex = 0;
+
+    const showGalleryItem = (index) => {
+      if (!lightbox || galleryItems.length === 0) return;
+      galleryIndex = (index + galleryItems.length) % galleryItems.length;
+      const item = galleryItems[galleryIndex];
       lightboxImg.src = item.dataset.gallerySrc;
       lightboxImg.alt = item.dataset.galleryCaption || '';
       lightboxCaption.textContent = item.dataset.galleryCaption || '';
       lightboxTitle.textContent = item.dataset.galleryTitle || '';
+    };
+    const openLightbox = (index) => {
+      if (!lightbox) return;
+      showGalleryItem(index);
       lightbox.style.display = 'flex';
       requestAnimationFrame(() => { lightbox.style.opacity = '1'; });
       document.body.style.overflow = 'hidden';
@@ -569,7 +580,7 @@ class Component extends DCLogic {
       setTimeout(() => { lightbox.style.display = 'none'; }, 300);
     };
 
-    document.querySelectorAll('[data-gallery-item]').forEach(item => {
+    galleryItems.forEach((item, index) => {
       const img = item.querySelector('img');
       const zoom = item.querySelector('[data-gallery-zoom]');
       item.addEventListener('mouseenter', () => {
@@ -580,26 +591,30 @@ class Component extends DCLogic {
         if (img) img.style.transform = 'scale(1)';
         if (zoom) zoom.style.opacity = '0';
       });
-      item.addEventListener('click', () => openLightbox(item));
+      item.addEventListener('click', () => openLightbox(index));
     });
 
     if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+    if (lightboxPrev) lightboxPrev.addEventListener('click', () => showGalleryItem(galleryIndex - 1));
+    if (lightboxNext) lightboxNext.addEventListener('click', () => showGalleryItem(galleryIndex + 1));
     if (lightbox) {
       lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
     }
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && lightbox && lightbox.style.display === 'flex') closeLightbox();
+      if (!lightbox || lightbox.style.display !== 'flex') return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') showGalleryItem(galleryIndex - 1);
+      if (e.key === 'ArrowRight') showGalleryItem(galleryIndex + 1);
     });
-    const viewDetailsBtn = document.getElementById('pd-lightbox-view-details');
-    if (viewDetailsBtn) {
-      viewDetailsBtn.addEventListener('click', () => { closeLightbox(); });
-      viewDetailsBtn.addEventListener('mouseenter', () => { viewDetailsBtn.style.background = 'rgba(214,194,168,0.12)'; viewDetailsBtn.style.borderColor = '#D6C2A8'; });
-      viewDetailsBtn.addEventListener('mouseleave', () => { viewDetailsBtn.style.background = 'transparent'; viewDetailsBtn.style.borderColor = 'rgba(214,194,168,0.4)'; });
-    }
     if (lightboxClose) {
       lightboxClose.addEventListener('mouseenter', () => { lightboxClose.style.background = '#D6C2A8'; lightboxClose.style.color = '#1E1610'; });
       lightboxClose.addEventListener('mouseleave', () => { lightboxClose.style.background = 'transparent'; lightboxClose.style.color = '#D6C2A8'; });
     }
+    [lightboxPrev, lightboxNext].forEach(btn => {
+      if (!btn) return;
+      btn.addEventListener('mouseenter', () => { btn.style.background = 'rgba(214,194,168,0.9)'; btn.style.color = '#1E1610'; });
+      btn.addEventListener('mouseleave', () => { btn.style.background = 'rgba(15,11,8,0.55)'; btn.style.color = '#D6C2A8'; });
+    });
   }
 }
 
