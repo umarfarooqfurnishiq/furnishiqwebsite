@@ -45,6 +45,8 @@
     }
     @keyframes fiqDetailIn{from{opacity:0;transform:translateY(64px);}to{opacity:1;transform:translateY(0);}}
     @keyframes fiqDetailOut{from{opacity:1;transform:translateY(0);}to{opacity:0;transform:translateY(64px);}}
+    .fiq-detail-nav-circle{transition:background 0.3s,border-color 0.3s;}
+    .fiq-detail-nav:hover .fiq-detail-nav-circle{background:rgba(255,255,255,0.92);border-color:rgba(255,255,255,0.92);color:#1E1610;}
   </style>
 </helmet>
 
@@ -124,7 +126,19 @@
     </div>
 
     <sc-if value="{{ hasSelection }}" hint-placeholder-val="{{ null }}">
-      <div class="fiq-detail" data-screen-label="Project Detail" style="display:grid;grid-template-columns:1fr 1fr;align-items:stretch;background:#1F1F1F;border-top:1px solid rgba(214,194,168,0.14);border-bottom:1px solid rgba(214,194,168,0.14);animation:{{ detailAnim }};">
+      <div class="fiq-detail" data-screen-label="Project Detail" style="position:relative;display:grid;grid-template-columns:1fr 1fr;align-items:stretch;background:#1F1F1F;border-top:1px solid rgba(214,194,168,0.14);border-bottom:1px solid rgba(214,194,168,0.14);animation:{{ detailAnim }};">
+        <sc-if value="{{ hasMultipleProjects }}" hint-placeholder-val="{{ true }}">
+          <button type="button" class="fiq-detail-nav" onClick="{{ onPrevProject }}" aria-label="Previous project" style="position:absolute;top:0;left:0;bottom:0;width:min(140px,16%);z-index:5;border:none;cursor:pointer;display:flex;align-items:center;justify-content:flex-start;padding-left:clamp(16px,2vw,28px);background:linear-gradient(to right,rgba(255,255,255,0.16),transparent);">
+            <span class="fiq-detail-nav-circle" style="width:44px;height:44px;border-radius:50%;background:rgba(20,15,10,0.3);border:1px solid rgba(255,255,255,0.6);display:flex;align-items:center;justify-content:center;color:#FFFFFF;flex-shrink:0;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </span>
+          </button>
+          <button type="button" class="fiq-detail-nav" onClick="{{ onNextProject }}" aria-label="Next project" style="position:absolute;top:0;right:0;bottom:0;width:min(140px,16%);z-index:5;border:none;cursor:pointer;display:flex;align-items:center;justify-content:flex-end;padding-right:clamp(16px,2vw,28px);background:linear-gradient(to left,rgba(255,255,255,0.16),transparent);">
+            <span class="fiq-detail-nav-circle" style="width:44px;height:44px;border-radius:50%;background:rgba(20,15,10,0.3);border:1px solid rgba(255,255,255,0.6);display:flex;align-items:center;justify-content:center;color:#FFFFFF;flex-shrink:0;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </span>
+          </button>
+        </sc-if>
         <div style="overflow:hidden;width:100%;">
           <img src="{{ selImage }}" alt="{{ selTitle }}" style="display:block;width:100%;height:100%;object-fit:cover;">
         </div>
@@ -476,6 +490,21 @@ class Component extends DCLogic {
         if (self.state.closing) return;
         self.setState({ closing: true });
         setTimeout(() => self.setState({ selectedTitle: null, closing: false }), 430);
+      },
+      hasMultipleProjects: filtered.length > 1,
+      onPrevProject: () => {
+        if (selIdx < 0 || filtered.length < 2) return;
+        const prev = filtered[(selIdx - 1 + filtered.length) % filtered.length];
+        self.setState({ selectedTitle: prev.title, closing: false });
+        const scrollBox = document.querySelector('.fiq-detail-scroll');
+        if (scrollBox) scrollBox.scrollTop = 0;
+      },
+      onNextProject: () => {
+        if (selIdx < 0 || filtered.length < 2) return;
+        const next = filtered[(selIdx + 1) % filtered.length];
+        self.setState({ selectedTitle: next.title, closing: false });
+        const scrollBox = document.querySelector('.fiq-detail-scroll');
+        if (scrollBox) scrollBox.scrollTop = 0;
       },
       noResults: filtered.length === 0,
     };
