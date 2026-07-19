@@ -45,6 +45,8 @@
     }
     @keyframes fiqDetailIn{from{opacity:0;transform:translateY(64px);}to{opacity:1;transform:translateY(0);}}
     @keyframes fiqDetailOut{from{opacity:1;transform:translateY(0);}to{opacity:0;transform:translateY(64px);}}
+    @keyframes fiqDetailZoomOut{from{opacity:1;transform:scale(1);}to{opacity:0;transform:scale(0.94);}}
+    @keyframes fiqDetailZoomIn{from{opacity:0;transform:scale(0.94);}to{opacity:1;transform:scale(1);}}
     .fiq-detail-nav-circle{transition:background 0.3s,border-color 0.3s;}
     .fiq-detail-nav:hover .fiq-detail-nav-circle{background:rgba(255,255,255,0.92);border-color:rgba(255,255,255,0.92);color:#1E1610;}
   </style>
@@ -293,9 +295,22 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1440}}">
 class Component extends DCLogic {
-  state = { activeCategory: 'All', selectedTitle: null, closing: false };
+  state = { activeCategory: 'All', selectedTitle: null, closing: false, switchPhase: null };
 
   slugify(t) { return t.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''); }
+
+  goToProject(title) {
+    if (this.state.switchPhase) return;
+    const self = this;
+    this.setState({ switchPhase: 'out' });
+    setTimeout(() => {
+      self.setState({ selectedTitle: title, switchPhase: 'in' });
+      const scrollBox = document.querySelector('.fiq-detail-scroll');
+      if (scrollBox) scrollBox.scrollTop = 0;
+      self.scrollToDetail();
+      setTimeout(() => self.setState({ switchPhase: null }), 420);
+    }, 230);
+  }
 
   scrollToDetail(attempt) {
     attempt = attempt || 0;
@@ -445,11 +460,12 @@ class Component extends DCLogic {
       selOpacity: p.title === this.state.selectedTitle ? 1 : 0,
       onClick: (e) => {
         e.preventDefault();
-        if (self.state.selectedTitle !== p.title) {
-          self.setState({ selectedTitle: p.title, closing: false });
-          const scrollBox = document.querySelector('.fiq-detail-scroll');
-          if (scrollBox) scrollBox.scrollTop = 0;
+        if (self.state.selectedTitle === p.title) return;
+        if (self.state.selectedTitle) {
+          self.goToProject(p.title);
+          return;
         }
+        self.setState({ selectedTitle: p.title, closing: false });
         setTimeout(() => {
           const scrollBox = document.querySelector('.fiq-detail-scroll');
           if (scrollBox) scrollBox.scrollTop = 0;
@@ -485,7 +501,11 @@ class Component extends DCLogic {
       selParas: det ? det.paras.map(t => ({ text: t })) : [],
       detailAnim: this.state.closing
         ? 'fiqDetailOut 0.45s cubic-bezier(0.5,0,0.75,0) both'
-        : 'fiqDetailIn 0.65s cubic-bezier(0.16,1,0.3,1) both',
+        : this.state.switchPhase === 'out'
+          ? 'fiqDetailZoomOut 0.25s ease both'
+          : this.state.switchPhase === 'in'
+            ? 'fiqDetailZoomIn 0.4s cubic-bezier(0.16,1,0.3,1) both'
+            : 'fiqDetailIn 0.65s cubic-bezier(0.16,1,0.3,1) both',
       onCloseDetail: () => {
         if (self.state.closing) return;
         self.setState({ closing: true });
@@ -495,16 +515,12 @@ class Component extends DCLogic {
       onPrevProject: () => {
         if (selIdx < 0 || filtered.length < 2) return;
         const prev = filtered[(selIdx - 1 + filtered.length) % filtered.length];
-        self.setState({ selectedTitle: prev.title, closing: false });
-        const scrollBox = document.querySelector('.fiq-detail-scroll');
-        if (scrollBox) scrollBox.scrollTop = 0;
+        self.goToProject(prev.title);
       },
       onNextProject: () => {
         if (selIdx < 0 || filtered.length < 2) return;
         const next = filtered[(selIdx + 1) % filtered.length];
-        self.setState({ selectedTitle: next.title, closing: false });
-        const scrollBox = document.querySelector('.fiq-detail-scroll');
-        if (scrollBox) scrollBox.scrollTop = 0;
+        self.goToProject(next.title);
       },
       noResults: filtered.length === 0,
     };
