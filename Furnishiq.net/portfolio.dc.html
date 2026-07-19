@@ -305,9 +305,11 @@ class Component extends DCLogic {
     this.setState({ switchPhase: 'out' });
     setTimeout(() => {
       self.setState({ selectedTitle: title, switchPhase: 'in' });
-      const scrollBox = document.querySelector('.fiq-detail-scroll');
-      if (scrollBox) scrollBox.scrollTop = 0;
-      self.scrollToDetail();
+      setTimeout(() => {
+        const scrollBox = document.querySelector('.fiq-detail-scroll');
+        if (scrollBox) scrollBox.scrollTop = 0;
+        self.scrollToDetail();
+      }, 60);
       setTimeout(() => self.setState({ switchPhase: null }), 420);
     }, 230);
   }
