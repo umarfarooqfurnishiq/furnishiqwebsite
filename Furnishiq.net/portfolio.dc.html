@@ -37,8 +37,6 @@
       .fiq-port-grid{grid-template-columns:1fr!important;grid-auto-rows:auto!important;}
       .fiq-port-grid > a{grid-column:span 1!important;grid-row:span 1!important;aspect-ratio:3/2!important;}
       .fiq-detail{grid-template-columns:1fr!important;}
-      .fiq-detail-body{height:auto!important;}
-      .fiq-detail-scroll{position:static!important;overflow-y:visible!important;}
       .fiq-footer-grid{grid-template-columns:1fr 1fr!important;gap:48px!important;}
       .fiq-footer-brand{grid-column:1/-1!important;}
     }
@@ -127,11 +125,11 @@
 
     <sc-if value="{{ hasSelection }}" hint-placeholder-val="{{ null }}">
       <div class="fiq-detail" data-screen-label="Project Detail" style="display:grid;grid-template-columns:1fr 1fr;align-items:stretch;background:#1F1F1F;border-top:1px solid rgba(214,194,168,0.14);border-bottom:1px solid rgba(214,194,168,0.14);animation:{{ detailAnim }};">
-        <div style="aspect-ratio:3/2;overflow:hidden;align-self:start;width:100%;">
+        <div style="overflow:hidden;width:100%;">
           <img src="{{ selImage }}" alt="{{ selTitle }}" style="display:block;width:100%;height:100%;object-fit:cover;">
         </div>
-        <div class="fiq-detail-body" style="position:relative;height:100%;min-height:0;">
-        <div class="fiq-detail-scroll" style="position:absolute;inset:0;overflow-y:auto;padding:clamp(36px,4vw,64px) max(clamp(28px,4vw,72px),calc((100vw - 1280px) / 2)) clamp(48px,5vw,80px) clamp(28px,4vw,72px);">
+        <div class="fiq-detail-body">
+        <div class="fiq-detail-scroll" style="padding:clamp(36px,4vw,64px) max(clamp(28px,4vw,72px),calc((100vw - 1280px) / 2)) clamp(48px,5vw,80px) clamp(28px,4vw,72px);">
           <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:24px;margin-bottom:28px;">
             <div style="display:flex;align-items:center;gap:16px;">
               <span style="display:block;width:28px;height:1px;background:#D6C2A8;flex-shrink:0;"></span>
