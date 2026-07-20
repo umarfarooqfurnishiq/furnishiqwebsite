@@ -489,6 +489,20 @@ class Component extends DCLogic {
       onMessageChange: (e) => self.setState({ formMessage: e.target.value }),
       onFormSubmit: (e) => {
         e.preventDefault();
+        const s = self.state;
+        const subject = `New Project Inquiry — ${s.formName || 'Website Visitor'}`;
+        const body = [
+          `Name: ${s.formName}`,
+          s.formCompany ? `Company: ${s.formCompany}` : null,
+          `Email: ${s.formEmail}`,
+          `Phone: ${s.formCountryCode} ${s.formPhone}`,
+          s.selectedService ? `Interested In: ${s.selectedService}` : null,
+          s.selectedBudget ? `Estimated Budget: ${s.selectedBudget}` : null,
+          '',
+          'Project Details:',
+          s.formMessage,
+        ].filter((line) => line !== null).join('\n');
+        window.location.href = `mailto:ibrahim@furnishiq.net?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         self.setState({
           formDone: true, doneName: self.state.formName,
           formName: '', formCompany: '', formEmail: '', formPhone: '', formMessage: '',

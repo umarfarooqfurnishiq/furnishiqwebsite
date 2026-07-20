@@ -208,23 +208,23 @@
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
         <label style="display:flex;flex-direction:column;gap:8px;">
           <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(214,194,168,0.55);">First Name *</span>
-          <input type="text" placeholder="Sarah" style="font-family:'Lama Sans',sans-serif;font-size:14px;color:#FFFFFF;background:transparent;border:none;border-bottom:1px solid rgba(214,194,168,0.3);padding:6px 0 10px;outline:none;">
+          <input id="bf-first-name" type="text" placeholder="Sarah" style="font-family:'Lama Sans',sans-serif;font-size:14px;color:#FFFFFF;background:transparent;border:none;border-bottom:1px solid rgba(214,194,168,0.3);padding:6px 0 10px;outline:none;">
         </label>
         <label style="display:flex;flex-direction:column;gap:8px;">
           <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(214,194,168,0.55);">Last Name *</span>
-          <input type="text" placeholder="Al-Rashid" style="font-family:'Lama Sans',sans-serif;font-size:14px;color:#FFFFFF;background:transparent;border:none;border-bottom:1px solid rgba(214,194,168,0.3);padding:6px 0 10px;outline:none;">
+          <input id="bf-last-name" type="text" placeholder="Al-Rashid" style="font-family:'Lama Sans',sans-serif;font-size:14px;color:#FFFFFF;background:transparent;border:none;border-bottom:1px solid rgba(214,194,168,0.3);padding:6px 0 10px;outline:none;">
         </label>
       </div>
       <label style="display:flex;flex-direction:column;gap:8px;">
         <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(214,194,168,0.55);">Email Address *</span>
-        <input type="email" placeholder="sarah@company.com" style="font-family:'Lama Sans',sans-serif;font-size:14px;color:#FFFFFF;background:transparent;border:none;border-bottom:1px solid rgba(214,194,168,0.3);padding:6px 0 10px;outline:none;">
+        <input id="bf-email" type="email" placeholder="sarah@company.com" style="font-family:'Lama Sans',sans-serif;font-size:14px;color:#FFFFFF;background:transparent;border:none;border-bottom:1px solid rgba(214,194,168,0.3);padding:6px 0 10px;outline:none;">
       </label>
       <label style="display:flex;flex-direction:column;gap:8px;">
         <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(214,194,168,0.55);">Phone Number *</span>
         <div style="display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(214,194,168,0.3);padding:6px 0 10px;">
           <span style="font-family:'Lama Sans',sans-serif;font-size:14px;color:#FFFFFF;">+966</span>
           <span style="width:1px;height:14px;background:rgba(214,194,168,0.3);"></span>
-          <input type="tel" placeholder="58 033 0627" style="flex:1;font-family:'Lama Sans',sans-serif;font-size:14px;color:#FFFFFF;background:transparent;border:none;outline:none;">
+          <input id="bf-phone" type="tel" placeholder="58 033 0627" style="flex:1;font-family:'Lama Sans',sans-serif;font-size:14px;color:#FFFFFF;background:transparent;border:none;outline:none;">
         </div>
       </label>
       <button type="button" id="id-brochure-btn" style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#1E1610;background:#D6C2A8;border:none;padding:19px 0;display:flex;align-items:center;justify-content:center;gap:10px;cursor:pointer;transition:background 0.3s;margin-top:8px;">
@@ -524,6 +524,21 @@ class Component extends DCLogic {
     if (ctaBtn) {
       ctaBtn.addEventListener('mouseenter', () => { ctaBtn.style.background = '#FFFFFF'; });
       ctaBtn.addEventListener('mouseleave', () => { ctaBtn.style.background = '#D6C2A8'; });
+      ctaBtn.addEventListener('click', () => {
+        const firstName = (document.getElementById('bf-first-name') || {}).value || '';
+        const lastName = (document.getElementById('bf-last-name') || {}).value || '';
+        const email = (document.getElementById('bf-email') || {}).value || '';
+        const phone = (document.getElementById('bf-phone') || {}).value || '';
+        const subject = `Brochure Request — ${(firstName + ' ' + lastName).trim() || 'Website Visitor'}`;
+        const body = [
+          `Name: ${(firstName + ' ' + lastName).trim()}`,
+          `Email: ${email}`,
+          `Phone: +966 ${phone}`,
+          '',
+          'Requested the MEP services brochure from the project detail page.',
+        ].join('\n');
+        window.location.href = `mailto:ibrahim@furnishiq.net?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      });
     }
 
     document.addEventListener('mouseover', (e) => {

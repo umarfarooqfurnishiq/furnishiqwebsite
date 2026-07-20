@@ -676,6 +676,16 @@ class Component extends DCLogic {
       onPhoneChange: (e) => self.setState({ formPhone: e.target.value }),
       onBrochureSubmit: (e) => {
         e.preventDefault();
+        const s = self.state;
+        const subject = `Brochure Request — ${(s.formFirstName + ' ' + s.formLastName).trim() || 'Website Visitor'}`;
+        const body = [
+          `Name: ${(s.formFirstName + ' ' + s.formLastName).trim()}`,
+          `Email: ${s.formEmail}`,
+          `Phone: ${s.formCountryCode} ${s.formPhone}`,
+          '',
+          'Requested the services brochure.',
+        ].join('\n');
+        window.location.href = `mailto:ibrahim@furnishiq.net?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         self.setState({
           brochureSuccess: true,
           formFirstName: '', formLastName: '', formEmail: '', formPhone: '',
