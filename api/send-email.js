@@ -1,7 +1,7 @@
 const { Resend } = require('resend');
 
 const resend = new Resend(process.env.RESEND_API_KEY);
-const TO_EMAIL = process.env.TO_EMAIL || 'ibrahim@furnishiq.net';
+const TO_EMAIL = process.env.TO_EMAIL || 'info@furnishiq.net';
 const FROM_EMAIL = process.env.FROM_EMAIL || 'FurnishIQ Website <website@furnishiq.net>';
 
 function escapeHtml(value) {
