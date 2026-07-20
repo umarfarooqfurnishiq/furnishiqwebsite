@@ -1,0 +1,7 @@
+{
+  "name": "furnishiq-site",
+  "private": true,
+  "dependencies": {
+    "resend": "^4.0.1"
+  }
+}

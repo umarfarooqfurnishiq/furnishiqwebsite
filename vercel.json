@@ -1,6 +1,7 @@
 {
   "rewrites": [
     { "source": "/", "destination": "/Furnishiq.net/home.dc.html" },
+    { "source": "/api/:path*", "destination": "/api/:path*" },
     { "source": "/:path*", "destination": "/Furnishiq.net/:path*" }
   ]
 }

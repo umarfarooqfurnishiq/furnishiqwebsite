@@ -494,16 +494,17 @@ class Component extends DCLogic {
         const btnLabel = document.getElementById('id-submit-btn-label');
         if (btn) btn.disabled = true;
         if (btnLabel) btnLabel.textContent = 'Sending…';
-        const body = new FormData();
-        body.append('_subject', `New Project Inquiry — ${s.formName || 'Website Visitor'}`);
-        body.append('Name', s.formName);
-        body.append('Company', s.formCompany || '—');
-        body.append('email', s.formEmail);
-        body.append('Phone', `${s.formCountryCode} ${s.formPhone}`);
-        body.append('Interested In', s.selectedService || 'Not specified');
-        body.append('Estimated Budget', s.selectedBudget || 'Not specified');
-        body.append('Message', s.formMessage);
-        fetch('https://formspree.io/f/xzdnggrv', { method: 'POST', body, headers: { Accept: 'application/json' } })
+        const payload = {
+          formType: 'contact',
+          name: s.formName,
+          company: s.formCompany || '—',
+          email: s.formEmail,
+          phone: `${s.formCountryCode} ${s.formPhone}`,
+          service: s.selectedService || 'Not specified',
+          budget: s.selectedBudget || 'Not specified',
+          message: s.formMessage,
+        };
+        fetch('/api/send-email', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
           .then((r) => {
             if (!r.ok) throw new Error('Network error');
             self.setState({

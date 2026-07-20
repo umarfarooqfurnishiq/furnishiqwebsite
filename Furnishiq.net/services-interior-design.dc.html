@@ -681,13 +681,15 @@ class Component extends DCLogic {
         const btnLabel = document.getElementById('id-download-btn-label');
         if (btn) btn.disabled = true;
         if (btnLabel) btnLabel.textContent = 'Sending…';
-        const body = new FormData();
-        body.append('_subject', `Design Consultation Request — ${(s.formFirstName + ' ' + s.formLastName).trim() || 'Website Visitor'}`);
-        body.append('Name', (s.formFirstName + ' ' + s.formLastName).trim());
-        body.append('email', s.formEmail);
-        body.append('Phone', `${s.formCountryCode} ${s.formPhone}`);
-        body.append('Request', 'Design consultation');
-        fetch('https://formspree.io/f/xzdnggrv', { method: 'POST', body, headers: { Accept: 'application/json' } })
+        const payload = {
+          formType: 'brochure',
+          name: (s.formFirstName + ' ' + s.formLastName).trim(),
+          email: s.formEmail,
+          phone: `${s.formCountryCode} ${s.formPhone}`,
+          request: 'Design consultation',
+          sourcePage: 'services-interior-design.dc.html',
+        };
+        fetch('/api/send-email', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
           .then((r) => {
             if (!r.ok) throw new Error('Network error');
             self.setState({

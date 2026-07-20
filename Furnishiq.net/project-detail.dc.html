@@ -532,13 +532,15 @@ class Component extends DCLogic {
         const btnLabel = document.getElementById('id-brochure-btn-label');
         ctaBtn.disabled = true;
         if (btnLabel) btnLabel.textContent = 'Sending…';
-        const body = new FormData();
-        body.append('_subject', `Brochure Request — ${(firstName + ' ' + lastName).trim() || 'Website Visitor'}`);
-        body.append('Name', (firstName + ' ' + lastName).trim());
-        body.append('email', email);
-        body.append('Phone', `+966 ${phone}`);
-        body.append('Request', 'MEP services brochure (project detail page)');
-        fetch('https://formspree.io/f/xzdnggrv', { method: 'POST', body, headers: { Accept: 'application/json' } })
+        const payload = {
+          formType: 'brochure',
+          name: (firstName + ' ' + lastName).trim(),
+          email: email,
+          phone: `+966 ${phone}`,
+          request: 'MEP services brochure',
+          sourcePage: 'project-detail.dc.html',
+        };
+        fetch('/api/send-email', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
           .then((r) => {
             if (!r.ok) throw new Error('Network error');
             if (btnLabel) btnLabel.textContent = 'Sent — Thank You';
