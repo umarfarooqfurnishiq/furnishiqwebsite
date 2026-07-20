@@ -496,7 +496,7 @@
           <!-- CTA button -->
           <button type="submit" id="id-download-btn" style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#1E1610;background:#D6C2A8;padding:18px 36px;border:1px solid #D6C2A8;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:12px;width:100%;transition:all 0.3s cubic-bezier(0.25,0.46,0.45,0.94);">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-            Book a Design Consultation
+            <span id="id-download-btn-label">Book a Design Consultation</span>
           </button>
 
           <sc-if value="{{ brochureSuccess }}" hint-placeholder-val="{{ null }}">
@@ -677,20 +677,32 @@ class Component extends DCLogic {
       onBrochureSubmit: (e) => {
         e.preventDefault();
         const s = self.state;
-        const subject = `Brochure Request — ${(s.formFirstName + ' ' + s.formLastName).trim() || 'Website Visitor'}`;
-        const body = [
-          `Name: ${(s.formFirstName + ' ' + s.formLastName).trim()}`,
-          `Email: ${s.formEmail}`,
-          `Phone: ${s.formCountryCode} ${s.formPhone}`,
-          '',
-          'Requested the services brochure.',
-        ].join('\n');
-        window.location.href = `mailto:ibrahim@furnishiq.net?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-        self.setState({
-          brochureSuccess: true,
-          formFirstName: '', formLastName: '', formEmail: '', formPhone: '',
-        });
-        setTimeout(() => self.setState({ brochureSuccess: false }), 6000);
+        const btn = document.getElementById('id-download-btn');
+        const btnLabel = document.getElementById('id-download-btn-label');
+        if (btn) btn.disabled = true;
+        if (btnLabel) btnLabel.textContent = 'Sending…';
+        const body = new FormData();
+        body.append('_subject', `Design Consultation Request — ${(s.formFirstName + ' ' + s.formLastName).trim() || 'Website Visitor'}`);
+        body.append('Name', (s.formFirstName + ' ' + s.formLastName).trim());
+        body.append('email', s.formEmail);
+        body.append('Phone', `${s.formCountryCode} ${s.formPhone}`);
+        body.append('Request', 'Design consultation');
+        fetch('https://formspree.io/f/xzdnggrv', { method: 'POST', body, headers: { Accept: 'application/json' } })
+          .then((r) => {
+            if (!r.ok) throw new Error('Network error');
+            self.setState({
+              brochureSuccess: true,
+              formFirstName: '', formLastName: '', formEmail: '', formPhone: '',
+            });
+            setTimeout(() => self.setState({ brochureSuccess: false }), 6000);
+          })
+          .catch(() => {
+            alert('Something went wrong — please try again or email us directly at projects@furnishiq.net');
+          })
+          .finally(() => {
+            if (btn) btn.disabled = false;
+            if (btnLabel) btnLabel.textContent = 'Book a Design Consultation';
+          });
       },
     };
   }

@@ -231,7 +231,7 @@
 
           <!-- Submit -->
           <button type="submit" id="id-submit-btn" style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#FFFFFF;background:#3A2D25;padding:19px 36px;border:1px solid #3A2D25;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:12px;width:100%;transition:all 0.3s cubic-bezier(0.25,0.46,0.45,0.94);" style-hover="background:#5B4636;border-color:#5B4636;">
-            Send Inquiry
+            <span id="id-submit-btn-label">Send Inquiry</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
           </button>
           <p style="font-family:'Lama Sans',sans-serif;font-size:11px;color:#B8A08C;margin-top:16px;text-align:center;letter-spacing:0.03em;">Your details stay with FurnishIQ. Never shared, never spammed.</p>
@@ -490,24 +490,33 @@ class Component extends DCLogic {
       onFormSubmit: (e) => {
         e.preventDefault();
         const s = self.state;
-        const subject = `New Project Inquiry — ${s.formName || 'Website Visitor'}`;
-        const body = [
-          `Name: ${s.formName}`,
-          s.formCompany ? `Company: ${s.formCompany}` : null,
-          `Email: ${s.formEmail}`,
-          `Phone: ${s.formCountryCode} ${s.formPhone}`,
-          s.selectedService ? `Interested In: ${s.selectedService}` : null,
-          s.selectedBudget ? `Estimated Budget: ${s.selectedBudget}` : null,
-          '',
-          'Project Details:',
-          s.formMessage,
-        ].filter((line) => line !== null).join('\n');
-        window.location.href = `mailto:ibrahim@furnishiq.net?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-        self.setState({
-          formDone: true, doneName: self.state.formName,
-          formName: '', formCompany: '', formEmail: '', formPhone: '', formMessage: '',
-          selectedService: null, selectedBudget: null,
-        });
+        const btn = document.getElementById('id-submit-btn');
+        const btnLabel = document.getElementById('id-submit-btn-label');
+        if (btn) btn.disabled = true;
+        if (btnLabel) btnLabel.textContent = 'Sending…';
+        const body = new FormData();
+        body.append('_subject', `New Project Inquiry — ${s.formName || 'Website Visitor'}`);
+        body.append('Name', s.formName);
+        body.append('Company', s.formCompany || '—');
+        body.append('email', s.formEmail);
+        body.append('Phone', `${s.formCountryCode} ${s.formPhone}`);
+        body.append('Interested In', s.selectedService || 'Not specified');
+        body.append('Estimated Budget', s.selectedBudget || 'Not specified');
+        body.append('Message', s.formMessage);
+        fetch('https://formspree.io/f/xzdnggrv', { method: 'POST', body, headers: { Accept: 'application/json' } })
+          .then((r) => {
+            if (!r.ok) throw new Error('Network error');
+            self.setState({
+              formDone: true, doneName: s.formName,
+              formName: '', formCompany: '', formEmail: '', formPhone: '', formMessage: '',
+              selectedService: null, selectedBudget: null,
+            });
+          })
+          .catch(() => {
+            if (btn) btn.disabled = false;
+            if (btnLabel) btnLabel.textContent = 'Send Inquiry';
+            alert('Something went wrong — please try again or email us directly at projects@furnishiq.net');
+          });
       },
       onFormReset: () => self.setState({ formDone: false }),
 
