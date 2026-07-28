@@ -1,4 +1,15 @@
 {
+  "redirects": [
+    { "source": "/about-us.dc.html", "destination": "/", "permanent": true },
+    { "source": "/blog.dc.html", "destination": "/", "permanent": true },
+    { "source": "/portfolio.dc.html", "destination": "/", "permanent": true },
+    { "source": "/project-detail.dc.html", "destination": "/", "permanent": true },
+    { "source": "/single-post.dc.html", "destination": "/", "permanent": true },
+    { "source": "/services-interior-design.dc.html", "destination": "/", "permanent": true },
+    { "source": "/services-fitout.dc.html", "destination": "/", "permanent": true },
+    { "source": "/services-mep.dc.html", "destination": "/", "permanent": true },
+    { "source": "/services-furniture.dc.html", "destination": "/", "permanent": true }
+  ],
   "rewrites": [
     { "source": "/", "destination": "/Furnishiq.net/home.dc.html" },
     { "source": "/api/:path*", "destination": "/api/:path*" },

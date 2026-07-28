@@ -2,5 +2,14 @@ User-agent: *
 Allow: /
 Disallow: /FurnishIQ%20Home.html
 Disallow: /_FurnishIQ%20About%20Us.dc.html
+Disallow: /about-us.dc.html
+Disallow: /blog.dc.html
+Disallow: /portfolio.dc.html
+Disallow: /project-detail.dc.html
+Disallow: /single-post.dc.html
+Disallow: /services-interior-design.dc.html
+Disallow: /services-fitout.dc.html
+Disallow: /services-mep.dc.html
+Disallow: /services-furniture.dc.html
 
 Sitemap: https://www.furnishiq.net/sitemap.xml
