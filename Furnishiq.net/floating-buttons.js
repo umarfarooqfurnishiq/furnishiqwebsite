@@ -6,7 +6,9 @@
   window.__fiqFloatingButtonsInit = true;
 
   var WA_NUMBER = '966580330627';
-  var WA_TEXT = encodeURIComponent('Hello FurnishIQ, I would like to know more about your design and fit-out services.');
+  var WA_TEXT_EN = 'Hello FurnishIQ, I would like to know more about your design and fit-out services.';
+  var WA_TEXT_AR = 'مرحباً FurnishIQ، أود معرفة المزيد عن خدمات التصميم والتشطيبات لديكم.';
+  var WA_TEXT = encodeURIComponent(document.documentElement.lang === 'ar' ? WA_TEXT_AR : WA_TEXT_EN);
 
   function injectStyle() {
     var css = [
