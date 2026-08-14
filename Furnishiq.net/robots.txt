@@ -38,5 +38,7 @@ Disallow: /en/services-mep
 Disallow: /ar/services-mep
 Disallow: /en/services-furniture
 Disallow: /ar/services-furniture
+Disallow: /about-us-2
+Disallow: /about-us-2.dc.html
 
 Sitemap: https://www.furnishiq.net/sitemap.xml

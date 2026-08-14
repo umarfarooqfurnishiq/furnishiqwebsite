@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<title>About FurnishIQ (Test Version 2)</title>
+<meta name="description" content="Test version of the About Us page — not for public indexing.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://www.furnishiq.net/about-us-2">
+<script src="./support.js"></script>
+<script src="./nav-mobile.js"></script>
+<script src="./floating-buttons.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+  <link rel="stylesheet" href="_ds/furnishiq-design-system-ea658a9e-dd64-48ad-ab93-f0196a53ec9c/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/furnishiq-design-system-ea658a9e-dd64-48ad-ab93-f0196a53ec9c/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/furnishiq-design-system-ea658a9e-dd64-48ad-ab93-f0196a53ec9c/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/furnishiq-design-system-ea658a9e-dd64-48ad-ab93-f0196a53ec9c/tokens/effects.css">
+  <link rel="stylesheet" href="_ds/furnishiq-design-system-ea658a9e-dd64-48ad-ab93-f0196a53ec9c/tokens/base.css">
+  <script src="_ds/furnishiq-design-system-ea658a9e-dd64-48ad-ab93-f0196a53ec9c/_ds_bundle.js"></script>
+
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    @keyframes fiq-pulse-dot {
+      0%{box-shadow:0 0 0 0 rgba(214,194,168,0.45);}
+      70%{box-shadow:0 0 0 9px rgba(214,194,168,0);}
+      100%{box-shadow:0 0 0 0 rgba(214,194,168,0);}
+    }
+    @media(max-width:960px){
+      .fiq-nav-links { display: none !important; }
+      .fiq-nav-cta   { display: none !important; }
+      .fiq-hero-grid { grid-template-columns: 1fr !important; }
+      .a2-story-grid { grid-template-columns: 1fr !important; gap: 44px !important; }
+      .a2-mv-grid    { grid-template-columns: 1fr !important; }
+      .a2-values-grid{ grid-template-columns: 1fr 1fr !important; }
+      .a2-why-grid   { grid-template-columns: 1fr 1fr !important; }
+      .a2-cta-row    { flex-direction: column !important; align-items: stretch !important; }
+      .fiq-footer-grid{ grid-template-columns: 1fr 1fr !important; gap: 48px !important; }
+      .fiq-footer-brand{ grid-column: 1 / -1 !important; }
+    }
+    @media(max-width:600px){
+      .a2-values-grid{ grid-template-columns: 1fr !important; }
+      .a2-why-grid   { grid-template-columns: 1fr !important; }
+      .fiq-footer-grid{ grid-template-columns: 1fr !important; }
+    }
+  </style>
+</helmet>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ NAV ━━ -->
+<nav id="fiq-nav" style="position:fixed;top:0;left:0;right:0;height:80px;z-index:200;display:flex;align-items:center;background:transparent;border-bottom:1px solid transparent;transition:background 0.55s cubic-bezier(0.25,0.46,0.45,0.94),border-color 0.55s,box-shadow 0.55s;">
+  <div style="max-width:1440px;margin:0 auto;width:100%;padding:0 clamp(20px,5vw,64px);display:flex;align-items:center;justify-content:space-between;gap:24px;">
+    <a href="/" style="flex-shrink:0;position:relative;height:36px;width:172px;display:block;text-decoration:none;">
+      <img id="fiq-logo-w" src="assets/logo-default.png" alt="FurnishIQ" style="position:absolute;inset:0;height:36px;width:auto;max-width:172px;object-fit:contain;object-position:left center;transition:opacity 0.4s cubic-bezier(0.25,0.46,0.45,0.94);">
+      <img id="fiq-logo-d" src="assets/logo-scrolled.png" alt="FurnishIQ" style="position:absolute;inset:0;height:36px;width:auto;max-width:172px;object-fit:contain;object-position:left center;opacity:0;transition:opacity 0.4s cubic-bezier(0.25,0.46,0.45,0.94);">
+    </a>
+    <div class="fiq-nav-links" style="display:flex;gap:clamp(24px,3.5vw,48px);align-items:center;flex:1;justify-content:center;">
+      <a href="/#services" data-nav-link style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;transition:color 0.25s,opacity 0.25s;opacity:0.8;">Our Services</a>
+      <a href="/#process" data-nav-link style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;transition:color 0.25s,opacity 0.25s;opacity:0.8;">Our Process</a>
+      <a href="/portfolio" data-nav-link style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;transition:color 0.25s,opacity 0.25s;opacity:0.8;">Our Portfolio</a>
+      <a href="/#blog" data-nav-link style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;transition:color 0.25s,opacity 0.25s;opacity:0.8;">Insights</a>
+    </div>
+    <a href="/contact" class="fiq-nav-cta" id="fiq-nav-cta" style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;border:1px solid rgba(214,194,168,0.5);padding:12px 28px;flex-shrink:0;transition:all 0.3s cubic-bezier(0.25,0.46,0.45,0.94);white-space:nowrap;background:transparent;">Book Free Consultation</a>
+  </div>
+</nav>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1. HERO ━ -->
+<section data-about-hero style="position:relative;background:#1E1610;overflow:hidden;padding:clamp(150px,20vh,220px) clamp(24px,5vw,80px) clamp(80px,10vw,128px);">
+  <div style="position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2400&q=80');background-size:cover;background-position:center;opacity:0.16;pointer-events:none;"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(115deg,rgba(30,22,16,0.96) 0%,rgba(30,22,16,0.75) 55%,rgba(30,22,16,0.96) 100%);pointer-events:none;"></div>
+  <div style="position:absolute;top:-140px;right:-100px;width:480px;height:480px;border:1px solid rgba(214,194,168,0.06);border-radius:50%;pointer-events:none;"></div>
+  <div style="position:absolute;top:-60px;right:20px;width:280px;height:280px;border:1px solid rgba(214,194,168,0.045);border-radius:50%;pointer-events:none;"></div>
+
+  <div style="position:relative;z-index:1;max-width:900px;margin:0 auto;text-align:center;">
+    <div data-hero-eyebrow style="opacity:0;transition:opacity 0.6s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:28px;">
+      <span data-hero-eyebrow-line style="display:block;width:0px;height:1px;background:#D6C2A8;flex-shrink:0;transition:width 0.7s cubic-bezier(0.25,0.46,0.45,0.94);"></span>
+      <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:rgba(214,194,168,0.75);">About FurnishIQ</span>
+      <span data-hero-eyebrow-line-r style="display:block;width:0px;height:1px;background:#D6C2A8;flex-shrink:0;transition:width 0.7s cubic-bezier(0.25,0.46,0.45,0.94);"></span>
+    </div>
+    <h1 style="font-family:'Lama Sans',sans-serif;font-size:clamp(40px,6vw,76px);font-weight:600;line-height:1.05;letter-spacing:-0.015em;color:#FFFFFF;margin:0 0 20px;text-wrap:balance;">
+      <span style="display:block;overflow:hidden;"><span data-hero-word style="display:block;transform:translateY(112%);transition:transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);">About Us</span></span>
+    </h1>
+    <p data-reveal data-reveal-delay="0.3" style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Lama Sans',sans-serif;font-size:clamp(17px,2vw,22px);font-weight:500;color:#D6C2A8;letter-spacing:0.01em;margin-bottom:28px;">Designing Spaces. Building Trust. Creating Lasting Value.</p>
+    <p data-reveal data-reveal-delay="0.4" style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Lama Sans',sans-serif;font-size:15px;line-height:1.85;color:rgba(255,255,255,0.65);max-width:640px;margin:0 auto 40px;">FurnishIQ is a Saudi-based company specializing in interior design, turnkey fit-out, furniture solutions, and project management. We transform ideas into exceptional spaces that reflect our clients' identity and deliver enduring value.</p>
+    <div data-reveal data-reveal-delay="0.5" style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);">
+      <a href="/contact" style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#3A2D25;background:#D6C2A8;padding:15px 40px;text-decoration:none;display:inline-block;transition:background 0.3s cubic-bezier(0.25,0.46,0.45,0.94),color 0.3s;border:1px solid #D6C2A8;">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2. WHO WE ARE ━━━ -->
+<section style="background:#F5F2ED;padding:clamp(80px,10vw,120px) clamp(24px,5vw,80px);">
+  <div style="max-width:900px;margin:0 auto;text-align:center;">
+    <div data-reveal style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);">
+      <div style="display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:24px;">
+        <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
+        <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#8B6B4A;">Who We Are</span>
+        <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
+      </div>
+      <p style="font-family:'Lama Sans',sans-serif;font-size:17px;line-height:1.85;color:#3A2D25;margin-bottom:22px;">FurnishIQ is a Saudi design-build company specializing in interior design, turnkey fit-out, furniture solutions, and project management. We create exceptional environments across residential, hospitality, commercial, and government sectors — transforming concepts into functional, inspiring, and enduring spaces.</p>
+      <p style="font-family:'Lama Sans',sans-serif;font-size:15px;line-height:1.85;color:#5B4636;">From concept development and engineering to procurement, execution, and handover, our multidisciplinary team delivers seamless project experiences through innovation, quality craftsmanship, and disciplined project management.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3. OUR STORY ━━━━━━ -->
+<section style="background:#3A2D25;padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px);">
+  <div style="max-width:1280px;margin:0 auto;">
+    <div class="a2-story-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(48px,7vw,104px);align-items:start;">
+      <div data-reveal style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);">
+        <div style="display:flex;align-items:center;gap:16px;margin-bottom:24px;">
+          <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
+          <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#8B6B4A;">Our Story</span>
+        </div>
+        <p style="font-family:'Lama Sans',sans-serif;font-size:15px;line-height:1.9;color:rgba(214,194,168,0.72);margin-bottom:18px;">Our journey began with a simple observation: while the market offered many design and construction solutions, there remained a significant gap for discerning clients seeking spaces that truly reflected their individuality, lifestyle, and aspirations.</p>
+        <p style="font-family:'Lama Sans',sans-serif;font-size:15px;line-height:1.9;color:rgba(214,194,168,0.72);">FurnishIQ was established to close that gap — delivering personalized, high-quality environments through a fully integrated design, build, and management approach.</p>
+      </div>
+      <div data-reveal data-reveal-delay="0.12" style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);border-left:1px solid rgba(214,194,168,0.18);padding-left:clamp(24px,3vw,44px);">
+        <div style="display:flex;align-items:center;gap:16px;margin-bottom:24px;">
+          <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
+          <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#8B6B4A;">Part of Arsan Global</span>
+        </div>
+        <p style="font-family:'Lama Sans',sans-serif;font-size:15px;line-height:1.9;color:rgba(214,194,168,0.72);margin-bottom:18px;">FurnishIQ is the Design, Build, and Management subsidiary of Arsan Global, a diversified international holding group headquartered in the Kingdom of Saudi Arabia and established in 2007. With a growing presence across the Middle East, Europe, North America, and Asia, Arsan Global operates through specialized companies in logistics, technology, real estate, trading, business consulting, and integrated project solutions.</p>
+        <p style="font-family:'Lama Sans',sans-serif;font-size:15px;line-height:1.9;color:rgba(214,194,168,0.72);">Backed by the financial strength, international network, and multidisciplinary expertise of Arsan Global, FurnishIQ combines creative vision, engineering excellence, and disciplined execution to create exceptional spaces that inspire, perform, and endure.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━ 4. MISSION, VISION & VALUES ━ -->
+<section style="background:#FFFFFF;padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px);">
+  <div style="max-width:1280px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:clamp(56px,7vw,88px);">
+      <div style="display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:20px;">
+        <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
+        <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#8B6B4A;">What Drives Us</span>
+        <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
+      </div>
+      <h2 data-reveal style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Lama Sans',sans-serif;font-size:clamp(28px,3.5vw,48px);font-weight:500;color:#1F1F1F;line-height:1.1;letter-spacing:-0.015em;">Our Mission, Vision &amp; Values</h2>
+    </div>
+
+    <div class="a2-mv-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#D6C2A8;margin-bottom:clamp(56px,7vw,88px);">
+      <div data-reveal style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);background:#F5F2ED;padding:clamp(36px,4.5vw,56px);">
+        <h3 style="font-family:'Lama Sans',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:#8B6B4A;margin-bottom:18px;">Our Mission</h3>
+        <p style="font-family:'Lama Sans',sans-serif;font-size:16px;line-height:1.85;color:#3A2D25;">To deliver bespoke Design, Build, and Management solutions that transform ideas into meaningful environments — combining creativity, craftsmanship, and disciplined execution to reflect the unique character and ambitions of every client.</p>
+      </div>
+      <div data-reveal data-reveal-delay="0.1" style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);background:#F5F2ED;padding:clamp(36px,4.5vw,56px);">
+        <h3 style="font-family:'Lama Sans',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:#8B6B4A;margin-bottom:18px;">Our Vision</h3>
+        <p style="font-family:'Lama Sans',sans-serif;font-size:16px;line-height:1.85;color:#3A2D25;">To redefine the way people experience spaces by creating environments that express individuality, inspire excellence, and enrich everyday life.</p>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-bottom:clamp(40px,5vw,56px);">
+      <span data-reveal style="opacity:0;transition:opacity 0.7s;font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#8B6B4A;">Our Core Values</span>
+    </div>
+    <div class="a2-values-grid" style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:1px;background:#D6C2A8;">
+      <div data-reveal data-reveal-delay="0.05" style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);background:#1F1F1F;padding:32px 28px;">
+        <div style="width:32px;height:2px;background:#D6C2A8;margin-bottom:22px;"></div>
+        <h4 style="font-family:'Lama Sans',sans-serif;font-size:15px;font-weight:500;color:#FFFFFF;margin-bottom:10px;">Integrity</h4>
+        <p style="font-family:'Lama Sans',sans-serif;font-size:12.5px;line-height:1.75;color:rgba(214,194,168,0.65);">We operate with honesty, transparency, and accountability in every relationship and every project.</p>
+      </div>
+      <div data-reveal data-reveal-delay="0.1" style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);background:#1F1F1F;padding:32px 28px;">
+        <div style="width:32px;height:2px;background:#D6C2A8;margin-bottom:22px;"></div>
+        <h4 style="font-family:'Lama Sans',sans-serif;font-size:15px;font-weight:500;color:#FFFFFF;margin-bottom:10px;">Quality</h4>
+        <p style="font-family:'Lama Sans',sans-serif;font-size:12.5px;line-height:1.75;color:rgba(214,194,168,0.65);">We are committed to delivering superior workmanship, reliable solutions, and exceptional attention to detail.</p>
+      </div>
+      <div data-reveal data-reveal-delay="0.15" style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);background:#1F1F1F;padding:32px 28px;">
+        <div style="width:32px;height:2px;background:#D6C2A8;margin-bottom:22px;"></div>
+        <h4 style="font-family:'Lama Sans',sans-serif;font-size:15px;font-weight:500;color:#FFFFFF;margin-bottom:10px;">Innovation</h4>
+        <p style="font-family:'Lama Sans',sans-serif;font-size:12.5px;line-height:1.75;color:rgba(214,194,168,0.65);">We embrace creativity, technology, and continuous improvement to deliver smarter and more effective solutions.</p>
+      </div>
+      <div data-reveal data-reveal-delay="0.2" style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);background:#1F1F1F;padding:32px 28px;">
+        <div style="width:32px;height:2px;background:#D6C2A8;margin-bottom:22px;"></div>
+        <h4 style="font-family:'Lama Sans',sans-serif;font-size:15px;font-weight:500;color:#FFFFFF;margin-bottom:10px;">Client Focus</h4>
+        <p style="font-family:'Lama Sans',sans-serif;font-size:12.5px;line-height:1.75;color:rgba(214,194,168,0.65);">We listen, understand, and collaborate to create spaces that reflect our clients' goals, aspirations, and vision.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5. WHY FURNISHIQ ━━ -->
+<section style="background:#F5F2ED;padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px);">
+  <div style="max-width:1280px;margin:0 auto;">
+    <div style="margin-bottom:clamp(52px,6vw,80px);">
+      <div data-reveal style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;align-items:center;gap:16px;margin-bottom:20px;">
+        <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
+        <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#8B6B4A;">Our Advantage</span>
+      </div>
+      <h2 data-reveal data-reveal-delay="0.1" style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Lama Sans',sans-serif;font-size:clamp(30px,4vw,60px);font-weight:500;color:#3A2D25;line-height:1.1;">Why FurnishIQ</h2>
+    </div>
+    <div class="a2-why-grid" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:#D6C2A8;">
+      <div data-reveal data-reveal-delay="0" style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);background:#FFFFFF;padding:36px 32px;">
+        <div style="width:36px;height:2px;background:#5B4636;margin-bottom:24px;"></div>
+        <h3 style="font-family:'Lama Sans',sans-serif;font-size:15px;font-weight:500;color:#1F1F1F;margin-bottom:10px;line-height:1.3;">End-to-End Delivery</h3>
+        <p style="font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.8;color:#8B6B4A;">Single point of responsibility from concept to completion.</p>
+      </div>
+      <div data-reveal data-reveal-delay="0.08" style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);background:#FFFFFF;padding:36px 32px;">
+        <div style="width:36px;height:2px;background:#5B4636;margin-bottom:24px;"></div>
+        <h3 style="font-family:'Lama Sans',sans-serif;font-size:15px;font-weight:500;color:#1F1F1F;margin-bottom:10px;line-height:1.3;">Integrated Expertise</h3>
+        <p style="font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.8;color:#8B6B4A;">Design, engineering, MEP, fit-out, and FF&amp;E under one roof.</p>
+      </div>
+      <div data-reveal data-reveal-delay="0.16" style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);background:#FFFFFF;padding:36px 32px;">
+        <div style="width:36px;height:2px;background:#5B4636;margin-bottom:24px;"></div>
+        <h3 style="font-family:'Lama Sans',sans-serif;font-size:15px;font-weight:500;color:#1F1F1F;margin-bottom:10px;line-height:1.3;">Quality Assurance</h3>
+        <p style="font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.8;color:#8B6B4A;">Rigorous quality control and a Zero-Snag commitment at every stage.</p>
+      </div>
+      <div data-reveal data-reveal-delay="0.06" style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);background:#FFFFFF;padding:36px 32px;">
+        <div style="width:36px;height:2px;background:#5B4636;margin-bottom:24px;"></div>
+        <h3 style="font-family:'Lama Sans',sans-serif;font-size:15px;font-weight:500;color:#1F1F1F;margin-bottom:10px;line-height:1.3;">Nationwide Reach</h3>
+        <p style="font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.8;color:#8B6B4A;">Consistent quality and reliable service across the Kingdom.</p>
+      </div>
+      <div data-reveal data-reveal-delay="0.14" style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);background:#FFFFFF;padding:36px 32px;">
+        <div style="width:36px;height:2px;background:#5B4636;margin-bottom:24px;"></div>
+        <h3 style="font-family:'Lama Sans',sans-serif;font-size:15px;font-weight:500;color:#1F1F1F;margin-bottom:10px;line-height:1.3;">Strategic Partnerships</h3>
+        <p style="font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.8;color:#8B6B4A;">Collaboration with trusted local and international partners.</p>
+      </div>
+      <div data-reveal data-reveal-delay="0.22" style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);background:#FFFFFF;padding:36px 32px;">
+        <div style="width:36px;height:2px;background:#5B4636;margin-bottom:24px;"></div>
+        <h3 style="font-family:'Lama Sans',sans-serif;font-size:15px;font-weight:500;color:#1F1F1F;margin-bottom:10px;line-height:1.3;">Vision 2030 Alignment</h3>
+        <p style="font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.8;color:#8B6B4A;">Contributing to Saudi Arabia's transformation through world-class solutions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6. LEADERSHIP ━━━━ -->
+<section style="position:relative;background:#1E1610;overflow:hidden;padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px);">
+  <div style="position:absolute;top:-60px;left:-100px;width:400px;height:400px;border:1px solid rgba(214,194,168,0.05);border-radius:50%;pointer-events:none;"></div>
+  <div style="max-width:860px;margin:0 auto;position:relative;z-index:1;text-align:center;">
+    <div data-reveal style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);">
+      <div style="display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:32px;">
+        <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
+        <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:rgba(214,194,168,0.7);">Message from the Chairman</span>
+        <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
+      </div>
+      <svg width="34" height="26" viewBox="0 0 34 26" fill="none" style="margin:0 auto 24px;display:block;opacity:0.4;"><path d="M0 26V15.6C0 6.5 5.4 1 14 0l1.3 3.6C9.6 4.8 6.7 8 6.7 12.4h7.6V26H0Zm18.7 0V15.6c0-9.1 5.4-14.6 14-15.6l1.3 3.6c-5.7 1.2-8.6 4.4-8.6 8.8h7.6V26H18.7Z" fill="#D6C2A8"/></svg>
+      <blockquote style="font-family:'Lama Sans',sans-serif;font-size:clamp(20px,2.6vw,32px);font-weight:500;line-height:1.5;color:#FFFFFF;letter-spacing:-0.01em;margin-bottom:36px;text-wrap:balance;">At FurnishIQ, we believe exceptional spaces begin with a deep understanding of our clients' aspirations. We don't just design — we build trust and create lasting value.</blockquote>
+      <div style="width:40px;height:1px;background:rgba(214,194,168,0.4);margin:0 auto 20px;"></div>
+      <p style="font-family:'Lama Sans',sans-serif;font-size:14px;color:#FFFFFF;margin-bottom:4px;">Adel bin Ali Al Tamimi</p>
+      <p style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(214,194,168,0.6);">Chairman, FurnishIQ</p>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 7. VISION 2030 ━━━━━ -->
+<section style="background:#F5F2ED;padding:clamp(64px,8vw,96px) clamp(24px,5vw,80px);">
+  <div style="max-width:900px;margin:0 auto;text-align:center;">
+    <div data-reveal style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);">
+      <h2 style="font-family:'Lama Sans',sans-serif;font-size:clamp(24px,3vw,38px);font-weight:500;color:#3A2D25;line-height:1.15;margin-bottom:20px;">Aligned with Vision 2030</h2>
+      <p style="font-family:'Lama Sans',sans-serif;font-size:15px;line-height:1.85;color:#5B4636;">As Saudi Arabia advances toward Vision 2030, we remain committed to contributing to the Kingdom's transformation through world-class design, build, and management solutions that support innovation, quality, and sustainability.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 8. FINAL CTA ━━━━━━━ -->
+<section style="position:relative;overflow:hidden;background:#5B4636;padding:clamp(72px,9vw,104px) clamp(24px,5vw,80px);">
+  <div style="position:absolute;top:-80px;right:-80px;width:280px;height:280px;border:1px solid rgba(214,194,168,0.08);border-radius:50%;pointer-events:none;"></div>
+  <div style="position:absolute;bottom:-60px;left:-40px;width:200px;height:200px;border:1px solid rgba(214,194,168,0.06);border-radius:50%;pointer-events:none;"></div>
+  <div style="max-width:900px;margin:0 auto;position:relative;z-index:1;text-align:center;">
+    <h2 data-reveal style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Lama Sans',sans-serif;font-size:clamp(26px,3.6vw,44px);font-weight:500;color:#FFFFFF;line-height:1.15;letter-spacing:-0.01em;margin-bottom:36px;text-wrap:balance;">Ready to transform your space into something extraordinary?</h2>
+    <div class="a2-cta-row" data-reveal data-reveal-delay="0.1" style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+      <a href="/contact" style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#3A2D25;background:#D6C2A8;padding:16px 40px;text-decoration:none;transition:background 0.3s;display:inline-block;">Contact Us</a>
+      <a href="/portfolio" style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#D6C2A8;background:transparent;padding:16px 40px;text-decoration:none;transition:all 0.3s;border:1px solid rgba(214,194,168,0.4);display:inline-block;">View Our Projects</a>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ FOOTER ━━━━━━━━━━━ -->
+<footer style="background:#1F1F1F;padding:clamp(64px,8vw,96px) clamp(24px,5vw,80px) 40px;border-top:1px solid rgba(91,70,54,0.25);">
+  <div style="max-width:1280px;margin:0 auto;">
+    <div class="fiq-footer-grid" style="display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:clamp(28px,4vw,64px);margin-bottom:64px;">
+
+      <div class="fiq-footer-brand">
+        <a href="/" style="display:block;text-decoration:none;"><img src="assets/logo-default.png" alt="FurnishIQ" style="height:36px;width:auto;max-width:160px;object-fit:contain;object-position:left center;margin-bottom:22px;display:block;" loading="lazy" decoding="async"></a>
+        <p style="font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.8;color:rgba(214,194,168,0.55);margin-bottom:32px;max-width:260px;">Integrated Design–Build solutions transforming ambitious architectural concepts into inspiring realities across Saudi Arabia.</p>
+        <div style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(214,194,168,0.4);margin-bottom:14px;">Join the IQ</div>
+        <div style="display:flex;border:1px solid rgba(214,194,168,0.2);">
+          <input id="newsletter-input" type="email" placeholder="Your email address" value="{{ newsletterEmail }}" onChange="{{ onNewsletterChange }}" style="flex:1;background:transparent;border:none;padding:13px 16px;font-family:'Lama Sans',sans-serif;font-size:13px;color:#FFFFFF;outline:none;min-width:0;">
+          <button onClick="{{ onNewsletterSubmit }}" style="background:#5B4636;border:none;padding:13px 20px;cursor:pointer;font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:#D6C2A8;flex-shrink:0;transition:background 0.3s;">Subscribe</button>
+        </div>
+        <sc-if value="{{ newsletterStatus }}" hint-placeholder-val="{{ null }}">
+          <p style="font-family:'Lama Sans',sans-serif;font-size:12px;color:rgba(214,194,168,0.65);margin-top:10px;">Thank you — monthly updates, strictly no spam.</p>
+        </sc-if>
+      </div>
+
+      <div>
+        <div style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.26em;text-transform:uppercase;color:rgba(214,194,168,0.4);margin-bottom:22px;">Services</div>
+        <nav style="display:flex;flex-direction:column;gap:13px;">
+          <a href="/services-interior-design" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Interior Design</a>
+          <a href="/services-fitout" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Fit-Out</a>
+          <a href="/services-mep" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Engineering &amp; MEP</a>
+          <a href="/services-furniture" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Furniture Solutions</a>
+          <a href="#" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Project Management</a>
+        </nav>
+      </div>
+
+      <div>
+        <div style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.26em;text-transform:uppercase;color:rgba(214,194,168,0.4);margin-bottom:22px;">Company</div>
+        <nav style="display:flex;flex-direction:column;gap:13px;">
+          <a href="/about-us" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">About Us</a>
+          <a href="/portfolio" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Portfolio</a>
+          <a href="#" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">All Services</a>
+          <a href="#" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Terms &amp; Conditions</a>
+          <a href="/contact" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Contact</a>
+          <a href="/blog" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Insights</a>
+        </nav>
+      </div>
+
+      <div>
+        <div style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.26em;text-transform:uppercase;color:rgba(214,194,168,0.4);margin-bottom:22px;">Find Us</div>
+        <div style="display:flex;flex-direction:column;gap:20px;">
+          <div>
+            <div style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(214,194,168,0.35);margin-bottom:5px;">Address</div>
+            <p style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);line-height:1.65;">Riyadh, KSA.</p>
+          </div>
+          <div>
+            <div style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(214,194,168,0.35);margin-bottom:5px;">Email</div>
+            <a href="mailto:info@furnishiq.net" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">info@furnishiq.net</a>
+          </div>
+          <div>
+            <div style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(214,194,168,0.35);margin-bottom:5px;">Phone — Ibrahim Al Ali</div>
+            <a href="tel:+966580330627" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">+966 58 033 0627</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div style="border-top:1px solid rgba(214,194,168,0.1);padding-top:28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+      <p style="font-family:'Lama Sans',sans-serif;font-size:11px;color:rgba(214,194,168,0.3);letter-spacing:0.04em;">© 2026 FurnishIQ. All rights reserved.</p>
+      <p style="font-family:'Lama Sans',sans-serif;font-size:11px;color:rgba(214,194,168,0.3);letter-spacing:0.04em;">Crafted with precision in Saudi Arabia. (Test page — not for public indexing.)</p>
+    </div>
+  </div>
+</footer>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1440}}">
+
+class Component extends DCLogic {
+  state = { newsletterEmail: '', newsletterStatus: null };
+
+  renderVals() {
+    return {
+      newsletterStatus: this.state.newsletterStatus,
+      onNewsletterChange: (e) => this.setState({ newsletterEmail: e.target.value }),
+      onNewsletterSubmit: () => {
+        if (this.state.newsletterEmail && this.state.newsletterEmail.includes('@')) {
+          this.setState({ newsletterStatus: 'success', newsletterEmail: '' });
+        }
+      }
+    };
+  }
+
+  componentDidMount() {
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // ── NAV SCROLL ──────────────────────────────────────────────────────────
+    const nav    = document.getElementById('fiq-nav');
+    if (window.FIQMobileNav) window.FIQMobileNav(nav);
+    const logoW  = document.getElementById('fiq-logo-w');
+    const logoD  = document.getElementById('fiq-logo-d');
+    const navLinks = document.querySelectorAll('[data-nav-link]');
+    const navCta = document.getElementById('fiq-nav-cta');
+
+    const syncNav = () => {
+      const s = window.scrollY > 60;
+      if (!nav) return;
+      nav.style.background    = s ? 'rgba(255,255,255,0.96)' : 'transparent';
+      nav.style.borderBottomColor = s ? '#D6C2A8' : 'transparent';
+      nav.style.backdropFilter = s ? 'blur(16px)' : 'none';
+      nav.style.boxShadow      = s ? '0 2px 16px rgba(58,45,37,0.06)' : 'none';
+      if (logoW) logoW.style.opacity = s ? '0' : '1';
+      if (logoD) logoD.style.opacity = s ? '1' : '0';
+      navLinks.forEach(l => {
+        l.style.color   = s ? '#1F1F1F' : '#FFFFFF';
+        l.style.opacity = s ? '1' : '0.8';
+      });
+      if (navCta) {
+        navCta.style.color       = s ? '#1F1F1F' : '#FFFFFF';
+        navCta.style.borderColor = s ? 'rgba(91,70,54,0.35)' : 'rgba(214,194,168,0.5)';
+      }
+    };
+    window.addEventListener('scroll', syncNav, { passive: true });
+    syncNav();
+
+    navLinks.forEach(l => {
+      l.addEventListener('mouseenter', () => { l.style.opacity = '1'; });
+      l.addEventListener('mouseleave', () => { l.style.opacity = window.scrollY > 60 ? '1' : '0.8'; });
+    });
+    if (navCta) {
+      navCta.addEventListener('mouseenter', () => {
+        navCta.style.background = window.scrollY > 60 ? '#3A2D25' : 'rgba(255,255,255,0.1)';
+        navCta.style.color = '#D6C2A8';
+      });
+      navCta.addEventListener('mouseleave', () => { navCta.style.background = 'transparent'; syncNav(); });
+    }
+
+    // ── HERO ENTRANCE ────────────────────────────────────────────────────────
+    const hero = document.querySelector('[data-about-hero]');
+    if (hero) {
+      const heroEyebrow = hero.querySelector('[data-hero-eyebrow]');
+      const heroEyebrowLine = hero.querySelector('[data-hero-eyebrow-line]');
+      const heroEyebrowLineR = hero.querySelector('[data-hero-eyebrow-line-r]');
+      const heroWords = hero.querySelectorAll('[data-hero-word]');
+      if (reduced) {
+        if (heroEyebrow) heroEyebrow.style.opacity = '1';
+        if (heroEyebrowLine) heroEyebrowLine.style.width = '32px';
+        if (heroEyebrowLineR) heroEyebrowLineR.style.width = '32px';
+        heroWords.forEach(w => { w.style.transform = 'translateY(0)'; });
+      } else {
+        setTimeout(() => { if (heroEyebrow) heroEyebrow.style.opacity = '1'; }, 100);
+        setTimeout(() => { if (heroEyebrowLine) heroEyebrowLine.style.width = '32px'; }, 180);
+        setTimeout(() => { if (heroEyebrowLineR) heroEyebrowLineR.style.width = '32px'; }, 180);
+        heroWords.forEach((w, i) => {
+          setTimeout(() => { w.style.transform = 'translateY(0)'; }, 320 + i * 160);
+        });
+      }
+    }
+
+    // ── SCROLL REVEAL ───────────────────────────────────────────────────────
+    if (reduced) {
+      document.querySelectorAll('[data-reveal]').forEach(el => {
+        el.style.opacity   = '1';
+        el.style.transform = 'none';
+      });
+    } else {
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          const el    = entry.target;
+          const delay = parseFloat(el.dataset.revealDelay || '0') * 1000;
+          setTimeout(() => {
+            el.style.opacity   = '1';
+            el.style.transform = 'translateY(0)';
+          }, delay);
+          obs.unobserve(el);
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -24px 0px' });
+      document.querySelectorAll('[data-reveal]').forEach(el => obs.observe(el));
+    }
+  }
+}
+</script>
+</body>
+</html>
