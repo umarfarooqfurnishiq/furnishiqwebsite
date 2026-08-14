@@ -46,7 +46,7 @@
     var toggle = document.createElement('button');
     toggle.type = 'button';
     toggle.className = 'fiq-nav-toggle';
-    toggle.setAttribute('aria-label', 'Open menu');
+    toggle.setAttribute('aria-label', document.documentElement.lang === 'ar' ? 'فتح القائمة' : 'Open menu');
     toggle.setAttribute('aria-expanded', 'false');
     toggle.innerHTML = '<span></span><span></span><span></span>';
     linksBox.parentElement.appendChild(toggle);

@@ -20,5 +20,23 @@ Disallow: /services-interior-design
 Disallow: /services-fitout
 Disallow: /services-mep
 Disallow: /services-furniture
+Disallow: /en/about-us
+Disallow: /ar/about-us
+Disallow: /en/blog
+Disallow: /ar/blog
+Disallow: /en/portfolio
+Disallow: /ar/portfolio
+Disallow: /en/project-detail
+Disallow: /ar/project-detail
+Disallow: /en/single-post
+Disallow: /ar/single-post
+Disallow: /en/services-interior-design
+Disallow: /ar/services-interior-design
+Disallow: /en/services-fitout
+Disallow: /ar/services-fitout
+Disallow: /en/services-mep
+Disallow: /ar/services-mep
+Disallow: /en/services-furniture
+Disallow: /ar/services-furniture
 
 Sitemap: https://www.furnishiq.net/sitemap.xml
