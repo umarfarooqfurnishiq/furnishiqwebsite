@@ -39,7 +39,9 @@
     { "source": "/en/services-furniture", "destination": "/", "permanent": true },
     { "source": "/ar/services-furniture", "destination": "/", "permanent": true },
 
-    { "source": "/contact.dc.html", "destination": "/contact", "permanent": true }
+    { "source": "/contact.dc.html", "destination": "/contact", "permanent": true },
+    { "source": "/home.ar.dc.html", "destination": "/ar", "permanent": true },
+    { "source": "/contact.ar.dc.html", "destination": "/ar/contact", "permanent": true }
   ],
   "rewrites": [
     { "source": "/", "destination": "/Furnishiq.net/home.dc.html" },
@@ -47,6 +49,8 @@
     { "source": "/en/contact", "destination": "/Furnishiq.net/contact.dc.html" },
     { "source": "/ar", "destination": "/Furnishiq.net/home.ar.dc.html" },
     { "source": "/ar/contact", "destination": "/Furnishiq.net/contact.ar.dc.html" },
+    { "source": "/en/:path*", "destination": "/Furnishiq.net/:path*" },
+    { "source": "/ar/:path*", "destination": "/Furnishiq.net/:path*" },
     { "source": "/contact", "destination": "/Furnishiq.net/contact.dc.html" },
     { "source": "/about-us", "destination": "/Furnishiq.net/about-us.dc.html" },
     { "source": "/blog", "destination": "/Furnishiq.net/blog.dc.html" },

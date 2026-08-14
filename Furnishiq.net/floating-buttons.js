@@ -9,6 +9,8 @@
   var WA_TEXT_EN = 'Hello FurnishIQ, I would like to know more about your design and fit-out services.';
   var WA_TEXT_AR = 'مرحباً FurnishIQ، أود معرفة المزيد عن خدمات التصميم والتشطيبات لديكم.';
   var WA_TEXT = encodeURIComponent(document.documentElement.lang === 'ar' ? WA_TEXT_AR : WA_TEXT_EN);
+  var WA_ARIA = document.documentElement.lang === 'ar' ? 'الدردشة عبر واتساب' : 'Chat on WhatsApp';
+  var TOP_ARIA = document.documentElement.lang === 'ar' ? 'العودة إلى الأعلى' : 'Back to top';
 
   function injectStyle() {
     var css = [
@@ -35,14 +37,14 @@
     wa.href = 'https://wa.me/' + WA_NUMBER + '?text=' + WA_TEXT;
     wa.target = '_blank';
     wa.rel = 'noopener noreferrer';
-    wa.setAttribute('aria-label', 'Chat on WhatsApp');
+    wa.setAttribute('aria-label', WA_ARIA);
     wa.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19l1.4-4.2A7.5 7.5 0 1 1 8.7 18Z"/></svg>';
     document.body.appendChild(wa);
 
     var top = document.createElement('button');
     top.type = 'button';
     top.className = 'fiq-float-btn fiq-float-top';
-    top.setAttribute('aria-label', 'Back to top');
+    top.setAttribute('aria-label', TOP_ARIA);
     top.innerHTML = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>';
     document.body.appendChild(top);
 
