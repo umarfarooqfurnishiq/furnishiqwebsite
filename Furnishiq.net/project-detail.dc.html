@@ -113,7 +113,7 @@
         </sc-for>
       </div>
       <div style="aspect-ratio:3/2;overflow:hidden;margin-bottom:52px;">
-        <img src="{{ secondaryImage }}" alt="{{ title }}" style="display:block;width:100%;height:100%;object-fit:cover;">
+        <img src="{{ secondaryImage }}" alt="{{ title }}" style="display:block;width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async">
       </div>
 
       <div style="display:flex;align-items:center;gap:16px;margin-bottom:24px;">
@@ -124,7 +124,7 @@
         <sc-for list="{{ gallery }}" as="shot" hint-placeholder-count="3">
           <div data-gallery-item data-gallery-src="{{ shot.image }}" data-gallery-caption="{{ shot.caption }}" data-gallery-title="{{ title }}" style="cursor:pointer;">
             <div style="aspect-ratio:3/2;overflow:hidden;margin-bottom:12px;position:relative;">
-              <img src="{{ shot.image }}" alt="{{ shot.caption }}" style="display:block;width:100%;height:100%;object-fit:cover;transition:transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94);">
+              <img src="{{ shot.image }}" alt="{{ shot.caption }}" style="display:block;width:100%;height:100%;object-fit:cover;transition:transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94);" loading="lazy" decoding="async">
               <div data-gallery-zoom style="position:absolute;inset:0;background:rgba(20,15,10,0.15);opacity:0;transition:opacity 0.3s ease;display:flex;align-items:center;justify-content:center;">
                 <div style="width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,0.7);display:flex;align-items:center;justify-content:center;">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
@@ -176,7 +176,7 @@
       <sc-for list="{{ related }}" as="rp" hint-placeholder-count="3">
         <a href="{{ rp.href }}" style="text-decoration:none;display:block;">
           <div style="aspect-ratio:3/2;overflow:hidden;margin-bottom:16px;">
-            <img src="{{ rp.image }}" alt="{{ rp.title }}" style="display:block;width:100%;height:100%;object-fit:cover;">
+            <img src="{{ rp.image }}" alt="{{ rp.title }}" style="display:block;width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async">
           </div>
           <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(214,194,168,0.6);">{{ rp.location }}</span>
           <h3 style="font-family:'Lama Sans',sans-serif;font-size:16px;font-weight:500;color:#FFFFFF;line-height:1.3;margin:8px 0 0;text-wrap:balance;">{{ rp.title }}</h3>
@@ -189,7 +189,7 @@
 
 <section data-screen-label="CTA" style="position:relative;overflow:hidden;padding:clamp(72px,9vw,120px) clamp(24px,5vw,80px);">
   <div style="position:absolute;inset:0;">
-    <img src="https://images.unsplash.com/photo-1541976590-713941681591?auto=format&fit=crop&w=2000&q=80" alt="" style="width:100%;height:100%;object-fit:cover;">
+    <img src="https://images.unsplash.com/photo-1541976590-713941681591?auto=format&fit=crop&w=2000&q=80" alt="" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async">
   </div>
   <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,15,10,0.88) 0%,rgba(20,15,10,0.72) 45%,rgba(20,15,10,0.5) 100%);pointer-events:none;"></div>
 
@@ -241,7 +241,7 @@
   <div style="max-width:1280px;margin:0 auto;">
     <div class="fiq-footer-grid" style="display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:clamp(28px,4vw,64px);margin-bottom:64px;">
       <div class="fiq-footer-brand">
-        <img src="assets/logo-default.png" alt="FurnishIQ" style="height:36px;width:auto;max-width:160px;object-fit:contain;object-position:left center;margin-bottom:22px;display:block;">
+        <img src="assets/logo-default.png" alt="FurnishIQ" style="height:36px;width:auto;max-width:160px;object-fit:contain;object-position:left center;margin-bottom:22px;display:block;" loading="lazy" decoding="async">
         <p style="font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.8;color:rgba(214,194,168,0.55);margin-bottom:0;max-width:260px;">Integrated Design–Build solutions transforming ambitious architectural concepts into inspiring realities across Saudi Arabia.</p>
       </div>
       <div>
@@ -296,7 +296,7 @@
   </button>
   <div style="max-width:1100px;width:100%;max-height:88vh;display:flex;flex-direction:column;align-items:center;">
     <div style="position:relative;width:100%;aspect-ratio:3/2;overflow:hidden;background:#000;">
-      <img id="pd-lightbox-img" src="" alt="" style="display:block;width:100%;height:100%;object-fit:cover;">
+      <img id="pd-lightbox-img" src="" alt="" style="display:block;width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async">
       <button type="button" id="pd-lightbox-prev" aria-label="Previous image" style="position:absolute;top:50%;left:16px;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:rgba(15,11,8,0.55);border:1px solid rgba(214,194,168,0.4);display:flex;align-items:center;justify-content:center;cursor:pointer;color:#D6C2A8;transition:all 0.3s;">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
       </button>
