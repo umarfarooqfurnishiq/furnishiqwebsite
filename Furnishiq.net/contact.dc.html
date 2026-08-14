@@ -6,8 +6,9 @@
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <title>Contact FurnishIQ | Start Your Design Project</title>
 <meta name="description" content="Get in touch with FurnishIQ's design-build team in Saudi Arabia. Share your project and receive a response from a senior consultant within one working day.">
-<link rel="canonical" href="https://www.furnishiq.net/contact.dc.html">
+<link rel="canonical" href="https://www.furnishiq.net/contact">
 <script src="./support.js"></script>
+<script src="./nav-mobile.js"></script>
 </head>
 <body>
 <x-dc>
@@ -50,7 +51,7 @@
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ NAV ━━ -->
 <nav id="id-nav" style="position:fixed;top:0;left:0;right:0;height:80px;z-index:200;display:flex;align-items:center;background:transparent;border-bottom:1px solid transparent;transition:background 0.55s cubic-bezier(0.25,0.46,0.45,0.94),border-color 0.55s,box-shadow 0.55s;">
   <div style="max-width:1440px;margin:0 auto;width:100%;padding:0 clamp(20px,5vw,64px);display:flex;align-items:center;justify-content:space-between;gap:24px;">
-    <a href="home.dc.html" style="flex-shrink:0;position:relative;height:36px;width:172px;display:block;text-decoration:none;">
+    <a href="/" style="flex-shrink:0;position:relative;height:36px;width:172px;display:block;text-decoration:none;">
       <img id="id-logo-w" src="assets/logo-default.png" alt="FurnishIQ" style="position:absolute;inset:0;height:36px;width:auto;max-width:172px;object-fit:contain;object-position:left center;transition:opacity 0.4s cubic-bezier(0.25,0.46,0.45,0.94);">
       <img id="id-logo-d" src="assets/logo-scrolled.png" alt="FurnishIQ" style="position:absolute;inset:0;height:36px;width:auto;max-width:172px;object-fit:contain;object-position:left center;opacity:0;transition:opacity 0.4s cubic-bezier(0.25,0.46,0.45,0.94);">
     </a>
@@ -352,7 +353,7 @@
     <div class="fiq-footer-grid" style="display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:clamp(28px,4vw,64px);margin-bottom:64px;">
 
       <div class="fiq-footer-brand">
-        <a href="home.dc.html" style="display:block;text-decoration:none;"><img src="assets/logo-default.png" alt="FurnishIQ" style="height:36px;width:auto;max-width:160px;object-fit:contain;object-position:left center;margin-bottom:22px;display:block;"></a>
+        <a href="/" style="display:block;text-decoration:none;"><img src="assets/logo-default.png" alt="FurnishIQ" style="height:36px;width:auto;max-width:160px;object-fit:contain;object-position:left center;margin-bottom:22px;display:block;"></a>
         <p style="font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.8;color:rgba(214,194,168,0.55);margin-bottom:32px;max-width:260px;">Integrated Design–Build solutions transforming ambitious architectural concepts into inspiring realities across Saudi Arabia.</p>
         <div style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(214,194,168,0.4);margin-bottom:14px;">Join the IQ</div>
         <div style="display:flex;border:1px solid rgba(214,194,168,0.2);">
@@ -382,7 +383,7 @@
           <a href="#form" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Portfolio</a>
           <a href="#" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">All Services</a>
           <a href="#" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Terms &amp; Conditions</a>
-          <a href="contact.dc.html" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Contact</a>
+          <a href="/contact" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Contact</a>
           <a href="#form" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Insights</a>
         </nav>
       </div>
@@ -537,6 +538,7 @@ class Component extends DCLogic {
 
     // ── NAV SCROLL ─────────────────────────────────────────
     const nav = document.getElementById('id-nav');
+    if (window.FIQMobileNav) window.FIQMobileNav(nav);
     const logoW = document.getElementById('id-logo-w');
     const logoD = document.getElementById('id-logo-d');
     const navLinks = document.querySelectorAll('[data-nav-link]');

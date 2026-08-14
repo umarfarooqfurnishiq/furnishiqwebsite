@@ -4,21 +4,61 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" type="image/png" href="assets/favicon.png">
-<title>About FurnishIQ | Where Vision Meets Precision</title>
-<meta name="description" content="FurnishIQ is a design-build studio in Saudi Arabia turning ambitious interior concepts into precisely executed, inspiring spaces.">
-<link rel="canonical" href="https://www.furnishiq.net/about-us.dc.html">
+<title>About FurnishIQ | Design-Build Studio in Riyadh, KSA</title>
+<meta name="description" content="FurnishIQ is a Riyadh-based design-build studio delivering interior design, turnkey fit-out, MEP engineering, and furniture solutions across Saudi Arabia.">
+<link rel="canonical" href="https://www.furnishiq.net/about-us">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="FurnishIQ">
+<meta property="og:url" content="https://www.furnishiq.net/about-us">
+<meta property="og:title" content="About FurnishIQ | Design-Build Studio in Riyadh, KSA">
+<meta property="og:description" content="FurnishIQ is a Riyadh-based design-build studio delivering interior design, turnkey fit-out, MEP engineering, and furniture solutions across Saudi Arabia.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&h=630&q=80">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="About FurnishIQ | Design-Build Studio in Riyadh, KSA">
+<meta name="twitter:description" content="FurnishIQ is a Riyadh-based design-build studio delivering interior design, turnkey fit-out, MEP engineering, and furniture solutions across Saudi Arabia.">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&h=630&q=80">
 <script src="./support.js"></script>
+<script src="./nav-mobile.js"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "FurnishIQ",
+  "url": "https://www.furnishiq.net/",
+  "logo": "https://www.furnishiq.net/assets/logo-default.png",
+  "description": "FurnishIQ is a Riyadh-based design-build studio delivering interior design, turnkey fit-out, MEP engineering, and furniture solutions across Saudi Arabia.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Riyadh",
+    "addressCountry": "SA"
+  },
+  "telephone": "+966580330627",
+  "email": "info@furnishiq.net"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.furnishiq.net/" },
+    { "@type": "ListItem", "position": 2, "name": "About", "item": "https://www.furnishiq.net/about-us" }
+  ]
+}
+</script>
 </head>
 <body>
 <x-dc>
 
 <helmet>
-  <link rel="stylesheet" href="_ds/tokens/colors.css">
-  <link rel="stylesheet" href="_ds/tokens/typography.css">
-  <link rel="stylesheet" href="_ds/tokens/spacing.css">
-  <link rel="stylesheet" href="_ds/tokens/effects.css">
-  <link rel="stylesheet" href="_ds/tokens/base.css">
-  <script src="_ds/_ds_bundle.js"></script>
+  <link rel="stylesheet" href="_ds/furnishiq-design-system-ea658a9e-dd64-48ad-ab93-f0196a53ec9c/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/furnishiq-design-system-ea658a9e-dd64-48ad-ab93-f0196a53ec9c/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/furnishiq-design-system-ea658a9e-dd64-48ad-ab93-f0196a53ec9c/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/furnishiq-design-system-ea658a9e-dd64-48ad-ab93-f0196a53ec9c/tokens/effects.css">
+  <link rel="stylesheet" href="_ds/furnishiq-design-system-ea658a9e-dd64-48ad-ab93-f0196a53ec9c/tokens/base.css">
+  <script src="_ds/furnishiq-design-system-ea658a9e-dd64-48ad-ab93-f0196a53ec9c/_ds_bundle.js"></script>
 
   <style>
     *, *::before, *::after {
@@ -32,10 +72,18 @@
       51% { transform: scaleY(1); transform-origin: bottom; }
       100%{ transform: scaleY(0); transform-origin: bottom; }
     }
+    @keyframes fiq-pulse-dot {
+      0%{box-shadow:0 0 0 0 rgba(214,194,168,0.45);}
+      70%{box-shadow:0 0 0 9px rgba(214,194,168,0);}
+      100%{box-shadow:0 0 0 0 rgba(214,194,168,0);}
+    }
+    .about-disc-tab:hover .about-disc-title { color: #1F1F1F !important; }
 
     @media(max-width:960px){
       .fiq-nav-links { display: none !important; }
       .fiq-nav-cta   { display: none !important; }
+      .fiq-hero-grid { grid-template-columns: 1fr !important; }
+      .fiq-hero-side { border-left: none !important; border-top: 1px solid rgba(214,194,168,0.14) !important; padding-left: 0 !important; padding-top: 36px !important; margin-top: 44px !important; }
       #journey-svg-wrap { display: none !important; }
       .about-brand-grid   { flex-direction: column !important; }
       .about-services-grid{ flex-direction: column !important; }
@@ -60,13 +108,13 @@
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ NAV ━━ -->
 <nav id="fiq-nav" style="position:fixed;top:0;left:0;right:0;height:80px;z-index:200;display:flex;align-items:center;background:transparent;border-bottom:1px solid transparent;transition:background 0.55s cubic-bezier(0.25,0.46,0.45,0.94),border-color 0.55s,box-shadow 0.55s;">
   <div style="max-width:1440px;margin:0 auto;width:100%;padding:0 clamp(20px,5vw,64px);display:flex;align-items:center;justify-content:space-between;gap:24px;">
-    <a href="home.dc.html" style="flex-shrink:0;position:relative;height:36px;width:172px;display:block;text-decoration:none;">
+    <a href="/" style="flex-shrink:0;position:relative;height:36px;width:172px;display:block;text-decoration:none;">
       <img id="fiq-logo-w" src="assets/logo-default.png" alt="FurnishIQ" style="position:absolute;inset:0;height:36px;width:auto;max-width:172px;object-fit:contain;object-position:left center;transition:opacity 0.4s cubic-bezier(0.25,0.46,0.45,0.94);">
       <img id="fiq-logo-d" src="assets/logo-scrolled.png" alt="FurnishIQ" style="position:absolute;inset:0;height:36px;width:auto;max-width:172px;object-fit:contain;object-position:left center;opacity:0;transition:opacity 0.4s cubic-bezier(0.25,0.46,0.45,0.94);">
     </a>
     <div class="fiq-nav-links" style="display:flex;gap:clamp(24px,3.5vw,48px);align-items:center;flex:1;justify-content:center;">
       <a href="/#services" data-nav-link style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;transition:color 0.25s,opacity 0.25s;opacity:0.8;">Services</a>
-      <a href="portfolio.dc.html" data-nav-link style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;transition:color 0.25s,opacity 0.25s;opacity:0.8;">Portfolio</a>
+      <a href="/portfolio" data-nav-link style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;transition:color 0.25s,opacity 0.25s;opacity:0.8;">Portfolio</a>
       <a href="/#process" data-nav-link style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;transition:color 0.25s,opacity 0.25s;opacity:0.8;">Process</a>
       <a href="/#blog" data-nav-link style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;transition:color 0.25s,opacity 0.25s;opacity:0.8;">Insights</a>
     </div>
@@ -75,27 +123,49 @@
 </nav>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ PAGE HERO ━ -->
-<section style="position:relative;overflow:hidden;padding:160px clamp(24px,5vw,80px) 80px;min-height:480px;">
-  <!-- Homepage slider image — Finished Build -->
-  <div style="position:absolute;inset:0;z-index:0;">
-    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&w=1920&q=80" alt="" style="width:100%;height:100%;object-fit:cover;object-position:center center;filter:sepia(0.1) saturate(0.5) brightness(0.82) hue-rotate(185deg);">
-    <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(58,45,37,0.92) 0%,rgba(58,45,37,0.22) 50%,rgba(58,45,37,0.55) 100%);"></div>
-    <div style="position:absolute;inset:0;background:rgba(28,16,8,0.52);"></div>
-  </div>
-  <div style="max-width:1280px;margin:0 auto;position:relative;z-index:1;">
-    <div data-reveal style="opacity:0;transform:translateY(12px);transition:opacity 0.7s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;align-items:center;gap:10px;margin-bottom:52px;">
-      <a href="/" style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(214,194,168,0.42);text-decoration:none;transition:color 0.25s;">Home</a>
-      <span style="width:24px;height:1px;background:rgba(214,194,168,0.22);display:block;flex-shrink:0;"></span>
-      <span style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(214,194,168,0.88);">About</span>
+<section data-about-hero style="position:relative;background:#1E1610;overflow:hidden;padding:clamp(150px,18vh,200px) clamp(24px,5vw,80px) clamp(72px,9vw,120px);">
+  <!-- Photographic texture -->
+  <div style="position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2400&q=80');background-size:cover;background-position:center;opacity:0.16;pointer-events:none;"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(115deg,rgba(30,22,16,0.96) 0%,rgba(30,22,16,0.72) 55%,rgba(30,22,16,0.94) 100%);pointer-events:none;"></div>
+  <!-- Decorative rings -->
+  <div style="position:absolute;top:-140px;right:-100px;width:480px;height:480px;border:1px solid rgba(214,194,168,0.06);border-radius:50%;pointer-events:none;"></div>
+  <div style="position:absolute;top:-60px;right:20px;width:280px;height:280px;border:1px solid rgba(214,194,168,0.045);border-radius:50%;pointer-events:none;"></div>
+
+  <div style="position:relative;z-index:1;max-width:1280px;margin:0 auto;">
+    <div class="fiq-hero-grid" style="display:grid;grid-template-columns:1.6fr 1fr;gap:clamp(48px,7vw,110px);align-items:end;">
+
+      <!-- Headline -->
+      <div>
+        <div data-hero-eyebrow style="opacity:0;transition:opacity 0.6s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;align-items:center;gap:16px;margin-bottom:28px;">
+          <span data-hero-eyebrow-line style="display:block;width:0px;height:1px;background:#D6C2A8;flex-shrink:0;transition:width 0.7s cubic-bezier(0.25,0.46,0.45,0.94);"></span>
+          <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:rgba(214,194,168,0.75);">About FurnishIQ</span>
+        </div>
+        <h1 style="font-family:'Lama Sans',sans-serif;font-size:clamp(36px,4.2vw,58px);font-weight:600;line-height:1.05;letter-spacing:-0.01em;color:#FFFFFF;margin:0;text-wrap:balance;">
+          <span style="display:block;overflow:hidden;"><span data-hero-word style="display:block;transform:translateY(112%);transition:transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);">Where vision</span></span>
+          <span style="display:block;overflow:hidden;"><span data-hero-word style="display:block;transform:translateY(112%);transition:transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);color:#D6C2A8;">meets precision.</span></span>
+        </h1>
+      </div>
+
+      <!-- Side: description + breadcrumb -->
+      <div class="fiq-hero-side" data-reveal data-reveal-delay="0.5" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);border-left:1px solid rgba(214,194,168,0.18);padding-left:clamp(24px,2.5vw,40px);">
+        <div style="display:flex;align-items:center;gap:11px;margin-bottom:18px;">
+          <span style="width:7px;height:7px;border-radius:50%;background:#D6C2A8;flex-shrink:0;animation:fiq-pulse-dot 2.4s cubic-bezier(0.25,0.46,0.45,0.94) infinite;"></span>
+          <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.24em;text-transform:uppercase;color:rgba(214,194,168,0.8);">Serving clients across KSA</span>
+        </div>
+        <p style="font-family:'Lama Sans',sans-serif;font-size:13.5px;line-height:1.85;color:rgba(214,194,168,0.55);margin-bottom:24px;">A Saudi-based design-build studio delivering interior design, fit-out, engineering, and furniture solutions from concept to handover.</p>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <a href="/" style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.26em;text-transform:uppercase;color:rgba(214,194,168,0.5);text-decoration:none;transition:color 0.25s;">Home</a>
+          <span style="font-family:'Lama Sans',sans-serif;font-size:9px;color:rgba(214,194,168,0.3);">/</span>
+          <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.26em;text-transform:uppercase;color:rgba(214,194,168,0.85);">About</span>
+        </div>
+      </div>
+
     </div>
-    <h1 data-reveal data-reveal-delay="0.08" style="opacity:0;transform:translateY(18px);transition:opacity 0.85s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.85s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Lama Sans',sans-serif;font-size:clamp(52px,7vw,96px);font-weight:500;color:#FFFFFF;line-height:1.0;letter-spacing:-0.015em;margin-bottom:22px;">About Us</h1>
-    <p data-reveal data-reveal-delay="0.18" style="opacity:0;transform:translateY(14px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Lama Sans',sans-serif;font-size:clamp(14px,1.6vw,18px);font-weight:500;color:rgba(214,194,168,0.55);letter-spacing:0.07em;margin-bottom:44px;">Where Vision Meets Precision.</p>
-    <div data-reveal data-reveal-delay="0.28" style="opacity:0;transition:opacity 0.9s;width:100%;height:1px;background:rgba(214,194,168,0.16);"></div>
   </div>
 </section>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ BRAND STATEMENT ━━━ -->
-<section style="background:#FFFFFF;padding:clamp(80px,10vw,120px) clamp(24px,5vw,80px);">
+<section style="background:#F5F2ED;padding:clamp(80px,10vw,120px) clamp(24px,5vw,80px);">
   <div style="max-width:1280px;margin:0 auto;">
     <div class="about-brand-grid" style="display:flex;gap:clamp(48px,7vw,104px);align-items:flex-start;">
       <div style="flex:5;flex-shrink:0;">
@@ -109,8 +179,57 @@
       </div>
       <div style="flex:7;">
         <div data-reveal data-reveal-delay="0.14" style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);">
-          <p style="font-family:'Lama Sans',sans-serif;font-size:16px;line-height:1.8;color:#5B4636;margin-bottom:22px;">At FurnishIQ, we believe a space is more than a physical structure. It is a thoughtful, livable environment — one that should be as comfortable as it is inspiring. We move beyond conventional design limitations to deliver personalised solutions for homeowners, businesses, and organisations across the Kingdom, fusing creativity with operational excellence.</p>
+          <p style="font-family:'Lama Sans',sans-serif;font-size:16px;line-height:1.8;color:#5B4636;margin-bottom:22px;">At FurnishIQ, we believe a space is more than a physical structure. It is a thoughtful, liveable environment — one that should be as comfortable as it is inspiring. We move beyond conventional design limitations to deliver personalised solutions for homeowners, businesses, and organisations across the Kingdom, fusing creative design with disciplined project delivery.</p>
           <p style="font-family:'Lama Sans',sans-serif;font-size:16px;line-height:1.8;color:#5B4636;">FurnishIQ is a Saudi-based design-build company specialising in interior design, turnkey fit-out, furniture solutions, and project management. From concept development and engineering to procurement, execution, and handover, our multidisciplinary team delivers seamless project experiences through innovation, quality craftsmanship, and disciplined project management.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ INTEGRATED SERVICES ━━ -->
+<section style="position:relative;background:#FFFFFF;padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px);overflow:hidden;">
+  <!-- Background image, bled to the left edge of the screen, capped at the description column's right edge -->
+  <div style="position:absolute;inset:0;pointer-events:none;">
+    <div style="max-width:1280px;height:100%;margin:0 auto;display:flex;gap:clamp(48px,7vw,104px);">
+      <div style="flex:7;position:relative;">
+        <div style="position:absolute;top:0;bottom:0;right:0;width:100vw;background-image:url('{{ activeImage }}');background-size:cover;background-position:center;opacity:{{ bgOpacity }};transition:opacity 0.3s ease;"></div>
+        <div style="position:absolute;top:0;bottom:0;right:0;width:100vw;background:linear-gradient(100deg,rgba(255,255,255,0.92) 0%,rgba(255,255,255,0.65) 40%,rgba(255,255,255,0.28) 100%);"></div>
+      </div>
+      <div style="flex:5;flex-shrink:0;"></div>
+    </div>
+  </div>
+  <div style="max-width:1280px;margin:0 auto;position:relative;z-index:1;">
+    <div class="about-services-grid" style="display:flex;gap:clamp(48px,7vw,104px);align-items:flex-start;">
+      <div style="flex:7;padding-right:clamp(24px,3vw,48px);">
+        <div data-reveal style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);">
+          <div style="display:flex;align-items:center;gap:16px;margin-bottom:28px;">
+            <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
+            <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#8B6B4A;">Our Disciplines</span>
+          </div>
+          <div style="opacity:{{ leftOpacity }};transition:opacity 0.22s ease;">
+            <sc-if value="{{ showDefault }}" hint-placeholder-val="{{ true }}">
+              <h2 style="font-family:'Lama Sans',sans-serif;font-size:clamp(28px,4.2vw,42px);font-weight:800;letter-spacing:-0.6px;color:#3A2D25;line-height:1.1;margin-bottom:28px;">Integrated Expertise.<br>One Point of Accountability.</h2>
+              <p style="font-family:'Lama Sans',sans-serif;font-size:16px;line-height:1.8;color:#5B4636;margin-bottom:20px;">One of the greatest challenges in construction is the disconnect between designers and contractors. FurnishIQ solves this by providing a comprehensive ecosystem of design and build services under one roof.</p>
+              <p style="font-family:'Lama Sans',sans-serif;font-size:16px;line-height:1.8;color:#5B4636;margin-bottom:36px;">This integrated approach ensures your vision is never lost in translation — from the first sketch to the final handover.</p>
+              <a href="/portfolio" onMouseEnter="{{ ctaMouseEnter }}" onMouseLeave="{{ ctaMouseLeave }}" style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#D6C2A8;background:#3A2D25;padding:14px 32px;text-decoration:none;display:inline-block;transition:background 0.3s,color 0.3s;">Explore Projects</a>
+            </sc-if>
+            <sc-if value="{{ showDiscipline }}" hint-placeholder-val="{{ false }}">
+              <h2 style="font-family:'Lama Sans',sans-serif;font-size:clamp(28px,4.2vw,42px);font-weight:800;letter-spacing:-0.6px;color:#3A2D25;line-height:1.1;margin-bottom:28px;">{{ activeTitle }}</h2>
+              <p style="font-family:'Lama Sans',sans-serif;font-size:16px;line-height:1.8;color:#5B4636;margin-bottom:36px;">{{ activeBody }}</p>
+              <a href="/portfolio" onMouseEnter="{{ ctaMouseEnter }}" onMouseLeave="{{ ctaMouseLeave }}" style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#D6C2A8;background:#3A2D25;padding:14px 32px;text-decoration:none;display:inline-block;transition:background 0.3s,color 0.3s;">Explore Projects</a>
+            </sc-if>
+          </div>
+        </div>
+      </div>
+      <div style="flex:5;flex-shrink:0;">
+        <div data-reveal data-reveal-delay="0.14" style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);">
+          <sc-for list="{{ disciplines }}" as="disc" hint-placeholder-count="5">
+            <div class="about-disc-tab" onClick="{{ disc.onClick }}" style="border-top:{{ disc.borderTop }};padding:22px 0;cursor:pointer;">
+              <div class="about-disc-title" style="font-family:'Lama Sans',sans-serif;font-size:32px;font-weight:800;letter-spacing:-0.01em;color:{{ disc.titleColor }};margin-bottom:7px;line-height:1.15;transition:color 0.3s cubic-bezier(0.25,0.46,0.45,0.94);">{{ disc.title }}</div>
+              <div style="display:none;font-family:'Lama Sans',sans-serif;font-size:15px;color:#8B6B4A;line-height:1.65;">{{ disc.tagline }}</div>
+            </div>
+          </sc-for>
         </div>
       </div>
     </div>
@@ -129,58 +248,19 @@
         <div style="font-family:'Lama Sans',sans-serif;font-size:clamp(52px,5.5vw,80px);font-weight:500;color:#3A2D25;line-height:1;margin-bottom:24px;letter-spacing:-0.02em;">01</div>
         <div style="width:100%;height:1px;background:#3A2D25;margin-bottom:28px;opacity:0.14;"></div>
         <h3 style="font-family:'Lama Sans',sans-serif;font-size:clamp(15px,1.6vw,20px);font-weight:500;color:#1F1F1F;margin-bottom:14px;line-height:1.25;">Visual Certainty Through Photorealism</h3>
-        <p style="font-family:'Lama Sans',sans-serif;font-size:14px;line-height:1.8;color:#5B4636;">We eliminate the guesswork of construction. By providing full photoreal 3D renders of every floor and landscape before a single brick is laid, we empower clients to decide with absolute confidence — approving textures, lighting, and layouts in a virtual environment.</p>
+        <p style="font-family:'Lama Sans',sans-serif;font-size:14px;line-height:1.8;color:#5B4636;">Every material, finish, and light source is modelled and reviewed with you before it becomes a purchase order. This discipline exists because reworking a finished space costs far more than revising a render — so approvals happen on screen, not on site.</p>
       </div>
       <div class="about-pillar" data-reveal data-reveal-delay="0.12" style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);padding:clamp(36px,4vw,56px) clamp(28px,3.5vw,52px);border-right:1px solid rgba(58,45,37,0.13);">
         <div style="font-family:'Lama Sans',sans-serif;font-size:clamp(52px,5.5vw,80px);font-weight:500;color:#3A2D25;line-height:1;margin-bottom:24px;letter-spacing:-0.02em;">02</div>
         <div style="width:100%;height:1px;background:#3A2D25;margin-bottom:28px;opacity:0.14;"></div>
         <h3 style="font-family:'Lama Sans',sans-serif;font-size:clamp(15px,1.6vw,20px);font-weight:500;color:#1F1F1F;margin-bottom:14px;line-height:1.25;">Strategic DNA &amp; Brand-Led Planning</h3>
-        <p style="font-family:'Lama Sans',sans-serif;font-size:14px;line-height:1.8;color:#5B4636;">Design should serve a purpose. Our approach incorporates brand-led planning, where every layout and traffic flow is strategically engineered to reflect your unique identity and optimise daily operations — balancing high-end aesthetics with practical, high-performance functionality.</p>
+        <p style="font-family:'Lama Sans',sans-serif;font-size:14px;line-height:1.8;color:#5B4636;">We start by studying how a space will actually be used — footfall, service routes, staff movement, guest experience — before a single layout is drawn. The plan is built around behaviour first and aesthetics second, which is why it still works once the photographs are taken and the space is in daily use.</p>
       </div>
       <div class="about-pillar" data-reveal data-reveal-delay="0.24" style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);padding:clamp(36px,4vw,56px) clamp(28px,3.5vw,52px);">
         <div style="font-family:'Lama Sans',sans-serif;font-size:clamp(52px,5.5vw,80px);font-weight:500;color:#3A2D25;line-height:1;margin-bottom:24px;letter-spacing:-0.02em;">03</div>
         <div style="width:100%;height:1px;background:#3A2D25;margin-bottom:28px;opacity:0.14;"></div>
         <h3 style="font-family:'Lama Sans',sans-serif;font-size:clamp(15px,1.6vw,20px);font-weight:500;color:#1F1F1F;margin-bottom:14px;line-height:1.25;">The Zero-Snag Promise</h3>
-        <p style="font-family:'Lama Sans',sans-serif;font-size:14px;line-height:1.8;color:#5B4636;">Excellence in execution is our hallmark. Through rigorous Quality Assurance (QA/QC) and continuous Health, Safety &amp; Environment (HSE) monitoring, we guarantee a clean build — ensuring your space is ready for immediate use without the stress of lingering technical issues.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ INTEGRATED SERVICES ━━ -->
-<section style="background:#FFFFFF;padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px);">
-  <div style="max-width:1280px;margin:0 auto;">
-    <div class="about-services-grid" style="display:flex;gap:clamp(48px,7vw,104px);align-items:flex-start;">
-      <div style="flex:7;">
-        <div data-reveal style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);">
-          <div style="display:flex;align-items:center;gap:16px;margin-bottom:28px;">
-            <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
-            <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#8B6B4A;">Our Disciplines</span>
-          </div>
-          <div style="opacity:{{ leftOpacity }};transition:opacity 0.22s ease;">
-            <sc-if value="{{ showDefault }}" hint-placeholder-val="{{ true }}">
-              <h2 style="font-family:'Lama Sans',sans-serif;font-size:clamp(26px,3.2vw,52px);font-weight:500;color:#3A2D25;line-height:1.1;margin-bottom:28px;">Integrated Expertise.<br>One Point of Accountability.</h2>
-              <p style="font-family:'Lama Sans',sans-serif;font-size:16px;line-height:1.8;color:#5B4636;margin-bottom:20px;">One of the greatest challenges in construction is the disconnect between designers and contractors. FurnishIQ solves this by providing a comprehensive ecosystem of design and build services under one roof.</p>
-              <p style="font-family:'Lama Sans',sans-serif;font-size:16px;line-height:1.8;color:#5B4636;">This integrated approach ensures your vision is never lost in translation — from the first sketch to the final handover.</p>
-            </sc-if>
-            <sc-if value="{{ showDiscipline }}" hint-placeholder-val="{{ false }}">
-              <h2 style="font-family:'Lama Sans',sans-serif;font-size:clamp(26px,3.2vw,52px);font-weight:500;color:#3A2D25;line-height:1.1;margin-bottom:28px;">{{ activeTitle }}</h2>
-              <p style="font-family:'Lama Sans',sans-serif;font-size:16px;line-height:1.8;color:#5B4636;margin-bottom:36px;">{{ activeBody }}</p>
-              <a href="/projects" onMouseEnter="{{ ctaMouseEnter }}" onMouseLeave="{{ ctaMouseLeave }}" style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#3A2D25;background:#D6C2A8;padding:14px 32px;text-decoration:none;display:inline-block;transition:background 0.3s,color 0.3s;">Explore Projects</a>
-            </sc-if>
-          </div>
-        </div>
-      </div>
-      <div style="flex:5;flex-shrink:0;">
-        <div data-reveal data-reveal-delay="0.14" style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);">
-          <sc-for list="{{ disciplines }}" as="disc" hint-placeholder-count="4">
-            <div onClick="{{ disc.onClick }}" onMouseEnter="{{ disc.onMouseEnter }}" onMouseLeave="{{ disc.onMouseLeave }}" style="border-top:1px solid #D6C2A8;border-left:{{ disc.activeBorder }};padding:22px 16px;cursor:pointer;background:{{ disc.bg }};transition:background 0.22s;">
-              <div style="font-family:'Lama Sans',sans-serif;font-size:13px;font-weight:500;color:{{ disc.titleColor }};margin-bottom:7px;letter-spacing:0.02em;">{{ disc.title }}</div>
-              <div style="font-family:'Lama Sans',sans-serif;font-size:13px;color:#8B6B4A;line-height:1.65;">{{ disc.tagline }}</div>
-            </div>
-          </sc-for>
-          <div style="border-top:1px solid #D6C2A8;"></div>
-        </div>
+        <p style="font-family:'Lama Sans',sans-serif;font-size:14px;line-height:1.8;color:#5B4636;">Snagging is treated as a design failure, not an expected final step. Our site teams inspect against the approved specification at each phase of the build, not only at handover — so the final walkthrough is a formality, not the first time issues surface.</p>
       </div>
     </div>
   </div>
@@ -201,41 +281,26 @@
     <!-- Journey signal infographic -->
     <div id="journey-svg-wrap" style="margin-bottom:clamp(28px,3.5vw,44px);overflow:visible;">
       <svg id="journey-svg" viewBox="0 0 1000 130" preserveAspectRatio="none" style="width:100%;height:clamp(90px,11vw,155px);overflow:visible;display:block;">
-        <defs>
-          <filter id="fiq-aura-blur" x="-400%" y="-400%" width="900%" height="900%">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="6"/>
-          </filter>
-          <filter id="fiq-path-glow" x="-5%" y="-500%" width="110%" height="1100%">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="5"/>
-          </filter>
-        </defs>
         <!-- Vertical dashed connectors from dot down into step content -->
         <line x1="125" y1="12" x2="125" y2="160" stroke="rgba(214,194,168,0.18)" stroke-width="1" stroke-dasharray="3,6"/>
         <line x1="375" y1="116" x2="375" y2="160" stroke="rgba(214,194,168,0.18)" stroke-width="1" stroke-dasharray="3,6"/>
         <line x1="625" y1="12" x2="625" y2="160" stroke="rgba(214,194,168,0.18)" stroke-width="1" stroke-dasharray="3,6"/>
         <line x1="875" y1="116" x2="875" y2="160" stroke="rgba(214,194,168,0.18)" stroke-width="1" stroke-dasharray="3,6"/>
-        <!-- Blurred glow path behind the line -->
-        <path d="M 125,8 C 210,8 275,112 375,112 C 475,112 540,8 625,8 C 710,8 780,112 875,112"
-              fill="none" stroke="rgba(214,194,168,0.15)" stroke-width="10" filter="url(#fiq-path-glow)"/>
         <!-- Main signal path (drawn by JS on scroll) -->
         <path id="journey-path"
               d="M 125,8 C 210,8 275,112 375,112 C 475,112 540,8 625,8 C 710,8 780,112 875,112"
               fill="none" stroke="rgba(214,194,168,0.78)" stroke-width="0.9"/>
-        <!-- Golden aura dots — revealed sequentially as line draws -->
+        <!-- Golden dots — revealed sequentially as line draws -->
         <g class="journey-dot-group" style="opacity:0;">
-          <circle cx="125" cy="8" r="11" fill="rgba(210,168,55,0.28)" filter="url(#fiq-aura-blur)"/>
           <circle cx="125" cy="8" r="3" fill="#D4B264"/>
         </g>
         <g class="journey-dot-group" style="opacity:0;">
-          <circle cx="375" cy="112" r="11" fill="rgba(210,168,55,0.28)" filter="url(#fiq-aura-blur)"/>
           <circle cx="375" cy="112" r="3" fill="#D4B264"/>
         </g>
         <g class="journey-dot-group" style="opacity:0;">
-          <circle cx="625" cy="8" r="11" fill="rgba(210,168,55,0.28)" filter="url(#fiq-aura-blur)"/>
           <circle cx="625" cy="8" r="3" fill="#D4B264"/>
         </g>
         <g class="journey-dot-group" style="opacity:0;">
-          <circle cx="875" cy="112" r="11" fill="rgba(210,168,55,0.28)" filter="url(#fiq-aura-blur)"/>
           <circle cx="875" cy="112" r="3" fill="#D4B264"/>
         </g>
       </svg>
@@ -298,7 +363,7 @@
       <div data-reveal data-reveal-delay="0.06" data-why-card style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);background:#FFFFFF;padding:36px 32px;">
         <div data-why-bar style="width:36px;height:2px;background:#5B4636;margin-bottom:24px;"></div>
         <h3 style="font-family:'Lama Sans',sans-serif;font-size:15px;font-weight:500;color:#1F1F1F;margin-bottom:10px;line-height:1.3;">Quality Assurance</h3>
-        <p style="font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.8;color:#8B6B4A;">Built around excellence — rigorous quality control at every stage ensures superior workmanship, material compliance, and delivery standards that exceed expectations.</p>
+        <p style="font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.8;color:#8B6B4A;">Quality checkpoints at every stage — material inspection, workmanship review, and final walkthrough — catch issues before they reach the client, not after.</p>
       </div>
       <div data-reveal data-reveal-delay="0.14" data-why-card style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);background:#FFFFFF;padding:36px 32px;">
         <div data-why-bar style="width:36px;height:2px;background:#5B4636;margin-bottom:24px;"></div>
@@ -350,15 +415,15 @@
         <div style="display:flex;flex-direction:column;gap:28px;">
           <div>
             <div style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(214,194,168,0.48);margin-bottom:9px;">Headquarters</div>
-            <p style="font-family:'Lama Sans',sans-serif;font-size:15px;line-height:1.75;color:rgba(255,255,255,0.78);">46 Port Gate Building, Khalidiyah<br>Dammam, KSA</p>
+            <p style="font-family:'Lama Sans',sans-serif;font-size:15px;line-height:1.75;color:rgba(255,255,255,0.78);">Riyadh, Kingdom of Saudi Arabia</p>
           </div>
           <div>
             <div style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(214,194,168,0.48);margin-bottom:9px;">Phone</div>
-            <a href="tel:+966595160000" style="font-family:'Lama Sans',sans-serif;font-size:15px;color:rgba(255,255,255,0.78);text-decoration:none;transition:color 0.25s;">+66 59 516 0000</a>
+            <a href="tel:+966580330627" style="font-family:'Lama Sans',sans-serif;font-size:15px;color:rgba(255,255,255,0.78);text-decoration:none;transition:color 0.25s;">+966 58 033 0627</a>
           </div>
           <div>
             <div style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(214,194,168,0.48);margin-bottom:9px;">Website</div>
-            <a href="https://furnishiq.net" target="_blank" style="font-family:'Lama Sans',sans-serif;font-size:15px;color:rgba(214,194,168,0.85);text-decoration:none;border-bottom:1px solid rgba(214,194,168,0.35);padding-bottom:2px;transition:color 0.25s,border-color 0.25s;">furnishiq.net</a>
+            <a href="https://furnishiq.net" target="_blank" rel="noopener noreferrer" style="font-family:'Lama Sans',sans-serif;font-size:15px;color:rgba(214,194,168,0.85);text-decoration:none;border-bottom:1px solid rgba(214,194,168,0.35);padding-bottom:2px;transition:color 0.25s,border-color 0.25s;">furnishiq.net</a>
           </div>
         </div>
       </div>
@@ -367,8 +432,8 @@
         <h2 style="font-family:'Lama Sans',sans-serif;font-size:clamp(24px,3vw,44px);font-weight:500;color:#D6C2A8;line-height:1.15;margin-bottom:22px;">Ready to Visualise Your Space?</h2>
         <p style="font-family:'Lama Sans',sans-serif;font-size:14px;line-height:1.75;color:rgba(214,194,168,0.58);margin-bottom:36px;">Receive a clear plan, photoreal visuals, and a comprehensive budget roadmap tailored to your brief.</p>
         <div style="display:flex;flex-direction:column;gap:12px;">
-          <a href="contact.dc.html" id="cta-book" style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#3A2D25;background:#D6C2A8;padding:15px 32px;text-decoration:none;display:block;transition:background 0.3s,color 0.3s;text-align:center;">Book a Consultation</a>
-          <a href="portfolio.dc.html" id="cta-projects" style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#D6C2A8;background:transparent;padding:15px 32px;text-decoration:none;display:block;transition:all 0.3s;border:1px solid rgba(214,194,168,0.35);text-align:center;">Discover Projects</a>
+          <a href="/contact" id="cta-book" style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#3A2D25;background:#D6C2A8;padding:15px 32px;text-decoration:none;display:block;transition:background 0.3s,color 0.3s;text-align:center;">Book a Consultation</a>
+          <a href="/portfolio" id="cta-projects" style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#D6C2A8;background:transparent;padding:15px 32px;text-decoration:none;display:block;transition:all 0.3s;border:1px solid rgba(214,194,168,0.35);text-align:center;">Discover Projects</a>
         </div>
       </div>
     </div>
@@ -381,7 +446,7 @@
     <div class="fiq-footer-grid" style="display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:clamp(28px,4vw,64px);margin-bottom:64px;">
 
       <div class="fiq-footer-brand">
-        <a href="home.dc.html" style="display:block;text-decoration:none;"><img src="assets/logo-default.png" alt="FurnishIQ" style="height:36px;width:auto;max-width:160px;object-fit:contain;object-position:left center;margin-bottom:22px;display:block;"></a>
+        <a href="/" style="display:block;text-decoration:none;"><img src="assets/logo-default.png" alt="FurnishIQ" style="height:36px;width:auto;max-width:160px;object-fit:contain;object-position:left center;margin-bottom:22px;display:block;"></a>
         <p style="font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.8;color:rgba(214,194,168,0.55);margin-bottom:32px;max-width:260px;">Integrated Design–Build solutions transforming ambitious architectural concepts into inspiring realities across Saudi Arabia.</p>
         <div style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(214,194,168,0.4);margin-bottom:14px;">Join the IQ</div>
         <div style="display:flex;border:1px solid rgba(214,194,168,0.2);">
@@ -396,10 +461,10 @@
       <div>
         <div style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.26em;text-transform:uppercase;color:rgba(214,194,168,0.4);margin-bottom:22px;">Services</div>
         <nav style="display:flex;flex-direction:column;gap:13px;">
-          <a href="services-interior-design.dc.html" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Interior Design</a>
-          <a href="services-fitout.dc.html" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Fit-Out</a>
-          <a href="services-mep.dc.html" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Engineering &amp; MEP</a>
-          <a href="services-furniture.dc.html" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Furniture Solutions</a>
+          <a href="/services-interior-design" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Interior Design</a>
+          <a href="/services-fitout" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Fit-Out</a>
+          <a href="/services-mep" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Engineering &amp; MEP</a>
+          <a href="/services-furniture" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Furniture Solutions</a>
           <a href="#" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Project Management</a>
         </nav>
       </div>
@@ -407,12 +472,12 @@
       <div>
         <div style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.26em;text-transform:uppercase;color:rgba(214,194,168,0.4);margin-bottom:22px;">Company</div>
         <nav style="display:flex;flex-direction:column;gap:13px;">
-          <a href="about-us.dc.html" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">About Us</a>
-          <a href="portfolio.dc.html" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Portfolio</a>
+          <a href="/about-us" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">About Us</a>
+          <a href="/portfolio" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Portfolio</a>
           <a href="#" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">All Services</a>
           <a href="#" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Terms &amp; Conditions</a>
-          <a href="contact.dc.html" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Contact</a>
-          <a href="blog.dc.html" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Insights</a>
+          <a href="/contact" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Contact</a>
+          <a href="/blog" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Insights</a>
         </nav>
       </div>
 
@@ -448,26 +513,32 @@
 class Component extends DCLogic {
   state = { newsletterEmail: '', newsletterStatus: null, activeDiscipline: -1, leftOpacity: 1 };
 
+  _overviewImage = 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1920&q=80';
+
   _disciplines = [
     {
       title: 'Architecture & Interior Design',
       tagline: 'Bespoke spaces that maximise property value',
-      body: 'Every FurnishIQ project begins with a rigorous discovery of your brief, your brand, and the behaviours of the people who will inhabit the space. Our design team translates that understanding into bespoke spatial concepts — developing layouts, material specifications, and lighting strategies that balance aesthetic ambition with practical performance. Full photoreal 3D renders are produced for client approval before construction begins, ensuring the final environment is built exactly as envisioned, with no surprises and no compromises.'
+      body: 'Every FurnishIQ project begins with a rigorous discovery of your brief, your brand, and the behaviours of the people who will inhabit the space. Our design team translates that understanding into bespoke spatial concepts — developing layouts, material specifications, and lighting strategies that balance aesthetic ambition with practical performance. Full photoreal 3D renders are produced for client approval before construction begins, ensuring the final environment is built exactly as envisioned, with no surprises and no compromises.',
+      image: 'https://images.unsplash.com/photo-1615874959474-d609969a20ed?auto=format&fit=crop&w=1920&q=80'
     },
     {
       title: 'Fit-Out & Turnkey Solutions',
       tagline: 'Raw shells transformed into masterpieces',
-      body: 'FurnishIQ takes complete responsibility for the build — from initial partitioning, flooring, and ceilings through to bespoke joinery, specialist finishes, and final handover. Because our fit-out team operates alongside our designers and engineers under one roof, coordination is resolved in the model rather than on-site, protecting both programme and budget. Every project concludes with a structured snagging process and a defined aftercare period, so the space you receive is complete, compliant, and ready for immediate occupation.'
+      body: 'FurnishIQ takes complete responsibility for the build — from initial partitioning, flooring, and ceilings through to bespoke joinery, specialist finishes, and final handover. Because our fit-out team operates alongside our designers and engineers under one roof, coordination is resolved in the model rather than on-site, protecting both programme and budget. Every project concludes with a structured snagging process and a defined aftercare period, so the space you receive is complete, compliant, and ready for immediate occupation.',
+      image: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1920&q=80'
     },
     {
       title: 'Engineering & MEP',
       tagline: 'The precision backbone of Mechanical, Electrical & Plumbing systems',
-      body: 'Our Mechanical, Electrical, and Plumbing engineering is delivered by the same integrated team responsible for your design and fit-out — not an external subcontractor working from a separate drawing set. This in-house coordination eliminates clashes before they reach the site and ensures that every electrical system, HVAC installation, plumbing network, fire-fighting provision, and low-current infrastructure is designed and installed as a coherent whole. All systems are tested, commissioned, and fully documented to Saudi and international compliance standards prior to handover.'
+      body: 'Our Mechanical, Electrical, and Plumbing engineering is delivered by the same integrated team responsible for your design and fit-out — not an external subcontractor working from a separate drawing set. This in-house coordination eliminates clashes before they reach the site and ensures that every electrical system, HVAC installation, plumbing network, fire-fighting provision, and low-current infrastructure is designed and installed as a coherent whole. All systems are tested, commissioned, and fully documented to Saudi and international compliance standards prior to handover.',
+      image: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1920&q=80'
     },
     {
       title: 'Furniture Procurement',
       tagline: 'Pieces strategically sourced to align with your scale, budget, and aesthetic',
-      body: 'Furniture selections at FurnishIQ are developed in parallel with spatial planning, not after it — ensuring every piece is aligned with the design intent, the end-user requirement, and the project budget from the outset. We source across the full market, from bespoke custom joinery to internationally procured FF&E, and manage the entire process in-house: purchase orders, delivery scheduling, quality inspection, warehousing, and installation. The result is a furnished environment where every piece belongs — proportionally, materially, and functionally — to the space it occupies.'
+      body: 'Furniture selections at FurnishIQ are developed in parallel with spatial planning, not after it — ensuring every piece is aligned with the design intent, the end-user requirement, and the project budget from the outset. We source across the full market, from bespoke custom joinery to internationally procured FF&E, and manage the entire process in-house: purchase orders, delivery scheduling, quality inspection, warehousing, and installation. The result is a furnished environment where every piece belongs — proportionally, materially, and functionally — to the space it occupies.',
+      image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1920&q=80'
     }
   ];
 
@@ -479,23 +550,35 @@ class Component extends DCLogic {
       showDiscipline: active >= 0,
       activeTitle: disc ? disc.title : '',
       activeBody:  disc ? disc.body  : '',
+      activeImage: disc ? disc.image : this._overviewImage,
       leftOpacity: this.state.leftOpacity,
-      disciplines: this._disciplines.map((d, i) => ({
-        title:        d.title,
-        tagline:      d.tagline,
-        bg:           i === active ? '#F5F2ED' : 'transparent',
-        titleColor:   i === active ? '#8B6B4A' : '#1F1F1F',
-        activeBorder: i === active ? '3px solid #8B6B4A' : '3px solid transparent',
-        onClick: () => {
-          if (i === this.state.activeDiscipline) return;
-          this.setState({ leftOpacity: 0 });
-          setTimeout(() => this.setState({ activeDiscipline: i, leftOpacity: 1 }), 230);
+      bgOpacity:   this.state.leftOpacity * 0.4,
+      disciplines: [
+        {
+          title:      'Overview',
+          tagline:    'Integrated Expertise. One Point of Accountability.',
+          titleColor: active === -1 ? '#1F1F1F' : '#B8A08C',
+          borderTop:  'none',
+          onClick: () => {
+            if (this.state.activeDiscipline === -1) return;
+            this.setState({ leftOpacity: 0 });
+            setTimeout(() => this.setState({ activeDiscipline: -1, leftOpacity: 1 }), 230);
+          }
         },
-        onMouseEnter: (e) => { if (i !== this.state.activeDiscipline) e.currentTarget.style.background = '#F5F2ED'; },
-        onMouseLeave: (e) => { if (i !== this.state.activeDiscipline) e.currentTarget.style.background = 'transparent'; }
-      })),
-      ctaMouseEnter: (e) => { e.currentTarget.style.background = '#3A2D25'; e.currentTarget.style.color = '#D6C2A8'; },
-      ctaMouseLeave: (e) => { e.currentTarget.style.background = '#D6C2A8'; e.currentTarget.style.color = '#3A2D25'; },
+        ...this._disciplines.map((d, i) => ({
+          title:      d.title,
+          tagline:    d.tagline,
+          titleColor: i === active ? '#1F1F1F' : '#B8A08C',
+          borderTop:  '1px solid #D6C2A8',
+          onClick: () => {
+            if (i === this.state.activeDiscipline) return;
+            this.setState({ leftOpacity: 0 });
+            setTimeout(() => this.setState({ activeDiscipline: i, leftOpacity: 1 }), 230);
+          }
+        }))
+      ],
+      ctaMouseEnter: (e) => { e.currentTarget.style.background = '#D6C2A8'; e.currentTarget.style.color = '#3A2D25'; },
+      ctaMouseLeave: (e) => { e.currentTarget.style.background = '#3A2D25'; e.currentTarget.style.color = '#D6C2A8'; },
       newsletterStatus: this.state.newsletterStatus,
       onNewsletterChange: (e) => this.setState({ newsletterEmail: e.target.value }),
       onNewsletterSubmit: () => {
@@ -511,6 +594,7 @@ class Component extends DCLogic {
 
     // ── NAV SCROLL ──────────────────────────────────────────────────────────
     const nav    = document.getElementById('fiq-nav');
+    if (window.FIQMobileNav) window.FIQMobileNav(nav);
     const logoW  = document.getElementById('fiq-logo-w');
     const logoD  = document.getElementById('fiq-logo-d');
     const navLinks = document.querySelectorAll('[data-nav-link]');
@@ -547,6 +631,25 @@ class Component extends DCLogic {
         navCta.style.color = '#D6C2A8';
       });
       navCta.addEventListener('mouseleave', () => { navCta.style.background = 'transparent'; syncNav(); });
+    }
+
+    // ── HERO ENTRANCE ────────────────────────────────────────────────────────
+    const hero = document.querySelector('[data-about-hero]');
+    if (hero) {
+      const heroEyebrow = hero.querySelector('[data-hero-eyebrow]');
+      const heroEyebrowLine = hero.querySelector('[data-hero-eyebrow-line]');
+      const heroWords = hero.querySelectorAll('[data-hero-word]');
+      if (reduced) {
+        if (heroEyebrow) heroEyebrow.style.opacity = '1';
+        if (heroEyebrowLine) heroEyebrowLine.style.width = '32px';
+        heroWords.forEach(w => { w.style.transform = 'translateY(0)'; });
+      } else {
+        setTimeout(() => { if (heroEyebrow) heroEyebrow.style.opacity = '1'; }, 100);
+        setTimeout(() => { if (heroEyebrowLine) heroEyebrowLine.style.width = '32px'; }, 180);
+        heroWords.forEach((w, i) => {
+          setTimeout(() => { w.style.transform = 'translateY(0)'; }, 320 + i * 160);
+        });
+      }
     }
 
     // ── SCROLL REVEAL ───────────────────────────────────────────────────────

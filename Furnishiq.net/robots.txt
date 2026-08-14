@@ -11,5 +11,14 @@ Disallow: /services-interior-design.dc.html
 Disallow: /services-fitout.dc.html
 Disallow: /services-mep.dc.html
 Disallow: /services-furniture.dc.html
+Disallow: /about-us
+Disallow: /blog
+Disallow: /portfolio
+Disallow: /project-detail
+Disallow: /single-post
+Disallow: /services-interior-design
+Disallow: /services-fitout
+Disallow: /services-mep
+Disallow: /services-furniture
 
 Sitemap: https://www.furnishiq.net/sitemap.xml

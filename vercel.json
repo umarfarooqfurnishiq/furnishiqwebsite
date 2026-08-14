@@ -8,10 +8,32 @@
     { "source": "/services-interior-design.dc.html", "destination": "/", "permanent": true },
     { "source": "/services-fitout.dc.html", "destination": "/", "permanent": true },
     { "source": "/services-mep.dc.html", "destination": "/", "permanent": true },
-    { "source": "/services-furniture.dc.html", "destination": "/", "permanent": true }
+    { "source": "/services-furniture.dc.html", "destination": "/", "permanent": true },
+
+    { "source": "/about-us", "destination": "/", "permanent": true },
+    { "source": "/blog", "destination": "/", "permanent": true },
+    { "source": "/portfolio", "destination": "/", "permanent": true },
+    { "source": "/project-detail", "destination": "/", "permanent": true },
+    { "source": "/single-post", "destination": "/", "permanent": true },
+    { "source": "/services-interior-design", "destination": "/", "permanent": true },
+    { "source": "/services-fitout", "destination": "/", "permanent": true },
+    { "source": "/services-mep", "destination": "/", "permanent": true },
+    { "source": "/services-furniture", "destination": "/", "permanent": true },
+
+    { "source": "/contact.dc.html", "destination": "/contact", "permanent": true }
   ],
   "rewrites": [
     { "source": "/", "destination": "/Furnishiq.net/home.dc.html" },
+    { "source": "/contact", "destination": "/Furnishiq.net/contact.dc.html" },
+    { "source": "/about-us", "destination": "/Furnishiq.net/about-us.dc.html" },
+    { "source": "/blog", "destination": "/Furnishiq.net/blog.dc.html" },
+    { "source": "/portfolio", "destination": "/Furnishiq.net/portfolio.dc.html" },
+    { "source": "/project-detail", "destination": "/Furnishiq.net/project-detail.dc.html" },
+    { "source": "/single-post", "destination": "/Furnishiq.net/single-post.dc.html" },
+    { "source": "/services-interior-design", "destination": "/Furnishiq.net/services-interior-design.dc.html" },
+    { "source": "/services-fitout", "destination": "/Furnishiq.net/services-fitout.dc.html" },
+    { "source": "/services-mep", "destination": "/Furnishiq.net/services-mep.dc.html" },
+    { "source": "/services-furniture", "destination": "/Furnishiq.net/services-furniture.dc.html" },
     { "source": "/api/:path*", "destination": "/api/:path*" },
     { "source": "/:path*", "destination": "/Furnishiq.net/:path*" }
   ]
