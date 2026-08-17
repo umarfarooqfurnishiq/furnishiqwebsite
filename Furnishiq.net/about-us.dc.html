@@ -79,16 +79,26 @@
       100%{box-shadow:0 0 0 0 rgba(214,194,168,0);}
     }
     .about-disc-tab:hover .about-disc-title { color: #1F1F1F !important; }
-    .journey-card { transition: background 0.35s cubic-bezier(0.25,0.46,0.45,0.94); }
-    .journey-card:hover { background: #3A2D25 !important; }
-    .journey-card .journey-icon  { transition: stroke 0.35s cubic-bezier(0.25,0.46,0.45,0.94); }
-    .journey-card .journey-num   { transition: -webkit-text-stroke-color 0.35s cubic-bezier(0.25,0.46,0.45,0.94); }
-    .journey-card .journey-title { transition: color 0.35s cubic-bezier(0.25,0.46,0.45,0.94); }
-    .journey-card .journey-desc  { transition: color 0.35s cubic-bezier(0.25,0.46,0.45,0.94); }
-    .journey-card:hover .journey-icon  { stroke: #D6C2A8 !important; }
-    .journey-card:hover .journey-num   { -webkit-text-stroke-color: rgba(214,194,168,0.5) !important; }
-    .journey-card:hover .journey-title { color: #FFFFFF !important; }
-    .journey-card:hover .journey-desc  { color: rgba(214,194,168,0.72) !important; }
+    .journey-card {
+      transition: background 0.5s cubic-bezier(0.25,0.46,0.45,0.94),
+                  transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94),
+                  box-shadow 0.5s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+    .journey-card:hover {
+      background: #3A2D25 !important;
+      transform: translateY(-8px);
+      box-shadow: 0 20px 48px rgba(58,45,37,0.24) !important;
+    }
+    .journey-card .journey-icon    { transition: stroke 0.45s cubic-bezier(0.25,0.46,0.45,0.94); }
+    .journey-card .journey-num     { transition: -webkit-text-stroke-color 0.45s cubic-bezier(0.25,0.46,0.45,0.94); }
+    .journey-card .journey-title   { transition: color 0.45s cubic-bezier(0.25,0.46,0.45,0.94); }
+    .journey-card .journey-desc    { transition: color 0.45s cubic-bezier(0.25,0.46,0.45,0.94); }
+    .journey-card .journey-card-bg { opacity: 0; transition: opacity 0.55s cubic-bezier(0.25,0.46,0.45,0.94); }
+    .journey-card:hover .journey-icon    { stroke: #D6C2A8 !important; }
+    .journey-card:hover .journey-num     { -webkit-text-stroke-color: rgba(214,194,168,0.5) !important; }
+    .journey-card:hover .journey-title   { color: #FFFFFF !important; }
+    .journey-card:hover .journey-desc    { color: rgba(214,194,168,0.72) !important; }
+    .journey-card:hover .journey-card-bg { opacity: 0.16 !important; }
 
     @media(max-width:960px){
       .fiq-nav-links { display: none !important; }
@@ -313,61 +323,73 @@
     <div class="journey-cards-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;">
 
       <!-- 01 Discover -->
-      <div class="journey-card" data-reveal style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);background:#FFFFFF;border-radius:20px;padding:clamp(32px,3vw,44px) clamp(26px,2.6vw,32px);box-shadow:0 4px 20px rgba(58,45,37,0.10);display:flex;flex-direction:column;min-height:360px;">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:32px;">
-          <svg class="journey-icon" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#8B6B4A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="10" cy="10" r="7"/>
-            <line x1="20" y1="20" x2="15" y2="15"/>
-          </svg>
-          <span class="journey-num" style="font-family:'Lama Sans',sans-serif;font-size:76px;font-weight:700;line-height:1;color:transparent;-webkit-text-stroke:1.6px rgba(58,45,37,0.4);">01</span>
+      <div class="journey-card" data-reveal style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);position:relative;overflow:hidden;background:#FFFFFF;border-radius:20px;padding:clamp(36px,3.6vw,52px) clamp(30px,3vw,38px);box-shadow:0 4px 20px rgba(58,45,37,0.10);display:flex;flex-direction:column;min-height:400px;">
+        <img class="journey-card-bg" src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=900&q=70" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" loading="lazy" decoding="async">
+        <div style="position:relative;z-index:1;display:flex;flex-direction:column;flex:1;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:44px;">
+            <svg class="journey-icon" width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="#8B6B4A" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="10" cy="10" r="7"/>
+              <line x1="20" y1="20" x2="15" y2="15"/>
+            </svg>
+            <span class="journey-num" style="font-family:'Lama Sans',sans-serif;font-size:76px;font-weight:700;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(58,45,37,0.4);">01</span>
+          </div>
+          <h3 class="journey-title" style="font-family:'Lama Sans',sans-serif;font-size:21px;font-weight:700;color:#1F1F1F;margin-bottom:18px;">Discover</h3>
+          <p class="journey-desc" style="font-family:'Lama Sans',sans-serif;font-size:14px;line-height:1.8;color:#5B4636;">Goal setting, thorough site surveys, and budget alignment to ensure your project is grounded in reality from day one.</p>
         </div>
-        <h3 class="journey-title" style="font-family:'Lama Sans',sans-serif;font-size:21px;font-weight:700;color:#1F1F1F;margin-bottom:14px;">Discover</h3>
-        <p class="journey-desc" style="font-family:'Lama Sans',sans-serif;font-size:14px;line-height:1.8;color:#5B4636;">Goal setting, thorough site surveys, and budget alignment to ensure your project is grounded in reality from day one.</p>
       </div>
 
       <!-- 02 Design -->
-      <div class="journey-card" data-reveal data-reveal-delay="0.08" style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);background:#FFFFFF;border-radius:20px;padding:clamp(32px,3vw,44px) clamp(26px,2.6vw,32px);box-shadow:0 4px 20px rgba(58,45,37,0.10);display:flex;flex-direction:column;min-height:360px;">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:32px;">
-          <svg class="journey-icon" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#8B6B4A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M4 20L7 12L16 3L21 8L12 17L4 20Z"/>
-            <line x1="7" y1="12" x2="10.5" y2="15.5"/>
-          </svg>
-          <span class="journey-num" style="font-family:'Lama Sans',sans-serif;font-size:76px;font-weight:700;line-height:1;color:transparent;-webkit-text-stroke:1.6px rgba(58,45,37,0.4);">02</span>
+      <div class="journey-card" data-reveal data-reveal-delay="0.08" style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);position:relative;overflow:hidden;background:#FFFFFF;border-radius:20px;padding:clamp(36px,3.6vw,52px) clamp(30px,3vw,38px);box-shadow:0 4px 20px rgba(58,45,37,0.10);display:flex;flex-direction:column;min-height:400px;">
+        <img class="journey-card-bg" src="https://images.unsplash.com/photo-1615874959474-d609969a20ed?auto=format&fit=crop&w=900&q=70" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" loading="lazy" decoding="async">
+        <div style="position:relative;z-index:1;display:flex;flex-direction:column;flex:1;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:44px;">
+            <svg class="journey-icon" width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="#8B6B4A" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 20L7 12L16 3L21 8L12 17L4 20Z"/>
+              <line x1="7" y1="12" x2="10.5" y2="15.5"/>
+            </svg>
+            <span class="journey-num" style="font-family:'Lama Sans',sans-serif;font-size:76px;font-weight:700;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(58,45,37,0.4);">02</span>
+          </div>
+          <h3 class="journey-title" style="font-family:'Lama Sans',sans-serif;font-size:21px;font-weight:700;color:#1F1F1F;margin-bottom:18px;">Design</h3>
+          <p class="journey-desc" style="font-family:'Lama Sans',sans-serif;font-size:14px;line-height:1.8;color:#5B4636;">Development of layouts and mood boards, culminating in high-definition 3D visuals required for your final approval.</p>
         </div>
-        <h3 class="journey-title" style="font-family:'Lama Sans',sans-serif;font-size:21px;font-weight:700;color:#1F1F1F;margin-bottom:14px;">Design</h3>
-        <p class="journey-desc" style="font-family:'Lama Sans',sans-serif;font-size:14px;line-height:1.8;color:#5B4636;">Development of layouts and mood boards, culminating in high-definition 3D visuals required for your final approval.</p>
       </div>
 
       <!-- 03 Build -->
-      <div class="journey-card" data-reveal data-reveal-delay="0.16" style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);background:#FFFFFF;border-radius:20px;padding:clamp(32px,3vw,44px) clamp(26px,2.6vw,32px);box-shadow:0 4px 20px rgba(58,45,37,0.10);display:flex;flex-direction:column;min-height:360px;">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:32px;">
-          <svg class="journey-icon" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#8B6B4A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="4" y1="20" x2="4" y2="4"/>
-            <line x1="4" y1="4" x2="20" y2="4"/>
-            <line x1="4" y1="8" x2="14" y2="4"/>
-            <line x1="18" y1="4" x2="18" y2="10"/>
-            <rect x="16" y="10" width="4" height="4"/>
-            <line x1="2" y1="20" x2="10" y2="20"/>
-          </svg>
-          <span class="journey-num" style="font-family:'Lama Sans',sans-serif;font-size:76px;font-weight:700;line-height:1;color:transparent;-webkit-text-stroke:1.6px rgba(58,45,37,0.4);">03</span>
+      <div class="journey-card" data-reveal data-reveal-delay="0.16" style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);position:relative;overflow:hidden;background:#FFFFFF;border-radius:20px;padding:clamp(36px,3.6vw,52px) clamp(30px,3vw,38px);box-shadow:0 4px 20px rgba(58,45,37,0.10);display:flex;flex-direction:column;min-height:400px;">
+        <img class="journey-card-bg" src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=70" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" loading="lazy" decoding="async">
+        <div style="position:relative;z-index:1;display:flex;flex-direction:column;flex:1;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:44px;">
+            <svg class="journey-icon" width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="#8B6B4A" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="4" y1="20" x2="4" y2="4"/>
+              <line x1="4" y1="4" x2="20" y2="4"/>
+              <line x1="4" y1="8" x2="14" y2="4"/>
+              <line x1="18" y1="4" x2="18" y2="10"/>
+              <rect x="16" y="10" width="4" height="4"/>
+              <line x1="2" y1="20" x2="10" y2="20"/>
+            </svg>
+            <span class="journey-num" style="font-family:'Lama Sans',sans-serif;font-size:76px;font-weight:700;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(58,45,37,0.4);">03</span>
+          </div>
+          <h3 class="journey-title" style="font-family:'Lama Sans',sans-serif;font-size:21px;font-weight:700;color:#1F1F1F;margin-bottom:18px;">Build</h3>
+          <p class="journey-desc" style="font-family:'Lama Sans',sans-serif;font-size:14px;line-height:1.8;color:#5B4636;">Our team takes over the site with strict programme certainty, maintaining the highest quality standards and safety protocols throughout construction.</p>
         </div>
-        <h3 class="journey-title" style="font-family:'Lama Sans',sans-serif;font-size:21px;font-weight:700;color:#1F1F1F;margin-bottom:14px;">Build</h3>
-        <p class="journey-desc" style="font-family:'Lama Sans',sans-serif;font-size:14px;line-height:1.8;color:#5B4636;">Our team takes over the site with strict programme certainty, maintaining the highest quality standards and safety protocols throughout construction.</p>
       </div>
 
       <!-- 04 Handover -->
-      <div class="journey-card" data-reveal data-reveal-delay="0.24" style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);background:#FFFFFF;border-radius:20px;padding:clamp(32px,3vw,44px) clamp(26px,2.6vw,32px);box-shadow:0 4px 20px rgba(58,45,37,0.10);display:flex;flex-direction:column;min-height:360px;">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:32px;">
-          <svg class="journey-icon" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#8B6B4A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="7" cy="15" r="4"/>
-            <line x1="10.5" y1="11.5" x2="20" y2="2"/>
-            <line x1="16" y1="6" x2="19" y2="9"/>
-            <line x1="13" y1="9" x2="16" y2="12"/>
-          </svg>
-          <span class="journey-num" style="font-family:'Lama Sans',sans-serif;font-size:76px;font-weight:700;line-height:1;color:transparent;-webkit-text-stroke:1.6px rgba(58,45,37,0.4);">04</span>
+      <div class="journey-card" data-reveal data-reveal-delay="0.24" style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);position:relative;overflow:hidden;background:#FFFFFF;border-radius:20px;padding:clamp(36px,3.6vw,52px) clamp(30px,3vw,38px);box-shadow:0 4px 20px rgba(58,45,37,0.10);display:flex;flex-direction:column;min-height:400px;">
+        <img class="journey-card-bg" src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=900&q=70" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;z-index:0;" loading="lazy" decoding="async">
+        <div style="position:relative;z-index:1;display:flex;flex-direction:column;flex:1;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:44px;">
+            <svg class="journey-icon" width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="#8B6B4A" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="7" cy="15" r="4"/>
+              <line x1="10.5" y1="11.5" x2="20" y2="2"/>
+              <line x1="16" y1="6" x2="19" y2="9"/>
+              <line x1="13" y1="9" x2="16" y2="12"/>
+            </svg>
+            <span class="journey-num" style="font-family:'Lama Sans',sans-serif;font-size:76px;font-weight:700;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(58,45,37,0.4);">04</span>
+          </div>
+          <h3 class="journey-title" style="font-family:'Lama Sans',sans-serif;font-size:21px;font-weight:700;color:#1F1F1F;margin-bottom:18px;">Handover</h3>
+          <p class="journey-desc" style="font-family:'Lama Sans',sans-serif;font-size:14px;line-height:1.8;color:#5B4636;">A zero-snag completion followed by dedicated aftercare, ensuring your new environment performs perfectly from the first day.</p>
         </div>
-        <h3 class="journey-title" style="font-family:'Lama Sans',sans-serif;font-size:21px;font-weight:700;color:#1F1F1F;margin-bottom:14px;">Handover</h3>
-        <p class="journey-desc" style="font-family:'Lama Sans',sans-serif;font-size:14px;line-height:1.8;color:#5B4636;">A zero-snag completion followed by dedicated aftercare, ensuring your new environment performs perfectly from the first day.</p>
       </div>
 
     </div>
