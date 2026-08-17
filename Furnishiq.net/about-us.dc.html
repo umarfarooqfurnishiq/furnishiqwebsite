@@ -78,7 +78,6 @@
       70%{box-shadow:0 0 0 9px rgba(214,194,168,0);}
       100%{box-shadow:0 0 0 0 rgba(214,194,168,0);}
     }
-    .about-disc-tab:hover .about-disc-title { color: #1F1F1F !important; }
     .journey-card {
       transition: background 0.5s cubic-bezier(0.25,0.46,0.45,0.94),
                   transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94),
@@ -212,50 +211,64 @@
 </section>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ INTEGRATED SERVICES ━━ -->
-<section style="position:relative;background:#FFFFFF;padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px);overflow:hidden;">
-  <!-- Background image, bled to the left edge of the screen, capped at the description column's right edge -->
-  <div style="position:absolute;inset:0;pointer-events:none;">
-    <div style="max-width:1280px;height:100%;margin:0 auto;display:flex;gap:clamp(48px,7vw,104px);">
-      <div style="flex:7;position:relative;">
-        <div style="position:absolute;top:0;bottom:0;right:0;width:100vw;background-image:url('{{ activeImage }}');background-size:cover;background-position:center;opacity:{{ bgOpacity }};transition:opacity 0.3s ease;"></div>
-        <div style="position:absolute;top:0;bottom:0;right:0;width:100vw;background:linear-gradient(100deg,rgba(255,255,255,0.92) 0%,rgba(255,255,255,0.65) 40%,rgba(255,255,255,0.28) 100%);"></div>
+<section style="position:relative;background:#FFFFFF;padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px);">
+  <div style="max-width:1280px;margin:0 auto;">
+
+    <div data-reveal style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);max-width:640px;margin-bottom:clamp(56px,7vw,80px);">
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:24px;">
+        <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
+        <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#8B6B4A;">Our Disciplines</span>
       </div>
-      <div style="flex:5;flex-shrink:0;"></div>
+      <h2 style="font-family:'Lama Sans',sans-serif;font-size:clamp(28px,4.2vw,42px);font-weight:800;letter-spacing:-0.6px;color:#3A2D25;line-height:1.1;">Integrated Expertise. One Point of Accountability.</h2>
     </div>
-  </div>
-  <div style="max-width:1280px;margin:0 auto;position:relative;z-index:1;">
-    <div class="about-services-grid" style="display:flex;gap:clamp(48px,7vw,104px);align-items:flex-start;">
-      <div style="flex:7;padding-right:clamp(24px,3vw,48px);">
-        <div data-reveal style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);">
-          <div style="display:flex;align-items:center;gap:16px;margin-bottom:28px;">
-            <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
-            <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#8B6B4A;">Our Disciplines</span>
+
+    <div class="about-services-grid" style="display:flex;gap:clamp(40px,5vw,72px);align-items:flex-start;">
+
+      <!-- LEFT: pill tab list -->
+      <div style="flex:5;display:flex;flex-direction:column;gap:14px;">
+        <sc-for list="{{ disciplines }}" as="disc" hint-placeholder-count="5">
+          <div onClick="{{ disc.onClick }}" style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:8px 8px 8px 28px;border-radius:999px;cursor:pointer;background:{{ disc.pillBg }};transition:background 0.4s cubic-bezier(0.25,0.46,0.45,0.94);">
+            <span style="font-family:'Lama Sans',sans-serif;font-size:16px;font-weight:600;color:{{ disc.pillText }};transition:color 0.4s cubic-bezier(0.25,0.46,0.45,0.94);">{{ disc.title }}</span>
+            <span style="width:44px;height:44px;border-radius:50%;background:{{ disc.circleBg }};display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background 0.4s cubic-bezier(0.25,0.46,0.45,0.94);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="{{ disc.arrowColor }}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="transition:stroke 0.4s cubic-bezier(0.25,0.46,0.45,0.94);">
+                <line x1="7" y1="17" x2="17" y2="7"/>
+                <polyline points="7 7 17 7 17 17"/>
+              </svg>
+            </span>
           </div>
-          <div style="opacity:{{ leftOpacity }};transition:opacity 0.22s ease;">
-            <sc-if value="{{ showDefault }}" hint-placeholder-val="{{ true }}">
-              <h2 style="font-family:'Lama Sans',sans-serif;font-size:clamp(28px,4.2vw,42px);font-weight:800;letter-spacing:-0.6px;color:#3A2D25;line-height:1.1;margin-bottom:28px;">Integrated Expertise.<br>One Point of Accountability.</h2>
-              <p style="font-family:'Lama Sans',sans-serif;font-size:16px;line-height:1.8;color:#5B4636;margin-bottom:20px;">One of the greatest challenges in construction is the disconnect between designers and contractors. FurnishIQ solves this by providing a comprehensive ecosystem of design and build services under one roof.</p>
-              <p style="font-family:'Lama Sans',sans-serif;font-size:16px;line-height:1.8;color:#5B4636;margin-bottom:36px;">This integrated approach ensures your vision is never lost in translation — from the first sketch to the final handover.</p>
-              <a href="/portfolio" onMouseEnter="{{ ctaMouseEnter }}" onMouseLeave="{{ ctaMouseLeave }}" style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#D6C2A8;background:#3A2D25;padding:14px 32px;text-decoration:none;display:inline-block;transition:background 0.3s,color 0.3s;">Explore Projects</a>
-            </sc-if>
-            <sc-if value="{{ showDiscipline }}" hint-placeholder-val="{{ false }}">
-              <h2 style="font-family:'Lama Sans',sans-serif;font-size:clamp(28px,4.2vw,42px);font-weight:800;letter-spacing:-0.6px;color:#3A2D25;line-height:1.1;margin-bottom:28px;">{{ activeTitle }}</h2>
-              <p style="font-family:'Lama Sans',sans-serif;font-size:16px;line-height:1.8;color:#5B4636;margin-bottom:36px;">{{ activeBody }}</p>
-              <a href="/portfolio" onMouseEnter="{{ ctaMouseEnter }}" onMouseLeave="{{ ctaMouseLeave }}" style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#D6C2A8;background:#3A2D25;padding:14px 32px;text-decoration:none;display:inline-block;transition:background 0.3s,color 0.3s;">Explore Projects</a>
-            </sc-if>
-          </div>
-        </div>
+        </sc-for>
       </div>
-      <div style="flex:5;flex-shrink:0;">
+
+      <!-- RIGHT: image, floating CTA, title + description below -->
+      <div style="flex:7;">
         <div data-reveal data-reveal-delay="0.14" style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);">
-          <sc-for list="{{ disciplines }}" as="disc" hint-placeholder-count="5">
-            <div class="about-disc-tab" onClick="{{ disc.onClick }}" style="border-top:{{ disc.borderTop }};padding:22px 0;cursor:pointer;">
-              <div class="about-disc-title" style="font-family:'Lama Sans',sans-serif;font-size:32px;font-weight:800;letter-spacing:-0.01em;color:{{ disc.titleColor }};margin-bottom:7px;line-height:1.15;transition:color 0.3s cubic-bezier(0.25,0.46,0.45,0.94);">{{ disc.title }}</div>
-              <div style="display:none;font-family:'Lama Sans',sans-serif;font-size:15px;color:#8B6B4A;line-height:1.65;">{{ disc.tagline }}</div>
+          <div style="opacity:{{ leftOpacity }};transition:opacity 0.25s ease;">
+            <div style="position:relative;border-radius:24px;overflow:hidden;aspect-ratio:4/3;">
+              <img src="{{ activeImage }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy" decoding="async">
+              <a href="/portfolio" onMouseEnter="{{ ctaMouseEnter }}" onMouseLeave="{{ ctaMouseLeave }}" style="position:absolute;left:20px;bottom:20px;background:#3A2D25;color:#D6C2A8;padding:8px 8px 8px 22px;border-radius:999px;text-decoration:none;display:inline-flex;align-items:center;gap:14px;transition:background 0.3s,color 0.3s;">
+                <span style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;white-space:nowrap;">Explore Projects</span>
+                <span style="width:32px;height:32px;border-radius:50%;background:#D6C2A8;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3A2D25" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="7" y1="17" x2="17" y2="7"/>
+                    <polyline points="7 7 17 7 17 17"/>
+                  </svg>
+                </span>
+              </a>
             </div>
-          </sc-for>
+            <div style="margin-top:32px;">
+              <sc-if value="{{ showDefault }}" hint-placeholder-val="{{ true }}">
+                <h3 style="font-family:'Lama Sans',sans-serif;font-size:clamp(22px,2.6vw,30px);font-weight:800;letter-spacing:-0.4px;color:#3A2D25;line-height:1.15;margin-bottom:14px;">Integrated Expertise. One Point of Accountability.</h3>
+                <p style="font-family:'Lama Sans',sans-serif;font-size:16px;line-height:1.8;color:#5B4636;">One of the greatest challenges in construction is the disconnect between designers and contractors. FurnishIQ solves this by providing a comprehensive ecosystem of design and build services under one roof — so your vision is never lost in translation, from the first sketch to the final handover.</p>
+              </sc-if>
+              <sc-if value="{{ showDiscipline }}" hint-placeholder-val="{{ false }}">
+                <h3 style="font-family:'Lama Sans',sans-serif;font-size:clamp(22px,2.6vw,30px);font-weight:800;letter-spacing:-0.4px;color:#3A2D25;line-height:1.15;margin-bottom:14px;">{{ activeTitle }}</h3>
+                <p style="font-family:'Lama Sans',sans-serif;font-size:16px;line-height:1.8;color:#5B4636;">{{ activeBody }}</p>
+              </sc-if>
+            </div>
+          </div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -623,8 +636,10 @@ class Component extends DCLogic {
         {
           title:      'Overview',
           tagline:    'Integrated Expertise. One Point of Accountability.',
-          titleColor: active === -1 ? '#1F1F1F' : '#B8A08C',
-          borderTop:  'none',
+          pillBg:     active === -1 ? '#D6C2A8' : '#3A2D25',
+          pillText:   active === -1 ? '#3A2D25' : 'rgba(245,242,237,0.78)',
+          circleBg:   active === -1 ? '#3A2D25' : 'rgba(255,255,255,0.1)',
+          arrowColor: active === -1 ? '#D6C2A8' : 'rgba(245,242,237,0.75)',
           onClick: () => {
             if (this.state.activeDiscipline === -1) return;
             this.setState({ leftOpacity: 0 });
@@ -634,8 +649,10 @@ class Component extends DCLogic {
         ...this._disciplines.map((d, i) => ({
           title:      d.title,
           tagline:    d.tagline,
-          titleColor: i === active ? '#1F1F1F' : '#B8A08C',
-          borderTop:  '1px solid #D6C2A8',
+          pillBg:     i === active ? '#D6C2A8' : '#3A2D25',
+          pillText:   i === active ? '#3A2D25' : 'rgba(245,242,237,0.78)',
+          circleBg:   i === active ? '#3A2D25' : 'rgba(255,255,255,0.1)',
+          arrowColor: i === active ? '#D6C2A8' : 'rgba(245,242,237,0.75)',
           onClick: () => {
             if (i === this.state.activeDiscipline) return;
             this.setState({ leftOpacity: 0 });
