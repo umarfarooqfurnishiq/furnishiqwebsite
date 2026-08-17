@@ -79,8 +79,8 @@
       100%{box-shadow:0 0 0 0 rgba(214,194,168,0);}
     }
     .disc-image {
-      -webkit-mask-image: radial-gradient(circle 30px at 0% 100%, transparent 0, transparent 99%, black 100%);
-      mask-image: radial-gradient(circle 30px at 0% 100%, transparent 0, transparent 99%, black 100%);
+      -webkit-mask-image: radial-gradient(circle 30px at 100% 100%, transparent 0, transparent 99%, black 100%);
+      mask-image: radial-gradient(circle 30px at 100% 100%, transparent 0, transparent 99%, black 100%);
     }
     .journey-card {
       transition: background 0.5s cubic-bezier(0.25,0.46,0.45,0.94),
@@ -221,7 +221,7 @@
     <div class="about-services-grid" style="display:flex;gap:clamp(40px,5vw,72px);align-items:flex-start;">
 
       <!-- LEFT: heading + pill tab list -->
-      <div style="flex:5;display:flex;flex-direction:column;">
+      <div style="flex:5;display:flex;flex-direction:column;position:sticky;top:120px;">
         <div data-reveal style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);margin-bottom:clamp(40px,5vw,56px);">
           <div style="display:flex;align-items:center;gap:16px;margin-bottom:24px;">
             <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
@@ -250,7 +250,7 @@
           <div style="opacity:{{ leftOpacity }};transition:opacity 0.25s ease;">
             <div style="position:relative;">
               <img src="{{ activeImage }}" alt="" class="disc-image" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;border-radius:24px;" loading="lazy" decoding="async">
-              <a href="/portfolio" onMouseEnter="{{ ctaMouseEnter }}" onMouseLeave="{{ ctaMouseLeave }}" style="position:absolute;left:0;bottom:0;transform:translateY(46%);z-index:2;background:#8B6B4A;color:#FFFFFF;padding:8px 8px 8px 22px;border-radius:999px;text-decoration:none;display:inline-flex;align-items:center;gap:14px;box-shadow:0 8px 24px rgba(58,45,37,0.3);transition:background 0.3s,color 0.3s;">
+              <a href="/portfolio" onMouseEnter="{{ ctaMouseEnter }}" onMouseLeave="{{ ctaMouseLeave }}" style="position:absolute;right:0;bottom:0;transform:translateY(46%);z-index:2;background:#8B6B4A;color:#FFFFFF;padding:8px 8px 8px 22px;border-radius:999px;text-decoration:none;display:inline-flex;align-items:center;gap:14px;box-shadow:0 8px 24px rgba(58,45,37,0.3);transition:background 0.3s,color 0.3s;">
                 <span style="font-family:'Lama Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;white-space:nowrap;">Explore Projects</span>
                 <span style="width:34px;height:34px;border-radius:50%;background:#1F1F1F;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
