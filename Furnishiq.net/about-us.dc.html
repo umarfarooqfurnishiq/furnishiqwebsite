@@ -109,6 +109,7 @@
       .journey-cards-grid { grid-template-columns: 1fr 1fr !important; gap: 20px !important; }
       .about-brand-grid   { flex-direction: column !important; }
       .about-services-grid{ flex-direction: column !important; }
+      .about-disc-left    { position: static !important; top: auto !important; }
       .about-pillars-grid { grid-template-columns: 1fr !important; }
       .about-pillar       { border-right: none !important; padding: 36px 0 !important; }
       .about-pillar + .about-pillar { border-top: 1px solid rgba(58,45,37,0.14) !important; }
@@ -217,13 +218,13 @@
     <div class="about-services-grid" style="display:flex;gap:clamp(40px,5vw,72px);align-items:flex-start;">
 
       <!-- LEFT: heading + pill tab list -->
-      <div style="flex:5;display:flex;flex-direction:column;position:sticky;top:120px;">
+      <div class="about-disc-left" style="flex:5;display:flex;flex-direction:column;position:sticky;top:120px;">
         <div data-reveal style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);margin-bottom:clamp(40px,5vw,56px);">
           <div style="display:flex;align-items:center;gap:16px;margin-bottom:24px;">
             <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
             <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#8B6B4A;">Our Disciplines</span>
           </div>
-          <h2 style="font-family:'Lama Sans',sans-serif;font-size:clamp(28px,4.2vw,42px);font-weight:500;letter-spacing:-0.6px;color:#3A2D25;line-height:1.1;">Integrated Expertise. One Point of Accountability.</h2>
+          <h2 style="font-family:'Lama Sans',sans-serif;font-size:clamp(28px,4.2vw,42px);font-weight:500;letter-spacing:-0.6px;color:#3A2D25;line-height:1.1;text-wrap:balance;">Integrated Expertise. Total Accountability.</h2>
         </div>
         <div style="display:flex;flex-direction:column;gap:14px;">
         <sc-for list="{{ disciplines }}" as="disc" hint-placeholder-count="5">
@@ -258,11 +259,11 @@
             </div>
             <div style="margin-top:32px;">
               <sc-if value="{{ showDefault }}" hint-placeholder-val="{{ true }}">
-                <h3 style="font-family:'Lama Sans',sans-serif;font-size:clamp(22px,2.6vw,30px);font-weight:500;letter-spacing:-0.4px;color:#3A2D25;line-height:1.15;margin-bottom:14px;">Integrated Expertise. One Point of Accountability.</h3>
+                <h3 style="font-family:'Lama Sans',sans-serif;font-size:clamp(22px,2.6vw,30px);font-weight:500;letter-spacing:-0.4px;color:#3A2D25;line-height:1.15;margin-bottom:14px;text-wrap:balance;">Integrated Expertise. Total Accountability.</h3>
                 <p style="font-family:'Lama Sans',sans-serif;font-size:16px;line-height:1.8;color:#5B4636;">One of the greatest challenges in construction is the disconnect between designers and contractors. FurnishIQ solves this by providing a comprehensive ecosystem of design and build services under one roof — so your vision is never lost in translation, from the first sketch to the final handover.</p>
               </sc-if>
               <sc-if value="{{ showDiscipline }}" hint-placeholder-val="{{ false }}">
-                <h3 style="font-family:'Lama Sans',sans-serif;font-size:clamp(22px,2.6vw,30px);font-weight:500;letter-spacing:-0.4px;color:#3A2D25;line-height:1.15;margin-bottom:14px;">{{ activeTitle }}</h3>
+                <h3 style="font-family:'Lama Sans',sans-serif;font-size:clamp(22px,2.6vw,30px);font-weight:500;letter-spacing:-0.4px;color:#3A2D25;line-height:1.15;margin-bottom:14px;text-wrap:balance;">{{ activeTitle }}</h3>
                 <p style="font-family:'Lama Sans',sans-serif;font-size:16px;line-height:1.8;color:#5B4636;">{{ activeBody }}</p>
               </sc-if>
             </div>
@@ -636,7 +637,7 @@ class Component extends DCLogic {
       disciplines: [
         {
           title:      'Overview',
-          tagline:    'Integrated Expertise. One Point of Accountability.',
+          tagline:    'Integrated Expertise. Total Accountability.',
           pillBg:     active === -1 ? '#D6C2A8' : '#3A2D25',
           pillText:   active === -1 ? '#3A2D25' : 'rgba(245,242,237,0.78)',
           circleBg:   active === -1 ? '#3A2D25' : 'rgba(255,255,255,0.1)',
