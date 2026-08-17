@@ -41,16 +41,13 @@
       100%{box-shadow:0 0 0 0 rgba(214,194,168,0);}
     }
     .about-disc-tab:hover .about-disc-title { color: #1F1F1F !important; }
-    .journey-desktop { display: block; }
-    .journey-mobile  { display: none; }
 
     @media(max-width:960px){
       .fiq-nav-links { display: none !important; }
       .fiq-nav-cta   { display: none !important; }
       .fiq-hero-grid { grid-template-columns: 1fr !important; }
       .fiq-hero-side { border-left: none !important; border-top: 1px solid rgba(214,194,168,0.14) !important; padding-left: 0 !important; padding-top: 36px !important; margin-top: 44px !important; }
-      .journey-desktop { display: none !important; }
-      .journey-mobile  { display: block !important; }
+      .journey-cards-grid { grid-template-columns: 1fr 1fr !important; gap: 20px !important; }
       .about-brand-grid   { flex-direction: column !important; }
       .about-services-grid{ flex-direction: column !important; }
       .about-pillars-grid { grid-template-columns: 1fr !important; }
@@ -68,9 +65,10 @@
       .fiq-footer-brand   { grid-column: 1 / -1 !important; }
     }
     @media(max-width:600px){
-      .about-why-grid  { grid-template-columns: 1fr !important; }
-      .a2-values-grid  { grid-template-columns: 1fr !important; }
-      .fiq-footer-grid { grid-template-columns: 1fr !important; }
+      .about-why-grid     { grid-template-columns: 1fr !important; }
+      .a2-values-grid     { grid-template-columns: 1fr !important; }
+      .fiq-footer-grid    { grid-template-columns: 1fr !important; }
+      .journey-cards-grid { grid-template-columns: 1fr !important; }
     }
   </style>
 </helmet>
@@ -309,121 +307,91 @@
 </section>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ FOUR-STEP PROCESS ━ -->
-<section id="journey-section" style="position:relative;background:#F5F2ED;">
+<section id="journey-section" style="position:relative;background:#F5F2ED;padding-bottom:clamp(80px,10vw,128px);">
 
-  <!-- Desktop: scroll-pinned step reveal, heading pinned inside with the photos -->
-  <div class="journey-desktop">
-    <div id="journey-scroll-wrap" style="position:relative;height:400vh;">
-      <div id="journey-sticky-panel" style="position:sticky;top:0;height:100vh;overflow:hidden;background:#F5F2ED;">
-
-        <div class="journey-step-panel" data-step-index="0" style="position:absolute;inset:0;opacity:1;transition:opacity 0.7s cubic-bezier(0.25,0.46,0.45,0.94);">
-          <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1920&q=80" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(0.55) brightness(0.88) sepia(0.06);" loading="lazy" decoding="async">
-          <div style="position:absolute;inset:0;background:linear-gradient(90deg,#FFFFFF 0%,rgba(255,255,255,0) 100%);"></div>
-          <div style="position:relative;z-index:1;height:100%;display:flex;align-items:center;">
-            <div style="max-width:1280px;margin:0 auto;width:100%;padding:0 clamp(24px,5vw,80px);">
-              <div style="max-width:600px;">
-                <div style="font-family:'Lama Sans',sans-serif;font-size:clamp(70px,9vw,130px);font-weight:500;color:rgba(58,45,37,0.18);line-height:1;margin-bottom:8px;letter-spacing:-0.02em;">01</div>
-                <h3 style="font-family:'Lama Sans',sans-serif;font-size:clamp(30px,3.5vw,52px);font-weight:500;color:#1F1F1F;letter-spacing:-0.01em;margin-bottom:20px;">Discover</h3>
-                <p style="font-family:'Lama Sans',sans-serif;font-size:15px;line-height:1.85;color:#5B4636;max-width:440px;">Goal setting, thorough site surveys, and budget alignment to ensure your project is grounded in reality from day one.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="journey-step-panel" data-step-index="1" style="position:absolute;inset:0;opacity:0;transition:opacity 0.7s cubic-bezier(0.25,0.46,0.45,0.94);">
-          <img src="https://images.unsplash.com/photo-1615874959474-d609969a20ed?auto=format&fit=crop&w=1920&q=80" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(0.55) brightness(0.88) sepia(0.06);" loading="lazy" decoding="async">
-          <div style="position:absolute;inset:0;background:linear-gradient(90deg,#FFFFFF 0%,rgba(255,255,255,0) 100%);"></div>
-          <div style="position:relative;z-index:1;height:100%;display:flex;align-items:center;">
-            <div style="max-width:1280px;margin:0 auto;width:100%;padding:0 clamp(24px,5vw,80px);">
-              <div style="max-width:600px;">
-                <div style="font-family:'Lama Sans',sans-serif;font-size:clamp(70px,9vw,130px);font-weight:500;color:rgba(58,45,37,0.18);line-height:1;margin-bottom:8px;letter-spacing:-0.02em;">02</div>
-                <h3 style="font-family:'Lama Sans',sans-serif;font-size:clamp(30px,3.5vw,52px);font-weight:500;color:#1F1F1F;letter-spacing:-0.01em;margin-bottom:20px;">Design</h3>
-                <p style="font-family:'Lama Sans',sans-serif;font-size:15px;line-height:1.85;color:#5B4636;max-width:440px;">Development of layouts and mood boards, culminating in high-definition 3D visuals required for your final approval.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="journey-step-panel" data-step-index="2" style="position:absolute;inset:0;opacity:0;transition:opacity 0.7s cubic-bezier(0.25,0.46,0.45,0.94);">
-          <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1920&q=80" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(0.55) brightness(0.88) sepia(0.06);" loading="lazy" decoding="async">
-          <div style="position:absolute;inset:0;background:linear-gradient(90deg,#FFFFFF 0%,rgba(255,255,255,0) 100%);"></div>
-          <div style="position:relative;z-index:1;height:100%;display:flex;align-items:center;">
-            <div style="max-width:1280px;margin:0 auto;width:100%;padding:0 clamp(24px,5vw,80px);">
-              <div style="max-width:600px;">
-                <div style="font-family:'Lama Sans',sans-serif;font-size:clamp(70px,9vw,130px);font-weight:500;color:rgba(58,45,37,0.18);line-height:1;margin-bottom:8px;letter-spacing:-0.02em;">03</div>
-                <h3 style="font-family:'Lama Sans',sans-serif;font-size:clamp(30px,3.5vw,52px);font-weight:500;color:#1F1F1F;letter-spacing:-0.01em;margin-bottom:20px;">Build</h3>
-                <p style="font-family:'Lama Sans',sans-serif;font-size:15px;line-height:1.85;color:#5B4636;max-width:440px;">Our team takes over the site with strict programme certainty, maintaining the highest quality standards and safety protocols throughout construction.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="journey-step-panel" data-step-index="3" style="position:absolute;inset:0;opacity:0;transition:opacity 0.7s cubic-bezier(0.25,0.46,0.45,0.94);">
-          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;filter:saturate(0.55) brightness(0.88) sepia(0.06);" loading="lazy" decoding="async">
-          <div style="position:absolute;inset:0;background:linear-gradient(90deg,#FFFFFF 0%,rgba(255,255,255,0) 100%);"></div>
-          <div style="position:relative;z-index:1;height:100%;display:flex;align-items:center;">
-            <div style="max-width:1280px;margin:0 auto;width:100%;padding:0 clamp(24px,5vw,80px);">
-              <div style="max-width:600px;">
-                <div style="font-family:'Lama Sans',sans-serif;font-size:clamp(70px,9vw,130px);font-weight:500;color:rgba(58,45,37,0.18);line-height:1;margin-bottom:8px;letter-spacing:-0.02em;">04</div>
-                <h3 style="font-family:'Lama Sans',sans-serif;font-size:clamp(30px,3.5vw,52px);font-weight:500;color:#1F1F1F;letter-spacing:-0.01em;margin-bottom:20px;">Handover</h3>
-                <p style="font-family:'Lama Sans',sans-serif;font-size:15px;line-height:1.85;color:#5B4636;max-width:440px;">A zero-snag completion followed by dedicated aftercare, ensuring your new environment performs perfectly from the first day.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Heading, pinned inside the same panel as the photos -->
-        <div style="position:absolute;top:0;left:0;right:0;z-index:2;text-align:center;padding:clamp(44px,6vw,68px) clamp(24px,5vw,80px) 0;">
-          <div style="display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:16px;">
-            <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
-            <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#8B6B4A;">Our Methodology</span>
-            <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
-          </div>
-          <h2 style="font-family:'Lama Sans',sans-serif;font-size:clamp(26px,3.2vw,44px);font-weight:500;color:#3A2D25;line-height:1.1;">A Transparent Journey</h2>
-        </div>
-
-        <div style="position:absolute;bottom:clamp(28px,4vw,48px);left:50%;transform:translateX(-50%);z-index:3;display:flex;align-items:center;gap:14px;background:rgba(255,255,255,0.85);padding:10px 18px;box-shadow:0 2px 8px rgba(58,45,37,0.08);">
-          <span class="journey-dot" data-dot-index="0" style="width:9px;height:9px;border-radius:50%;background:#3A2D25;transition:background 0.35s cubic-bezier(0.25,0.46,0.45,0.94);"></span>
-          <span class="journey-dot" data-dot-index="1" style="width:9px;height:9px;border-radius:50%;background:rgba(58,45,37,0.28);transition:background 0.35s cubic-bezier(0.25,0.46,0.45,0.94);"></span>
-          <span class="journey-dot" data-dot-index="2" style="width:9px;height:9px;border-radius:50%;background:rgba(58,45,37,0.28);transition:background 0.35s cubic-bezier(0.25,0.46,0.45,0.94);"></span>
-          <span class="journey-dot" data-dot-index="3" style="width:9px;height:9px;border-radius:50%;background:rgba(58,45,37,0.28);transition:background 0.35s cubic-bezier(0.25,0.46,0.45,0.94);"></span>
-        </div>
-
-      </div>
-    </div>
+  <!-- Ruler strip -->
+  <div style="width:100%;line-height:0;overflow:hidden;">
+    <svg width="100%" height="44" preserveAspectRatio="none" style="display:block;">
+      <defs>
+        <pattern id="fiq-ruler-ticks-2" width="16" height="44" patternUnits="userSpaceOnUse">
+          <line x1="0" y1="30" x2="0" y2="44" stroke="rgba(58,45,37,0.32)" stroke-width="1"/>
+          <line x1="8" y1="37" x2="8" y2="44" stroke="rgba(58,45,37,0.18)" stroke-width="1"/>
+        </pattern>
+      </defs>
+      <rect width="100%" height="44" fill="url(#fiq-ruler-ticks-2)"/>
+    </svg>
   </div>
 
-  <!-- Mobile / reduced-motion fallback: static stacked list -->
-  <div class="journey-mobile" style="padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px) clamp(64px,8vw,96px);">
+  <div style="max-width:1280px;margin:0 auto;padding:clamp(56px,7vw,88px) clamp(24px,5vw,80px) 0;">
     <div style="text-align:center;margin-bottom:clamp(48px,6vw,72px);">
-      <div style="display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:16px;">
+      <div data-reveal style="opacity:0;transition:opacity 0.7s;display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:18px;">
         <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
         <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#8B6B4A;">Our Methodology</span>
         <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
       </div>
-      <h2 style="font-family:'Lama Sans',sans-serif;font-size:clamp(26px,3.2vw,44px);font-weight:500;color:#3A2D25;line-height:1.1;">A Transparent Journey</h2>
+      <h2 data-reveal data-reveal-delay="0.1" style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Lama Sans',sans-serif;font-size:clamp(32px,4.5vw,56px);font-weight:800;letter-spacing:-0.01em;color:#3A2D25;line-height:1.1;">A Transparent Journey</h2>
     </div>
-    <div class="about-process-grid" style="display:grid;grid-template-columns:1fr;gap:40px;">
-      <div class="about-pstep">
-        <div style="font-family:'Lama Sans',sans-serif;font-size:clamp(56px,6.5vw,88px);font-weight:500;color:rgba(58,45,37,0.18);line-height:1;margin-bottom:20px;letter-spacing:-0.02em;">01</div>
-        <h4 style="font-family:'Lama Sans',sans-serif;font-size:12px;font-weight:500;color:#1F1F1F;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:14px;">Discover</h4>
-        <p style="font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.8;color:#5B4636;">Goal setting, thorough site surveys, and budget alignment to ensure your project is grounded in reality from day one.</p>
+
+    <div class="journey-cards-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;">
+
+      <!-- 01 Discover -->
+      <div data-reveal style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);background:#FFFFFF;padding:clamp(28px,2.6vw,36px) clamp(22px,2.2vw,28px);box-shadow:0 4px 20px rgba(58,45,37,0.10);display:flex;flex-direction:column;">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:28px;">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#8B6B4A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="10" cy="10" r="7"/>
+            <line x1="20" y1="20" x2="15" y2="15"/>
+          </svg>
+          <span style="font-family:'Lama Sans',sans-serif;font-size:42px;font-weight:700;line-height:1;color:transparent;-webkit-text-stroke:1.3px rgba(58,45,37,0.4);">01</span>
+        </div>
+        <h3 style="font-family:'Lama Sans',sans-serif;font-size:19px;font-weight:700;color:#1F1F1F;margin-bottom:12px;">Discover</h3>
+        <p style="font-family:'Lama Sans',sans-serif;font-size:13.5px;line-height:1.75;color:#5B4636;">Goal setting, thorough site surveys, and budget alignment to ensure your project is grounded in reality from day one.</p>
       </div>
-      <div class="about-pstep">
-        <div style="font-family:'Lama Sans',sans-serif;font-size:clamp(56px,6.5vw,88px);font-weight:500;color:rgba(58,45,37,0.18);line-height:1;margin-bottom:20px;letter-spacing:-0.02em;">02</div>
-        <h4 style="font-family:'Lama Sans',sans-serif;font-size:12px;font-weight:500;color:#1F1F1F;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:14px;">Design</h4>
-        <p style="font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.8;color:#5B4636;">Development of layouts and mood boards, culminating in high-definition 3D visuals required for your final approval.</p>
+
+      <!-- 02 Design -->
+      <div data-reveal data-reveal-delay="0.08" style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);background:#FFFFFF;padding:clamp(28px,2.6vw,36px) clamp(22px,2.2vw,28px);box-shadow:0 4px 20px rgba(58,45,37,0.10);display:flex;flex-direction:column;">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:28px;">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#8B6B4A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 20L7 12L16 3L21 8L12 17L4 20Z"/>
+            <line x1="7" y1="12" x2="10.5" y2="15.5"/>
+          </svg>
+          <span style="font-family:'Lama Sans',sans-serif;font-size:42px;font-weight:700;line-height:1;color:transparent;-webkit-text-stroke:1.3px rgba(58,45,37,0.4);">02</span>
+        </div>
+        <h3 style="font-family:'Lama Sans',sans-serif;font-size:19px;font-weight:700;color:#1F1F1F;margin-bottom:12px;">Design</h3>
+        <p style="font-family:'Lama Sans',sans-serif;font-size:13.5px;line-height:1.75;color:#5B4636;">Development of layouts and mood boards, culminating in high-definition 3D visuals required for your final approval.</p>
       </div>
-      <div class="about-pstep">
-        <div style="font-family:'Lama Sans',sans-serif;font-size:clamp(56px,6.5vw,88px);font-weight:500;color:rgba(58,45,37,0.18);line-height:1;margin-bottom:20px;letter-spacing:-0.02em;">03</div>
-        <h4 style="font-family:'Lama Sans',sans-serif;font-size:12px;font-weight:500;color:#1F1F1F;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:14px;">Build</h4>
-        <p style="font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.8;color:#5B4636;">Our team takes over the site with strict programme certainty, maintaining the highest quality standards and safety protocols throughout construction.</p>
+
+      <!-- 03 Build (highlighted) -->
+      <div data-reveal data-reveal-delay="0.16" style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);background:#3A2D25;padding:clamp(28px,2.6vw,36px) clamp(22px,2.2vw,28px);box-shadow:0 4px 20px rgba(58,45,37,0.10);display:flex;flex-direction:column;">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:28px;">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#D6C2A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="4" y1="20" x2="4" y2="4"/>
+            <line x1="4" y1="4" x2="20" y2="4"/>
+            <line x1="4" y1="8" x2="14" y2="4"/>
+            <line x1="18" y1="4" x2="18" y2="10"/>
+            <rect x="16" y="10" width="4" height="4"/>
+            <line x1="2" y1="20" x2="10" y2="20"/>
+          </svg>
+          <span style="font-family:'Lama Sans',sans-serif;font-size:42px;font-weight:700;line-height:1;color:transparent;-webkit-text-stroke:1.3px rgba(214,194,168,0.45);">03</span>
+        </div>
+        <h3 style="font-family:'Lama Sans',sans-serif;font-size:19px;font-weight:700;color:#FFFFFF;margin-bottom:12px;">Build</h3>
+        <p style="font-family:'Lama Sans',sans-serif;font-size:13.5px;line-height:1.75;color:rgba(214,194,168,0.72);">Our team takes over the site with strict programme certainty, maintaining the highest quality standards and safety protocols throughout construction.</p>
       </div>
-      <div class="about-pstep">
-        <div style="font-family:'Lama Sans',sans-serif;font-size:clamp(56px,6.5vw,88px);font-weight:500;color:rgba(58,45,37,0.18);line-height:1;margin-bottom:20px;letter-spacing:-0.02em;">04</div>
-        <h4 style="font-family:'Lama Sans',sans-serif;font-size:12px;font-weight:500;color:#1F1F1F;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:14px;">Handover</h4>
-        <p style="font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.8;color:#5B4636;">A zero-snag completion followed by dedicated aftercare, ensuring your new environment performs perfectly from the first day.</p>
+
+      <!-- 04 Handover -->
+      <div data-reveal data-reveal-delay="0.24" style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);background:#FFFFFF;padding:clamp(28px,2.6vw,36px) clamp(22px,2.2vw,28px);box-shadow:0 4px 20px rgba(58,45,37,0.10);display:flex;flex-direction:column;">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:28px;">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#8B6B4A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="7" cy="15" r="4"/>
+            <line x1="10.5" y1="11.5" x2="20" y2="2"/>
+            <line x1="16" y1="6" x2="19" y2="9"/>
+            <line x1="13" y1="9" x2="16" y2="12"/>
+          </svg>
+          <span style="font-family:'Lama Sans',sans-serif;font-size:42px;font-weight:700;line-height:1;color:transparent;-webkit-text-stroke:1.3px rgba(58,45,37,0.4);">04</span>
+        </div>
+        <h3 style="font-family:'Lama Sans',sans-serif;font-size:19px;font-weight:700;color:#1F1F1F;margin-bottom:12px;">Handover</h3>
+        <p style="font-family:'Lama Sans',sans-serif;font-size:13.5px;line-height:1.75;color:#5B4636;">A zero-snag completion followed by dedicated aftercare, ensuring your new environment performs perfectly from the first day.</p>
       </div>
+
     </div>
   </div>
 </section>
@@ -795,36 +763,6 @@ class Component extends DCLogic {
         });
       }, { threshold: 0.08, rootMargin: '0px 0px -24px 0px' });
       document.querySelectorAll('[data-reveal]').forEach(el => obs.observe(el));
-    }
-
-    // ── JOURNEY SCROLL-PIN STEP REVEAL ───────────────────────────────────────
-    const journeyWrap    = document.getElementById('journey-scroll-wrap');
-    const journeyPanels  = document.querySelectorAll('.journey-step-panel');
-    const journeyDots    = document.querySelectorAll('.journey-dot');
-    const journeyDesktop = document.querySelector('.journey-desktop');
-    const journeyMobile  = document.querySelector('.journey-mobile');
-
-    if (reduced) {
-      if (journeyDesktop) journeyDesktop.style.display = 'none';
-      if (journeyMobile)  journeyMobile.style.display  = 'block';
-    } else if (journeyWrap && journeyPanels.length) {
-      let journeyActiveIndex = 0;
-      const updateJourneyScroll = () => {
-        const rect = journeyWrap.getBoundingClientRect();
-        const vh = window.innerHeight;
-        const scrollable = rect.height - vh;
-        if (scrollable <= 0) return;
-        let progress = (-rect.top) / scrollable;
-        progress = Math.max(0, Math.min(0.999, progress));
-        const idx = Math.min(journeyPanels.length - 1, Math.floor(progress * journeyPanels.length));
-        if (idx !== journeyActiveIndex) {
-          journeyActiveIndex = idx;
-          journeyPanels.forEach((p, i) => { p.style.opacity = i === idx ? '1' : '0'; });
-          journeyDots.forEach((d, i) => { d.style.background = i === idx ? '#FFFFFF' : 'rgba(245,242,237,0.35)'; });
-        }
-      };
-      window.addEventListener('scroll', updateJourneyScroll, { passive: true });
-      updateJourneyScroll();
     }
 
     // ── WHY CARD HOVER ──────────────────────────────────────────────────────
