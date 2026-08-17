@@ -41,13 +41,16 @@
       100%{box-shadow:0 0 0 0 rgba(214,194,168,0);}
     }
     .about-disc-tab:hover .about-disc-title { color: #1F1F1F !important; }
+    .journey-desktop { display: block; }
+    .journey-mobile  { display: none; }
 
     @media(max-width:960px){
       .fiq-nav-links { display: none !important; }
       .fiq-nav-cta   { display: none !important; }
       .fiq-hero-grid { grid-template-columns: 1fr !important; }
       .fiq-hero-side { border-left: none !important; border-top: 1px solid rgba(214,194,168,0.14) !important; padding-left: 0 !important; padding-top: 36px !important; margin-top: 44px !important; }
-      #journey-svg-wrap { display: none !important; }
+      .journey-desktop { display: none !important; }
+      .journey-mobile  { display: block !important; }
       .about-brand-grid   { flex-direction: column !important; }
       .about-services-grid{ flex-direction: column !important; }
       .about-pillars-grid { grid-template-columns: 1fr !important; }
@@ -306,63 +309,106 @@
 </section>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ FOUR-STEP PROCESS ━ -->
-<section id="journey-section" style="position:relative;overflow:hidden;background:#3A2D25;padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px);">
-  <!-- Tech / AI neurolink background -->
-  <div style="position:absolute;inset:0;z-index:0;pointer-events:none;">
-    <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&w=1920&q=80" alt="" style="width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(0.15) brightness(0.28) sepia(0.3);" loading="lazy" decoding="async">
-    <div style="position:absolute;inset:0;background:linear-gradient(160deg,rgba(22,12,5,0.82) 0%,rgba(38,24,12,0.70) 50%,rgba(22,12,5,0.80) 100%);"></div>
-  </div>
-  <div style="max-width:1280px;margin:0 auto;position:relative;z-index:1;">
-    <div style="text-align:center;margin-bottom:clamp(56px,7vw,88px);">
+<section id="journey-section" style="position:relative;background:#3A2D25;">
+  <div style="max-width:1280px;margin:0 auto;padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px) clamp(48px,6vw,72px);">
+    <div style="text-align:center;">
       <span data-reveal style="opacity:0;transition:opacity 0.7s;font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:rgba(214,194,168,0.48);display:block;margin-bottom:18px;">Our Methodology</span>
       <h2 data-reveal data-reveal-delay="0.1" style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Lama Sans',sans-serif;font-size:clamp(30px,4vw,60px);font-weight:500;color:#D6C2A8;line-height:1.1;">A Transparent Journey</h2>
     </div>
-    <!-- Journey signal infographic -->
-    <div id="journey-svg-wrap" style="margin-bottom:clamp(28px,3.5vw,44px);overflow:visible;">
-      <svg id="journey-svg" viewBox="0 0 1000 130" preserveAspectRatio="none" style="width:100%;height:clamp(90px,11vw,155px);overflow:visible;display:block;">
-        <line x1="125" y1="12" x2="125" y2="160" stroke="rgba(214,194,168,0.18)" stroke-width="1" stroke-dasharray="3,6"/>
-        <line x1="375" y1="116" x2="375" y2="160" stroke="rgba(214,194,168,0.18)" stroke-width="1" stroke-dasharray="3,6"/>
-        <line x1="625" y1="12" x2="625" y2="160" stroke="rgba(214,194,168,0.18)" stroke-width="1" stroke-dasharray="3,6"/>
-        <line x1="875" y1="116" x2="875" y2="160" stroke="rgba(214,194,168,0.18)" stroke-width="1" stroke-dasharray="3,6"/>
-        <path id="journey-path"
-              d="M 125,8 C 210,8 275,112 375,112 C 475,112 540,8 625,8 C 710,8 780,112 875,112"
-              fill="none" stroke="rgba(214,194,168,0.78)" stroke-width="0.9"/>
-        <g class="journey-dot-group" style="opacity:0;">
-          <circle cx="125" cy="8" r="3" fill="#D4B264"/>
-        </g>
-        <g class="journey-dot-group" style="opacity:0;">
-          <circle cx="375" cy="112" r="3" fill="#D4B264"/>
-        </g>
-        <g class="journey-dot-group" style="opacity:0;">
-          <circle cx="625" cy="8" r="3" fill="#D4B264"/>
-        </g>
-        <g class="journey-dot-group" style="opacity:0;">
-          <circle cx="875" cy="112" r="3" fill="#D4B264"/>
-        </g>
-      </svg>
-    </div>
+  </div>
 
-    <div class="about-process-grid" style="display:grid;grid-template-columns:1fr 1px 1fr 1px 1fr 1px 1fr;align-items:stretch;gap:0;">
-      <div class="about-pstep" data-reveal style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);padding:0 clamp(24px,3.5vw,48px) 0 0;">
-        <div style="font-family:'Lama Sans',sans-serif;font-size:clamp(56px,6.5vw,88px);font-weight:500;color:rgba(214,194,168,0.22);line-height:1;margin-bottom:28px;letter-spacing:-0.02em;">01</div>
+  <!-- Desktop: scroll-pinned step reveal -->
+  <div class="journey-desktop">
+    <div id="journey-scroll-wrap" style="position:relative;height:400vh;">
+      <div id="journey-sticky-panel" style="position:sticky;top:0;height:100vh;overflow:hidden;">
+
+        <div class="journey-step-panel" data-step-index="0" style="position:absolute;inset:0;opacity:1;transition:opacity 0.7s cubic-bezier(0.25,0.46,0.45,0.94);">
+          <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1920&q=80" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(0.3) brightness(0.4) sepia(0.15);" loading="lazy" decoding="async">
+          <div style="position:absolute;inset:0;background:linear-gradient(100deg,rgba(22,12,5,0.9) 0%,rgba(22,12,5,0.6) 48%,rgba(22,12,5,0.78) 100%);"></div>
+          <div style="position:relative;z-index:1;height:100%;display:flex;align-items:center;">
+            <div style="max-width:1280px;margin:0 auto;width:100%;padding:0 clamp(24px,5vw,80px);">
+              <div style="max-width:600px;">
+                <div style="font-family:'Lama Sans',sans-serif;font-size:clamp(70px,9vw,130px);font-weight:500;color:rgba(214,194,168,0.28);line-height:1;margin-bottom:8px;letter-spacing:-0.02em;">01</div>
+                <h3 style="font-family:'Lama Sans',sans-serif;font-size:clamp(30px,3.5vw,52px);font-weight:500;color:#FFFFFF;letter-spacing:-0.01em;margin-bottom:20px;">Discover</h3>
+                <p style="font-family:'Lama Sans',sans-serif;font-size:15px;line-height:1.85;color:rgba(214,194,168,0.75);max-width:440px;">Goal setting, thorough site surveys, and budget alignment to ensure your project is grounded in reality from day one.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="journey-step-panel" data-step-index="1" style="position:absolute;inset:0;opacity:0;transition:opacity 0.7s cubic-bezier(0.25,0.46,0.45,0.94);">
+          <img src="https://images.unsplash.com/photo-1615874959474-d609969a20ed?auto=format&fit=crop&w=1920&q=80" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(0.3) brightness(0.4) sepia(0.15);" loading="lazy" decoding="async">
+          <div style="position:absolute;inset:0;background:linear-gradient(100deg,rgba(22,12,5,0.9) 0%,rgba(22,12,5,0.6) 48%,rgba(22,12,5,0.78) 100%);"></div>
+          <div style="position:relative;z-index:1;height:100%;display:flex;align-items:center;">
+            <div style="max-width:1280px;margin:0 auto;width:100%;padding:0 clamp(24px,5vw,80px);">
+              <div style="max-width:600px;">
+                <div style="font-family:'Lama Sans',sans-serif;font-size:clamp(70px,9vw,130px);font-weight:500;color:rgba(214,194,168,0.28);line-height:1;margin-bottom:8px;letter-spacing:-0.02em;">02</div>
+                <h3 style="font-family:'Lama Sans',sans-serif;font-size:clamp(30px,3.5vw,52px);font-weight:500;color:#FFFFFF;letter-spacing:-0.01em;margin-bottom:20px;">Design</h3>
+                <p style="font-family:'Lama Sans',sans-serif;font-size:15px;line-height:1.85;color:rgba(214,194,168,0.75);max-width:440px;">Development of layouts and mood boards, culminating in high-definition 3D visuals required for your final approval.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="journey-step-panel" data-step-index="2" style="position:absolute;inset:0;opacity:0;transition:opacity 0.7s cubic-bezier(0.25,0.46,0.45,0.94);">
+          <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1920&q=80" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(0.3) brightness(0.4) sepia(0.15);" loading="lazy" decoding="async">
+          <div style="position:absolute;inset:0;background:linear-gradient(100deg,rgba(22,12,5,0.9) 0%,rgba(22,12,5,0.6) 48%,rgba(22,12,5,0.78) 100%);"></div>
+          <div style="position:relative;z-index:1;height:100%;display:flex;align-items:center;">
+            <div style="max-width:1280px;margin:0 auto;width:100%;padding:0 clamp(24px,5vw,80px);">
+              <div style="max-width:600px;">
+                <div style="font-family:'Lama Sans',sans-serif;font-size:clamp(70px,9vw,130px);font-weight:500;color:rgba(214,194,168,0.28);line-height:1;margin-bottom:8px;letter-spacing:-0.02em;">03</div>
+                <h3 style="font-family:'Lama Sans',sans-serif;font-size:clamp(30px,3.5vw,52px);font-weight:500;color:#FFFFFF;letter-spacing:-0.01em;margin-bottom:20px;">Build</h3>
+                <p style="font-family:'Lama Sans',sans-serif;font-size:15px;line-height:1.85;color:rgba(214,194,168,0.75);max-width:440px;">Our team takes over the site with strict programme certainty, maintaining the highest quality standards and safety protocols throughout construction.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="journey-step-panel" data-step-index="3" style="position:absolute;inset:0;opacity:0;transition:opacity 0.7s cubic-bezier(0.25,0.46,0.45,0.94);">
+          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;filter:saturate(0.3) brightness(0.4) sepia(0.15);" loading="lazy" decoding="async">
+          <div style="position:absolute;inset:0;background:linear-gradient(100deg,rgba(22,12,5,0.9) 0%,rgba(22,12,5,0.6) 48%,rgba(22,12,5,0.78) 100%);"></div>
+          <div style="position:relative;z-index:1;height:100%;display:flex;align-items:center;">
+            <div style="max-width:1280px;margin:0 auto;width:100%;padding:0 clamp(24px,5vw,80px);">
+              <div style="max-width:600px;">
+                <div style="font-family:'Lama Sans',sans-serif;font-size:clamp(70px,9vw,130px);font-weight:500;color:rgba(214,194,168,0.28);line-height:1;margin-bottom:8px;letter-spacing:-0.02em;">04</div>
+                <h3 style="font-family:'Lama Sans',sans-serif;font-size:clamp(30px,3.5vw,52px);font-weight:500;color:#FFFFFF;letter-spacing:-0.01em;margin-bottom:20px;">Handover</h3>
+                <p style="font-family:'Lama Sans',sans-serif;font-size:15px;line-height:1.85;color:rgba(214,194,168,0.75);max-width:440px;">A zero-snag completion followed by dedicated aftercare, ensuring your new environment performs perfectly from the first day.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="position:absolute;bottom:clamp(28px,4vw,48px);left:50%;transform:translateX(-50%);z-index:2;display:flex;gap:14px;">
+          <span class="journey-dot" data-dot-index="0" style="width:9px;height:9px;border-radius:50%;background:#FFFFFF;transition:background 0.35s cubic-bezier(0.25,0.46,0.45,0.94);"></span>
+          <span class="journey-dot" data-dot-index="1" style="width:9px;height:9px;border-radius:50%;background:rgba(245,242,237,0.35);transition:background 0.35s cubic-bezier(0.25,0.46,0.45,0.94);"></span>
+          <span class="journey-dot" data-dot-index="2" style="width:9px;height:9px;border-radius:50%;background:rgba(245,242,237,0.35);transition:background 0.35s cubic-bezier(0.25,0.46,0.45,0.94);"></span>
+          <span class="journey-dot" data-dot-index="3" style="width:9px;height:9px;border-radius:50%;background:rgba(245,242,237,0.35);transition:background 0.35s cubic-bezier(0.25,0.46,0.45,0.94);"></span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile / reduced-motion fallback: static stacked list -->
+  <div class="journey-mobile" style="padding:0 clamp(24px,5vw,80px) clamp(64px,8vw,96px);">
+    <div class="about-process-grid" style="display:grid;grid-template-columns:1fr;gap:40px;">
+      <div class="about-pstep">
+        <div style="font-family:'Lama Sans',sans-serif;font-size:clamp(56px,6.5vw,88px);font-weight:500;color:rgba(214,194,168,0.22);line-height:1;margin-bottom:20px;letter-spacing:-0.02em;">01</div>
         <h4 style="font-family:'Lama Sans',sans-serif;font-size:12px;font-weight:500;color:#FFFFFF;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:14px;">Discover</h4>
         <p style="font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.8;color:#B8A08C;">Goal setting, thorough site surveys, and budget alignment to ensure your project is grounded in reality from day one.</p>
       </div>
-      <div class="about-pdiv" style="background:rgba(214,194,168,0.14);"></div>
-      <div class="about-pstep" data-reveal data-reveal-delay="0.1" style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);padding:0 clamp(24px,3.5vw,48px);">
-        <div style="font-family:'Lama Sans',sans-serif;font-size:clamp(56px,6.5vw,88px);font-weight:500;color:rgba(214,194,168,0.22);line-height:1;margin-bottom:28px;letter-spacing:-0.02em;">02</div>
+      <div class="about-pstep">
+        <div style="font-family:'Lama Sans',sans-serif;font-size:clamp(56px,6.5vw,88px);font-weight:500;color:rgba(214,194,168,0.22);line-height:1;margin-bottom:20px;letter-spacing:-0.02em;">02</div>
         <h4 style="font-family:'Lama Sans',sans-serif;font-size:12px;font-weight:500;color:#FFFFFF;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:14px;">Design</h4>
         <p style="font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.8;color:#B8A08C;">Development of layouts and mood boards, culminating in high-definition 3D visuals required for your final approval.</p>
       </div>
-      <div class="about-pdiv" style="background:rgba(214,194,168,0.14);"></div>
-      <div class="about-pstep" data-reveal data-reveal-delay="0.2" style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);padding:0 clamp(24px,3.5vw,48px);">
-        <div style="font-family:'Lama Sans',sans-serif;font-size:clamp(56px,6.5vw,88px);font-weight:500;color:rgba(214,194,168,0.22);line-height:1;margin-bottom:28px;letter-spacing:-0.02em;">03</div>
+      <div class="about-pstep">
+        <div style="font-family:'Lama Sans',sans-serif;font-size:clamp(56px,6.5vw,88px);font-weight:500;color:rgba(214,194,168,0.22);line-height:1;margin-bottom:20px;letter-spacing:-0.02em;">03</div>
         <h4 style="font-family:'Lama Sans',sans-serif;font-size:12px;font-weight:500;color:#FFFFFF;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:14px;">Build</h4>
         <p style="font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.8;color:#B8A08C;">Our team takes over the site with strict programme certainty, maintaining the highest quality standards and safety protocols throughout construction.</p>
       </div>
-      <div class="about-pdiv" style="background:rgba(214,194,168,0.14);"></div>
-      <div class="about-pstep" data-reveal data-reveal-delay="0.3" style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);padding:0 0 0 clamp(24px,3.5vw,48px);">
-        <div style="font-family:'Lama Sans',sans-serif;font-size:clamp(56px,6.5vw,88px);font-weight:500;color:rgba(214,194,168,0.22);line-height:1;margin-bottom:28px;letter-spacing:-0.02em;">04</div>
+      <div class="about-pstep">
+        <div style="font-family:'Lama Sans',sans-serif;font-size:clamp(56px,6.5vw,88px);font-weight:500;color:rgba(214,194,168,0.22);line-height:1;margin-bottom:20px;letter-spacing:-0.02em;">04</div>
         <h4 style="font-family:'Lama Sans',sans-serif;font-size:12px;font-weight:500;color:#FFFFFF;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:14px;">Handover</h4>
         <p style="font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.8;color:#B8A08C;">A zero-snag completion followed by dedicated aftercare, ensuring your new environment performs perfectly from the first day.</p>
       </div>
@@ -739,56 +785,34 @@ class Component extends DCLogic {
       document.querySelectorAll('[data-reveal]').forEach(el => obs.observe(el));
     }
 
-    // ── JOURNEY SVG ANIMATION (scroll-driven) ───────────────────────────────
-    const journeyPath  = document.getElementById('journey-path');
-    const journeyDotGs = document.querySelectorAll('.journey-dot-group');
+    // ── JOURNEY SCROLL-PIN STEP REVEAL ───────────────────────────────────────
+    const journeyWrap    = document.getElementById('journey-scroll-wrap');
+    const journeyPanels  = document.querySelectorAll('.journey-step-panel');
+    const journeyDots    = document.querySelectorAll('.journey-dot');
+    const journeyDesktop = document.querySelector('.journey-desktop');
+    const journeyMobile  = document.querySelector('.journey-mobile');
 
-    if (journeyPath) {
-      const totalLen = journeyPath.getTotalLength();
-      journeyPath.style.strokeDasharray  = totalLen;
-      journeyPath.style.strokeDashoffset = totalLen;
-
-      const dotThresholds = [0.03, 0.34, 0.65, 0.96];
-      const dotRevealed   = [false, false, false, false];
-
-      const resetJourney = () => {
-        journeyPath.style.transition       = 'none';
-        journeyPath.style.strokeDashoffset = totalLen;
-        dotRevealed.fill(false);
-        journeyDotGs.forEach(g => { g.style.transition = 'none'; g.style.opacity = '0'; });
-      };
-
-      const updateJourney = () => {
-        const section = document.getElementById('journey-section');
-        if (!section) return;
-        const rect = section.getBoundingClientRect();
-        const vh   = window.innerHeight;
-        const rawProgress = (vh - rect.top) / (vh * 0.85);
-        const progress    = Math.max(0, Math.min(1, rawProgress));
-
-        journeyPath.style.strokeDashoffset = totalLen * (1 - progress);
-
-        dotThresholds.forEach((threshold, i) => {
-          if (!dotRevealed[i] && progress >= threshold) {
-            dotRevealed[i] = true;
-            const g = journeyDotGs[i];
-            if (g) { g.style.transition = 'opacity 0.55s ease'; g.style.opacity = '1'; }
-          }
-        });
-      };
-
-      if (reduced) {
-        journeyPath.style.strokeDashoffset = '0';
-        journeyDotGs.forEach(g => { g.style.opacity = '1'; });
-      } else {
-        const sectionEl = document.getElementById('journey-section');
-        if (sectionEl) {
-          new IntersectionObserver((entries) => {
-            if (!entries[0].isIntersecting) resetJourney();
-          }, { threshold: 0 }).observe(sectionEl);
+    if (reduced) {
+      if (journeyDesktop) journeyDesktop.style.display = 'none';
+      if (journeyMobile)  journeyMobile.style.display  = 'block';
+    } else if (journeyWrap && journeyPanels.length) {
+      let journeyActiveIndex = 0;
+      const updateJourneyScroll = () => {
+        const rect = journeyWrap.getBoundingClientRect();
+        const vh = window.innerHeight;
+        const scrollable = rect.height - vh;
+        if (scrollable <= 0) return;
+        let progress = (-rect.top) / scrollable;
+        progress = Math.max(0, Math.min(0.999, progress));
+        const idx = Math.min(journeyPanels.length - 1, Math.floor(progress * journeyPanels.length));
+        if (idx !== journeyActiveIndex) {
+          journeyActiveIndex = idx;
+          journeyPanels.forEach((p, i) => { p.style.opacity = i === idx ? '1' : '0'; });
+          journeyDots.forEach((d, i) => { d.style.background = i === idx ? '#FFFFFF' : 'rgba(245,242,237,0.35)'; });
         }
-        window.addEventListener('scroll', updateJourney, { passive: true });
-      }
+      };
+      window.addEventListener('scroll', updateJourneyScroll, { passive: true });
+      updateJourneyScroll();
     }
 
     // ── WHY CARD HOVER ──────────────────────────────────────────────────────
