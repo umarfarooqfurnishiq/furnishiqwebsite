@@ -3,6 +3,7 @@ const { Resend } = require('resend');
 const resend = new Resend(process.env.RESEND_API_KEY);
 const TO_EMAIL = process.env.TO_EMAIL || 'info@furnishiq.net';
 const FROM_EMAIL = process.env.FROM_EMAIL || 'FurnishIQ Website <website@furnishiq.net>';
+const ZAPIER_WEBHOOK_URL = process.env.ZAPIER_WEBHOOK_URL;
 
 function escapeHtml(value) {
   return String(value == null ? '' : value)
@@ -103,9 +104,24 @@ module.exports = async (req, res) => {
       subject,
       html: renderEmail(heading, rows),
     });
-    res.status(200).json({ ok: true });
   } catch (err) {
     console.error('Resend send failed:', err);
     res.status(502).json({ ok: false, error: 'Email send failed' });
+    return;
   }
+
+  // Best-effort CRM sync via Zapier — never fail the request over this.
+  if (ZAPIER_WEBHOOK_URL) {
+    try {
+      await fetch(ZAPIER_WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+    } catch (err) {
+      console.error('Zapier webhook failed:', err);
+    }
+  }
+
+  res.status(200).json({ ok: true });
 };
