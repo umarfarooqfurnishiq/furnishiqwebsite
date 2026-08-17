@@ -108,6 +108,7 @@
       .fiq-hero-side { border-left: none !important; border-top: 1px solid rgba(214,194,168,0.14) !important; padding-left: 0 !important; padding-top: 36px !important; margin-top: 44px !important; }
       .journey-cards-grid { grid-template-columns: 1fr 1fr !important; gap: 20px !important; }
       .about-brand-grid   { flex-direction: column !important; }
+      .about-brand-img2   { margin-top: 0 !important; }
       .about-services-grid{ flex-direction: column !important; }
       .about-disc-left    { position: static !important; top: auto !important; }
       .about-pillars-grid { grid-template-columns: 1fr !important; }
@@ -191,20 +192,38 @@
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ BRAND STATEMENT ━━━ -->
 <section style="background:#F5F2ED;padding:clamp(80px,10vw,120px) clamp(24px,5vw,80px);">
   <div style="max-width:1280px;margin:0 auto;">
-    <div class="about-brand-grid" style="display:flex;gap:clamp(48px,7vw,104px);align-items:flex-start;">
-      <div style="flex:5;flex-shrink:0;">
-        <div data-reveal style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);">
-          <div style="display:flex;align-items:center;gap:16px;margin-bottom:24px;">
-            <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
-            <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#8B6B4A;">Who We Are</span>
-          </div>
-          <h2 style="font-family:'Lama Sans',sans-serif;font-size:clamp(26px,3.2vw,48px);font-weight:500;color:#3A2D25;line-height:1.1;letter-spacing:-0.01em;">Redefining the Design-Build Landscape in Saudi Arabia</h2>
-        </div>
+    <div data-reveal style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);max-width:640px;margin-bottom:clamp(56px,7vw,80px);">
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:24px;">
+        <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
+        <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#8B6B4A;">Who We Are</span>
       </div>
-      <div style="flex:7;">
-        <div data-reveal data-reveal-delay="0.14" style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);">
-          <p style="font-family:'Lama Sans',sans-serif;font-size:16px;line-height:1.8;color:#5B4636;margin-bottom:22px;">At FurnishIQ, we believe a space is more than a physical structure. It is a thoughtful, liveable environment — one that should be as comfortable as it is inspiring. We move beyond conventional design limitations to deliver personalised solutions for homeowners, businesses, and organisations across the Kingdom, fusing creative design with disciplined project delivery.</p>
-          <p style="font-family:'Lama Sans',sans-serif;font-size:16px;line-height:1.8;color:#5B4636;">FurnishIQ is a Saudi-based design-build company specialising in interior design, turnkey fit-out, furniture solutions, and project management. From concept development and engineering to procurement, execution, and handover, our multidisciplinary team delivers seamless project experiences through innovation, quality craftsmanship, and disciplined project management.</p>
+      <h2 style="font-family:'Lama Sans',sans-serif;font-size:clamp(26px,3.2vw,48px);font-weight:500;color:#3A2D25;line-height:1.1;letter-spacing:-0.01em;">Redefining the Design-Build Landscape in Saudi Arabia</h2>
+    </div>
+
+    <div class="about-brand-grid" style="display:flex;gap:clamp(28px,3.5vw,40px);align-items:flex-start;">
+      <div data-reveal data-reveal-delay="0.1" style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);flex:3;">
+        <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=75" alt="" style="width:100%;aspect-ratio:3/4;object-fit:cover;display:block;border-radius:20px;box-shadow:0 4px 20px rgba(58,45,37,0.10);" loading="lazy" decoding="async">
+        <a href="/portfolio" style="margin-top:20px;background:#8B6B4A;color:#FFFFFF;padding:8px 8px 8px 22px;border-radius:999px;text-decoration:none;display:inline-flex;align-items:center;gap:14px;transition:background 0.3s,color 0.3s;">
+          <span style="font-family:'Lama Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;white-space:nowrap;">Learn More</span>
+          <span style="width:34px;height:34px;border-radius:50%;background:#1F1F1F;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="7" y1="17" x2="17" y2="7"/>
+              <polyline points="7 7 17 7 17 17"/>
+            </svg>
+          </span>
+        </a>
+      </div>
+      <div class="about-brand-img2" data-reveal data-reveal-delay="0.18" style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);flex:3;margin-top:clamp(28px,4vw,56px);">
+        <img src="https://images.unsplash.com/photo-1615874959474-d609969a20ed?auto=format&fit=crop&w=900&q=75" alt="" style="width:100%;aspect-ratio:3/4;object-fit:cover;display:block;border-radius:20px;box-shadow:0 4px 20px rgba(58,45,37,0.10);" loading="lazy" decoding="async">
+      </div>
+      <div style="flex:4;">
+        <div data-reveal data-reveal-delay="0.14" style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);margin-bottom:36px;">
+          <h3 style="font-family:'Lama Sans',sans-serif;font-size:19px;font-weight:500;color:#3A2D25;margin-bottom:12px;">Our Vision</h3>
+          <p style="font-family:'Lama Sans',sans-serif;font-size:15px;line-height:1.8;color:rgba(91,70,54,0.55);font-style:italic;">Vision statement pending — copy to be provided.</p>
+        </div>
+        <div data-reveal data-reveal-delay="0.2" style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);">
+          <h3 style="font-family:'Lama Sans',sans-serif;font-size:19px;font-weight:500;color:#3A2D25;margin-bottom:12px;">Our Mission</h3>
+          <p style="font-family:'Lama Sans',sans-serif;font-size:15px;line-height:1.8;color:rgba(91,70,54,0.55);font-style:italic;">Mission statement pending — copy to be provided.</p>
         </div>
       </div>
     </div>
