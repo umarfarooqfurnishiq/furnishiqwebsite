@@ -223,7 +223,7 @@
             <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
             <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#8B6B4A;">Our Disciplines</span>
           </div>
-          <h2 style="font-family:'Lama Sans',sans-serif;font-size:clamp(28px,4.2vw,42px);font-weight:800;letter-spacing:-0.6px;color:#3A2D25;line-height:1.1;">Integrated Expertise. One Point of Accountability.</h2>
+          <h2 style="font-family:'Lama Sans',sans-serif;font-size:clamp(28px,4.2vw,42px);font-weight:500;letter-spacing:-0.6px;color:#3A2D25;line-height:1.1;">Integrated Expertise. One Point of Accountability.</h2>
         </div>
         <div style="display:flex;flex-direction:column;gap:14px;">
         <sc-for list="{{ disciplines }}" as="disc" hint-placeholder-count="5">
@@ -245,7 +245,7 @@
         <div data-reveal data-reveal-delay="0.14" style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);">
           <div style="opacity:{{ leftOpacity }};transition:opacity 0.25s ease;">
             <div style="position:relative;">
-              <img src="{{ activeImage }}" alt="" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;border-radius:24px;" loading="lazy" decoding="async">
+              <img src="{{ activeImage }}" alt="" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;border-radius:24px;box-shadow:0 4px 20px rgba(58,45,37,0.10);" loading="lazy" decoding="async">
               <a href="/portfolio" style="position:absolute;right:24px;bottom:24px;background:#D6C2A8;color:#3A2D25;padding:8px 8px 8px 22px;border-radius:999px;text-decoration:none;display:inline-flex;align-items:center;gap:14px;box-shadow:0 8px 24px rgba(58,45,37,0.3);transition:background 0.3s,color 0.3s;">
                 <span style="font-family:'Lama Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;white-space:nowrap;">Explore Projects</span>
                 <span style="width:34px;height:34px;border-radius:50%;background:#3A2D25;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
@@ -258,11 +258,11 @@
             </div>
             <div style="margin-top:32px;">
               <sc-if value="{{ showDefault }}" hint-placeholder-val="{{ true }}">
-                <h3 style="font-family:'Lama Sans',sans-serif;font-size:clamp(22px,2.6vw,30px);font-weight:800;letter-spacing:-0.4px;color:#3A2D25;line-height:1.15;margin-bottom:14px;">Integrated Expertise. One Point of Accountability.</h3>
+                <h3 style="font-family:'Lama Sans',sans-serif;font-size:clamp(22px,2.6vw,30px);font-weight:500;letter-spacing:-0.4px;color:#3A2D25;line-height:1.15;margin-bottom:14px;">Integrated Expertise. One Point of Accountability.</h3>
                 <p style="font-family:'Lama Sans',sans-serif;font-size:16px;line-height:1.8;color:#5B4636;">One of the greatest challenges in construction is the disconnect between designers and contractors. FurnishIQ solves this by providing a comprehensive ecosystem of design and build services under one roof — so your vision is never lost in translation, from the first sketch to the final handover.</p>
               </sc-if>
               <sc-if value="{{ showDiscipline }}" hint-placeholder-val="{{ false }}">
-                <h3 style="font-family:'Lama Sans',sans-serif;font-size:clamp(22px,2.6vw,30px);font-weight:800;letter-spacing:-0.4px;color:#3A2D25;line-height:1.15;margin-bottom:14px;">{{ activeTitle }}</h3>
+                <h3 style="font-family:'Lama Sans',sans-serif;font-size:clamp(22px,2.6vw,30px);font-weight:500;letter-spacing:-0.4px;color:#3A2D25;line-height:1.15;margin-bottom:14px;">{{ activeTitle }}</h3>
                 <p style="font-family:'Lama Sans',sans-serif;font-size:16px;line-height:1.8;color:#5B4636;">{{ activeBody }}</p>
               </sc-if>
             </div>
@@ -330,7 +330,7 @@
           <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#8B6B4A;">Our Methodology</span>
           <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
         </div>
-        <h2 data-reveal data-reveal-delay="0.1" style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Lama Sans',sans-serif;font-size:clamp(32px,4.5vw,56px);font-weight:800;letter-spacing:-0.01em;color:#3A2D25;line-height:1.1;">A Transparent Journey</h2>
+        <h2 data-reveal data-reveal-delay="0.1" style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Lama Sans',sans-serif;font-size:clamp(32px,4.5vw,56px);font-weight:500;letter-spacing:-0.01em;color:#3A2D25;line-height:1.1;">A Transparent Journey</h2>
       </div>
     </div>
   </div>
@@ -350,7 +350,7 @@
             </svg>
             <span class="journey-num" style="font-family:'Lama Sans',sans-serif;font-size:80px;font-weight:400;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(58,45,37,0.45);">01</span>
           </div>
-          <h3 class="journey-title" style="font-family:'Lama Sans',sans-serif;font-size:28px;font-weight:700;color:#1F1F1F;margin-bottom:18px;">Discover</h3>
+          <h3 class="journey-title" style="font-family:'Lama Sans',sans-serif;font-size:28px;font-weight:500;color:#1F1F1F;margin-bottom:18px;">Discover</h3>
           <p class="journey-desc" style="font-family:'Lama Sans',sans-serif;font-size:14px;line-height:1.8;color:#5B4636;">Goal setting, thorough site surveys, and budget alignment to ensure your project is grounded in reality from day one.</p>
         </div>
       </div>
@@ -372,7 +372,7 @@
             </svg>
             <span class="journey-num" style="font-family:'Lama Sans',sans-serif;font-size:80px;font-weight:400;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(58,45,37,0.45);">02</span>
           </div>
-          <h3 class="journey-title" style="font-family:'Lama Sans',sans-serif;font-size:28px;font-weight:700;color:#1F1F1F;margin-bottom:18px;">Design</h3>
+          <h3 class="journey-title" style="font-family:'Lama Sans',sans-serif;font-size:28px;font-weight:500;color:#1F1F1F;margin-bottom:18px;">Design</h3>
           <p class="journey-desc" style="font-family:'Lama Sans',sans-serif;font-size:14px;line-height:1.8;color:#5B4636;">Development of layouts and mood boards, culminating in high-definition 3D visuals required for your final approval.</p>
         </div>
       </div>
@@ -390,7 +390,7 @@
             </svg>
             <span class="journey-num" style="font-family:'Lama Sans',sans-serif;font-size:80px;font-weight:400;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(58,45,37,0.45);">03</span>
           </div>
-          <h3 class="journey-title" style="font-family:'Lama Sans',sans-serif;font-size:28px;font-weight:700;color:#1F1F1F;margin-bottom:18px;">Build</h3>
+          <h3 class="journey-title" style="font-family:'Lama Sans',sans-serif;font-size:28px;font-weight:500;color:#1F1F1F;margin-bottom:18px;">Build</h3>
           <p class="journey-desc" style="font-family:'Lama Sans',sans-serif;font-size:14px;line-height:1.8;color:#5B4636;">Our team takes over the site with strict programme certainty, maintaining the highest quality standards and safety protocols throughout construction.</p>
         </div>
       </div>
@@ -405,7 +405,7 @@
             </svg>
             <span class="journey-num" style="font-family:'Lama Sans',sans-serif;font-size:80px;font-weight:400;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(58,45,37,0.45);">04</span>
           </div>
-          <h3 class="journey-title" style="font-family:'Lama Sans',sans-serif;font-size:28px;font-weight:700;color:#1F1F1F;margin-bottom:18px;">Handover</h3>
+          <h3 class="journey-title" style="font-family:'Lama Sans',sans-serif;font-size:28px;font-weight:500;color:#1F1F1F;margin-bottom:18px;">Handover</h3>
           <p class="journey-desc" style="font-family:'Lama Sans',sans-serif;font-size:14px;line-height:1.8;color:#5B4636;">A zero-snag completion followed by dedicated aftercare, ensuring your new environment performs perfectly from the first day.</p>
         </div>
       </div>
