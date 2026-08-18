@@ -135,6 +135,7 @@
       .about-pdiv         { display: none !important; }
       .about-pstep        { padding: 0 !important; }
       .about-why-grid     { grid-template-columns: 1fr 1fr !important; }
+      .why-card-cell      { border-right: none !important; border-bottom: 1px solid rgba(58,45,37,0.12) !important; }
       .about-studio-grid  { flex-direction: column !important; }
       .fiq-footer-grid    { grid-template-columns: 1fr 1fr !important; gap: 48px !important; }
       .fiq-footer-brand   { grid-column: 1 / -1 !important; }
@@ -563,47 +564,73 @@
 </section>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ WHY FURNISHIQ ━ -->
-<section style="background:#FFFFFF;padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px);">
-  <div style="max-width:1280px;margin:0 auto;">
-    <div style="margin-bottom:clamp(52px,6vw,80px);">
-      <div data-reveal style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;align-items:center;gap:16px;margin-bottom:20px;">
+<section style="background-color:#F5F2ED;background-image:radial-gradient(rgba(58,45,37,0.10) 1px, transparent 1px);background-size:20px 20px;padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px);">
+  <div style="max-width:1280px;margin:0 auto;text-align:center;">
+
+    <div data-reveal style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);margin-bottom:clamp(40px,5vw,56px);">
+      <div style="display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:20px;">
         <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
         <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#8B6B4A;">Our Advantage</span>
+        <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
       </div>
-      <h2 data-reveal data-reveal-delay="0.1" style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Lama Sans',sans-serif;font-size:clamp(30px,4vw,60px);font-weight:500;color:#3A2D25;line-height:1.1;">Why Choose FurnishIQ?</h2>
+      <h2 style="font-family:'Lama Sans',sans-serif;font-size:clamp(30px,4vw,52px);font-weight:500;color:#3A2D25;line-height:1.15;max-width:720px;margin:0 auto;">Why Choose FurnishIQ</h2>
     </div>
-    <div class="about-why-grid" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:#D6C2A8;">
-      <div data-reveal data-why-card style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);background:#FFFFFF;padding:36px 32px;">
-        <div data-why-bar style="width:36px;height:2px;background:#5B4636;margin-bottom:24px;"></div>
-        <h3 style="font-family:'Lama Sans',sans-serif;font-size:15px;font-weight:500;color:#1F1F1F;margin-bottom:10px;line-height:1.3;">End-to-End Delivery</h3>
-        <p style="font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.8;color:#8B6B4A;">Single point of responsibility from concept to completion — ensuring consistency, efficiency, and full accountability across every phase.</p>
-      </div>
-      <div data-reveal data-reveal-delay="0.08" data-why-card style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);background:#FFFFFF;padding:36px 32px;">
-        <div data-why-bar style="width:36px;height:2px;background:#5B4636;margin-bottom:24px;"></div>
-        <h3 style="font-family:'Lama Sans',sans-serif;font-size:15px;font-weight:500;color:#1F1F1F;margin-bottom:10px;line-height:1.3;">Design &amp; Build Expertise</h3>
-        <p style="font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.8;color:#8B6B4A;">Integrated engineering and execution — creative design, technical engineering, and construction expertise combined under one discipline.</p>
-      </div>
-      <div data-reveal data-reveal-delay="0.16" data-why-card style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);background:#FFFFFF;padding:36px 32px;">
-        <div data-why-bar style="width:36px;height:2px;background:#5B4636;margin-bottom:24px;"></div>
-        <h3 style="font-family:'Lama Sans',sans-serif;font-size:15px;font-weight:500;color:#1F1F1F;margin-bottom:10px;line-height:1.3;">Furniture &amp; FF&amp;E</h3>
-        <p style="font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.8;color:#8B6B4A;">From bespoke joinery to internationally sourced FF&amp;E — tailored furnishing solutions that enhance functionality, comfort, and aesthetic coherence.</p>
-      </div>
-      <div data-reveal data-reveal-delay="0.06" data-why-card style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);background:#FFFFFF;padding:36px 32px;">
-        <div data-why-bar style="width:36px;height:2px;background:#5B4636;margin-bottom:24px;"></div>
-        <h3 style="font-family:'Lama Sans',sans-serif;font-size:15px;font-weight:500;color:#1F1F1F;margin-bottom:10px;line-height:1.3;">Quality Assurance</h3>
-        <p style="font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.8;color:#8B6B4A;">Quality checkpoints at every stage — material inspection, workmanship review, and final walkthrough — catch issues before they reach the client, not after.</p>
-      </div>
-      <div data-reveal data-reveal-delay="0.14" data-why-card style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);background:#FFFFFF;padding:36px 32px;">
-        <div data-why-bar style="width:36px;height:2px;background:#5B4636;margin-bottom:24px;"></div>
-        <h3 style="font-family:'Lama Sans',sans-serif;font-size:15px;font-weight:500;color:#1F1F1F;margin-bottom:10px;line-height:1.3;">Project Management</h3>
-        <p style="font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.8;color:#8B6B4A;">Precision planning and reliable delivery — schedules, budgets, procurement, and coordination managed with full transparency at every milestone.</p>
-      </div>
-      <div data-reveal data-reveal-delay="0.22" data-why-card style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);background:#FFFFFF;padding:36px 32px;">
-        <div data-why-bar style="width:36px;height:2px;background:#5B4636;margin-bottom:24px;"></div>
-        <h3 style="font-family:'Lama Sans',sans-serif;font-size:15px;font-weight:500;color:#1F1F1F;margin-bottom:10px;line-height:1.3;">Nationwide Delivery</h3>
-        <p style="font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.8;color:#8B6B4A;">Serving clients across KSA — consistent quality and reliable service through a strong operational network, wherever your project is located.</p>
+
+    <div data-reveal data-reveal-delay="0.1" style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);background:#FFFFFF;border-radius:24px;box-shadow:0 4px 30px rgba(58,45,37,0.10);">
+      <div class="about-why-grid" style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;">
+
+        <div class="why-card-cell" data-why-card style="padding:clamp(32px,3.5vw,48px) 28px;border-right:1px solid rgba(58,45,37,0.12);">
+          <div style="width:48px;height:48px;border:1.5px solid #8B6B4A;border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 22px;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8B6B4A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="6" y1="20" x2="6" y2="4"/>
+              <path d="M6 4h11l-3 4 3 4H6"/>
+            </svg>
+          </div>
+          <h3 style="font-family:'Lama Sans',sans-serif;font-size:16px;font-weight:700;color:#1F1F1F;margin-bottom:10px;">End-to-End Delivery</h3>
+          <p style="font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.75;color:#8B6B4A;">Single point of responsibility from concept to completion.</p>
+        </div>
+
+        <div class="why-card-cell" data-why-card style="padding:clamp(32px,3.5vw,48px) 28px;border-right:1px solid rgba(58,45,37,0.12);">
+          <div style="width:48px;height:48px;border:1.5px solid #8B6B4A;border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 22px;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8B6B4A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 20L7 12L16 3L21 8L12 17L4 20Z"/>
+              <line x1="7" y1="12" x2="10.5" y2="15.5"/>
+            </svg>
+          </div>
+          <h3 style="font-family:'Lama Sans',sans-serif;font-size:16px;font-weight:700;color:#1F1F1F;margin-bottom:10px;">Design &amp; Build Expertise</h3>
+          <p style="font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.75;color:#8B6B4A;">Creative design and construction expertise combined under one roof.</p>
+        </div>
+
+        <div class="why-card-cell" data-why-card style="padding:clamp(32px,3.5vw,48px) 28px;border-right:1px solid rgba(58,45,37,0.12);">
+          <div style="width:48px;height:48px;border:1.5px solid #8B6B4A;border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 22px;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8B6B4A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3L19 6V11L12 21L5 11V6Z"/>
+              <polyline points="9 11.5 11 13.5 15 9.5"/>
+            </svg>
+          </div>
+          <h3 style="font-family:'Lama Sans',sans-serif;font-size:16px;font-weight:700;color:#1F1F1F;margin-bottom:10px;">Quality Assurance</h3>
+          <p style="font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.75;color:#8B6B4A;">Checkpoints at every stage catch issues before the client ever does.</p>
+        </div>
+
+        <div class="why-card-cell" data-why-card style="padding:clamp(32px,3.5vw,48px) 28px;">
+          <div style="width:48px;height:48px;border:1.5px solid #8B6B4A;border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 22px;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8B6B4A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="5" y="4" width="14" height="17" rx="2"/>
+              <line x1="9" y1="2" x2="9" y2="6"/>
+              <line x1="15" y1="2" x2="15" y2="6"/>
+              <line x1="8" y1="11" x2="16" y2="11"/>
+              <line x1="8" y1="15" x2="13" y2="15"/>
+            </svg>
+          </div>
+          <h3 style="font-family:'Lama Sans',sans-serif;font-size:16px;font-weight:700;color:#1F1F1F;margin-bottom:10px;">Project Management</h3>
+          <p style="font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.75;color:#8B6B4A;">Schedules, budgets, and coordination managed with full transparency.</p>
+        </div>
+
       </div>
     </div>
+
+    <p data-reveal data-reveal-delay="0.18" style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Lama Sans',sans-serif;font-size:15px;line-height:1.8;color:#5B4636;max-width:640px;margin:clamp(36px,4.5vw,52px) auto 0;">By bringing design, engineering, and craftsmanship under one roof, we help clients bring ambitious spaces to life — on time, on budget, and without compromise.</p>
+
   </div>
 </section>
 
