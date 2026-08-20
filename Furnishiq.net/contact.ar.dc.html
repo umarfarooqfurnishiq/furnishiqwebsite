@@ -517,6 +517,16 @@ class Component extends DCLogic {
         e.preventDefault();
         const s = self.state;
         if (s.formHoneypot) return; // bot filled the hidden field — silently drop
+        const missing = [];
+        if (!s.formName.trim()) missing.push('الاسم الكامل');
+        if (!s.selectedService) missing.push('اختيار الخدمة');
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s.formEmail.trim())) missing.push('بريد إلكتروني صحيح');
+        if (!s.formPhone.trim()) missing.push('رقم الهاتف');
+        if (!s.formMessage.trim()) missing.push('تفاصيل مشروعك');
+        if (missing.length) {
+          alert('يرجى إكمال الحقول التالية قبل الإرسال:\n\n' + missing.join('\n'));
+          return;
+        }
         const btn = document.getElementById('id-submit-btn');
         const btnLabel = document.getElementById('id-submit-btn-label');
         if (btn) btn.disabled = true;

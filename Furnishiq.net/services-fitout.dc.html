@@ -712,6 +712,15 @@ class Component extends DCLogic {
         e.preventDefault();
         const s = self.state;
         if (s.formHoneypot) return; // bot filled the hidden field — silently drop
+        const missing = [];
+        if (!s.formFirstName.trim()) missing.push('First Name');
+        if (!s.formLastName.trim()) missing.push('Last Name');
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s.formEmail.trim())) missing.push('a valid Email Address');
+        if (!s.formPhone.trim()) missing.push('Phone Number');
+        if (missing.length) {
+          alert('Please complete the following before submitting:\n\n' + missing.join('\n'));
+          return;
+        }
         const btn = document.getElementById('fit-download-btn');
         const btnLabel = document.getElementById('fit-download-btn-label');
         if (btn) btn.disabled = true;
