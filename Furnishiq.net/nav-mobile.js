@@ -26,7 +26,22 @@
       '.fiq-nav-overlay-cta{font-family:"Lama Sans",sans-serif;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#1F1F1F;text-decoration:none;background:#D6C2A8;padding:14px 32px;margin-top:8px;transition:opacity 0.3s cubic-bezier(0.25,0.46,0.45,0.94);}',
       '.fiq-nav-overlay-cta:hover{opacity:0.85;}',
       'body.fiq-nav-open{overflow:hidden;}',
-      '@media(prefers-reduced-motion:reduce){.fiq-nav-overlay,.fiq-nav-toggle span{transition:none!important;}}'
+      '@media(prefers-reduced-motion:reduce){.fiq-nav-overlay,.fiq-nav-toggle span{transition:none!important;}}',
+      // Services dropdown — desktop: hover/focus reveals a dark panel below the trigger.
+      '.fiq-dropdown{position:relative;}',
+      '.fiq-dropdown-trigger{font-family:inherit;background:transparent;border:none;padding:0;cursor:default;}',
+      '.fiq-dropdown-panel{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(8px);margin-top:14px;background:#3A2D25;min-width:220px;padding:12px 0;opacity:0;pointer-events:none;transition:opacity 0.3s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.3s cubic-bezier(0.25,0.46,0.45,0.94);box-shadow:0 24px 80px rgba(58,45,37,0.2);}',
+      '.fiq-dropdown:hover .fiq-dropdown-panel,.fiq-dropdown:focus-within .fiq-dropdown-panel{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0);}',
+      '.fiq-dropdown-panel a{display:block;padding:10px 24px;font-family:"Lama Sans",sans-serif;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#D6C2A8;text-decoration:none;white-space:nowrap;transition:background 0.2s,color 0.2s;}',
+      '.fiq-dropdown-panel a:hover{background:rgba(214,194,168,0.08);color:#FFFFFF;}',
+      '@media(prefers-reduced-motion:reduce){.fiq-dropdown-panel{transition:none!important;}}',
+      // Services dropdown — mobile: no hover, so render the panel inline/expanded in the overlay.
+      '@media(max-width:960px){',
+      '.fiq-nav-overlay-links .fiq-dropdown{display:flex;flex-direction:column;align-items:center;}',
+      '.fiq-nav-overlay-links .fiq-dropdown-trigger{color:#F5F2ED;opacity:0.6;font-size:13px!important;letter-spacing:0.16em;text-transform:uppercase;}',
+      '.fiq-nav-overlay-links .fiq-dropdown-panel{position:static;opacity:1!important;pointer-events:auto!important;transform:none!important;background:transparent;box-shadow:none;padding:14px 0 0;margin-top:0;min-width:0;}',
+      '.fiq-nav-overlay-links .fiq-dropdown-panel a{font-size:16px!important;padding:8px 0;text-align:center;}',
+      '}'
     ].join('');
     var styleEl = document.createElement('style');
     styleEl.setAttribute('data-fiq-nav-mobile', '');
