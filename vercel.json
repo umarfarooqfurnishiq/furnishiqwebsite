@@ -1,6 +1,5 @@
 {
   "redirects": [
-    { "source": "/about-us.dc.html", "destination": "/", "permanent": true },
     { "source": "/blog.dc.html", "destination": "/", "permanent": true },
     { "source": "/portfolio.dc.html", "destination": "/", "permanent": true },
     { "source": "/project-detail.dc.html", "destination": "/", "permanent": true },
@@ -10,7 +9,6 @@
     { "source": "/services-mep.dc.html", "destination": "/", "permanent": true },
     { "source": "/services-furniture.dc.html", "destination": "/", "permanent": true },
 
-    { "source": "/about-us", "destination": "/", "permanent": true },
     { "source": "/blog", "destination": "/", "permanent": true },
     { "source": "/portfolio", "destination": "/", "permanent": true },
     { "source": "/project-detail", "destination": "/", "permanent": true },
@@ -20,8 +18,6 @@
     { "source": "/services-mep", "destination": "/", "permanent": true },
     { "source": "/services-furniture", "destination": "/", "permanent": true },
 
-    { "source": "/en/about-us", "destination": "/", "permanent": true },
-    { "source": "/ar/about-us", "destination": "/", "permanent": true },
     { "source": "/en/blog", "destination": "/", "permanent": true },
     { "source": "/ar/blog", "destination": "/", "permanent": true },
     { "source": "/en/portfolio", "destination": "/", "permanent": true },
