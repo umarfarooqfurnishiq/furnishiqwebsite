@@ -577,6 +577,8 @@ class Component extends DCLogic {
       onNewsletterChange: (e) => this.setState({ newsletterEmail: e.target.value }),
       onNewsletterSubmit: () => {
         if (this.state.newsletterEmail && this.state.newsletterEmail.includes('@')) {
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({ event: 'newsletter_subscribe', page_path: window.location.pathname });
           this.setState({ newsletterStatus: 'success', newsletterEmail: '' });
         }
       }
