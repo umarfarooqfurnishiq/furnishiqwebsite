@@ -60,6 +60,13 @@ module.exports = async (req, res) => {
   }
   data = data || {};
 
+  // Honeypot: real users never fill this hidden field. Pretend success so the
+  // bot doesn't learn it was blocked, but skip sending anything.
+  if (data.honeypot) {
+    res.status(200).json({ ok: true });
+    return;
+  }
+
   const formType = data.formType;
   const replyTo = (data.email || '').trim() || undefined;
 

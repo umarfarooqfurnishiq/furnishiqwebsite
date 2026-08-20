@@ -180,6 +180,12 @@
         <sc-if value="{{ formNotDone }}" hint-placeholder-val="{{ true }}">
         <form onSubmit="{{ onFormSubmit }}" style="display:flex;flex-direction:column;">
 
+          <!-- Honeypot: hidden from real users, catches basic bots that auto-fill every field -->
+          <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">
+            <label for="id-hp-field">Leave this field empty</label>
+            <input id="id-hp-field" type="text" tabindex="-1" autocomplete="off" value="{{ formHoneypot }}" onChange="{{ onHoneypotChange }}">
+          </div>
+
           <!-- Service chips -->
           <div style="margin-bottom:38px;">
             <div style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:#8B6B4A;margin-bottom:16px;">أنا مهتم بـ *</div>
@@ -423,7 +429,7 @@
 class Component extends DCLogic {
   state = {
     formName: '', formCompany: '', formEmail: '', formPhone: '',
-    formMessage: '', formCountryCode: '+966',
+    formMessage: '', formCountryCode: '+966', formHoneypot: '',
     selectedService: null, selectedBudget: null,
     formDone: false, doneName: '',
     newsletterEmail: '', newsletterStatus: null,
@@ -493,9 +499,12 @@ class Component extends DCLogic {
       onEmailChange: (e) => self.setState({ formEmail: e.target.value }),
       onPhoneChange: (e) => self.setState({ formPhone: e.target.value }),
       onMessageChange: (e) => self.setState({ formMessage: e.target.value }),
+      formHoneypot: self.state.formHoneypot,
+      onHoneypotChange: (e) => self.setState({ formHoneypot: e.target.value }),
       onFormSubmit: (e) => {
         e.preventDefault();
         const s = self.state;
+        if (s.formHoneypot) return; // bot filled the hidden field — silently drop
         const btn = document.getElementById('id-submit-btn');
         const btnLabel = document.getElementById('id-submit-btn-label');
         if (btn) btn.disabled = true;
@@ -509,6 +518,7 @@ class Component extends DCLogic {
           service: s.selectedService || 'Not specified',
           budget: s.selectedBudget || 'Not specified',
           message: s.formMessage,
+          honeypot: s.formHoneypot,
         };
         fetch('/api/send-email', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
           .then((r) => {

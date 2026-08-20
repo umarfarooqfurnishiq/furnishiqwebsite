@@ -478,6 +478,12 @@
       <div data-reveal data-reveal-delay="0.15" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);flex:1;min-width:280px;max-width:500px;">
         <form id="fit-brochure-form" onSubmit="{{ onBrochureSubmit }}" style="display:flex;flex-direction:column;gap:0;">
 
+          <!-- Honeypot: hidden from real users, catches basic bots that auto-fill every field -->
+          <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">
+            <label for="fit-hp-field">Leave this field empty</label>
+            <input id="fit-hp-field" type="text" tabindex="-1" autocomplete="off" value="{{ formHoneypot }}" onChange="{{ onHoneypotChange }}">
+          </div>
+
           <!-- Name row -->
           <div class="fiq-form-names" style="display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:28px;">
             <div style="display:flex;flex-direction:column;gap:7px;">
@@ -596,7 +602,7 @@
 class Component extends DCLogic {
   state = {
     newsletterEmail: '', newsletterStatus: null,
-    formFirstName: '', formLastName: '', formEmail: '', formPhone: '',
+    formFirstName: '', formLastName: '', formEmail: '', formPhone: '', formHoneypot: '',
     formCountryCode: '+966',
     brochureSuccess: false,
     openDisc: 0,
@@ -688,9 +694,12 @@ class Component extends DCLogic {
       onLastNameChange: (e) => self.setState({ formLastName: e.target.value }),
       onEmailChange: (e) => self.setState({ formEmail: e.target.value }),
       onPhoneChange: (e) => self.setState({ formPhone: e.target.value }),
+      formHoneypot: self.state.formHoneypot,
+      onHoneypotChange: (e) => self.setState({ formHoneypot: e.target.value }),
       onBrochureSubmit: (e) => {
         e.preventDefault();
         const s = self.state;
+        if (s.formHoneypot) return; // bot filled the hidden field — silently drop
         const btn = document.getElementById('fit-download-btn');
         const btnLabel = document.getElementById('fit-download-btn-label');
         if (btn) btn.disabled = true;
@@ -702,6 +711,7 @@ class Component extends DCLogic {
           phone: `${s.formCountryCode} ${s.formPhone}`,
           request: 'Fit-out quote',
           sourcePage: '/services-fitout',
+          honeypot: s.formHoneypot,
         };
         fetch('/api/send-email', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
           .then((r) => {
