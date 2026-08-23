@@ -68,14 +68,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       51%{transform:scaleY(1);transform-origin:bottom;}
       100%{transform:scaleY(0);transform-origin:bottom;}
     }
-    .services-arrow-btn:hover{background:#1F1F1F!important;border-color:#1F1F1F!important;transform:translateY(-50%) scale(1.08)!important;}
-    .services-arrow-btn:hover svg path{stroke:#FFFFFF!important;}
-    .services-slide-card:hover{box-shadow:0 12px 36px rgba(58,45,37,0.14)!important;}
+    .services-arrow-btn:hover svg path{stroke:#8B6B4A!important;}
+    #services-prev:hover svg{transform:translateX(-4px);}
+    #services-next:hover svg{transform:translateX(4px);}
+    .services-slide-card:hover .services-slide-img{transform:scale(1.06)!important;}
+    .services-slide-card:hover .services-slide-content{background:#3A2D25!important;}
+    .services-slide-card:hover .services-slide-title{color:#FFFFFF!important;}
+    .services-slide-card:hover .services-slide-tagline{color:#D6C2A8!important;}
+    .services-slide-card:hover .services-slide-body{color:rgba(214,194,168,0.75)!important;}
+    .services-slide-card:hover .services-slide-arrow-circle{background:#D6C2A8!important;}
+    .services-slide-card:hover .services-slide-arrow-circle svg{stroke:#3A2D25!important;}
     @media(max-width:960px){
       .fiq-nav-links{display:none!important;}
       .fiq-nav-cta{display:none!important;}
-      #services-prev{left:4px!important;}
-      #services-next{right:4px!important;}
+      #services-prev{left:-8px!important;}
+      #services-next{right:-8px!important;}
       .fiq-value-pillars{flex-direction:column!important;}
       .fiq-value-pillar-mid{border-left:none!important;border-right:none!important;border-top:1px solid #D6C2A8!important;border-bottom:1px solid #D6C2A8!important;padding:48px 0!important;}
       .fiq-value-pillar-first{padding-right:0!important;padding-bottom:48px!important;}
@@ -196,26 +203,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <div data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);position:relative;">
-      <button type="button" id="services-prev" aria-label="Previous service" class="services-arrow-btn" style="position:absolute;left:-24px;top:35%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;border:1px solid rgba(31,31,31,0.25);background:#F5F2ED;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:2;transition:background 0.3s,border-color 0.3s,transform 0.3s;">
-        <svg width="16" height="14" viewBox="0 0 20 16" fill="none"><path d="M19 8H1M1 8L8 1M1 8L8 15" stroke="#1F1F1F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="transition:stroke 0.3s;"></path></svg>
+      <button type="button" id="services-prev" aria-label="Previous service" class="services-arrow-btn" style="position:absolute;left:-52px;top:50%;transform:translateY(-50%);width:40px;height:40px;border:none;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:2;padding:0;">
+        <svg width="30" height="22" viewBox="0 0 30 22" fill="none"><path d="M29 11H1M1 11L11 1M1 11L11 21" stroke="#3A2D25" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="transition:stroke 0.3s,transform 0.3s;"></path></svg>
       </button>
-      <button type="button" id="services-next" aria-label="Next service" class="services-arrow-btn" style="position:absolute;right:-24px;top:35%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;border:1px solid rgba(31,31,31,0.25);background:#F5F2ED;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:2;transition:background 0.3s,border-color 0.3s,transform 0.3s;">
-        <svg width="16" height="14" viewBox="0 0 20 16" fill="none"><path d="M1 8H19M19 8L12 1M19 8L12 15" stroke="#1F1F1F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="transition:stroke 0.3s;"></path></svg>
+      <button type="button" id="services-next" aria-label="Next service" class="services-arrow-btn" style="position:absolute;right:-52px;top:50%;transform:translateY(-50%);width:40px;height:40px;border:none;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:2;padding:0;">
+        <svg width="30" height="22" viewBox="0 0 30 22" fill="none"><path d="M1 11H29M19 1L29 11M19 21L29 11" stroke="#3A2D25" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="transition:stroke 0.3s,transform 0.3s;"></path></svg>
       </button>
 
       <div id="services-slider-viewport" style="overflow:hidden;">
-        <div id="services-slider-track" style="display:flex;transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);">
+        <div id="services-slider-track" style="display:flex;align-items:stretch;transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);">
           <sc-for list="{{ serviceSlides }}" as="svc" hint-placeholder-count="8">
             <div style="flex:0 0 {{ svc.basis }};box-sizing:border-box;padding:0 12px;" aria-hidden="{{ svc.hidden }}">
-              <a href="/contact" tabindex="{{ svc.tabIndex }}" class="services-slide-card" style="display:block;background:#FFFFFF;text-decoration:none;overflow:hidden;box-shadow:0 2px 8px rgba(58,45,37,0.08);transition:box-shadow 0.3s;">
-                <div style="overflow:hidden;">
+              <a href="/contact" tabindex="{{ svc.tabIndex }}" class="services-slide-card" style="display:flex;flex-direction:column;height:100%;background:#FFFFFF;text-decoration:none;overflow:hidden;">
+                <div style="overflow:hidden;flex-shrink:0;">
                   <img src="{{ svc.image }}" alt="{{ svc.title }}" class="services-slide-img" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);" loading="lazy" decoding="async">
                 </div>
-                <div style="padding:28px clamp(20px,2.5vw,28px) clamp(28px,3vw,36px);">
+                <div class="services-slide-content" style="flex:1;display:flex;flex-direction:column;position:relative;padding:28px clamp(20px,2.5vw,28px) clamp(28px,3vw,36px);transition:background 0.4s cubic-bezier(0.25,0.46,0.45,0.94);clip-path:polygon(0 0,100% 0,100% calc(100% - 36px),calc(100% - 36px) 100%,0 100%);">
                   <h3 class="services-slide-title" style="font-family:'Lama Sans',sans-serif;font-size:clamp(18px,1.8vw,22px);font-weight:500;color:#1F1F1F;line-height:1.25;margin-bottom:6px;transition:color 0.3s;">{{ svc.title }}</h3>
-                  <p style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:#8B6B4A;margin-bottom:14px;">{{ svc.tagline }}</p>
-                  <p style="font-family:'Lama Sans',sans-serif;font-size:13.5px;line-height:1.7;color:#5B4636;margin-bottom:20px;">{{ svc.body }}</p>
-                  <span class="services-slide-arrow-circle" style="width:38px;height:38px;border-radius:50%;background:#3A2D25;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background 0.3s;">
+                  <p class="services-slide-tagline" style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:#8B6B4A;margin-bottom:14px;transition:color 0.3s;">{{ svc.tagline }}</p>
+                  <p class="services-slide-body" style="font-family:'Lama Sans',sans-serif;font-size:13.5px;line-height:1.7;color:#5B4636;margin-bottom:0;flex:1;transition:color 0.3s;">{{ svc.body }}</p>
+                  <span class="services-slide-arrow-circle" style="position:absolute;right:14px;bottom:14px;width:38px;height:38px;border-radius:50%;background:#3A2D25;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background 0.3s;">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D6C2A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition:stroke 0.3s;"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
                   </span>
                 </div>
@@ -658,24 +665,6 @@ class Component extends DCLogic {
       }, { threshold: 0.08, rootMargin: '0px 0px -24px 0px' });
       document.querySelectorAll('[data-reveal]').forEach(el => obs.observe(el));
     }
-
-    // ── SERVICE CARD HOVER ─────────────────────────────────────────────────
-    document.querySelectorAll('.services-slide-card').forEach(card => {
-      const img = card.querySelector('.services-slide-img');
-      const title = card.querySelector('.services-slide-title');
-      const circle = card.querySelector('.services-slide-arrow-circle');
-      const circleSvg = circle ? circle.querySelector('svg') : null;
-      card.addEventListener('mouseenter', () => {
-        if (img) img.style.transform = 'scale(1.06)';
-        if (title) title.style.color = '#8B6B4A';
-        if (circle) circle.style.background = '#8B6B4A';
-      });
-      card.addEventListener('mouseleave', () => {
-        if (img) img.style.transform = 'scale(1)';
-        if (title) title.style.color = '#1F1F1F';
-        if (circle) circle.style.background = '#3A2D25';
-      });
-    });
 
     // ── SERVICES SLIDER (infinite loop) ─────────────────────────────────────
     const servicesTrack = document.getElementById('services-slider-track');
