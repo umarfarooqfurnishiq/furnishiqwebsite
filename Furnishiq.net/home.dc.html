@@ -190,66 +190,43 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <h2 data-reveal data-reveal-delay="0.1" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Lama Sans',sans-serif;font-size:clamp(28px,3.5vw,52px);font-weight:500;color:#1F1F1F;line-height:1.1;letter-spacing:-0.015em;">Integrated Expertise.<br>Exceptional Results.</h2>
       </div>
-      <a href="/about-us" data-reveal data-reveal-delay="0.15" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94),background 0.3s,color 0.3s;font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#1F1F1F;text-decoration:none;border:1px solid rgba(31,31,31,0.3);padding:15px 32px;white-space:nowrap;flex-shrink:0;" onmouseover="this.style.background='#1F1F1F';this.style.color='#FFFFFF';" onmouseout="this.style.background='transparent';this.style.color='#1F1F1F';">Learn More</a>
+      <div style="display:flex;align-items:center;gap:16px;flex-shrink:0;">
+        <a href="/about-us" data-reveal data-reveal-delay="0.15" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94),background 0.3s,color 0.3s;font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#1F1F1F;text-decoration:none;border:1px solid rgba(31,31,31,0.3);padding:15px 32px;white-space:nowrap;" onmouseover="this.style.background='#1F1F1F';this.style.color='#FFFFFF';" onmouseout="this.style.background='transparent';this.style.color='#1F1F1F';">Learn More</a>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <button type="button" id="services-prev" aria-label="Previous service" style="width:44px;height:44px;border-radius:50%;border:1px solid rgba(31,31,31,0.25);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background 0.3s,border-color 0.3s;" onmouseover="this.style.background='#1F1F1F';this.style.borderColor='#1F1F1F';this.querySelector('svg').style.stroke='#FFFFFF';" onmouseout="this.style.background='transparent';this.style.borderColor='rgba(31,31,31,0.25)';this.querySelector('svg').style.stroke='#1F1F1F';">
+            <svg width="16" height="14" viewBox="0 0 20 16" fill="none"><path d="M19 8H1M1 8L8 1M1 8L8 15" stroke="#1F1F1F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="transition:stroke 0.3s;"></path></svg>
+          </button>
+          <button type="button" id="services-next" aria-label="Next service" style="width:44px;height:44px;border-radius:50%;border:1px solid rgba(31,31,31,0.25);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background 0.3s,border-color 0.3s;" onmouseover="this.style.background='#1F1F1F';this.style.borderColor='#1F1F1F';this.querySelector('svg').style.stroke='#FFFFFF';" onmouseout="this.style.background='transparent';this.style.borderColor='rgba(31,31,31,0.25)';this.querySelector('svg').style.stroke='#1F1F1F';">
+            <svg width="16" height="14" viewBox="0 0 20 16" fill="none"><path d="M1 8H19M19 8L12 1M19 8L12 15" stroke="#1F1F1F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="transition:stroke 0.3s;"></path></svg>
+          </button>
+        </div>
+      </div>
     </div>
-    <div class="fiq-services-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:2px;">
 
-      <a href="/contact" data-service-card data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94),box-shadow 0.45s cubic-bezier(0.25,0.46,0.45,0.94);position:relative;background:#FFFFFF;padding:clamp(36px,4.5vw,60px);overflow:hidden;cursor:pointer;display:block;text-decoration:none;">
-        <div data-card-hover-bg style="position:absolute;inset:0;background:#3A2D25;transform:translateY(101%);transition:transform 0.55s cubic-bezier(0.25,0.46,0.45,0.94);z-index:0;pointer-events:none;"></div>
-        <div style="position:relative;z-index:1;">
-          <div data-card-num style="font-family:'Lama Sans',sans-serif;font-size:clamp(68px,7.5vw,92px);font-weight:500;color:rgba(91,70,54,0.1);line-height:1;margin-bottom:20px;letter-spacing:-0.02em;transition:color 0.4s;">01</div>
-          <h3 data-card-title style="font-family:'Lama Sans',sans-serif;font-size:clamp(19px,2.1vw,26px);font-weight:500;color:#1F1F1F;margin-bottom:10px;line-height:1.2;transition:color 0.4s;">Interior Design</h3>
-          <p style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:#8B6B4A;margin-bottom:20px;">Thoughtful, Bespoke &amp; Visionary</p>
-          <p data-card-body style="font-family:'Lama Sans',sans-serif;font-size:14px;line-height:1.75;color:#5B4636;transition:color 0.4s;">We create personalised, livable environments balancing high-end aesthetics with practical functionality. Full Photoreal 3D visuals before any construction begins, so you approve every detail with absolute confidence.</p>
-          <div data-card-arrow style="margin-top:28px;opacity:0;transform:translateX(-10px);transition:opacity 0.4s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;align-items:center;gap:12px;">
-            <span style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:#D6C2A8;">Explore Service</span>
-            <svg width="20" height="8" viewBox="0 0 20 8" fill="none"><path d="M0 4H18M18 4L15 1M18 4L15 7" stroke="#D6C2A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-          </div>
+    <div data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);">
+      <div id="services-slider-viewport" style="overflow:hidden;">
+        <div id="services-slider-track" style="display:flex;transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);">
+          <sc-for list="{{ serviceSlides }}" as="svc" hint-placeholder-count="8">
+            <div style="flex:0 0 {{ svc.basis }};box-sizing:border-box;padding:0 12px;" aria-hidden="{{ svc.hidden }}">
+              <a href="/contact" tabindex="{{ svc.tabIndex }}" class="services-slide-card" style="display:block;background:#FFFFFF;text-decoration:none;overflow:hidden;">
+                <div style="overflow:hidden;">
+                  <img src="{{ svc.image }}" alt="{{ svc.title }}" class="services-slide-img" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);" loading="lazy" decoding="async">
+                </div>
+                <div style="padding:28px clamp(20px,2.5vw,28px) clamp(28px,3vw,36px);">
+                  <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:6px;">
+                    <h3 class="services-slide-title" style="font-family:'Lama Sans',sans-serif;font-size:clamp(18px,1.8vw,22px);font-weight:500;color:#1F1F1F;line-height:1.25;transition:color 0.3s;">{{ svc.title }}</h3>
+                    <span class="services-slide-arrow-circle" style="width:38px;height:38px;border-radius:50%;background:#3A2D25;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background 0.3s;">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D6C2A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition:stroke 0.3s;"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                    </span>
+                  </div>
+                  <p style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:#8B6B4A;margin-bottom:14px;">{{ svc.tagline }}</p>
+                  <p style="font-family:'Lama Sans',sans-serif;font-size:13.5px;line-height:1.7;color:#5B4636;">{{ svc.body }}</p>
+                </div>
+              </a>
+            </div>
+          </sc-for>
         </div>
-      </a>
-
-      <a href="/contact" data-service-card data-reveal data-reveal-delay="0.1" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94),box-shadow 0.45s cubic-bezier(0.25,0.46,0.45,0.94);position:relative;background:#FFFFFF;padding:clamp(36px,4.5vw,60px);overflow:hidden;cursor:pointer;display:block;text-decoration:none;">
-        <div data-card-hover-bg style="position:absolute;inset:0;background:#3A2D25;transform:translateY(101%);transition:transform 0.55s cubic-bezier(0.25,0.46,0.45,0.94);z-index:0;pointer-events:none;"></div>
-        <div style="position:relative;z-index:1;">
-          <div data-card-num style="font-family:'Lama Sans',sans-serif;font-size:clamp(68px,7.5vw,92px);font-weight:500;color:rgba(91,70,54,0.1);line-height:1;margin-bottom:20px;letter-spacing:-0.02em;transition:color 0.4s;">02</div>
-          <h3 data-card-title style="font-family:'Lama Sans',sans-serif;font-size:clamp(19px,2.1vw,26px);font-weight:500;color:#1F1F1F;margin-bottom:10px;line-height:1.2;transition:color 0.4s;">Fit-Out</h3>
-          <p style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:#8B6B4A;margin-bottom:20px;">Turning Raw Shells into Masterpieces</p>
-          <p data-card-body style="font-family:'Lama Sans',sans-serif;font-size:14px;line-height:1.75;color:#5B4636;transition:color 0.4s;">The core of our business. Complete transformation of raw shells into fully functional, turnkey environments through Brand-Led Planning and our hallmark Zero-Snag Promise — every finish meeting the highest standard.</p>
-          <div data-card-arrow style="margin-top:28px;opacity:0;transform:translateX(-10px);transition:opacity 0.4s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;align-items:center;gap:12px;">
-            <span style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:#D6C2A8;">Explore Service</span>
-            <svg width="20" height="8" viewBox="0 0 20 8" fill="none"><path d="M0 4H18M18 4L15 1M18 4L15 7" stroke="#D6C2A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-          </div>
-        </div>
-      </a>
-
-      <a href="/contact" data-service-card data-reveal data-reveal-delay="0.06" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94),box-shadow 0.45s cubic-bezier(0.25,0.46,0.45,0.94);position:relative;background:#FFFFFF;padding:clamp(36px,4.5vw,60px);overflow:hidden;cursor:pointer;display:block;text-decoration:none;">
-        <div data-card-hover-bg style="position:absolute;inset:0;background:#3A2D25;transform:translateY(101%);transition:transform 0.55s cubic-bezier(0.25,0.46,0.45,0.94);z-index:0;pointer-events:none;"></div>
-        <div style="position:relative;z-index:1;">
-          <div data-card-num style="font-family:'Lama Sans',sans-serif;font-size:clamp(68px,7.5vw,92px);font-weight:500;color:rgba(91,70,54,0.1);line-height:1;margin-bottom:20px;letter-spacing:-0.02em;transition:color 0.4s;">03</div>
-          <h3 data-card-title style="font-family:'Lama Sans',sans-serif;font-size:clamp(19px,2.1vw,26px);font-weight:500;color:#1F1F1F;margin-bottom:10px;line-height:1.2;transition:color 0.4s;">Engineering &amp; MEP</h3>
-          <p style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:#8B6B4A;margin-bottom:20px;">The Precision Backbone</p>
-          <p data-card-body style="font-family:'Lama Sans',sans-serif;font-size:14px;line-height:1.75;color:#5B4636;transition:color 0.4s;">True luxury depends on invisible systems. Our MEP (Mechanical, Electrical, and Plumbing) services provide high-performance infrastructure seamlessly integrated into the architectural fabric — maximising efficiency and comfort.</p>
-          <div data-card-arrow style="margin-top:28px;opacity:0;transform:translateX(-10px);transition:opacity 0.4s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;align-items:center;gap:12px;">
-            <span style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:#D6C2A8;">Explore Service</span>
-            <svg width="20" height="8" viewBox="0 0 20 8" fill="none"><path d="M0 4H18M18 4L15 1M18 4L15 7" stroke="#D6C2A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-          </div>
-        </div>
-      </a>
-
-      <a href="/contact" data-service-card data-reveal data-reveal-delay="0.16" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94),box-shadow 0.45s cubic-bezier(0.25,0.46,0.45,0.94);position:relative;background:#FFFFFF;padding:clamp(36px,4.5vw,60px);overflow:hidden;cursor:pointer;display:block;text-decoration:none;">
-        <div data-card-hover-bg style="position:absolute;inset:0;background:#3A2D25;transform:translateY(101%);transition:transform 0.55s cubic-bezier(0.25,0.46,0.45,0.94);z-index:0;pointer-events:none;"></div>
-        <div style="position:relative;z-index:1;">
-          <div data-card-num style="font-family:'Lama Sans',sans-serif;font-size:clamp(68px,7.5vw,92px);font-weight:500;color:rgba(91,70,54,0.1);line-height:1;margin-bottom:20px;letter-spacing:-0.02em;transition:color 0.4s;">04</div>
-          <h3 data-card-title style="font-family:'Lama Sans',sans-serif;font-size:clamp(19px,2.1vw,26px);font-weight:500;color:#1F1F1F;margin-bottom:10px;line-height:1.2;transition:color 0.4s;">Furniture Solutions</h3>
-          <p style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:#8B6B4A;margin-bottom:20px;">Strategic Sourcing &amp; Curation</p>
-          <p data-card-body style="font-family:'Lama Sans',sans-serif;font-size:14px;line-height:1.75;color:#5B4636;transition:color 0.4s;">We strategically source furniture aligned with your approved 3D renders. Leveraging global industry connections, we procure high-quality pieces matching your aesthetic, budget, and operational needs — floor to ceiling coherence.</p>
-          <div data-card-arrow style="margin-top:28px;opacity:0;transform:translateX(-10px);transition:opacity 0.4s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;align-items:center;gap:12px;">
-            <span style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:#D6C2A8;">Explore Service</span>
-            <svg width="20" height="8" viewBox="0 0 20 8" fill="none"><path d="M0 4H18M18 4L15 1M18 4L15 7" stroke="#D6C2A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-          </div>
-        </div>
-      </a>
-
+      </div>
     </div>
   </div>
 </section>
@@ -574,8 +551,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 class Component extends DCLogic {
   state = { newsletterEmail: '', newsletterStatus: null };
 
+  SERVICE_ITEMS = [
+    { title: 'Interior Design', tagline: 'Thoughtful, Bespoke & Visionary', body: 'We create personalised, livable environments balancing high-end aesthetics with practical functionality. Full Photoreal 3D visuals before any construction begins.', image: 'https://images.unsplash.com/photo-1615874959474-d609969a20ed?auto=format&fit=crop&w=900&q=75' },
+    { title: 'Fit-Out', tagline: 'Turning Raw Shells into Masterpieces', body: 'The core of our business. Complete transformation of raw shells into fully functional, turnkey environments through Brand-Led Planning and our Zero-Snag Promise.', image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=900&q=75' },
+    { title: 'Engineering & MEP', tagline: 'The Precision Backbone', body: 'True luxury depends on invisible systems. Our MEP services provide high-performance infrastructure seamlessly integrated into the architectural fabric.', image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=900&q=75' },
+    { title: 'Furniture Solutions', tagline: 'Strategic Sourcing & Curation', body: 'We strategically source furniture aligned with your approved 3D renders, matching your aesthetic, budget, and operational needs — floor to ceiling coherence.', image: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=75' },
+  ];
+
   renderVals() {
     return {
+      serviceSlides: (() => {
+        const basis = (100 / (this.SERVICE_ITEMS.length * 2)) + '%';
+        return [
+          ...this.SERVICE_ITEMS.map(s => ({ ...s, hidden: 'false', tabIndex: '0', basis })),
+          ...this.SERVICE_ITEMS.map(s => ({ ...s, hidden: 'true', tabIndex: '-1', basis })),
+        ];
+      })(),
       newsletterEmail: this.state.newsletterEmail,
       newsletterStatus: this.state.newsletterStatus,
       onNewsletterChange: (e) => this.setState({ newsletterEmail: e.target.value }),
@@ -672,30 +663,69 @@ class Component extends DCLogic {
     }
 
     // ── SERVICE CARD HOVER ─────────────────────────────────────────────────
-    document.querySelectorAll('[data-service-card]').forEach(card => {
-      const bg = card.querySelector('[data-card-hover-bg]');
-      const num = card.querySelector('[data-card-num]');
-      const title = card.querySelector('[data-card-title]');
-      const body = card.querySelector('[data-card-body]');
-      const arrow = card.querySelector('[data-card-arrow]');
-
+    document.querySelectorAll('.services-slide-card').forEach(card => {
+      const img = card.querySelector('.services-slide-img');
+      const title = card.querySelector('.services-slide-title');
+      const circle = card.querySelector('.services-slide-arrow-circle');
+      const circleSvg = circle ? circle.querySelector('svg') : null;
       card.addEventListener('mouseenter', () => {
-        if (bg) bg.style.transform = 'translateY(0)';
-        if (num) num.style.color = 'rgba(214,194,168,0.1)';
-        if (title) title.style.color = '#D6C2A8';
-        if (body) body.style.color = 'rgba(214,194,168,0.62)';
-        if (arrow) { arrow.style.opacity = '1'; arrow.style.transform = 'translateX(0)'; }
-        card.style.boxShadow = '0 12px 48px rgba(58,45,37,0.18)';
+        if (img) img.style.transform = 'scale(1.06)';
+        if (title) title.style.color = '#8B6B4A';
+        if (circle) circle.style.background = '#8B6B4A';
       });
       card.addEventListener('mouseleave', () => {
-        if (bg) bg.style.transform = 'translateY(101%)';
-        if (num) num.style.color = 'rgba(91,70,54,0.1)';
+        if (img) img.style.transform = 'scale(1)';
         if (title) title.style.color = '#1F1F1F';
-        if (body) body.style.color = '#5B4636';
-        if (arrow) { arrow.style.opacity = '0'; arrow.style.transform = 'translateX(-10px)'; }
-        card.style.boxShadow = 'none';
+        if (circle) circle.style.background = '#3A2D25';
       });
     });
+
+    // ── SERVICES SLIDER (infinite loop) ─────────────────────────────────────
+    const servicesTrack = document.getElementById('services-slider-track');
+    const servicesViewport = document.getElementById('services-slider-viewport');
+    const servicesPrev = document.getElementById('services-prev');
+    const servicesNext = document.getElementById('services-next');
+    if (servicesTrack && servicesViewport && servicesPrev && servicesNext) {
+      const N = this.SERVICE_ITEMS.length;
+      const totalSlides = N * 2;
+      const stepPct = 100 / totalSlides;
+      let pos = 0;
+      let visible = 3;
+
+      const setVisible = () => {
+        const w = window.innerWidth;
+        visible = w <= 600 ? 1 : w <= 960 ? 2 : 3;
+        servicesTrack.style.width = ((totalSlides / visible) * 100) + '%';
+      };
+      setVisible();
+      window.addEventListener('resize', setVisible, { passive: true });
+
+      const render = (animate) => {
+        servicesTrack.style.transition = animate && !reduced ? 'transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94)' : 'none';
+        servicesTrack.style.transform = `translateX(-${pos * stepPct}%)`;
+      };
+      render(false);
+
+      servicesNext.addEventListener('click', () => {
+        pos++;
+        render(true);
+        if (pos >= N) {
+          setTimeout(() => { pos -= N; render(false); }, reduced ? 0 : 600);
+        }
+      });
+      servicesPrev.addEventListener('click', () => {
+        if (pos === 0) {
+          pos += N;
+          render(false);
+          servicesTrack.offsetHeight;
+          pos--;
+          render(true);
+        } else {
+          pos--;
+          render(true);
+        }
+      });
+    }
 
     // ── PORTFOLIO HOVER ────────────────────────────────────────────────────
     document.querySelectorAll('[data-portfolio-card]').forEach((card, i) => {
