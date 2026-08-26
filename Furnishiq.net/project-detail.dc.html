@@ -574,9 +574,11 @@ class Component extends DCLogic {
         bfShowError('bf-first-name', firstName.trim() ? '' : 'Please enter your first name.');
         bfShowError('bf-last-name', lastName.trim() ? '' : 'Please enter your last name.');
         bfShowError('bf-email', /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim()) ? '' : 'Please enter a valid email address.');
-        bfShowError('bf-phone', phone.trim() ? '' : 'Please enter your phone number.');
+        const phoneDigits = phone.replace(/\D/g, '');
+        const isValidPhone = /^5\d{8}$/.test(phoneDigits);
+        bfShowError('bf-phone', !phone.trim() ? 'Please enter your phone number.' : (!isValidPhone ? 'Please enter a valid 9-digit KSA mobile number (e.g. 5XXXXXXXX).' : ''));
 
-        const hasError = !firstName.trim() || !lastName.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim()) || !phone.trim();
+        const hasError = !firstName.trim() || !lastName.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim()) || !isValidPhone;
         if (hasError) return;
         ctaBtn.disabled = true;
         if (btnLabel) btnLabel.textContent = 'Sending…';
