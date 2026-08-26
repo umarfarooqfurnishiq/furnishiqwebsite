@@ -1,7 +1,7 @@
 {
   "redirects": [
     { "source": "/blog.dc.html", "destination": "/", "permanent": true },
-    { "source": "/portfolio.dc.html", "destination": "/", "permanent": true },
+    { "source": "/portfolio.dc.html", "destination": "/projects", "permanent": true },
     { "source": "/project-detail.dc.html", "destination": "/", "permanent": true },
     { "source": "/single-post.dc.html", "destination": "/", "permanent": true },
     { "source": "/services-interior-design.dc.html", "destination": "/", "permanent": true },
@@ -10,7 +10,7 @@
     { "source": "/services-furniture.dc.html", "destination": "/", "permanent": true },
 
     { "source": "/blog", "destination": "/", "permanent": true },
-    { "source": "/portfolio", "destination": "/", "permanent": true },
+    { "source": "/portfolio", "destination": "/projects", "permanent": true },
     { "source": "/project-detail", "destination": "/", "permanent": true },
     { "source": "/single-post", "destination": "/", "permanent": true },
     { "source": "/services-interior-design", "destination": "/", "permanent": true },
@@ -20,8 +20,9 @@
 
     { "source": "/en/blog", "destination": "/", "permanent": true },
     { "source": "/ar/blog", "destination": "/", "permanent": true },
-    { "source": "/en/portfolio", "destination": "/", "permanent": true },
-    { "source": "/ar/portfolio", "destination": "/", "permanent": true },
+    { "source": "/en/portfolio", "destination": "/projects", "permanent": true },
+    { "source": "/ar/portfolio", "destination": "/ar", "permanent": true },
+    { "source": "/ar/projects", "destination": "/ar", "permanent": true },
     { "source": "/en/project-detail", "destination": "/", "permanent": true },
     { "source": "/ar/project-detail", "destination": "/", "permanent": true },
     { "source": "/en/single-post", "destination": "/", "permanent": true },
@@ -52,7 +53,7 @@
     { "source": "/about-us", "destination": "/Furnishiq.net/about-us.dc.html" },
     { "source": "/about-us-2", "destination": "/Furnishiq.net/about-us-2.dc.html" },
     { "source": "/blog", "destination": "/Furnishiq.net/blog.dc.html" },
-    { "source": "/portfolio", "destination": "/Furnishiq.net/portfolio.dc.html" },
+    { "source": "/projects", "destination": "/Furnishiq.net/projects.dc.html" },
     { "source": "/project-detail", "destination": "/Furnishiq.net/project-detail.dc.html" },
     { "source": "/single-post", "destination": "/Furnishiq.net/single-post.dc.html" },
     { "source": "/services-interior-design", "destination": "/Furnishiq.net/services-interior-design.dc.html" },
