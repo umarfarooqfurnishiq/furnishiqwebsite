@@ -52,6 +52,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       .fiq-subnav-link{flex:0 0 auto!important;padding:20px 22px!important;}
       .fiq-svc-row{flex-direction:column!important;gap:36px!important;}
       .fiq-svc-row-rev{flex-direction:column!important;}
+      .fiq-svc-diagonal{flex-direction:column!important;min-height:0!important;}
+      .fiq-svc-diagonal-img{flex:0 0 auto!important;aspect-ratio:4/3!important;clip-path:none!important;margin-left:0!important;}
+      .fiq-svc-diagonal-panel{margin-left:0!important;padding:44px 24px!important;}
+      .fiq-svc-overlap>div:first-child{margin-left:0!important;margin-right:0!important;}
+      .fiq-svc-overlap-card{position:static!important;width:100%!important;margin-top:-1px!important;transform:none!important;}
+      .fiq-mep-photo{clip-path:none!important;}
+      .fiq-mep-card{position:static!important;width:auto!important;height:280px!important;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;transform:none!important;margin:44px 24px 0!important;}
+      .fiq-mep-text{margin-left:0!important;transform:none!important;padding:44px 24px!important;max-width:none!important;}
+      #mep{min-height:0!important;}
+      #mep>div:nth-child(2){position:static!important;inset:auto!important;}
+      #mep>div:nth-child(3){min-height:0!important;flex-direction:column!important;}
+      .fiq-svc-overlap2-panel{margin-left:0!important;margin-right:0!important;}
+      #process>div{flex-direction:column!important;}
+      #furniture{padding-left:24px!important;padding-right:24px!important;}
       .fiq-markets-grid{grid-template-columns:1fr 1fr!important;}
       .fiq-footer-grid{grid-template-columns:1fr 1fr!important;gap:48px!important;}
       .fiq-footer-brand{grid-column:1/-1!important;}
@@ -62,11 +76,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }
     .fiq-subnav-link{ transition:background 0.3s cubic-bezier(0.25,0.46,0.45,0.94), color 0.3s cubic-bezier(0.25,0.46,0.45,0.94); }
     .fiq-subnav-link.is-active{ background:#D6C2A8!important; color:#1E1610!important; }
+    .fiq-subnav-link:hover{ background:#D6C2A8; color:#1E1610; }
     .fiq-subnav-track::-webkit-scrollbar{ display:none; }
     .fiq-market-card{ transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94); }
     .fiq-market-card:hover{ transform:translateY(-6px); }
     .fiq-market-card:hover .fiq-market-img{ transform:scale(1.06); }
     .fiq-market-img{ transition:transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94); }
+    .fiq-cta-tan{ transition:background 0.3s cubic-bezier(0.25,0.46,0.45,0.94); }
+    .fiq-cta-tan:hover{ background:#C4A97F!important; }
+    .fiq-cta-dark{ transition:background 0.3s cubic-bezier(0.25,0.46,0.45,0.94); }
+    .fiq-cta-dark:hover{ background:#5B4636!important; }
   </style>
 </helmet>
 
@@ -105,89 +124,110 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ STICKY SUB-NAV ━━ -->
 <div id="svc-subnav" style="position:sticky;top:80px;z-index:150;background:#3A2D25;border-bottom:1px solid rgba(214,194,168,0.15);box-shadow:0 4px 20px rgba(0,0,0,0.15);">
-  <div class="fiq-subnav-track" style="max-width:1440px;margin:0 auto;display:flex;align-items:stretch;overflow-x:auto;">
-    <a href="#interior-design" data-subnav-link data-target="interior-design" class="fiq-subnav-link" style="flex:1;display:flex;align-items:center;justify-content:center;text-align:center;padding:38px 20px;font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;white-space:nowrap;border-right:1px solid rgba(214,194,168,0.12);">Interior Design</a>
-    <a href="#fitout" data-subnav-link data-target="fitout" class="fiq-subnav-link" style="flex:1;display:flex;align-items:center;justify-content:center;text-align:center;padding:38px 20px;font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;white-space:nowrap;border-right:1px solid rgba(214,194,168,0.12);">Fit-Out</a>
-    <a href="#mep" data-subnav-link data-target="mep" class="fiq-subnav-link" style="flex:1;display:flex;align-items:center;justify-content:center;text-align:center;padding:38px 20px;font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;white-space:nowrap;border-right:1px solid rgba(214,194,168,0.12);">Engineering &amp; MEP</a>
-    <a href="#furniture" data-subnav-link data-target="furniture" class="fiq-subnav-link" style="flex:1;display:flex;align-items:center;justify-content:center;text-align:center;padding:38px 20px;font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;white-space:nowrap;border-right:1px solid rgba(214,194,168,0.12);">Furniture</a>
-    <a href="#markets" data-subnav-link data-target="markets" class="fiq-subnav-link" style="flex:1;display:flex;align-items:center;justify-content:center;text-align:center;padding:38px 20px;font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;white-space:nowrap;">Markets We Serve</a>
+  <div class="fiq-subnav-track" style="max-width:1280px;margin:0 auto;display:flex;align-items:stretch;overflow-x:auto;">
+    <a href="#interior-design" data-subnav-link data-target="interior-design" class="fiq-subnav-link" style="flex:1;display:flex;align-items:center;justify-content:center;text-align:center;padding:16px 20px;font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;white-space:nowrap;border-right:1px solid rgba(214,194,168,0.12);">Interior Design</a>
+    <a href="#fitout" data-subnav-link data-target="fitout" class="fiq-subnav-link" style="flex:1;display:flex;align-items:center;justify-content:center;text-align:center;padding:16px 20px;font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;white-space:nowrap;border-right:1px solid rgba(214,194,168,0.12);">Fit-Out</a>
+    <a href="#mep" data-subnav-link data-target="mep" class="fiq-subnav-link" style="flex:1;display:flex;align-items:center;justify-content:center;text-align:center;padding:16px 20px;font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;white-space:nowrap;border-right:1px solid rgba(214,194,168,0.12);">Engineering &amp; MEP</a>
+    <a href="#furniture" data-subnav-link data-target="furniture" class="fiq-subnav-link" style="flex:1;display:flex;align-items:center;justify-content:center;text-align:center;padding:16px 20px;font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;white-space:nowrap;border-right:1px solid rgba(214,194,168,0.12);">Furniture</a>
+    <a href="#markets" data-subnav-link data-target="markets" class="fiq-subnav-link" style="flex:1;display:flex;align-items:center;justify-content:center;text-align:center;padding:16px 20px;font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;white-space:nowrap;">Markets We Serve</a>
   </div>
 </div>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1. INTERIOR DESIGN ━ -->
-<section id="interior-design" data-screen-label="Interior Design" style="scroll-margin-top:160px;background:#FFFFFF;padding:clamp(72px,9vw,116px) clamp(24px,5vw,80px);">
-  <div style="max-width:840px;margin:0 auto;text-align:center;">
-    <div data-reveal style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:20px;">
-      <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
-      <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#8B6B4A;">Our Interior Design Services</span>
-      <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
+<section id="interior-design" data-screen-label="Interior Design" style="scroll-margin-top:116px;background:#3A2D25;position:relative;overflow:hidden;">
+  <div class="fiq-svc-diagonal" style="display:flex;min-height:clamp(520px,62vw,680px);">
+    <div class="fiq-svc-diagonal-img" data-reveal style="opacity:0;transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94);flex:0 0 54%;position:relative;background-image:url('https://images.unsplash.com/photo-1615874959474-d609969a20ed?auto=format&fit=crop&w=1800&q=80');background-size:cover;background-position:center;clip-path:polygon(0 0,100% 0,88% 100%,0 100%);"></div>
+    <div class="fiq-svc-diagonal-panel" style="flex:1;display:flex;align-items:center;margin-left:clamp(-90px,-6vw,-40px);padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px) clamp(80px,10vw,128px) clamp(120px,10vw,160px);">
+      <div data-reveal data-reveal-delay="0.1" style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);max-width:520px;">
+        <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;">
+          <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
+          <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#8B6B4A;">Our Interior Design Services</span>
+        </div>
+        <h2 style="font-family:'Lama Sans',sans-serif;font-size:clamp(28px,3.4vw,44px);font-weight:500;color:#FFFFFF;line-height:1.15;letter-spacing:-0.01em;margin-bottom:24px;">Where Inspiration Becomes Your Reality</h2>
+        <p style="font-family:'Lama Sans',sans-serif;font-size:15px;line-height:1.85;color:rgba(214,194,168,0.8);margin-bottom:36px;">At FurnishIQ, we redefine the interior design experience by bridging the gap between high-level architectural vision and livable, bespoke artistry. We believe a space should be more than just aesthetic; it must be a personalized solution that optimizes your daily life or business operations, with every detail — from the flow of a room to the texture of a material — crafted with purpose.</p>
+        <a href="/services-interior-design" class="fiq-cta-tan" style="display:inline-flex;align-items:center;gap:12px;font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#3A2D25;background:#D6C2A8;padding:15px 32px;text-decoration:none;transition:background 0.3s;">
+          Explore Interior Design
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3A2D25" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </div>
     </div>
-    <h2 data-reveal data-reveal-delay="0.08" style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Lama Sans',sans-serif;font-size:clamp(28px,3.4vw,44px);font-weight:500;color:#3A2D25;line-height:1.15;letter-spacing:-0.01em;margin-bottom:24px;">Where Inspiration Becomes Your Reality</h2>
-    <p data-reveal data-reveal-delay="0.14" style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Lama Sans',sans-serif;font-size:15px;line-height:1.85;color:#5B4636;margin-bottom:36px;">At FurnishIQ, we redefine the interior design experience by bridging the gap between high-level architectural vision and livable, bespoke artistry. We believe a space should be more than just aesthetic; it must be a personalized solution that optimizes your daily life or business operations, with every detail — from the flow of a room to the texture of a material — crafted with purpose.</p>
-    <a href="/services-interior-design" data-reveal data-reveal-delay="0.2" style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:inline-flex;align-items:center;gap:12px;font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#3A2D25;background:#D6C2A8;padding:15px 32px;text-decoration:none;transition:background 0.3s;">
-      Explore Interior Design
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3A2D25" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-    </a>
   </div>
 </section>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2. FIT-OUT ━ -->
-<section id="fitout" data-screen-label="Fit-Out" style="scroll-margin-top:160px;background:#F5F2ED;padding:clamp(72px,9vw,116px) clamp(24px,5vw,80px);">
-  <div style="max-width:840px;margin:0 auto;text-align:center;">
-    <div data-reveal style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:20px;">
-      <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
-      <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#8B6B4A;">Our Fit-Out Services</span>
-      <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
+<section id="fitout" data-screen-label="Fit-Out" style="scroll-margin-top:116px;background:#FFFFFF;padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px);overflow:hidden;">
+  <div class="fiq-svc-overlap" style="max-width:1280px;margin:0 auto;position:relative;">
+    <div data-reveal data-reveal-delay="0.1" style="opacity:0;transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94);margin-left:clamp(0px,14vw,220px);margin-right:calc(50% - 50vw);height:clamp(440px,40vw,600px);">
+      <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1600&q=80" alt="Fit-Out — total spatial transformation" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:0;" loading="lazy" decoding="async">
     </div>
-    <h2 data-reveal data-reveal-delay="0.08" style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Lama Sans',sans-serif;font-size:clamp(28px,3.4vw,44px);font-weight:500;color:#3A2D25;line-height:1.15;letter-spacing:-0.01em;margin-bottom:24px;">Total Spatial Transformation</h2>
-    <p data-reveal data-reveal-delay="0.14" style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Lama Sans',sans-serif;font-size:15px;line-height:1.85;color:#5B4636;margin-bottom:36px;">At FurnishIQ, our Fit-Out service is our most highlighted offering and the heartbeat of our operational excellence. We specialize in the complete transformation of raw, structural shells into fully functional, finished, and turnkey environments that are ready for immediate occupation — on schedule, and without compromise.</p>
-    <a href="/services-fitout" data-reveal data-reveal-delay="0.2" style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:inline-flex;align-items:center;gap:12px;font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#FFFFFF;background:#3A2D25;padding:15px 32px;text-decoration:none;transition:background 0.3s;">
-      Explore Fit-Out
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-    </a>
+    <div class="fiq-svc-overlap-card" style="position:absolute;left:0;top:50%;transform:translateY(-50%);width:clamp(320px,36vw,600px);">
+      <div data-reveal style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);background:#FFFFFF;border-radius:0;box-shadow:0 24px 80px rgba(58,45,37,0.20);padding:clamp(26px,2.8vw,56px);">
+        <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px;">
+          <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
+          <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#8B6B4A;">Our Fit-Out Services</span>
+        </div>
+        <h2 style="font-family:'Lama Sans',sans-serif;font-size:clamp(28px,3.4vw,44px);font-weight:500;color:#3A2D25;line-height:1.15;letter-spacing:-0.01em;margin-bottom:16px;">Total Spatial Transformation</h2>
+        <p style="font-family:'Lama Sans',sans-serif;font-size:15px;line-height:1.85;color:#5B4636;margin-bottom:26px;">At FurnishIQ, our Fit-Out service is our most highlighted offering and the heartbeat of our operational excellence. We specialize in the complete transformation of raw, structural shells into fully functional, finished, and turnkey environments that are ready for immediate occupation — on schedule, and without compromise.</p>
+        <a href="/services-fitout" class="fiq-cta-dark" style="display:inline-flex;align-items:center;gap:12px;font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#FFFFFF;background:#3A2D25;padding:15px 32px;text-decoration:none;transition:background 0.3s;">
+          Explore Fit-Out
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3. ENGINEERING & MEP ━ -->
-<section id="mep" data-screen-label="Engineering & MEP" style="scroll-margin-top:160px;background:#FFFFFF;padding:clamp(72px,9vw,116px) clamp(24px,5vw,80px);overflow:hidden;">
-  <div class="fiq-svc-row" style="max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:clamp(48px,6vw,88px);">
-    <div data-reveal style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);flex:1;">
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━ 3. ENGINEERING & MEP ━ -->
+<section id="mep" data-screen-label="Engineering & MEP" style="scroll-margin-top:116px;background:#FFFFFF;position:relative;overflow:hidden;min-height:clamp(560px,58vw,700px);display:flex;align-items:center;">
+  <div class="fiq-mep-photo" style="position:absolute;inset:0;clip-path:polygon(0 0,100% 0,100% 100%,50% 100%,0 75%);">
+    <div style="position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=2400&q=80');background-size:cover;background-position:center;"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(100deg,rgba(58,45,37,0.1) 0%,rgba(58,45,37,0.88) 52%,rgba(58,45,37,0.95) 100%);"></div>
+  </div>
+
+  <div style="position:relative;z-index:1;max-width:1440px;width:100%;margin:0 auto;padding:clamp(80px,10vw,128px) 0;display:flex;align-items:stretch;">
+    <div class="fiq-mep-card" data-reveal style="opacity:0;transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94);position:relative;flex:0 0 calc(50% - 24px);margin-left:clamp(24px,5vw,64px);box-shadow:0 24px 80px rgba(0,0,0,0.35);">
+      <span style="position:absolute;top:-14px;left:-14px;width:60px;height:2px;background:#8B6B4A;transform:rotate(-45deg);transform-origin:top left;"></span>
+      <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1000&q=80" alt="Engineering & MEP detail" style="width:100%;height:100%;object-fit:cover;border-radius:0;display:block;" loading="lazy" decoding="async">
+    </div>
+    <div class="fiq-mep-text" data-reveal data-reveal-delay="0.1" style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);flex:1;max-width:560px;padding:0 clamp(24px,5vw,64px);">
       <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;">
-        <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
-        <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#8B6B4A;">Our Engineering Services</span>
+        <span style="display:block;width:32px;height:1px;background:#FFFFFF;flex-shrink:0;"></span>
+        <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#FFFFFF;">Our Engineering Services</span>
       </div>
-      <h2 style="font-family:'Lama Sans',sans-serif;font-size:clamp(28px,3.4vw,44px);font-weight:500;color:#3A2D25;line-height:1.15;letter-spacing:-0.01em;margin-bottom:24px;">The Foundation of High-Performance Environments</h2>
-      <p style="font-family:'Lama Sans',sans-serif;font-size:15px;line-height:1.85;color:#5B4636;margin-bottom:36px;">True luxury and functionality depend on the invisible systems that keep a building running. Our Engineering &amp; MEP (Mechanical, Electrical, and Plumbing) services provide the high-performance infrastructure required to bring your interior vision to life, seamlessly integrated into every design and fit-out we deliver.</p>
-      <a href="/services-mep" style="display:inline-flex;align-items:center;gap:12px;font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#3A2D25;background:#D6C2A8;padding:15px 32px;text-decoration:none;transition:background 0.3s;">
+      <h2 style="font-family:'Lama Sans',sans-serif;font-size:clamp(28px,3.4vw,44px);font-weight:500;color:#FFFFFF;line-height:1.15;letter-spacing:-0.01em;margin-bottom:24px;">The Foundation of High-Performance Environments</h2>
+      <p style="font-family:'Lama Sans',sans-serif;font-size:15px;line-height:1.85;color:#FFFFFF;margin-bottom:36px;">True luxury and functionality depend on the invisible systems that keep a building running. Our Engineering &amp; MEP (Mechanical, Electrical, and Plumbing) services provide the high-performance infrastructure required to bring your interior vision to life, seamlessly integrated into every design and fit-out we deliver.</p>
+      <a href="/services-mep" class="fiq-cta-tan" style="display:inline-flex;align-items:center;gap:12px;font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#3A2D25;background:#D6C2A8;padding:15px 32px;text-decoration:none;transition:background 0.3s;">
         Explore Engineering &amp; MEP
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3A2D25" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
       </a>
-    </div>
-    <div data-reveal data-reveal-delay="0.12" style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);flex:1;">
-      <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1200&q=80" alt="Engineering & MEP" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:20px;box-shadow:0 4px 20px rgba(58,45,37,0.10);display:block;" loading="lazy" decoding="async">
     </div>
   </div>
 </section>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4. FURNITURE ━ -->
-<section id="furniture" data-screen-label="Furniture" style="scroll-margin-top:160px;background:#F5F2ED;padding:clamp(72px,9vw,116px) clamp(24px,5vw,80px);">
-  <div style="max-width:840px;margin:0 auto;text-align:center;">
-    <div data-reveal style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:20px;">
-      <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
-      <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#8B6B4A;">Our Furniture Solutions</span>
-      <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
+<section id="furniture" data-screen-label="Furniture" style="scroll-margin-top:116px;background:#FFFFFF;position:relative;overflow:hidden;min-height:clamp(560px,58vw,700px);padding:clamp(80px,10vw,128px) 0;display:flex;align-items:center;">
+  <div style="position:absolute;top:0;bottom:0;left:0;right:50%;background-image:url('https://images.unsplash.com/photo-1567016432779-094069958ea5?auto=format&fit=crop&w=1600&q=80');background-size:cover;background-position:center;"></div>
+
+  <div style="max-width:1440px;width:100%;margin:0 auto;position:relative;z-index:1;">
+    <div class="fiq-svc-overlap2-panel" data-reveal style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);margin-left:calc(50% - clamp(60px,8vw,140px));margin-right:calc(50% - 50vw);background:#5B4636;box-shadow:0 24px 80px rgba(58,45,37,0.24);padding:clamp(40px,4vw,56px);">
+      <div style="max-width:480px;">
+        <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;">
+          <span style="display:block;width:32px;height:1px;background:#D6C2A8;flex-shrink:0;"></span>
+          <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#D6C2A8;">Our Furniture Solutions</span>
+        </div>
+        <h2 style="font-family:'Lama Sans',sans-serif;font-size:clamp(28px,3.4vw,44px);font-weight:500;color:#FFFFFF;line-height:1.15;letter-spacing:-0.01em;margin-bottom:24px;">The Final Layer of Spatial Perfection</h2>
+        <p style="font-family:'Lama Sans',sans-serif;font-size:15px;line-height:1.85;color:rgba(255,255,255,0.85);margin-bottom:36px;">Furniture is the final layer of design that completes the atmosphere and flow of a room. Sourcing the right pieces is a time-consuming activity that demands significant effort, as each item must align with the broader architectural vision — which is why our team curates and delivers every piece as part of one integrated process.</p>
+        <a href="/services-furniture" class="fiq-cta-tan" style="display:inline-flex;align-items:center;gap:12px;font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#3A2D25;background:#D6C2A8;padding:15px 32px;text-decoration:none;transition:background 0.3s;">
+          Explore Furniture
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3A2D25" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </div>
     </div>
-    <h2 data-reveal data-reveal-delay="0.08" style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Lama Sans',sans-serif;font-size:clamp(28px,3.4vw,44px);font-weight:500;color:#3A2D25;line-height:1.15;letter-spacing:-0.01em;margin-bottom:24px;">The Final Layer of Spatial Perfection</h2>
-    <p data-reveal data-reveal-delay="0.14" style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Lama Sans',sans-serif;font-size:15px;line-height:1.85;color:#5B4636;margin-bottom:36px;">Furniture is the final layer of design that completes the atmosphere and flow of a room. Sourcing the right pieces is a time-consuming activity that demands significant effort, as each item must align with the broader architectural vision — which is why our team curates and delivers every piece as part of one integrated process.</p>
-    <a href="/services-furniture" data-reveal data-reveal-delay="0.2" style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:inline-flex;align-items:center;gap:12px;font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#FFFFFF;background:#3A2D25;padding:15px 32px;text-decoration:none;transition:background 0.3s;">
-      Explore Furniture
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-    </a>
   </div>
 </section>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5. MARKETS WE SERVE ━ -->
-<section id="markets" data-screen-label="Markets We Serve" style="scroll-margin-top:160px;background:#3A2D25;padding:clamp(72px,9vw,116px) clamp(24px,5vw,80px);">
+<section id="markets" data-screen-label="Markets We Serve" style="scroll-margin-top:116px;background:#FFFFFF;padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px);">
   <div style="max-width:1280px;margin:0 auto;">
     <div data-reveal style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);text-align:center;margin-bottom:clamp(44px,6vw,64px);">
       <div style="display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:20px;">
@@ -195,7 +235,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#8B6B4A;">Markets We Serve</span>
         <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
       </div>
-      <h2 style="font-family:'Lama Sans',sans-serif;font-size:clamp(28px,3.4vw,44px);font-weight:500;color:#FFFFFF;line-height:1.15;letter-spacing:-0.01em;max-width:640px;margin:0 auto;">One integrated team, delivering across every sector.</h2>
+      <h2 style="font-family:'Lama Sans',sans-serif;font-size:clamp(28px,3.4vw,44px);font-weight:500;color:#3A2D25;line-height:1.15;letter-spacing:-0.01em;max-width:640px;margin:0 auto;">One integrated team, delivering across every sector.</h2>
     </div>
 
     <div class="fiq-markets-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,1.6vw,20px);">
@@ -229,6 +269,96 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(30,22,16,0.9) 0%,rgba(30,22,16,0) 55%);"></div>
         <div style="position:absolute;bottom:0;left:0;right:0;padding:22px;">
           <span style="font-family:'Lama Sans',sans-serif;font-size:14px;font-weight:500;color:#FFFFFF;">Retail</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6. OUR PROCESS ━━━━━ -->
+<section id="process" data-screen-label="Our Process" style="scroll-margin-top:116px;position:relative;overflow:hidden;">
+ <div style="position:relative;padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px) clamp(56px,7vw,88px);">
+  <div style="position:absolute;inset:0;clip-path:polygon(0 0,25% 0,45% 100%,0 100%);background:#F5F2ED;"></div>
+  <div style="position:absolute;inset:0;clip-path:polygon(25% 0,100% 0,100% 100%,45% 100%);background-color:#F5F2ED;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='30'%3E%3Cg fill='%235B4636' fill-opacity='0.08'%3E%3Crect x='1.5' y='1.5' width='27' height='12'/%3E%3Crect x='31.5' y='1.5' width='27' height='12'/%3E%3Crect x='-13.5' y='16.5' width='27' height='12'/%3E%3Crect x='16.5' y='16.5' width='27' height='12'/%3E%3Crect x='46.5' y='16.5' width='27' height='12'/%3E%3C/g%3E%3C/svg%3E&quot;);"></div>
+
+  <div style="max-width:1280px;margin:0 auto;position:relative;z-index:1;display:flex;align-items:center;gap:clamp(56px,7vw,96px);">
+    <div data-reveal style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);flex:1;position:relative;min-height:clamp(400px,38vw,520px);display:flex;align-items:center;">
+      <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1200&q=80" alt="FurnishIQ project handover" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:0;border:12px solid #FFFFFF;box-shadow:0 24px 80px rgba(0,0,0,0.3);display:block;" loading="lazy" decoding="async">
+    </div>
+    <div data-reveal data-reveal-delay="0.12" style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);flex:1;">
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;">
+        <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
+        <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#8B6B4A;">Our Process</span>
+      </div>
+      <h2 style="font-family:'Lama Sans',sans-serif;font-size:clamp(28px,3.4vw,44px);font-weight:500;color:#3A2D25;line-height:1.15;letter-spacing:-0.01em;margin-bottom:24px;">A Proven Process, Refined on Every Project</h2>
+      <p style="font-family:'Lama Sans',sans-serif;font-size:15px;line-height:1.85;color:#5B4636;">At FurnishIQ, our commitment to excellence extends to a proven, design-build process built around clarity at every stage — from concept and material selection through fit-out and final handover. This structured approach lets us take full ownership of a project's outcome, protecting quality, schedule, and budget in equal measure, whichever service leads the engagement.</p>
+    </div>
+  </div>
+ </div>
+
+ <div style="position:relative;padding:clamp(56px,7vw,88px) clamp(24px,5vw,80px) clamp(80px,10vw,128px);">
+  <div style="position:absolute;inset:0;clip-path:polygon(45% 0,100% 0,100% 100%,65% 100%);background:#F5F2ED;"></div>
+  <div style="position:absolute;inset:0;clip-path:polygon(0 0,45% 0,65% 100%,0 100%);background-color:#F5F2ED;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='30'%3E%3Cg fill='%235B4636' fill-opacity='0.08'%3E%3Crect x='1.5' y='1.5' width='27' height='12'/%3E%3Crect x='31.5' y='1.5' width='27' height='12'/%3E%3Crect x='-13.5' y='16.5' width='27' height='12'/%3E%3Crect x='16.5' y='16.5' width='27' height='12'/%3E%3Crect x='46.5' y='16.5' width='27' height='12'/%3E%3C/g%3E%3C/svg%3E&quot;);"></div>
+
+  <div style="max-width:1280px;margin:0 auto;position:relative;z-index:1;display:flex;align-items:center;gap:clamp(56px,7vw,96px);">
+    <div data-reveal style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);flex:1;">
+      <h2 style="font-family:'Lama Sans',sans-serif;font-size:clamp(28px,3.4vw,44px);font-weight:500;color:#3A2D25;line-height:1.15;letter-spacing:-0.01em;margin-bottom:24px;">Dependable Warranty</h2>
+      <p style="font-family:'Lama Sans',sans-serif;font-size:15px;line-height:1.85;color:#5B4636;margin-bottom:36px;">Our commitment goes beyond handover. Every FurnishIQ project is backed by a standard one-year materials and workmanship warranty, with extended cover available on request — closing any gaps left by manufacturer coverage. It's the same structured accountability that runs through our entire process, so your investment stays protected long after the final walkthrough.</p>
+      <a href="/contact" class="fiq-cta-tan" style="display:inline-flex;align-items:center;gap:12px;font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#3A2D25;background:#D6C2A8;padding:15px 32px;text-decoration:none;">
+        Request More Information
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3A2D25" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+      </a>
+    </div>
+    <div data-reveal data-reveal-delay="0.12" style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);flex:1;position:relative;min-height:clamp(400px,38vw,520px);display:flex;align-items:center;">
+      <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=80" alt="FurnishIQ project handed over and warrantied" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:0;border:12px solid #FFFFFF;box-shadow:0 24px 80px rgba(0,0,0,0.3);display:block;" loading="lazy" decoding="async">
+    </div>
+  </div>
+ </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ PORTFOLIO ━━━━━━━━ -->
+<section id="portfolio" style="background:#3A2D25;padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px);">
+  <div style="max-width:1280px;margin:0 auto;">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:clamp(44px,6vw,72px);flex-wrap:wrap;gap:24px;">
+      <div>
+        <div data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;align-items:center;gap:16px;margin-bottom:20px;">
+          <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
+          <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#8B6B4A;">Selected Work</span>
+        </div>
+        <h2 data-reveal data-reveal-delay="0.1" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Lama Sans',sans-serif;font-size:clamp(26px,3.5vw,52px);font-weight:500;color:#FFFFFF;line-height:1.1;letter-spacing:-0.015em;">Transforming the Kingdom,<br>One Space at a Time.</h2>
+      </div>
+      <a href="/projects" data-reveal data-reveal-delay="0.2" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#D6C2A8;text-decoration:none;border-bottom:1px solid rgba(214,194,168,0.35);padding-bottom:4px;white-space:nowrap;flex-shrink:0;align-self:flex-end;margin-bottom:4px;">View All Projects</a>
+    </div>
+    <div class="fiq-portfolio-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:3px;">
+
+      <a href="/projects?category=Hospitality" data-portfolio-card data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);position:relative;aspect-ratio:3/4;overflow:hidden;cursor:pointer;display:block;text-decoration:none;">
+        <img id="spimg-1" src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&w=800&q=80" alt="Jeddah Boutique Hotel" style="width:100%;height:100%;object-fit:cover;object-position:center;transition:transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);" loading="lazy" decoding="async">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(58,45,37,0.92) 0%,rgba(58,45,37,0.0) 55%);"></div>
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:28px;">
+          <div style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:#8B6B4A;margin-bottom:10px;">Hospitality · Jeddah</div>
+          <h3 style="font-family:'Lama Sans',sans-serif;font-size:clamp(16px,1.8vw,22px);font-weight:500;color:#FFFFFF;line-height:1.2;margin-bottom:8px;">Jeddah Boutique Hotel</h3>
+          <p style="font-family:'Lama Sans',sans-serif;font-size:12px;color:rgba(214,194,168,0.65);line-height:1.5;">Redefining commercial hospitality.</p>
+        </div>
+      </a>
+
+      <a href="/projects?category=Residential" data-portfolio-card data-reveal data-reveal-delay="0.15" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);position:relative;aspect-ratio:3/4;overflow:hidden;cursor:pointer;display:block;text-decoration:none;">
+        <img id="spimg-2" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&w=800&q=80" alt="Wadi Villas" style="width:100%;height:100%;object-fit:cover;object-position:center;transition:transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);" loading="lazy" decoding="async">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(58,45,37,0.92) 0%,rgba(58,45,37,0.0) 55%);"></div>
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:28px;">
+          <div style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:#8B6B4A;margin-bottom:10px;">Residential · Riyadh</div>
+          <h3 style="font-family:'Lama Sans',sans-serif;font-size:clamp(16px,1.8vw,22px);font-weight:500;color:#FFFFFF;line-height:1.2;margin-bottom:8px;">Wadi Villas, Riyadh</h3>
+          <p style="font-family:'Lama Sans',sans-serif;font-size:12px;color:rgba(214,194,168,0.65);line-height:1.5;">Luxury residential living at its finest.</p>
+        </div>
+      </a>
+
+      <a href="/projects?category=Residential" data-portfolio-card data-reveal data-reveal-delay="0.3" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);position:relative;aspect-ratio:3/4;overflow:hidden;cursor:pointer;display:block;text-decoration:none;">
+        <img id="spimg-3" src="https://images.unsplash.com/photo-1613977257365-aaae5a9817ff?auto=format&w=800&q=80" alt="Ali Saleh Altamimi Villa" style="width:100%;height:100%;object-fit:cover;object-position:center;transition:transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);" loading="lazy" decoding="async">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(58,45,37,0.92) 0%,rgba(58,45,37,0.0) 55%);"></div>
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:28px;">
+          <div style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:#8B6B4A;margin-bottom:10px;">Architecture · KSA</div>
+          <h3 style="font-family:'Lama Sans',sans-serif;font-size:clamp(16px,1.8vw,22px);font-weight:500;color:#FFFFFF;line-height:1.2;margin-bottom:8px;">Ali Saleh Altamimi Villa</h3>
+          <p style="font-family:'Lama Sans',sans-serif;font-size:12px;color:rgba(214,194,168,0.65);line-height:1.5;">Full-scale architectural and landscape design.</p>
         </div>
       </a>
 
@@ -385,10 +515,23 @@ class Component extends DCLogic {
         entries.forEach(entry => {
           if (entry.isIntersecting) setActive(entry.target.id);
         });
-      }, { rootMargin: '-170px 0px -60% 0px', threshold: 0 });
+      }, { rootMargin: '-152px 0px -60% 0px', threshold: 0 });
       sections.forEach(s => spy.observe(s));
       setActive(sections[0].id);
     }
+
+    // ── PORTFOLIO HOVER ────────────────────────────────────────────────────
+    document.querySelectorAll('[data-portfolio-card]').forEach((card) => {
+      const img = card.querySelector('img');
+      card.addEventListener('mouseenter', () => {
+        if (img) img.style.transform = 'scale(1.07)';
+        card.style.zIndex = '2';
+      });
+      card.addEventListener('mouseleave', () => {
+        if (img) img.style.transform = 'scale(1)';
+        card.style.zIndex = '1';
+      });
+    });
 
     // ── SCROLL REVEAL ────────────────────────────────────────────────────────
     if (reduced) {
