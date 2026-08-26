@@ -2,7 +2,7 @@
   "redirects": [
     { "source": "/blog.dc.html", "destination": "/", "permanent": true },
     { "source": "/portfolio.dc.html", "destination": "/projects", "permanent": true },
-    { "source": "/project-detail.dc.html", "destination": "/", "permanent": true },
+    { "source": "/project-detail.dc.html", "destination": "/project-detail", "permanent": true },
     { "source": "/single-post.dc.html", "destination": "/", "permanent": true },
     { "source": "/services-interior-design.dc.html", "destination": "/", "permanent": true },
     { "source": "/services-fitout.dc.html", "destination": "/", "permanent": true },
@@ -11,7 +11,6 @@
 
     { "source": "/blog", "destination": "/", "permanent": true },
     { "source": "/portfolio", "destination": "/projects", "permanent": true },
-    { "source": "/project-detail", "destination": "/", "permanent": true },
     { "source": "/single-post", "destination": "/", "permanent": true },
     { "source": "/services-interior-design", "destination": "/", "permanent": true },
     { "source": "/services-fitout", "destination": "/", "permanent": true },
