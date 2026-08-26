@@ -3,6 +3,7 @@ Allow: /
 Disallow: /FurnishIQ%20Home.html
 Disallow: /_FurnishIQ%20About%20Us.dc.html
 Disallow: /about-us.dc.html
+Disallow: /services.dc.html
 Disallow: /blog.dc.html
 Disallow: /projects.dc.html
 Disallow: /project-detail.dc.html
@@ -12,6 +13,7 @@ Disallow: /services-fitout.dc.html
 Disallow: /services-mep.dc.html
 Disallow: /services-furniture.dc.html
 Disallow: /about-us
+Disallow: /services
 Disallow: /blog
 Disallow: /projects
 Disallow: /project-detail

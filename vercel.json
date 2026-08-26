@@ -52,6 +52,7 @@
     { "source": "/about-us", "destination": "/Furnishiq.net/about-us.dc.html" },
     { "source": "/about-us-2", "destination": "/Furnishiq.net/about-us-2.dc.html" },
     { "source": "/blog", "destination": "/Furnishiq.net/blog.dc.html" },
+    { "source": "/services", "destination": "/Furnishiq.net/services.dc.html" },
     { "source": "/projects", "destination": "/Furnishiq.net/projects.dc.html" },
     { "source": "/project-detail", "destination": "/Furnishiq.net/project-detail.dc.html" },
     { "source": "/single-post", "destination": "/Furnishiq.net/single-post.dc.html" },
