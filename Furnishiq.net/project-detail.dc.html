@@ -232,15 +232,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <label style="display:flex;flex-direction:column;gap:8px;">
           <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(214,194,168,0.55);">First Name *</span>
           <input id="bf-first-name" type="text" required placeholder="Sarah" style="font-family:'Lama Sans',sans-serif;font-size:14px;color:#FFFFFF;background:transparent;border:none;border-bottom:1px solid rgba(214,194,168,0.3);padding:6px 0 10px;outline:none;">
+          <span id="bf-first-name-error" style="display:none;font-family:'Lama Sans',sans-serif;font-size:11px;color:#E86A5C;"></span>
         </label>
         <label style="display:flex;flex-direction:column;gap:8px;">
           <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(214,194,168,0.55);">Last Name *</span>
           <input id="bf-last-name" type="text" required placeholder="Al-Rashid" style="font-family:'Lama Sans',sans-serif;font-size:14px;color:#FFFFFF;background:transparent;border:none;border-bottom:1px solid rgba(214,194,168,0.3);padding:6px 0 10px;outline:none;">
+          <span id="bf-last-name-error" style="display:none;font-family:'Lama Sans',sans-serif;font-size:11px;color:#E86A5C;"></span>
         </label>
       </div>
       <label style="display:flex;flex-direction:column;gap:8px;">
         <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(214,194,168,0.55);">Email Address *</span>
         <input id="bf-email" type="email" required placeholder="sarah@company.com" style="font-family:'Lama Sans',sans-serif;font-size:14px;color:#FFFFFF;background:transparent;border:none;border-bottom:1px solid rgba(214,194,168,0.3);padding:6px 0 10px;outline:none;">
+        <span id="bf-email-error" style="display:none;font-family:'Lama Sans',sans-serif;font-size:11px;color:#E86A5C;"></span>
       </label>
       <label style="display:flex;flex-direction:column;gap:8px;">
         <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(214,194,168,0.55);">Phone Number *</span>
@@ -249,6 +252,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <span style="width:1px;height:14px;background:rgba(214,194,168,0.3);"></span>
           <input id="bf-phone" type="tel" required placeholder="58 033 0627" style="flex:1;font-family:'Lama Sans',sans-serif;font-size:14px;color:#FFFFFF;background:transparent;border:none;outline:none;">
         </div>
+        <span id="bf-phone-error" style="display:none;font-family:'Lama Sans',sans-serif;font-size:11px;color:#E86A5C;"></span>
       </label>
       <button type="button" id="id-brochure-btn" style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#1E1610;background:#D6C2A8;border:none;padding:19px 0;display:flex;align-items:center;justify-content:center;gap:10px;cursor:pointer;transition:background 0.3s;margin-top:8px;">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"></path><polyline points="7 10 12 15 17 10"></polyline><path d="M4 19h16"></path></svg>
@@ -548,21 +552,32 @@ class Component extends DCLogic {
     if (ctaBtn) {
       ctaBtn.addEventListener('mouseenter', () => { ctaBtn.style.background = '#FFFFFF'; });
       ctaBtn.addEventListener('mouseleave', () => { ctaBtn.style.background = '#D6C2A8'; });
+      const bfFieldErrors = ['bf-first-name', 'bf-last-name', 'bf-email', 'bf-phone'];
+      const bfShowError = (id, message) => {
+        const input = document.getElementById(id);
+        const error = document.getElementById(id + '-error');
+        if (input) input.style.borderBottomColor = message ? '#E86A5C' : 'rgba(214,194,168,0.3)';
+        if (error) { error.textContent = message || ''; error.style.display = message ? 'block' : 'none'; }
+      };
+      bfFieldErrors.forEach((id) => {
+        const input = document.getElementById(id);
+        if (input) input.addEventListener('input', () => bfShowError(id, ''));
+      });
+
       ctaBtn.addEventListener('click', () => {
         const firstName = (document.getElementById('bf-first-name') || {}).value || '';
         const lastName = (document.getElementById('bf-last-name') || {}).value || '';
         const email = (document.getElementById('bf-email') || {}).value || '';
         const phone = (document.getElementById('bf-phone') || {}).value || '';
         const btnLabel = document.getElementById('id-brochure-btn-label');
-        const missing = [];
-        if (!firstName.trim()) missing.push('First Name');
-        if (!lastName.trim()) missing.push('Last Name');
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) missing.push('a valid Email Address');
-        if (!phone.trim()) missing.push('Phone Number');
-        if (missing.length) {
-          alert('Please complete the following before submitting:\n\n' + missing.join('\n'));
-          return;
-        }
+
+        bfShowError('bf-first-name', firstName.trim() ? '' : 'Please enter your first name.');
+        bfShowError('bf-last-name', lastName.trim() ? '' : 'Please enter your last name.');
+        bfShowError('bf-email', /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim()) ? '' : 'Please enter a valid email address.');
+        bfShowError('bf-phone', phone.trim() ? '' : 'Please enter your phone number.');
+
+        const hasError = !firstName.trim() || !lastName.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim()) || !phone.trim();
+        if (hasError) return;
         ctaBtn.disabled = true;
         if (btnLabel) btnLabel.textContent = 'Sending…';
         const payload = {
