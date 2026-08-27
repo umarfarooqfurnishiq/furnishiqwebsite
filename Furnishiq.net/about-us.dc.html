@@ -107,15 +107,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     .journey-card .journey-card-bg { opacity: 0; transition: opacity 0.55s cubic-bezier(0.25,0.46,0.45,0.94); }
     .journey-card:hover .journey-icon:not(.journey-icon-fill) { stroke: #D6C2A8 !important; }
     .journey-card .journey-icon-fill path     { transition: fill 0.45s cubic-bezier(0.25,0.46,0.45,0.94); }
-    .btn-pill-bronze     { transition: background 0.3s cubic-bezier(0.25,0.46,0.45,0.94); }
-    .btn-pill-bronze:hover { background: #3A2D25 !important; }
-    .btn-pill-bronze:hover .btn-circle { background: #D6C2A8 !important; }
-    .btn-pill-bronze:hover .btn-circle svg { stroke: #3A2D25 !important; }
-    .btn-pill-champagne  { transition: background 0.3s cubic-bezier(0.25,0.46,0.45,0.94), color 0.3s cubic-bezier(0.25,0.46,0.45,0.94); }
-    .btn-pill-champagne:hover { background: #3A2D25 !important; color: #D6C2A8 !important; }
-    .btn-pill-champagne:hover .btn-circle { background: #D6C2A8 !important; }
-    .btn-pill-champagne:hover .btn-circle svg { stroke: #3A2D25 !important; }
-    .btn-circle, .btn-circle svg { transition: background 0.3s cubic-bezier(0.25,0.46,0.45,0.94), stroke 0.3s cubic-bezier(0.25,0.46,0.45,0.94); }
+    .fiq-cta-tan{ transition:background 0.3s cubic-bezier(0.25,0.46,0.45,0.94); }
+    .fiq-cta-tan:hover{ background:#C4A97F!important; }
+    .fiq-cta-dark{ transition:background 0.3s cubic-bezier(0.25,0.46,0.45,0.94); }
+    .fiq-cta-dark:hover{ background:#5B4636!important; }
+    .fiq-cta-outline{ transition:background 0.3s cubic-bezier(0.25,0.46,0.45,0.94), border-color 0.3s cubic-bezier(0.25,0.46,0.45,0.94); }
+    .fiq-cta-outline:hover{ background:rgba(214,194,168,0.12)!important; border-color:rgba(214,194,168,0.7)!important; }
     .arsan-badge { transition: background 0.35s cubic-bezier(0.25,0.46,0.45,0.94), border-color 0.35s cubic-bezier(0.25,0.46,0.45,0.94); }
     .arsan-badge-title, .arsan-badge-sub { transition: color 0.35s cubic-bezier(0.25,0.46,0.45,0.94); }
     .arsan-badge:hover { background: #D6C2A8 !important; border-color: #D6C2A8 !important; }
@@ -186,7 +183,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </nav>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ PAGE HERO ━ -->
-<section data-about-hero style="position:relative;background:#1E1610;overflow:hidden;min-height:clamp(620px,66vh,760px);padding:clamp(150px,18vh,200px) clamp(24px,5vw,80px) clamp(72px,9vw,120px);">
+<section data-about-hero style="position:relative;background:#1E1610;overflow:hidden;min-height:clamp(620px,66vh,760px);display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(100px,14vh,150px) clamp(24px,5vw,80px) clamp(56px,7vw,88px);">
   <!-- Photographic texture -->
   <div style="position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2400&q=80');background-size:cover;background-position:center;opacity:0.16;pointer-events:none;"></div>
   <div style="position:absolute;inset:0;background:linear-gradient(115deg,rgba(30,22,16,0.96) 0%,rgba(30,22,16,0.72) 55%,rgba(30,22,16,0.94) 100%);pointer-events:none;"></div>
@@ -210,7 +207,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
 
       <!-- Side: description + breadcrumb -->
-      <div class="fiq-hero-side" data-reveal data-reveal-delay="0.5" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);border-left:1px solid rgba(214,194,168,0.18);padding-left:clamp(24px,2.5vw,40px);">
+      <div class="fiq-hero-side" data-reveal data-reveal-delay="0.5" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);border-left:1px solid rgba(214,194,168,0.18);padding-left:clamp(24px,2.5vw,40px);align-self:end;">
         <div style="display:flex;align-items:center;gap:11px;margin-bottom:18px;">
           <span style="width:7px;height:7px;border-radius:50%;background:#D6C2A8;flex-shrink:0;animation:fiq-pulse-dot 2.4s cubic-bezier(0.25,0.46,0.45,0.94) infinite;"></span>
           <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.24em;text-transform:uppercase;color:rgba(214,194,168,0.8);">Serving clients across KSA</span>
@@ -227,6 +224,99 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ WHY FURNISHIQ ━ -->
+<section style="background:#FFFFFF;padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px);">
+  <div style="max-width:1280px;margin:0 auto;text-align:center;">
+
+    <div data-reveal style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);margin-bottom:clamp(40px,5vw,56px);">
+      <div style="display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:20px;">
+        <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
+        <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#8B6B4A;">Why Choose FurnishIQ</span>
+        <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
+      </div>
+      <h2 style="font-family:'Lama Sans',sans-serif;font-size:clamp(30px,4vw,52px);font-weight:500;color:#3A2D25;line-height:1.2;max-width:720px;margin:0 auto;">We help clients build spaces that perform, inspire, and endure.</h2>
+    </div>
+
+    <div data-reveal data-reveal-delay="0.1" style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);">
+
+      <div class="about-why-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,2vw,24px);">
+
+        <div class="why-card-cell" data-why-card style="background:#F5F2ED;border-radius:0;padding:clamp(32px,3.5vw,44px) 28px;text-align:center;">
+          <div class="why-card-icon" style="width:120px;height:120px;border-radius:50%;background:#3A2D25;display:flex;align-items:center;justify-content:center;margin:0 auto 30px;">
+            <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#D6C2A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="6" y1="20" x2="6" y2="4"/>
+              <path d="M6 4h11l-3 4 3 4H6"/>
+            </svg>
+          </div>
+          <h3 class="why-card-title" style="font-family:'Lama Sans',sans-serif;font-size:17px;font-weight:500;color:#1F1F1F;margin-bottom:12px;">End-to-End Delivery</h3>
+          <p class="why-card-desc" style="font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.75;color:#5B4636;">Single point of responsibility from concept to completion.</p>
+        </div>
+
+        <div class="why-card-cell" data-why-card style="background:#F5F2ED;border-radius:0;padding:clamp(32px,3.5vw,44px) 28px;text-align:center;">
+          <div class="why-card-icon" style="width:120px;height:120px;border-radius:50%;background:#3A2D25;display:flex;align-items:center;justify-content:center;margin:0 auto 30px;">
+            <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#D6C2A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 20L7 12L16 3L21 8L12 17L4 20Z"/>
+              <line x1="7" y1="12" x2="10.5" y2="15.5"/>
+            </svg>
+          </div>
+          <h3 class="why-card-title" style="font-family:'Lama Sans',sans-serif;font-size:17px;font-weight:500;color:#1F1F1F;margin-bottom:12px;">Design &amp; Build Expertise</h3>
+          <p class="why-card-desc" style="font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.75;color:#5B4636;">Creative design and construction expertise combined under one roof.</p>
+        </div>
+
+        <div class="why-card-cell" data-why-card style="background:#F5F2ED;border-radius:0;padding:clamp(32px,3.5vw,44px) 28px;text-align:center;">
+          <div class="why-card-icon" style="width:120px;height:120px;border-radius:50%;background:#3A2D25;display:flex;align-items:center;justify-content:center;margin:0 auto 30px;">
+            <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#D6C2A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3L19 6V11L12 21L5 11V6Z"/>
+              <polyline points="9 11.5 11 13.5 15 9.5"/>
+            </svg>
+          </div>
+          <h3 class="why-card-title" style="font-family:'Lama Sans',sans-serif;font-size:17px;font-weight:500;color:#1F1F1F;margin-bottom:12px;">Quality Assurance</h3>
+          <p class="why-card-desc" style="font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.75;color:#5B4636;">Checkpoints at every stage catch issues before the client ever does.</p>
+        </div>
+
+        <div class="why-card-cell" data-why-card style="background:#F5F2ED;border-radius:0;padding:clamp(32px,3.5vw,44px) 28px;text-align:center;">
+          <div class="why-card-icon" style="width:120px;height:120px;border-radius:50%;background:#3A2D25;display:flex;align-items:center;justify-content:center;margin:0 auto 30px;">
+            <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#D6C2A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="5" y="4" width="14" height="17" rx="2"/>
+              <line x1="9" y1="2" x2="9" y2="6"/>
+              <line x1="15" y1="2" x2="15" y2="6"/>
+              <line x1="8" y1="11" x2="16" y2="11"/>
+              <line x1="8" y1="15" x2="13" y2="15"/>
+            </svg>
+          </div>
+          <h3 class="why-card-title" style="font-family:'Lama Sans',sans-serif;font-size:17px;font-weight:500;color:#1F1F1F;margin-bottom:12px;">Project Management</h3>
+          <p class="why-card-desc" style="font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.75;color:#5B4636;">Schedules, budgets, and coordination managed with full transparency.</p>
+        </div>
+
+      </div>
+
+    </div>
+
+    <style>
+      .why-card-cell      { transition: background 0.4s cubic-bezier(0.25,0.46,0.45,0.94); }
+      .why-card-cell:hover { background: #3A2D25 !important; }
+      .why-card-icon      { transition: background 0.4s cubic-bezier(0.25,0.46,0.45,0.94); }
+      .why-card-icon svg  { transition: stroke 0.4s cubic-bezier(0.25,0.46,0.45,0.94); }
+      .why-card-title     { transition: color 0.4s cubic-bezier(0.25,0.46,0.45,0.94); }
+      .why-card-desc      { transition: color 0.4s cubic-bezier(0.25,0.46,0.45,0.94); }
+      .why-card-cell:hover .why-card-icon     { background: #D6C2A8 !important; }
+      .why-card-cell:hover .why-card-icon svg { stroke: #3A2D25 !important; }
+      .why-card-cell:hover .why-card-title    { color: #FFFFFF !important; }
+      .why-card-cell:hover .why-card-desc     { color: rgba(255,255,255,0.75) !important; }
+      @media(max-width:900px){
+        .about-why-grid{grid-template-columns:1fr 1fr!important;}
+      }
+      @media(max-width:600px){
+        .about-why-grid{grid-template-columns:1fr!important;}
+      }
+    </style>
+
+    <p data-reveal data-reveal-delay="0.18" style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Lama Sans',sans-serif;font-size:15px;line-height:1.8;color:#5B4636;max-width:640px;margin:clamp(36px,4.5vw,52px) auto 0;">By bringing design, engineering, and craftsmanship under one roof, we help clients bring ambitious spaces to life — on time, on budget, and without compromise.</p>
+
+  </div>
+</section>
+
+
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ BRAND STATEMENT ━━━ -->
 <section style="background:#F5F2ED;padding:clamp(80px,10vw,120px) clamp(24px,5vw,80px);">
   <div style="max-width:1280px;margin:0 auto;">
@@ -240,14 +330,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div data-reveal data-reveal-delay="0.1" style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);">
           <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=75" alt="" style="width:100%;aspect-ratio:3/5.6;object-fit:cover;display:block;border-radius:0;box-shadow:0 4px 20px rgba(58,45,37,0.10);" loading="lazy" decoding="async">
-          <a href="/projects" class="btn-pill-bronze" style="margin-top:20px;background:#8B6B4A;color:#FFFFFF;padding:8px 8px 8px 22px;border-radius:0;text-decoration:none;display:inline-flex;align-items:center;gap:14px;">
-            <span style="font-family:'Lama Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;white-space:nowrap;">Learn More</span>
-            <span class="btn-circle" style="width:34px;height:34px;border-radius:0;background:#1F1F1F;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="7" y1="17" x2="17" y2="7"/>
-                <polyline points="7 7 17 7 17 17"/>
-              </svg>
-            </span>
+          <a href="/projects" class="fiq-cta-dark" style="margin-top:20px;display:inline-flex;align-items:center;gap:12px;font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#FFFFFF;background:#3A2D25;padding:15px 32px;text-decoration:none;transition:background 0.3s;">
+            Learn More
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
           </a>
         </div>
       </div>
@@ -286,7 +371,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div style="max-width:1280px;margin:0 auto;">
     <div class="our-story-grid" style="display:grid;grid-template-columns:5fr 7fr;gap:clamp(32px,4vw,56px);align-items:start;">
 
-      <!-- LEFT: OUR STORY + copy + Part of Arsan Global + copy + single CTA -->
+      <!-- LEFT: OUR STORY intro copy -->
       <div data-reveal style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);">
         <div style="display:flex;align-items:center;gap:16px;margin-bottom:32px;">
           <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
@@ -294,16 +379,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
 
         <p style="font-family:'Lama Sans',sans-serif;font-size:15px;line-height:1.85;color:#5B4636;margin-bottom:20px;">Our journey began with a simple observation: while the market offered many design and construction solutions, there remained a significant gap for discerning clients seeking spaces that truly reflected their individuality, lifestyle, and aspirations.</p>
-        <p style="font-family:'Lama Sans',sans-serif;font-size:15px;line-height:1.85;color:#5B4636;margin-bottom:40px;">FurnishIQ was established to close that gap — delivering personalized, high-quality environments through a fully integrated design, build, and management approach.</p>
-
-        <h2 style="font-family:'Lama Sans',sans-serif;font-size:clamp(28px,4.2vw,42px);font-weight:500;color:#3A2D25;line-height:1.1;margin-bottom:28px;">Part of Arsan Global</h2>
-
-        <p style="font-family:'Lama Sans',sans-serif;font-size:15px;line-height:1.85;color:#5B4636;margin-bottom:20px;">FurnishIQ is the Design, Build, and Management subsidiary of Arsan Global, a diversified international holding group headquartered in the Kingdom of Saudi Arabia and established in 2007. With a growing presence across the Middle East, Europe, North America, and Asia, Arsan Global operates through specialized companies in logistics, technology, real estate, trading, business consulting, and integrated project solutions.</p>
-        <p style="font-family:'Lama Sans',sans-serif;font-size:15px;line-height:1.85;color:#5B4636;">Backed by the financial strength, international network, and multidisciplinary expertise of Arsan Global, FurnishIQ combines creative vision, engineering excellence, and disciplined execution to create exceptional spaces that inspire, perform, and endure.</p>
+        <p style="font-family:'Lama Sans',sans-serif;font-size:15px;line-height:1.85;color:#5B4636;">FurnishIQ was established to close that gap — delivering personalized, high-quality environments through a fully integrated design, build, and management approach.</p>
       </div>
 
       <!-- RIGHT: Arsan Global feature graphic (recreated in HTML/CSS — no source file was available to embed as an image) -->
-      <div class="our-story-right" data-reveal data-reveal-delay="0.1" style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);position:sticky;top:120px;">
+      <div class="our-story-right" data-reveal data-reveal-delay="0.1" style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);">
         <div style="position:relative;width:100%;background:#1F1F1F;border-radius:0;padding:clamp(16px,2.2vw,28px);box-shadow:0 4px 20px rgba(58,45,37,0.10);">
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(10px,1.4vw,18px);">
             <div style="background:#2A2A2A;border-radius:0;padding:clamp(16px,2.2vw,28px);">
@@ -334,6 +414,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
 
+    </div>
+
+    <!-- FULL-WIDTH ROW: Part of Arsan Global -->
+    <div data-reveal data-reveal-delay="0.1" style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);max-width:1280px;margin:clamp(56px,7vw,88px) auto 0;text-align:center;">
+      <h2 style="font-family:'Lama Sans',sans-serif;font-size:clamp(28px,4.2vw,42px);font-weight:500;color:#3A2D25;line-height:1.1;margin-bottom:28px;">Part of Arsan Global</h2>
+      <p style="font-family:'Lama Sans',sans-serif;font-size:15px;line-height:1.85;color:#5B4636;margin-bottom:20px;">FurnishIQ is the Design, Build, and Management subsidiary of Arsan Global, a diversified international holding group headquartered in the Kingdom of Saudi Arabia and established in 2007. With a growing presence across the Middle East, Europe, North America, and Asia, Arsan Global operates through specialized companies in logistics, technology, real estate, trading, business consulting, and integrated project solutions.</p>
+      <p style="font-family:'Lama Sans',sans-serif;font-size:15px;line-height:1.85;color:#5B4636;">Backed by the financial strength, international network, and multidisciplinary expertise of Arsan Global, FurnishIQ combines creative vision, engineering excellence, and disciplined execution to create exceptional spaces that inspire, perform, and endure.</p>
     </div>
   </div>
 </section>
@@ -424,16 +511,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
           <h2 style="font-family:'Lama Sans',sans-serif;font-size:clamp(28px,4.2vw,42px);font-weight:500;letter-spacing:-0.6px;color:#3A2D25;line-height:1.1;text-wrap:balance;">Integrated Expertise. Total Accountability.</h2>
         </div>
-        <div style="display:flex;flex-direction:column;gap:14px;">
+        <div style="display:flex;flex-direction:column;">
         <sc-for list="{{ disciplines }}" as="disc" hint-placeholder-count="5">
-          <div onClick="{{ disc.onClick }}" style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:8px 8px 8px 28px;border-radius:0;cursor:pointer;background:{{ disc.pillBg }};transition:background 0.4s cubic-bezier(0.25,0.46,0.45,0.94);">
-            <span style="font-family:'Lama Sans',sans-serif;font-size:16px;font-weight:600;color:{{ disc.pillText }};transition:color 0.4s cubic-bezier(0.25,0.46,0.45,0.94);">{{ disc.title }}</span>
-            <span style="width:44px;height:44px;border-radius:0;background:{{ disc.circleBg }};display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background 0.4s cubic-bezier(0.25,0.46,0.45,0.94);">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="{{ disc.arrowColor }}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="transition:stroke 0.4s cubic-bezier(0.25,0.46,0.45,0.94);">
-                <line x1="7" y1="17" x2="17" y2="7"/>
-                <polyline points="7 7 17 7 17 17"/>
-              </svg>
-            </span>
+          <div onClick="{{ disc.onClick }}" style="display:flex;align-items:center;gap:18px;padding:17px 6px 17px 22px;cursor:pointer;border-left:2px solid {{ disc.barColor }};border-bottom:1px solid rgba(58,45,37,0.12);transition:border-color 0.4s cubic-bezier(0.25,0.46,0.45,0.94);">
+            <span style="font-family:'Lama Sans',sans-serif;font-size:16px;font-weight:{{ disc.fontWeight }};color:{{ disc.textColor }};transition:color 0.4s cubic-bezier(0.25,0.46,0.45,0.94);flex:1;">{{ disc.title }}</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#8B6B4A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;opacity:{{ disc.arrowOpacity }};transform:{{ disc.arrowTransform }};transition:opacity 0.4s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94);">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
           </div>
         </sc-for>
         </div>
@@ -445,14 +530,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div style="opacity:{{ leftOpacity }};transition:opacity 0.25s ease;">
             <div style="position:relative;">
               <img src="{{ activeImage }}" alt="" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;border-radius:0;box-shadow:0 4px 20px rgba(58,45,37,0.10);" loading="lazy" decoding="async">
-              <a href="/projects" class="btn-pill-champagne" style="position:absolute;right:24px;bottom:24px;background:#D6C2A8;color:#3A2D25;padding:8px 8px 8px 22px;border-radius:0;text-decoration:none;display:inline-flex;align-items:center;gap:14px;box-shadow:0 8px 24px rgba(58,45,37,0.3);">
-                <span style="font-family:'Lama Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;white-space:nowrap;">Explore Projects</span>
-                <span class="btn-circle" style="width:34px;height:34px;border-radius:0;background:#3A2D25;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#D6C2A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="7" y1="17" x2="17" y2="7"/>
-                    <polyline points="7 7 17 7 17 17"/>
-                  </svg>
-                </span>
+              <a href="/projects" class="fiq-cta-tan" style="position:absolute;right:24px;bottom:24px;display:inline-flex;align-items:center;gap:12px;font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#3A2D25;background:#D6C2A8;padding:15px 32px;text-decoration:none;transition:background 0.3s;box-shadow:0 8px 24px rgba(58,45,37,0.3);">
+                Explore Projects
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3A2D25" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </a>
             </div>
             <div style="margin-top:32px;">
@@ -583,98 +663,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ WHY FURNISHIQ ━ -->
-<section style="background:#FFFFFF;padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px);">
-  <div style="max-width:1280px;margin:0 auto;text-align:center;">
-
-    <div data-reveal style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);margin-bottom:clamp(40px,5vw,56px);">
-      <div style="display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:20px;">
-        <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
-        <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#8B6B4A;">Why Choose FurnishIQ</span>
-        <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
-      </div>
-      <h2 style="font-family:'Lama Sans',sans-serif;font-size:clamp(30px,4vw,52px);font-weight:500;color:#3A2D25;line-height:1.2;max-width:720px;margin:0 auto;">We help clients build spaces that perform, inspire, and endure.</h2>
-    </div>
-
-    <div data-reveal data-reveal-delay="0.1" style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);">
-
-      <div class="about-why-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,2vw,24px);">
-
-        <div class="why-card-cell" data-why-card style="background:#F5F2ED;border-radius:0;padding:clamp(32px,3.5vw,44px) 28px;text-align:center;">
-          <div class="why-card-icon" style="width:120px;height:120px;border-radius:50%;background:#3A2D25;display:flex;align-items:center;justify-content:center;margin:0 auto 30px;">
-            <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#D6C2A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="6" y1="20" x2="6" y2="4"/>
-              <path d="M6 4h11l-3 4 3 4H6"/>
-            </svg>
-          </div>
-          <h3 class="why-card-title" style="font-family:'Lama Sans',sans-serif;font-size:17px;font-weight:500;color:#1F1F1F;margin-bottom:12px;">End-to-End Delivery</h3>
-          <p class="why-card-desc" style="font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.75;color:#5B4636;">Single point of responsibility from concept to completion.</p>
-        </div>
-
-        <div class="why-card-cell" data-why-card style="background:#F5F2ED;border-radius:0;padding:clamp(32px,3.5vw,44px) 28px;text-align:center;">
-          <div class="why-card-icon" style="width:120px;height:120px;border-radius:50%;background:#3A2D25;display:flex;align-items:center;justify-content:center;margin:0 auto 30px;">
-            <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#D6C2A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M4 20L7 12L16 3L21 8L12 17L4 20Z"/>
-              <line x1="7" y1="12" x2="10.5" y2="15.5"/>
-            </svg>
-          </div>
-          <h3 class="why-card-title" style="font-family:'Lama Sans',sans-serif;font-size:17px;font-weight:500;color:#1F1F1F;margin-bottom:12px;">Design &amp; Build Expertise</h3>
-          <p class="why-card-desc" style="font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.75;color:#5B4636;">Creative design and construction expertise combined under one roof.</p>
-        </div>
-
-        <div class="why-card-cell" data-why-card style="background:#F5F2ED;border-radius:0;padding:clamp(32px,3.5vw,44px) 28px;text-align:center;">
-          <div class="why-card-icon" style="width:120px;height:120px;border-radius:50%;background:#3A2D25;display:flex;align-items:center;justify-content:center;margin:0 auto 30px;">
-            <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#D6C2A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 3L19 6V11L12 21L5 11V6Z"/>
-              <polyline points="9 11.5 11 13.5 15 9.5"/>
-            </svg>
-          </div>
-          <h3 class="why-card-title" style="font-family:'Lama Sans',sans-serif;font-size:17px;font-weight:500;color:#1F1F1F;margin-bottom:12px;">Quality Assurance</h3>
-          <p class="why-card-desc" style="font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.75;color:#5B4636;">Checkpoints at every stage catch issues before the client ever does.</p>
-        </div>
-
-        <div class="why-card-cell" data-why-card style="background:#F5F2ED;border-radius:0;padding:clamp(32px,3.5vw,44px) 28px;text-align:center;">
-          <div class="why-card-icon" style="width:120px;height:120px;border-radius:50%;background:#3A2D25;display:flex;align-items:center;justify-content:center;margin:0 auto 30px;">
-            <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#D6C2A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="5" y="4" width="14" height="17" rx="2"/>
-              <line x1="9" y1="2" x2="9" y2="6"/>
-              <line x1="15" y1="2" x2="15" y2="6"/>
-              <line x1="8" y1="11" x2="16" y2="11"/>
-              <line x1="8" y1="15" x2="13" y2="15"/>
-            </svg>
-          </div>
-          <h3 class="why-card-title" style="font-family:'Lama Sans',sans-serif;font-size:17px;font-weight:500;color:#1F1F1F;margin-bottom:12px;">Project Management</h3>
-          <p class="why-card-desc" style="font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.75;color:#5B4636;">Schedules, budgets, and coordination managed with full transparency.</p>
-        </div>
-
-      </div>
-
-    </div>
-
-    <style>
-      .why-card-cell      { transition: background 0.4s cubic-bezier(0.25,0.46,0.45,0.94); }
-      .why-card-cell:hover { background: #3A2D25 !important; }
-      .why-card-icon      { transition: background 0.4s cubic-bezier(0.25,0.46,0.45,0.94); }
-      .why-card-icon svg  { transition: stroke 0.4s cubic-bezier(0.25,0.46,0.45,0.94); }
-      .why-card-title     { transition: color 0.4s cubic-bezier(0.25,0.46,0.45,0.94); }
-      .why-card-desc      { transition: color 0.4s cubic-bezier(0.25,0.46,0.45,0.94); }
-      .why-card-cell:hover .why-card-icon     { background: #D6C2A8 !important; }
-      .why-card-cell:hover .why-card-icon svg { stroke: #3A2D25 !important; }
-      .why-card-cell:hover .why-card-title    { color: #FFFFFF !important; }
-      .why-card-cell:hover .why-card-desc     { color: rgba(255,255,255,0.75) !important; }
-      @media(max-width:900px){
-        .about-why-grid{grid-template-columns:1fr 1fr!important;}
-      }
-      @media(max-width:600px){
-        .about-why-grid{grid-template-columns:1fr!important;}
-      }
-    </style>
-
-    <p data-reveal data-reveal-delay="0.18" style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Lama Sans',sans-serif;font-size:15px;line-height:1.8;color:#5B4636;max-width:640px;margin:clamp(36px,4.5vw,52px) auto 0;">By bringing design, engineering, and craftsmanship under one roof, we help clients bring ambitious spaces to life — on time, on budget, and without compromise.</p>
-
-  </div>
-</section>
-
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ MARKETS WE SERVE ━ -->
 <section style="background:#F5F2ED;padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px);">
   <div style="max-width:1280px;margin:0 auto;">
@@ -760,8 +748,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h2 style="font-family:'Lama Sans',sans-serif;font-size:clamp(24px,3vw,44px);font-weight:500;color:#D6C2A8;line-height:1.15;margin-bottom:22px;">Ready to Visualise Your Space?</h2>
         <p style="font-family:'Lama Sans',sans-serif;font-size:14px;line-height:1.75;color:rgba(214,194,168,0.58);margin-bottom:36px;">Receive a clear plan, photoreal visuals, and a comprehensive budget roadmap tailored to your brief.</p>
         <div style="display:flex;flex-direction:column;gap:12px;">
-          <a href="/contact" id="cta-book" style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#3A2D25;background:#D6C2A8;padding:15px 32px;text-decoration:none;display:block;transition:background 0.3s,color 0.3s;text-align:center;">Book a Consultation</a>
-          <a href="/projects" id="cta-projects" style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#D6C2A8;background:transparent;padding:15px 32px;text-decoration:none;display:block;transition:all 0.3s;border:1px solid rgba(214,194,168,0.35);text-align:center;">Discover Projects</a>
+          <a href="/contact" id="cta-book" class="fiq-cta-tan" style="display:inline-flex;align-items:center;justify-content:center;gap:12px;font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#3A2D25;background:#D6C2A8;padding:15px 32px;text-decoration:none;transition:background 0.3s;">
+            Book a Consultation
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3A2D25" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+          <a href="/projects" id="cta-projects" class="fiq-cta-outline" style="display:inline-flex;align-items:center;justify-content:center;gap:12px;font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#D6C2A8;background:transparent;padding:15px 32px;text-decoration:none;border:1px solid rgba(214,194,168,0.35);">
+            Discover Projects
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D6C2A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
         </div>
       </div>
     </div>
@@ -885,10 +879,11 @@ class Component extends DCLogic {
         {
           title:      'Overview',
           tagline:    'Integrated Expertise. Total Accountability.',
-          pillBg:     active === -1 ? '#D6C2A8' : '#3A2D25',
-          pillText:   active === -1 ? '#3A2D25' : 'rgba(245,242,237,0.78)',
-          circleBg:   active === -1 ? '#3A2D25' : 'rgba(255,255,255,0.1)',
-          arrowColor: active === -1 ? '#D6C2A8' : 'rgba(245,242,237,0.75)',
+          barColor:      active === -1 ? '#8B6B4A' : 'transparent',
+          textColor:     active === -1 ? '#3A2D25' : 'rgba(58,45,37,0.5)',
+          fontWeight:    active === -1 ? 600 : 500,
+          arrowOpacity:  active === -1 ? 1 : 0,
+          arrowTransform: active === -1 ? 'translateX(0)' : 'translateX(-4px)',
           onClick: () => {
             if (this.state.activeDiscipline === -1) return;
             this.setState({ leftOpacity: 0 });
@@ -898,10 +893,11 @@ class Component extends DCLogic {
         ...this._disciplines.map((d, i) => ({
           title:      d.title,
           tagline:    d.tagline,
-          pillBg:     i === active ? '#D6C2A8' : '#3A2D25',
-          pillText:   i === active ? '#3A2D25' : 'rgba(245,242,237,0.78)',
-          circleBg:   i === active ? '#3A2D25' : 'rgba(255,255,255,0.1)',
-          arrowColor: i === active ? '#D6C2A8' : 'rgba(245,242,237,0.75)',
+          barColor:      i === active ? '#8B6B4A' : 'transparent',
+          textColor:     i === active ? '#3A2D25' : 'rgba(58,45,37,0.5)',
+          fontWeight:    i === active ? 600 : 500,
+          arrowOpacity:  i === active ? 1 : 0,
+          arrowTransform: i === active ? 'translateX(0)' : 'translateX(-4px)',
           onClick: () => {
             if (i === this.state.activeDiscipline) return;
             this.setState({ leftOpacity: 0 });
@@ -1013,18 +1009,6 @@ class Component extends DCLogic {
         });
       }, { threshold: 0.08, rootMargin: '0px 0px -24px 0px' });
       document.querySelectorAll('[data-reveal]').forEach(el => obs.observe(el));
-    }
-
-    // ── CTA BUTTON HOVERS ───────────────────────────────────────────────────
-    const ctaBook = document.getElementById('cta-book');
-    if (ctaBook) {
-      ctaBook.addEventListener('mouseenter', () => { ctaBook.style.background = '#FFFFFF'; ctaBook.style.color = '#3A2D25'; });
-      ctaBook.addEventListener('mouseleave', () => { ctaBook.style.background = '#D6C2A8'; ctaBook.style.color = '#3A2D25'; });
-    }
-    const ctaProjects = document.getElementById('cta-projects');
-    if (ctaProjects) {
-      ctaProjects.addEventListener('mouseenter', () => { ctaProjects.style.background = 'rgba(214,194,168,0.12)'; ctaProjects.style.borderColor = 'rgba(214,194,168,0.7)'; });
-      ctaProjects.addEventListener('mouseleave', () => { ctaProjects.style.background = 'transparent'; ctaProjects.style.borderColor = 'rgba(214,194,168,0.35)'; });
     }
 
     // ── FOOTER ──────────────────────────────────────────────────────────────
