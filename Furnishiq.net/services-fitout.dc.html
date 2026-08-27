@@ -64,6 +64,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       .fiq-fit-steps{flex-direction:column!important;gap:40px!important;}
       .fiq-fit-connector{display:none!important;}
       .fiq-sectors-grid{grid-template-columns:1fr 1fr!important;}
+      .fiq-markets-grid{grid-template-columns:1fr 1fr!important;}
       .fiq-footer-grid{grid-template-columns:1fr 1fr!important;gap:48px!important;}
       .fiq-footer-brand{grid-column:1/-1!important;}
       .fiq-cta-row{flex-direction:column!important;align-items:flex-start!important;}
@@ -72,8 +73,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     @media(max-width:600px){
       .fiq-disc-grid{grid-template-columns:1fr!important;}
       .fiq-sectors-grid{grid-template-columns:1fr!important;}
+      .fiq-markets-grid{grid-template-columns:1fr!important;}
       .fiq-footer-grid{grid-template-columns:1fr!important;}
     }
+    .fiq-market-card{ transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94); }
+    .fiq-market-card:hover{ transform:translateY(-6px); }
+    .fiq-market-card:hover .fiq-market-img{ transform:scale(1.06); }
+    .fiq-market-img{ transition:transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94); }
   </style>
 </helmet>
 
@@ -132,7 +138,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ ADVANTAGE ━━━━━━━ -->
-<section data-screen-label="Advantage" style="background:#FFFFFF;">
+<section data-screen-label="Advantage" style="background:#FFFFFF;overflow:hidden;">
 
   <!-- Section header -->
   <div style="padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px) clamp(52px,6vw,80px);">
@@ -147,10 +153,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <!-- Pillar 01: image LEFT · text RIGHT -->
   <div data-adv-row style="display:grid;grid-template-columns:1fr 1fr;margin-bottom:0;">
-    <div data-slide-from="left" style="overflow:hidden;min-height:clamp(320px,36vw,440px);opacity:0;transform:translateX(-52px);transition:opacity 0.9s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);">
-      <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80" alt="Brand-led interior layout planning" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;" loading="lazy" decoding="async">
+    <div data-slide-from="left" style="position:relative;overflow:hidden;opacity:0;transform:translateX(-52px);transition:opacity 0.9s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);">
+      <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80" alt="Brand-led interior layout planning" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;" loading="lazy" decoding="async">
     </div>
-    <div data-slide-from="right" style="display:flex;flex-direction:column;justify-content:flex-start;padding:clamp(40px,5vw,64px) clamp(40px,10vw,152px) clamp(48px,6vw,80px) clamp(48px,5vw,80px);background:#FFFFFF;opacity:0;transform:translateX(52px);transition:opacity 0.9s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);">
+    <div data-slide-from="right" style="display:flex;flex-direction:column;justify-content:flex-start;padding:80px clamp(40px,10vw,152px) 80px clamp(48px,5vw,80px);background:#FFFFFF;opacity:0;transform:translateX(52px);transition:opacity 0.9s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);">
       <div style="font-family:'Lama Sans',sans-serif;font-size:clamp(72px,8.5vw,108px);font-weight:500;color:rgba(139,107,74,0.22);line-height:1;letter-spacing:-0.03em;margin-bottom:4px;">01</div>
       <div style="width:36px;height:2px;background:#8B6B4A;margin-bottom:28px;"></div>
       <h3 style="font-family:'Lama Sans',sans-serif;font-size:clamp(18px,2vw,26px);font-weight:500;color:#1F1F1F;margin-bottom:18px;line-height:1.2;">Strategic DNA: Brand-Led Planning</h3>
@@ -160,23 +166,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <!-- Pillar 02: text LEFT · image RIGHT -->
   <div data-adv-row style="display:grid;grid-template-columns:1fr 1fr;margin-bottom:0;">
-    <div data-slide-from="left" style="display:flex;flex-direction:column;justify-content:flex-start;padding:clamp(40px,5vw,64px) clamp(48px,5vw,80px) clamp(48px,6vw,80px) clamp(40px,10vw,152px);background:#FFFFFF;opacity:0;transform:translateX(-52px);transition:opacity 0.9s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);">
+    <div data-slide-from="left" style="display:flex;flex-direction:column;justify-content:flex-start;padding:80px clamp(48px,5vw,80px) 80px clamp(40px,10vw,152px);background:#FFFFFF;opacity:0;transform:translateX(-52px);transition:opacity 0.9s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);">
       <div style="font-family:'Lama Sans',sans-serif;font-size:clamp(72px,8.5vw,108px);font-weight:500;color:rgba(139,107,74,0.22);line-height:1;letter-spacing:-0.03em;margin-bottom:4px;">02</div>
       <div style="width:36px;height:2px;background:#8B6B4A;margin-bottom:28px;"></div>
       <h3 style="font-family:'Lama Sans',sans-serif;font-size:clamp(18px,2vw,26px);font-weight:500;color:#1F1F1F;margin-bottom:18px;line-height:1.2;">Technical Backbone: Integrated Engineering</h3>
       <p style="font-family:'Lama Sans',sans-serif;font-size:15px;line-height:1.85;color:#5B4636;">A successful fit-out relies on what's behind the walls. We ensure the seamless integration of Engineering and MEP services, providing the high-performance infrastructure — climate control, power, and plumbing — your project requires without technical conflicts.</p>
     </div>
-    <div data-slide-from="right" style="overflow:hidden;min-height:clamp(320px,36vw,440px);opacity:0;transform:translateX(52px);transition:opacity 0.9s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);">
-      <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1200&q=80" alt="Engineering and MEP integrated behind the finish" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;" loading="lazy" decoding="async">
+    <div data-slide-from="right" style="position:relative;overflow:hidden;opacity:0;transform:translateX(52px);transition:opacity 0.9s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);">
+      <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1200&q=80" alt="Engineering and MEP integrated behind the finish" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;" loading="lazy" decoding="async">
     </div>
   </div>
 
   <!-- Pillar 03: image LEFT · text RIGHT -->
   <div data-adv-row style="display:grid;grid-template-columns:1fr 1fr;margin-bottom:0;">
-    <div data-slide-from="left" style="overflow:hidden;min-height:clamp(320px,36vw,440px);opacity:0;transform:translateX(-52px);transition:opacity 0.9s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);">
-      <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1200&q=80" alt="Finished interior handed over to zero-snag standard" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;" loading="lazy" decoding="async">
+    <div data-slide-from="left" style="position:relative;overflow:hidden;opacity:0;transform:translateX(-52px);transition:opacity 0.9s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);">
+      <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1200&q=80" alt="Finished interior handed over to zero-snag standard" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;" loading="lazy" decoding="async">
     </div>
-    <div data-slide-from="right" style="display:flex;flex-direction:column;justify-content:flex-start;padding:clamp(40px,5vw,64px) clamp(40px,10vw,152px) clamp(48px,6vw,80px) clamp(48px,5vw,80px);background:#FFFFFF;opacity:0;transform:translateX(52px);transition:opacity 0.9s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);">
+    <div data-slide-from="right" style="display:flex;flex-direction:column;justify-content:flex-start;padding:80px clamp(40px,10vw,152px) 80px clamp(48px,5vw,80px);background:#FFFFFF;opacity:0;transform:translateX(52px);transition:opacity 0.9s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);">
       <div style="font-family:'Lama Sans',sans-serif;font-size:clamp(72px,8.5vw,108px);font-weight:500;color:rgba(139,107,74,0.22);line-height:1;letter-spacing:-0.03em;margin-bottom:4px;">03</div>
       <div style="width:36px;height:2px;background:#8B6B4A;margin-bottom:28px;"></div>
       <h3 style="font-family:'Lama Sans',sans-serif;font-size:clamp(18px,2vw,26px);font-weight:500;color:#1F1F1F;margin-bottom:18px;line-height:1.2;">The Zero-Snag Promise</h3>
@@ -208,257 +214,159 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ SCOPE ━━━━━━━━━━━━━ -->
-<section data-screen-label="Scope" style="position:relative;background:#2A2018;overflow:hidden;">
-  <!-- Background image layer -->
-  <div style="position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2400&q=80');background-size:cover;background-position:center;opacity:0.42;pointer-events:none;mix-blend-mode:luminosity;"></div>
-  <div style="position:absolute;inset:0;background:linear-gradient(160deg,rgba(42,32,24,0.42) 0%,rgba(42,32,24,0.78) 60%,rgba(42,32,24,0.92) 100%);pointer-events:none;"></div>
-
+<section data-screen-label="Scope" style="position:relative;background:#F5F2ED;overflow:hidden;">
   <!-- Section header -->
-  <div style="position:relative;z-index:1;padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px) clamp(52px,6vw,72px);">
+  <div style="position:relative;z-index:1;padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px) clamp(40px,5vw,56px);">
     <div style="max-width:1280px;margin:0 auto;">
-    <div style="margin-bottom:clamp(48px,6vw,80px);">
-      <div data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;align-items:center;gap:16px;margin-bottom:20px;">
-        <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
-        <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#8B6B4A;">Our Fit-Out Scope</span>
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;">
+        <div style="max-width:640px;">
+          <div data-reveal style="opacity:0;transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;align-items:center;gap:16px;margin-bottom:20px;">
+            <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
+            <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#8B6B4A;">Our Fit-Out Scope</span>
+          </div>
+          <h2 data-reveal data-reveal-delay="0.1" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Lama Sans',sans-serif;font-size:clamp(28px,3.5vw,52px);font-weight:500;color:#3A2D25;line-height:1.1;letter-spacing:-0.015em;margin-bottom:20px;">Furniture,<br>FF&amp;E &amp; Styling</h2>
+          <p data-reveal data-reveal-delay="0.16" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Lama Sans',sans-serif;font-size:15px;line-height:1.85;color:#5B4636;">From first partition to final styling, our fit-out team manages every phase in-house &mdash; ensuring precision, consistency, and a single point of accountability throughout your project.</p>
+        </div>
+        <div data-reveal data-reveal-delay="0.2" style="opacity:0;transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;gap:10px;flex-shrink:0;">
+          <button id="disc-scroll-prev" aria-label="Scroll left" style="width:44px;height:44px;border:1px solid rgba(58,45,37,0.16);background:#FFFFFF;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.3s,border-color 0.3s;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3A2D25" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 5 5 12 12 19"></polyline></svg>
+          </button>
+          <button id="disc-scroll-next" aria-label="Scroll right" style="width:44px;height:44px;border:1px solid rgba(58,45,37,0.16);background:#FFFFFF;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.3s,border-color 0.3s;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3A2D25" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </button>
+        </div>
       </div>
-      <h2 data-reveal data-reveal-delay="0.1" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Lama Sans',sans-serif;font-size:clamp(28px,3.5vw,52px);font-weight:500;color:#FFFFFF;line-height:1.1;letter-spacing:-0.015em;">End-to-End Interior<br>Delivery.</h2>
     </div>
   </div>
 
-  <!-- Accordion row -->
-  <div style="position:relative;z-index:1;display:flex;border-top:1px solid rgba(214,194,168,0.12);min-height:580px;">
+  <!-- Gallery row -->
+  <style>
+    #disc-scroll-row::-webkit-scrollbar{display:none;}
+    #disc-scroll-row{scrollbar-width:none;-ms-overflow-style:none;}
+    .disc-card{flex:none;width:140px;transition:width 0.7s cubic-bezier(0.22,1,0.36,1);}
+    .disc-card.is-active{width:var(--disc-active-w,600px);}
+    .disc-card img{transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);}
+    .disc-card:hover img{transform:scale(1.06);}
+    .disc-title{font-family:'Lama Sans',sans-serif;font-weight:500;color:#FFFFFF;transition:font-size 0.5s cubic-bezier(0.22,1,0.36,1),margin-bottom 0.5s cubic-bezier(0.22,1,0.36,1);}
+    .disc-card:not(.is-active) .disc-title{font-size:11px;line-height:1.3;}
+    .disc-card.is-active .disc-title{font-size:clamp(18px,1.8vw,22px);line-height:1.25;margin-bottom:10px;}
+    .disc-desc{font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.7;color:rgba(255,255,255,0.75);max-width:340px;margin:0;opacity:0;max-height:0;overflow:hidden;transition:opacity 0.3s ease,max-height 0.45s cubic-bezier(0.25,0.46,0.45,0.94);}
+    .disc-card.is-active .disc-desc{opacity:1;max-height:120px;transition:opacity 0.3s ease 0.15s,max-height 0.45s cubic-bezier(0.25,0.46,0.45,0.94);}
+    .disc-label{position:absolute;left:22px;right:22px;bottom:24px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;}
+    #disc-scroll-prev:hover,#disc-scroll-next:hover{background:#3A2D25;border-color:#3A2D25;}
+    #disc-scroll-prev:hover svg,#disc-scroll-next:hover svg{stroke:#FFFFFF;}
+  </style>
+  <div id="disc-scroll-row" style="position:relative;z-index:1;display:flex;gap:5px;overflow-x:hidden;scroll-behavior:smooth;box-sizing:border-box;padding:0 clamp(24px,5vw,80px) clamp(80px,10vw,128px) clamp(24px,5vw,80px);width:100%;">
 
-    <!-- 01 Space Planning & Layout -->
-    <div onMouseEnter="{{ onDisc0 }}" style="flex:{{ disc0Flex }};border-right:1px solid rgba(214,194,168,0.12);cursor:pointer;padding:clamp(28px,3.5vw,44px) clamp(20px,2.5vw,36px);transition:background 0.3s,flex 0.4s cubic-bezier(0.25,0.46,0.45,0.94);">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;padding-bottom:24px;border-bottom:1px solid rgba(214,194,168,0.1);">
-        <h4 style="font-family:'Lama Sans',sans-serif;font-size:clamp(14px,1.5vw,19px);font-weight:500;color:#FFFFFF;line-height:1.3;letter-spacing:0.005em;white-space:nowrap;">Space Planning<br>&amp; Layout</h4>
-        <span style="font-family:'Lama Sans',sans-serif;font-size:18px;color:#8B6B4A;line-height:1;flex-shrink:0;margin-top:1px;font-weight:300;">{{ disc0Icon }}</span>
+    <!-- 01 Space Planning &amp; Layout -->
+    <div class="disc-card is-active" style="position:relative;height:clamp(420px,42vw,560px);overflow:hidden;">
+      <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=80" alt="Space Planning &amp; Layout" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy" decoding="async">
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,16,12,0) 72%,rgba(20,16,12,0.5) 100%);pointer-events:none;"></div>
+      <div class="disc-label">
+        <h4 class="disc-title">Space Planning<br>&amp; Layout</h4>
+        <p class="disc-desc">Brand-led layouts, zoning, and photoreal 3D visualization before a single wall is built.</p>
       </div>
-      <div style="display:grid;grid-template-rows:{{ disc0Rows }};opacity:{{ disc0Opacity }};transition:grid-template-rows 0.45s cubic-bezier(0.25,0.46,0.45,0.94),opacity 0.35s ease 0.05s;">
-        <div style="overflow:hidden;">
-        <div style="padding-top:32px;">
-          <svg width="72" height="72" viewBox="0 0 28 28" fill="none" style="display:block;margin-bottom:28px;opacity:0.85;">
-            <rect x="4" y="4" width="20" height="20" stroke="#FFFFFF" stroke-width="0.65"></rect>
-            <path d="M4 14h20M14 4v20" stroke="#FFFFFF" stroke-width="0.65"></path>
-          </svg>
-          <div style="display:flex;flex-direction:column;gap:9px;">
-            <span style="font-family:'Lama Sans',sans-serif;font-size:14px;color:#FFFFFF;line-height:1.6;">Brand-Led Layout Design</span>
-            <span style="font-family:'Lama Sans',sans-serif;font-size:14px;color:#FFFFFF;line-height:1.6;">Traffic &amp; Flow Optimization</span>
-            <span style="font-family:'Lama Sans',sans-serif;font-size:14px;color:#FFFFFF;line-height:1.6;">Zoning &amp; Space Programming</span>
-            <span style="font-family:'Lama Sans',sans-serif;font-size:14px;color:#FFFFFF;line-height:1.6;">Mood Boards &amp; Concept Design</span>
-            <span style="font-family:'Lama Sans',sans-serif;font-size:14px;color:#FFFFFF;line-height:1.6;">Photoreal 3D Visualization</span>
-          </div>
-        </div>
-        </div>
-      </div>
-          </div>
+    </div>
 
-    <!-- 02 Partitions, Walls & Ceilings -->
-    <div onMouseEnter="{{ onDisc1 }}" style="flex:{{ disc1Flex }};border-right:1px solid rgba(214,194,168,0.12);cursor:pointer;padding:clamp(28px,3.5vw,44px) clamp(20px,2.5vw,36px);transition:background 0.3s,flex 0.4s cubic-bezier(0.25,0.46,0.45,0.94);">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;padding-bottom:24px;border-bottom:1px solid rgba(214,194,168,0.1);">
-        <h4 style="font-family:'Lama Sans',sans-serif;font-size:clamp(14px,1.5vw,19px);font-weight:500;color:#FFFFFF;line-height:1.3;letter-spacing:0.005em;white-space:nowrap;">Partitions, Walls<br>&amp; Ceilings</h4>
-        <span style="font-family:'Lama Sans',sans-serif;font-size:18px;color:#8B6B4A;line-height:1;flex-shrink:0;margin-top:1px;font-weight:300;">{{ disc1Icon }}</span>
+    <!-- 02 Partitions, Walls &amp; Ceilings -->
+    <div class="disc-card" style="position:relative;height:clamp(420px,42vw,560px);overflow:hidden;">
+      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80" alt="Partitions, Walls &amp; Ceilings" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy" decoding="async">
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,16,12,0) 72%,rgba(20,16,12,0.5) 100%);pointer-events:none;"></div>
+      <div class="disc-label">
+        <h4 class="disc-title">Partitions, Walls<br>&amp; Ceilings</h4>
+        <p class="disc-desc">Gypsum partitions, suspended ceilings, acoustic treatment, and fire-rated assemblies.</p>
       </div>
-      <div style="display:grid;grid-template-rows:{{ disc1Rows }};opacity:{{ disc1Opacity }};transition:grid-template-rows 0.45s cubic-bezier(0.25,0.46,0.45,0.94),opacity 0.35s ease 0.05s;">
-        <div style="overflow:hidden;">
-        <div style="padding-top:32px;">
-          <svg width="72" height="72" viewBox="0 0 28 28" fill="none" style="display:block;margin-bottom:28px;opacity:0.85;">
-            <path d="M6 24V6h16v18" stroke="#FFFFFF" stroke-width="0.65"></path>
-            <path d="M6 12h16M6 18h16" stroke="#FFFFFF" stroke-width="0.65"></path>
-          </svg>
-          <div style="display:flex;flex-direction:column;gap:9px;">
-            <span style="font-family:'Lama Sans',sans-serif;font-size:14px;color:#FFFFFF;line-height:1.6;">Gypsum &amp; Drywall Partitions</span>
-            <span style="font-family:'Lama Sans',sans-serif;font-size:14px;color:#FFFFFF;line-height:1.6;">Suspended Ceiling Systems</span>
-            <span style="font-family:'Lama Sans',sans-serif;font-size:14px;color:#FFFFFF;line-height:1.6;">Acoustic Treatments</span>
-            <span style="font-family:'Lama Sans',sans-serif;font-size:14px;color:#FFFFFF;line-height:1.6;">Glazed &amp; Demountable Walls</span>
-            <span style="font-family:'Lama Sans',sans-serif;font-size:14px;color:#FFFFFF;line-height:1.6;">Fire-Rated Assemblies</span>
-          </div>
-        </div>
-        </div>
-      </div>
-          </div>
+    </div>
 
-    <!-- 03 Flooring & Wall Finishes -->
-    <div onMouseEnter="{{ onDisc2 }}" style="flex:{{ disc2Flex }};border-right:1px solid rgba(214,194,168,0.12);cursor:pointer;padding:clamp(28px,3.5vw,44px) clamp(20px,2.5vw,36px);transition:background 0.3s,flex 0.4s cubic-bezier(0.25,0.46,0.45,0.94);">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;padding-bottom:24px;border-bottom:1px solid rgba(214,194,168,0.1);">
-        <h4 style="font-family:'Lama Sans',sans-serif;font-size:clamp(14px,1.5vw,19px);font-weight:500;color:#FFFFFF;line-height:1.3;letter-spacing:0.005em;white-space:nowrap;">Flooring &amp;<br>Wall Finishes</h4>
-        <span style="font-family:'Lama Sans',sans-serif;font-size:18px;color:#8B6B4A;line-height:1;flex-shrink:0;margin-top:1px;font-weight:300;">{{ disc2Icon }}</span>
+    <!-- 03 Flooring &amp; Wall Finishes -->
+    <div class="disc-card" style="position:relative;height:clamp(420px,42vw,560px);overflow:hidden;">
+      <img src="https://images.unsplash.com/photo-1615529182904-14819c35db37?auto=format&fit=crop&w=900&q=80" alt="Flooring &amp; Wall Finishes" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy" decoding="async">
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,16,12,0) 72%,rgba(20,16,12,0.5) 100%);pointer-events:none;"></div>
+      <div class="disc-label">
+        <h4 class="disc-title">Flooring &amp;<br>Wall Finishes</h4>
+        <p class="disc-desc">Natural stone, timber, decorative cladding, and protective sealing across every surface.</p>
       </div>
-      <div style="display:grid;grid-template-rows:{{ disc2Rows }};opacity:{{ disc2Opacity }};transition:grid-template-rows 0.45s cubic-bezier(0.25,0.46,0.45,0.94),opacity 0.35s ease 0.05s;">
-        <div style="overflow:hidden;">
-        <div style="padding-top:32px;">
-          <svg width="72" height="72" viewBox="0 0 28 28" fill="none" style="display:block;margin-bottom:28px;opacity:0.85;">
-            <path d="M4 20l6-5 5 4 5-6 4 3" stroke="#FFFFFF" stroke-width="0.65" stroke-linecap="round" stroke-linejoin="round"></path>
-            <rect x="4" y="4" width="20" height="20" stroke="#FFFFFF" stroke-width="0.65"></rect>
-          </svg>
-          <div style="display:flex;flex-direction:column;gap:9px;">
-            <span style="font-family:'Lama Sans',sans-serif;font-size:14px;color:#FFFFFF;line-height:1.6;">Natural Stone &amp; Tiling</span>
-            <span style="font-family:'Lama Sans',sans-serif;font-size:14px;color:#FFFFFF;line-height:1.6;">Timber &amp; Vinyl Flooring</span>
-            <span style="font-family:'Lama Sans',sans-serif;font-size:14px;color:#FFFFFF;line-height:1.6;">Decorative Wall Cladding</span>
-            <span style="font-family:'Lama Sans',sans-serif;font-size:14px;color:#FFFFFF;line-height:1.6;">Paint &amp; Wallcovering</span>
-            <span style="font-family:'Lama Sans',sans-serif;font-size:14px;color:#FFFFFF;line-height:1.6;">Surface Protection &amp; Sealing</span>
-          </div>
-        </div>
-        </div>
-      </div>
-          </div>
+    </div>
 
-    <!-- 04 Joinery & Millwork -->
-    <div onMouseEnter="{{ onDisc3 }}" style="flex:{{ disc3Flex }};border-right:1px solid rgba(214,194,168,0.12);cursor:pointer;padding:clamp(28px,3.5vw,44px) clamp(20px,2.5vw,36px);transition:background 0.3s,flex 0.4s cubic-bezier(0.25,0.46,0.45,0.94);">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;padding-bottom:24px;border-bottom:1px solid rgba(214,194,168,0.1);">
-        <h4 style="font-family:'Lama Sans',sans-serif;font-size:clamp(14px,1.5vw,19px);font-weight:500;color:#FFFFFF;line-height:1.3;letter-spacing:0.005em;white-space:nowrap;">Joinery &amp;<br>Millwork</h4>
-        <span style="font-family:'Lama Sans',sans-serif;font-size:18px;color:#8B6B4A;line-height:1;flex-shrink:0;margin-top:1px;font-weight:300;">{{ disc3Icon }}</span>
+    <!-- 04 Joinery &amp; Millwork -->
+    <div class="disc-card" style="position:relative;height:clamp(420px,42vw,560px);overflow:hidden;">
+      <img src="https://images.unsplash.com/photo-1613977257365-aaae5a9817ff?auto=format&fit=crop&w=900&q=80" alt="Joinery &amp; Millwork" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy" decoding="async">
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,16,12,0) 72%,rgba(20,16,12,0.5) 100%);pointer-events:none;"></div>
+      <div class="disc-label">
+        <h4 class="disc-title">Joinery &amp;<br>Millwork</h4>
+        <p class="disc-desc">Bespoke cabinetry, reception counters, custom hardware, and built-in storage.</p>
       </div>
-      <div style="display:grid;grid-template-rows:{{ disc3Rows }};opacity:{{ disc3Opacity }};transition:grid-template-rows 0.45s cubic-bezier(0.25,0.46,0.45,0.94),opacity 0.35s ease 0.05s;">
-        <div style="overflow:hidden;">
-        <div style="padding-top:32px;">
-          <svg width="72" height="72" viewBox="0 0 28 28" fill="none" style="display:block;margin-bottom:28px;opacity:0.85;">
-            <rect x="5" y="9" width="18" height="14" stroke="#FFFFFF" stroke-width="0.65"></rect>
-            <path d="M5 15h18M11 9v14M17 9v14" stroke="#FFFFFF" stroke-width="0.65"></path>
-          </svg>
-          <div style="display:flex;flex-direction:column;gap:9px;">
-            <span style="font-family:'Lama Sans',sans-serif;font-size:14px;color:#FFFFFF;line-height:1.6;">Bespoke Cabinetry</span>
-            <span style="font-family:'Lama Sans',sans-serif;font-size:14px;color:#FFFFFF;line-height:1.6;">Reception &amp; Feature Counters</span>
-            <span style="font-family:'Lama Sans',sans-serif;font-size:14px;color:#FFFFFF;line-height:1.6;">Doors &amp; Custom Hardware</span>
-            <span style="font-family:'Lama Sans',sans-serif;font-size:14px;color:#FFFFFF;line-height:1.6;">Wall Paneling</span>
-            <span style="font-family:'Lama Sans',sans-serif;font-size:14px;color:#FFFFFF;line-height:1.6;">Built-In Storage Solutions</span>
-          </div>
-        </div>
-        </div>
-      </div>
-          </div>
+    </div>
 
     <!-- 05 MEP Coordination -->
-    <div onMouseEnter="{{ onDisc4 }}" style="flex:{{ disc4Flex }};border-right:1px solid rgba(214,194,168,0.12);cursor:pointer;padding:clamp(28px,3.5vw,44px) clamp(20px,2.5vw,36px);transition:background 0.3s,flex 0.4s cubic-bezier(0.25,0.46,0.45,0.94);">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;padding-bottom:24px;border-bottom:1px solid rgba(214,194,168,0.1);">
-        <h4 style="font-family:'Lama Sans',sans-serif;font-size:clamp(14px,1.5vw,19px);font-weight:500;color:#FFFFFF;line-height:1.3;letter-spacing:0.005em;white-space:nowrap;">MEP<br>Coordination</h4>
-        <span style="font-family:'Lama Sans',sans-serif;font-size:18px;color:#8B6B4A;line-height:1;flex-shrink:0;margin-top:1px;font-weight:300;">{{ disc4Icon }}</span>
+    <div class="disc-card" style="position:relative;height:clamp(420px,42vw,560px);overflow:hidden;">
+      <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=900&q=80" alt="MEP Coordination" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy" decoding="async">
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,16,12,0) 72%,rgba(20,16,12,0.5) 100%);pointer-events:none;"></div>
+      <div class="disc-label">
+        <h4 class="disc-title">MEP<br>Coordination</h4>
+        <p class="disc-desc">Electrical, HVAC, plumbing, and fire safety systems coordinated in-house from day one.</p>
       </div>
-      <div style="display:grid;grid-template-rows:{{ disc4Rows }};opacity:{{ disc4Opacity }};transition:grid-template-rows 0.45s cubic-bezier(0.25,0.46,0.45,0.94),opacity 0.35s ease 0.05s;">
-        <div style="overflow:hidden;">
-        <div style="padding-top:32px;">
-          <svg width="72" height="72" viewBox="0 0 28 28" fill="none" style="display:block;margin-bottom:28px;opacity:0.85;">
-            <path d="M16 3L7 15.5h8L13 25l12-13.5H17L16 3Z" stroke="#FFFFFF" stroke-width="0.65" stroke-linejoin="round"></path>
-          </svg>
-          <div style="display:flex;flex-direction:column;gap:9px;">
-            <span style="font-family:'Lama Sans',sans-serif;font-size:14px;color:#FFFFFF;line-height:1.6;">Electrical &amp; Lighting Fit-Out</span>
-            <span style="font-family:'Lama Sans',sans-serif;font-size:14px;color:#FFFFFF;line-height:1.6;">HVAC &amp; Climate Control</span>
-            <span style="font-family:'Lama Sans',sans-serif;font-size:14px;color:#FFFFFF;line-height:1.6;">Plumbing &amp; Sanitary Fixtures</span>
-            <span style="font-family:'Lama Sans',sans-serif;font-size:14px;color:#FFFFFF;line-height:1.6;">Fire &amp; Life Safety Systems</span>
-            <span style="font-family:'Lama Sans',sans-serif;font-size:14px;color:#FFFFFF;line-height:1.6;">Low-Current &amp; Smart Systems</span>
-          </div>
-        </div>
-        </div>
-      </div>
-          </div>
+    </div>
 
-    <!-- 06 Furniture, FF&E & Styling -->
-    <div onMouseEnter="{{ onDisc5 }}" style="flex:{{ disc5Flex }};cursor:pointer;padding:clamp(28px,3.5vw,44px) clamp(20px,2.5vw,36px);transition:background 0.3s,flex 0.4s cubic-bezier(0.25,0.46,0.45,0.94);">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;padding-bottom:24px;border-bottom:1px solid rgba(214,194,168,0.1);">
-        <h4 style="font-family:'Lama Sans',sans-serif;font-size:clamp(14px,1.5vw,19px);font-weight:500;color:#FFFFFF;line-height:1.3;letter-spacing:0.005em;white-space:nowrap;">Furniture,<br>FF&amp;E &amp; Styling</h4>
-        <span style="font-family:'Lama Sans',sans-serif;font-size:18px;color:#8B6B4A;line-height:1;flex-shrink:0;margin-top:1px;font-weight:300;">{{ disc5Icon }}</span>
+    <!-- 06 Furniture, FF&amp;E &amp; Styling -->
+    <div class="disc-card" style="position:relative;height:clamp(420px,42vw,560px);overflow:hidden;">
+      <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=900&q=80" alt="Furniture, FF&amp;E &amp; Styling" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy" decoding="async">
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,16,12,0) 72%,rgba(20,16,12,0.5) 100%);pointer-events:none;"></div>
+      <div class="disc-label">
+        <h4 class="disc-title">Furniture,<br>FF&amp;E &amp; Styling</h4>
+        <p class="disc-desc">Procurement, fixtures, soft furnishings, and final styling through to handover.</p>
       </div>
-      <div style="display:grid;grid-template-rows:{{ disc5Rows }};opacity:{{ disc5Opacity }};transition:grid-template-rows 0.45s cubic-bezier(0.25,0.46,0.45,0.94),opacity 0.35s ease 0.05s;">
-        <div style="overflow:hidden;">
-        <div style="padding-top:32px;">
-          <svg width="72" height="72" viewBox="0 0 28 28" fill="none" style="display:block;margin-bottom:28px;opacity:0.85;">
-            <path d="M6 14V9a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v5" stroke="#FFFFFF" stroke-width="0.65"></path>
-            <path d="M4 14h20v6H4z" stroke="#FFFFFF" stroke-width="0.65"></path>
-            <path d="M5 20v3M23 20v3" stroke="#FFFFFF" stroke-width="0.65" stroke-linecap="round"></path>
-          </svg>
-          <div style="display:flex;flex-direction:column;gap:9px;">
-            <span style="font-family:'Lama Sans',sans-serif;font-size:14px;color:#FFFFFF;line-height:1.6;">Furniture Procurement</span>
-            <span style="font-family:'Lama Sans',sans-serif;font-size:14px;color:#FFFFFF;line-height:1.6;">Fixtures &amp; Fittings</span>
-            <span style="font-family:'Lama Sans',sans-serif;font-size:14px;color:#FFFFFF;line-height:1.6;">Soft Furnishings &amp; Textiles</span>
-            <span style="font-family:'Lama Sans',sans-serif;font-size:14px;color:#FFFFFF;line-height:1.6;">Decor &amp; Final Styling</span>
-            <span style="font-family:'Lama Sans',sans-serif;font-size:14px;color:#FFFFFF;line-height:1.6;">Installation &amp; Handover</span>
-          </div>
-        </div>
-        </div>
-      </div>
-          </div>
+    </div>
 
   </div>
-  <div style="height:clamp(64px,8vw,96px);"></div>
 </section>
 
-<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ LIFECYCLE ━━━━━━━ -->
-<section data-screen-label="Lifecycle" data-fit-lifecycle style="background:#F5F2ED;padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px);overflow:hidden;">
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ MARKETS WE SERVE ━ -->
+<section data-screen-label="Markets" style="background:#FFFFFF;padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px);">
   <div style="max-width:1280px;margin:0 auto;">
-    <div style="margin-bottom:clamp(52px,7vw,88px);">
-      <div data-fit-eyebrow style="opacity:0;display:flex;align-items:center;gap:16px;margin-bottom:20px;transition:opacity 0.6s cubic-bezier(0.25,0.46,0.45,0.94);">
-        <span data-fit-eyebrow-line style="display:block;width:0px;height:1px;background:#8B6B4A;flex-shrink:0;transition:width 0.7s cubic-bezier(0.25,0.46,0.45,0.94);"></span>
-        <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#8B6B4A;">The Fit-Out Journey</span>
+    <div data-reveal style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);text-align:center;margin-bottom:clamp(44px,6vw,64px);">
+      <div style="display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:20px;">
+        <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
+        <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#8B6B4A;">Markets We Serve</span>
+        <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
       </div>
-      <div style="font-family:'Lama Sans',sans-serif;font-size:clamp(28px,3.5vw,52px);font-weight:500;color:#1F1F1F;line-height:1.15;letter-spacing:-0.015em;">
-        <div style="overflow:hidden;display:block;"><span data-fit-word style="display:block;transform:translateY(110%);transition:transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);">Precision in</span></div>
-        <div style="overflow:hidden;display:block;"><span data-fit-word style="display:block;transform:translateY(110%);transition:transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);">4 Steps.</span></div>
-      </div>
+      <h2 style="font-family:'Lama Sans',sans-serif;font-size:clamp(28px,3.4vw,44px);font-weight:500;color:#3A2D25;line-height:1.15;letter-spacing:-0.01em;max-width:640px;margin:0 auto;">One integrated team, delivering across every sector.</h2>
     </div>
-    <div class="fiq-fit-steps" style="display:flex;align-items:flex-start;">
 
-      <div data-fit-step="0" style="flex:1;padding-right:clamp(20px,3vw,44px);opacity:0;transform:translateY(28px);transition:opacity 0.6s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);">
-        <div data-fit-num style="font-family:'Lama Sans',sans-serif;font-size:clamp(72px,8.5vw,112px);font-weight:500;color:rgba(91,70,54,0.07);line-height:1;letter-spacing:-0.03em;margin-bottom:4px;transition:color 0.5s cubic-bezier(0.25,0.46,0.45,0.94);">01</div>
-        <div data-fit-rule style="width:0%;height:1px;background:#D6C2A8;margin-bottom:28px;transition:width 0.65s cubic-bezier(0.25,0.46,0.45,0.94);"></div>
-        <h4 style="font-family:'Lama Sans',sans-serif;font-size:17px;font-weight:500;color:#1F1F1F;margin-bottom:6px;letter-spacing:0.05em;">Discover</h4>
-        <p style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:#8B6B4A;margin-bottom:14px;">The Alignment</p>
-        <p style="font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.8;color:#5B4636;">We begin with goal setting and comprehensive site surveys of your structural shell. During this phase, we establish a firm budget roadmap to ensure the project remains cost-effective and aligned with your financial objectives from day one.</p>
-      </div>
+    <div class="fiq-markets-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,1.6vw,20px);">
 
-      <div class="fiq-fit-connector" style="flex-shrink:0;width:clamp(16px,2.5vw,36px);padding-top:56px;">
-        <div data-fit-dash style="height:1px;width:0%;background-image:repeating-linear-gradient(90deg,#D6C2A8 0,#D6C2A8 4px,transparent 4px,transparent 7px);transition:width 0.5s cubic-bezier(0.25,0.46,0.45,0.94);"></div>
-      </div>
+      <a href="/projects?category=Residential" class="fiq-market-card" data-reveal data-reveal-delay="0.06" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);position:relative;aspect-ratio:3/4;overflow:hidden;border-radius:0;display:block;text-decoration:none;">
+        <img class="fiq-market-img" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=700&q=75" alt="Residential" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(30,22,16,0.9) 0%,rgba(30,22,16,0) 55%);"></div>
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:22px;">
+          <span style="font-family:'Lama Sans',sans-serif;font-size:14px;font-weight:500;color:#FFFFFF;">Residential</span>
+        </div>
+      </a>
 
-      <div data-fit-step="1" style="flex:1;padding:0 clamp(20px,3vw,44px);opacity:0;transform:translateY(28px);transition:opacity 0.6s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);">
-        <div data-fit-num style="font-family:'Lama Sans',sans-serif;font-size:clamp(72px,8.5vw,112px);font-weight:500;color:rgba(91,70,54,0.07);line-height:1;letter-spacing:-0.03em;margin-bottom:4px;transition:color 0.5s cubic-bezier(0.25,0.46,0.45,0.94);">02</div>
-        <div data-fit-rule style="width:0%;height:1px;background:#D6C2A8;margin-bottom:28px;transition:width 0.65s cubic-bezier(0.25,0.46,0.45,0.94);"></div>
-        <h4 style="font-family:'Lama Sans',sans-serif;font-size:17px;font-weight:500;color:#1F1F1F;margin-bottom:6px;letter-spacing:0.05em;">Design</h4>
-        <p style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:#8B6B4A;margin-bottom:14px;">The Visual Blueprint</p>
-        <p style="font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.8;color:#5B4636;">To provide you with Visual Certainty, we develop detailed layout plans and mood boards, culminating in high-definition Photoreal 3D visuals — so you can approve every material and finish before any physical construction begins.</p>
-      </div>
+      <a href="/projects?category=Hospitality" class="fiq-market-card" data-reveal data-reveal-delay="0.12" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);position:relative;aspect-ratio:3/4;overflow:hidden;border-radius:0;display:block;text-decoration:none;">
+        <img class="fiq-market-img" src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=700&q=75" alt="Hospitality" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(30,22,16,0.9) 0%,rgba(30,22,16,0) 55%);"></div>
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:22px;">
+          <span style="font-family:'Lama Sans',sans-serif;font-size:14px;font-weight:500;color:#FFFFFF;">Hospitality</span>
+        </div>
+      </a>
 
-      <div class="fiq-fit-connector" style="flex-shrink:0;width:clamp(16px,2.5vw,36px);padding-top:56px;">
-        <div data-fit-dash style="height:1px;width:0%;background-image:repeating-linear-gradient(90deg,#D6C2A8 0,#D6C2A8 4px,transparent 4px,transparent 7px);transition:width 0.5s cubic-bezier(0.25,0.46,0.45,0.94);"></div>
-      </div>
+      <a href="/projects?category=Workplace" class="fiq-market-card" data-reveal data-reveal-delay="0.18" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);position:relative;aspect-ratio:3/4;overflow:hidden;border-radius:0;display:block;text-decoration:none;">
+        <img class="fiq-market-img" src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=700&q=75" alt="Workplace" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(30,22,16,0.9) 0%,rgba(30,22,16,0) 55%);"></div>
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:22px;">
+          <span style="font-family:'Lama Sans',sans-serif;font-size:14px;font-weight:500;color:#FFFFFF;">Workplace</span>
+        </div>
+      </a>
 
-      <div data-fit-step="2" style="flex:1;padding:0 clamp(20px,3vw,44px);opacity:0;transform:translateY(28px);transition:opacity 0.6s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);">
-        <div data-fit-num style="font-family:'Lama Sans',sans-serif;font-size:clamp(72px,8.5vw,112px);font-weight:500;color:rgba(91,70,54,0.07);line-height:1;letter-spacing:-0.03em;margin-bottom:4px;transition:color 0.5s cubic-bezier(0.25,0.46,0.45,0.94);">03</div>
-        <div data-fit-rule style="width:0%;height:1px;background:#D6C2A8;margin-bottom:28px;transition:width 0.65s cubic-bezier(0.25,0.46,0.45,0.94);"></div>
-        <h4 style="font-family:'Lama Sans',sans-serif;font-size:17px;font-weight:500;color:#1F1F1F;margin-bottom:6px;letter-spacing:0.05em;">Build</h4>
-        <p style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:#8B6B4A;margin-bottom:14px;">The Precision Execution</p>
-        <p style="font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.8;color:#5B4636;">Our team takes over the site with a focus on program certainty. We manage the construction phase with continuous safety monitoring and strict quality controls to ensure the physical build matches the approved 3D renders.</p>
-      </div>
+      <a href="/projects?category=Retail" class="fiq-market-card" data-reveal data-reveal-delay="0.24" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);position:relative;aspect-ratio:3/4;overflow:hidden;border-radius:0;display:block;text-decoration:none;">
+        <img class="fiq-market-img" src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=700&q=75" alt="Retail" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(30,22,16,0.9) 0%,rgba(30,22,16,0) 55%);"></div>
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:22px;">
+          <span style="font-family:'Lama Sans',sans-serif;font-size:14px;font-weight:500;color:#FFFFFF;">Retail</span>
+        </div>
+      </a>
 
-      <div class="fiq-fit-connector" style="flex-shrink:0;width:clamp(16px,2.5vw,36px);padding-top:56px;">
-        <div data-fit-dash style="height:1px;width:0%;background-image:repeating-linear-gradient(90deg,#D6C2A8 0,#D6C2A8 4px,transparent 4px,transparent 7px);transition:width 0.5s cubic-bezier(0.25,0.46,0.45,0.94);"></div>
-      </div>
-
-      <div data-fit-step="3" style="flex:1;padding-left:clamp(20px,3vw,44px);opacity:0;transform:translateY(28px);transition:opacity 0.6s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);">
-        <div data-fit-num style="font-family:'Lama Sans',sans-serif;font-size:clamp(72px,8.5vw,112px);font-weight:500;color:rgba(91,70,54,0.07);line-height:1;letter-spacing:-0.03em;margin-bottom:4px;transition:color 0.5s cubic-bezier(0.25,0.46,0.45,0.94);">04</div>
-        <div data-fit-rule style="width:0%;height:1px;background:#5B4636;margin-bottom:28px;transition:width 0.65s cubic-bezier(0.25,0.46,0.45,0.94);"></div>
-        <h4 style="font-family:'Lama Sans',sans-serif;font-size:17px;font-weight:500;color:#1F1F1F;margin-bottom:6px;letter-spacing:0.05em;">Handover</h4>
-        <p style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:#8B6B4A;margin-bottom:14px;">The Flawless Completion</p>
-        <p style="font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.8;color:#5B4636;">We conclude every project by achieving a Zero-Snag completion. Our commitment doesn't end when the keys are turned; we provide dedicated aftercare to ensure your new environment continues to perform perfectly.</p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ SECTORS ━━━━━━━━━ -->
-<section data-screen-label="Sectors" style="background:#F0EDE8;padding:clamp(52px,6vw,80px) clamp(24px,5vw,80px);">
-  <div style="max-width:1440px;margin:0 auto;display:flex;align-items:center;gap:clamp(24px,3.5vw,64px);flex-wrap:wrap;">
-    <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:#9B7B5A;flex-shrink:0;white-space:nowrap;">Sectors We Serve</span>
-    <div style="display:flex;align-items:center;flex-wrap:wrap;">
-      <span style="font-family:'Lama Sans',sans-serif;font-size:clamp(20px,2vw,32px);font-weight:400;color:#2A1E14;letter-spacing:-0.02em;padding-right:clamp(16px,2vw,32px);">Commercial</span>
-      <span style="width:1px;height:28px;background:rgba(91,70,54,0.3);flex-shrink:0;"></span>
-      <span style="font-family:'Lama Sans',sans-serif;font-size:clamp(20px,2vw,32px);font-weight:400;color:#2A1E14;letter-spacing:-0.02em;padding:0 clamp(16px,2vw,32px);">Hospitality</span>
-      <span style="width:1px;height:28px;background:rgba(91,70,54,0.3);flex-shrink:0;"></span>
-      <span style="font-family:'Lama Sans',sans-serif;font-size:clamp(20px,2vw,32px);font-weight:400;color:#2A1E14;letter-spacing:-0.02em;padding:0 clamp(16px,2vw,32px);">Corporate</span>
-      <span style="width:1px;height:28px;background:rgba(91,70,54,0.3);flex-shrink:0;"></span>
-      <span style="font-family:'Lama Sans',sans-serif;font-size:clamp(20px,2vw,32px);font-weight:400;color:#2A1E14;letter-spacing:-0.02em;padding:0 clamp(16px,2vw,32px);">Residential</span>
-      <span style="width:1px;height:28px;background:rgba(91,70,54,0.3);flex-shrink:0;"></span>
-      <span style="font-family:'Lama Sans',sans-serif;font-size:clamp(20px,2vw,32px);font-weight:400;color:#2A1E14;letter-spacing:-0.02em;padding-left:clamp(16px,2vw,32px);">Industrial</span>
     </div>
   </div>
 </section>
@@ -959,6 +867,45 @@ class Component extends DCLogic {
           }
         });
       });
+    }
+
+    // ── DISCIPLINES GALLERY ACCORDION ───────────────────────────────────────
+    const discRow = document.getElementById('disc-scroll-row');
+    const discPrev = document.getElementById('disc-scroll-prev');
+    const discNext = document.getElementById('disc-scroll-next');
+    if (discRow) {
+      const discCards = Array.from(discRow.querySelectorAll('.disc-card'));
+      let discActive = discCards.findIndex((c) => c.classList.contains('is-active'));
+      if (discActive === -1) discActive = 0;
+
+      const INACTIVE_W = 140;
+      const GAP = 5;
+      const updateDiscWidth = () => {
+        const rowStyle = getComputedStyle(discRow);
+        const available = discRow.clientWidth - parseFloat(rowStyle.paddingLeft) - parseFloat(rowStyle.paddingRight);
+        const n = discCards.length;
+        const activeW = available - (n - 1) * INACTIVE_W - (n - 1) * GAP;
+        discRow.style.setProperty('--disc-active-w', Math.max(activeW, 240) + 'px');
+      };
+      updateDiscWidth();
+      let discResizeTimer;
+      window.addEventListener('resize', () => {
+        clearTimeout(discResizeTimer);
+        discResizeTimer = setTimeout(updateDiscWidth, 150);
+      });
+
+      const setDiscActive = (i) => {
+        discActive = (i + discCards.length) % discCards.length;
+        discCards.forEach((c, idx) => c.classList.toggle('is-active', idx === discActive));
+      };
+
+      discCards.forEach((card, i) => {
+        card.style.cursor = 'pointer';
+        card.addEventListener('click', () => setDiscActive(i));
+      });
+
+      if (discPrev) discPrev.addEventListener('click', () => setDiscActive(discActive - 1));
+      if (discNext) discNext.addEventListener('click', () => setDiscActive(discActive + 1));
     }
 
     // ── ADVANTAGE CTA HOVER ────────────────────────────────────────────────
