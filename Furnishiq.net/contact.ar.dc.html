@@ -40,6 +40,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       70%{box-shadow:0 0 0 9px rgba(214,194,168,0);}
       100%{box-shadow:0 0 0 0 rgba(214,194,168,0);}
     }
+    .journey-card {
+      transition: background 0.5s cubic-bezier(0.25,0.46,0.45,0.94),
+                  transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94),
+                  box-shadow 0.5s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+    .journey-card:hover {
+      background: #3A2D25 !important;
+      transform: translateY(-8px);
+      box-shadow: 0 20px 48px rgba(58,45,37,0.24) !important;
+    }
+    .journey-card .journey-icon    { transition: stroke 0.45s cubic-bezier(0.25,0.46,0.45,0.94); }
+    .journey-card .journey-num     { transition: -webkit-text-stroke-color 0.45s cubic-bezier(0.25,0.46,0.45,0.94); }
+    .journey-card .journey-title   { transition: color 0.45s cubic-bezier(0.25,0.46,0.45,0.94); }
+    .journey-card .journey-tag     { transition: color 0.45s cubic-bezier(0.25,0.46,0.45,0.94); }
+    .journey-card .journey-desc    { transition: color 0.45s cubic-bezier(0.25,0.46,0.45,0.94); }
+    .journey-card .journey-card-bg { opacity: 0; transition: opacity 0.55s cubic-bezier(0.25,0.46,0.45,0.94); }
+    .journey-card:hover .journey-icon { stroke: #D6C2A8 !important; }
+    .journey-card:hover .journey-num     { -webkit-text-stroke-color: rgba(214,194,168,0.5) !important; }
+    .journey-card:hover .journey-title   { color: #FFFFFF !important; }
+    .journey-card:hover .journey-tag     { color: #FFFFFF !important; }
+    .journey-card:hover .journey-desc    { color: rgba(214,194,168,0.72) !important; }
+    .journey-card:hover .journey-card-bg { opacity: 0.16 !important; }
     @media(max-width:960px){
       .fiq-nav-links{display:none!important;}
       .fiq-nav-cta-btn{display:none!important;}
@@ -49,16 +71,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       .fiq-contact-cols{grid-template-columns:1fr!important;}
       .fiq-contact-left{position:static!important;}
       .fiq-form-names{grid-template-columns:1fr!important;}
-      .fiq-next-steps{flex-direction:column!important;gap:40px!important;}
-      .fiq-next-connector{display:none!important;}
-      .fiq-visit-grid{grid-template-columns:1fr!important;}
-      .fiq-visit-left{grid-column:1!important;padding-left:clamp(24px,5vw,80px)!important;padding-right:clamp(24px,5vw,80px)!important;}
-      .fiq-visit-map{grid-column:1!important;min-height:320px!important;}
+      .journey-cards-grid{grid-template-columns:1fr 1fr!important;gap:20px!important;}
+      .fiq-visit-map{height:380px!important;}
       .fiq-footer-grid{grid-template-columns:1fr 1fr!important;gap:48px!important;}
       .fiq-footer-brand{grid-column:1/-1!important;}
     }
     @media(max-width:600px){
       .fiq-channel-strip{grid-template-columns:1fr!important;}
+      .journey-cards-grid{grid-template-columns:1fr!important;}
       .fiq-footer-grid{grid-template-columns:1fr!important;}
     }
   </style>
@@ -290,84 +310,95 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <h2 data-reveal data-reveal-delay="0.1" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'GE SS Two','Arial',sans-serif;font-size:clamp(26px,3.2vw,44px);font-weight:500;color:#1F1F1F;line-height:1.15;letter-spacing:-0.015em;margin-bottom:clamp(48px,6vw,80px);">ماذا يحدث بعد ذلك.</h2>
 
-    <div class="fiq-next-steps" style="display:flex;align-items:flex-start;">
+    <div class="journey-cards-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
 
-      <div data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);flex:1;padding-right:clamp(20px,3vw,44px);">
-        <div style="font-family:'GE SS Two','Arial',sans-serif;font-size:clamp(64px,7.5vw,100px);font-weight:500;color:rgba(91,70,54,0.07);line-height:1;letter-spacing:-0.03em;margin-bottom:4px;">01</div>
-        <div style="width:36px;height:1px;background:#D6C2A8;margin-bottom:26px;"></div>
-        <h4 style="font-family:'GE SS Two','Arial',sans-serif;font-size:17px;font-weight:500;color:#1F1F1F;margin-bottom:6px;letter-spacing:normal;">نستمع</h4>
-        <p style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:#8B6B4A;margin-bottom:14px;">خلال 24 ساعة</p>
-        <p style="font-family:'GE SS Two','Arial',sans-serif;font-size:13px;line-height:1.8;color:#5B4636;">يراجع استشاري أول — وليس مركز اتصال — طلبك ويحدد موعداً لمحادثة استكشافية في الوقت الذي يناسبك.</p>
+      <!-- 01 نستمع -->
+      <div class="journey-card" data-reveal style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);position:relative;overflow:hidden;background:#FFFFFF;border-radius:20px;padding:clamp(36px,3.6vw,52px) clamp(30px,3vw,38px);box-shadow:0 4px 20px rgba(58,45,37,0.10);display:flex;flex-direction:column;min-height:380px;">
+        <img class="journey-card-bg" src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=70" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" loading="lazy" decoding="async">
+        <div style="position:relative;z-index:1;display:flex;flex-direction:column;flex:1;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:44px;">
+            <svg class="journey-icon" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#8B6B4A" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 14v-2a9 9 0 0 1 18 0v2"/>
+              <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3v5ZM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3v5Z"/>
+            </svg>
+            <span class="journey-num" style="font-family:'GE SS Two','Arial',sans-serif;font-size:72px;font-weight:400;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(58,45,37,0.45);">01</span>
+          </div>
+          <h3 class="journey-title" style="font-family:'GE SS Two','Arial',sans-serif;font-size:26px;font-weight:500;color:#1F1F1F;margin-bottom:6px;">نستمع</h3>
+          <p class="journey-tag" style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:#8B6B4A;margin-bottom:16px;">خلال 24 ساعة</p>
+          <p class="journey-desc" style="font-family:'GE SS Two','Arial',sans-serif;font-size:14px;line-height:1.8;color:#5B4636;">يراجع استشاري أول — وليس مركز اتصال — طلبك ويحدد موعداً لمحادثة استكشافية في الوقت الذي يناسبك.</p>
+        </div>
       </div>
 
-      <div class="fiq-next-connector" style="flex-shrink:0;width:clamp(16px,2.5vw,36px);padding-top:52px;">
-        <div style="height:1px;width:100%;background-image:repeating-linear-gradient(90deg,#D6C2A8 0,#D6C2A8 4px,transparent 4px,transparent 7px);"></div>
+      <!-- 02 نزور -->
+      <div class="journey-card" data-reveal data-reveal-delay="0.08" style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);position:relative;overflow:hidden;background:#FFFFFF;border-radius:20px;padding:clamp(36px,3.6vw,52px) clamp(30px,3vw,38px);box-shadow:0 4px 20px rgba(58,45,37,0.10);display:flex;flex-direction:column;min-height:380px;">
+        <img class="journey-card-bg" src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=900&q=70" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" loading="lazy" decoding="async">
+        <div style="position:relative;z-index:1;display:flex;flex-direction:column;flex:1;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:44px;">
+            <svg class="journey-icon" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#8B6B4A" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            <span class="journey-num" style="font-family:'GE SS Two','Arial',sans-serif;font-size:72px;font-weight:400;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(58,45,37,0.45);">02</span>
+          </div>
+          <h3 class="journey-title" style="font-family:'GE SS Two','Arial',sans-serif;font-size:26px;font-weight:500;color:#1F1F1F;margin-bottom:6px;">نزور</h3>
+          <p class="journey-tag" style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:#8B6B4A;margin-bottom:16px;">الموقع والنطاق</p>
+          <p class="journey-desc" style="font-family:'GE SS Two','Arial',sans-serif;font-size:14px;line-height:1.8;color:#5B4636;">نعاين المساحة، نفهم كيفية استخدامك لها، ونتفق على الطموح والقيود والجدول الزمني — وجهاً لوجه كلما أمكن.</p>
+        </div>
       </div>
 
-      <div data-reveal data-reveal-delay="0.1" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);flex:1;padding:0 clamp(20px,3vw,44px);">
-        <div style="font-family:'GE SS Two','Arial',sans-serif;font-size:clamp(64px,7.5vw,100px);font-weight:500;color:rgba(91,70,54,0.07);line-height:1;letter-spacing:-0.03em;margin-bottom:4px;">02</div>
-        <div style="width:36px;height:1px;background:#D6C2A8;margin-bottom:26px;"></div>
-        <h4 style="font-family:'GE SS Two','Arial',sans-serif;font-size:17px;font-weight:500;color:#1F1F1F;margin-bottom:6px;letter-spacing:normal;">نزور</h4>
-        <p style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:#8B6B4A;margin-bottom:14px;">الموقع والنطاق</p>
-        <p style="font-family:'GE SS Two','Arial',sans-serif;font-size:13px;line-height:1.8;color:#5B4636;">نعاين المساحة، نفهم كيفية استخدامك لها، ونتفق على الطموح والقيود والجدول الزمني — وجهاً لوجه كلما أمكن.</p>
-      </div>
-
-      <div class="fiq-next-connector" style="flex-shrink:0;width:clamp(16px,2.5vw,36px);padding-top:52px;">
-        <div style="height:1px;width:100%;background-image:repeating-linear-gradient(90deg,#D6C2A8 0,#D6C2A8 4px,transparent 4px,transparent 7px);"></div>
-      </div>
-
-      <div data-reveal data-reveal-delay="0.2" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);flex:1;padding-left:clamp(20px,3vw,44px);">
-        <div style="font-family:'GE SS Two','Arial',sans-serif;font-size:clamp(64px,7.5vw,100px);font-weight:500;color:rgba(91,70,54,0.07);line-height:1;letter-spacing:-0.03em;margin-bottom:4px;">03</div>
-        <div style="width:36px;height:1px;background:#5B4636;margin-bottom:26px;"></div>
-        <h4 style="font-family:'GE SS Two','Arial',sans-serif;font-size:17px;font-weight:500;color:#1F1F1F;margin-bottom:6px;letter-spacing:normal;">نقترح</h4>
-        <p style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:#8B6B4A;margin-bottom:14px;">الخطة وخارطة الطريق</p>
-        <p style="font-family:'GE SS Two','Arial',sans-serif;font-size:13px;line-height:1.8;color:#5B4636;">تحصل على عرض واضح — النطاق، التوجه التصويري الواقعي، وخارطة طريق مالية شاملة — قبل الالتزام بأي شيء.</p>
+      <!-- 03 نقترح -->
+      <div class="journey-card" data-reveal data-reveal-delay="0.16" style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);position:relative;overflow:hidden;background:#FFFFFF;border-radius:20px;padding:clamp(36px,3.6vw,52px) clamp(30px,3vw,38px);box-shadow:0 4px 20px rgba(58,45,37,0.10);display:flex;flex-direction:column;min-height:380px;">
+        <img class="journey-card-bg" src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=900&q=70" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;z-index:0;" loading="lazy" decoding="async">
+        <div style="position:relative;z-index:1;display:flex;flex-direction:column;flex:1;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:44px;">
+            <svg class="journey-icon" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#8B6B4A" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+              <line x1="10" y1="9" x2="8" y2="9"/>
+            </svg>
+            <span class="journey-num" style="font-family:'GE SS Two','Arial',sans-serif;font-size:72px;font-weight:400;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(58,45,37,0.45);">03</span>
+          </div>
+          <h3 class="journey-title" style="font-family:'GE SS Two','Arial',sans-serif;font-size:26px;font-weight:500;color:#1F1F1F;margin-bottom:6px;">نقترح</h3>
+          <p class="journey-tag" style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:#8B6B4A;margin-bottom:16px;">الخطة وخارطة الطريق</p>
+          <p class="journey-desc" style="font-family:'GE SS Two','Arial',sans-serif;font-size:14px;line-height:1.8;color:#5B4636;">تحصل على عرض واضح — النطاق، التوجه التصويري الواقعي، وخارطة طريق مالية شاملة — قبل الالتزام بأي شيء.</p>
+        </div>
       </div>
 
     </div>
   </div>
 </section>
 
+
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━ VISIT ━━━━━━━━━━━━━━━ -->
-<section data-screen-label="Visit" style="position:relative;background:#1E1610;overflow:hidden;">
-  <div class="fiq-visit-grid" style="display:grid;grid-template-columns:minmax(clamp(24px,5vw,80px),1fr) minmax(0,640px) 50%;min-height:480px;">
+<section data-screen-label="Visit" style="position:relative;background:#1E1610;overflow:hidden;padding:clamp(64px,8vw,110px) 0 0;">
+  <div style="max-width:1280px;margin:0 auto;padding:0 clamp(24px,5vw,80px) clamp(48px,6vw,72px);">
+    <div data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;align-items:center;gap:16px;margin-bottom:22px;">
+      <span style="display:block;width:32px;height:1px;background:#D6C2A8;flex-shrink:0;"></span>
+      <span style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:rgba(214,194,168,0.7);">زر الاستوديو</span>
+    </div>
+    <h2 data-reveal data-reveal-delay="0.08" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'GE SS Two','Arial',sans-serif;font-size:clamp(26px,3.2vw,44px);font-weight:500;color:#FFFFFF;line-height:1.12;letter-spacing:-0.015em;margin-bottom:20px;">شاهد المواد.<br>المس التشطيبات.</h2>
+    <p data-reveal data-reveal-delay="0.15" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'GE SS Two','Arial',sans-serif;font-size:14px;line-height:1.85;color:rgba(214,194,168,0.6);margin-bottom:36px;max-width:520px;">بعض القرارات تستحق أن تُتخذ حضورياً. احجز جلسة في الاستوديو لاستكشاف مكتبات المواد، عينات التشطيبات، وأعمال المشاريع السابقة.</p>
 
-    <!-- LEFT: studio details -->
-    <div class="fiq-visit-left" style="grid-column:2;padding:clamp(64px,8vw,110px) clamp(40px,5vw,72px) clamp(64px,8vw,110px) 0;display:flex;flex-direction:column;justify-content:center;">
-      <div data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;align-items:center;gap:16px;margin-bottom:22px;">
-        <span style="display:block;width:32px;height:1px;background:#D6C2A8;flex-shrink:0;"></span>
-        <span style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:rgba(214,194,168,0.7);">زر الاستوديو</span>
+    <div data-reveal data-reveal-delay="0.2" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;flex-wrap:wrap;align-items:center;gap:clamp(32px,5vw,64px);">
+      <div>
+        <div style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:rgba(214,194,168,0.4);margin-bottom:6px;">العنوان</div>
+        <p style="font-family:'GE SS Two','Arial',sans-serif;font-size:14px;color:rgba(214,194,168,0.85);line-height:1.7;">الرياض، المملكة العربية السعودية</p>
       </div>
-      <h2 data-reveal data-reveal-delay="0.08" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'GE SS Two','Arial',sans-serif;font-size:clamp(26px,3.2vw,44px);font-weight:500;color:#FFFFFF;line-height:1.12;letter-spacing:-0.015em;margin-bottom:20px;">شاهد المواد.<br>المس التشطيبات.</h2>
-      <p data-reveal data-reveal-delay="0.15" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'GE SS Two','Arial',sans-serif;font-size:14px;line-height:1.85;color:rgba(214,194,168,0.6);margin-bottom:40px;max-width:380px;">بعض القرارات تستحق أن تُتخذ حضورياً. احجز جلسة في الاستوديو لاستكشاف مكتبات المواد، عينات التشطيبات، وأعمال المشاريع السابقة.</p>
-
-      <div data-reveal data-reveal-delay="0.2" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;flex-direction:column;gap:22px;margin-bottom:44px;">
-        <div>
-          <div style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:rgba(214,194,168,0.4);margin-bottom:6px;">العنوان</div>
-          <p style="font-family:'GE SS Two','Arial',sans-serif;font-size:14px;color:rgba(214,194,168,0.85);line-height:1.7;">الرياض، المملكة العربية السعودية</p>
-        </div>
-        <div>
-          <div style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:rgba(214,194,168,0.4);margin-bottom:6px;">بموعد مسبق</div>
-          <p style="font-family:'GE SS Two','Arial',sans-serif;font-size:14px;color:rgba(214,194,168,0.85);line-height:1.7;">الأحد – الخميس · 9:00 – 18:00</p>
-        </div>
+      <div>
+        <div style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:rgba(214,194,168,0.4);margin-bottom:6px;">بموعد مسبق</div>
+        <p style="font-family:'GE SS Two','Arial',sans-serif;font-size:14px;color:rgba(214,194,168,0.85);line-height:1.7;">الأحد – الخميس · 9:00 – 18:00</p>
       </div>
-
-      <a href="#form" id="id-visit-cta" style="font-family:'GE SS Two','Arial',sans-serif;font-size:10px;letter-spacing:normal;text-transform:uppercase;color:#1E1610;background:#D6C2A8;padding:17px 34px;border:1px solid #D6C2A8;text-decoration:none;display:inline-flex;align-items:center;gap:12px;align-self:flex-start;transition:all 0.3s cubic-bezier(0.25,0.46,0.45,0.94);" style-hover="background:#FFFFFF;border-color:#FFFFFF;">
+      <a href="#form" id="id-visit-cta" style="font-family:'GE SS Two','Arial',sans-serif;font-size:10px;letter-spacing:normal;text-transform:uppercase;color:#1E1610;background:#D6C2A8;padding:17px 34px;border:1px solid #D6C2A8;text-decoration:none;display:inline-flex;align-items:center;gap:12px;transition:all 0.3s cubic-bezier(0.25,0.46,0.45,0.94);" style-hover="background:#FFFFFF;border-color:#FFFFFF;">
         احجز زيارة للاستوديو
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
       </a>
     </div>
+  </div>
 
-    <!-- RIGHT: imagery -->
-    <div class="fiq-visit-map" style="grid-column:3;position:relative;min-height:480px;overflow:hidden;">
-      <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1600&q=80" alt="استوديو FurnishIQ الداخلي مع عينات المواد" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;" loading="lazy" decoding="async">
-      <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(30,22,16,0.55) 0%,rgba(30,22,16,0) 45%);pointer-events:none;"></div>
-      <div style="position:absolute;left:clamp(20px,3vw,40px);bottom:clamp(20px,3vw,40px);background:rgba(30,22,16,0.85);backdrop-filter:blur(12px);border:1px solid rgba(214,194,168,0.2);padding:18px 24px;display:flex;align-items:center;gap:14px;">
-        <span style="width:7px;height:7px;border-radius:50%;background:#D6C2A8;flex-shrink:0;animation:fiq-pulse-dot 2.4s cubic-bezier(0.25,0.46,0.45,0.94) infinite;"></span>
-        <span style="font-family:'GE SS Two','Arial',sans-serif;font-size:10px;letter-spacing:normal;text-transform:uppercase;color:rgba(214,194,168,0.9);">الرياض · 24.7136° شمالاً، 46.6753° شرقاً</span>
-      </div>
-    </div>
-
+  <div class="fiq-visit-map" style="position:relative;width:100%;height:520px;overflow:hidden;">
+    <iframe src="https://www.google.com/maps?cid=2079283542092448688&z=16&output=embed" style="position:absolute;inset:0;width:100%;height:100%;border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="موقع FurnishIQ على خرائط جوجل"></iframe>
   </div>
 </section>
 
