@@ -21,7 +21,23 @@
 
     { "source": "/contact.dc.html", "destination": "/contact", "permanent": true },
     { "source": "/home.ar.dc.html", "destination": "/ar", "permanent": true },
-    { "source": "/contact.ar.dc.html", "destination": "/ar/contact", "permanent": true }
+    { "source": "/contact.ar.dc.html", "destination": "/ar/contact", "permanent": true },
+
+    { "source": "/home.dc.html", "destination": "/", "permanent": true },
+    { "source": "/about-us.dc.html", "destination": "/about-us", "permanent": true },
+    { "source": "/about-us.ar.dc.html", "destination": "/ar/about-us", "permanent": true },
+    { "source": "/about-us-2.dc.html", "destination": "/about-us-2", "permanent": true },
+    { "source": "/projects.dc.html", "destination": "/projects", "permanent": true },
+    { "source": "/services.dc.html", "destination": "/services", "permanent": true },
+    { "source": "/services.ar.dc.html", "destination": "/ar/services", "permanent": true },
+    { "source": "/services-interior-design.dc.html", "destination": "/services-interior-design", "permanent": true },
+    { "source": "/services-interior-design.ar.dc.html", "destination": "/ar/services-interior-design", "permanent": true },
+    { "source": "/services-fitout.dc.html", "destination": "/services-fitout", "permanent": true },
+    { "source": "/services-fitout.ar.dc.html", "destination": "/ar/services-fitout", "permanent": true },
+    { "source": "/services-mep.dc.html", "destination": "/services-mep", "permanent": true },
+    { "source": "/services-mep.ar.dc.html", "destination": "/ar/services-mep", "permanent": true },
+    { "source": "/services-furniture.dc.html", "destination": "/services-furniture", "permanent": true },
+    { "source": "/services-furniture.ar.dc.html", "destination": "/ar/services-furniture", "permanent": true }
   ],
   "rewrites": [
     { "source": "/", "destination": "/Furnishiq.net/home.dc.html" },
