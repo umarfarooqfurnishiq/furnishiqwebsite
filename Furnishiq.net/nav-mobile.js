@@ -86,7 +86,7 @@
     function setScrolledState() {
       toggle.classList.toggle('fiq-nav-toggle--scrolled', window.scrollY > 60);
     }
-    setScrolledState();
+    requestAnimationFrame(setScrolledState);
     window.addEventListener('scroll', setScrolledState, { passive: true });
 
     function close() {

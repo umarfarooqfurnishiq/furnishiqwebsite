@@ -53,7 +53,7 @@
     function syncTop() {
       top.classList.toggle('fiq-float-top--visible', window.scrollY > 400);
     }
-    syncTop();
+    requestAnimationFrame(syncTop);
     window.addEventListener('scroll', syncTop, { passive: true });
 
     top.addEventListener('click', function () {
