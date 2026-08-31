@@ -657,7 +657,7 @@ input:focus, select:focus, textarea:focus {
 
       <div id="services-slider-viewport" style="overflow:hidden;">
         <div id="services-slider-track" style="display:flex;align-items:stretch;transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);">
-          <sc-for list="{{ serviceSlides }}" as="svc" hint-placeholder-count="8">
+          <sc-for list="{{ serviceSlides }}" as="svc" hint-placeholder-count="0">
             <div style="flex:0 0 {{ svc.basis }};box-sizing:border-box;padding:0 12px;" aria-hidden="{{ svc.hidden }}">
               <a href="/contact" tabindex="{{ svc.tabIndex }}" class="services-slide-card" style="display:flex;flex-direction:column;height:100%;background:#FFFFFF;text-decoration:none;overflow:hidden;">
                 <div style="overflow:hidden;flex-shrink:0;">
