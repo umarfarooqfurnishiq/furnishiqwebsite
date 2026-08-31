@@ -39,6 +39,36 @@
     { "source": "/services-furniture.dc.html", "destination": "/services-furniture", "permanent": true },
     { "source": "/services-furniture.ar.dc.html", "destination": "/ar/services-furniture", "permanent": true }
   ],
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+    },
+    {
+      "source": "/uploads/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+    },
+    {
+      "source": "/_ds/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+    },
+    {
+      "source": "/support.js",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=86400, must-revalidate" }]
+    },
+    {
+      "source": "/nav-mobile.js",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=86400, must-revalidate" }]
+    },
+    {
+      "source": "/floating-buttons.js",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=86400, must-revalidate" }]
+    },
+    {
+      "source": "/analytics-events.js",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=86400, must-revalidate" }]
+    }
+  ],
   "rewrites": [
     { "source": "/", "destination": "/Furnishiq.net/home.dc.html" },
     { "source": "/en", "destination": "/Furnishiq.net/home.dc.html" },
