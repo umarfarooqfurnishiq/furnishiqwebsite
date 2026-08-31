@@ -524,8 +524,8 @@ input:focus, select:focus, textarea:focus {
 <nav id="fiq-nav" style="position:fixed;top:0;left:0;right:0;height:80px;z-index:200;display:flex;align-items:center;background:transparent;border-bottom:1px solid transparent;transition:background 0.55s cubic-bezier(0.25,0.46,0.45,0.94),border-color 0.55s,box-shadow 0.55s;">
   <div style="max-width:1440px;margin:0 auto;width:100%;padding:0 clamp(20px,5vw,64px);display:flex;align-items:center;justify-content:space-between;gap:24px;">
     <a href="/" style="flex-shrink:0;position:relative;height:36px;width:172px;display:block;text-decoration:none;">
-      <img id="fiq-logo-w" src="assets/logo-default.png" width="382" height="130" alt="FurnishIQ" style="position:absolute;inset:0;height:36px;width:auto;max-width:172px;object-fit:contain;object-position:left center;transition:opacity 0.4s cubic-bezier(0.25,0.46,0.45,0.94);">
-      <img id="fiq-logo-d" src="assets/logo-scrolled.png" width="382" height="130" alt="FurnishIQ" style="position:absolute;inset:0;height:36px;width:auto;max-width:172px;object-fit:contain;object-position:left center;opacity:0;transition:opacity 0.4s cubic-bezier(0.25,0.46,0.45,0.94);">
+      <img id="fiq-logo-w" src="assets/logo-default.png" width="264" height="90" alt="FurnishIQ" fetchpriority="high" style="position:absolute;inset:0;height:36px;width:auto;max-width:172px;object-fit:contain;object-position:left center;transition:opacity 0.4s cubic-bezier(0.25,0.46,0.45,0.94);">
+      <img id="fiq-logo-d" src="assets/logo-scrolled.png" width="264" height="90" alt="FurnishIQ" style="position:absolute;inset:0;height:36px;width:auto;max-width:172px;object-fit:contain;object-position:left center;opacity:0;transition:opacity 0.4s cubic-bezier(0.25,0.46,0.45,0.94);">
     </a>
     <div class="fiq-nav-links" style="display:flex;gap:clamp(24px,3.5vw,48px);align-items:center;flex:1;justify-content:center;">
       <a href="/" data-nav-link style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;transition:color 0.25s,opacity 0.25s;opacity:0.8;">Home</a>
@@ -542,7 +542,7 @@ input:focus, select:focus, textarea:focus {
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1. HERO ━ -->
 <section data-about-hero style="position:relative;background:#1E1610;overflow:hidden;padding:clamp(150px,18vh,200px) clamp(24px,5vw,80px) clamp(72px,9vw,120px);">
   <!-- Photographic texture -->
-  <div style="position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2400&q=50');background-size:cover;background-position:center;opacity:0.16;pointer-events:none;"></div>
+  <div style="position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2400&q=40');background-size:cover;background-position:center;opacity:0.16;pointer-events:none;"></div>
   <div style="position:absolute;inset:0;background:linear-gradient(115deg,rgba(30,22,16,0.96) 0%,rgba(30,22,16,0.72) 55%,rgba(30,22,16,0.94) 100%);pointer-events:none;"></div>
   <!-- Decorative rings -->
   <div style="position:absolute;top:-140px;right:-100px;width:480px;height:480px;border:1px solid rgba(214,194,168,0.06);border-radius:50%;pointer-events:none;"></div>
@@ -941,7 +941,7 @@ input:focus, select:focus, textarea:focus {
 <section id="contact" style="position:relative;overflow:hidden;padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px);">
   <!-- Background image -->
   <div style="position:absolute;inset:0;z-index:0;">
-    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&w=1920&q=50" srcset="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&w=640&q=50 640w, https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&w=960&q=50 960w, https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&w=1280&q=50 1280w, https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&w=1920&q=50 1920w" sizes="100vw" alt="" style="width:100%;height:100%;object-fit:cover;object-position:center 40%;filter:blur(5px) saturate(0.75) sepia(0.18) brightness(0.9);transform:scale(1.07);" loading="lazy" decoding="async">
+    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&w=1920&q=40" srcset="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&w=640&q=40 640w, https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&w=960&q=40 960w, https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&w=1280&q=40 1280w, https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&w=1920&q=40 1920w" sizes="100vw" alt="" style="width:100%;height:100%;object-fit:cover;object-position:center 40%;filter:blur(5px) saturate(0.75) sepia(0.18) brightness(0.9);transform:scale(1.07);" loading="lazy" decoding="async">
     <div style="position:absolute;inset:0;background:rgba(36,24,16,0.76);"></div>
   </div>
   <div style="max-width:1280px;margin:0 auto;position:relative;z-index:1;">
@@ -986,7 +986,7 @@ input:focus, select:focus, textarea:focus {
     <div class="fiq-footer-grid" style="display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:clamp(28px,4vw,64px);margin-bottom:64px;">
 
       <div class="fiq-footer-brand">
-        <a href="/" style="display:block;text-decoration:none;"><img src="assets/logo-default.png" width="382" height="130" alt="FurnishIQ" style="height:36px;width:auto;max-width:160px;object-fit:contain;object-position:left center;margin-bottom:22px;display:block;" loading="lazy" decoding="async"></a>
+        <a href="/" style="display:block;text-decoration:none;"><img src="assets/logo-default.png" width="264" height="90" alt="FurnishIQ" style="height:36px;width:auto;max-width:160px;object-fit:contain;object-position:left center;margin-bottom:22px;display:block;" loading="lazy" decoding="async"></a>
         <p style="font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.8;color:rgba(214,194,168,0.55);margin-bottom:32px;max-width:260px;">Integrated Design–Build solutions transforming ambitious architectural concepts into inspiring realities across Saudi Arabia.</p>
         <div style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(214,194,168,0.4);margin-bottom:14px;">Join the IQ</div>
         <div style="display:flex;border:1px solid rgba(214,194,168,0.2);">
@@ -1053,32 +1053,32 @@ input:focus, select:focus, textarea:focus {
 class Component extends DCLogic {
   state = { newsletterEmail: '', newsletterStatus: null, activeDiscipline: -1, leftOpacity: 1 };
 
-  _overviewImage = 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1920&q=50';
+  _overviewImage = 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1920&q=40';
 
   _disciplines = [
     {
       title: 'Architecture & Interior Design',
       tagline: 'Bespoke spaces that maximise property value',
       body: 'Every FurnishIQ project begins with a rigorous discovery of your brief, your brand, and the behaviours of the people who will inhabit the space. Our design team translates that understanding into bespoke spatial concepts — developing layouts, material specifications, and lighting strategies that balance aesthetic ambition with practical performance. Full photoreal 3D renders are produced for client approval before construction begins, ensuring the final environment is built exactly as envisioned, with no surprises and no compromises.',
-      image: 'https://images.unsplash.com/photo-1615874959474-d609969a20ed?auto=format&fit=crop&w=1920&q=50'
+      image: 'https://images.unsplash.com/photo-1615874959474-d609969a20ed?auto=format&fit=crop&w=1920&q=40'
     },
     {
       title: 'Fit-Out & Turnkey Solutions',
       tagline: 'Raw shells transformed into masterpieces',
       body: 'FurnishIQ takes complete responsibility for the build — from initial partitioning, flooring, and ceilings through to bespoke joinery, specialist finishes, and final handover. Because our fit-out team operates alongside our designers and engineers under one roof, coordination is resolved in the model rather than on-site, protecting both programme and budget. Every project concludes with a structured snagging process and a defined aftercare period, so the space you receive is complete, compliant, and ready for immediate occupation.',
-      image: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1920&q=50'
+      image: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1920&q=40'
     },
     {
       title: 'Engineering & MEP',
       tagline: 'The precision backbone of Mechanical, Electrical & Plumbing systems',
       body: 'Our Mechanical, Electrical, and Plumbing engineering is delivered by the same integrated team responsible for your design and fit-out — not an external subcontractor working from a separate drawing set. This in-house coordination eliminates clashes before they reach the site and ensures that every electrical system, HVAC installation, plumbing network, fire-fighting provision, and low-current infrastructure is designed and installed as a coherent whole. All systems are tested, commissioned, and fully documented to Saudi and international compliance standards prior to handover.',
-      image: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1920&q=50'
+      image: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1920&q=40'
     },
     {
       title: 'Furniture Procurement',
       tagline: 'Pieces strategically sourced to align with your scale, budget, and aesthetic',
       body: 'Furniture selections at FurnishIQ are developed in parallel with spatial planning, not after it — ensuring every piece is aligned with the design intent, the end-user requirement, and the project budget from the outset. We source across the full market, from bespoke custom joinery to internationally procured FF&E, and manage the entire process in-house: purchase orders, delivery scheduling, quality inspection, warehousing, and installation. The result is a furnished environment where every piece belongs — proportionally, materially, and functionally — to the space it occupies.',
-      image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1920&q=50'
+      image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1920&q=40'
     }
   ];
 
