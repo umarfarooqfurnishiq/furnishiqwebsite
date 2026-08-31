@@ -40,7 +40,441 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 <x-dc>
 <helmet>
-  <link rel="stylesheet" href="_ds/furnishiq-design-system-ea658a9e-dd64-48ad-ab93-f0196a53ec9c/tokens/bundle.css">
+  <style>
+/* FurnishIQ — Color Tokens
+   Luxury interior design brand palette.
+   Primary system: warm walnut & bronze luxury tones.
+   Brand green (#1C6B35) is reserved for logo use ONLY. */
+
+:root {
+  /* ── Luxury Brown Palette ────────────────────────────── */
+  --color-walnut:        #5B4636;  /* Primary walnut — main CTA, headings */
+  --color-walnut-dark:   #3A2D25;  /* Dark walnut — deep backgrounds, nav */
+  --color-bronze:        #8B6B4A;  /* Bronze — accents, secondary elements */
+  --color-taupe:         #B8A08C;  /* Warm taupe — dividers, subtle borders */
+  --color-champagne:     #D6C2A8;  /* Champagne — light borders, highlights */
+  --color-stone:         #F5F2ED;  /* Stone — section backgrounds, cards */
+  --color-charcoal:      #1F1F1F;  /* Near black — primary text */
+  --color-white:         #FFFFFF;  /* Pure white — page background */
+
+  /* ── Brand Green Palette ─────────────────────────────── */
+  --color-green-deep:    #0A2918;  /* Forest deep — dark surfaces */
+  --color-green-dark:    #0F3D22;  /* Forest dark — hero BG, headers */
+  --color-brand-green:   #1C6B35;  /* Logo accent + primary green */
+  --color-green-forest:  #247A3C;  /* Forest — buttons, CTAs (green mode) */
+  --color-green-mid:     #2E9E4F;  /* Mid green — hover states */
+  --color-green-sage:    #5AB872;  /* Sage — muted accents */
+  --color-green-mint:    #8ED4A0;  /* Mint — light accents */
+  --color-green-pale:    #B8E4C6;  /* Pale — subtle highlights */
+  --color-green-mist:    #D5EFD9;  /* Mist — tinted backgrounds */
+  --color-green-stone:   #EBF5EE;  /* Green stone — section BGs */
+
+  /* ── Green Semantic Aliases ──────────────────────────── */
+  --surface-green:       var(--color-green-dark);   /* Dark green surface */
+  --surface-green-light: var(--color-green-stone);  /* Light green surface */
+  --text-on-green:       #FFFFFF;                   /* On dark green */
+  --text-green-accent:   var(--color-brand-green);  /* Green in light contexts */
+  --border-green:        var(--color-green-sage);   /* Green borders */
+  --color-green-action:  var(--color-green-forest); /* Green CTA */
+  --color-green-hover:   var(--color-green-dark);   /* Green CTA hover */
+
+  --color-brand-dark:    #1A1A1A;  /* ⚠ Logo background only */
+
+  /* ── Extended Palette ────────────────────────────────── */
+  --color-walnut-10:     #F4F0EC;  /* Walnut tint 10% */
+  --color-walnut-20:     #E8DFD8;  /* Walnut tint 20% */
+  --color-walnut-40:     #AD9484;  /* Walnut tint 40% */
+  --color-walnut-60:     #876B59;  /* Walnut tint 60% */
+  --color-bronze-light:  #C4A882;  /* Bronze light */
+  --color-bronze-muted:  #A07D5C;  /* Bronze muted */
+
+  /* ── Semantic: Surfaces ──────────────────────────────── */
+  --surface-primary:     var(--color-white);
+  --surface-secondary:   var(--color-stone);
+  --surface-dark:        var(--color-charcoal);
+  --surface-walnut:      var(--color-walnut-dark);
+  --surface-warm:        var(--color-champagne);
+
+  /* ── Semantic: Text ──────────────────────────────────── */
+  --text-primary:        var(--color-charcoal);
+  --text-secondary:      var(--color-walnut);
+  --text-muted:          var(--color-bronze);
+  --text-subtle:         var(--color-taupe);
+  --text-on-dark:        var(--color-white);
+  --text-on-walnut:      var(--color-champagne);
+  --text-display:        var(--color-walnut-dark);
+
+  /* ── Semantic: Borders ───────────────────────────────── */
+  --border-light:        var(--color-champagne);
+  --border-medium:       var(--color-taupe);
+  --border-dark:         var(--color-walnut);
+  --border-subtle:       var(--color-stone);
+
+  /* ── Semantic: Interactive ───────────────────────────── */
+  --color-action:        var(--color-walnut);
+  --color-action-hover:  var(--color-walnut-dark);
+  --color-action-muted:  var(--color-bronze);
+  --color-focus:         var(--color-bronze);
+}
+/* FurnishIQ — Typography Tokens
+   Display / Body (English): Lama Sans Medium — refined geometric sans-serif
+   Arabic: GE SS Two Medium — matching Arabic companion for bilingual layouts
+   Both fonts provided as brand assets; local files only. */
+
+@font-face {
+  font-family: 'Lama Sans';
+  src: url('_ds/furnishiq-design-system-ea658a9e-dd64-48ad-ab93-f0196a53ec9c/uploads/LamaSans-Medium_English.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GE SS Two';
+  src: url('_ds/furnishiq-design-system-ea658a9e-dd64-48ad-ab93-f0196a53ec9c/uploads/GE_SS_Two_Medium_Arabic.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* ── Font Families ───────────────────────────────────── */
+  --font-display:  'Lama Sans', 'Helvetica Neue', 'Arial', sans-serif;
+  --font-body:     'Lama Sans', 'Helvetica Neue', 'Arial', sans-serif;
+  --font-arabic:   'GE SS Two', 'Arial', sans-serif;
+
+  /* ── Font Sizes (px, fluid where appropriate) ────────── */
+  --text-4xl:   clamp(56px, 6vw, 96px);   /* Hero / Landmark */
+  --text-3xl:   clamp(40px, 4.5vw, 72px); /* H1 */
+  --text-2xl:   clamp(30px, 3.5vw, 56px); /* H2 */
+  --text-xl:    clamp(24px, 2.5vw, 40px); /* H3 */
+  --text-lg:    clamp(18px, 2vw, 28px);   /* H4 */
+  --text-md:    20px;                      /* Lead paragraph */
+  --text-base:  16px;                      /* Body */
+  --text-sm:    14px;                      /* Small body */
+  --text-xs:    12px;                      /* Captions, labels */
+  --text-2xs:   10px;                      /* Micro labels */
+
+  /* ── Line Heights ────────────────────────────────────── */
+  --leading-none:     1;
+  --leading-tight:    1.1;
+  --leading-snug:     1.25;
+  --leading-normal:   1.5;
+  --leading-relaxed:  1.7;
+  --leading-loose:    2;
+
+  /* ── Letter Spacing ──────────────────────────────────── */
+  --tracking-tightest: -0.03em;
+  --tracking-tight:    -0.01em;
+  --tracking-normal:    0em;
+  --tracking-wide:      0.06em;
+  --tracking-wider:     0.12em;
+  --tracking-widest:    0.2em;
+  --tracking-ultra:     0.3em;
+
+  /* ── Font Weights ────────────────────────────────────── */
+  --weight-light:    300;
+  --weight-regular:  400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+
+  /* ── Type Scale Aliases ──────────────────────────────── */
+  /* H1: Brand landmark heading */
+  --type-h1-family:   var(--font-display);
+  --type-h1-size:     var(--text-3xl);
+  --type-h1-weight:   var(--weight-medium);
+  --type-h1-leading:  var(--leading-tight);
+  --type-h1-tracking: var(--tracking-tight);
+
+  /* H2: Section heading */
+  --type-h2-family:   var(--font-display);
+  --type-h2-size:     var(--text-2xl);
+  --type-h2-weight:   var(--weight-medium);
+  --type-h2-leading:  var(--leading-snug);
+  --type-h2-tracking: var(--tracking-normal);
+
+  /* H3: Sub-section heading */
+  --type-h3-family:   var(--font-display);
+  --type-h3-size:     var(--text-xl);
+  --type-h3-weight:   var(--weight-medium);
+  --type-h3-leading:  var(--leading-snug);
+  --type-h3-tracking: var(--tracking-normal);
+
+  /* H4: Component heading */
+  --type-h4-family:   var(--font-body);
+  --type-h4-size:     var(--text-lg);
+  --type-h4-weight:   var(--weight-medium);
+  --type-h4-leading:  var(--leading-normal);
+  --type-h4-tracking: var(--tracking-wide);
+
+  /* Body */
+  --type-body-family:  var(--font-body);
+  --type-body-size:    var(--text-base);
+  --type-body-weight:  var(--weight-regular);
+  --type-body-leading: var(--leading-relaxed);
+
+  /* Caption */
+  --type-caption-family:   var(--font-body);
+  --type-caption-size:     var(--text-xs);
+  --type-caption-weight:   var(--weight-regular);
+  --type-caption-tracking: var(--tracking-wider);
+
+  /* Label / eyebrow */
+  --type-label-family:   var(--font-body);
+  --type-label-size:     var(--text-xs);
+  --type-label-weight:   var(--weight-semibold);
+  --type-label-tracking: var(--tracking-widest);
+
+  /* Quote */
+  --type-quote-family:   var(--font-display);
+  --type-quote-size:     var(--text-2xl);
+  --type-quote-weight:   var(--weight-medium);
+  --type-quote-style:    normal;
+  --type-quote-leading:  var(--leading-snug);
+
+  /* Arabic */
+  --type-arabic-family:  var(--font-arabic);
+  --type-arabic-size:    var(--text-base);
+  --type-arabic-weight:  var(--weight-medium);
+  --type-arabic-leading: var(--leading-relaxed);
+}
+/* FurnishIQ — Spacing & Layout Tokens
+   Based on a 4px base unit. Section spacing is generous — 
+   luxury brands breathe with white space. */
+
+:root {
+  /* ── Base Scale ──────────────────────────────────────── */
+  --space-0:   0px;
+  --space-1:   4px;
+  --space-2:   8px;
+  --space-3:   12px;
+  --space-4:   16px;
+  --space-5:   20px;
+  --space-6:   24px;
+  --space-8:   32px;
+  --space-10:  40px;
+  --space-12:  48px;
+  --space-14:  56px;
+  --space-16:  64px;
+  --space-20:  80px;
+  --space-24:  96px;
+  --space-28:  112px;
+  --space-32:  128px;
+  --space-40:  160px;
+  --space-48:  192px;
+  --space-56:  224px;
+  --space-64:  256px;
+
+  /* ── Fluid Spacing ───────────────────────────────────── */
+  --space-section:    clamp(64px, 8vw, 128px);  /* Between major sections */
+  --space-component:  clamp(32px, 4vw, 64px);   /* Between components */
+  --space-element:    clamp(16px, 2vw, 32px);   /* Within components */
+  --space-inline:     clamp(8px, 1vw, 16px);    /* Inline gaps */
+
+  /* ── Layout ──────────────────────────────────────────── */
+  --container-max:     1440px;   /* Max site width */
+  --container-wide:    1280px;   /* Wide content */
+  --container-base:    1080px;   /* Standard content */
+  --container-narrow:  720px;    /* Editorial / article */
+  --container-xs:      480px;    /* Forms, modals */
+
+  --gutter:            clamp(20px, 5vw, 80px);  /* @kind spacing */
+  --gutter-sm:         clamp(16px, 3vw, 40px); /* @kind spacing */
+
+  /* ── Grid ────────────────────────────────────────────── */
+  --grid-cols-12:   repeat(12, 1fr); /* @kind other */
+  --grid-cols-6:    repeat(6, 1fr); /* @kind other */
+  --grid-cols-4:    repeat(4, 1fr); /* @kind other */
+  --grid-cols-3:    repeat(3, 1fr); /* @kind other */
+  --grid-cols-2:    repeat(2, 1fr); /* @kind other */
+  --grid-gap:       var(--space-8);
+  --grid-gap-lg:    var(--space-12);
+  --grid-gap-sm:    var(--space-4);
+
+  /* ── Component Sizes ─────────────────────────────────── */
+  --btn-height-sm:   36px;
+  --btn-height-md:   48px;
+  --btn-height-lg:   56px;
+
+  --input-height-sm:  40px;
+  --input-height-md:  50px;
+  --input-height-lg:  60px;
+
+  --nav-height:       80px;
+  --nav-height-sm:    64px;
+}
+/* FurnishIQ — Effects Tokens
+   Shadows, radii, borders, transitions, and motion.
+   The brand uses sharp corners (radius-none is the default) 
+   and subtle warm shadows — never blue-tinted. */
+
+:root {
+  /* ── Border Radius ───────────────────────────────────── */
+  --radius-none:   0px;     /* Default for brand — sharp luxury */
+  --radius-sm:     2px;     /* Subtle softening */
+  --radius-md:     4px;     /* Input fields */
+  --radius-lg:     8px;     /* Cards (rare) */
+  --radius-full:   9999px;  /* Pills, avatars */
+
+  /* ── Shadows (warm-toned, no cold grays) ─────────────── */
+  --shadow-xs:     0 1px 2px rgba(58, 45, 37, 0.06);
+  --shadow-sm:     0 2px 8px rgba(58, 45, 37, 0.08);
+  --shadow-md:     0 4px 20px rgba(58, 45, 37, 0.10);
+  --shadow-lg:     0 8px 40px rgba(58, 45, 37, 0.12);
+  --shadow-xl:     0 16px 60px rgba(58, 45, 37, 0.15);
+  --shadow-luxury: 0 24px 80px rgba(58, 45, 37, 0.20);
+
+  /* ── Green Shadows (forest-toned) ─────────────────────── */
+  --shadow-green-xs:     0 1px 2px rgba(15, 61, 34, 0.06);
+  --shadow-green-sm:     0 2px 8px rgba(15, 61, 34, 0.08);
+  --shadow-green-md:     0 4px 20px rgba(15, 61, 34, 0.10);
+  --shadow-green-lg:     0 8px 40px rgba(15, 61, 34, 0.12);
+  --shadow-green-xl:     0 16px 60px rgba(15, 61, 34, 0.15);
+  --shadow-green-luxury: 0 24px 80px rgba(15, 61, 34, 0.18);
+
+  /* Inset shadows */
+  --shadow-inset-sm: inset 0 1px 3px rgba(58, 45, 37, 0.08);
+  --shadow-inset-md: inset 0 2px 8px rgba(58, 45, 37, 0.12);
+
+  /* ── Border Widths ───────────────────────────────────── */
+  --border-0:      0px;
+  --border-thin:   1px;
+  --border-base:   1.5px;
+  --border-thick:  2px;
+  --border-heavy:  3px;
+
+  /* ── Transitions ─────────────────────────────────────── */
+  --ease-linear:   linear; /* @kind other */
+  --ease-in:       cubic-bezier(0.4, 0, 1, 1); /* @kind other */
+  --ease-out:      cubic-bezier(0, 0, 0.2, 1); /* @kind other */
+  --ease-inout:    cubic-bezier(0.4, 0, 0.2, 1); /* @kind other */
+  --ease-luxury:   cubic-bezier(0.25, 0.46, 0.45, 0.94); /* @kind other */
+
+  --duration-instant: 0ms; /* @kind other */
+  --duration-fast:    100ms; /* @kind other */
+  --duration-base:    200ms; /* @kind other */
+  --duration-slow:    350ms; /* @kind other */
+  --duration-slower:  500ms; /* @kind other */
+  --duration-luxury:  700ms; /* @kind other */
+
+  --transition-fast:    var(--duration-fast) var(--ease-out); /* @kind other */
+  --transition-base:    var(--duration-base) var(--ease-out); /* @kind other */
+  --transition-slow:    var(--duration-slow) var(--ease-luxury); /* @kind other */
+  --transition-luxury:  var(--duration-luxury) var(--ease-luxury); /* @kind other */
+
+  /* ── Opacity ─────────────────────────────────────────── */
+  --opacity-full:    1; /* @kind other */
+  --opacity-muted:   0.6; /* @kind other */
+  --opacity-subtle:  0.4; /* @kind other */
+  --opacity-faint:   0.15; /* @kind other */
+  --opacity-ghost:   0.08; /* @kind other */
+
+  /* ── Blur ────────────────────────────────────────────── */
+  --blur-sm:   4px; /* @kind other */
+  --blur-md:   12px; /* @kind other */
+  --blur-lg:   24px; /* @kind other */
+  --blur-xl:   40px; /* @kind other */
+
+  /* ── Z-Index ─────────────────────────────────────────── */
+  --z-below:    -1; /* @kind other */
+  --z-base:      0; /* @kind other */
+  --z-raised:    10; /* @kind other */
+  --z-overlay:   100; /* @kind other */
+  --z-nav:       200; /* @kind other */
+  --z-modal:     300; /* @kind other */
+  --z-toast:     400; /* @kind other */
+}
+/* FurnishIQ — Base Reset & Global Defaults */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-relaxed);
+  color: var(--text-primary);
+  background: var(--surface-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-wrap: pretty;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: var(--weight-medium);
+  line-height: var(--leading-tight);
+  color: var(--text-display);
+}
+
+h1 { font-size: var(--text-3xl); letter-spacing: var(--tracking-tight); }
+h2 { font-size: var(--text-2xl); }
+h3 { font-size: var(--text-xl); }
+h4 { font-family: var(--font-body); font-size: var(--text-lg); font-weight: var(--weight-medium); letter-spacing: var(--tracking-wide); }
+h5 { font-family: var(--font-body); font-size: var(--text-md); font-weight: var(--weight-medium); }
+h6 { font-family: var(--font-body); font-size: var(--text-base); font-weight: var(--weight-semibold); letter-spacing: var(--tracking-widest); text-transform: uppercase; }
+
+p {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  color: var(--text-primary);
+}
+
+a {
+  color: var(--color-walnut);
+  text-decoration: none;
+  transition: color var(--transition-base);
+}
+
+a:hover {
+  color: var(--color-walnut-dark);
+}
+
+img, video {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+input, select, textarea {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  border: var(--border-thin) solid var(--border-light);
+  outline: none;
+  background: var(--surface-primary);
+  color: var(--text-primary);
+  border-radius: var(--radius-none);
+  transition: border-color var(--transition-fast);
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--color-walnut);
+}
+
+::selection {
+  background: var(--color-champagne);
+  color: var(--color-walnut-dark);
+}
+
+  </style>
   <script src="_ds/furnishiq-design-system-ea658a9e-dd64-48ad-ab93-f0196a53ec9c/_ds_bundle.js" defer></script>
   <style>
     @media(max-width:960px){
