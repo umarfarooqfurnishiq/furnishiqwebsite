@@ -544,13 +544,21 @@ input:focus, select:focus, textarea:focus {
       .fiq-hero-h1{font-size:clamp(36px,11vw,56px)!important;}
       .fiq-hero-sub{font-size:15px!important;}
     }
+    @media(max-width:768px){
+      #fiq-nav>div{justify-content:flex-end!important;}
+      #fiq-logo-link{position:absolute!important;left:50%!important;top:50%!important;transform:translate(-50%,-50%)!important;}
+      #hero-comparison{cursor:default!important;}
+      #hero-right-panel,#hero-slider-line,#hero-slider-handle,#hero-scroll-hint{display:none!important;}
+      #hero-render-panel{width:100%!important;}
+      #hero-render-overlay{background:linear-gradient(to top,rgba(58,45,37,0.96) 0%,rgba(58,45,37,0.65) 45%,rgba(58,45,37,0.35) 100%)!important;}
+    }
   </style>
 </helmet>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ NAV ━━ -->
 <nav id="fiq-nav" style="position:fixed;top:0;left:0;right:0;height:80px;z-index:200;display:flex;align-items:center;background:transparent;border-bottom:1px solid transparent;transition:background 0.55s cubic-bezier(0.25,0.46,0.45,0.94),border-color 0.55s,box-shadow 0.55s;">
   <div style="max-width:1280px;margin:0 auto;width:100%;padding:0;display:flex;align-items:center;justify-content:space-between;gap:24px;">
-    <a href="#" style="flex-shrink:0;position:relative;height:36px;width:172px;display:block;text-decoration:none;">
+    <a href="#" id="fiq-logo-link" style="flex-shrink:0;position:relative;height:36px;width:172px;display:block;text-decoration:none;">
       <img id="fiq-logo-w" src="assets/logo-default.png" width="610" height="236" alt="FurnishIQ" style="position:absolute;inset:0;height:36px;width:auto;max-width:172px;object-fit:contain;object-position:left center;transition:opacity 0.4s cubic-bezier(0.25,0.46,0.45,0.94);">
       <img id="fiq-logo-d" src="assets/logo-scrolled.png" width="838" height="285" alt="FurnishIQ" style="position:absolute;inset:0;height:36px;width:auto;max-width:172px;object-fit:contain;object-position:left center;opacity:0;transition:opacity 0.4s cubic-bezier(0.25,0.46,0.45,0.94);">
     </a>
@@ -570,7 +578,7 @@ input:focus, select:focus, textarea:focus {
 <section id="hero-comparison" style="position:relative;height:100vh;min-height:600px;overflow:hidden;background:#3A2D25;cursor:ew-resize;-webkit-user-select:none;user-select:none;">
 
   <!-- RIGHT: Finished Build — warm -->
-  <div style="position:absolute;inset:0;">
+  <div id="hero-right-panel" style="position:absolute;inset:0;">
     <img src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?auto=format&w=1920&q=65" srcset="https://images.unsplash.com/photo-1631679706909-1844bbd07221?auto=format&w=640&q=65 640w, https://images.unsplash.com/photo-1631679706909-1844bbd07221?auto=format&w=960&q=65 960w, https://images.unsplash.com/photo-1631679706909-1844bbd07221?auto=format&w=1280&q=65 1280w, https://images.unsplash.com/photo-1631679706909-1844bbd07221?auto=format&w=1920&q=65 1920w" sizes="100vw" fetchpriority="high" alt="Finished Interior" style="width:100%;height:100%;object-fit:cover;object-position:center center;">
     <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(58,45,37,0.92) 0%,rgba(58,45,37,0.35) 55%,rgba(58,45,37,0.12) 100%);"></div>
     <div style="position:absolute;top:clamp(96px,14vh,136px);right:clamp(24px,4vw,64px);display:flex;align-items:center;gap:12px;">
@@ -585,7 +593,7 @@ input:focus, select:focus, textarea:focus {
       <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&w=1920&q=65" srcset="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&w=640&q=65 640w, https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&w=960&q=65 960w, https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&w=1280&q=65 1280w, https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&w=1920&q=65 1920w" sizes="100vw" fetchpriority="high" alt="3D Render" style="width:100vw;height:100%;object-fit:cover;object-position:center;filter:sepia(0.1) saturate(0.5) brightness(0.82) hue-rotate(185deg);">
       <div style="position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 79px,rgba(139,107,74,0.1) 79px,rgba(139,107,74,0.1) 80px),repeating-linear-gradient(90deg,transparent,transparent 79px,rgba(139,107,74,0.1) 79px,rgba(139,107,74,0.1) 80px);"></div>
       <div style="position:absolute;inset:0;background:rgba(15,30,55,0.22);"></div>
-      <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(58,45,37,0.92) 0%,rgba(58,45,37,0.25) 55%,rgba(58,45,37,0.05) 100%);"></div>
+      <div id="hero-render-overlay" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(58,45,37,0.92) 0%,rgba(58,45,37,0.25) 55%,rgba(58,45,37,0.05) 100%);"></div>
     </div>
     <div style="position:absolute;top:clamp(96px,14vh,136px);left:clamp(24px,4vw,64px);display:flex;align-items:center;gap:12px;">
       <span style="display:block;width:28px;height:1px;background:rgba(214,194,168,0.45);"></span>
@@ -620,7 +628,7 @@ input:focus, select:focus, textarea:focus {
   </div>
 
   <!-- Scroll hint -->
-  <div style="position:absolute;bottom:32px;right:clamp(24px,4vw,64px);z-index:6;display:flex;flex-direction:column;align-items:center;gap:8px;pointer-events:none;">
+  <div id="hero-scroll-hint" style="position:absolute;bottom:32px;right:clamp(24px,4vw,64px);z-index:6;display:flex;flex-direction:column;align-items:center;gap:8px;pointer-events:none;">
     <span style="font-family:'Lama Sans',sans-serif;font-size:8px;letter-spacing:0.28em;text-transform:uppercase;color:rgba(214,194,168,0.45);writing-mode:vertical-rl;">Scroll</span>
     <div style="width:1px;height:48px;overflow:hidden;background:rgba(214,194,168,0.2);">
       <div style="width:1px;height:48px;background:#D6C2A8;animation:fiq-scroll-line 2s ease-in-out infinite;"></div>
@@ -1087,7 +1095,7 @@ class Component extends DCLogic {
     const sliderLine = document.getElementById('hero-slider-line');
     const sliderHandle = document.getElementById('hero-slider-handle');
 
-    if (heroEl && renderPanel) {
+    if (heroEl && renderPanel && !window.matchMedia('(max-width:768px)').matches) {
       let dragging = false;
 
       const moveTo = (clientX) => {
