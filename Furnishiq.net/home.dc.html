@@ -657,23 +657,126 @@ input:focus, select:focus, textarea:focus {
 
       <div id="services-slider-viewport" style="overflow:hidden;">
         <div id="services-slider-track" style="display:flex;align-items:stretch;transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);">
-          <sc-for list="{{ serviceSlides }}" as="svc" hint-placeholder-count="0">
-            <div style="flex:0 0 {{ svc.basis }};box-sizing:border-box;padding:0 12px;" aria-hidden="{{ svc.hidden }}">
-              <a href="/contact" tabindex="{{ svc.tabIndex }}" class="services-slide-card" style="display:flex;flex-direction:column;height:100%;background:#FFFFFF;text-decoration:none;overflow:hidden;">
+            <div style="flex:0 0 12.5%;box-sizing:border-box;padding:0 12px;" aria-hidden="false">
+              <a href="/contact" tabindex="0" class="services-slide-card" style="display:flex;flex-direction:column;height:100%;background:#FFFFFF;text-decoration:none;overflow:hidden;">
                 <div style="overflow:hidden;flex-shrink:0;">
-                  <div class="services-slide-img" role="img" aria-label="{{ svc.title }}" style="width:100%;aspect-ratio:4/3;background-image:url('{{ svc.image }}');background-size:cover;background-position:center;transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);"></div>
+                  <img src="https://images.unsplash.com/photo-1615874959474-d609969a20ed?auto=format&fit=crop&w=700&q=30" alt="Interior Design" class="services-slide-img" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);" loading="lazy" decoding="async">
                 </div>
                 <div class="services-slide-content" style="flex:1;display:flex;flex-direction:column;position:relative;padding:28px clamp(20px,2.5vw,28px) clamp(28px,3vw,36px);transition:background 0.4s cubic-bezier(0.25,0.46,0.45,0.94);">
-                  <h3 class="services-slide-title" style="font-family:'Lama Sans',sans-serif;font-size:clamp(18px,1.8vw,22px);font-weight:500;color:#1F1F1F;line-height:1.25;margin-bottom:6px;transition:color 0.3s;">{{ svc.title }}</h3>
-                  <p class="services-slide-tagline" style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:#8B6B4A;margin-bottom:14px;transition:color 0.3s;">{{ svc.tagline }}</p>
-                  <p class="services-slide-body" style="font-family:'Lama Sans',sans-serif;font-size:13.5px;line-height:1.7;color:#5B4636;margin-bottom:0;flex:1;transition:color 0.3s;">{{ svc.body }}</p>
+                  <h3 class="services-slide-title" style="font-family:'Lama Sans',sans-serif;font-size:clamp(18px,1.8vw,22px);font-weight:500;color:#1F1F1F;line-height:1.25;margin-bottom:6px;transition:color 0.3s;">Interior Design</h3>
+                  <p class="services-slide-tagline" style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:#8B6B4A;margin-bottom:14px;transition:color 0.3s;">Thoughtful, Bespoke &amp; Visionary</p>
+                  <p class="services-slide-body" style="font-family:'Lama Sans',sans-serif;font-size:13.5px;line-height:1.7;color:#5B4636;margin-bottom:0;flex:1;transition:color 0.3s;">We create personalised, livable environments balancing high-end aesthetics with practical functionality. Full Photoreal 3D visuals before any construction begins.</p>
                   <span class="services-slide-arrow-circle" style="position:absolute;right:14px;bottom:14px;width:38px;height:38px;border-radius:50%;background:#3A2D25;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background 0.3s;">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D6C2A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition:stroke 0.3s;"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
                   </span>
                 </div>
               </a>
             </div>
-          </sc-for>
+            <div style="flex:0 0 12.5%;box-sizing:border-box;padding:0 12px;" aria-hidden="false">
+              <a href="/contact" tabindex="0" class="services-slide-card" style="display:flex;flex-direction:column;height:100%;background:#FFFFFF;text-decoration:none;overflow:hidden;">
+                <div style="overflow:hidden;flex-shrink:0;">
+                  <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=700&q=30" alt="Fit-Out" class="services-slide-img" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);" loading="lazy" decoding="async">
+                </div>
+                <div class="services-slide-content" style="flex:1;display:flex;flex-direction:column;position:relative;padding:28px clamp(20px,2.5vw,28px) clamp(28px,3vw,36px);transition:background 0.4s cubic-bezier(0.25,0.46,0.45,0.94);">
+                  <h3 class="services-slide-title" style="font-family:'Lama Sans',sans-serif;font-size:clamp(18px,1.8vw,22px);font-weight:500;color:#1F1F1F;line-height:1.25;margin-bottom:6px;transition:color 0.3s;">Fit-Out</h3>
+                  <p class="services-slide-tagline" style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:#8B6B4A;margin-bottom:14px;transition:color 0.3s;">Turning Raw Shells into Masterpieces</p>
+                  <p class="services-slide-body" style="font-family:'Lama Sans',sans-serif;font-size:13.5px;line-height:1.7;color:#5B4636;margin-bottom:0;flex:1;transition:color 0.3s;">The core of our business. Complete transformation of raw shells into fully functional, turnkey environments through Brand-Led Planning and our Zero-Snag Promise.</p>
+                  <span class="services-slide-arrow-circle" style="position:absolute;right:14px;bottom:14px;width:38px;height:38px;border-radius:50%;background:#3A2D25;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background 0.3s;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D6C2A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition:stroke 0.3s;"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                  </span>
+                </div>
+              </a>
+            </div>
+            <div style="flex:0 0 12.5%;box-sizing:border-box;padding:0 12px;" aria-hidden="false">
+              <a href="/contact" tabindex="0" class="services-slide-card" style="display:flex;flex-direction:column;height:100%;background:#FFFFFF;text-decoration:none;overflow:hidden;">
+                <div style="overflow:hidden;flex-shrink:0;">
+                  <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=700&q=30" alt="Engineering &amp; MEP" class="services-slide-img" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);" loading="lazy" decoding="async">
+                </div>
+                <div class="services-slide-content" style="flex:1;display:flex;flex-direction:column;position:relative;padding:28px clamp(20px,2.5vw,28px) clamp(28px,3vw,36px);transition:background 0.4s cubic-bezier(0.25,0.46,0.45,0.94);">
+                  <h3 class="services-slide-title" style="font-family:'Lama Sans',sans-serif;font-size:clamp(18px,1.8vw,22px);font-weight:500;color:#1F1F1F;line-height:1.25;margin-bottom:6px;transition:color 0.3s;">Engineering &amp; MEP</h3>
+                  <p class="services-slide-tagline" style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:#8B6B4A;margin-bottom:14px;transition:color 0.3s;">The Precision Backbone</p>
+                  <p class="services-slide-body" style="font-family:'Lama Sans',sans-serif;font-size:13.5px;line-height:1.7;color:#5B4636;margin-bottom:0;flex:1;transition:color 0.3s;">True luxury depends on invisible systems. Our MEP services provide high-performance infrastructure seamlessly integrated into the architectural fabric.</p>
+                  <span class="services-slide-arrow-circle" style="position:absolute;right:14px;bottom:14px;width:38px;height:38px;border-radius:50%;background:#3A2D25;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background 0.3s;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D6C2A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition:stroke 0.3s;"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                  </span>
+                </div>
+              </a>
+            </div>
+            <div style="flex:0 0 12.5%;box-sizing:border-box;padding:0 12px;" aria-hidden="false">
+              <a href="/contact" tabindex="0" class="services-slide-card" style="display:flex;flex-direction:column;height:100%;background:#FFFFFF;text-decoration:none;overflow:hidden;">
+                <div style="overflow:hidden;flex-shrink:0;">
+                  <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=700&q=30" alt="Furniture Solutions" class="services-slide-img" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);" loading="lazy" decoding="async">
+                </div>
+                <div class="services-slide-content" style="flex:1;display:flex;flex-direction:column;position:relative;padding:28px clamp(20px,2.5vw,28px) clamp(28px,3vw,36px);transition:background 0.4s cubic-bezier(0.25,0.46,0.45,0.94);">
+                  <h3 class="services-slide-title" style="font-family:'Lama Sans',sans-serif;font-size:clamp(18px,1.8vw,22px);font-weight:500;color:#1F1F1F;line-height:1.25;margin-bottom:6px;transition:color 0.3s;">Furniture Solutions</h3>
+                  <p class="services-slide-tagline" style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:#8B6B4A;margin-bottom:14px;transition:color 0.3s;">Strategic Sourcing &amp; Curation</p>
+                  <p class="services-slide-body" style="font-family:'Lama Sans',sans-serif;font-size:13.5px;line-height:1.7;color:#5B4636;margin-bottom:0;flex:1;transition:color 0.3s;">We strategically source furniture aligned with your approved 3D renders, matching your aesthetic, budget, and operational needs — floor to ceiling coherence.</p>
+                  <span class="services-slide-arrow-circle" style="position:absolute;right:14px;bottom:14px;width:38px;height:38px;border-radius:50%;background:#3A2D25;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background 0.3s;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D6C2A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition:stroke 0.3s;"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                  </span>
+                </div>
+              </a>
+            </div>
+            <div style="flex:0 0 12.5%;box-sizing:border-box;padding:0 12px;" aria-hidden="true">
+              <a href="/contact" tabindex="-1" class="services-slide-card" style="display:flex;flex-direction:column;height:100%;background:#FFFFFF;text-decoration:none;overflow:hidden;">
+                <div style="overflow:hidden;flex-shrink:0;">
+                  <img src="https://images.unsplash.com/photo-1615874959474-d609969a20ed?auto=format&fit=crop&w=700&q=30" alt="Interior Design" class="services-slide-img" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);" loading="lazy" decoding="async">
+                </div>
+                <div class="services-slide-content" style="flex:1;display:flex;flex-direction:column;position:relative;padding:28px clamp(20px,2.5vw,28px) clamp(28px,3vw,36px);transition:background 0.4s cubic-bezier(0.25,0.46,0.45,0.94);">
+                  <h3 class="services-slide-title" style="font-family:'Lama Sans',sans-serif;font-size:clamp(18px,1.8vw,22px);font-weight:500;color:#1F1F1F;line-height:1.25;margin-bottom:6px;transition:color 0.3s;">Interior Design</h3>
+                  <p class="services-slide-tagline" style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:#8B6B4A;margin-bottom:14px;transition:color 0.3s;">Thoughtful, Bespoke &amp; Visionary</p>
+                  <p class="services-slide-body" style="font-family:'Lama Sans',sans-serif;font-size:13.5px;line-height:1.7;color:#5B4636;margin-bottom:0;flex:1;transition:color 0.3s;">We create personalised, livable environments balancing high-end aesthetics with practical functionality. Full Photoreal 3D visuals before any construction begins.</p>
+                  <span class="services-slide-arrow-circle" style="position:absolute;right:14px;bottom:14px;width:38px;height:38px;border-radius:50%;background:#3A2D25;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background 0.3s;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D6C2A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition:stroke 0.3s;"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                  </span>
+                </div>
+              </a>
+            </div>
+            <div style="flex:0 0 12.5%;box-sizing:border-box;padding:0 12px;" aria-hidden="true">
+              <a href="/contact" tabindex="-1" class="services-slide-card" style="display:flex;flex-direction:column;height:100%;background:#FFFFFF;text-decoration:none;overflow:hidden;">
+                <div style="overflow:hidden;flex-shrink:0;">
+                  <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=700&q=30" alt="Fit-Out" class="services-slide-img" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);" loading="lazy" decoding="async">
+                </div>
+                <div class="services-slide-content" style="flex:1;display:flex;flex-direction:column;position:relative;padding:28px clamp(20px,2.5vw,28px) clamp(28px,3vw,36px);transition:background 0.4s cubic-bezier(0.25,0.46,0.45,0.94);">
+                  <h3 class="services-slide-title" style="font-family:'Lama Sans',sans-serif;font-size:clamp(18px,1.8vw,22px);font-weight:500;color:#1F1F1F;line-height:1.25;margin-bottom:6px;transition:color 0.3s;">Fit-Out</h3>
+                  <p class="services-slide-tagline" style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:#8B6B4A;margin-bottom:14px;transition:color 0.3s;">Turning Raw Shells into Masterpieces</p>
+                  <p class="services-slide-body" style="font-family:'Lama Sans',sans-serif;font-size:13.5px;line-height:1.7;color:#5B4636;margin-bottom:0;flex:1;transition:color 0.3s;">The core of our business. Complete transformation of raw shells into fully functional, turnkey environments through Brand-Led Planning and our Zero-Snag Promise.</p>
+                  <span class="services-slide-arrow-circle" style="position:absolute;right:14px;bottom:14px;width:38px;height:38px;border-radius:50%;background:#3A2D25;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background 0.3s;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D6C2A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition:stroke 0.3s;"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                  </span>
+                </div>
+              </a>
+            </div>
+            <div style="flex:0 0 12.5%;box-sizing:border-box;padding:0 12px;" aria-hidden="true">
+              <a href="/contact" tabindex="-1" class="services-slide-card" style="display:flex;flex-direction:column;height:100%;background:#FFFFFF;text-decoration:none;overflow:hidden;">
+                <div style="overflow:hidden;flex-shrink:0;">
+                  <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=700&q=30" alt="Engineering &amp; MEP" class="services-slide-img" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);" loading="lazy" decoding="async">
+                </div>
+                <div class="services-slide-content" style="flex:1;display:flex;flex-direction:column;position:relative;padding:28px clamp(20px,2.5vw,28px) clamp(28px,3vw,36px);transition:background 0.4s cubic-bezier(0.25,0.46,0.45,0.94);">
+                  <h3 class="services-slide-title" style="font-family:'Lama Sans',sans-serif;font-size:clamp(18px,1.8vw,22px);font-weight:500;color:#1F1F1F;line-height:1.25;margin-bottom:6px;transition:color 0.3s;">Engineering &amp; MEP</h3>
+                  <p class="services-slide-tagline" style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:#8B6B4A;margin-bottom:14px;transition:color 0.3s;">The Precision Backbone</p>
+                  <p class="services-slide-body" style="font-family:'Lama Sans',sans-serif;font-size:13.5px;line-height:1.7;color:#5B4636;margin-bottom:0;flex:1;transition:color 0.3s;">True luxury depends on invisible systems. Our MEP services provide high-performance infrastructure seamlessly integrated into the architectural fabric.</p>
+                  <span class="services-slide-arrow-circle" style="position:absolute;right:14px;bottom:14px;width:38px;height:38px;border-radius:50%;background:#3A2D25;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background 0.3s;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D6C2A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition:stroke 0.3s;"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                  </span>
+                </div>
+              </a>
+            </div>
+            <div style="flex:0 0 12.5%;box-sizing:border-box;padding:0 12px;" aria-hidden="true">
+              <a href="/contact" tabindex="-1" class="services-slide-card" style="display:flex;flex-direction:column;height:100%;background:#FFFFFF;text-decoration:none;overflow:hidden;">
+                <div style="overflow:hidden;flex-shrink:0;">
+                  <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=700&q=30" alt="Furniture Solutions" class="services-slide-img" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);" loading="lazy" decoding="async">
+                </div>
+                <div class="services-slide-content" style="flex:1;display:flex;flex-direction:column;position:relative;padding:28px clamp(20px,2.5vw,28px) clamp(28px,3vw,36px);transition:background 0.4s cubic-bezier(0.25,0.46,0.45,0.94);">
+                  <h3 class="services-slide-title" style="font-family:'Lama Sans',sans-serif;font-size:clamp(18px,1.8vw,22px);font-weight:500;color:#1F1F1F;line-height:1.25;margin-bottom:6px;transition:color 0.3s;">Furniture Solutions</h3>
+                  <p class="services-slide-tagline" style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:#8B6B4A;margin-bottom:14px;transition:color 0.3s;">Strategic Sourcing &amp; Curation</p>
+                  <p class="services-slide-body" style="font-family:'Lama Sans',sans-serif;font-size:13.5px;line-height:1.7;color:#5B4636;margin-bottom:0;flex:1;transition:color 0.3s;">We strategically source furniture aligned with your approved 3D renders, matching your aesthetic, budget, and operational needs — floor to ceiling coherence.</p>
+                  <span class="services-slide-arrow-circle" style="position:absolute;right:14px;bottom:14px;width:38px;height:38px;border-radius:50%;background:#3A2D25;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background 0.3s;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D6C2A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition:stroke 0.3s;"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                  </span>
+                </div>
+              </a>
+            </div>
         </div>
       </div>
     </div>
