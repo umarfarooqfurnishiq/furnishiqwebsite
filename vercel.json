@@ -1,11 +1,10 @@
 {
   "redirects": [
-    { "source": "/blog.dc.html", "destination": "/", "permanent": true },
+    { "source": "/blog.dc.html", "destination": "/blog", "permanent": true },
     { "source": "/portfolio.dc.html", "destination": "/projects", "permanent": true },
     { "source": "/project-detail.dc.html", "destination": "/project-detail", "permanent": true },
     { "source": "/single-post.dc.html", "destination": "/", "permanent": true },
 
-    { "source": "/blog", "destination": "/", "permanent": true },
     { "source": "/portfolio", "destination": "/projects", "permanent": true },
     { "source": "/single-post", "destination": "/", "permanent": true },
 
