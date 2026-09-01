@@ -3,10 +3,9 @@
     { "source": "/blog.dc.html", "destination": "/blog", "permanent": true },
     { "source": "/portfolio.dc.html", "destination": "/projects", "permanent": true },
     { "source": "/project-detail.dc.html", "destination": "/project-detail", "permanent": true },
-    { "source": "/single-post.dc.html", "destination": "/", "permanent": true },
+    { "source": "/single-post.dc.html", "destination": "/single-post", "permanent": true },
 
     { "source": "/portfolio", "destination": "/projects", "permanent": true },
-    { "source": "/single-post", "destination": "/", "permanent": true },
 
     { "source": "/en/blog", "destination": "/", "permanent": true },
     { "source": "/ar/blog", "destination": "/", "permanent": true },
