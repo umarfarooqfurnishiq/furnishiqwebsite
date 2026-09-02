@@ -1026,7 +1026,6 @@ class Component extends DCLogic {
               form_name: 'contact',
               service: s.selectedService || 'Not specified',
             });
-            self.setState({
             window.location.href = '/ar/thank-you?name=' + encodeURIComponent(s.formName);
           })
           .catch(() => {
