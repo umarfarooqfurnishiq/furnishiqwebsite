@@ -662,13 +662,15 @@ input:focus, select:focus, textarea:focus {
                 <button type="button" onClick="{{ chip.onClick }}" style="font-family:'GE SS Two','Arial',sans-serif;font-size:11px;letter-spacing:normal;text-transform:uppercase;padding:12px 20px;cursor:pointer;transition:all 0.3s cubic-bezier(0.25,0.46,0.45,0.94);background:{{ chip.bg }};color:{{ chip.color }};border:1px solid {{ chip.border }};">{{ chip.label }}</button>
               </sc-for>
             </div>
+            <span style="display:{{ serviceErrorDisplay }};font-family:'GE SS Two','Arial',sans-serif;font-size:11px;color:#C0392B;margin-top:8px;">{{ serviceError }}</span>
           </div>
 
           <!-- Name row -->
           <div class="fiq-form-names" style="display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:32px;">
             <div style="display:flex;flex-direction:column;gap:7px;">
               <label style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:#8B6B4A;">الاسم الكامل *</label>
-              <input type="text" required placeholder="سارة الراشد" value="{{ formName }}" onChange="{{ onNameChange }}" style="background:transparent;border:none;border-bottom:1px solid #D6C2A8;padding:11px 0;font-family:'GE SS Two','Arial',sans-serif;font-size:15px;color:#1F1F1F;outline:none;width:100%;transition:border-color 0.25s;" style-focus="border-bottom-color:#5B4636;">
+              <input type="text" required placeholder="سارة الراشد" value="{{ formName }}" onChange="{{ onNameChange }}" style="background:transparent;border:none;border-bottom:1px solid {{ nameBorder }};padding:11px 0;font-family:'GE SS Two','Arial',sans-serif;font-size:15px;color:#1F1F1F;outline:none;width:100%;transition:border-color 0.25s;" style-focus="border-bottom-color:#5B4636;">
+              <span style="display:{{ nameErrorDisplay }};font-family:'GE SS Two','Arial',sans-serif;font-size:11px;color:#C0392B;">{{ nameError }}</span>
             </div>
             <div style="display:flex;flex-direction:column;gap:7px;">
               <label style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:#8B6B4A;">الشركة <span style="color:#B8A08C;text-transform:none;letter-spacing:0;">(اختياري)</span></label>
@@ -680,16 +682,18 @@ input:focus, select:focus, textarea:focus {
           <div class="fiq-form-names" style="display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:32px;">
             <div style="display:flex;flex-direction:column;gap:7px;">
               <label style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:#8B6B4A;">البريد الإلكتروني *</label>
-              <input type="email" required placeholder="sarah@company.com" value="{{ formEmail }}" onChange="{{ onEmailChange }}" style="background:transparent;border:none;border-bottom:1px solid #D6C2A8;padding:11px 0;font-family:'GE SS Two','Arial',sans-serif;font-size:15px;color:#1F1F1F;outline:none;width:100%;transition:border-color 0.25s;" style-focus="border-bottom-color:#5B4636;">
+              <input type="email" required placeholder="sarah@company.com" value="{{ formEmail }}" onChange="{{ onEmailChange }}" style="background:transparent;border:none;border-bottom:1px solid {{ emailBorder }};padding:11px 0;font-family:'GE SS Two','Arial',sans-serif;font-size:15px;color:#1F1F1F;outline:none;width:100%;transition:border-color 0.25s;" style-focus="border-bottom-color:#5B4636;">
+              <span style="display:{{ emailErrorDisplay }};font-family:'GE SS Two','Arial',sans-serif;font-size:11px;color:#C0392B;">{{ emailError }}</span>
             </div>
             <div style="display:flex;flex-direction:column;gap:7px;">
               <label style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:#8B6B4A;">رقم الهاتف *</label>
-              <div id="id-phone-wrapper" style="display:flex;align-items:center;border-bottom:1px solid #D6C2A8;transition:border-color 0.25s;">
+              <div id="id-phone-wrapper" style="display:flex;align-items:center;border-bottom:1px solid {{ phoneBorder }};transition:border-color 0.25s;">
                 {{ phoneSelect }}
                 <svg width="8" height="5" viewBox="0 0 8 5" fill="none" style="flex-shrink:0;pointer-events:none;margin:0 10px 0 3px;"><path d="M1 1l3 3 3-3" stroke="#8B6B4A" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
                 <span style="width:1px;height:16px;background:#D6C2A8;flex-shrink:0;margin-right:14px;"></span>
                 <input id="id-phone-input" type="tel" required placeholder="58 033 0627" value="{{ formPhone }}" onChange="{{ onPhoneChange }}" style="flex:1;background:transparent;border:none;padding:11px 0;font-family:'GE SS Two','Arial',sans-serif;font-size:15px;color:#1F1F1F;outline:none;min-width:0;">
               </div>
+              <span style="display:{{ phoneErrorDisplay }};font-family:'GE SS Two','Arial',sans-serif;font-size:11px;color:#C0392B;">{{ phoneError }}</span>
             </div>
           </div>
 
@@ -706,7 +710,8 @@ input:focus, select:focus, textarea:focus {
           <!-- Message -->
           <div style="display:flex;flex-direction:column;gap:7px;margin-bottom:44px;">
             <label style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:#8B6B4A;">عن مشروعك *</label>
-            <textarea required rows="4" placeholder="الموقع، المساحة التقريبية، وما ترغب في تحقيقه…" value="{{ formMessage }}" onChange="{{ onMessageChange }}" style="background:transparent;border:none;border-bottom:1px solid #D6C2A8;padding:11px 0;font-family:'GE SS Two','Arial',sans-serif;font-size:15px;line-height:1.7;color:#1F1F1F;outline:none;width:100%;resize:vertical;min-height:96px;transition:border-color 0.25s;" style-focus="border-bottom-color:#5B4636;"></textarea>
+            <textarea required rows="4" placeholder="الموقع، المساحة التقريبية، وما ترغب في تحقيقه…" value="{{ formMessage }}" onChange="{{ onMessageChange }}" style="background:transparent;border:none;border-bottom:1px solid {{ messageBorder }};padding:11px 0;font-family:'GE SS Two','Arial',sans-serif;font-size:15px;line-height:1.7;color:#1F1F1F;outline:none;width:100%;resize:vertical;min-height:96px;transition:border-color 0.25s;" style-focus="border-bottom-color:#5B4636;"></textarea>
+            <span style="display:{{ messageErrorDisplay }};font-family:'GE SS Two','Arial',sans-serif;font-size:11px;color:#C0392B;margin-top:7px;">{{ messageError }}</span>
           </div>
 
           <!-- Submit -->
@@ -912,6 +917,7 @@ class Component extends DCLogic {
     selectedService: null, selectedBudget: null,
     formDone: false, doneName: '',
     newsletterEmail: '', newsletterStatus: null,
+    fieldErrors: { name: '', service: '', email: '', phone: '', message: '' },
   };
 
   SERVICES = ['التصميم الداخلي', 'التشطيبات', 'الهندسة والأنظمة الكهروميكانيكية', 'الأثاث', 'التسليم المتكامل'];
@@ -959,7 +965,7 @@ class Component extends DCLogic {
       phoneSelect,
       serviceChips: self.SERVICES.map(s =>
         chip(s, self.state.selectedService === s,
-          () => self.setState({ selectedService: self.state.selectedService === s ? null : s }))),
+          () => self.setState({ selectedService: self.state.selectedService === s ? null : s, fieldErrors: { ...self.state.fieldErrors, service: '' } }))),
       budgetChips: self.BUDGETS.map(b =>
         chip(b, self.state.selectedBudget === b,
           () => self.setState({ selectedBudget: self.state.selectedBudget === b ? null : b }))),
@@ -973,25 +979,42 @@ class Component extends DCLogic {
       formNotDone: !self.state.formDone,
       doneName: (self.state.doneName || '').split(' ')[0] || 'صديقنا',
 
-      onNameChange: (e) => self.setState({ formName: e.target.value }),
+      onNameChange: (e) => self.setState({ formName: e.target.value, fieldErrors: { ...self.state.fieldErrors, name: '' } }),
       onCompanyChange: (e) => self.setState({ formCompany: e.target.value }),
-      onEmailChange: (e) => self.setState({ formEmail: e.target.value }),
-      onPhoneChange: (e) => self.setState({ formPhone: e.target.value }),
-      onMessageChange: (e) => self.setState({ formMessage: e.target.value }),
+      onEmailChange: (e) => self.setState({ formEmail: e.target.value, fieldErrors: { ...self.state.fieldErrors, email: '' } }),
+      onPhoneChange: (e) => self.setState({ formPhone: e.target.value, fieldErrors: { ...self.state.fieldErrors, phone: '' } }),
+      onMessageChange: (e) => self.setState({ formMessage: e.target.value, fieldErrors: { ...self.state.fieldErrors, message: '' } }),
       formHoneypot: self.state.formHoneypot,
       onHoneypotChange: (e) => self.setState({ formHoneypot: e.target.value }),
+
+      nameError: self.state.fieldErrors.name,
+      nameErrorDisplay: self.state.fieldErrors.name ? 'block' : 'none',
+      nameBorder: self.state.fieldErrors.name ? '#C0392B' : '#D6C2A8',
+      serviceError: self.state.fieldErrors.service,
+      serviceErrorDisplay: self.state.fieldErrors.service ? 'block' : 'none',
+      emailError: self.state.fieldErrors.email,
+      emailErrorDisplay: self.state.fieldErrors.email ? 'block' : 'none',
+      emailBorder: self.state.fieldErrors.email ? '#C0392B' : '#D6C2A8',
+      phoneError: self.state.fieldErrors.phone,
+      phoneErrorDisplay: self.state.fieldErrors.phone ? 'block' : 'none',
+      phoneBorder: self.state.fieldErrors.phone ? '#C0392B' : '#D6C2A8',
+      messageError: self.state.fieldErrors.message,
+      messageErrorDisplay: self.state.fieldErrors.message ? 'block' : 'none',
+      messageBorder: self.state.fieldErrors.message ? '#C0392B' : '#D6C2A8',
+
       onFormSubmit: (e) => {
         e.preventDefault();
         const s = self.state;
         if (s.formHoneypot) return; // bot filled the hidden field — silently drop
-        const missing = [];
-        if (!s.formName.trim()) missing.push('الاسم الكامل');
-        if (!s.selectedService) missing.push('اختيار الخدمة');
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s.formEmail.trim())) missing.push('بريد إلكتروني صحيح');
-        if (!s.formPhone.trim()) missing.push('رقم الهاتف');
-        if (!s.formMessage.trim()) missing.push('تفاصيل مشروعك');
-        if (missing.length) {
-          alert('يرجى إكمال الحقول التالية قبل الإرسال:\n\n' + missing.join('\n'));
+        const errors = {
+          name: s.formName.trim() ? '' : 'يرجى إدخال اسمك الكامل.',
+          service: s.selectedService ? '' : 'يرجى اختيار الخدمة.',
+          email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s.formEmail.trim()) ? '' : 'يرجى إدخال بريد إلكتروني صحيح.',
+          phone: s.formPhone.trim() ? '' : 'يرجى إدخال رقم هاتفك.',
+          message: s.formMessage.trim() ? '' : 'يرجى إخبارنا عن مشروعك.',
+        };
+        if (errors.name || errors.service || errors.email || errors.phone || errors.message) {
+          self.setState({ fieldErrors: errors });
           return;
         }
         const btn = document.getElementById('id-submit-btn');
@@ -1022,6 +1045,7 @@ class Component extends DCLogic {
               formDone: true, doneName: s.formName,
               formName: '', formCompany: '', formEmail: '', formPhone: '', formMessage: '',
               selectedService: null, selectedBudget: null,
+              fieldErrors: { name: '', service: '', email: '', phone: '', message: '' },
             });
           })
           .catch(() => {
