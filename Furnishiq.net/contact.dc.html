@@ -724,18 +724,6 @@ input:focus, select:focus, textarea:focus {
         </form>
         </sc-if>
 
-        <sc-if value="{{ formDone }}" hint-placeholder-val="{{ null }}">
-          <div style="display:flex;flex-direction:column;align-items:center;text-align:center;padding:clamp(32px,4vw,56px) 0;">
-            <svg width="64" height="64" viewBox="0 0 28 28" fill="none" style="display:block;margin-bottom:28px;">
-              <circle cx="14" cy="14" r="12" stroke="#8B6B4A" stroke-width="0.7"></circle>
-              <path d="M9 14.2l3.4 3.4L19.5 11" stroke="#8B6B4A" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"></path>
-            </svg>
-            <h3 style="font-family:'Lama Sans',sans-serif;font-size:clamp(22px,2.4vw,30px);font-weight:500;color:#1F1F1F;margin-bottom:14px;letter-spacing:-0.01em;">Thank you, {{ doneName }}.</h3>
-            <p style="font-family:'Lama Sans',sans-serif;font-size:14.5px;line-height:1.85;color:#5B4636;max-width:380px;margin-bottom:32px;">Your inquiry is with our consulting team. Expect a personal reply within one working day — usually much sooner.</p>
-            <button onClick="{{ onFormReset }}" style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#5B4636;background:transparent;padding:14px 28px;border:1px solid #B8A08C;cursor:pointer;transition:all 0.3s;" style-hover="border-color:#5B4636;">Send another inquiry</button>
-          </div>
-        </sc-if>
-
       </div>
     </div>
   </div>
@@ -914,7 +902,6 @@ class Component extends DCLogic {
     formName: '', formCompany: '', formEmail: '', formPhone: '',
     formMessage: '', formCountryCode: '+966', formHoneypot: '',
     selectedService: null, selectedBudget: null,
-    formDone: false, doneName: '',
     newsletterEmail: '', newsletterStatus: null,
     fieldErrors: { name: '', service: '', email: '', phone: '', message: '' },
   };
@@ -974,9 +961,7 @@ class Component extends DCLogic {
       formEmail: self.state.formEmail,
       formPhone: self.state.formPhone,
       formMessage: self.state.formMessage,
-      formDone: self.state.formDone,
-      formNotDone: !self.state.formDone,
-      doneName: (self.state.doneName || '').split(' ')[0] || 'friend',
+      formNotDone: true,
 
       onNameChange: (e) => self.setState({ formName: e.target.value, fieldErrors: { ...self.state.fieldErrors, name: '' } }),
       onCompanyChange: (e) => self.setState({ formCompany: e.target.value }),
@@ -1040,12 +1025,7 @@ class Component extends DCLogic {
               form_name: 'contact',
               service: s.selectedService || 'Not specified',
             });
-            self.setState({
-              formDone: true, doneName: s.formName,
-              formName: '', formCompany: '', formEmail: '', formPhone: '', formMessage: '',
-              selectedService: null, selectedBudget: null,
-              fieldErrors: { name: '', service: '', email: '', phone: '', message: '' },
-            });
+            window.location.href = '/thank-you?name=' + encodeURIComponent(s.formName);
           })
           .catch(() => {
             if (btn) btn.disabled = false;
@@ -1053,8 +1033,6 @@ class Component extends DCLogic {
             alert('Something went wrong — please try again or email us directly at info@furnishiq.net');
           });
       },
-      onFormReset: () => self.setState({ formDone: false }),
-
       newsletterEmail: self.state.newsletterEmail,
       newsletterStatus: self.state.newsletterStatus,
       onNewsletterChange: (e) => self.setState({ newsletterEmail: e.target.value }),

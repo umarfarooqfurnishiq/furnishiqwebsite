@@ -89,6 +89,7 @@
     { "source": "/projects", "destination": "/Furnishiq.net/projects.dc.html" },
     { "source": "/project-detail", "destination": "/Furnishiq.net/project-detail.dc.html" },
     { "source": "/single-post", "destination": "/Furnishiq.net/single-post.dc.html" },
+    { "source": "/thank-you", "destination": "/Furnishiq.net/thank-you.dc.html" },
     { "source": "/services-interior-design", "destination": "/Furnishiq.net/services-interior-design.dc.html" },
     { "source": "/services-fitout", "destination": "/Furnishiq.net/services-fitout.dc.html" },
     { "source": "/services-mep", "destination": "/Furnishiq.net/services-mep.dc.html" },
