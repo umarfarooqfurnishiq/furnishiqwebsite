@@ -72,6 +72,7 @@
     { "source": "/en", "destination": "/Furnishiq.net/home.dc.html" },
     { "source": "/en/contact", "destination": "/Furnishiq.net/contact.dc.html" },
     { "source": "/ar", "destination": "/Furnishiq.net/home.ar.dc.html" },
+    { "source": "/ar/thank-you", "destination": "/Furnishiq.net/thank-you.ar.dc.html" },
     { "source": "/ar/contact", "destination": "/Furnishiq.net/contact.ar.dc.html" },
     { "source": "/ar/about-us", "destination": "/Furnishiq.net/about-us.ar.dc.html" },
     { "source": "/ar/services", "destination": "/Furnishiq.net/services.ar.dc.html" },
