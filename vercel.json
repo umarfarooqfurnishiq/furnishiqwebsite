@@ -8,7 +8,6 @@
     { "source": "/portfolio", "destination": "/projects", "permanent": true },
 
     { "source": "/en/blog", "destination": "/", "permanent": true },
-    { "source": "/ar/blog", "destination": "/", "permanent": true },
     { "source": "/en/portfolio", "destination": "/projects", "permanent": true },
     { "source": "/ar/portfolio", "destination": "/ar/projects", "permanent": true },
     { "source": "/en/project-detail", "destination": "/", "permanent": true },
@@ -80,6 +79,7 @@
     { "source": "/ar/services-furniture", "destination": "/Furnishiq.net/services-furniture.ar.dc.html" },
     { "source": "/ar/projects", "destination": "/Furnishiq.net/projects.ar.dc.html" },
     { "source": "/ar/project-detail", "destination": "/Furnishiq.net/project-detail.ar.dc.html" },
+    { "source": "/ar/blog", "destination": "/Furnishiq.net/blog.ar.dc.html" },
     { "source": "/en/:path*", "destination": "/Furnishiq.net/:path*" },
     { "source": "/ar/:path*", "destination": "/Furnishiq.net/:path*" },
     { "source": "/contact", "destination": "/Furnishiq.net/contact.dc.html" },
