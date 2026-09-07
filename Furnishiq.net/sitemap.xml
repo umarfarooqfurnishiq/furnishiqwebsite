@@ -1,15 +1,147 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://www.furnishiq.net/</loc>
-  </url>
-  <url>
-    <loc>https://www.furnishiq.net/contact</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.furnishiq.net/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.furnishiq.net/ar"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.furnishiq.net/"/>
   </url>
   <url>
     <loc>https://www.furnishiq.net/ar</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.furnishiq.net/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.furnishiq.net/ar"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.furnishiq.net/"/>
+  </url>
+  <url>
+    <loc>https://www.furnishiq.net/about-us</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.furnishiq.net/about-us"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.furnishiq.net/ar/about-us"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.furnishiq.net/about-us"/>
+  </url>
+  <url>
+    <loc>https://www.furnishiq.net/ar/about-us</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.furnishiq.net/about-us"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.furnishiq.net/ar/about-us"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.furnishiq.net/about-us"/>
+  </url>
+  <url>
+    <loc>https://www.furnishiq.net/services</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.furnishiq.net/services"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.furnishiq.net/ar/services"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.furnishiq.net/services"/>
+  </url>
+  <url>
+    <loc>https://www.furnishiq.net/ar/services</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.furnishiq.net/services"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.furnishiq.net/ar/services"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.furnishiq.net/services"/>
+  </url>
+  <url>
+    <loc>https://www.furnishiq.net/services-interior-design</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.furnishiq.net/services-interior-design"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.furnishiq.net/ar/services-interior-design"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.furnishiq.net/services-interior-design"/>
+  </url>
+  <url>
+    <loc>https://www.furnishiq.net/ar/services-interior-design</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.furnishiq.net/services-interior-design"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.furnishiq.net/ar/services-interior-design"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.furnishiq.net/services-interior-design"/>
+  </url>
+  <url>
+    <loc>https://www.furnishiq.net/services-fitout</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.furnishiq.net/services-fitout"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.furnishiq.net/ar/services-fitout"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.furnishiq.net/services-fitout"/>
+  </url>
+  <url>
+    <loc>https://www.furnishiq.net/ar/services-fitout</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.furnishiq.net/services-fitout"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.furnishiq.net/ar/services-fitout"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.furnishiq.net/services-fitout"/>
+  </url>
+  <url>
+    <loc>https://www.furnishiq.net/services-mep</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.furnishiq.net/services-mep"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.furnishiq.net/ar/services-mep"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.furnishiq.net/services-mep"/>
+  </url>
+  <url>
+    <loc>https://www.furnishiq.net/ar/services-mep</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.furnishiq.net/services-mep"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.furnishiq.net/ar/services-mep"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.furnishiq.net/services-mep"/>
+  </url>
+  <url>
+    <loc>https://www.furnishiq.net/services-furniture</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.furnishiq.net/services-furniture"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.furnishiq.net/ar/services-furniture"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.furnishiq.net/services-furniture"/>
+  </url>
+  <url>
+    <loc>https://www.furnishiq.net/ar/services-furniture</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.furnishiq.net/services-furniture"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.furnishiq.net/ar/services-furniture"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.furnishiq.net/services-furniture"/>
+  </url>
+  <url>
+    <loc>https://www.furnishiq.net/projects</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.furnishiq.net/projects"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.furnishiq.net/ar/projects"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.furnishiq.net/projects"/>
+  </url>
+  <url>
+    <loc>https://www.furnishiq.net/ar/projects</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.furnishiq.net/projects"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.furnishiq.net/ar/projects"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.furnishiq.net/projects"/>
+  </url>
+  <url>
+    <loc>https://www.furnishiq.net/project-detail</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.furnishiq.net/project-detail"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.furnishiq.net/ar/project-detail"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.furnishiq.net/project-detail"/>
+  </url>
+  <url>
+    <loc>https://www.furnishiq.net/ar/project-detail</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.furnishiq.net/project-detail"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.furnishiq.net/ar/project-detail"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.furnishiq.net/project-detail"/>
+  </url>
+  <url>
+    <loc>https://www.furnishiq.net/blog</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.furnishiq.net/blog"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.furnishiq.net/ar/blog"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.furnishiq.net/blog"/>
+  </url>
+  <url>
+    <loc>https://www.furnishiq.net/ar/blog</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.furnishiq.net/blog"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.furnishiq.net/ar/blog"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.furnishiq.net/blog"/>
+  </url>
+  <url>
+    <loc>https://www.furnishiq.net/single-post</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.furnishiq.net/single-post"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.furnishiq.net/ar/single-post"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.furnishiq.net/single-post"/>
+  </url>
+  <url>
+    <loc>https://www.furnishiq.net/ar/single-post</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.furnishiq.net/single-post"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.furnishiq.net/ar/single-post"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.furnishiq.net/single-post"/>
+  </url>
+  <url>
+    <loc>https://www.furnishiq.net/contact</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.furnishiq.net/contact"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.furnishiq.net/ar/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.furnishiq.net/contact"/>
   </url>
   <url>
     <loc>https://www.furnishiq.net/ar/contact</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.furnishiq.net/contact"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.furnishiq.net/ar/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.furnishiq.net/contact"/>
   </url>
 </urlset>
