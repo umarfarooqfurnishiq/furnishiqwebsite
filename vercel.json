@@ -31,7 +31,9 @@
     { "source": "/services-mep.dc.html", "destination": "/services-mep", "permanent": true },
     { "source": "/services-mep.ar.dc.html", "destination": "/ar/services-mep", "permanent": true },
     { "source": "/services-furniture.dc.html", "destination": "/services-furniture", "permanent": true },
-    { "source": "/services-furniture.ar.dc.html", "destination": "/ar/services-furniture", "permanent": true }
+    { "source": "/services-furniture.ar.dc.html", "destination": "/ar/services-furniture", "permanent": true },
+    { "source": "/landing-turnkey.dc.html", "destination": "/landing-turnkey", "permanent": true },
+    { "source": "/landing-turnkey.ar.dc.html", "destination": "/ar/landing-turnkey", "permanent": true }
   ],
   "headers": [
     {
@@ -80,6 +82,7 @@
     { "source": "/ar/project-detail", "destination": "/Furnishiq.net/project-detail.ar.dc.html" },
     { "source": "/ar/blog", "destination": "/Furnishiq.net/blog.ar.dc.html" },
     { "source": "/ar/single-post", "destination": "/Furnishiq.net/single-post.ar.dc.html" },
+    { "source": "/ar/landing-turnkey", "destination": "/Furnishiq.net/landing-turnkey.ar.dc.html" },
     { "source": "/en/:path*", "destination": "/Furnishiq.net/:path*" },
     { "source": "/ar/:path*", "destination": "/Furnishiq.net/:path*" },
     { "source": "/contact", "destination": "/Furnishiq.net/contact.dc.html" },
@@ -95,6 +98,7 @@
     { "source": "/services-fitout", "destination": "/Furnishiq.net/services-fitout.dc.html" },
     { "source": "/services-mep", "destination": "/Furnishiq.net/services-mep.dc.html" },
     { "source": "/services-furniture", "destination": "/Furnishiq.net/services-furniture.dc.html" },
+    { "source": "/landing-turnkey", "destination": "/Furnishiq.net/landing-turnkey.dc.html" },
     { "source": "/api/:path*", "destination": "/api/:path*" },
     { "source": "/:path*", "destination": "/Furnishiq.net/:path*" }
   ]

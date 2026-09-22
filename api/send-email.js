@@ -98,6 +98,24 @@ module.exports = async (req, res) => {
       { label: 'Requested', value: data.request },
       { label: 'Source Page', value: data.sourcePage },
     ];
+  } else if (formType === 'landing_turnkey' || formType === 'landing_turnkey_ar') {
+    const NEED_LABELS = {
+      turnkey: 'Integrated Turnkey Package (Design, Fit-Out & Furnishing)',
+      design_only: 'Interior Design Only',
+      fit_out: 'Fit-Out Execution for Existing Blueprints',
+      furniture: 'Luxury Furniture Procurement',
+      other: 'Other Services',
+    };
+    const name = (data.name || '').trim();
+    const language = formType === 'landing_turnkey_ar' ? 'Arabic' : 'English';
+    subject = `Turnkey Landing Page Lead — ${name || 'Website Visitor'}`;
+    heading = 'Turnkey Landing Page Inquiry';
+    rows = [
+      { label: 'Name', value: name },
+      { label: 'Phone', value: data.phone },
+      { label: 'Need', value: NEED_LABELS[data.need] || data.need },
+      { label: 'Language', value: language },
+    ];
   } else {
     res.status(400).json({ ok: false, error: 'Unknown form type' });
     return;
