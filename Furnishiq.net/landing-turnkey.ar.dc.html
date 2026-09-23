@@ -509,10 +509,11 @@ input:focus, select:focus, textarea:focus {
 
   </style>
   <style>
-    @media(max-width:960px){
-      .fiq-nav-links{display:none!important;}
-      .fiq-nav-cta-btn{display:none!important;}
-    }
+    /* Landing pages always show the hamburger menu, even on desktop —
+       never the full inline nav link list. */
+    .fiq-nav-links{display:none!important;}
+    .fiq-nav-cta-btn{display:none!important;}
+    .fiq-nav-toggle{display:flex!important;}
     @media(max-width:768px){
       .fiq-needs-grid{grid-template-columns:1fr!important;}
       .fiq-service-inclusions{grid-template-columns:1fr!important;}
