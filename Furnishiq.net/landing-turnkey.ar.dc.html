@@ -518,11 +518,10 @@ input:focus, select:focus, textarea:focus {
       .fiq-needs-grid{grid-template-columns:1fr!important;}
       .fiq-service-inclusions{grid-template-columns:1fr!important;}
       .fiq-work-grid{grid-template-columns:1fr 1fr!important;}
-      .fiq-usps-grid{grid-template-columns:1fr 1fr!important;}
+      .fiq-usps-card{grid-template-columns:1fr!important;}
     }
     @media(max-width:520px){
       .fiq-work-grid{grid-template-columns:1fr!important;}
-      .fiq-usps-grid{grid-template-columns:1fr!important;}
     }
   </style>
 </helmet>
@@ -655,32 +654,62 @@ input:focus, select:focus, textarea:focus {
 </section>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ USPS ━━ -->
-<section id="usps" data-screen-label="USPs" style="background:#1F1F1F;padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px);">
-  <div style="max-width:1280px;margin:0 auto;">
-    <div style="text-align:center;margin-bottom:56px;">
-      <h2 data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'GE SS Two',sans-serif;font-size:clamp(28px,3.2vw,44px);font-weight:500;color:#FFFFFF;margin-bottom:14px;">ليش تختار فرينيش آي كيو؟</h2>
-      <p data-reveal data-reveal-delay="0.08" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'GE SS Two',sans-serif;font-size:15px;color:rgba(255,255,255,0.7);max-width:640px;margin:0 auto;line-height:1.7;">مساحتك بالكامل.. تحت إشراف جهة هندسية واحدة لتجربة تسليم مفتاح خالية من التشتت.</p>
-    </div>
-    <div class="fiq-usps-grid" style="display:grid;grid-template-columns:repeat(5,1fr);gap:20px;">
-      <div data-reveal style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);border:1px solid rgba(255,255,255,0.12);padding:24px 20px;">
-        <h3 style="font-family:'GE SS Two',sans-serif;font-size:14px;font-weight:500;color:#D6C2A8;margin-bottom:10px;">منظومة هندسية متكاملة</h3>
-        <p style="font-family:'GE SS Two',sans-serif;font-size:13px;color:rgba(255,255,255,0.65);line-height:1.6;">ندير رحلة مشروعك من التصميم الداخلي المبتكر وحتى تسليم المفتاح، لضمان أعلى معايير الجودة والفخامة.</p>
+<section id="usps" data-screen-label="USPs" style="background:#F5F2ED;padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px);">
+  <div style="max-width:1180px;margin:0 auto;">
+    <div class="fiq-usps-card" data-reveal style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);background:#1F1F1F;border-radius:28px;padding:clamp(32px,4vw,56px);display:grid;grid-template-columns:1.05fr 0.95fr;gap:clamp(32px,4vw,56px);align-items:center;">
+      <div>
+        <span style="display:block;font-family:'GE SS Two',sans-serif;font-size:11px;letter-spacing:normal;text-transform:uppercase;color:#8FBF9F;margin-bottom:14px;">المزايا</span>
+        <h2 style="font-family:'GE SS Two',sans-serif;font-size:clamp(26px,2.8vw,38px);font-weight:500;color:#FFFFFF;margin-bottom:16px;">ليش تختار فرينيش آي كيو؟</h2>
+        <p style="font-family:'GE SS Two',sans-serif;font-size:14px;color:rgba(255,255,255,0.62);line-height:1.8;margin-bottom:28px;">مساحتك بالكامل.. تحت إشراف جهة هندسية واحدة لتجربة تسليم مفتاح خالية من التشتت.</p>
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span style="flex-shrink:0;width:22px;height:22px;border-radius:50%;background:#D6C2A8;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1F1F1F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span style="font-family:'GE SS Two',sans-serif;font-size:14px;color:#F5F2ED;">منظومة هندسية متكاملة</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span style="flex-shrink:0;width:22px;height:22px;border-radius:50%;background:#D6C2A8;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1F1F1F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span style="font-family:'GE SS Two',sans-serif;font-size:14px;color:#F5F2ED;">جهة واحدة من التصميم للتشطيب</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span style="flex-shrink:0;width:22px;height:22px;border-radius:50%;background:#D6C2A8;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1F1F1F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span style="font-family:'GE SS Two',sans-serif;font-size:14px;color:#F5F2ED;">دقة وتنسيق بتقنية (BIM)</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span style="flex-shrink:0;width:22px;height:22px;border-radius:50%;background:#D6C2A8;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1F1F1F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span style="font-family:'GE SS Two',sans-serif;font-size:14px;color:#F5F2ED;">حلول مخصصة لمساحتك</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span style="flex-shrink:0;width:22px;height:22px;border-radius:50%;background:#D6C2A8;display:flex;align-items:center;justify-content:center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1F1F1F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span style="font-family:'GE SS Two',sans-serif;font-size:14px;color:#F5F2ED;">ابدأ مشروعك بأفضل قيمة (29.99 ريال/م&sup2;)</span>
+          </div>
+        </div>
       </div>
-      <div data-reveal data-reveal-delay="0.06" style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);border:1px solid rgba(255,255,255,0.12);padding:24px 20px;">
-        <h3 style="font-family:'GE SS Two',sans-serif;font-size:14px;font-weight:500;color:#D6C2A8;margin-bottom:10px;">جهة واحدة من التصميم للتشطيب</h3>
-        <p style="font-family:'GE SS Two',sans-serif;font-size:13px;color:rgba(255,255,255,0.65);line-height:1.6;">نختصر عليك عناء التعامل مع جهات متعددة؛ نصمم، نؤسس الأنظمة (MEP)، نشطب (Fit-out)، ونؤثث مساحتك بالكامل.</p>
-      </div>
-      <div data-reveal data-reveal-delay="0.12" style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);border:1px solid rgba(255,255,255,0.12);padding:24px 20px;">
-        <h3 style="font-family:'GE SS Two',sans-serif;font-size:14px;font-weight:500;color:#D6C2A8;margin-bottom:10px;">دقة وتنسيق بتقنية (BIM)</h3>
-        <p style="font-family:'GE SS Two',sans-serif;font-size:13px;color:rgba(255,255,255,0.65);line-height:1.6;">نعتمد أحدث تقنيات النمذجة لضمان التناغم التام بين التصميم والأنظمة الداخلية، لتفادي أي أخطاء أو تعارضات أثناء التنفيذ.</p>
-      </div>
-      <div data-reveal data-reveal-delay="0.18" style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);border:1px solid rgba(255,255,255,0.12);padding:24px 20px;">
-        <h3 style="font-family:'GE SS Two',sans-serif;font-size:14px;font-weight:500;color:#D6C2A8;margin-bottom:10px;">حلول مخصصة لمساحتك</h3>
-        <p style="font-family:'GE SS Two',sans-serif;font-size:13px;color:rgba(255,255,255,0.65);line-height:1.6;">تطابق تام بنسبة 100% بين المخططات (3D) والواقع، مع انتقاء أرقى الخامات وقطع الأثاث التي تناسب هويتك واحتياجك الفعلي.</p>
-      </div>
-      <div data-reveal data-reveal-delay="0.24" style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);border:1px solid rgba(255,255,255,0.12);padding:24px 20px;">
-        <h3 style="font-family:'GE SS Two',sans-serif;font-size:14px;font-weight:500;color:#D6C2A8;margin-bottom:10px;">ابدأ مشروعك بأفضل قيمة</h3>
-        <p style="font-family:'GE SS Two',sans-serif;font-size:13px;color:rgba(255,255,255,0.65);line-height:1.6;">باقات التصميم الداخلي السكني فقط تبدأ من 29.99 ريال/م&sup2;.</p>
+      <div style="position:relative;">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=30" alt="" style="width:100%;height:clamp(280px,32vw,380px);object-fit:cover;border-radius:20px;">
+        <div style="position:absolute;bottom:20px;left:20px;right:20px;background:rgba(31,31,31,0.88);backdrop-filter:blur(6px);border-radius:14px;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;">
+          <div>
+            <div style="font-family:'GE SS Two',sans-serif;font-size:13px;font-weight:500;color:#FFFFFF;margin-bottom:6px;">+40 موظف</div>
+            <div style="display:flex;align-items:center;gap:6px;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="#D6C2A8"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.8-6.2 3.8 1.6-7-5.4-4.7 7.1-.6z"/></svg>
+              <span style="font-family:'GE SS Two',sans-serif;font-size:11px;color:rgba(255,255,255,0.7);">4.9 (120 تقييم)</span>
+            </div>
+          </div>
+          <div style="display:flex;">
+            <span style="width:24px;height:24px;border-radius:50%;background:#8B6B4A;border:2px solid #1F1F1F;margin-inline-start:-8px;"></span>
+            <span style="width:24px;height:24px;border-radius:50%;background:#B8A08C;border:2px solid #1F1F1F;margin-inline-start:-8px;"></span>
+            <span style="width:24px;height:24px;border-radius:50%;background:#D6C2A8;border:2px solid #1F1F1F;margin-inline-start:-8px;"></span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
