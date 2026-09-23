@@ -625,12 +625,18 @@ input:focus, select:focus, textarea:focus {
       .about-studio-grid  { flex-direction: column !important; }
       .fiq-footer-grid    { grid-template-columns: 1fr 1fr !important; gap: 48px !important; }
       .fiq-footer-brand   { grid-column: 1 / -1 !important; }
+      .fiq-markets-grid   { grid-template-columns: 1fr 1fr !important; }
     }
     @media(max-width:600px){
       .about-why-grid     { grid-template-columns: 1fr !important; }
       .fiq-footer-grid    { grid-template-columns: 1fr !important; }
       .journey-cards-grid { grid-template-columns: 1fr !important; }
+      .fiq-markets-grid   { grid-template-columns: 1fr !important; }
     }
+    .fiq-market-card{ transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94); }
+    .fiq-market-card:hover{ transform:translateY(-6px); }
+    .fiq-market-card:hover .fiq-market-img{ transform:scale(1.06); }
+    .fiq-market-img{ transition:transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94); }
   </style>
 </helmet>
 
@@ -1134,20 +1140,52 @@ input:focus, select:focus, textarea:focus {
 </section>
 
 
-<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ SECTORS STRIP ━ -->
-<section style="background:#F5F2ED;border-radius:32px 32px 0 0;padding:clamp(44px,5.5vw,72px) clamp(24px,5vw,80px);">
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ MARKETS WE SERVE ━ -->
+<section style="background:#F5F2ED;padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px);">
   <div style="max-width:1280px;margin:0 auto;">
-    <div data-reveal style="opacity:0;transform:translateY(12px);transition:opacity 0.7s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;align-items:center;gap:clamp(20px,4vw,56px);flex-wrap:wrap;">
-      <span style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:#8B6B4A;flex-shrink:0;">القطاعات التي نخدمها</span>
-      <div style="display:flex;align-items:center;flex-wrap:wrap;gap:0;">
-        <span style="font-family:'GE SS Two','Arial',sans-serif;font-size:clamp(20px,2.4vw,32px);font-weight:500;color:#3A2D25;padding:8px clamp(16px,2.5vw,36px) 8px 0;">تجاري</span>
-        <span style="width:1px;height:28px;background:#3A2D25;opacity:0.18;flex-shrink:0;"></span>
-        <span style="font-family:'GE SS Two','Arial',sans-serif;font-size:clamp(20px,2.4vw,32px);font-weight:500;color:#3A2D25;padding:8px clamp(16px,2.5vw,36px);">ضيافة</span>
-        <span style="width:1px;height:28px;background:#3A2D25;opacity:0.18;flex-shrink:0;"></span>
-        <span style="font-family:'GE SS Two','Arial',sans-serif;font-size:clamp(20px,2.4vw,32px);font-weight:500;color:#3A2D25;padding:8px clamp(16px,2.5vw,36px);">سكني</span>
-        <span style="width:1px;height:28px;background:#3A2D25;opacity:0.18;flex-shrink:0;"></span>
-        <span style="font-family:'GE SS Two','Arial',sans-serif;font-size:clamp(20px,2.4vw,32px);font-weight:500;color:#3A2D25;padding:8px 0 8px clamp(16px,2.5vw,36px);">حكومي</span>
+    <div data-reveal style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);text-align:center;margin-bottom:clamp(44px,6vw,64px);">
+      <div style="display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:20px;">
+        <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
+        <span style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:#8B6B4A;">الأسواق التي نخدمها</span>
+        <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
       </div>
+      <h2 style="font-family:'GE SS Two','Arial',sans-serif;font-size:clamp(28px,3.4vw,44px);font-weight:500;color:#3A2D25;line-height:1.15;letter-spacing:-0.01em;max-width:640px;margin:0 auto;">فريق متكامل واحد، يُنجز عبر كل قطاع.</h2>
+    </div>
+
+    <div class="fiq-markets-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,1.6vw,20px);">
+
+      <a href="/ar/projects?category=Residential" class="fiq-market-card" data-reveal data-reveal-delay="0.06" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);position:relative;aspect-ratio:3/4;overflow:hidden;border-radius:0;display:block;text-decoration:none;">
+        <img class="fiq-market-img" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=700&q=30" srcset="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=350&q=30 350w, https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=525&q=30 525w, https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=610&q=30 610w, https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=700&q=30 700w" sizes="(max-width:600px) 100vw, (max-width:1024px) 50vw, 33vw" alt="سكني" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(30,22,16,0.9) 0%,rgba(30,22,16,0) 55%);"></div>
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:22px;">
+          <span style="font-family:'GE SS Two','Arial',sans-serif;font-size:14px;font-weight:500;color:#FFFFFF;">سكني</span>
+        </div>
+      </a>
+
+      <a href="/ar/projects?category=Hospitality" class="fiq-market-card" data-reveal data-reveal-delay="0.12" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);position:relative;aspect-ratio:3/4;overflow:hidden;border-radius:0;display:block;text-decoration:none;">
+        <img class="fiq-market-img" src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=700&q=30" srcset="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=350&q=30 350w, https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=525&q=30 525w, https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=610&q=30 610w, https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=700&q=30 700w" sizes="(max-width:600px) 100vw, (max-width:1024px) 50vw, 33vw" alt="ضيافة" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(30,22,16,0.9) 0%,rgba(30,22,16,0) 55%);"></div>
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:22px;">
+          <span style="font-family:'GE SS Two','Arial',sans-serif;font-size:14px;font-weight:500;color:#FFFFFF;">ضيافة</span>
+        </div>
+      </a>
+
+      <a href="/ar/projects?category=Workplace" class="fiq-market-card" data-reveal data-reveal-delay="0.18" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);position:relative;aspect-ratio:3/4;overflow:hidden;border-radius:0;display:block;text-decoration:none;">
+        <img class="fiq-market-img" src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=700&q=30" srcset="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=350&q=30 350w, https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=525&q=30 525w, https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=610&q=30 610w, https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=700&q=30 700w" sizes="(max-width:600px) 100vw, (max-width:1024px) 50vw, 33vw" alt="مكاتب" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(30,22,16,0.9) 0%,rgba(30,22,16,0) 55%);"></div>
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:22px;">
+          <span style="font-family:'GE SS Two','Arial',sans-serif;font-size:14px;font-weight:500;color:#FFFFFF;">مكاتب</span>
+        </div>
+      </a>
+
+      <a href="/ar/projects?category=Retail" class="fiq-market-card" data-reveal data-reveal-delay="0.24" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);position:relative;aspect-ratio:3/4;overflow:hidden;border-radius:0;display:block;text-decoration:none;">
+        <img class="fiq-market-img" src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=700&q=30" srcset="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=350&q=30 350w, https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=525&q=30 525w, https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=610&q=30 610w, https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=700&q=30 700w" sizes="(max-width:600px) 100vw, (max-width:1024px) 50vw, 33vw" alt="تجزئة" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(30,22,16,0.9) 0%,rgba(30,22,16,0) 55%);"></div>
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:22px;">
+          <span style="font-family:'GE SS Two','Arial',sans-serif;font-size:14px;font-weight:500;color:#FFFFFF;">تجزئة</span>
+        </div>
+      </a>
+
     </div>
   </div>
 </section>
