@@ -544,16 +544,36 @@ input:focus, select:focus, textarea:focus {
       51%{transform:scaleY(1);transform-origin:bottom;}
       100%{transform:scaleY(0);transform-origin:bottom;}
     }
+    .fiq-value-cta:hover{background:#3A2D25!important;color:#D6C2A8!important;}
+    .fiq-value-cta:hover svg{stroke:#D6C2A8!important;}
+    .services-arrow-btn:hover svg path{stroke:#8B6B4A!important;}
+    #services-prev:hover svg{transform:translateX(-4px);}
+    #services-next:hover svg{transform:translateX(4px);}
+    .services-slide-card:hover .services-slide-img{transform:scale(1.06)!important;}
+    .services-slide-card:hover .services-slide-content{background:#3A2D25!important;}
+    .services-slide-card:hover .services-slide-title{color:#FFFFFF!important;}
+    .services-slide-card:hover .services-slide-tagline{color:#D6C2A8!important;}
+    .services-slide-card:hover .services-slide-body{color:rgba(214,194,168,0.75)!important;}
+    .services-slide-card:hover .services-slide-arrow-circle{background:#D6C2A8!important;}
+    .services-slide-card:hover .services-slide-arrow-circle svg{stroke:#3A2D25!important;}
+    .svc-slide-wrap{flex:0 0 12.5%;box-sizing:border-box;padding:0 12px;}
+    .services-slide-card{display:flex;flex-direction:column;height:100%;background:#FFFFFF;text-decoration:none;overflow:hidden;}
+    .svc-img-wrap{overflow:hidden;flex-shrink:0;}
+    .services-slide-img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);}
+    .services-slide-content{flex:1;display:flex;flex-direction:column;position:relative;padding:28px clamp(20px,2.5vw,28px) clamp(28px,3vw,36px);transition:background 0.4s cubic-bezier(0.25,0.46,0.45,0.94);}
+    .services-slide-title{font-family:'GE SS Two','Arial',sans-serif;font-size:clamp(18px,1.8vw,22px);font-weight:500;color:#1F1F1F;line-height:1.25;margin-bottom:6px;transition:color 0.3s;}
+    .services-slide-tagline{font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:#8B6B4A;margin-bottom:14px;transition:color 0.3s;}
+    .services-slide-body{font-family:'GE SS Two','Arial',sans-serif;font-size:13.5px;line-height:1.7;color:#5B4636;margin-bottom:0;flex:1;transition:color 0.3s;}
+    .services-slide-arrow-circle{position:absolute;right:14px;bottom:14px;width:38px;height:38px;border-radius:50%;background:#3A2D25;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background 0.3s;}
+    .svc-arrow-svg{transition:stroke 0.3s;}
     @media(max-width:960px){
       .fiq-nav-links{display:none!important;}
       .fiq-nav-cta{display:none!important;}
-      .fiq-value-pillars{flex-direction:column!important;}
-      .fiq-value-pillar-mid{border-left:none!important;border-right:none!important;border-top:1px solid #D6C2A8!important;border-bottom:1px solid #D6C2A8!important;padding:48px 0!important;}
-      .fiq-value-pillar-first{padding-right:0!important;padding-bottom:48px!important;}
-      .fiq-value-pillar-last{padding-left:0!important;padding-top:48px!important;}
+      .fiq-value-pillars{grid-template-columns:1fr!important;gap:40px!important;}
       .fiq-fitout-layout{flex-direction:column!important;}
       .fiq-fitout-img{width:100%!important;height:360px!important;min-height:0!important;}
-      .fiq-services-grid{grid-template-columns:1fr 1fr!important;}
+      #services-prev{left:-8px!important;}
+      #services-next{right:-8px!important;}
       .fiq-portfolio-grid{grid-template-columns:1fr 1fr!important;}
       .fiq-blog-grid{grid-template-columns:1fr 1fr!important;}
       .fiq-footer-grid{grid-template-columns:1fr 1fr!important;gap:48px!important;}
@@ -562,7 +582,6 @@ input:focus, select:focus, textarea:focus {
       #cta-primary,#cta-secondary,#wa-btn,#phone-btn{width:100%!important;box-sizing:border-box!important;justify-content:center!important;text-align:center!important;}
     }
     @media(max-width:600px){
-      .fiq-services-grid{grid-template-columns:1fr!important;}
       .fiq-portfolio-grid{grid-template-columns:1fr!important;}
       .fiq-blog-grid{grid-template-columns:1fr!important;}
       .fiq-footer-grid{grid-template-columns:1fr!important;}
@@ -664,74 +683,146 @@ input:focus, select:focus, textarea:focus {
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ SERVICES GRID ━━━ -->
 <section id="services" style="background:#F5F2ED;padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px);">
   <div style="max-width:1280px;margin:0 auto;">
-    <div style="margin-bottom:clamp(48px,6vw,80px);display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;">
-      <div>
-        <div data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;align-items:center;gap:16px;margin-bottom:20px;">
-          <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
-          <span style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:#8B6B4A;">ماذا نقدم</span>
-        </div>
-        <h2 data-reveal data-reveal-delay="0.1" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'GE SS Two','Arial',sans-serif;font-size:clamp(28px,3.5vw,52px);font-weight:500;color:#1F1F1F;line-height:1.1;letter-spacing:-0.015em;">خبرة متكاملة.<br>نتائج استثنائية.</h2>
+    <div style="margin-bottom:clamp(48px,6vw,80px);">
+      <div data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;align-items:center;gap:16px;margin-bottom:20px;">
+        <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
+        <span style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:#8B6B4A;">ماذا نقدم</span>
       </div>
-      <a href="/ar/about-us" data-reveal data-reveal-delay="0.15" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94),background 0.3s,color 0.3s;font-family:'GE SS Two','Arial',sans-serif;font-size:10px;letter-spacing:normal;text-transform:uppercase;color:#1F1F1F;text-decoration:none;border:1px solid rgba(31,31,31,0.3);padding:15px 32px;white-space:nowrap;flex-shrink:0;" onmouseover="this.style.background='#1F1F1F';this.style.color='#FFFFFF';" onmouseout="this.style.background='transparent';this.style.color='#1F1F1F';">اعرف المزيد</a>
+      <h2 data-reveal data-reveal-delay="0.1" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'GE SS Two','Arial',sans-serif;font-size:clamp(28px,3.5vw,52px);font-weight:500;color:#1F1F1F;line-height:1.1;letter-spacing:-0.015em;">خبرة متكاملة.<br>نتائج استثنائية.</h2>
     </div>
-    <div class="fiq-services-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:2px;">
 
-      <a href="/ar/contact" data-service-card data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94),box-shadow 0.45s cubic-bezier(0.25,0.46,0.45,0.94);position:relative;background:#FFFFFF;padding:clamp(36px,4.5vw,60px);overflow:hidden;cursor:pointer;display:block;text-decoration:none;">
-        <div data-card-hover-bg style="position:absolute;inset:0;background:#3A2D25;transform:translateY(101%);transition:transform 0.55s cubic-bezier(0.25,0.46,0.45,0.94);z-index:0;pointer-events:none;"></div>
-        <div style="position:relative;z-index:1;">
-          <div data-card-num style="font-family:'GE SS Two','Arial',sans-serif;font-size:clamp(68px,7.5vw,92px);font-weight:500;color:rgba(91,70,54,0.1);line-height:1;margin-bottom:20px;letter-spacing:-0.02em;transition:color 0.4s;">01</div>
-          <h3 data-card-title style="font-family:'GE SS Two','Arial',sans-serif;font-size:clamp(19px,2.1vw,26px);font-weight:500;color:#1F1F1F;margin-bottom:10px;line-height:1.2;transition:color 0.4s;">التصميم الداخلي</h3>
-          <p style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:#8B6B4A;margin-bottom:20px;">مدروس، مخصص، ورؤيوي</p>
-          <p data-card-body style="font-family:'GE SS Two','Arial',sans-serif;font-size:14px;line-height:1.75;color:#5B4636;transition:color 0.4s;">نصمم بيئات معيشية مخصصة توازن بين الجماليات الراقية والوظائف العملية. تصورات ثلاثية الأبعاد فوتوغرافية الواقعية قبل بدء أي أعمال إنشائية، لتعتمد كل تفصيلة بثقة تامة.</p>
-          <div data-card-arrow style="margin-top:28px;opacity:0;transform:translateX(-10px);transition:opacity 0.4s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;align-items:center;gap:12px;">
-            <span style="font-family:'GE SS Two','Arial',sans-serif;font-size:10px;letter-spacing:normal;text-transform:uppercase;color:#D6C2A8;">استكشف الخدمة</span>
-            <svg width="20" height="8" viewBox="0 0 20 8" fill="none"><path d="M0 4H18M18 4L15 1M18 4L15 7" stroke="#D6C2A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-          </div>
+    <div data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);position:relative;">
+      <button type="button" id="services-prev" aria-label="الخدمة السابقة" class="services-arrow-btn" style="position:absolute;left:-52px;top:50%;transform:translateY(-50%);width:40px;height:40px;border:none;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:2;padding:0;">
+        <svg width="30" height="22" viewBox="0 0 30 22" fill="none"><path d="M29 11H1M1 11L11 1M1 11L11 21" stroke="#3A2D25" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="transition:stroke 0.3s,transform 0.3s;"></path></svg>
+      </button>
+      <button type="button" id="services-next" aria-label="الخدمة التالية" class="services-arrow-btn" style="position:absolute;right:-52px;top:50%;transform:translateY(-50%);width:40px;height:40px;border:none;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:2;padding:0;">
+        <svg width="30" height="22" viewBox="0 0 30 22" fill="none"><path d="M1 11H29M19 1L29 11M19 21L29 11" stroke="#3A2D25" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="transition:stroke 0.3s,transform 0.3s;"></path></svg>
+      </button>
+
+      <div id="services-slider-viewport" dir="ltr" style="overflow:hidden;">
+        <div id="services-slider-track" style="display:flex;align-items:stretch;transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);">
+            <div class="svc-slide-wrap" aria-hidden="false">
+              <a href="/ar/contact" tabindex="0" class="services-slide-card">
+                <div class="svc-img-wrap">
+                  <img src="https://images.unsplash.com/photo-1615874959474-d609969a20ed?auto=format&fit=crop&w=700&q=30" srcset="https://images.unsplash.com/photo-1615874959474-d609969a20ed?auto=format&fit=crop&w=350&q=30 350w, https://images.unsplash.com/photo-1615874959474-d609969a20ed?auto=format&fit=crop&w=525&q=30 525w, https://images.unsplash.com/photo-1615874959474-d609969a20ed?auto=format&fit=crop&w=700&q=30 700w" sizes="(max-width:600px) 90vw, (max-width:960px) 45vw, 30vw" alt="التصميم الداخلي" class="services-slide-img" loading="lazy" decoding="async">
+                </div>
+                <div class="services-slide-content" dir="rtl">
+                  <h3 class="services-slide-title">التصميم الداخلي</h3>
+                  <p class="services-slide-tagline">مدروس، مخصص، ورؤيوي</p>
+                  <p class="services-slide-body">نصمم بيئات معيشية مخصصة توازن بين الجماليات الراقية والوظائف العملية، مع تصورات ثلاثية الأبعاد فوتوغرافية الواقعية قبل بدء أي أعمال إنشائية.</p>
+                  <span class="services-slide-arrow-circle">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D6C2A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svc-arrow-svg"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                  </span>
+                </div>
+              </a>
+            </div>
+            <div class="svc-slide-wrap" aria-hidden="false">
+              <a href="/ar/contact" tabindex="0" class="services-slide-card">
+                <div class="svc-img-wrap">
+                  <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=700&q=30" srcset="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=350&q=30 350w, https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=525&q=30 525w, https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=700&q=30 700w" sizes="(max-width:600px) 90vw, (max-width:960px) 45vw, 30vw" alt="التشطيبات" class="services-slide-img" loading="lazy" decoding="async">
+                </div>
+                <div class="services-slide-content" dir="rtl">
+                  <h3 class="services-slide-title">التشطيبات</h3>
+                  <p class="services-slide-tagline">نحوّل الهياكل الخام إلى تحف معمارية</p>
+                  <p class="services-slide-body">جوهر عملنا. تحويل كامل للهياكل الخام إلى بيئات جاهزة وظيفياً من خلال التخطيط الموجّه بالهوية التجارية والتزامنا بخلوّ العيوب.</p>
+                  <span class="services-slide-arrow-circle">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D6C2A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svc-arrow-svg"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                  </span>
+                </div>
+              </a>
+            </div>
+            <div class="svc-slide-wrap" aria-hidden="false">
+              <a href="/ar/contact" tabindex="0" class="services-slide-card">
+                <div class="svc-img-wrap">
+                  <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=700&q=30" srcset="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=350&q=30 350w, https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=525&q=30 525w, https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=700&q=30 700w" sizes="(max-width:600px) 90vw, (max-width:960px) 45vw, 30vw" alt="الهندسة والأنظمة الكهروميكانيكية" class="services-slide-img" loading="lazy" decoding="async">
+                </div>
+                <div class="services-slide-content" dir="rtl">
+                  <h3 class="services-slide-title">الهندسة والأنظمة الكهروميكانيكية</h3>
+                  <p class="services-slide-tagline">العمود الفقري للدقة</p>
+                  <p class="services-slide-body">الفخامة الحقيقية تعتمد على أنظمة غير مرئية. توفر خدماتنا الكهروميكانيكية بنية تحتية عالية الأداء تندمج بسلاسة في النسيج المعماري.</p>
+                  <span class="services-slide-arrow-circle">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D6C2A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svc-arrow-svg"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                  </span>
+                </div>
+              </a>
+            </div>
+            <div class="svc-slide-wrap" aria-hidden="false">
+              <a href="/ar/contact" tabindex="0" class="services-slide-card">
+                <div class="svc-img-wrap">
+                  <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=700&q=30" srcset="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=350&q=30 350w, https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=525&q=30 525w, https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=700&q=30 700w" sizes="(max-width:600px) 90vw, (max-width:960px) 45vw, 30vw" alt="حلول الأثاث" class="services-slide-img" loading="lazy" decoding="async">
+                </div>
+                <div class="services-slide-content" dir="rtl">
+                  <h3 class="services-slide-title">حلول الأثاث</h3>
+                  <p class="services-slide-tagline">توريد وانتقاء استراتيجي</p>
+                  <p class="services-slide-body">نوفر الأثاث بشكل استراتيجي بما يتماشى مع تصوراتك ثلاثية الأبعاد المعتمدة، بما يناسب ذوقك وميزانيتك واحتياجاتك التشغيلية.</p>
+                  <span class="services-slide-arrow-circle">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D6C2A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svc-arrow-svg"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                  </span>
+                </div>
+              </a>
+            </div>
+            <div class="svc-slide-wrap" aria-hidden="true">
+              <a href="/ar/contact" tabindex="-1" class="services-slide-card">
+                <div class="svc-img-wrap">
+                  <img src="https://images.unsplash.com/photo-1615874959474-d609969a20ed?auto=format&fit=crop&w=700&q=30" srcset="https://images.unsplash.com/photo-1615874959474-d609969a20ed?auto=format&fit=crop&w=350&q=30 350w, https://images.unsplash.com/photo-1615874959474-d609969a20ed?auto=format&fit=crop&w=525&q=30 525w, https://images.unsplash.com/photo-1615874959474-d609969a20ed?auto=format&fit=crop&w=700&q=30 700w" sizes="(max-width:600px) 90vw, (max-width:960px) 45vw, 30vw" alt="التصميم الداخلي" class="services-slide-img" loading="lazy" decoding="async">
+                </div>
+                <div class="services-slide-content" dir="rtl">
+                  <h3 class="services-slide-title">التصميم الداخلي</h3>
+                  <p class="services-slide-tagline">مدروس، مخصص، ورؤيوي</p>
+                  <p class="services-slide-body">نصمم بيئات معيشية مخصصة توازن بين الجماليات الراقية والوظائف العملية، مع تصورات ثلاثية الأبعاد فوتوغرافية الواقعية قبل بدء أي أعمال إنشائية.</p>
+                  <span class="services-slide-arrow-circle">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D6C2A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svc-arrow-svg"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                  </span>
+                </div>
+              </a>
+            </div>
+            <div class="svc-slide-wrap" aria-hidden="true">
+              <a href="/ar/contact" tabindex="-1" class="services-slide-card">
+                <div class="svc-img-wrap">
+                  <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=700&q=30" srcset="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=350&q=30 350w, https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=525&q=30 525w, https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=700&q=30 700w" sizes="(max-width:600px) 90vw, (max-width:960px) 45vw, 30vw" alt="التشطيبات" class="services-slide-img" loading="lazy" decoding="async">
+                </div>
+                <div class="services-slide-content" dir="rtl">
+                  <h3 class="services-slide-title">التشطيبات</h3>
+                  <p class="services-slide-tagline">نحوّل الهياكل الخام إلى تحف معمارية</p>
+                  <p class="services-slide-body">جوهر عملنا. تحويل كامل للهياكل الخام إلى بيئات جاهزة وظيفياً من خلال التخطيط الموجّه بالهوية التجارية والتزامنا بخلوّ العيوب.</p>
+                  <span class="services-slide-arrow-circle">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D6C2A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svc-arrow-svg"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                  </span>
+                </div>
+              </a>
+            </div>
+            <div class="svc-slide-wrap" aria-hidden="true">
+              <a href="/ar/contact" tabindex="-1" class="services-slide-card">
+                <div class="svc-img-wrap">
+                  <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=700&q=30" srcset="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=350&q=30 350w, https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=525&q=30 525w, https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=700&q=30 700w" sizes="(max-width:600px) 90vw, (max-width:960px) 45vw, 30vw" alt="الهندسة والأنظمة الكهروميكانيكية" class="services-slide-img" loading="lazy" decoding="async">
+                </div>
+                <div class="services-slide-content" dir="rtl">
+                  <h3 class="services-slide-title">الهندسة والأنظمة الكهروميكانيكية</h3>
+                  <p class="services-slide-tagline">العمود الفقري للدقة</p>
+                  <p class="services-slide-body">الفخامة الحقيقية تعتمد على أنظمة غير مرئية. توفر خدماتنا الكهروميكانيكية بنية تحتية عالية الأداء تندمج بسلاسة في النسيج المعماري.</p>
+                  <span class="services-slide-arrow-circle">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D6C2A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svc-arrow-svg"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                  </span>
+                </div>
+              </a>
+            </div>
+            <div class="svc-slide-wrap" aria-hidden="true">
+              <a href="/ar/contact" tabindex="-1" class="services-slide-card">
+                <div class="svc-img-wrap">
+                  <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=700&q=30" srcset="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=350&q=30 350w, https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=525&q=30 525w, https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=700&q=30 700w" sizes="(max-width:600px) 90vw, (max-width:960px) 45vw, 30vw" alt="حلول الأثاث" class="services-slide-img" loading="lazy" decoding="async">
+                </div>
+                <div class="services-slide-content" dir="rtl">
+                  <h3 class="services-slide-title">حلول الأثاث</h3>
+                  <p class="services-slide-tagline">توريد وانتقاء استراتيجي</p>
+                  <p class="services-slide-body">نوفر الأثاث بشكل استراتيجي بما يتماشى مع تصوراتك ثلاثية الأبعاد المعتمدة، بما يناسب ذوقك وميزانيتك واحتياجاتك التشغيلية.</p>
+                  <span class="services-slide-arrow-circle">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D6C2A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svc-arrow-svg"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                  </span>
+                </div>
+              </a>
+            </div>
         </div>
-      </a>
-
-      <a href="/ar/contact" data-service-card data-reveal data-reveal-delay="0.1" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94),box-shadow 0.45s cubic-bezier(0.25,0.46,0.45,0.94);position:relative;background:#FFFFFF;padding:clamp(36px,4.5vw,60px);overflow:hidden;cursor:pointer;display:block;text-decoration:none;">
-        <div data-card-hover-bg style="position:absolute;inset:0;background:#3A2D25;transform:translateY(101%);transition:transform 0.55s cubic-bezier(0.25,0.46,0.45,0.94);z-index:0;pointer-events:none;"></div>
-        <div style="position:relative;z-index:1;">
-          <div data-card-num style="font-family:'GE SS Two','Arial',sans-serif;font-size:clamp(68px,7.5vw,92px);font-weight:500;color:rgba(91,70,54,0.1);line-height:1;margin-bottom:20px;letter-spacing:-0.02em;transition:color 0.4s;">02</div>
-          <h3 data-card-title style="font-family:'GE SS Two','Arial',sans-serif;font-size:clamp(19px,2.1vw,26px);font-weight:500;color:#1F1F1F;margin-bottom:10px;line-height:1.2;transition:color 0.4s;">التشطيبات</h3>
-          <p style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:#8B6B4A;margin-bottom:20px;">نحوّل الهياكل الخام إلى تحف معمارية</p>
-          <p data-card-body style="font-family:'GE SS Two','Arial',sans-serif;font-size:14px;line-height:1.75;color:#5B4636;transition:color 0.4s;">جوهر عملنا. تحويل كامل للهياكل الخام إلى بيئات جاهزة وظيفياً بالكامل من خلال التخطيط الموجّه بالهوية التجارية والتزامنا المميز بخلوّ العيوب — بحيث تلبي كل تشطيبة أعلى المعايير.</p>
-          <div data-card-arrow style="margin-top:28px;opacity:0;transform:translateX(-10px);transition:opacity 0.4s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;align-items:center;gap:12px;">
-            <span style="font-family:'GE SS Two','Arial',sans-serif;font-size:10px;letter-spacing:normal;text-transform:uppercase;color:#D6C2A8;">استكشف الخدمة</span>
-            <svg width="20" height="8" viewBox="0 0 20 8" fill="none"><path d="M0 4H18M18 4L15 1M18 4L15 7" stroke="#D6C2A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-          </div>
-        </div>
-      </a>
-
-      <a href="/ar/contact" data-service-card data-reveal data-reveal-delay="0.06" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94),box-shadow 0.45s cubic-bezier(0.25,0.46,0.45,0.94);position:relative;background:#FFFFFF;padding:clamp(36px,4.5vw,60px);overflow:hidden;cursor:pointer;display:block;text-decoration:none;">
-        <div data-card-hover-bg style="position:absolute;inset:0;background:#3A2D25;transform:translateY(101%);transition:transform 0.55s cubic-bezier(0.25,0.46,0.45,0.94);z-index:0;pointer-events:none;"></div>
-        <div style="position:relative;z-index:1;">
-          <div data-card-num style="font-family:'GE SS Two','Arial',sans-serif;font-size:clamp(68px,7.5vw,92px);font-weight:500;color:rgba(91,70,54,0.1);line-height:1;margin-bottom:20px;letter-spacing:-0.02em;transition:color 0.4s;">03</div>
-          <h3 data-card-title style="font-family:'GE SS Two','Arial',sans-serif;font-size:clamp(19px,2.1vw,26px);font-weight:500;color:#1F1F1F;margin-bottom:10px;line-height:1.2;transition:color 0.4s;">الهندسة والأنظمة الكهروميكانيكية</h3>
-          <p style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:#8B6B4A;margin-bottom:20px;">العمود الفقري للدقة</p>
-          <p data-card-body style="font-family:'GE SS Two','Arial',sans-serif;font-size:14px;line-height:1.75;color:#5B4636;transition:color 0.4s;">الفخامة الحقيقية تعتمد على أنظمة غير مرئية. توفر خدماتنا الكهروميكانيكية (الميكانيكية والكهربائية والصحية) بنية تحتية عالية الأداء تندمج بسلاسة في النسيج المعماري — لتعزيز الكفاءة والراحة.</p>
-          <div data-card-arrow style="margin-top:28px;opacity:0;transform:translateX(-10px);transition:opacity 0.4s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;align-items:center;gap:12px;">
-            <span style="font-family:'GE SS Two','Arial',sans-serif;font-size:10px;letter-spacing:normal;text-transform:uppercase;color:#D6C2A8;">استكشف الخدمة</span>
-            <svg width="20" height="8" viewBox="0 0 20 8" fill="none"><path d="M0 4H18M18 4L15 1M18 4L15 7" stroke="#D6C2A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-          </div>
-        </div>
-      </a>
-
-      <a href="/ar/contact" data-service-card data-reveal data-reveal-delay="0.16" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94),box-shadow 0.45s cubic-bezier(0.25,0.46,0.45,0.94);position:relative;background:#FFFFFF;padding:clamp(36px,4.5vw,60px);overflow:hidden;cursor:pointer;display:block;text-decoration:none;">
-        <div data-card-hover-bg style="position:absolute;inset:0;background:#3A2D25;transform:translateY(101%);transition:transform 0.55s cubic-bezier(0.25,0.46,0.45,0.94);z-index:0;pointer-events:none;"></div>
-        <div style="position:relative;z-index:1;">
-          <div data-card-num style="font-family:'GE SS Two','Arial',sans-serif;font-size:clamp(68px,7.5vw,92px);font-weight:500;color:rgba(91,70,54,0.1);line-height:1;margin-bottom:20px;letter-spacing:-0.02em;transition:color 0.4s;">04</div>
-          <h3 data-card-title style="font-family:'GE SS Two','Arial',sans-serif;font-size:clamp(19px,2.1vw,26px);font-weight:500;color:#1F1F1F;margin-bottom:10px;line-height:1.2;transition:color 0.4s;">حلول الأثاث</h3>
-          <p style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:#8B6B4A;margin-bottom:20px;">توريد وانتقاء استراتيجي</p>
-          <p data-card-body style="font-family:'GE SS Two','Arial',sans-serif;font-size:14px;line-height:1.75;color:#5B4636;transition:color 0.4s;">نقوم بتوريد الأثاث بشكل استراتيجي بما يتماشى مع تصوراتك ثلاثية الأبعاد المعتمدة. وبالاستفادة من علاقاتنا العالمية في هذا المجال، نوفر قطعاً عالية الجودة تناسب ذوقك وميزانيتك واحتياجاتك التشغيلية — بانسجام تام من الأرضية إلى السقف.</p>
-          <div data-card-arrow style="margin-top:28px;opacity:0;transform:translateX(-10px);transition:opacity 0.4s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;align-items:center;gap:12px;">
-            <span style="font-family:'GE SS Two','Arial',sans-serif;font-size:10px;letter-spacing:normal;text-transform:uppercase;color:#D6C2A8;">استكشف الخدمة</span>
-            <svg width="20" height="8" viewBox="0 0 20 8" fill="none"><path d="M0 4H18M18 4L15 1M18 4L15 7" stroke="#D6C2A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-          </div>
-        </div>
-      </a>
-
+      </div>
     </div>
   </div>
 </section>
@@ -760,38 +851,60 @@ input:focus, select:focus, textarea:focus {
 </section>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ VALUE PROPOSITION ━━━ -->
-<section data-value-section style="background:#FFFFFF;padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px);">
-  <div style="max-width:1280px;margin:0 auto;">
-    <div style="margin-bottom:clamp(56px,7vw,96px);">
+<section data-value-section style="background:#FFFFFF;padding:clamp(80px,10vw,128px) 0;">
+  <div style="width:95vw;max-width:1800px;margin:0 auto;border-radius:0;padding:clamp(48px,6vw,72px) clamp(24px,4vw,56px);position:relative;overflow:hidden;background-image:linear-gradient(rgba(245,242,237,0.9),rgba(245,242,237,0.9)),url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=2000&q=30');background-size:cover;background-position:center;">
+    <div style="position:absolute;inset:20px;border:2px solid rgba(58,45,37,0.12);border-radius:0;pointer-events:none;"></div>
+
+    <div style="position:relative;max-width:1280px;margin:0 auto clamp(48px,6vw,72px);">
       <div data-value-eyebrow style="opacity:0;display:flex;align-items:center;gap:16px;margin-bottom:22px;transition:opacity 0.6s cubic-bezier(0.25,0.46,0.45,0.94);">
         <span data-value-eyebrow-line style="display:block;width:0px;height:1px;background:#8B6B4A;flex-shrink:0;transition:width 0.7s cubic-bezier(0.25,0.46,0.45,0.94);"></span>
         <span style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:#8B6B4A;">تميّز FurnishIQ</span>
       </div>
-      <div style="font-family:'GE SS Two','Arial',sans-serif;font-size:clamp(30px,4vw,56px);font-weight:500;color:#1F1F1F;line-height:1.1;letter-spacing:-0.015em;max-width:680px;">
+      <div style="font-family:'GE SS Two','Arial',sans-serif;font-size:clamp(28px,3.5vw,52px);font-weight:500;color:#1F1F1F;line-height:1.1;letter-spacing:-0.015em;max-width:680px;">
         <div style="overflow:hidden;display:block;"><span data-value-word style="display:block;transform:translateY(110%);transition:transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);">لماذا نحن المعيار الجديد</span></div>
         <div style="overflow:hidden;display:block;"><span data-value-word style="display:block;transform:translateY(110%);transition:transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);">للتصميم الداخلي في المملكة.</span></div>
       </div>
     </div>
-    <div data-value-topline style="width:0%;height:1px;background:#D6C2A8;transition:width 0.85s cubic-bezier(0.25,0.46,0.45,0.94);"></div>
-    <div class="fiq-value-pillars" style="display:flex;">
-      <div data-value-pillar class="fiq-value-pillar-first" style="opacity:0;transform:translateY(22px);transition:opacity 0.65s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.65s cubic-bezier(0.25,0.46,0.45,0.94);flex:1;padding-top:52px;padding-right:52px;">
-        <div data-value-bar style="width:0px;height:2px;background:#5B4636;margin-bottom:28px;transition:width 0.55s cubic-bezier(0.25,0.46,0.45,0.94);"></div>
-        <h3 style="font-family:'GE SS Two','Arial',sans-serif;font-size:clamp(18px,2vw,26px);font-weight:500;color:#1F1F1F;margin-bottom:16px;line-height:1.2;">يقين بصري</h3>
-        <p style="font-family:'GE SS Two','Arial',sans-serif;font-size:14px;line-height:1.8;color:#5B4636;margin-bottom:28px;">قرر بثقة تامة. نوفر تصورات ثلاثية الأبعاد فوتوغرافية الواقعية الكاملة لكل طابق ومساحة خارجية قبل وضع أول لبنة، لضمان تجسيد رؤيتك بدقة.</p>
+
+    <div class="fiq-value-pillars" style="position:relative;max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);align-items:start;gap:clamp(40px,5vw,72px);">
+
+      <div data-value-pillar class="fiq-value-pillar-item" style="opacity:0;transform:translateY(22px);transition:opacity 0.65s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.65s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;flex-direction:column;align-items:center;text-align:center;">
+        <div style="width:140px;height:140px;border-radius:50%;background:#3A2D25;box-shadow:0 12px 32px rgba(58,45,37,0.16);display:flex;align-items:center;justify-content:center;margin-bottom:26px;flex-shrink:0;">
+          <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#F5F2ED" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+        </div>
+        <h3 style="font-family:'GE SS Two','Arial',sans-serif;font-size:21px;font-weight:700;color:#1F1F1F;margin-bottom:14px;line-height:1.2;">يقين بصري</h3>
+        <div data-value-bar style="width:0px;height:1px;background:rgba(91,70,54,0.3);margin-bottom:18px;transition:width 0.55s cubic-bezier(0.25,0.46,0.45,0.94);"></div>
+        <p style="font-family:'GE SS Two','Arial',sans-serif;font-size:13.5px;line-height:1.75;color:#5B4636;margin-bottom:16px;">قرر بثقة تامة. نوفر تصورات ثلاثية الأبعاد فوتوغرافية الواقعية الكاملة لكل طابق ومساحة خارجية قبل وضع أول لبنة.</p>
         <span style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:#8B6B4A;">تصور ثلاثي الأبعاد كامل</span>
       </div>
-      <div data-value-pillar class="fiq-value-pillar-mid" style="opacity:0;transform:translateY(22px);transition:opacity 0.65s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.65s cubic-bezier(0.25,0.46,0.45,0.94);flex:1;padding-top:52px;padding-left:52px;padding-right:52px;border-left:1px solid #D6C2A8;border-right:1px solid #D6C2A8;">
-        <div data-value-bar style="width:0px;height:2px;background:#5B4636;margin-bottom:28px;transition:width 0.55s cubic-bezier(0.25,0.46,0.45,0.94);"></div>
-        <h3 style="font-family:'GE SS Two','Arial',sans-serif;font-size:clamp(18px,2vw,26px);font-weight:500;color:#1F1F1F;margin-bottom:16px;line-height:1.2;">بصمة استراتيجية</h3>
-        <p style="font-family:'GE SS Two','Arial',sans-serif;font-size:14px;line-height:1.8;color:#5B4636;margin-bottom:28px;">نتبع أسلوب التخطيط الموجّه بالهوية التجارية. كل مخطط وتدفق مكاني مصمم استراتيجياً ليعكس هوية علامتك التجارية ويُحسّن عملياتك اليومية.</p>
+
+      <div data-value-pillar class="fiq-value-pillar-item" style="opacity:0;transform:translateY(22px);transition:opacity 0.65s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.65s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;flex-direction:column;align-items:center;text-align:center;">
+        <div style="width:140px;height:140px;border-radius:50%;background:#3A2D25;box-shadow:0 12px 32px rgba(58,45,37,0.16);display:flex;align-items:center;justify-content:center;margin-bottom:26px;flex-shrink:0;">
+          <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#F5F2ED" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="5"></circle><circle cx="12" cy="12" r="1" fill="#F5F2ED"></circle></svg>
+        </div>
+        <h3 style="font-family:'GE SS Two','Arial',sans-serif;font-size:21px;font-weight:700;color:#1F1F1F;margin-bottom:14px;line-height:1.2;">بصمة استراتيجية</h3>
+        <div data-value-bar style="width:0px;height:1px;background:rgba(91,70,54,0.3);margin-bottom:18px;transition:width 0.55s cubic-bezier(0.25,0.46,0.45,0.94);"></div>
+        <p style="font-family:'GE SS Two','Arial',sans-serif;font-size:13.5px;line-height:1.75;color:#5B4636;margin-bottom:16px;">نتبع أسلوب التخطيط الموجّه بالهوية التجارية. كل مخطط وتدفق مكاني مصمم استراتيجياً ليعكس هوية علامتك التجارية.</p>
         <span style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:#8B6B4A;">تخطيط موجّه بالهوية التجارية</span>
       </div>
-      <div data-value-pillar class="fiq-value-pillar-last" style="opacity:0;transform:translateY(22px);transition:opacity 0.65s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.65s cubic-bezier(0.25,0.46,0.45,0.94);flex:1;padding-top:52px;padding-left:52px;">
-        <div data-value-bar style="width:0px;height:2px;background:#5B4636;margin-bottom:28px;transition:width 0.55s cubic-bezier(0.25,0.46,0.45,0.94);"></div>
-        <h3 style="font-family:'GE SS Two','Arial',sans-serif;font-size:clamp(18px,2vw,26px);font-weight:500;color:#1F1F1F;margin-bottom:16px;line-height:1.2;">التزام خلوّ العيوب</h3>
-        <p style="font-family:'GE SS Two','Arial',sans-serif;font-size:14px;line-height:1.8;color:#5B4636;margin-bottom:28px;">سمتنا المميزة هي التميز في التنفيذ. من خلال مراقبة صارمة للجودة والسلامة، نضمن "بناءً نظيفاً" وتسليماً خالياً من العيوب في كل مرة.</p>
+
+      <div data-value-pillar class="fiq-value-pillar-item" style="opacity:0;transform:translateY(22px);transition:opacity 0.65s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.65s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;flex-direction:column;align-items:center;text-align:center;">
+        <div style="width:140px;height:140px;border-radius:50%;background:#3A2D25;box-shadow:0 12px 32px rgba(58,45,37,0.16);display:flex;align-items:center;justify-content:center;margin-bottom:26px;flex-shrink:0;">
+          <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#F5F2ED" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.5 9 8 11 4.5-2 8-6 8-11V5z"></path><path d="M9 12l2 2 4-4"></path></svg>
+        </div>
+        <h3 style="font-family:'GE SS Two','Arial',sans-serif;font-size:21px;font-weight:700;color:#1F1F1F;margin-bottom:14px;line-height:1.2;">التزام خلوّ العيوب</h3>
+        <div data-value-bar style="width:0px;height:1px;background:rgba(91,70,54,0.3);margin-bottom:18px;transition:width 0.55s cubic-bezier(0.25,0.46,0.45,0.94);"></div>
+        <p style="font-family:'GE SS Two','Arial',sans-serif;font-size:13.5px;line-height:1.75;color:#5B4636;margin-bottom:16px;">سمتنا المميزة هي التميز في التنفيذ. من خلال مراقبة صارمة للجودة والسلامة، نضمن تسليماً خالياً من العيوب في كل مرة.</p>
         <span style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:#8B6B4A;">ضمان البناء النظيف</span>
       </div>
+
+    </div>
+
+    <div style="position:relative;text-align:center;margin-top:clamp(40px,5vw,56px);">
+      <a href="/ar/contact" class="fiq-value-cta" style="font-family:'GE SS Two','Arial',sans-serif;font-size:10px;letter-spacing:normal;text-transform:uppercase;color:#3A2D25;background:#D6C2A8;padding:15px 36px;border:1px solid #D6C2A8;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:background 0.3s cubic-bezier(0.25,0.46,0.45,0.94),color 0.3s;">
+        احجز استشارة مجانية
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3A2D25" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition:stroke 0.3s;"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+      </a>
     </div>
   </div>
 </section>
@@ -1094,31 +1207,52 @@ class Component extends DCLogic {
       document.querySelectorAll('[data-reveal]').forEach(el => obs.observe(el));
     }
 
-    // ── SERVICE CARD HOVER ─────────────────────────────────────────────────
-    document.querySelectorAll('[data-service-card]').forEach(card => {
-      const bg = card.querySelector('[data-card-hover-bg]');
-      const num = card.querySelector('[data-card-num]');
-      const title = card.querySelector('[data-card-title]');
-      const body = card.querySelector('[data-card-body]');
-      const arrow = card.querySelector('[data-card-arrow]');
+    // ── SERVICES SLIDER (infinite loop) ─────────────────────────────────────
+    const servicesTrack = document.getElementById('services-slider-track');
+    const servicesViewport = document.getElementById('services-slider-viewport');
+    const servicesPrev = document.getElementById('services-prev');
+    const servicesNext = document.getElementById('services-next');
+    if (servicesTrack && servicesViewport && servicesPrev && servicesNext) {
+      const N = 4;
+      const totalSlides = N * 2;
+      const stepPct = 100 / totalSlides;
+      let pos = 0;
+      let visible = 3;
 
-      card.addEventListener('mouseenter', () => {
-        if (bg) bg.style.transform = 'translateY(0)';
-        if (num) num.style.color = 'rgba(214,194,168,0.1)';
-        if (title) title.style.color = '#D6C2A8';
-        if (body) body.style.color = 'rgba(214,194,168,0.62)';
-        if (arrow) { arrow.style.opacity = '1'; arrow.style.transform = 'translateX(0)'; }
-        card.style.boxShadow = '0 12px 48px rgba(58,45,37,0.18)';
+      const setVisible = () => {
+        const w = window.innerWidth;
+        visible = w <= 600 ? 1 : w <= 960 ? 2 : 3;
+        servicesTrack.style.width = ((totalSlides / visible) * 100) + '%';
+      };
+      setVisible();
+      window.addEventListener('resize', setVisible, { passive: true });
+
+      const render = (animate) => {
+        servicesTrack.style.transition = animate && !reduced ? 'transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94)' : 'none';
+        servicesTrack.style.transform = `translateX(-${pos * stepPct}%)`;
+      };
+      render(false);
+
+      servicesNext.addEventListener('click', () => {
+        pos++;
+        render(true);
+        if (pos >= N) {
+          setTimeout(() => { pos -= N; render(false); }, reduced ? 0 : 600);
+        }
       });
-      card.addEventListener('mouseleave', () => {
-        if (bg) bg.style.transform = 'translateY(101%)';
-        if (num) num.style.color = 'rgba(91,70,54,0.1)';
-        if (title) title.style.color = '#1F1F1F';
-        if (body) body.style.color = '#5B4636';
-        if (arrow) { arrow.style.opacity = '0'; arrow.style.transform = 'translateX(-10px)'; }
-        card.style.boxShadow = 'none';
+      servicesPrev.addEventListener('click', () => {
+        if (pos === 0) {
+          pos += N;
+          render(false);
+          servicesTrack.offsetHeight;
+          pos--;
+          render(true);
+        } else {
+          pos--;
+          render(true);
+        }
       });
-    });
+    }
 
     // ── PORTFOLIO HOVER ────────────────────────────────────────────────────
     document.querySelectorAll('[data-portfolio-card]').forEach((card, i) => {
