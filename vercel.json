@@ -33,7 +33,8 @@
     { "source": "/services-furniture.dc.html", "destination": "/services-furniture", "permanent": true },
     { "source": "/services-furniture.ar.dc.html", "destination": "/ar/services-furniture", "permanent": true },
     { "source": "/landing-turnkey.dc.html", "destination": "/landing-turnkey", "permanent": true },
-    { "source": "/landing-turnkey.ar.dc.html", "destination": "/ar/landing-turnkey", "permanent": true }
+    { "source": "/landing-turnkey.ar.dc.html", "destination": "/ar/concept-to-turnkey", "permanent": true },
+    { "source": "/ar/landing-turnkey", "destination": "/ar/concept-to-turnkey", "permanent": true }
   ],
   "headers": [
     {
@@ -82,7 +83,7 @@
     { "source": "/ar/project-detail", "destination": "/Furnishiq.net/project-detail.ar.dc.html" },
     { "source": "/ar/blog", "destination": "/Furnishiq.net/blog.ar.dc.html" },
     { "source": "/ar/single-post", "destination": "/Furnishiq.net/single-post.ar.dc.html" },
-    { "source": "/ar/landing-turnkey", "destination": "/Furnishiq.net/landing-turnkey.ar.dc.html" },
+    { "source": "/ar/concept-to-turnkey", "destination": "/Furnishiq.net/landing-turnkey.ar.dc.html" },
     { "source": "/en/:path*", "destination": "/Furnishiq.net/:path*" },
     { "source": "/ar/:path*", "destination": "/Furnishiq.net/:path*" },
     { "source": "/contact", "destination": "/Furnishiq.net/contact.dc.html" },

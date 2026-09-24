@@ -147,13 +147,13 @@
   <url>
     <loc>https://www.furnishiq.net/landing-turnkey</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.furnishiq.net/landing-turnkey"/>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.furnishiq.net/ar/landing-turnkey"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.furnishiq.net/ar/concept-to-turnkey"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.furnishiq.net/landing-turnkey"/>
   </url>
   <url>
-    <loc>https://www.furnishiq.net/ar/landing-turnkey</loc>
+    <loc>https://www.furnishiq.net/ar/concept-to-turnkey</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.furnishiq.net/landing-turnkey"/>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.furnishiq.net/ar/landing-turnkey"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.furnishiq.net/ar/concept-to-turnkey"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.furnishiq.net/landing-turnkey"/>
   </url>
 </urlset>

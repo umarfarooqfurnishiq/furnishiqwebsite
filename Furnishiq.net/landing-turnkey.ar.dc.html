@@ -31,11 +31,11 @@ fbq('track', 'PageView');
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
 <link rel="icon" type="image/png" href="assets/favicon.png">
-<title>فرينيش آي كيو | الباقة الهندسية المتكاملة (تسليم مفتاح)</title>
+<title>فيرنيش آي كيو | الباقة الهندسية المتكاملة (تسليم مفتاح)</title>
 <meta name="description" content="في الـ96... من المخطط إلى تسليم المفتاح. تصميم داخلي، تشطيبات فاخرة، وتأثيث متكامل مع جهة واحدة. باقات تبدأ من 29.99 ريال/م².">
-<link rel="canonical" href="https://www.furnishiq.net/ar/landing-turnkey">
+<link rel="canonical" href="https://www.furnishiq.net/ar/concept-to-turnkey">
 <link rel="alternate" hreflang="en" href="https://www.furnishiq.net/landing-turnkey">
-<link rel="alternate" hreflang="ar" href="https://www.furnishiq.net/ar/landing-turnkey">
+<link rel="alternate" hreflang="ar" href="https://www.furnishiq.net/ar/concept-to-turnkey">
 <link rel="alternate" hreflang="x-default" href="https://www.furnishiq.net/landing-turnkey">
 <script src="./support.js" defer></script>
 <script src="./nav-mobile.js" defer></script>
@@ -509,20 +509,110 @@ input:focus, select:focus, textarea:focus {
 
   </style>
   <style>
-    /* Landing pages always show the hamburger menu, even on desktop —
-       never the full inline nav link list. */
-    .fiq-nav-links{display:none!important;}
-    .fiq-nav-cta-btn{display:none!important;}
-    .fiq-nav-toggle{display:flex!important;}
+    /* Landing pages: an inline menu of in-page scroll links on desktop;
+       the shared hamburger (nav-mobile.js) takes over at 960px and below. */
+    @media(max-width:960px){
+      .fiq-nav-links,.fiq-nav-cta-btn{display:none!important;}
+    }
+    /* Base styles set html{scroll-behavior:smooth}; honour reduced motion for the nav jumps. */
+    @media(prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto;}
+    }
+    /* Keep section headings clear of the 80px fixed nav after a jump. */
+    #showcase,#services-overview,#video-showcase,#projects-showcase,#usps,#form{scroll-margin-top:80px;}
+    /* Scroll-spy: the link for the section in view. !important beats the inline opacity the nav script sets. */
+    [data-nav-section].is-active{opacity:1!important;text-decoration:underline!important;text-decoration-thickness:1px;text-underline-offset:10px;}
     @media(max-width:768px){
-      .fiq-needs-grid{grid-template-columns:1fr!important;}
-      .fiq-service-inclusions{grid-template-columns:1fr!important;}
-      .fiq-work-grid{grid-template-columns:1fr 1fr!important;}
       .fiq-usps-card{grid-template-columns:1fr!important;}
     }
-    @media(max-width:520px){
-      .fiq-work-grid{grid-template-columns:1fr!important;}
+    /* Showcase carousel */
+    .fiq-showcase-track{scrollbar-width:none;-ms-overflow-style:none;}
+    .fiq-showcase-track::-webkit-scrollbar{display:none;}
+    .fiq-showcase-card{transition:transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94);}
+    .fiq-showcase-card:hover{transform:translateY(-4px);}
+    .fiq-showcase-btn{transition:background 0.3s cubic-bezier(0.25,0.46,0.45,0.94),opacity 0.3s;}
+    @media(max-width:768px){
+      .fiq-showcase-bottom{grid-template-columns:1fr!important;}
+      .fiq-showcase-viewall{order:2;}
+      .fiq-showcase-track{margin-inline-start:calc(-1 * clamp(20px,3.4vw,48px))!important;padding-inline-start:clamp(20px,3.4vw,48px)!important;}
     }
+    @media(prefers-reduced-motion:reduce){
+      .fiq-showcase-track{scroll-behavior:auto!important;}
+      .fiq-showcase-card:hover{transform:none;}
+    }
+    /* Services carousel */
+    .fiq-svc-track{scrollbar-width:none;-ms-overflow-style:none;}
+    .fiq-svc-track::-webkit-scrollbar{display:none;}
+    .fiq-svc-card[data-svc-i="2"]{margin-top:clamp(14px,1.6vw,24px);}
+    .fiq-svc-card img{transition:transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);}
+    .fiq-svc-card:hover img{transform:scale(1.04);}
+    .fiq-svc-btn{transition:border-color 0.3s cubic-bezier(0.25,0.46,0.45,0.94),background 0.3s cubic-bezier(0.25,0.46,0.45,0.94),opacity 0.3s;}
+    .fiq-svc-btn:hover:not(:disabled){border-color:#FFFFFF;background:rgba(255,255,255,0.08);}
+    .fiq-svc-cta{transition:border-color 0.3s cubic-bezier(0.25,0.46,0.45,0.94),background 0.3s cubic-bezier(0.25,0.46,0.45,0.94);}
+    .fiq-svc-cta:hover{border-color:#FFFFFF;background:rgba(255,255,255,0.06);}
+    @media(max-width:900px){
+      .fiq-svc-head{grid-template-columns:1fr!important;}
+      .fiq-svc-head > :nth-child(2){order:1;}
+      .fiq-svc-head > :nth-child(4){order:2;}
+      .fiq-svc-head > :nth-child(3){order:3;}
+    }
+    @media(max-width:520px){
+      .fiq-svc-card{width:78vw!important;}
+    }
+    @media(prefers-reduced-motion:reduce){
+      .fiq-svc-track{scroll-behavior:auto!important;}
+      .fiq-svc-card:hover img{transform:none;}
+    }
+    /* Video carousel */
+    .fiq-vid-col{container-type:inline-size;min-width:0;}
+    .fiq-vid-track{scrollbar-width:none;-ms-overflow-style:none;}
+    .fiq-vid-track::-webkit-scrollbar{display:none;}
+    .fiq-vid-slide{width:600px;width:92cqw;}
+    .fiq-vid-play{transition:transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94),background 0.3s cubic-bezier(0.25,0.46,0.45,0.94);}
+    .fiq-vid-play:hover{transform:scale(1.06);background:#FFFFFF;}
+    .fiq-vid-dot{transition:background 0.3s cubic-bezier(0.25,0.46,0.45,0.94),width 0.3s cubic-bezier(0.25,0.46,0.45,0.94);}
+    .fiq-vid-arrow{transition:border-color 0.3s cubic-bezier(0.25,0.46,0.45,0.94),opacity 0.3s;}
+    .fiq-vid-arrow:hover{border-color:#1F1F1F;}
+    .fiq-vid-btn-primary{transition:background 0.3s cubic-bezier(0.25,0.46,0.45,0.94);}
+    .fiq-vid-btn-primary:hover{background:#5B4636;}
+    .fiq-vid-btn-secondary{transition:border-color 0.3s cubic-bezier(0.25,0.46,0.45,0.94);}
+    .fiq-vid-btn-secondary:hover{border-color:#5B4636;}
+    @media(max-width:900px){
+      .fiq-vid-grid{grid-template-columns:1fr!important;}
+      .fiq-vid-slide{width:85cqw;}
+    }
+    @media(prefers-reduced-motion:reduce){
+      .fiq-vid-track{scroll-behavior:auto!important;}
+      .fiq-vid-play:hover{transform:none;}
+    }
+    /* Projects drag carousel */
+    .fiq-prj-track{scrollbar-width:none;-ms-overflow-style:none;cursor:grab;user-select:none;-webkit-user-select:none;}
+    .fiq-prj-track::-webkit-scrollbar{display:none;}
+    .fiq-prj-track.is-dragging{cursor:grabbing;}
+    .fiq-prj-track.is-dragging .fiq-prj-card{pointer-events:none;}
+    .fiq-prj-card{border:1px solid transparent;transition:border-color 0.4s cubic-bezier(0.25,0.46,0.45,0.94);}
+    .fiq-prj-card:hover,.fiq-prj-card:focus-visible{border-color:rgba(255,255,255,0.85);outline:none;}
+    .fiq-prj-card img{-webkit-user-drag:none;filter:grayscale(1);transition:filter 0.6s cubic-bezier(0.25,0.46,0.45,0.94);}
+    .fiq-prj-card:hover img,.fiq-prj-card:focus-visible img{filter:grayscale(0);}
+    .fiq-prj-thumb{transition:inset-inline-start 0.15s linear,width 0.3s cubic-bezier(0.25,0.46,0.45,0.94);}
+    @media(max-width:600px){
+      .fiq-prj-card{width:72vw!important;}
+    }
+    /* Form section */
+    .fiq-form-field{transition:border-color 0.3s cubic-bezier(0.25,0.46,0.45,0.94);}
+    .fiq-form-field:focus{outline:none;border-color:#8B6B4A;}
+    .fiq-form-field::placeholder{color:#9A8F85;}
+    .fiq-form-submit:hover{background:#3A2D25!important;}
+    @media(max-width:900px){
+      .fiq-form-card{grid-template-columns:1fr!important;}
+      .fiq-form-media{min-height:260px!important;}
+    }
+    @media(max-width:560px){
+      .fiq-form-row{grid-template-columns:1fr!important;}
+    }
+    /* Footer */
+    .fiq-foot-link{transition:color 0.3s cubic-bezier(0.25,0.46,0.45,0.94);}
+    .fiq-foot-link:hover{color:#FFFFFF!important;}
   </style>
 </helmet>
 
@@ -534,19 +624,18 @@ input:focus, select:focus, textarea:focus {
       <img id="id-logo-d" src="assets/logo-scrolled.png" width="264" height="90" alt="FurnishIQ" style="position:absolute;inset:0;height:36px;width:auto;max-width:172px;object-fit:contain;object-position:left center;opacity:0;transition:opacity 0.4s cubic-bezier(0.25,0.46,0.45,0.94);">
     </a>
     <div class="fiq-nav-links" style="display:flex;gap:clamp(24px,3.5vw,48px);align-items:center;flex:1;justify-content:center;">
-      <a href="/ar" data-nav-link style="font-family:'GE SS Two',sans-serif;font-size:11px;letter-spacing:normal;text-transform:uppercase;color:#FFFFFF;text-decoration:none;transition:color 0.25s,opacity 0.25s;opacity:0.8;">الرئيسية</a>
-      <a href="/ar/about-us" data-nav-link style="font-family:'GE SS Two',sans-serif;font-size:11px;letter-spacing:normal;text-transform:uppercase;color:#FFFFFF;text-decoration:none;transition:color 0.25s,opacity 0.25s;opacity:0.8;">من نحن</a>
-      <a href="/ar/services" data-nav-link style="font-family:'GE SS Two',sans-serif;font-size:11px;letter-spacing:normal;text-transform:uppercase;color:#FFFFFF;text-decoration:none;transition:color 0.25s,opacity 0.25s;opacity:0.8;">الخدمات</a>
-      <a href="/ar/projects" data-nav-link style="font-family:'GE SS Two',sans-serif;font-size:11px;letter-spacing:normal;text-transform:uppercase;color:#FFFFFF;text-decoration:none;transition:color 0.25s,opacity 0.25s;opacity:0.8;">المشاريع</a>
-      <a href="/ar/blog" data-nav-link style="font-family:'GE SS Two',sans-serif;font-size:11px;letter-spacing:normal;text-transform:uppercase;color:#FFFFFF;text-decoration:none;transition:color 0.25s,opacity 0.25s;opacity:0.8;">المقالات</a>
-      <a href="/landing-turnkey" data-nav-link data-lang-switch style="font-family:'GE SS Two',sans-serif;font-size:11px;letter-spacing:normal;text-transform:uppercase;color:#FFFFFF;text-decoration:none;transition:color 0.25s,opacity 0.25s;opacity:0.8;">English</a>
+      <a href="#showcase" data-nav-link data-nav-section style="font-family:'GE SS Two',sans-serif;font-size:11px;letter-spacing:normal;text-transform:uppercase;color:#FFFFFF;text-decoration:none;transition:color 0.25s,opacity 0.25s;opacity:0.8;">احتياجك</a>
+      <a href="#services-overview" data-nav-link data-nav-section style="font-family:'GE SS Two',sans-serif;font-size:11px;letter-spacing:normal;text-transform:uppercase;color:#FFFFFF;text-decoration:none;transition:color 0.25s,opacity 0.25s;opacity:0.8;">الباقة</a>
+      <a href="#video-showcase" data-nav-link data-nav-section style="font-family:'GE SS Two',sans-serif;font-size:11px;letter-spacing:normal;text-transform:uppercase;color:#FFFFFF;text-decoration:none;transition:color 0.25s,opacity 0.25s;opacity:0.8;">شاهد</a>
+      <a href="#projects-showcase" data-nav-link data-nav-section style="font-family:'GE SS Two',sans-serif;font-size:11px;letter-spacing:normal;text-transform:uppercase;color:#FFFFFF;text-decoration:none;transition:color 0.25s,opacity 0.25s;opacity:0.8;">أعمالنا</a>
+      <a href="#usps" data-nav-link data-nav-section style="font-family:'GE SS Two',sans-serif;font-size:11px;letter-spacing:normal;text-transform:uppercase;color:#FFFFFF;text-decoration:none;transition:color 0.25s,opacity 0.25s;opacity:0.8;">المزايا</a>
     </div>
     <a href="#form" class="fiq-nav-cta-btn" id="id-nav-cta" style="font-family:'GE SS Two',sans-serif;font-size:11px;letter-spacing:normal;text-transform:uppercase;color:#FFFFFF;text-decoration:none;border:1px solid rgba(214,194,168,0.5);padding:12px 28px;flex-shrink:0;transition:all 0.3s cubic-bezier(0.25,0.46,0.45,0.94);white-space:nowrap;background:transparent;">ابدأ مشروعك</a>
   </div>
 </nav>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ HERO ━━ -->
-<section id="hero" data-screen-label="Hero" style="position:relative;min-height:88vh;display:flex;align-items:center;background:#1F1F1F;overflow:hidden;">
+<section id="hero" data-screen-label="Hero" style="position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:center;background:#1F1F1F;overflow:hidden;">
   <div style="position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=2400&q=30');background-size:cover;background-position:center;opacity:0.28;pointer-events:none;"></div>
   <div style="position:relative;z-index:1;max-width:1000px;margin:0 auto;padding:clamp(140px,14vw,180px) clamp(24px,5vw,80px) clamp(80px,8vw,120px);width:100%;text-align:center;display:flex;flex-direction:column;align-items:center;">
     <span data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:block;font-family:'GE SS Two',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:rgba(214,194,168,0.8);margin-bottom:20px;">تسليم مفتاح</span>
@@ -554,7 +643,7 @@ input:focus, select:focus, textarea:focus {
     <p data-reveal data-reveal-delay="0.16" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'GE SS Two',sans-serif;font-size:clamp(16px,1.6vw,19px);color:rgba(255,255,255,0.82);line-height:1.6;max-width:640px;margin-bottom:40px;">كل احتياجات مساحتك من التصميم الداخلي، التشطيبات الفاخرة (Fit-out)، والتأثيث المتكامل.. مع جهة واحدة تضمن لك دقة التنفيذ والتطابق التام مع رؤيتك.</p>
     <div data-reveal data-reveal-delay="0.24" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-bottom:64px;">
       <a href="#form" style="font-family:'GE SS Two',sans-serif;font-size:11px;letter-spacing:normal;text-transform:uppercase;color:#1F1F1F;background:#D6C2A8;padding:19px 36px;border:1px solid #D6C2A8;text-decoration:none;transition:all 0.3s cubic-bezier(0.25,0.46,0.45,0.94);width:240px;text-align:center;box-sizing:border-box;">تواصل مع فريقنا</a>
-      <a href="#work" style="font-family:'GE SS Two',sans-serif;font-size:11px;letter-spacing:normal;text-transform:uppercase;color:#FFFFFF;background:transparent;padding:19px 36px;border:1px solid rgba(255,255,255,0.4);text-decoration:none;transition:all 0.3s cubic-bezier(0.25,0.46,0.45,0.94);width:240px;text-align:center;box-sizing:border-box;">شاهد أعمالنا</a>
+      <a href="#projects-showcase" style="font-family:'GE SS Two',sans-serif;font-size:11px;letter-spacing:normal;text-transform:uppercase;color:#FFFFFF;background:transparent;padding:19px 36px;border:1px solid rgba(255,255,255,0.4);text-decoration:none;transition:all 0.3s cubic-bezier(0.25,0.46,0.45,0.94);width:240px;text-align:center;box-sizing:border-box;">شاهد أعمالنا</a>
     </div>
     <div data-reveal data-reveal-delay="0.32" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;gap:clamp(28px,5vw,64px);flex-wrap:wrap;justify-content:center;border-top:1px solid rgba(255,255,255,0.16);padding-top:36px;width:100%;">
       <div>
@@ -577,89 +666,387 @@ input:focus, select:focus, textarea:focus {
   </div>
 </section>
 
-<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ NEEDS ━━ -->
-<section id="needs" data-screen-label="Needs" style="background:#FFFFFF;padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px);">
-  <div style="max-width:1280px;margin:0 auto;">
-    <h2 data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'GE SS Two',sans-serif;font-size:clamp(28px,3.2vw,44px);font-weight:500;color:#1F1F1F;line-height:1.15;letter-spacing:normal;text-align:center;max-width:760px;margin:0 auto 56px;text-wrap:balance;">وش تحتاج فرينيش آي كيو تنجز لمساحتك؟</h2>
-    <div class="fiq-needs-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:32px;">
-      <div data-reveal style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);background:#F5F2ED;padding:clamp(32px,3vw,44px) clamp(28px,2.6vw,36px);display:flex;flex-direction:column;min-height:220px;">
-        <p style="font-family:'GE SS Two',sans-serif;font-size:18px;color:#1F1F1F;line-height:1.5;flex:1;margin-bottom:28px;">أبغى تجهيز مساحتي بالكامل.. من التصميم إلى تسليم المفتاح.</p>
-        <a href="#form" style="font-family:'GE SS Two',sans-serif;font-size:10px;letter-spacing:normal;text-transform:uppercase;color:#5B4636;text-decoration:none;border-bottom:1px solid #5B4636;padding-bottom:4px;align-self:flex-start;">احصل على استشارة</a>
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ SHOWCASE ━━ -->
+<section id="showcase" data-screen-label="Showcase" style="background:#F5F2ED;padding:clamp(64px,8vw,112px) clamp(16px,5vw,80px);">
+  <div data-reveal style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);max-width:1280px;margin:0 auto;background:#FFFFFF;padding:10px;border-radius:clamp(16px,1.8vw,24px);box-sizing:border-box;">
+    <div style="position:relative;overflow:hidden;border-radius:calc(clamp(16px,1.8vw,24px) - 10px);background:#1F1F1F;min-height:clamp(520px,46vw,660px);display:flex;flex-direction:column;justify-content:space-between;gap:40px;padding:clamp(20px,3.4vw,48px);box-sizing:border-box;">
+      <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=2000&q=40" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;">
+      <div style="position:absolute;inset:0;background:rgba(31,31,31,0.22);pointer-events:none;"></div>
+      <div style="position:absolute;left:0;right:0;bottom:0;height:65%;background:linear-gradient(to top,rgba(0,0,0,0.8) 0%,rgba(0,0,0,0.45) 45%,rgba(0,0,0,0) 100%);pointer-events:none;"></div>
+
+      <div style="position:relative;display:flex;align-items:flex-start;justify-content:space-between;gap:24px;">
+        <h2 style="font-family:'GE SS Two',sans-serif;font-size:clamp(24px,3.4vw,48px);font-weight:500;color:#FFFFFF;line-height:1.1;margin:0;text-wrap:balance;max-width:720px;">وش تحتاج فيرنيش آي كيو تنجز لمساحتك؟</h2>
+        <div style="display:flex;gap:12px;flex-shrink:0;margin-top:clamp(4px,1vw,14px);">
+          <button type="button" class="fiq-showcase-btn" data-showcase-prev aria-label="السابق" style="width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,0.7);background:rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+          <button type="button" class="fiq-showcase-btn" data-showcase-next aria-label="التالي" style="width:40px;height:40px;border-radius:50%;border:1px solid #FFFFFF;background:#FFFFFF;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1F1F1F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          </button>
+        </div>
       </div>
-      <div data-reveal data-reveal-delay="0.08" style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);background:#F5F2ED;padding:clamp(32px,3vw,44px) clamp(28px,2.6vw,36px);display:flex;flex-direction:column;min-height:220px;">
-        <p style="font-family:'GE SS Two',sans-serif;font-size:18px;color:#1F1F1F;line-height:1.5;flex:1;margin-bottom:28px;">أبغى تصميم داخلي.</p>
-        <a href="#service" style="font-family:'GE SS Two',sans-serif;font-size:10px;letter-spacing:normal;text-transform:uppercase;color:#5B4636;text-decoration:none;border-bottom:1px solid #5B4636;padding-bottom:4px;align-self:flex-start;">اكتشف الخدمة</a>
-      </div>
-      <div data-reveal data-reveal-delay="0.16" style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);background:#F5F2ED;padding:clamp(32px,3vw,44px) clamp(28px,2.6vw,36px);display:flex;flex-direction:column;min-height:220px;">
-        <p style="font-family:'GE SS Two',sans-serif;font-size:18px;color:#1F1F1F;line-height:1.5;flex:1;margin-bottom:28px;">عندي مساحة (عظم) وأبحث عن تشطيب (Fit-out) وتأثيث فاخر.</p>
-        <a href="#form" style="font-family:'GE SS Two',sans-serif;font-size:10px;letter-spacing:normal;text-transform:uppercase;color:#5B4636;text-decoration:none;border-bottom:1px solid #5B4636;padding-bottom:4px;align-self:flex-start;">احصل على استشارة</a>
+
+      <div class="fiq-showcase-bottom" style="position:relative;display:grid;grid-template-columns:26% 1fr;align-items:end;gap:16px;">
+        <span class="fiq-showcase-viewall" aria-hidden="true"></span>
+        <div class="fiq-showcase-track" data-showcase-track style="display:flex;gap:16px;overflow-x:auto;padding-top:12px;margin-top:-12px;scroll-snap-type:x mandatory;scroll-behavior:smooth;margin-inline-end:calc(-1 * clamp(20px,3.4vw,48px));padding-inline-end:clamp(20px,3.4vw,48px);">
+        <a href="#form" class="fiq-showcase-card" data-showcase-clone aria-hidden="true" tabindex="-1" data-showcase-card style="flex:0 0 auto;width:clamp(260px,24vw,340px);height:calc(clamp(260px,24vw,340px) * 10 / 11 + 100px);scroll-snap-align:start;display:block;position:relative;background:#FFFFFF;padding:10px;border-radius:clamp(16px,1.8vw,24px);text-decoration:none;box-sizing:border-box;">
+          <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=700&q=40" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;border-radius:calc(clamp(16px,1.8vw,24px) - 10px);">
+          <div style="position:absolute;bottom:18px;left:18px;width:68%;background:rgba(255,255,255,0.8);border-radius:8px;padding:14px 16px;box-sizing:border-box;display:flex;flex-direction:column;gap:14px;">
+            <span style="font-family:'GE SS Two',sans-serif;font-size:clamp(14px,1.1vw,16px);font-weight:500;color:#1F1F1F;line-height:1.5;">أبغى تجهيز مساحتي بالكامل.. من التصميم إلى تسليم المفتاح.</span>
+            <span style="font-family:'GE SS Two',sans-serif;font-size:11px;color:#5B4636;display:inline-flex;align-items:center;gap:6px;">احصل على استشارة <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#5B4636" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="17" y1="17" x2="7" y2="7"/><polyline points="7 17 7 7 17 7"/></svg></span>
+          </div>
+        </a>
+        <a href="#services-overview" class="fiq-showcase-card" data-showcase-clone aria-hidden="true" tabindex="-1" data-showcase-card style="flex:0 0 auto;width:clamp(260px,24vw,340px);height:calc(clamp(260px,24vw,340px) * 10 / 11 + 100px);scroll-snap-align:start;display:block;position:relative;background:#FFFFFF;padding:10px;border-radius:clamp(16px,1.8vw,24px);text-decoration:none;box-sizing:border-box;">
+          <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=700&q=40" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;border-radius:calc(clamp(16px,1.8vw,24px) - 10px);">
+          <div style="position:absolute;bottom:18px;left:18px;width:68%;background:rgba(255,255,255,0.8);border-radius:8px;padding:14px 16px;box-sizing:border-box;display:flex;flex-direction:column;gap:14px;">
+            <span style="font-family:'GE SS Two',sans-serif;font-size:clamp(14px,1.1vw,16px);font-weight:500;color:#1F1F1F;line-height:1.5;">أبغى تصميم داخلي.</span>
+            <span style="font-family:'GE SS Two',sans-serif;font-size:11px;color:#5B4636;display:inline-flex;align-items:center;gap:6px;">اكتشف الخدمة <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#5B4636" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="17" y1="17" x2="7" y2="7"/><polyline points="7 17 7 7 17 7"/></svg></span>
+          </div>
+        </a>
+        <a href="#form" class="fiq-showcase-card" data-showcase-clone aria-hidden="true" tabindex="-1" data-showcase-card style="flex:0 0 auto;width:clamp(260px,24vw,340px);height:calc(clamp(260px,24vw,340px) * 10 / 11 + 100px);scroll-snap-align:start;display:block;position:relative;background:#FFFFFF;padding:10px;border-radius:clamp(16px,1.8vw,24px);text-decoration:none;box-sizing:border-box;">
+          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=700&q=40" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;border-radius:calc(clamp(16px,1.8vw,24px) - 10px);">
+          <div style="position:absolute;bottom:18px;left:18px;width:68%;background:rgba(255,255,255,0.8);border-radius:8px;padding:14px 16px;box-sizing:border-box;display:flex;flex-direction:column;gap:14px;">
+            <span style="font-family:'GE SS Two',sans-serif;font-size:clamp(14px,1.1vw,16px);font-weight:500;color:#1F1F1F;line-height:1.5;">عندي مساحة (عظم) وأبحث عن تشطيب (Fit-out) وتأثيث فاخر.</span>
+            <span style="font-family:'GE SS Two',sans-serif;font-size:11px;color:#5B4636;display:inline-flex;align-items:center;gap:6px;">احصل على استشارة <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#5B4636" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="17" y1="17" x2="7" y2="7"/><polyline points="7 17 7 7 17 7"/></svg></span>
+          </div>
+        </a>
+        <a href="#form" class="fiq-showcase-card" data-showcase-card style="flex:0 0 auto;width:clamp(260px,24vw,340px);height:calc(clamp(260px,24vw,340px) * 10 / 11 + 100px);scroll-snap-align:start;display:block;position:relative;background:#FFFFFF;padding:10px;border-radius:clamp(16px,1.8vw,24px);text-decoration:none;box-sizing:border-box;">
+          <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=700&q=40" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;border-radius:calc(clamp(16px,1.8vw,24px) - 10px);">
+          <div style="position:absolute;bottom:18px;left:18px;width:68%;background:rgba(255,255,255,0.8);border-radius:8px;padding:14px 16px;box-sizing:border-box;display:flex;flex-direction:column;gap:14px;">
+            <span style="font-family:'GE SS Two',sans-serif;font-size:clamp(14px,1.1vw,16px);font-weight:500;color:#1F1F1F;line-height:1.5;">أبغى تجهيز مساحتي بالكامل.. من التصميم إلى تسليم المفتاح.</span>
+            <span style="font-family:'GE SS Two',sans-serif;font-size:11px;color:#5B4636;display:inline-flex;align-items:center;gap:6px;">احصل على استشارة <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#5B4636" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="17" y1="17" x2="7" y2="7"/><polyline points="7 17 7 7 17 7"/></svg></span>
+          </div>
+        </a>
+        <a href="#services-overview" class="fiq-showcase-card" data-showcase-card style="flex:0 0 auto;width:clamp(260px,24vw,340px);height:calc(clamp(260px,24vw,340px) * 10 / 11 + 100px);scroll-snap-align:start;display:block;position:relative;background:#FFFFFF;padding:10px;border-radius:clamp(16px,1.8vw,24px);text-decoration:none;box-sizing:border-box;">
+          <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=700&q=40" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;border-radius:calc(clamp(16px,1.8vw,24px) - 10px);">
+          <div style="position:absolute;bottom:18px;left:18px;width:68%;background:rgba(255,255,255,0.8);border-radius:8px;padding:14px 16px;box-sizing:border-box;display:flex;flex-direction:column;gap:14px;">
+            <span style="font-family:'GE SS Two',sans-serif;font-size:clamp(14px,1.1vw,16px);font-weight:500;color:#1F1F1F;line-height:1.5;">أبغى تصميم داخلي.</span>
+            <span style="font-family:'GE SS Two',sans-serif;font-size:11px;color:#5B4636;display:inline-flex;align-items:center;gap:6px;">اكتشف الخدمة <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#5B4636" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="17" y1="17" x2="7" y2="7"/><polyline points="7 17 7 7 17 7"/></svg></span>
+          </div>
+        </a>
+        <a href="#form" class="fiq-showcase-card" data-showcase-card style="flex:0 0 auto;width:clamp(260px,24vw,340px);height:calc(clamp(260px,24vw,340px) * 10 / 11 + 100px);scroll-snap-align:start;display:block;position:relative;background:#FFFFFF;padding:10px;border-radius:clamp(16px,1.8vw,24px);text-decoration:none;box-sizing:border-box;">
+          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=700&q=40" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;border-radius:calc(clamp(16px,1.8vw,24px) - 10px);">
+          <div style="position:absolute;bottom:18px;left:18px;width:68%;background:rgba(255,255,255,0.8);border-radius:8px;padding:14px 16px;box-sizing:border-box;display:flex;flex-direction:column;gap:14px;">
+            <span style="font-family:'GE SS Two',sans-serif;font-size:clamp(14px,1.1vw,16px);font-weight:500;color:#1F1F1F;line-height:1.5;">عندي مساحة (عظم) وأبحث عن تشطيب (Fit-out) وتأثيث فاخر.</span>
+            <span style="font-family:'GE SS Two',sans-serif;font-size:11px;color:#5B4636;display:inline-flex;align-items:center;gap:6px;">احصل على استشارة <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#5B4636" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="17" y1="17" x2="7" y2="7"/><polyline points="7 17 7 7 17 7"/></svg></span>
+          </div>
+        </a>
+        <a href="#form" class="fiq-showcase-card" data-showcase-clone aria-hidden="true" tabindex="-1" data-showcase-card style="flex:0 0 auto;width:clamp(260px,24vw,340px);height:calc(clamp(260px,24vw,340px) * 10 / 11 + 100px);scroll-snap-align:start;display:block;position:relative;background:#FFFFFF;padding:10px;border-radius:clamp(16px,1.8vw,24px);text-decoration:none;box-sizing:border-box;">
+          <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=700&q=40" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;border-radius:calc(clamp(16px,1.8vw,24px) - 10px);">
+          <div style="position:absolute;bottom:18px;left:18px;width:68%;background:rgba(255,255,255,0.8);border-radius:8px;padding:14px 16px;box-sizing:border-box;display:flex;flex-direction:column;gap:14px;">
+            <span style="font-family:'GE SS Two',sans-serif;font-size:clamp(14px,1.1vw,16px);font-weight:500;color:#1F1F1F;line-height:1.5;">أبغى تجهيز مساحتي بالكامل.. من التصميم إلى تسليم المفتاح.</span>
+            <span style="font-family:'GE SS Two',sans-serif;font-size:11px;color:#5B4636;display:inline-flex;align-items:center;gap:6px;">احصل على استشارة <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#5B4636" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="17" y1="17" x2="7" y2="7"/><polyline points="7 17 7 7 17 7"/></svg></span>
+          </div>
+        </a>
+        <a href="#services-overview" class="fiq-showcase-card" data-showcase-clone aria-hidden="true" tabindex="-1" data-showcase-card style="flex:0 0 auto;width:clamp(260px,24vw,340px);height:calc(clamp(260px,24vw,340px) * 10 / 11 + 100px);scroll-snap-align:start;display:block;position:relative;background:#FFFFFF;padding:10px;border-radius:clamp(16px,1.8vw,24px);text-decoration:none;box-sizing:border-box;">
+          <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=700&q=40" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;border-radius:calc(clamp(16px,1.8vw,24px) - 10px);">
+          <div style="position:absolute;bottom:18px;left:18px;width:68%;background:rgba(255,255,255,0.8);border-radius:8px;padding:14px 16px;box-sizing:border-box;display:flex;flex-direction:column;gap:14px;">
+            <span style="font-family:'GE SS Two',sans-serif;font-size:clamp(14px,1.1vw,16px);font-weight:500;color:#1F1F1F;line-height:1.5;">أبغى تصميم داخلي.</span>
+            <span style="font-family:'GE SS Two',sans-serif;font-size:11px;color:#5B4636;display:inline-flex;align-items:center;gap:6px;">اكتشف الخدمة <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#5B4636" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="17" y1="17" x2="7" y2="7"/><polyline points="7 17 7 7 17 7"/></svg></span>
+          </div>
+        </a>
+        <a href="#form" class="fiq-showcase-card" data-showcase-clone aria-hidden="true" tabindex="-1" data-showcase-card style="flex:0 0 auto;width:clamp(260px,24vw,340px);height:calc(clamp(260px,24vw,340px) * 10 / 11 + 100px);scroll-snap-align:start;display:block;position:relative;background:#FFFFFF;padding:10px;border-radius:clamp(16px,1.8vw,24px);text-decoration:none;box-sizing:border-box;">
+          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=700&q=40" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;border-radius:calc(clamp(16px,1.8vw,24px) - 10px);">
+          <div style="position:absolute;bottom:18px;left:18px;width:68%;background:rgba(255,255,255,0.8);border-radius:8px;padding:14px 16px;box-sizing:border-box;display:flex;flex-direction:column;gap:14px;">
+            <span style="font-family:'GE SS Two',sans-serif;font-size:clamp(14px,1.1vw,16px);font-weight:500;color:#1F1F1F;line-height:1.5;">عندي مساحة (عظم) وأبحث عن تشطيب (Fit-out) وتأثيث فاخر.</span>
+            <span style="font-family:'GE SS Two',sans-serif;font-size:11px;color:#5B4636;display:inline-flex;align-items:center;gap:6px;">احصل على استشارة <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#5B4636" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="17" y1="17" x2="7" y2="7"/><polyline points="7 17 7 7 17 7"/></svg></span>
+          </div>
+        </a>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ SERVICE ━━ -->
-<section id="service" data-screen-label="Service Package" style="background:#F5F2ED;padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px);">
-  <div style="max-width:900px;margin:0 auto;text-align:center;">
-    <span data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:block;font-family:'GE SS Two',sans-serif;font-size:10px;letter-spacing:normal;text-transform:uppercase;color:#8B6B4A;margin-bottom:18px;">الباقة</span>
-    <h2 data-reveal data-reveal-delay="0.08" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'GE SS Two',sans-serif;font-size:clamp(28px,3.2vw,44px);font-weight:500;color:#1F1F1F;line-height:1.15;letter-spacing:normal;margin-bottom:24px;text-wrap:balance;">الباقة الهندسية المتكاملة (تسليم مفتاح)</h2>
-    <p data-reveal data-reveal-delay="0.16" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'GE SS Two',sans-serif;font-size:16px;color:#5B4636;line-height:1.6;margin-bottom:8px;">ندير كافة مراحل تجهيز مساحتك من الفكرة إلى الواقع.</p>
-    <p data-reveal data-reveal-delay="0.2" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'GE SS Two',sans-serif;font-size:16px;color:#1F1F1F;font-weight:500;margin-bottom:8px;">باقات التصميم الداخلي السكني فقط تبدأ من 29.99 ريال/م&sup2;.</p>
-    <p data-reveal data-reveal-delay="0.24" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'GE SS Two',sans-serif;font-size:13px;color:#8B6B4A;line-height:1.6;margin-bottom:48px;">(يتم تقديم عروض منفصلة لخدمات التنفيذ، التشطيبات، والتأثيث حسب نطاق ومتطلبات مشروعك).</p>
-    <div class="fiq-service-inclusions" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;text-align:right;margin-bottom:48px;">
-      <div data-reveal style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);background:#FFFFFF;padding:28px;">
-        <h3 style="font-family:'GE SS Two',sans-serif;font-size:15px;font-weight:500;color:#1F1F1F;margin-bottom:10px;">تصميم داخلي 3D واقعي</h3>
-        <p style="font-family:'GE SS Two',sans-serif;font-size:14px;color:#5B4636;line-height:1.6;">مساحات مصممة بذكاء لتعكس هويتك، تلبي احتياجك الفعلي، وترتقي بأسلوب حياتك.</p>
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ SERVICES ━━ -->
+<section id="services-overview" data-screen-label="Services" style="background:#1F1F1F;padding:clamp(80px,10vw,128px) 0;overflow:hidden;">
+  <div style="max-width:1280px;margin:0 auto;padding:0 clamp(24px,5vw,80px);box-sizing:content-box;">
+    <div class="fiq-svc-head" style="display:grid;grid-template-columns:1.3fr 1fr;column-gap:clamp(32px,5vw,80px);row-gap:clamp(32px,3.4vw,48px);align-items:start;margin-bottom:clamp(40px,4.4vw,64px);">
+      <div data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);">
+        <span style="display:inline-block;font-family:'GE SS Two',sans-serif;font-size:11px;color:#FFFFFF;border:1px solid rgba(255,255,255,0.45);border-radius:999px;padding:7px 16px;margin-bottom:28px;"><span dir="ltr">02</span> - الباقة</span>
+        <h2 style="font-family:'GE SS Two',sans-serif;font-size:clamp(30px,3.3vw,48px);font-weight:500;color:#FFFFFF;line-height:1.2;margin:0;">الباقة الهندسية المتكاملة<br><span style="color:#D6C2A8;">(تسليم مفتاح)</span></h2>
       </div>
-      <div data-reveal data-reveal-delay="0.08" style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);background:#FFFFFF;padding:28px;">
-        <h3 style="font-family:'GE SS Two',sans-serif;font-size:15px;font-weight:500;color:#1F1F1F;margin-bottom:10px;">تنفيذ وتشطيبات (Fit-out) فاخرة</h3>
-        <p style="font-family:'GE SS Two',sans-serif;font-size:14px;color:#5B4636;line-height:1.6;">نترجم المخططات على أرض الواقع باستخدام أرقى الخامات، وتحت إشراف هندسي صارم يلتزم بأعلى معايير الجودة.</p>
+      <div data-reveal data-reveal-delay="0.08" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);margin-top:clamp(0px,4vw,60px);max-width:520px;">
+        <p style="font-family:'GE SS Two',sans-serif;font-size:clamp(15px,1.25vw,17px);color:#FFFFFF;line-height:1.75;margin:0 0 14px;">ندير كافة مراحل تجهيز مساحتك من الفكرة إلى الواقع. <span style="color:rgba(255,255,255,0.5);">باقات التصميم الداخلي السكني فقط تبدأ من 29.99 ريال/م&sup2;.</span></p>
+        <p style="font-family:'GE SS Two',sans-serif;font-size:12px;color:rgba(255,255,255,0.4);line-height:1.7;margin:0;">(يتم تقديم عروض منفصلة لخدمات التنفيذ، التشطيبات، والتأثيث حسب نطاق ومتطلبات مشروعك).</p>
       </div>
-      <div data-reveal data-reveal-delay="0.16" style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);background:#FFFFFF;padding:28px;">
-        <h3 style="font-family:'GE SS Two',sans-serif;font-size:15px;font-weight:500;color:#1F1F1F;margin-bottom:10px;">توريد وتأثيث متكامل</h3>
-        <p style="font-family:'GE SS Two',sans-serif;font-size:14px;color:#5B4636;line-height:1.6;">نكمل أناقة مساحتك بقطع أثاث فريدة، تتطابق بنسبة 100% مع التصميم المعتمد وأبعاد المكان.</p>
+      <div style="display:flex;align-items:center;gap:20px;min-height:44px;">
+        <div style="display:flex;gap:12px;">
+          <button type="button" class="fiq-svc-btn" data-svc-prev aria-label="السابق" style="width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,0.3);background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+          <button type="button" class="fiq-svc-btn" data-svc-next aria-label="التالي" style="width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,0.7);background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+        </div>
+        <span style="font-family:'GE SS Two',sans-serif;font-size:13px;color:rgba(255,255,255,0.6);">الباقة تشمل:</span>
+      </div>
+      <div>
+        <a href="#form" class="fiq-svc-cta" style="display:inline-flex;align-items:center;gap:18px;font-family:'GE SS Two',sans-serif;font-size:13px;color:#FFFFFF;text-decoration:none;border:1px solid rgba(255,255,255,0.5);border-radius:999px;padding:5px;padding-inline-start:22px;">
+          احصل على استشارة هندسية مجانية الان
+          <span style="flex-shrink:0;width:36px;height:36px;border-radius:50%;background:#FFFFFF;display:flex;align-items:center;justify-content:center;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1F1F1F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="17" y1="17" x2="7" y2="7"/><polyline points="7 17 7 7 17 7"/></svg>
+          </span>
+        </a>
       </div>
     </div>
-    <a href="#form" data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:inline-block;font-family:'GE SS Two',sans-serif;font-size:11px;letter-spacing:normal;text-transform:uppercase;color:#FFFFFF;background:#3A2D25;padding:19px 40px;border:1px solid #3A2D25;text-decoration:none;">احصل على استشارة هندسية مجانية الان</a>
+    <div class="fiq-svc-track" data-svc-track data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;align-items:flex-start;gap:clamp(16px,1.8vw,24px);overflow-x:auto;scroll-behavior:smooth;">
+        <a href="/ar/services-interior-design" class="fiq-svc-card" data-svc-card data-svc-clone aria-hidden="true" tabindex="-1" data-svc-i="1" style="flex:0 0 auto;width:clamp(270px,32vw,460px);display:block;text-decoration:none;">
+          <div style="overflow:hidden;border-radius:10px;aspect-ratio:6/5;background:#2A2522;margin-bottom:18px;">
+            <img src="https://images.unsplash.com/photo-1615874959474-d609969a20ed?auto=format&fit=crop&w=900&q=40" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:10px;">
+            <h3 style="font-family:'GE SS Two',sans-serif;font-size:clamp(15px,1.25vw,18px);font-weight:500;color:#FFFFFF;line-height:1.35;margin:0;">تصميم داخلي 3D واقعي</h3>
+            <span style="font-family:'GE SS Two',sans-serif;font-size:13px;color:rgba(255,255,255,0.7);flex-shrink:0;" dir="ltr">/01</span>
+          </div>
+          <p style="font-family:'GE SS Two',sans-serif;font-size:13px;color:rgba(255,255,255,0.55);line-height:1.7;margin:0;max-width:400px;">مساحات مصممة بذكاء لتعكس هويتك، تلبي احتياجك الفعلي، وترتقي بأسلوب حياتك.</p>
+        </a>
+        <a href="/ar/services-fitout" class="fiq-svc-card" data-svc-card data-svc-clone aria-hidden="true" tabindex="-1" data-svc-i="2" style="flex:0 0 auto;width:clamp(270px,32vw,460px);display:block;text-decoration:none;">
+          <div style="overflow:hidden;border-radius:10px;aspect-ratio:6/5;background:#2A2522;margin-bottom:18px;">
+            <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=900&q=40" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:10px;">
+            <h3 style="font-family:'GE SS Two',sans-serif;font-size:clamp(15px,1.25vw,18px);font-weight:500;color:#FFFFFF;line-height:1.35;margin:0;">تنفيذ وتشطيبات (Fit-out) فاخرة</h3>
+            <span style="font-family:'GE SS Two',sans-serif;font-size:13px;color:rgba(255,255,255,0.7);flex-shrink:0;" dir="ltr">/02</span>
+          </div>
+          <p style="font-family:'GE SS Two',sans-serif;font-size:13px;color:rgba(255,255,255,0.55);line-height:1.7;margin:0;max-width:400px;">نترجم المخططات على أرض الواقع باستخدام أرقى الخامات، وتحت إشراف هندسي صارم يلتزم بأعلى معايير الجودة.</p>
+        </a>
+        <a href="/ar/services-furniture" class="fiq-svc-card" data-svc-card data-svc-clone aria-hidden="true" tabindex="-1" data-svc-i="3" style="flex:0 0 auto;width:clamp(270px,32vw,460px);display:block;text-decoration:none;">
+          <div style="overflow:hidden;border-radius:10px;aspect-ratio:6/5;background:#2A2522;margin-bottom:18px;">
+            <img src="https://images.unsplash.com/photo-1567016432779-094069958ea5?auto=format&fit=crop&w=900&q=40" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:10px;">
+            <h3 style="font-family:'GE SS Two',sans-serif;font-size:clamp(15px,1.25vw,18px);font-weight:500;color:#FFFFFF;line-height:1.35;margin:0;">توريد وتأثيث متكامل</h3>
+            <span style="font-family:'GE SS Two',sans-serif;font-size:13px;color:rgba(255,255,255,0.7);flex-shrink:0;" dir="ltr">/03</span>
+          </div>
+          <p style="font-family:'GE SS Two',sans-serif;font-size:13px;color:rgba(255,255,255,0.55);line-height:1.7;margin:0;max-width:400px;">نكمل أناقة مساحتك بقطع أثاث فريدة، تتطابق بنسبة 100% مع التصميم المعتمد وأبعاد المكان.</p>
+        </a>
+        <a href="/ar/services-interior-design" class="fiq-svc-card" data-svc-card data-svc-i="1" style="flex:0 0 auto;width:clamp(270px,32vw,460px);display:block;text-decoration:none;">
+          <div style="overflow:hidden;border-radius:10px;aspect-ratio:6/5;background:#2A2522;margin-bottom:18px;">
+            <img src="https://images.unsplash.com/photo-1615874959474-d609969a20ed?auto=format&fit=crop&w=900&q=40" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:10px;">
+            <h3 style="font-family:'GE SS Two',sans-serif;font-size:clamp(15px,1.25vw,18px);font-weight:500;color:#FFFFFF;line-height:1.35;margin:0;">تصميم داخلي 3D واقعي</h3>
+            <span style="font-family:'GE SS Two',sans-serif;font-size:13px;color:rgba(255,255,255,0.7);flex-shrink:0;" dir="ltr">/01</span>
+          </div>
+          <p style="font-family:'GE SS Two',sans-serif;font-size:13px;color:rgba(255,255,255,0.55);line-height:1.7;margin:0;max-width:400px;">مساحات مصممة بذكاء لتعكس هويتك، تلبي احتياجك الفعلي، وترتقي بأسلوب حياتك.</p>
+        </a>
+        <a href="/ar/services-fitout" class="fiq-svc-card" data-svc-card data-svc-i="2" style="flex:0 0 auto;width:clamp(270px,32vw,460px);display:block;text-decoration:none;">
+          <div style="overflow:hidden;border-radius:10px;aspect-ratio:6/5;background:#2A2522;margin-bottom:18px;">
+            <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=900&q=40" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:10px;">
+            <h3 style="font-family:'GE SS Two',sans-serif;font-size:clamp(15px,1.25vw,18px);font-weight:500;color:#FFFFFF;line-height:1.35;margin:0;">تنفيذ وتشطيبات (Fit-out) فاخرة</h3>
+            <span style="font-family:'GE SS Two',sans-serif;font-size:13px;color:rgba(255,255,255,0.7);flex-shrink:0;" dir="ltr">/02</span>
+          </div>
+          <p style="font-family:'GE SS Two',sans-serif;font-size:13px;color:rgba(255,255,255,0.55);line-height:1.7;margin:0;max-width:400px;">نترجم المخططات على أرض الواقع باستخدام أرقى الخامات، وتحت إشراف هندسي صارم يلتزم بأعلى معايير الجودة.</p>
+        </a>
+        <a href="/ar/services-furniture" class="fiq-svc-card" data-svc-card data-svc-i="3" style="flex:0 0 auto;width:clamp(270px,32vw,460px);display:block;text-decoration:none;">
+          <div style="overflow:hidden;border-radius:10px;aspect-ratio:6/5;background:#2A2522;margin-bottom:18px;">
+            <img src="https://images.unsplash.com/photo-1567016432779-094069958ea5?auto=format&fit=crop&w=900&q=40" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:10px;">
+            <h3 style="font-family:'GE SS Two',sans-serif;font-size:clamp(15px,1.25vw,18px);font-weight:500;color:#FFFFFF;line-height:1.35;margin:0;">توريد وتأثيث متكامل</h3>
+            <span style="font-family:'GE SS Two',sans-serif;font-size:13px;color:rgba(255,255,255,0.7);flex-shrink:0;" dir="ltr">/03</span>
+          </div>
+          <p style="font-family:'GE SS Two',sans-serif;font-size:13px;color:rgba(255,255,255,0.55);line-height:1.7;margin:0;max-width:400px;">نكمل أناقة مساحتك بقطع أثاث فريدة، تتطابق بنسبة 100% مع التصميم المعتمد وأبعاد المكان.</p>
+        </a>
+        <a href="/ar/services-interior-design" class="fiq-svc-card" data-svc-card data-svc-clone aria-hidden="true" tabindex="-1" data-svc-i="1" style="flex:0 0 auto;width:clamp(270px,32vw,460px);display:block;text-decoration:none;">
+          <div style="overflow:hidden;border-radius:10px;aspect-ratio:6/5;background:#2A2522;margin-bottom:18px;">
+            <img src="https://images.unsplash.com/photo-1615874959474-d609969a20ed?auto=format&fit=crop&w=900&q=40" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:10px;">
+            <h3 style="font-family:'GE SS Two',sans-serif;font-size:clamp(15px,1.25vw,18px);font-weight:500;color:#FFFFFF;line-height:1.35;margin:0;">تصميم داخلي 3D واقعي</h3>
+            <span style="font-family:'GE SS Two',sans-serif;font-size:13px;color:rgba(255,255,255,0.7);flex-shrink:0;" dir="ltr">/01</span>
+          </div>
+          <p style="font-family:'GE SS Two',sans-serif;font-size:13px;color:rgba(255,255,255,0.55);line-height:1.7;margin:0;max-width:400px;">مساحات مصممة بذكاء لتعكس هويتك، تلبي احتياجك الفعلي، وترتقي بأسلوب حياتك.</p>
+        </a>
+        <a href="/ar/services-fitout" class="fiq-svc-card" data-svc-card data-svc-clone aria-hidden="true" tabindex="-1" data-svc-i="2" style="flex:0 0 auto;width:clamp(270px,32vw,460px);display:block;text-decoration:none;">
+          <div style="overflow:hidden;border-radius:10px;aspect-ratio:6/5;background:#2A2522;margin-bottom:18px;">
+            <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=900&q=40" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:10px;">
+            <h3 style="font-family:'GE SS Two',sans-serif;font-size:clamp(15px,1.25vw,18px);font-weight:500;color:#FFFFFF;line-height:1.35;margin:0;">تنفيذ وتشطيبات (Fit-out) فاخرة</h3>
+            <span style="font-family:'GE SS Two',sans-serif;font-size:13px;color:rgba(255,255,255,0.7);flex-shrink:0;" dir="ltr">/02</span>
+          </div>
+          <p style="font-family:'GE SS Two',sans-serif;font-size:13px;color:rgba(255,255,255,0.55);line-height:1.7;margin:0;max-width:400px;">نترجم المخططات على أرض الواقع باستخدام أرقى الخامات، وتحت إشراف هندسي صارم يلتزم بأعلى معايير الجودة.</p>
+        </a>
+        <a href="/ar/services-furniture" class="fiq-svc-card" data-svc-card data-svc-clone aria-hidden="true" tabindex="-1" data-svc-i="3" style="flex:0 0 auto;width:clamp(270px,32vw,460px);display:block;text-decoration:none;">
+          <div style="overflow:hidden;border-radius:10px;aspect-ratio:6/5;background:#2A2522;margin-bottom:18px;">
+            <img src="https://images.unsplash.com/photo-1567016432779-094069958ea5?auto=format&fit=crop&w=900&q=40" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:10px;">
+            <h3 style="font-family:'GE SS Two',sans-serif;font-size:clamp(15px,1.25vw,18px);font-weight:500;color:#FFFFFF;line-height:1.35;margin:0;">توريد وتأثيث متكامل</h3>
+            <span style="font-family:'GE SS Two',sans-serif;font-size:13px;color:rgba(255,255,255,0.7);flex-shrink:0;" dir="ltr">/03</span>
+          </div>
+          <p style="font-family:'GE SS Two',sans-serif;font-size:13px;color:rgba(255,255,255,0.55);line-height:1.7;margin:0;max-width:400px;">نكمل أناقة مساحتك بقطع أثاث فريدة، تتطابق بنسبة 100% مع التصميم المعتمد وأبعاد المكان.</p>
+        </a>
+      </div>
   </div>
 </section>
 
-<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ MEDIA ━━ -->
-<section id="media" data-screen-label="Media" style="position:relative;background:#1F1F1F;min-height:60vh;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px);">
-  <div style="position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=2400&q=30');background-size:cover;background-position:center;opacity:0.5;pointer-events:none;"></div>
-  <div style="position:relative;z-index:1;max-width:760px;text-align:center;">
-    <div data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);width:76px;height:76px;border:1px solid rgba(255,255,255,0.6);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 36px;">
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M8 5v14l11-7z"/></svg>
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ VIDEO ━━ -->
+<section id="video-showcase" data-screen-label="Video" style="background:#FFFFFF;padding:clamp(80px,10vw,128px) 0;overflow:hidden;">
+  <div style="max-width:1280px;margin:0 auto;padding:0 clamp(24px,5vw,80px);box-sizing:content-box;">
+    <div class="fiq-vid-grid" style="display:grid;grid-template-columns:0.8fr 1.2fr;gap:clamp(40px,5vw,72px);align-items:center;">
+      <div data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);">
+        <h2 style="font-family:'GE SS Two',sans-serif;font-size:clamp(28px,3vw,42px);font-weight:500;color:#1F1F1F;line-height:1.3;margin:0 0 20px;">تصميم تراه.. وواقع تعيش فخامته</h2>
+        <p style="font-family:'GE SS Two',sans-serif;font-size:15px;color:#5B4636;line-height:1.85;margin:0 0 32px;">شاهد كيف نترجم المخططات الهندسية إلى مساحات تنبض بالحياة. في فيرنيش آي كيو، نحن لا نبيعك مجرد أفكار خيالية، بل نلتزم بتقديم منظومة متكاملة تبدأ من التصميم الداخلي المدروس، وتمر بتأسيس الأنظمة (MEP) والتشطيبات الفاخرة، لتنتهي بتأثيث مساحتك بتطابق تام بنسبة 100% مع المخطط المعتمد.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a href="#form" class="fiq-vid-btn-primary" style="font-family:'GE SS Two',sans-serif;font-size:12px;color:#FFFFFF;background:#3A2D25;border:1px solid #3A2D25;padding:14px 26px;text-decoration:none;">احجز استشارتك الهندسية</a>
+          <a href="#projects-showcase" class="fiq-vid-btn-secondary" style="font-family:'GE SS Two',sans-serif;font-size:12px;color:#1F1F1F;background:transparent;border:1px solid #D6C2A8;padding:14px 26px;text-decoration:none;">شاهد أعمالنا</a>
+        </div>
+      </div>
+      <div class="fiq-vid-col" data-reveal data-reveal-delay="0.08" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);">
+        <div class="fiq-vid-track" data-vid-track style="display:flex;gap:16px;overflow-x:auto;scroll-behavior:smooth;margin-inline-end:calc(-1 * max(clamp(24px,5vw,80px),calc((100vw - 1280px) / 2)));padding-inline-end:max(clamp(24px,5vw,80px),calc((100vw - 1280px) / 2));">
+          <div class="fiq-vid-slide" data-vid-slide data-vid-clone aria-hidden="true" data-vid-i="0" data-video-src="" style="flex:0 0 auto;position:relative;aspect-ratio:16/11;background:#1F1F1F;overflow:hidden;">
+            <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1200&q=40" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+            <div style="position:absolute;inset:0;background:rgba(31,31,31,0.28);pointer-events:none;"></div>
+            <button type="button" class="fiq-vid-play" data-vid-play tabindex="-1" aria-label="تشغيل الفيديو 1" style="position:absolute;top:50%;left:50%;width:68px;height:68px;margin:-34px 0 0 -34px;border-radius:50%;border:none;background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="#1F1F1F" style="margin-left:3px;"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+          </div>
+          <div class="fiq-vid-slide" data-vid-slide data-vid-clone aria-hidden="true" data-vid-i="1" data-video-src="" style="flex:0 0 auto;position:relative;aspect-ratio:16/11;background:#1F1F1F;overflow:hidden;">
+            <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=40" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+            <div style="position:absolute;inset:0;background:rgba(31,31,31,0.28);pointer-events:none;"></div>
+            <button type="button" class="fiq-vid-play" data-vid-play tabindex="-1" aria-label="تشغيل الفيديو 2" style="position:absolute;top:50%;left:50%;width:68px;height:68px;margin:-34px 0 0 -34px;border-radius:50%;border:none;background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="#1F1F1F" style="margin-left:3px;"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+          </div>
+          <div class="fiq-vid-slide" data-vid-slide data-vid-clone aria-hidden="true" data-vid-i="2" data-video-src="" style="flex:0 0 auto;position:relative;aspect-ratio:16/11;background:#1F1F1F;overflow:hidden;">
+            <img src="https://images.unsplash.com/photo-1613977257365-aaae5a9817ff?auto=format&fit=crop&w=1200&q=40" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+            <div style="position:absolute;inset:0;background:rgba(31,31,31,0.28);pointer-events:none;"></div>
+            <button type="button" class="fiq-vid-play" data-vid-play tabindex="-1" aria-label="تشغيل الفيديو 3" style="position:absolute;top:50%;left:50%;width:68px;height:68px;margin:-34px 0 0 -34px;border-radius:50%;border:none;background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="#1F1F1F" style="margin-left:3px;"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+          </div>
+          <div class="fiq-vid-slide" data-vid-slide data-vid-i="0" data-video-src="" style="flex:0 0 auto;position:relative;aspect-ratio:16/11;background:#1F1F1F;overflow:hidden;">
+            <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1200&q=40" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+            <div style="position:absolute;inset:0;background:rgba(31,31,31,0.28);pointer-events:none;"></div>
+            <button type="button" class="fiq-vid-play" data-vid-play aria-label="تشغيل الفيديو 1" style="position:absolute;top:50%;left:50%;width:68px;height:68px;margin:-34px 0 0 -34px;border-radius:50%;border:none;background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="#1F1F1F" style="margin-left:3px;"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+          </div>
+          <div class="fiq-vid-slide" data-vid-slide data-vid-i="1" data-video-src="" style="flex:0 0 auto;position:relative;aspect-ratio:16/11;background:#1F1F1F;overflow:hidden;">
+            <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=40" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+            <div style="position:absolute;inset:0;background:rgba(31,31,31,0.28);pointer-events:none;"></div>
+            <button type="button" class="fiq-vid-play" data-vid-play aria-label="تشغيل الفيديو 2" style="position:absolute;top:50%;left:50%;width:68px;height:68px;margin:-34px 0 0 -34px;border-radius:50%;border:none;background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="#1F1F1F" style="margin-left:3px;"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+          </div>
+          <div class="fiq-vid-slide" data-vid-slide data-vid-i="2" data-video-src="" style="flex:0 0 auto;position:relative;aspect-ratio:16/11;background:#1F1F1F;overflow:hidden;">
+            <img src="https://images.unsplash.com/photo-1613977257365-aaae5a9817ff?auto=format&fit=crop&w=1200&q=40" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+            <div style="position:absolute;inset:0;background:rgba(31,31,31,0.28);pointer-events:none;"></div>
+            <button type="button" class="fiq-vid-play" data-vid-play aria-label="تشغيل الفيديو 3" style="position:absolute;top:50%;left:50%;width:68px;height:68px;margin:-34px 0 0 -34px;border-radius:50%;border:none;background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="#1F1F1F" style="margin-left:3px;"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+          </div>
+          <div class="fiq-vid-slide" data-vid-slide data-vid-clone aria-hidden="true" data-vid-i="0" data-video-src="" style="flex:0 0 auto;position:relative;aspect-ratio:16/11;background:#1F1F1F;overflow:hidden;">
+            <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1200&q=40" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+            <div style="position:absolute;inset:0;background:rgba(31,31,31,0.28);pointer-events:none;"></div>
+            <button type="button" class="fiq-vid-play" data-vid-play tabindex="-1" aria-label="تشغيل الفيديو 1" style="position:absolute;top:50%;left:50%;width:68px;height:68px;margin:-34px 0 0 -34px;border-radius:50%;border:none;background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="#1F1F1F" style="margin-left:3px;"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+          </div>
+          <div class="fiq-vid-slide" data-vid-slide data-vid-clone aria-hidden="true" data-vid-i="1" data-video-src="" style="flex:0 0 auto;position:relative;aspect-ratio:16/11;background:#1F1F1F;overflow:hidden;">
+            <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=40" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+            <div style="position:absolute;inset:0;background:rgba(31,31,31,0.28);pointer-events:none;"></div>
+            <button type="button" class="fiq-vid-play" data-vid-play tabindex="-1" aria-label="تشغيل الفيديو 2" style="position:absolute;top:50%;left:50%;width:68px;height:68px;margin:-34px 0 0 -34px;border-radius:50%;border:none;background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="#1F1F1F" style="margin-left:3px;"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+          </div>
+          <div class="fiq-vid-slide" data-vid-slide data-vid-clone aria-hidden="true" data-vid-i="2" data-video-src="" style="flex:0 0 auto;position:relative;aspect-ratio:16/11;background:#1F1F1F;overflow:hidden;">
+            <img src="https://images.unsplash.com/photo-1613977257365-aaae5a9817ff?auto=format&fit=crop&w=1200&q=40" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+            <div style="position:absolute;inset:0;background:rgba(31,31,31,0.28);pointer-events:none;"></div>
+            <button type="button" class="fiq-vid-play" data-vid-play tabindex="-1" aria-label="تشغيل الفيديو 3" style="position:absolute;top:50%;left:50%;width:68px;height:68px;margin:-34px 0 0 -34px;border-radius:50%;border:none;background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="#1F1F1F" style="margin-left:3px;"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-top:24px;">
+          <div style="display:flex;gap:6px;align-items:center;">
+            <button type="button" class="fiq-vid-dot" data-vid-dot="0" aria-label="الفيديو 1" style="width:6px;height:6px;border-radius:999px;border:none;padding:0;background:#1F1F1F;cursor:pointer;"></button>
+            <button type="button" class="fiq-vid-dot" data-vid-dot="1" aria-label="الفيديو 2" style="width:6px;height:6px;border-radius:999px;border:none;padding:0;background:#B8A08C;cursor:pointer;"></button>
+            <button type="button" class="fiq-vid-dot" data-vid-dot="2" aria-label="الفيديو 3" style="width:6px;height:6px;border-radius:999px;border:none;padding:0;background:#B8A08C;cursor:pointer;"></button>
+          </div>
+          <div style="display:flex;gap:10px;">
+            <button type="button" class="fiq-vid-arrow" data-vid-prev aria-label="السابق" style="width:36px;height:36px;border-radius:50%;border:1px solid #B8A08C;background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1F1F1F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+            <button type="button" class="fiq-vid-arrow" data-vid-next aria-label="التالي" style="width:36px;height:36px;border-radius:50%;border:1px solid #B8A08C;background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1F1F1F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
-    <h2 data-reveal data-reveal-delay="0.08" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'GE SS Two',sans-serif;font-size:clamp(26px,3vw,40px);font-weight:500;color:#FFFFFF;line-height:1.2;margin-bottom:20px;text-wrap:balance;">تصميم تراه.. وواقع تعيش فخامته</h2>
-    <p data-reveal data-reveal-delay="0.16" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'GE SS Two',sans-serif;font-size:15px;color:rgba(255,255,255,0.82);line-height:1.7;margin-bottom:32px;">شاهد كيف نترجم المخططات الهندسية إلى مساحات تنبض بالحياة. في فرينيش آي كيو، نحن لا نبيعك مجرد أفكار خيالية، بل نلتزم بتقديم منظومة متكاملة تبدأ من التصميم الداخلي المدروس، وتمر بتأسيس الأنظمة (MEP) والتشطيبات الفاخرة، لتنتهي بتأثيث مساحتك بتطابق تام بنسبة 100% مع المخطط المعتمد.</p>
-    <a href="#form" data-reveal data-reveal-delay="0.24" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:inline-block;font-family:'GE SS Two',sans-serif;font-size:11px;letter-spacing:normal;text-transform:uppercase;color:#1F1F1F;background:#D6C2A8;padding:19px 36px;border:1px solid #D6C2A8;text-decoration:none;">احجز استشارتك الهندسية</a>
   </div>
 </section>
 
-<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ OUR WORK ━━ -->
-<section id="work" data-screen-label="Our Work" style="background:#FFFFFF;padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px);">
-  <div style="max-width:1280px;margin:0 auto;">
-    <div style="text-align:center;margin-bottom:56px;">
-      <h2 data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'GE SS Two',sans-serif;font-size:clamp(28px,3.2vw,44px);font-weight:500;color:#1F1F1F;margin-bottom:14px;">أعمال صُممت لتُعاش</h2>
-      <p data-reveal data-reveal-delay="0.08" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'GE SS Two',sans-serif;font-size:16px;color:#5B4636;">شوف كيف تتحول أفكارنا إلى مشاريع</p>
-    </div>
-    <div class="fiq-work-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;">
-      <a href="/ar/projects" data-reveal style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:block;aspect-ratio:3/4;background-image:url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=900&q=30');background-size:cover;background-position:center;"></a>
-      <a href="/ar/projects" data-reveal data-reveal-delay="0.06" style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:block;aspect-ratio:3/4;background-image:url('https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=900&q=30');background-size:cover;background-position:center;"></a>
-      <a href="/ar/projects" data-reveal data-reveal-delay="0.12" style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:block;aspect-ratio:3/4;background-image:url('https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=900&q=30');background-size:cover;background-position:center;"></a>
-      <a href="/ar/projects" data-reveal data-reveal-delay="0.18" style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:block;aspect-ratio:3/4;background-image:url('https://images.unsplash.com/photo-1604328698692-f76ea9498e76?auto=format&fit=crop&w=900&q=30');background-size:cover;background-position:center;"></a>
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ PROJECTS ━━ -->
+<section id="projects-showcase" data-screen-label="Projects" style="background:#1F1F1F;padding:clamp(80px,10vw,128px) 0;overflow:hidden;">
+  <div style="max-width:1280px;margin:0 auto;padding:0 clamp(24px,5vw,80px);box-sizing:content-box;">
+    <h2 data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'GE SS Two',sans-serif;font-size:clamp(28px,3vw,42px);font-weight:500;color:#FFFFFF;line-height:1.3;margin:0 0 16px;">أعمال صُممت لتُعاش</h2>
+    <p data-reveal data-reveal-delay="0.08" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'GE SS Two',sans-serif;font-size:clamp(15px,1.3vw,18px);color:rgba(255,255,255,0.6);line-height:1.7;margin:0 0 clamp(40px,5vw,72px);">شوف كيف تتحول أفكارنا إلى مشاريع</p>
+  </div>
+  <div class="fiq-prj-track" data-prj-track data-reveal data-reveal-delay="0.12" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;gap:0;overflow-x:auto;padding-inline:8px;">
+      <a href="/ar/projects" class="fiq-prj-card" data-prj-card style="flex:0 0 auto;width:clamp(290px,27vw,420px);display:block;padding:7px;text-decoration:none;box-sizing:border-box;">
+        <img src="https://images.unsplash.com/photo-1613977257365-aaae5a9817ff?auto=format&fit=crop&w=700&q=40" alt="" loading="lazy" draggable="false" style="display:block;width:100%;aspect-ratio:16/10.5;object-fit:cover;margin-bottom:16px;">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;">
+          <span style="font-family:'GE SS Two',sans-serif;font-size:12px;color:#FFFFFF;">الفلل السكنية</span>
+          <span style="font-family:'GE SS Two',sans-serif;font-size:12px;color:rgba(255,255,255,0.7);" dir="ltr">42</span>
+        </div>
+      </a>
+      <a href="/ar/projects" class="fiq-prj-card" data-prj-card style="flex:0 0 auto;width:clamp(290px,27vw,420px);display:block;padding:7px;text-decoration:none;box-sizing:border-box;">
+        <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=700&q=40" alt="" loading="lazy" draggable="false" style="display:block;width:100%;aspect-ratio:16/10.5;object-fit:cover;margin-bottom:16px;">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;">
+          <span style="font-family:'GE SS Two',sans-serif;font-size:12px;color:#FFFFFF;">الشقق</span>
+          <span style="font-family:'GE SS Two',sans-serif;font-size:12px;color:rgba(255,255,255,0.7);" dir="ltr">36</span>
+        </div>
+      </a>
+      <a href="/ar/projects" class="fiq-prj-card" data-prj-card style="flex:0 0 auto;width:clamp(290px,27vw,420px);display:block;padding:7px;text-decoration:none;box-sizing:border-box;">
+        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=700&q=40" alt="" loading="lazy" draggable="false" style="display:block;width:100%;aspect-ratio:16/10.5;object-fit:cover;margin-bottom:16px;">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;">
+          <span style="font-family:'GE SS Two',sans-serif;font-size:12px;color:#FFFFFF;">المكاتب والمقرات</span>
+          <span style="font-family:'GE SS Two',sans-serif;font-size:12px;color:rgba(255,255,255,0.7);" dir="ltr">27</span>
+        </div>
+      </a>
+      <a href="/ar/projects" class="fiq-prj-card" data-prj-card style="flex:0 0 auto;width:clamp(290px,27vw,420px);display:block;padding:7px;text-decoration:none;box-sizing:border-box;">
+        <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=700&q=40" alt="" loading="lazy" draggable="false" style="display:block;width:100%;aspect-ratio:16/10.5;object-fit:cover;margin-bottom:16px;">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;">
+          <span style="font-family:'GE SS Two',sans-serif;font-size:12px;color:#FFFFFF;">المطاعم والمقاهي</span>
+          <span style="font-family:'GE SS Two',sans-serif;font-size:12px;color:rgba(255,255,255,0.7);" dir="ltr">18</span>
+        </div>
+      </a>
+      <a href="/ar/projects" class="fiq-prj-card" data-prj-card style="flex:0 0 auto;width:clamp(290px,27vw,420px);display:block;padding:7px;text-decoration:none;box-sizing:border-box;">
+        <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=700&q=40" alt="" loading="lazy" draggable="false" style="display:block;width:100%;aspect-ratio:16/10.5;object-fit:cover;margin-bottom:16px;">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;">
+          <span style="font-family:'GE SS Two',sans-serif;font-size:12px;color:#FFFFFF;">الفنادق والضيافة</span>
+          <span style="font-family:'GE SS Two',sans-serif;font-size:12px;color:rgba(255,255,255,0.7);" dir="ltr">15</span>
+        </div>
+      </a>
+      <a href="/ar/projects" class="fiq-prj-card" data-prj-card style="flex:0 0 auto;width:clamp(290px,27vw,420px);display:block;padding:7px;text-decoration:none;box-sizing:border-box;">
+        <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=700&q=40" alt="" loading="lazy" draggable="false" style="display:block;width:100%;aspect-ratio:16/10.5;object-fit:cover;margin-bottom:16px;">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;">
+          <span style="font-family:'GE SS Two',sans-serif;font-size:12px;color:#FFFFFF;">المحلات التجارية</span>
+          <span style="font-family:'GE SS Two',sans-serif;font-size:12px;color:rgba(255,255,255,0.7);" dir="ltr">12</span>
+        </div>
+      </a>
+  </div>
+  <div style="padding:0 16px;">
+    <div style="position:relative;height:1px;background:rgba(255,255,255,0.25);margin-top:clamp(48px,5vw,72px);">
+      <div class="fiq-prj-thumb" data-prj-thumb style="position:absolute;top:-1px;inset-inline-start:0;height:3px;width:30%;background:#FFFFFF;"></div>
     </div>
   </div>
 </section>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ USPS ━━ -->
 <section id="usps" data-screen-label="USPs" style="background:#1F1F1F;padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px);">
-  <div style="max-width:1180px;margin:0 auto;">
-    <div class="fiq-usps-card" data-reveal style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:grid;grid-template-columns:1.05fr 0.95fr;gap:clamp(32px,4vw,56px);align-items:center;">
+  <div style="max-width:1280px;margin:0 auto;">
+    <div class="fiq-usps-card" data-reveal style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,8vw,128px);align-items:center;">
       <div>
         <span style="display:block;font-family:'GE SS Two',sans-serif;font-size:11px;letter-spacing:normal;text-transform:uppercase;color:#8FBF9F;margin-bottom:14px;">المزايا</span>
-        <h2 style="font-family:'GE SS Two',sans-serif;font-size:clamp(26px,2.8vw,38px);font-weight:500;color:#FFFFFF;margin-bottom:16px;">ليش تختار فرينيش آي كيو؟</h2>
+        <h2 style="font-family:'GE SS Two',sans-serif;font-size:clamp(26px,2.8vw,38px);font-weight:500;color:#FFFFFF;margin-bottom:16px;">ليش تختار فيرنيش آي كيو؟</h2>
         <p style="font-family:'GE SS Two',sans-serif;font-size:14px;color:rgba(255,255,255,0.62);line-height:1.8;margin-bottom:28px;">مساحتك بالكامل.. تحت إشراف جهة هندسية واحدة لتجربة تسليم مفتاح خالية من التشتت.</p>
         <div style="display:flex;flex-direction:column;gap:16px;">
           <div style="display:flex;align-items:center;gap:12px;">
@@ -694,11 +1081,11 @@ input:focus, select:focus, textarea:focus {
           </div>
         </div>
       </div>
-      <div style="position:relative;">
-        <div style="padding:7px;border:1px solid rgba(214,194,168,0.4);border-radius:48px 14px 14px 14px;">
-          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=30" alt="" style="display:block;width:100%;height:clamp(280px,32vw,380px);object-fit:cover;border-radius:44px 8px 8px 8px;">
+      <div style="position:relative;--fiq-usp-pad:clamp(12px,1.25vw,18px);--fiq-usp-curve:clamp(120px,19vw,280px);">
+        <div style="padding:var(--fiq-usp-pad);background:#2E2824;border-radius:24px var(--fiq-usp-curve) 24px 24px;">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=40" alt="" style="display:block;width:100%;height:calc(clamp(340px,36vw,520px) + 100px);object-fit:cover;border-radius:calc(24px - var(--fiq-usp-pad)) calc(var(--fiq-usp-curve) - var(--fiq-usp-pad)) calc(24px - var(--fiq-usp-pad)) calc(24px - var(--fiq-usp-pad));">
         </div>
-        <div style="position:absolute;bottom:20px;left:20px;right:20px;background:rgba(31,31,31,0.88);backdrop-filter:blur(6px);border-radius:14px;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;">
+        <div style="position:absolute;bottom:calc(var(--fiq-usp-pad) + 20px);left:calc(var(--fiq-usp-pad) + 20px);right:calc(var(--fiq-usp-pad) + 20px);background:rgba(31,31,31,0.88);backdrop-filter:blur(6px);border-radius:14px;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;">
           <div>
             <div style="font-family:'GE SS Two',sans-serif;font-size:13px;font-weight:500;color:#FFFFFF;margin-bottom:6px;">+40 موظف</div>
             <div style="display:flex;align-items:center;gap:6px;">
@@ -718,55 +1105,74 @@ input:focus, select:focus, textarea:focus {
 </section>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ FORM ━━ -->
-<section id="form" data-screen-label="Form" style="background:#F5F2ED;padding:clamp(80px,10vw,136px) clamp(24px,5vw,80px);">
-  <div style="max-width:560px;margin:0 auto;">
-    <div style="text-align:center;margin-bottom:44px;">
-      <h2 data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'GE SS Two',sans-serif;font-size:clamp(28px,3.2vw,44px);font-weight:500;color:#1F1F1F;margin-bottom:16px;text-wrap:balance;">جاهز تبدأ رحلة تجهيز مساحتك؟</h2>
-      <p data-reveal data-reveal-delay="0.08" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'GE SS Two',sans-serif;font-size:15px;color:#5B4636;line-height:1.7;">سواء كنت تبحث عن تصميم داخلي استثنائي، أو تمتلك مساحة (عظم) وتحتاج إلى تشطيب وتأثيث شامل (تسليم مفتاح).. خلّ البداية الأصح مع فرينيش آي كيو.</p>
+<section id="form" data-screen-label="Form" style="background:#FFFFFF;padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px);">
+  <div class="fiq-form-card" data-reveal style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;border-radius:16px;overflow:hidden;background:#F5F2ED;">
+    <div class="fiq-form-media" style="position:relative;min-height:560px;background:#2A2522;">
+      <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=1200&q=40" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
     </div>
+    <div style="padding:clamp(32px,5vw,72px) clamp(24px,4.4vw,64px);display:flex;flex-direction:column;justify-content:center;">
+      <h2 style="font-family:'GE SS Two',sans-serif;font-size:clamp(28px,3vw,40px);font-weight:500;color:#1F1F1F;line-height:1.3;margin:0 0 14px;">جاهز تبدأ رحلة تجهيز مساحتك؟</h2>
+      <p style="font-family:'GE SS Two',sans-serif;font-size:15px;color:#5B4636;line-height:1.75;margin:0 0 32px;max-width:480px;">سواء كنت تبحث عن تصميم داخلي استثنائي، أو تمتلك مساحة (عظم) وتحتاج إلى تشطيب وتأثيث شامل (تسليم مفتاح).. خلّ البداية الأصح مع فيرنيش آي كيو.</p>
 
-    <sc-if value="{{ formNotDone }}" hint-placeholder-val="{{ true }}">
-      <form onSubmit="{{ onFormSubmit }}" style="display:flex;flex-direction:column;gap:20px;">
-        <div aria-hidden="true" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">
-          <input type="text" value="{{ formHoneypot }}" onChange="{{ onHoneypotChange }}" name="company_website" tabindex="-1" autocomplete="off">
-        </div>
-        <div>
-          <label style="display:block;font-family:'GE SS Two',sans-serif;font-size:10px;letter-spacing:normal;text-transform:uppercase;color:#5B4636;margin-bottom:8px;">الإسم بالكامل</label>
-          <input type="text" value="{{ formName }}" onChange="{{ onNameChange }}" style="width:100%;padding:16px 18px;border:1px solid #D6C2A8;background:#FFFFFF;font-family:'GE SS Two',sans-serif;font-size:15px;color:#1F1F1F;">
-          <sc-if value="{{ nameError }}" hint-placeholder-val="{{ '' }}"><span style="display:block;font-family:'GE SS Two',sans-serif;font-size:12px;color:#B33A3A;margin-top:6px;">{{ nameError }}</span></sc-if>
-        </div>
-        <div>
-          <label style="display:block;font-family:'GE SS Two',sans-serif;font-size:10px;letter-spacing:normal;text-transform:uppercase;color:#5B4636;margin-bottom:8px;">رقم الجوال</label>
-          <input type="tel" value="{{ formPhone }}" onChange="{{ onPhoneChange }}" style="width:100%;padding:16px 18px;border:1px solid #D6C2A8;background:#FFFFFF;font-family:'GE SS Two',sans-serif;font-size:15px;color:#1F1F1F;">
-          <sc-if value="{{ phoneError }}" hint-placeholder-val="{{ '' }}"><span style="display:block;font-family:'GE SS Two',sans-serif;font-size:12px;color:#B33A3A;margin-top:6px;">{{ phoneError }}</span></sc-if>
-        </div>
-        <div>
-          <label style="display:block;font-family:'GE SS Two',sans-serif;font-size:10px;letter-spacing:normal;text-transform:uppercase;color:#5B4636;margin-bottom:8px;">وش تحتاج؟</label>
-          <select value="{{ selectedNeed }}" onChange="{{ onNeedChange }}" style="width:100%;padding:16px 18px;border:1px solid #D6C2A8;background:#FFFFFF;font-family:'GE SS Two',sans-serif;font-size:15px;color:#1F1F1F;">
-            <option value="">اختر خيار</option>
-            <option value="turnkey">تصميم، تشطيب، وتأثيث متكامل (تسليم مفتاح)</option>
-            <option value="design_only">تصميم داخلي فقط</option>
-            <option value="fit_out">تنفيذ وتشطيبات (Fit-out) لمخطط جاهز</option>
-            <option value="furniture">توريد أثاث فاخر</option>
-            <option value="other">خدمة أخرى</option>
-          </select>
-          <sc-if value="{{ needError }}" hint-placeholder-val="{{ '' }}"><span style="display:block;font-family:'GE SS Two',sans-serif;font-size:12px;color:#B33A3A;margin-top:6px;">{{ needError }}</span></sc-if>
-        </div>
-        <button type="submit" id="id-submit-btn" style="font-family:'GE SS Two',sans-serif;font-size:10px;letter-spacing:normal;text-transform:uppercase;color:#FFFFFF;background:#3A2D25;padding:19px 36px;border:1px solid #3A2D25;cursor:pointer;width:100%;transition:all 0.3s cubic-bezier(0.25,0.46,0.45,0.94);">
-          <span id="id-submit-btn-label">ابدأ مشروعك مع فرينيش آي كيو</span>
-        </button>
-      </form>
-    </sc-if>
+      <sc-if value="{{ formNotDone }}" hint-placeholder-val="{{ true }}">
+        <form onSubmit="{{ onFormSubmit }}" style="display:flex;flex-direction:column;gap:22px;">
+          <div aria-hidden="true" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">
+            <input type="text" value="{{ formHoneypot }}" onChange="{{ onHoneypotChange }}" name="company_website" tabindex="-1" autocomplete="off">
+          </div>
+          <div class="fiq-form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+            <div>
+              <label for="id-form-name" style="display:block;font-family:'GE SS Two',sans-serif;font-size:13px;font-weight:500;color:#1F1F1F;margin-bottom:8px;">الإسم بالكامل<span style="color:#B33A3A;margin-inline-start:4px;">*</span></label>
+              <input id="id-form-name" class="fiq-form-field" type="text" placeholder="اسمك الكامل" autocomplete="name" value="{{ formName }}" onChange="{{ onNameChange }}" style="width:100%;box-sizing:border-box;padding:12px 14px;border:1px solid #E4DDD3;border-radius:6px;background:#FFFFFF;font-family:'GE SS Two',sans-serif;font-size:14px;color:#1F1F1F;">
+              <sc-if value="{{ nameError }}" hint-placeholder-val="{{ '' }}"><span style="display:block;font-family:'GE SS Two',sans-serif;font-size:12px;color:#B33A3A;margin-top:6px;">{{ nameError }}</span></sc-if>
+            </div>
+            <div>
+              <label for="id-form-phone" style="display:block;font-family:'GE SS Two',sans-serif;font-size:13px;font-weight:500;color:#1F1F1F;margin-bottom:8px;">رقم الجوال<span style="color:#B33A3A;margin-inline-start:4px;">*</span></label>
+              <input id="id-form-phone" class="fiq-form-field" type="tel" placeholder="05XXXXXXXX" autocomplete="tel" value="{{ formPhone }}" onChange="{{ onPhoneChange }}" style="text-align:right;width:100%;box-sizing:border-box;padding:12px 14px;border:1px solid #E4DDD3;border-radius:6px;background:#FFFFFF;font-family:'GE SS Two',sans-serif;font-size:14px;color:#1F1F1F;">
+              <sc-if value="{{ phoneError }}" hint-placeholder-val="{{ '' }}"><span style="display:block;font-family:'GE SS Two',sans-serif;font-size:12px;color:#B33A3A;margin-top:6px;">{{ phoneError }}</span></sc-if>
+            </div>
+          </div>
+          <div>
+            <label for="id-form-need" style="display:block;font-family:'GE SS Two',sans-serif;font-size:13px;font-weight:500;color:#1F1F1F;margin-bottom:8px;">وش تحتاج؟<span style="color:#B33A3A;margin-inline-start:4px;">*</span></label>
+            <select id="id-form-need" class="fiq-form-field" value="{{ selectedNeed }}" onChange="{{ onNeedChange }}" style="width:100%;box-sizing:border-box;padding:12px 14px;border:1px solid #E4DDD3;border-radius:6px;background:#FFFFFF;font-family:'GE SS Two',sans-serif;font-size:14px;color:#1F1F1F;">
+              <option value="">اختر خيار</option>
+              <option value="turnkey">تصميم، تشطيب، وتأثيث متكامل (تسليم مفتاح)</option>
+              <option value="design_only">تصميم داخلي فقط</option>
+              <option value="fit_out">تنفيذ وتشطيبات (Fit-out) لمخطط جاهز</option>
+              <option value="furniture">توريد أثاث فاخر</option>
+              <option value="other">خدمة أخرى</option>
+            </select>
+            <sc-if value="{{ needError }}" hint-placeholder-val="{{ '' }}"><span style="display:block;font-family:'GE SS Two',sans-serif;font-size:12px;color:#B33A3A;margin-top:6px;">{{ needError }}</span></sc-if>
+          </div>
+          <button type="submit" id="id-submit-btn" class="fiq-form-submit" style="font-family:'GE SS Two',sans-serif;font-size:14px;color:#FFFFFF;background:#1F1F1F;padding:14px 24px;border:none;border-radius:6px;cursor:pointer;width:100%;margin-top:6px;transition:background 0.3s cubic-bezier(0.25,0.46,0.45,0.94);">
+            <span id="id-submit-btn-label">ابدأ مشروعك مع فيرنيش آي كيو</span>
+          </button>
+        </form>
+      </sc-if>
 
-    <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
-      <div style="text-align:center;background:#FFFFFF;padding:clamp(40px,4vw,56px) clamp(28px,3vw,40px);">
-        <h3 style="font-family:'GE SS Two',sans-serif;font-size:22px;font-weight:500;color:#1F1F1F;margin-bottom:16px;">تم استلام طلبك</h3>
-        <p style="font-family:'GE SS Two',sans-serif;font-size:15px;color:#5B4636;line-height:1.7;margin-bottom:12px;">مساحتك أخذت أول خطوة نحو الفخامة مع فرينيش آي كيو.</p>
-        <p style="font-family:'GE SS Two',sans-serif;font-size:15px;color:#5B4636;line-height:1.7;">فريقنا الهندسي يقوم الآن بمراجعة تفاصيل طلبك. سيتواصل معك أحد خبرائنا قريباً جداً لمناقشة احتياجات مساحتك، والبدء في تحويل رؤيتك إلى واقع نلتزم بتنفيذه بأدق التفاصيل.</p>
-      </div>
-    </sc-if>
+      <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
+        <div style="background:#FFFFFF;border-radius:10px;padding:clamp(28px,3vw,40px);">
+          <h3 style="font-family:'GE SS Two',sans-serif;font-size:22px;font-weight:500;color:#1F1F1F;margin:0 0 14px;">تم استلام طلبك</h3>
+          <p style="font-family:'GE SS Two',sans-serif;font-size:15px;color:#5B4636;line-height:1.7;margin:0 0 12px;">مساحتك أخذت أول خطوة نحو الفخامة مع فيرنيش آي كيو.</p>
+          <p style="font-family:'GE SS Two',sans-serif;font-size:15px;color:#5B4636;line-height:1.7;margin:0;">فريقنا الهندسي يقوم الآن بمراجعة تفاصيل طلبك. سيتواصل معك أحد خبرائنا قريباً جداً لمناقشة احتياجات مساحتك، والبدء في تحويل رؤيتك إلى واقع نلتزم بتنفيذه بأدق التفاصيل.</p>
+        </div>
+      </sc-if>
+    </div>
   </div>
 </section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ FOOTER ━━ -->
+<footer style="background:#1F1F1F;padding:clamp(40px,5vw,56px) clamp(24px,5vw,80px);">
+  <div style="max-width:1280px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center;">
+    <a href="/ar" style="display:block;flex-shrink:0;">
+      <img src="assets/logo-default.png" width="264" height="90" alt="FurnishIQ" loading="lazy" decoding="async" style="display:block;height:30px;width:auto;">
+    </a>
+    <p style="font-family:'GE SS Two',sans-serif;font-size:12px;color:rgba(255,255,255,0.5);margin:0;">© 2026 فيرنيش آي كيو. جميع الحقوق محفوظة.</p>
+    <nav aria-label="روابط قانونية" style="display:flex;gap:24px;">
+      <a href="/ar/privacy-policy" class="fiq-foot-link" style="font-family:'GE SS Two',sans-serif;font-size:12px;color:rgba(255,255,255,0.6);text-decoration:none;">سياسة الخصوصية</a>
+      <a href="/ar/terms" class="fiq-foot-link" style="font-family:'GE SS Two',sans-serif;font-size:12px;color:rgba(255,255,255,0.6);text-decoration:none;">الشروط والأحكام</a>
+    </nav>
+  </div>
+</footer>
 
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1440}}">
@@ -828,7 +1234,7 @@ class Component extends DCLogic {
           })
           .catch(() => {
             if (btn) btn.disabled = false;
-            if (btnLabel) btnLabel.textContent = 'ابدأ مشروعك مع فرينيش آي كيو';
+            if (btnLabel) btnLabel.textContent = 'ابدأ مشروعك مع فيرنيش آي كيو';
             alert('حدث خطأ ما — يرجى المحاولة مرة أخرى أو مراسلتنا مباشرة على info@furnishiq.net');
           });
       },
@@ -865,6 +1271,269 @@ class Component extends DCLogic {
     };
     window.addEventListener('scroll', syncNav, { passive: true });
     syncNav();
+
+    const track = document.querySelector('[data-showcase-track]');
+    const prevBtn = document.querySelector('[data-showcase-prev]');
+    const nextBtn = document.querySelector('[data-showcase-next]');
+    if (track && prevBtn && nextBtn) {
+      // Infinite loop: the markup holds [clones][originals][clones]. Whenever a
+      // scroll settles inside a clone set, jump one set-width back into the
+      // originals; clones sit at identical offsets so the jump is invisible.
+      // RTL scrollLeft runs 0 -> negative, so work in a positive offset.
+      const dir = getComputedStyle(track).direction === 'rtl' ? -1 : 1;
+      const cards = track.querySelectorAll('[data-showcase-card]');
+      const count = cards.length / 3;
+      let setWidth = 0;
+      const measure = () => {
+        setWidth = Math.abs(cards[count].offsetLeft - cards[0].offsetLeft);
+      };
+      const jumpTo = (offset) => {
+        const behavior = track.style.scrollBehavior;
+        track.style.scrollBehavior = 'auto';
+        track.scrollLeft = dir * offset;
+        track.style.scrollBehavior = behavior;
+      };
+      const normalise = () => {
+        if (!setWidth) return;
+        const offset = Math.abs(track.scrollLeft);
+        if (offset < setWidth - 2) jumpTo(offset + setWidth);
+        else if (offset >= setWidth * 2 - 2) jumpTo(offset - setWidth);
+      };
+      const step = () => cards[0].getBoundingClientRect().width + 16;
+      prevBtn.addEventListener('click', () => track.scrollBy({ left: -dir * step(), behavior: reduced ? 'auto' : 'smooth' }));
+      nextBtn.addEventListener('click', () => track.scrollBy({ left: dir * step(), behavior: reduced ? 'auto' : 'smooth' }));
+      if ('onscrollend' in window) {
+        track.addEventListener('scrollend', normalise);
+      } else {
+        let settle;
+        track.addEventListener('scroll', () => {
+          clearTimeout(settle);
+          settle = setTimeout(normalise, 150);
+        }, { passive: true });
+      }
+      window.addEventListener('resize', () => {
+        const ratio = setWidth ? Math.abs(track.scrollLeft) / setWidth : 1;
+        measure();
+        jumpTo(ratio * setWidth);
+        normalise();
+      });
+      measure();
+      jumpTo(setWidth);
+    }
+
+    const svcTrack = document.querySelector('[data-svc-track]');
+    const svcPrev = document.querySelector('[data-svc-prev]');
+    const svcNext = document.querySelector('[data-svc-next]');
+    if (svcTrack && svcPrev && svcNext) {
+      // Infinite loop: the markup holds [clones][originals][clones]. Whenever a
+      // scroll settles inside a clone set, jump one set-width back into the
+      // originals; clones sit at identical offsets so the jump is invisible.
+      // RTL scrollLeft runs 0 -> negative, so work in a positive offset.
+      const svcDir = getComputedStyle(svcTrack).direction === 'rtl' ? -1 : 1;
+      const svcCards = svcTrack.querySelectorAll('[data-svc-card]');
+      const svcCount = svcCards.length / 3;
+      let svcSet = 0;
+      const svcMeasure = () => {
+        svcSet = Math.abs(svcCards[svcCount].offsetLeft - svcCards[0].offsetLeft);
+      };
+      const svcJump = (offset) => {
+        const behavior = svcTrack.style.scrollBehavior;
+        svcTrack.style.scrollBehavior = 'auto';
+        svcTrack.scrollLeft = svcDir * offset;
+        svcTrack.style.scrollBehavior = behavior;
+      };
+      const svcNormalise = () => {
+        if (!svcSet) return;
+        const offset = Math.abs(svcTrack.scrollLeft);
+        if (offset < svcSet - 2) svcJump(offset + svcSet);
+        else if (offset >= svcSet * 2 - 2) svcJump(offset - svcSet);
+      };
+      const svcStep = () => Math.abs(svcCards[1].offsetLeft - svcCards[0].offsetLeft);
+      svcPrev.addEventListener('click', () => svcTrack.scrollBy({ left: -svcDir * svcStep(), behavior: reduced ? 'auto' : 'smooth' }));
+      svcNext.addEventListener('click', () => svcTrack.scrollBy({ left: svcDir * svcStep(), behavior: reduced ? 'auto' : 'smooth' }));
+      if ('onscrollend' in window) {
+        svcTrack.addEventListener('scrollend', svcNormalise);
+      } else {
+        let svcSettle;
+        svcTrack.addEventListener('scroll', () => {
+          clearTimeout(svcSettle);
+          svcSettle = setTimeout(svcNormalise, 150);
+        }, { passive: true });
+      }
+      window.addEventListener('resize', () => {
+        const ratio = svcSet ? Math.abs(svcTrack.scrollLeft) / svcSet : 1;
+        svcMeasure();
+        svcJump(ratio * svcSet);
+        svcNormalise();
+      });
+      svcMeasure();
+      svcJump(svcSet);
+    }
+
+    const vidTrack = document.querySelector('[data-vid-track]');
+    const vidPrev = document.querySelector('[data-vid-prev]');
+    const vidNext = document.querySelector('[data-vid-next]');
+    if (vidTrack && vidPrev && vidNext) {
+      // Infinite loop: the markup holds [clones][originals][clones]. Whenever a
+      // scroll settles inside a clone set, jump one set-width back into the
+      // originals; clones sit at identical offsets so the jump is invisible.
+      // RTL scrollLeft runs 0 -> negative, so work in a positive offset.
+      const vidDir = getComputedStyle(vidTrack).direction === 'rtl' ? -1 : 1;
+      const vidSlides = vidTrack.querySelectorAll('[data-vid-slide]');
+      const vidCount = vidSlides.length / 3;
+      const vidDots = document.querySelectorAll('[data-vid-dot]');
+      let vidSet = 0;
+      const vidStep = () => Math.abs(vidSlides[1].offsetLeft - vidSlides[0].offsetLeft);
+      const vidMeasure = () => {
+        vidSet = Math.abs(vidSlides[vidCount].offsetLeft - vidSlides[0].offsetLeft);
+      };
+      const vidJump = (offset) => {
+        const behavior = vidTrack.style.scrollBehavior;
+        vidTrack.style.scrollBehavior = 'auto';
+        vidTrack.scrollLeft = vidDir * offset;
+        vidTrack.style.scrollBehavior = behavior;
+      };
+      const vidNormalise = () => {
+        if (!vidSet) return;
+        const offset = Math.abs(vidTrack.scrollLeft);
+        if (offset < vidSet - 2) vidJump(offset + vidSet);
+        else if (offset >= vidSet * 2 - 2) vidJump(offset - vidSet);
+      };
+      const syncVid = () => {
+        const raw = Math.round((Math.abs(vidTrack.scrollLeft) - vidSet) / vidStep());
+        const active = ((raw % vidCount) + vidCount) % vidCount;
+        vidDots.forEach((dot, i) => {
+          dot.style.background = i === active ? '#1F1F1F' : '#B8A08C';
+          dot.style.width = i === active ? '18px' : '6px';
+        });
+      };
+      vidPrev.addEventListener('click', () => vidTrack.scrollBy({ left: -vidDir * vidStep(), behavior: reduced ? 'auto' : 'smooth' }));
+      vidNext.addEventListener('click', () => vidTrack.scrollBy({ left: vidDir * vidStep(), behavior: reduced ? 'auto' : 'smooth' }));
+      vidDots.forEach((dot) => dot.addEventListener('click', () => {
+        vidTrack.scrollTo({ left: vidDir * (vidSet + Number(dot.dataset.vidDot) * vidStep()), behavior: reduced ? 'auto' : 'smooth' });
+      }));
+      vidTrack.addEventListener('scroll', syncVid, { passive: true });
+      if ('onscrollend' in window) {
+        vidTrack.addEventListener('scrollend', vidNormalise);
+      } else {
+        let vidSettle;
+        vidTrack.addEventListener('scroll', () => {
+          clearTimeout(vidSettle);
+          vidSettle = setTimeout(vidNormalise, 150);
+        }, { passive: true });
+      }
+      window.addEventListener('resize', () => {
+        const ratio = vidSet ? Math.abs(vidTrack.scrollLeft) / vidSet : 1;
+        vidMeasure();
+        vidJump(ratio * vidSet);
+        vidNormalise();
+        syncVid();
+      });
+      vidMeasure();
+      vidJump(vidSet);
+      syncVid();
+
+      // Placeholder slides: set data-video-src on a slide and its play button swaps in the video.
+      vidTrack.querySelectorAll('[data-vid-play]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          let slide = btn.closest('[data-vid-slide]');
+          const src = slide && slide.dataset.videoSrc;
+          if (!src) return;
+          // Play in the original, not a clone, so the loop jump never moves away from it.
+          if (slide.hasAttribute('data-vid-clone')) {
+            const original = vidSlides[vidCount + Number(slide.dataset.vidI)];
+            vidJump(Math.abs(vidTrack.scrollLeft) - vidDir * (slide.offsetLeft - original.offsetLeft));
+            slide = original;
+          }
+          const play = slide.querySelector('[data-vid-play]');
+          if (!play) return;
+          const video = document.createElement('video');
+          video.src = src;
+          video.controls = true;
+          video.autoplay = true;
+          video.playsInline = true;
+          video.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#1F1F1F;';
+          slide.appendChild(video);
+          play.remove();
+        });
+      });
+    }
+
+    const prjTrack = document.querySelector('[data-prj-track]');
+    const prjThumb = document.querySelector('[data-prj-thumb]');
+    if (prjTrack && prjThumb) {
+      // Progress bar: thumb width = visible share (capped), position = scroll progress.
+      // RTL scrollLeft runs 0 -> negative; inset-inline-start mirrors the thumb for us.
+      const syncPrj = () => {
+        const max = prjTrack.scrollWidth - prjTrack.clientWidth;
+        // Capped so the thumb keeps the design's slim proportion even with few cards.
+        const share = Math.min(prjTrack.clientWidth / prjTrack.scrollWidth, 0.28);
+        const progress = max > 0 ? Math.abs(prjTrack.scrollLeft) / max : 0;
+        prjThumb.style.width = (share * 100) + '%';
+        prjThumb.style.insetInlineStart = (progress * (1 - share) * 100) + '%';
+      };
+      prjTrack.addEventListener('scroll', syncPrj, { passive: true });
+      window.addEventListener('resize', syncPrj);
+      syncPrj();
+
+      // Mouse drag to scroll (touch and trackpads already scroll natively).
+      let prjDown = false;
+      let prjMoved = false;
+      let prjStartX = 0;
+      let prjStartScroll = 0;
+      prjTrack.addEventListener('pointerdown', (e) => {
+        if (e.pointerType !== 'mouse' || e.button !== 0) return;
+        prjDown = true;
+        prjMoved = false;
+        prjStartX = e.clientX;
+        prjStartScroll = prjTrack.scrollLeft;
+      });
+      window.addEventListener('pointermove', (e) => {
+        if (!prjDown) return;
+        const dx = e.clientX - prjStartX;
+        if (!prjMoved && Math.abs(dx) > 5) {
+          prjMoved = true;
+          prjTrack.classList.add('is-dragging');
+        }
+        if (prjMoved) prjTrack.scrollLeft = prjStartScroll - dx;
+      });
+      window.addEventListener('pointerup', () => {
+        if (!prjDown) return;
+        prjDown = false;
+        prjTrack.classList.remove('is-dragging');
+      });
+      // A drag that ends over a card must not also open it.
+      prjTrack.addEventListener('click', (e) => {
+        if (prjMoved) {
+          e.preventDefault();
+          e.stopPropagation();
+          prjMoved = false;
+        }
+      }, true);
+      prjTrack.addEventListener('dragstart', (e) => e.preventDefault());
+    }
+
+    // Scroll-spy: mark the nav link whose section is under the nav bar.
+    // Queried from document so the mobile overlay's cloned links stay in sync too.
+    const spySections = ['showcase', 'services-overview', 'video-showcase', 'projects-showcase', 'usps']
+      .map((id) => document.getElementById(id))
+      .filter(Boolean);
+    const syncSpy = () => {
+      const line = 81 + window.innerHeight * 0.25;
+      let current = '';
+      spySections.forEach((sec) => {
+        if (sec.getBoundingClientRect().top <= line) current = sec.id;
+      });
+      // Past the last tracked section (form / footer) nothing is active.
+      const form = document.getElementById('form');
+      if (form && form.getBoundingClientRect().top <= line) current = '';
+      document.querySelectorAll('[data-nav-section]').forEach((a) => {
+        a.classList.toggle('is-active', a.getAttribute('href') === '#' + current);
+      });
+    };
+    window.addEventListener('scroll', syncSpy, { passive: true });
+    window.addEventListener('resize', syncSpy);
+    syncSpy();
 
     const revealEls = document.querySelectorAll('[data-reveal]');
     if (reduced || !('IntersectionObserver' in window)) {
