@@ -39,7 +39,7 @@ fbq('track', 'PageView');
 <link rel="alternate" hreflang="x-default" href="https://www.furnishiq.net/landing-turnkey">
 <script src="./support.js" defer></script>
 <script src="./nav-mobile.js" defer></script>
-<script src="./floating-buttons.js" defer></script>
+<script src="./floating-buttons.js?v=2" data-wa-style="official" defer></script>
 <script src="./analytics-events.js" defer></script>
 <link rel="preload" as="font" type="font/otf" href="_ds/furnishiq-design-system-ea658a9e-dd64-48ad-ab93-f0196a53ec9c/uploads/GE_SS_Two_Medium_Arabic.otf" crossorigin>
 </head>
@@ -913,7 +913,7 @@ input:focus, select:focus, textarea:focus {
             <img src="uploads/landing-ar-pkg-design.jpg" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;">
           </div>
           <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:10px;">
-            <h3 style="font-family:'GE SS Two',sans-serif;font-size:clamp(15px,1.25vw,18px);font-weight:500;color:#FFFFFF;line-height:1.35;margin:0;">تصميم داخلي 3D واقعي</h3>
+            <h3 style="font-family:'GE SS Two',sans-serif;font-size:clamp(15px,1.25vw,18px);font-weight:500;color:#FFFFFF;line-height:1.35;margin:0;">تصميم داخلي <span dir="ltr" style="font-family:'Lama Sans',sans-serif;">3D</span> واقعي</h3>
           </div>
           <p style="font-family:'GE SS Two',sans-serif;font-size:13px;color:rgba(255,255,255,0.55);line-height:1.7;margin:0;max-width:400px;">مساحات مصممة بذكاء لتعكس هويتك، تلبي احتياجك الفعلي، وترتقي بأسلوب حياتك.</p>
         </a>
@@ -940,7 +940,7 @@ input:focus, select:focus, textarea:focus {
             <img src="uploads/landing-ar-pkg-design.jpg" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;">
           </div>
           <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:10px;">
-            <h3 style="font-family:'GE SS Two',sans-serif;font-size:clamp(15px,1.25vw,18px);font-weight:500;color:#FFFFFF;line-height:1.35;margin:0;">تصميم داخلي 3D واقعي</h3>
+            <h3 style="font-family:'GE SS Two',sans-serif;font-size:clamp(15px,1.25vw,18px);font-weight:500;color:#FFFFFF;line-height:1.35;margin:0;">تصميم داخلي <span dir="ltr" style="font-family:'Lama Sans',sans-serif;">3D</span> واقعي</h3>
           </div>
           <p style="font-family:'GE SS Two',sans-serif;font-size:13px;color:rgba(255,255,255,0.55);line-height:1.7;margin:0;max-width:400px;">مساحات مصممة بذكاء لتعكس هويتك، تلبي احتياجك الفعلي، وترتقي بأسلوب حياتك.</p>
         </a>
@@ -967,7 +967,7 @@ input:focus, select:focus, textarea:focus {
             <img src="uploads/landing-ar-pkg-design.jpg" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;">
           </div>
           <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:10px;">
-            <h3 style="font-family:'GE SS Two',sans-serif;font-size:clamp(15px,1.25vw,18px);font-weight:500;color:#FFFFFF;line-height:1.35;margin:0;">تصميم داخلي 3D واقعي</h3>
+            <h3 style="font-family:'GE SS Two',sans-serif;font-size:clamp(15px,1.25vw,18px);font-weight:500;color:#FFFFFF;line-height:1.35;margin:0;">تصميم داخلي <span dir="ltr" style="font-family:'Lama Sans',sans-serif;">3D</span> واقعي</h3>
           </div>
           <p style="font-family:'GE SS Two',sans-serif;font-size:13px;color:rgba(255,255,255,0.55);line-height:1.7;margin:0;max-width:400px;">مساحات مصممة بذكاء لتعكس هويتك، تلبي احتياجك الفعلي، وترتقي بأسلوب حياتك.</p>
         </a>
@@ -1292,6 +1292,10 @@ input:focus, select:focus, textarea:focus {
             </div>
             <sc-if value="{{ needError }}" hint-placeholder-val="{{ '' }}"><span style="display:block;font-family:'GE SS Two',sans-serif;font-size:12px;color:#B33A3A;margin-top:6px;">{{ needError }}</span></sc-if>
           </div>
+          <div>
+            <label for="id-form-message" style="display:block;font-family:'GE SS Two',sans-serif;font-size:13px;font-weight:500;color:#1F1F1F;margin-bottom:8px;">تفاصيل مشروعك <span style="font-weight:400;color:rgba(58,45,37,0.55);">(اختياري)</span></label>
+            <textarea id="id-form-message" class="fiq-form-field" rows="3" placeholder="حدّثنا عن مساحتك: نوعها، مساحتها التقريبية، أو موقعها" value="{{ formMessage }}" onChange="{{ onMessageChange }}" style="width:100%;box-sizing:border-box;min-height:112px;padding:14px 16px;resize:vertical;line-height:1.7;display:block;border:1px solid rgba(58,45,37,0.32);border-radius:8px;background-color:transparent;font-family:'GE SS Two',sans-serif;font-size:14px;color:#1F1F1F;"></textarea>
+          </div>
           <button type="submit" id="id-submit-btn" class="fiq-form-submit" style="font-family:'GE SS Two',sans-serif;font-size:14px;color:#FFFFFF;background:#1F1F1F;padding:14px 24px;border:none;border-radius:6px;cursor:pointer;width:100%;margin-top:6px;transition:background 0.3s cubic-bezier(0.25,0.46,0.45,0.94);">
             <span id="id-submit-btn-label">ابدأ مشروعك مع فيرنيش آي كيو</span>
           </button>
@@ -1331,6 +1335,7 @@ class Component extends DCLogic {
     formPhone: '',
     countryCode: '+966',
     selectedNeed: '',
+    formMessage: '',
     formHoneypot: '',
     nameError: '',
     phoneError: '',
@@ -1349,6 +1354,8 @@ class Component extends DCLogic {
       onCountryChange: (e) => self.setState({ countryCode: e.target.value }),
       selectedNeed: self.state.selectedNeed,
       onNeedChange: (e) => self.setState({ selectedNeed: e.target.value }),
+      formMessage: self.state.formMessage,
+      onMessageChange: (e) => self.setState({ formMessage: e.target.value }),
       formHoneypot: self.state.formHoneypot,
       onHoneypotChange: (e) => self.setState({ formHoneypot: e.target.value }),
       nameError: self.state.nameError,
@@ -1379,6 +1386,7 @@ class Component extends DCLogic {
           name: self.state.formName,
           phone: self.state.countryCode + ' ' + phoneDigits,
           need: self.state.selectedNeed,
+          message: self.state.formMessage.trim(),
           honeypot: self.state.formHoneypot,
         };
         fetch('/api/send-email', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })

@@ -114,6 +114,7 @@ module.exports = async (req, res) => {
       { label: 'Name', value: name },
       { label: 'Phone', value: data.phone },
       { label: 'Need', value: NEED_LABELS[data.need] || data.need },
+      { label: 'Project Details', value: data.message },
       { label: 'Language', value: language },
     ];
   } else {
