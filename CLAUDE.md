@@ -80,3 +80,58 @@ The full spec lives in `_ds/.../readme.md`. Key constraints:
 ## Logo
 
 Use only the provided PNG files (`logo-default.png`, `logo-dark.png`, `logo-scrolled.png`). Never recreate, recolour, or modify the logo. Approved backgrounds: white, charcoal, brand green.
+
+
+
+# Debugging & Feedback Rules
+
+Read when fixing a bug (reported or found in testing) or when handed raw error
+output. The two load-bearing rules in the global core — manual verification beats
+tests, and no self-declared completion — apply throughout this file.
+
+## 1. Debugging Protocol (mandatory sequence)
+
+No shortcuts, no exceptions.
+
+```
+1. REPRODUCE   → trigger the bug in the running app; confirm it exists
+2. PROVE       → trace to root cause in code; verify the hypothesis before touching anything
+3. FIX         → apply the targeted change only
+4. DEMONSTRATE → re-run, trigger the same scenario, confirm the bug is gone
+5. REPORT      → root cause, what changed, how you confirmed the fix
+```
+
+Never apply a speculative fix and declare victory. If you haven't reproduced and
+proved it, you haven't fixed it.
+
+- Do not repeat a failed fix. If a fix failed once, re-analyse from scratch — do
+  not reapply the same change.
+- Do not paper over failures. If something cannot be fixed, say so clearly rather
+  than hiding it behind a workaround.
+- One anecdotal match is not a root cause. A single old Stack Overflow or GitHub
+  issue that resembles the symptom is not proof. Before declaring a known issue,
+  verify: did more than one person report it? Is it recent and relevant? Does the
+  evidence actually match the current symptom? Challenge "found it, just downgrade
+  X" hard.
+- Prove the cause before fixing and the fix after: reproduce consistently →
+  identify root cause → show that this specific cause produces the bug → fix →
+  show the same scenario now works consistently. Document each step.
+
+## 2. Handling Feedback
+
+- Treat a list of issues as a prioritised work queue — address each explicitly and
+  in order.
+- Apply UI feedback (colours, layout, sizing) literally, then confirm.
+- After each fix, run the app and verify before reporting. Do not bundle multiple
+  fixes into one report without confirming each one individually.
+- Raw error output (terminal errors, stack traces, console logs) with no
+  explanation is a bug report. Apply the protocol in Section 1; only ask for more
+  context if the error is genuinely undiagnosable.
+
+## 3. Recording Lessons
+
+After a non-trivial fix, record the lesson so it survives context compaction or a
+chat reset — but **not** in CLAUDE.md, which is human-owned and gitignored.
+Write a brief note to the project's `docs/lessons.md` (create it if absent). This
+keeps the lesson committed and visible to the team, without self-authoring the
+instructions you operate under.
