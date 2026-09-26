@@ -596,6 +596,27 @@ input:focus, select:focus, textarea:focus {
       .fiq-pmodal-nav--next{left:12px;}
     }
     @media(prefers-reduced-motion:reduce){.fiq-pmodal,.fiq-pmodal.is-open,.fiq-pmodal-body,.fiq-pmodal-body > img,.fiq-pmodal-nav{transition:none;}}
+    /* Legal pop-up (privacy policy): full-screen reading view, built by script. */
+    .fiq-legal{position:fixed;inset:0;z-index:1000;display:flex;flex-direction:column;background:#F5F2ED;opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity 0.35s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94),visibility 0s linear 0.35s;}
+    .fiq-legal.is-open{opacity:1;visibility:visible;transform:none;transition:opacity 0.35s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94),visibility 0s;}
+    .fiq-legal-bar{flex-shrink:0;display:flex;align-items:center;height:80px;box-sizing:border-box;padding-right:var(--fiq-sbw,0px);border-bottom:1px solid rgba(58,45,37,0.12);background:#F5F2ED;}
+    .fiq-legal-bar-inner{max-width:1280px;margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between;gap:24px;}
+    .fiq-legal-close{width:48px;height:48px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(58,45,37,0.3);border-radius:50%;background:transparent;cursor:pointer;padding:0;transition:background 0.3s cubic-bezier(0.25,0.46,0.45,0.94),border-color 0.3s cubic-bezier(0.25,0.46,0.45,0.94);}
+    .fiq-legal-close:hover,.fiq-legal-close:focus-visible{background:#1F1F1F;border-color:#1F1F1F;outline:none;}
+    .fiq-legal-close:hover svg,.fiq-legal-close:focus-visible svg{stroke:#FFFFFF;}
+    .fiq-legal-scroll{flex:1;overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(58,45,37,0.3) transparent;}
+    .fiq-legal-doc{max-width:760px;margin:0 auto;padding:clamp(40px,6vw,72px) clamp(20px,5vw,40px) clamp(64px,8vw,96px);font-family:'GE SS Two',sans-serif;color:#1F1F1F;}
+    .fiq-legal-doc h2{font-size:clamp(28px,3vw,40px);font-weight:500;line-height:1.3;margin:0 0 10px;}
+    .fiq-legal-doc h3{font-size:18px;font-weight:500;color:#3A2D25;margin:40px 0 12px;padding-top:28px;border-top:1px solid rgba(58,45,37,0.12);}
+    .fiq-legal-doc p,.fiq-legal-doc li,.fiq-legal-doc h2,.fiq-legal-doc h3,.fiq-legal-doc a{font-family:'GE SS Two',sans-serif;}
+    .fiq-legal-doc p,.fiq-legal-doc li{font-size:15px;line-height:1.95;color:#5B4636;}
+    .fiq-legal-doc p{margin:0 0 12px;}
+    .fiq-legal-doc ul{margin:0 0 12px;padding-inline-start:22px;}
+    .fiq-legal-doc li{margin-bottom:6px;}
+    .fiq-legal-doc strong{color:#1F1F1F;font-weight:500;}
+    .fiq-legal-doc a{color:#8B6B4A;}
+    .fiq-legal-doc .fiq-legal-meta{font-size:13px;color:rgba(58,45,37,0.6);margin-bottom:28px;}
+    @media(prefers-reduced-motion:reduce){.fiq-legal,.fiq-legal.is-open{transition:none;transform:none;}}
     /* Hero CTAs swap styles on hover: filled <-> outlined. !important beats the inline styles. */
     .fiq-hero-cta-primary:hover,.fiq-hero-cta-primary:focus-visible{background:transparent!important;color:#FFFFFF!important;border-color:rgba(255,255,255,0.4)!important;}
     .fiq-hero-cta-secondary:hover,.fiq-hero-cta-secondary:focus-visible{background:#D6C2A8!important;color:#1F1F1F!important;border-color:#D6C2A8!important;}
@@ -1321,8 +1342,8 @@ input:focus, select:focus, textarea:focus {
     </a>
     <p style="font-family:'GE SS Two',sans-serif;font-size:12px;color:rgba(255,255,255,0.5);margin:0;">© 2026 فيرنيش آي كيو. جميع الحقوق محفوظة.</p>
     <nav aria-label="روابط قانونية" style="display:flex;gap:24px;">
-      <a href="/ar/privacy-policy" class="fiq-foot-link" style="font-family:'GE SS Two',sans-serif;font-size:12px;color:rgba(255,255,255,0.6);text-decoration:none;">سياسة الخصوصية</a>
-      <a href="/ar/terms" class="fiq-foot-link" style="font-family:'GE SS Two',sans-serif;font-size:12px;color:rgba(255,255,255,0.6);text-decoration:none;">الشروط والأحكام</a>
+      <a href="#privacy-policy" class="fiq-foot-link" data-legal-open="privacy" style="font-family:'GE SS Two',sans-serif;font-size:12px;color:rgba(255,255,255,0.6);text-decoration:none;">سياسة الخصوصية</a>
+      <a href="#terms" class="fiq-foot-link" data-legal-open="terms" style="font-family:'GE SS Two',sans-serif;font-size:12px;color:rgba(255,255,255,0.6);text-decoration:none;">الشروط والأحكام</a>
     </nav>
   </div>
 </footer>
@@ -1864,6 +1885,200 @@ class Component extends DCLogic {
         }
       });
     }
+
+    // Privacy policy pop-up: full-screen reading view opened from the footer link
+    // (or directly via #privacy-policy). Built here and appended to <body>.
+    // Legal pop-up: one full-screen reading view for both documents.
+    // Placeholder copy drafted for review — have it checked before relying on it.
+    const LEGAL_DOCS = {
+      privacy: { hash: '#privacy-policy', html: `<h2 id="fiq-legal-title">سياسة الخصوصية</h2>
+<p class="fiq-legal-meta">آخر تحديث: ٢٦ سبتمبر ٢٠٢٦</p>
+<p>تلتزم فيرنيش آي كيو، الذراع المتخصصة في التصميم الداخلي والتشطيبات والتأثيث التابعة لمجموعة ارسان العالمية ومقرها الرياض بالمملكة العربية السعودية، بحماية خصوصية زوار موقعها وعملائها. توضح هذه السياسة البيانات التي نجمعها عند استخدامك لموقعنا وتواصلك معنا، وكيف نستخدمها ونحميها، والحقوق المكفولة لك وفق نظام حماية البيانات الشخصية في المملكة العربية السعودية ولوائحه التنفيذية.</p>
+
+<h3>١. البيانات التي نجمعها</h3>
+<p><strong>بيانات تقدّمها لنا مباشرة</strong> عند تعبئة نموذج طلب الاستشارة أو التواصل معنا:</p>
+<ul>
+<li>الاسم الكامل.</li>
+<li>رقم الجوال مع رمز الدولة.</li>
+<li>نوع الخدمة التي تحتاجها.</li>
+<li>تفاصيل مشروعك التي تختار مشاركتها، مثل نوع المساحة ومساحتها التقريبية وموقعها.</li>
+</ul>
+<p><strong>بيانات تُجمع تلقائياً</strong> عند تصفّح الموقع، مثل نوع الجهاز والمتصفح، والصفحات التي تزورها ومدة الزيارة، والصفحة التي أحالتك إلينا، وعنوان بروتوكول الإنترنت (IP) والموقع الجغرافي التقريبي المستنتج منه. تُجمع هذه البيانات عبر ملفات تعريف الارتباط وتقنيات مشابهة موضّحة في البند السادس.</p>
+<p>لا نطلب منك بيانات حسّاسة مثل البيانات الصحية أو المالية أو الهوية الوطنية، ونرجو عدم إدراجها في حقل تفاصيل المشروع.</p>
+
+<h3>٢. كيف نستخدم بياناتك</h3>
+<ul>
+<li>الرد على طلبك والتواصل معك هاتفياً أو عبر واتساب لمناقشة احتياجات مساحتك وترتيب الاستشارة.</li>
+<li>إعداد عرض أو تصوّر مبدئي يتناسب مع نوع الخدمة وتفاصيل المشروع التي شاركتها.</li>
+<li>تحسين الموقع وتجربة الاستخدام وفهم أداء صفحاته.</li>
+<li>قياس فاعلية حملاتنا الإعلانية وعرض إعلانات ملائمة لخدماتنا.</li>
+<li>الحماية من الاستخدام المسيء أو الرسائل المزعجة، والامتثال للأنظمة المعمول بها.</li>
+</ul>
+
+<h3>٣. الأساس النظامي للمعالجة</h3>
+<p>نعالج بياناتك بناءً على موافقتك عند إرسال النموذج أو قبول ملفات تعريف الارتباط، ولتنفيذ طلبك الذي بادرت به، ولمصلحتنا المشروعة في تشغيل الموقع وحمايته وتطويره بما لا يمس حقوقك، وللوفاء بالتزاماتنا النظامية.</p>
+
+<h3>٤. مشاركة البيانات</h3>
+<p><strong>لا نبيع بياناتك الشخصية ولا نؤجرها لأي طرف.</strong> نشاركها فقط بالقدر اللازم مع:</p>
+<ul>
+<li><strong>فريق فيرنيش آي كيو ومجموعة ارسان العالمية</strong> المعنيين بمتابعة طلبك وتنفيذ مشروعك.</li>
+<li><strong>مزوّدي خدمات تقنية</strong> يعملون نيابة عنا وتحت التزامات تعاقدية بالسرية والحماية، وهم: <span dir="ltr">Vercel</span> لاستضافة الموقع، و <span dir="ltr">Resend</span> لإيصال بيانات النموذج إلى بريدنا الإلكتروني، وأدوات <span dir="ltr">Google</span> للتحليل وإدارة الوسوم لقياس استخدام الموقع، وبكسل <span dir="ltr">Meta</span> لقياس الإعلانات.</li>
+<li><strong>الجهات الحكومية أو القضائية المختصة</strong> متى طُلب ذلك نظاماً.</li>
+</ul>
+
+<h3>٥. نقل البيانات خارج المملكة</h3>
+<p>قد يستضيف بعض مزوّدي الخدمات المذكورين البيانات على خوادم خارج المملكة العربية السعودية. في هذه الحالة نحرص على أن يتم النقل وفق الضوابط الواردة في نظام حماية البيانات الشخصية ولوائحه، وبما يضمن مستوى حماية ملائماً لبياناتك.</p>
+
+<h3>٦. ملفات تعريف الارتباط والتتبّع</h3>
+<p>يستخدم الموقع ملفات تعريف الارتباط وتقنيات مشابهة من خلال <span dir="ltr">Google Tag Manager</span> وأدوات تحليل <span dir="ltr">Google</span> وبكسل <span dir="ltr">Meta</span>، لمعرفة كيفية استخدام الموقع وقياس نتائج الإعلانات. يمكنك التحكم في هذه الملفات أو حذفها أو حظرها من إعدادات متصفحك، كما يمكنك إدارة تفضيلات الإعلانات من إعدادات حسابك لدى <span dir="ltr">Google</span> و <span dir="ltr">Meta</span>. قد يؤدي تعطيلها إلى عدم عمل بعض خصائص الموقع كما هو متوقع.</p>
+
+<h3>٧. التواصل عبر واتساب</h3>
+<p>عند النقر على زر واتساب تنتقل إلى تطبيق واتساب المملوك لشركة <span dir="ltr">Meta</span>، وتخضع المحادثة لسياسة الخصوصية الخاصة بواتساب. نستخدم ما تشاركه معنا في المحادثة للرد على استفسارك فقط.</p>
+
+<h3>٨. مدة الاحتفاظ بالبيانات</h3>
+<p>نحتفظ ببيانات طلبك طوال فترة التواصل معك وتنفيذ مشروعك، ثم لمدة لا تتجاوز سنتين من آخر تواصل، ما لم يتطلب نظام معمول به الاحتفاظ بها لمدة أطول. بعد ذلك نتلفها أو نجعلها غير مرتبطة بهويتك بشكل آمن.</p>
+
+<h3>٩. حماية البيانات</h3>
+<p>نطبّق تدابير تقنية وتنظيمية مناسبة لحماية بياناتك، منها تشفير الاتصال بالموقع (<span dir="ltr">HTTPS</span>)، وتقييد الوصول إلى البيانات على الموظفين المعنيين فقط. ومع ذلك، لا يمكن ضمان أمان أي نقل عبر الإنترنت بشكل مطلق.</p>
+
+<h3>١٠. حقوقك</h3>
+<p>وفقاً لنظام حماية البيانات الشخصية، يحق لك:</p>
+<ul>
+<li>العلم بكيفية جمع بياناتك ومعالجتها والغرض من ذلك.</li>
+<li>الاطلاع على بياناتك والحصول على نسخة منها.</li>
+<li>طلب تصحيح بياناتك أو استكمالها أو تحديثها.</li>
+<li>طلب إتلاف بياناتك متى انتفت الحاجة إليها.</li>
+<li>الرجوع عن موافقتك على المعالجة في أي وقت، دون أن يؤثر ذلك على ما تم قبل الرجوع.</li>
+</ul>
+<p>لممارسة أي من هذه الحقوق، راسلنا على البريد الموضّح أدناه، وسنرد على طلبك خلال المدة المحددة نظاماً. كما يحق لك تقديم شكوى إلى الهيئة السعودية للبيانات والذكاء الاصطناعي (<span dir="ltr">SDAIA</span>) إذا رأيت أن بياناتك عولجت بما يخالف النظام.</p>
+
+<h3>١١. خصوصية القُصّر</h3>
+<p>خدماتنا موجّهة للبالغين، ولا نجمع عن قصد بيانات من هم دون الثامنة عشرة. إذا علمت أن قاصراً زوّدنا ببياناته، يُرجى التواصل معنا لحذفها.</p>
+
+<h3>١٢. التعديلات على هذه السياسة</h3>
+<p>قد نحدّث هذه السياسة من وقت لآخر لتعكس تغييرات في خدماتنا أو في الأنظمة. يظهر تاريخ آخر تحديث أعلى الصفحة، ويُعد استمرارك في استخدام الموقع بعد التحديث اطلاعاً على السياسة المعدّلة.</p>
+
+<h3>١٣. تواصل معنا</h3>
+<p>لأي استفسار يتعلق بهذه السياسة أو ببياناتك الشخصية:</p>
+<ul>
+<li>البريد الإلكتروني: <a href="mailto:info@furnishiq.net" dir="ltr">info@furnishiq.net</a></li>
+<li>الهاتف وواتساب: <a href="tel:+966580330627" dir="ltr">+966 58 033 0627</a></li>
+<li>العنوان: الرياض، المملكة العربية السعودية</li>
+</ul>` },
+      terms: { hash: '#terms', html: `<h2 id="fiq-legal-title">الشروط والأحكام</h2>
+<p class="fiq-legal-meta">آخر تحديث: ٢٦ سبتمبر ٢٠٢٦</p>
+<p>مرحباً بك في موقع فيرنيش آي كيو، الذراع المتخصصة في التصميم الداخلي والتشطيبات والتأثيث التابعة لمجموعة ارسان العالمية ومقرها الرياض بالمملكة العربية السعودية. باستخدامك لهذا الموقع أو إرسالك طلباً من خلاله، فإنك توافق على هذه الشروط والأحكام. إذا لم توافق عليها، يُرجى عدم استخدام الموقع.</p>
+
+<h3>١. نطاق هذه الشروط</h3>
+<p>تنظّم هذه الشروط استخدامك للموقع ومحتواه ونماذج التواصل فيه. أما مشاريع التصميم والتنفيذ والتأثيث نفسها، فتخضع لعقد مستقل يُوقَّع بينك وبين فيرنيش آي كيو، ويكون لذلك العقد الأولوية عند أي تعارض.</p>
+
+<h3>٢. طبيعة المعلومات والأسعار</h3>
+<ul>
+<li>المحتوى المنشور على الموقع، بما فيه أوصاف الخدمات والباقات، لأغراض تعريفية عامة ولا يُعد عرضاً ملزماً.</li>
+<li>الأسعار المعلنة، مثل أسعار باقات التصميم الداخلي السكني، أسعار ابتدائية استرشادية بالريال السعودي، وقد تتغير دون إشعار مسبق.</li>
+<li>تُقدَّم عروض مستقلة لخدمات التنفيذ والتشطيبات والتأثيث حسب نطاق كل مشروع ومتطلباته، ولا يصبح أي سعر أو جدول زمني ملزماً إلا بعرض سعر مكتوب أو عقد موقّع.</li>
+</ul>
+
+<h3>٣. الصور والتصاميم المعروضة</h3>
+<p>بعض الصور المعروضة على الموقع تصوّرات توضيحية أو تصاميم مفاهيمية لبيان أسلوب العمل، وقد تختلف عن المشاريع المنفّذة فعلياً. تختلف الخامات والألوان والتشطيبات النهائية حسب ما يُعتمد لكل مشروع، وقد تظهر الألوان بشكل مختلف قليلاً على الشاشات.</p>
+
+<h3>٤. طلبات الاستشارة والتواصل</h3>
+<ul>
+<li>إرسال نموذج طلب الاستشارة لا يُنشئ عقداً أو التزاماً على أي من الطرفين، وإنما يتيح لفريقنا التواصل معك لفهم احتياجاتك.</li>
+<li>تتعهد بأن تكون البيانات التي تقدّمها صحيحة، وأنك تملك صلاحية مشاركتها.</li>
+<li>الاستشارة المجانية المشار إليها في الموقع استشارة أولية تعريفية، وتخضع لتوافر الفريق ونطاق المشروع.</li>
+<li>تُعالج بياناتك وفق <a href="#privacy-policy" data-legal-open="privacy">سياسة الخصوصية</a>.</li>
+</ul>
+
+<h3>٥. الاستخدام المقبول للموقع</h3>
+<p>توافق على عدم استخدام الموقع في أي غرض غير نظامي، ومن ذلك:</p>
+<ul>
+<li>إرسال بيانات مضللة أو طلبات وهمية أو رسائل مزعجة.</li>
+<li>محاولة الوصول غير المصرّح به إلى الموقع أو أنظمته، أو تعطيل عمله.</li>
+<li>جمع محتوى الموقع أو بياناته بوسائل آلية دون إذن كتابي منا.</li>
+</ul>
+
+<h3>٦. الملكية الفكرية</h3>
+<p>جميع محتويات الموقع، من نصوص وصور وتصاميم وشعارات وعلامات تجارية، مملوكة لفيرنيش آي كيو أو مرخّصة لها، ومحمية بموجب أنظمة الملكية الفكرية في المملكة العربية السعودية. لا يجوز نسخها أو إعادة نشرها أو استخدامها تجارياً دون موافقة كتابية مسبقة. وتبقى التصاميم والمخططات المقدّمة لأي مشروع ملكاً لفيرنيش آي كيو ما لم ينص العقد على خلاف ذلك.</p>
+
+<h3>٧. روابط وخدمات الأطراف الأخرى</h3>
+<p>قد يحتوي الموقع على روابط أو خدمات تابعة لأطراف أخرى، مثل واتساب. لا نتحمل مسؤولية محتوى هذه الخدمات أو سياساتها، ويخضع استخدامك لها لشروطها الخاصة.</p>
+
+<h3>٨. إخلاء المسؤولية وحدودها</h3>
+<p>نسعى لأن تكون معلومات الموقع دقيقة ومحدّثة، لكنها تُقدَّم «كما هي» دون ضمان صريح أو ضمني لاكتمالها أو خلوّها من الأخطاء. وفي حدود ما تسمح به الأنظمة المعمول بها، لا تتحمل فيرنيش آي كيو المسؤولية عن أي أضرار غير مباشرة أو تبعية ناتجة عن استخدام الموقع أو تعذّر الوصول إليه. لا يمس هذا البند أي حقوق مقررة لك نظاماً ولا يجوز التنازل عنها.</p>
+
+<h3>٩. تعديل الشروط</h3>
+<p>يحق لنا تعديل هذه الشروط في أي وقت، ويسري التعديل من تاريخ نشره على الموقع. يظهر تاريخ آخر تحديث أعلى الصفحة، ويُعد استمرارك في استخدام الموقع قبولاً للشروط المعدّلة.</p>
+
+<h3>١٠. النظام الواجب التطبيق</h3>
+<p>تخضع هذه الشروط وتُفسَّر وفقاً لأنظمة المملكة العربية السعودية، وتختص المحاكم المختصة في مدينة الرياض بالنظر في أي نزاع ينشأ عنها.</p>
+
+<h3>١١. تواصل معنا</h3>
+<p>لأي استفسار حول هذه الشروط:</p>
+<ul>
+<li>البريد الإلكتروني: <a href="mailto:info@furnishiq.net" dir="ltr">info@furnishiq.net</a></li>
+<li>الهاتف وواتساب: <a href="tel:+966580330627" dir="ltr">+966 58 033 0627</a></li>
+<li>العنوان: الرياض، المملكة العربية السعودية</li>
+</ul>` },
+    };
+    const legal = document.createElement('div');
+    legal.className = 'fiq-legal';
+    legal.setAttribute('role', 'dialog');
+    legal.setAttribute('aria-modal', 'true');
+    legal.setAttribute('aria-labelledby', 'fiq-legal-title');
+    legal.setAttribute('dir', 'rtl');
+    // The bar mirrors the page nav (1280px container, 172x36 logo box) so the logo sits in the same spot.
+    legal.innerHTML = '<div class="fiq-legal-bar"><div class="fiq-legal-bar-inner">'
+      + '<span style="flex-shrink:0;position:relative;height:36px;width:172px;display:block;"><img src="assets/logo-scrolled.png" width="264" height="90" alt="FurnishIQ" style="position:absolute;inset:0;height:36px;width:auto;max-width:172px;object-fit:contain;object-position:left center;"></span>'
+      + '<button type="button" class="fiq-legal-close" aria-label="إغلاق"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1F1F1F" stroke-width="1.5" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></button>'
+      + '</div></div><div class="fiq-legal-scroll"><article class="fiq-legal-doc"></article></div>';
+    document.body.appendChild(legal);
+    const legalClose = legal.querySelector('.fiq-legal-close');
+    const legalScroll = legal.querySelector('.fiq-legal-scroll');
+    const legalDoc = legal.querySelector('.fiq-legal-doc');
+    let legalOpener = null;
+    let legalKey = null;
+    const openLegal = (key, opener) => {
+      const doc = LEGAL_DOCS[key];
+      if (!doc) return;
+      legalKey = key;
+      legalDoc.innerHTML = doc.html;
+      history.replaceState(null, '', doc.hash);
+      if (opener) legalOpener = opener;
+      legalScroll.scrollTop = 0;
+      // Match the page's width including its scrollbar, so the bar lines up with the nav behind it.
+      if (!legal.classList.contains('is-open')) legal.style.setProperty('--fiq-sbw', (window.innerWidth - document.documentElement.clientWidth) + 'px');
+      legal.classList.add('is-open');
+      document.documentElement.style.overflow = 'hidden';
+      legalClose.focus();
+    };
+    const closeLegal = () => {
+      if (!legal.classList.contains('is-open')) return;
+      legal.classList.remove('is-open');
+      document.documentElement.style.overflow = '';
+      history.replaceState(null, '', location.pathname + location.search);
+      legalKey = null;
+      if (legalOpener) legalOpener.focus();
+    };
+    // Delegated so links inside a document (terms -> privacy) switch documents too.
+    document.addEventListener('click', (e) => {
+      const a = e.target.closest('[data-legal-open]');
+      if (!a) return;
+      e.preventDefault();
+      openLegal(a.dataset.legalOpen, legal.contains(a) ? null : a);
+    });
+    legalClose.addEventListener('click', closeLegal);
+    document.addEventListener('keydown', (e) => {
+      if (!legal.classList.contains('is-open')) return;
+      if (e.key === 'Escape') closeLegal();
+      if (e.key === 'Tab') {
+        const items = [legalClose].concat([...legal.querySelectorAll('.fiq-legal-doc a')]);
+        const i = items.indexOf(document.activeElement);
+        e.preventDefault();
+        items[(i + (e.shiftKey ? -1 : 1) + items.length) % items.length].focus();
+      }
+    });
+    Object.keys(LEGAL_DOCS).forEach((k) => { if (location.hash === LEGAL_DOCS[k].hash) openLegal(k); });
 
     // Scroll-spy: mark the nav link whose section is under the nav bar.
     // Queried from document so the mobile overlay's cloned links stay in sync too.
