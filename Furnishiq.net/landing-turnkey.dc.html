@@ -514,6 +514,16 @@ input:focus, select:focus, textarea:focus {
     @media(max-width:960px){
       .fiq-nav-links,.fiq-nav-cta-btn{display:none!important;}
     }
+    /* Keyword menu labels are longer: keep each on one line, tighten spacing on small laptops,
+       and below 1140px drop the nav CTA (the hero CTAs sit right below it). */
+    .fiq-nav-links a{white-space:nowrap;}
+    @media(min-width:961px) and (max-width:1279px){
+      .fiq-nav-links{gap:22px!important;}
+      .fiq-nav-links a{letter-spacing:0.12em!important;}
+    }
+    @media(min-width:961px) and (max-width:1139px){
+      .fiq-nav-cta-btn{display:none!important;}
+    }
     /* Base styles set html{scroll-behavior:smooth}; honour reduced motion for the nav jumps. */
     @media(prefers-reduced-motion:reduce){
       html{scroll-behavior:auto;}
@@ -521,7 +531,12 @@ input:focus, select:focus, textarea:focus {
     /* Keep section headings clear of the 80px fixed nav after a jump. */
     #showcase,#services-overview,#video-showcase,#projects-showcase,#usps,#form{scroll-margin-top:80px;}
     /* Scroll-spy: the link for the section in view. !important beats the inline opacity the nav script sets. */
-    [data-nav-section].is-active{opacity:1!important;text-decoration:underline!important;text-decoration-thickness:1px;text-underline-offset:10px;}
+    [data-nav-section]{position:relative;}
+    /* Active underline grows out from the centre to both ends (ease-out), rounded caps; shrinks back the same way. */
+    [data-nav-section]::after{content:"";position:absolute;left:0;right:0;bottom:-9px;height:1.5px;border-radius:999px;background:currentColor;transform:scaleX(0);transform-origin:center;transition:transform 0.55s cubic-bezier(0.22,1,0.36,1);pointer-events:none;}
+    [data-nav-section].is-active{opacity:1!important;}
+    [data-nav-section].is-active::after{transform:scaleX(1);}
+    @media(prefers-reduced-motion:reduce){[data-nav-section]::after{transition:none;}}
     @media(max-width:768px){
       .fiq-usps-card{grid-template-columns:1fr!important;}
     }
@@ -810,11 +825,11 @@ input:focus, select:focus, textarea:focus {
       <img id="id-logo-d" src="assets/logo-scrolled.png" width="264" height="90" alt="FurnishIQ" style="position:absolute;inset:0;height:36px;width:auto;max-width:172px;object-fit:contain;object-position:left center;opacity:0;transition:opacity 0.4s cubic-bezier(0.25,0.46,0.45,0.94);">
     </a>
     <div class="fiq-nav-links" style="display:flex;gap:clamp(24px,3.5vw,48px);align-items:center;flex:1;justify-content:center;">
-      <a href="#showcase" data-nav-link data-nav-section style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;transition:color 0.25s,opacity 0.25s;opacity:0.8;">Your Needs</a>
-      <a href="#services-overview" data-nav-link data-nav-section style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;transition:color 0.25s,opacity 0.25s;opacity:0.8;">Package</a>
-      <a href="#video-showcase" data-nav-link data-nav-section style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;transition:color 0.25s,opacity 0.25s;opacity:0.8;">Watch</a>
-      <a href="#projects-showcase" data-nav-link data-nav-section style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;transition:color 0.25s,opacity 0.25s;opacity:0.8;">Our Work</a>
-      <a href="#usps" data-nav-link data-nav-section style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;transition:color 0.25s,opacity 0.25s;opacity:0.8;">Benefits</a>
+      <a href="#showcase" data-nav-link data-nav-section style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;transition:color 0.25s,opacity 0.25s;opacity:0.8;">Design &amp; Fit-Out</a>
+      <a href="#services-overview" data-nav-link data-nav-section style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;transition:color 0.25s,opacity 0.25s;opacity:0.8;">Turnkey Package</a>
+      <a href="#video-showcase" data-nav-link data-nav-section style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;transition:color 0.25s,opacity 0.25s;opacity:0.8;">Design to Delivery</a>
+      <a href="#projects-showcase" data-nav-link data-nav-section style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;transition:color 0.25s,opacity 0.25s;opacity:0.8;">Portfolio</a>
+      <a href="#usps" data-nav-link data-nav-section style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;transition:color 0.25s,opacity 0.25s;opacity:0.8;">Why FurnishIQ</a>
     </div>
     <a href="#form" class="fiq-nav-cta-btn" id="id-nav-cta" style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;border:1px solid rgba(214,194,168,0.5);padding:12px 28px;flex-shrink:0;transition:all 0.3s cubic-bezier(0.25,0.46,0.45,0.94);white-space:nowrap;background:transparent;">Start Your Project</a>
   </div>
