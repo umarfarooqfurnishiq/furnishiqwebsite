@@ -532,7 +532,7 @@ input:focus, select:focus, textarea:focus {
     /* Scroll-spy: the link for the section in view. !important beats the inline opacity the nav script sets. */
     [data-nav-section]{position:relative;}
     /* Active underline grows out from the centre to both ends (ease-out), rounded caps; shrinks back the same way. */
-    [data-nav-section]::after{content:"";position:absolute;left:0;right:0;bottom:-9px;height:1.5px;border-radius:999px;background:currentColor;transform:scaleX(0);transform-origin:center;transition:transform 0.55s cubic-bezier(0.22,1,0.36,1);pointer-events:none;}
+    [data-nav-section]::after{content:"";position:absolute;left:50%;width:72px;margin-left:-36px;bottom:-7px;height:2px;border-radius:999px;background:currentColor;transform:scaleX(0);transform-origin:center;transition:transform 0.55s cubic-bezier(0.22,1,0.36,1);pointer-events:none;}
     [data-nav-section].is-active{opacity:1!important;}
     [data-nav-section].is-active::after{transform:scaleX(1);}
     @media(prefers-reduced-motion:reduce){[data-nav-section]::after{transition:none;}}
@@ -819,7 +819,7 @@ input:focus, select:focus, textarea:focus {
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ NAV ━━ -->
 <nav id="id-nav" style="position:fixed;top:0;left:0;right:0;height:80px;z-index:200;display:flex;align-items:center;background:transparent;border-bottom:1px solid transparent;transition:background 0.55s cubic-bezier(0.25,0.46,0.45,0.94),border-color 0.55s,box-shadow 0.55s;">
   <div style="max-width:1280px;margin:0 auto;width:100%;padding:0;display:flex;align-items:center;justify-content:space-between;gap:24px;">
-    <a href="/ar" style="flex-shrink:0;position:relative;height:36px;width:172px;display:block;text-decoration:none;">
+    <a href="#hero" aria-label="العودة إلى الأعلى" style="flex-shrink:0;position:relative;height:36px;width:172px;display:block;text-decoration:none;">
       <img id="id-logo-w" src="assets/logo-default.png" width="264" height="90" alt="FurnishIQ" fetchpriority="high" style="position:absolute;inset:0;height:36px;width:auto;max-width:172px;object-fit:contain;object-position:left center;transition:opacity 0.4s cubic-bezier(0.25,0.46,0.45,0.94);">
       <img id="id-logo-d" src="assets/logo-scrolled.png" width="264" height="90" alt="FurnishIQ" style="position:absolute;inset:0;height:36px;width:auto;max-width:172px;object-fit:contain;object-position:left center;opacity:0;transition:opacity 0.4s cubic-bezier(0.25,0.46,0.45,0.94);">
     </a>
@@ -996,7 +996,7 @@ input:focus, select:focus, textarea:focus {
       </div>
     </div>
     <div class="fiq-svc-track" data-svc-track data-reveal="left" data-reveal-delay="0.2" style="display:flex;align-items:flex-start;gap:clamp(16px,1.8vw,24px);overflow-x:auto;scroll-behavior:smooth;">
-        <a href="/ar/services-interior-design" class="fiq-svc-card" data-svc-card data-svc-clone aria-hidden="true" tabindex="-1" data-svc-i="1" style="flex:0 0 auto;width:clamp(270px,32vw,460px);display:block;text-decoration:none;">
+        <a href="#form" class="fiq-svc-card" data-svc-card data-svc-clone aria-hidden="true" tabindex="-1" data-svc-i="1" style="flex:0 0 auto;width:clamp(270px,32vw,460px);display:block;text-decoration:none;">
           <div style="overflow:hidden;border-radius:10px;aspect-ratio:6/5;background:#2A2522;margin-bottom:18px;">
             <img src="uploads/landing-ar-pkg-design.jpg" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;">
           </div>
@@ -1005,7 +1005,7 @@ input:focus, select:focus, textarea:focus {
           </div>
           <p style="font-family:'GE SS Two',sans-serif;font-size:13px;color:rgba(255,255,255,0.55);line-height:1.7;margin:0;max-width:400px;">مساحات مصممة بذكاء لتعكس هويتك، تلبي احتياجك الفعلي، وترتقي بأسلوب حياتك.</p>
         </a>
-        <a href="/ar/services-fitout" class="fiq-svc-card" data-svc-card data-svc-clone aria-hidden="true" tabindex="-1" data-svc-i="2" style="flex:0 0 auto;width:clamp(270px,32vw,460px);display:block;text-decoration:none;">
+        <a href="#form" class="fiq-svc-card" data-svc-card data-svc-clone aria-hidden="true" tabindex="-1" data-svc-i="2" style="flex:0 0 auto;width:clamp(270px,32vw,460px);display:block;text-decoration:none;">
           <div style="overflow:hidden;border-radius:10px;aspect-ratio:6/5;background:#2A2522;margin-bottom:18px;">
             <img src="uploads/landing-ar-pkg-fitout.jpg" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;">
           </div>
@@ -1014,7 +1014,7 @@ input:focus, select:focus, textarea:focus {
           </div>
           <p style="font-family:'GE SS Two',sans-serif;font-size:13px;color:rgba(255,255,255,0.55);line-height:1.7;margin:0;max-width:400px;">نترجم المخططات على أرض الواقع باستخدام أرقى الخامات، وتحت إشراف هندسي صارم يلتزم بأعلى معايير الجودة.</p>
         </a>
-        <a href="/ar/services-furniture" class="fiq-svc-card" data-svc-card data-svc-clone aria-hidden="true" tabindex="-1" data-svc-i="3" style="flex:0 0 auto;width:clamp(270px,32vw,460px);display:block;text-decoration:none;">
+        <a href="#form" class="fiq-svc-card" data-svc-card data-svc-clone aria-hidden="true" tabindex="-1" data-svc-i="3" style="flex:0 0 auto;width:clamp(270px,32vw,460px);display:block;text-decoration:none;">
           <div style="overflow:hidden;border-radius:10px;aspect-ratio:6/5;background:#2A2522;margin-bottom:18px;">
             <img src="uploads/landing-ar-pkg-furniture.jpg" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;">
           </div>
@@ -1023,7 +1023,7 @@ input:focus, select:focus, textarea:focus {
           </div>
           <p style="font-family:'GE SS Two',sans-serif;font-size:13px;color:rgba(255,255,255,0.55);line-height:1.7;margin:0;max-width:400px;">نكمل أناقة مساحتك بقطع أثاث فريدة، تتطابق بنسبة 100% مع التصميم المعتمد وأبعاد المكان.</p>
         </a>
-        <a href="/ar/services-interior-design" class="fiq-svc-card" data-svc-card data-svc-i="1" style="flex:0 0 auto;width:clamp(270px,32vw,460px);display:block;text-decoration:none;">
+        <a href="#form" class="fiq-svc-card" data-svc-card data-svc-i="1" style="flex:0 0 auto;width:clamp(270px,32vw,460px);display:block;text-decoration:none;">
           <div style="overflow:hidden;border-radius:10px;aspect-ratio:6/5;background:#2A2522;margin-bottom:18px;">
             <img src="uploads/landing-ar-pkg-design.jpg" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;">
           </div>
@@ -1032,7 +1032,7 @@ input:focus, select:focus, textarea:focus {
           </div>
           <p style="font-family:'GE SS Two',sans-serif;font-size:13px;color:rgba(255,255,255,0.55);line-height:1.7;margin:0;max-width:400px;">مساحات مصممة بذكاء لتعكس هويتك، تلبي احتياجك الفعلي، وترتقي بأسلوب حياتك.</p>
         </a>
-        <a href="/ar/services-fitout" class="fiq-svc-card" data-svc-card data-svc-i="2" style="flex:0 0 auto;width:clamp(270px,32vw,460px);display:block;text-decoration:none;">
+        <a href="#form" class="fiq-svc-card" data-svc-card data-svc-i="2" style="flex:0 0 auto;width:clamp(270px,32vw,460px);display:block;text-decoration:none;">
           <div style="overflow:hidden;border-radius:10px;aspect-ratio:6/5;background:#2A2522;margin-bottom:18px;">
             <img src="uploads/landing-ar-pkg-fitout.jpg" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;">
           </div>
@@ -1041,7 +1041,7 @@ input:focus, select:focus, textarea:focus {
           </div>
           <p style="font-family:'GE SS Two',sans-serif;font-size:13px;color:rgba(255,255,255,0.55);line-height:1.7;margin:0;max-width:400px;">نترجم المخططات على أرض الواقع باستخدام أرقى الخامات، وتحت إشراف هندسي صارم يلتزم بأعلى معايير الجودة.</p>
         </a>
-        <a href="/ar/services-furniture" class="fiq-svc-card" data-svc-card data-svc-i="3" style="flex:0 0 auto;width:clamp(270px,32vw,460px);display:block;text-decoration:none;">
+        <a href="#form" class="fiq-svc-card" data-svc-card data-svc-i="3" style="flex:0 0 auto;width:clamp(270px,32vw,460px);display:block;text-decoration:none;">
           <div style="overflow:hidden;border-radius:10px;aspect-ratio:6/5;background:#2A2522;margin-bottom:18px;">
             <img src="uploads/landing-ar-pkg-furniture.jpg" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;">
           </div>
@@ -1050,7 +1050,7 @@ input:focus, select:focus, textarea:focus {
           </div>
           <p style="font-family:'GE SS Two',sans-serif;font-size:13px;color:rgba(255,255,255,0.55);line-height:1.7;margin:0;max-width:400px;">نكمل أناقة مساحتك بقطع أثاث فريدة، تتطابق بنسبة 100% مع التصميم المعتمد وأبعاد المكان.</p>
         </a>
-        <a href="/ar/services-interior-design" class="fiq-svc-card" data-svc-card data-svc-clone aria-hidden="true" tabindex="-1" data-svc-i="1" style="flex:0 0 auto;width:clamp(270px,32vw,460px);display:block;text-decoration:none;">
+        <a href="#form" class="fiq-svc-card" data-svc-card data-svc-clone aria-hidden="true" tabindex="-1" data-svc-i="1" style="flex:0 0 auto;width:clamp(270px,32vw,460px);display:block;text-decoration:none;">
           <div style="overflow:hidden;border-radius:10px;aspect-ratio:6/5;background:#2A2522;margin-bottom:18px;">
             <img src="uploads/landing-ar-pkg-design.jpg" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;">
           </div>
@@ -1059,7 +1059,7 @@ input:focus, select:focus, textarea:focus {
           </div>
           <p style="font-family:'GE SS Two',sans-serif;font-size:13px;color:rgba(255,255,255,0.55);line-height:1.7;margin:0;max-width:400px;">مساحات مصممة بذكاء لتعكس هويتك، تلبي احتياجك الفعلي، وترتقي بأسلوب حياتك.</p>
         </a>
-        <a href="/ar/services-fitout" class="fiq-svc-card" data-svc-card data-svc-clone aria-hidden="true" tabindex="-1" data-svc-i="2" style="flex:0 0 auto;width:clamp(270px,32vw,460px);display:block;text-decoration:none;">
+        <a href="#form" class="fiq-svc-card" data-svc-card data-svc-clone aria-hidden="true" tabindex="-1" data-svc-i="2" style="flex:0 0 auto;width:clamp(270px,32vw,460px);display:block;text-decoration:none;">
           <div style="overflow:hidden;border-radius:10px;aspect-ratio:6/5;background:#2A2522;margin-bottom:18px;">
             <img src="uploads/landing-ar-pkg-fitout.jpg" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;">
           </div>
@@ -1068,7 +1068,7 @@ input:focus, select:focus, textarea:focus {
           </div>
           <p style="font-family:'GE SS Two',sans-serif;font-size:13px;color:rgba(255,255,255,0.55);line-height:1.7;margin:0;max-width:400px;">نترجم المخططات على أرض الواقع باستخدام أرقى الخامات، وتحت إشراف هندسي صارم يلتزم بأعلى معايير الجودة.</p>
         </a>
-        <a href="/ar/services-furniture" class="fiq-svc-card" data-svc-card data-svc-clone aria-hidden="true" tabindex="-1" data-svc-i="3" style="flex:0 0 auto;width:clamp(270px,32vw,460px);display:block;text-decoration:none;">
+        <a href="#form" class="fiq-svc-card" data-svc-card data-svc-clone aria-hidden="true" tabindex="-1" data-svc-i="3" style="flex:0 0 auto;width:clamp(270px,32vw,460px);display:block;text-decoration:none;">
           <div style="overflow:hidden;border-radius:10px;aspect-ratio:6/5;background:#2A2522;margin-bottom:18px;">
             <img src="uploads/landing-ar-pkg-furniture.jpg" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;">
           </div>
@@ -1404,7 +1404,7 @@ input:focus, select:focus, textarea:focus {
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ FOOTER ━━ -->
 <footer style="background:#1F1F1F;padding:clamp(40px,5vw,56px) clamp(24px,5vw,80px);">
   <div style="max-width:1280px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center;">
-    <a href="/ar" style="display:block;flex-shrink:0;">
+    <a href="#hero" aria-label="العودة إلى الأعلى" style="display:block;flex-shrink:0;">
       <img src="assets/logo-default.png" width="264" height="90" alt="FurnishIQ" loading="lazy" decoding="async" style="display:block;height:30px;width:auto;">
     </a>
     <p style="font-family:'GE SS Two',sans-serif;font-size:12px;color:rgba(255,255,255,0.5);margin:0;">© 2026 فيرنيش آي كيو. جميع الحقوق محفوظة.</p>
@@ -1962,6 +1962,109 @@ class Component extends DCLogic {
         if (e.key === 'ArrowRight') { e.preventDefault(); stepProject(-1); }
         if (e.key === 'Tab') {
           const items = [pmClose, pmPrev, pmNext].concat([...pmInfo.querySelectorAll('a')]);
+          const idx = items.indexOf(document.activeElement);
+          e.preventDefault();
+          items[(idx + (e.shiftKey ? -1 : 1) + items.length) % items.length].focus();
+        }
+      });
+    }
+
+    // Package service pop-up: same presentation as the project pop-up. Opened from the package
+    // cards (clones included, matched by data-svc-i), loops through the three services, and its
+    // CTA pre-selects the matching need in the form before scrolling to it.
+    const svcCards = [...document.querySelectorAll('[data-svc-card]')];
+    if (svcCards.length) {
+      const selfForm = this;
+      const SVCS = [{"need": "design_only", "title": "تصميم داخلي <span dir=\"ltr\" style=\"font-family:'Lama Sans',sans-serif;\">3D</span> واقعي", "tag": "تبدأ من 29.99 ريال/م&sup2;", "intro": "نخطط مساحتك ونصممها ونجسّدها قبل طلب أي خامة. ندرس أسلوب حياتك أو عملك، ثم نقدم لك تصاميم ثلاثية الأبعاد واقعية لكل فراغ، لتعتمد النتيجة بثقة كاملة.", "items": [["تخطيط الفراغات", "مخططات توزيع وأثاث عملية مصممة حول روتينك اليومي وطريقة استخدام كل مساحة."], ["تصاميم <span dir=\"ltr\" style=\"font-family:'Lama Sans',sans-serif;\">3D</span> واقعية", "كل فراغ مُجسّد بخاماته وإضاءته وأثاثه الحقيقي، مع تعديلات معك حتى يصل إلى ما تريده."], ["لوحة الخامات والإضاءة", "مجموعة منتقاة من التشطيبات والألوان والإضاءة تعكس هويتك وتوجّه مرحلة التنفيذ."]]}, {"need": "fit_out", "title": "تنفيذ وتشطيبات (Fit-out) فاخرة", "tag": "عرض سعر حسب المشروع", "intro": "نحوّل المخططات المعتمدة إلى مساحة مكتملة، وندير جميع أعمال الموقع تحت إشراف هندسي صارم، لتطابق النتيجة التصميم ثلاثي الأبعاد وفق أعلى معايير الجودة.", "items": [["تأسيس الأنظمة (MEP)", "أنظمة التكييف والكهرباء والإضاءة والسباكة منسّقة بتقنية BIM لتفادي أي تعارض في الموقع."], ["تشطيبات فاخرة", "أعمال الحجر والخشب والجبس والنجارة بأرقى الخامات وأدق التفاصيل."], ["إشراف هندسي", "فريق هندسي مخصص، وفحوصات جودة يومية، وجهة تواصل واحدة حتى التسليم."]]}, {"need": "furniture", "title": "توريد وتأثيث متكامل", "tag": "تطابق 100% مع التصميم", "intro": "نكمل مساحتك بأثاث وديكور يطابقان التصميم المعتمد وأبعاد كل فراغ بدقة، مع التوريد والتوصيل والتركيب من فريق واحد.", "items": [["أثاث حسب الطلب", "قطع مصنّعة بالمقاس وبالتشطيبات والأقمشة المختارة في تصميمك."], ["توريد منتقى", "قطع مختارة من موردين موثوقين تتناسب مع ألوان كل فراغ وأبعاده."], ["التوصيل والتنسيق", "توصيل وتركيب وتنسيق نهائي، لتكون مساحتك جاهزة للسكن عند التسليم."]]}];
+      const SF = "font-family:'GE SS Two',sans-serif;";
+      const sm = document.createElement('div');
+      sm.className = 'fiq-pmodal fiq-smodal';
+      sm.setAttribute('role', 'dialog');
+      sm.setAttribute('aria-modal', 'true');
+      sm.setAttribute('dir', 'rtl');
+      sm.innerHTML = '<button type="button" class="fiq-pmodal-close" aria-label="إغلاق"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></button>'
+        + '<div class="fiq-pmodal-body"><img alt="">'
+        + '<button type="button" class="fiq-pmodal-nav fiq-pmodal-nav--prev" data-sm-prev aria-label="الخدمة السابقة"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>'
+        + '<button type="button" class="fiq-pmodal-nav fiq-pmodal-nav--next" data-sm-next aria-label="الخدمة التالية"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></button>'
+        + '<div class="fiq-pmodal-info"></div></div>';
+      document.body.appendChild(sm);
+      const smImg = sm.querySelector('.fiq-pmodal-body > img');
+      const smInfo = sm.querySelector('.fiq-pmodal-info');
+      const smClose = sm.querySelector('.fiq-pmodal-close');
+      const smPrev = sm.querySelector('[data-sm-prev]');
+      const smNext = sm.querySelector('[data-sm-next]');
+      // One source image per service, taken from the first card of each index.
+      const smSrc = SVCS.map((_, i) => { const c = svcCards.find((k) => Number(k.dataset.svcI) === i + 1); const im = c && c.querySelector('img'); return im ? im.getAttribute('src') : ''; });
+      let smIndex = 0;
+      let smOpener = null;
+      const closeService = () => {
+        if (!sm.classList.contains('is-open')) return;
+        sm.classList.remove('is-open');
+        document.documentElement.style.overflow = '';
+        if (smOpener) smOpener.focus();
+      };
+      const openService = (i, opener, stepping) => {
+        const d = SVCS[i];
+        if (!d) return;
+        smIndex = i;
+        if (stepping && !reduced) {
+          smImg.style.opacity = '0';
+          const show = () => { smImg.style.opacity = '1'; };
+          smImg.onload = show;
+          setTimeout(() => { smImg.src = smSrc[i]; if (smImg.complete) show(); }, 180);
+        } else {
+          smImg.onload = null;
+          smImg.style.opacity = '1';
+          smImg.src = smSrc[i];
+        }
+        smImg.alt = d.title.replace(/<[^>]+>/g, '');
+        smInfo.style.setProperty('--fiq-svc-n', d.items.length);
+        smInfo.innerHTML =
+          '<div class="fiq-pmodal-head">'
+          + '<div style="max-width:620px;"><h3 id="fiq-smodal-title" style="' + SF + 'font-size:clamp(24px,2.3vw,34px);font-weight:500;color:#FFFFFF;line-height:1.25;margin:0 0 10px;">' + d.title + '</h3>'
+          + '<p style="' + SF + 'font-size:14px;color:rgba(255,255,255,0.78);line-height:1.75;margin:0;">' + d.intro + '</p></div>'
+          + '<div style="display:flex;align-items:center;gap:clamp(20px,2.4vw,36px);">'
+          + '<span style="' + SF + 'font-size:13px;color:#D6C2A8;white-space:nowrap;">' + d.tag + '</span>'
+          + '<a href="#form" class="fiq-pmodal-cta" data-sm-cta>احجز استشارتك المجانية</a></div>'
+          + '</div>'
+          + '<div class="fiq-pmodal-svcs" aria-label="ماذا تشمل">'
+          + d.items.map(([name, text]) => '<div><span style="' + SF + 'display:inline-block;font-size:14px;font-weight:500;color:#D6C2A8;margin-bottom:6px;">' + name + '</span>'
+            + '<p style="' + SF + 'font-size:12.5px;color:rgba(255,255,255,0.72);line-height:1.7;margin:0;">' + text + '</p></div>').join('')
+          + '</div>';
+        sm.setAttribute('aria-labelledby', 'fiq-smodal-title');
+        sm.querySelector('.fiq-pmodal-body').scrollTop = 0;
+        if (opener) smOpener = opener;
+        if (stepping) return;
+        sm.classList.add('is-open');
+        document.documentElement.style.overflow = 'hidden';
+        smClose.focus();
+      };
+      const stepService = (dir) => openService((smIndex + dir + SVCS.length) % SVCS.length, null, true);
+      smPrev.addEventListener('click', () => stepService(-1));
+      smNext.addEventListener('click', () => stepService(1));
+      svcCards.forEach((card) => {
+        card.addEventListener('click', (e) => {
+          e.preventDefault();
+          openService(Number(card.dataset.svcI) - 1, card);
+        });
+      });
+      smClose.addEventListener('click', closeService);
+      sm.addEventListener('click', (e) => {
+        if (e.target === sm) closeService();
+        // CTA: pick the matching need in the form, close, and let the #form anchor scroll.
+        if (e.target.closest('[data-sm-cta]')) {
+          selfForm.setState({ selectedNeed: SVCS[smIndex].need, needError: '' });
+          smOpener = null;
+          closeService();
+        }
+      });
+      document.addEventListener('keydown', (e) => {
+        if (!sm.classList.contains('is-open')) return;
+        if (e.key === 'Escape') closeService();
+        if (e.key === 'ArrowLeft') { e.preventDefault(); stepService(1); }
+        if (e.key === 'ArrowRight') { e.preventDefault(); stepService(-1); }
+        if (e.key === 'Tab') {
+          const items = [smClose, smPrev, smNext].concat([...smInfo.querySelectorAll('a')]);
           const idx = items.indexOf(document.activeElement);
           e.preventDefault();
           items[(idx + (e.shiftKey ? -1 : 1) + items.length) % items.length].focus();
