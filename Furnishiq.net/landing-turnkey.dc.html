@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html dir="ltr" lang="en">
 <head>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -32,14 +32,14 @@ fbq('track', 'PageView');
 <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <title>FurnishIQ | Integrated Turnkey Engineering Package</title>
-<meta name="description" content="From plan to turnkey handover in 96 days. Interior design, luxury fit-out, and furnishing — delivered by one partner, from 29.99 SAR/m².">
+<meta name="description" content="From concept to turnkey delivery. Interior design, luxury fit-out and complete furnishing with a single partner. Residential design packages from 29.99 SAR/m².">
 <link rel="canonical" href="https://www.furnishiq.net/landing-turnkey">
 <link rel="alternate" hreflang="en" href="https://www.furnishiq.net/landing-turnkey">
-<link rel="alternate" hreflang="ar" href="https://www.furnishiq.net/ar/landing-turnkey">
+<link rel="alternate" hreflang="ar" href="https://www.furnishiq.net/ar/concept-to-turnkey">
 <link rel="alternate" hreflang="x-default" href="https://www.furnishiq.net/landing-turnkey">
 <script src="./support.js" defer></script>
 <script src="./nav-mobile.js" defer></script>
-<script src="./floating-buttons.js" defer></script>
+<script src="./floating-buttons.js?v=2" data-wa-style="official" defer></script>
 <script src="./analytics-events.js" defer></script>
 <link rel="preload" as="font" type="font/ttf" href="_ds/furnishiq-design-system-ea658a9e-dd64-48ad-ab93-f0196a53ec9c/uploads/LamaSans-Medium_English.ttf" crossorigin>
 </head>
@@ -509,21 +509,296 @@ input:focus, select:focus, textarea:focus {
 
   </style>
   <style>
-    /* Landing pages always show the hamburger menu, even on desktop —
-       never the full inline nav link list. */
-    .fiq-nav-links{display:none!important;}
-    .fiq-nav-cta-btn{display:none!important;}
-    .fiq-nav-toggle{display:flex!important;}
+    /* Landing pages: an inline menu of in-page scroll links on desktop;
+       the shared hamburger (nav-mobile.js) takes over at 960px and below. */
+    @media(max-width:960px){
+      .fiq-nav-links,.fiq-nav-cta-btn{display:none!important;}
+    }
+    /* Base styles set html{scroll-behavior:smooth}; honour reduced motion for the nav jumps. */
+    @media(prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto;}
+    }
+    /* Keep section headings clear of the 80px fixed nav after a jump. */
+    #showcase,#services-overview,#video-showcase,#projects-showcase,#usps,#form{scroll-margin-top:80px;}
+    /* Scroll-spy: the link for the section in view. !important beats the inline opacity the nav script sets. */
+    [data-nav-section].is-active{opacity:1!important;text-decoration:underline!important;text-decoration-thickness:1px;text-underline-offset:10px;}
     @media(max-width:768px){
-      .fiq-needs-grid{grid-template-columns:1fr!important;}
-      .fiq-service-inclusions{grid-template-columns:1fr!important;}
-      .fiq-work-grid{grid-template-columns:1fr 1fr!important;}
-      .fiq-usps-grid{grid-template-columns:1fr 1fr!important;}
+      .fiq-usps-card{grid-template-columns:1fr!important;}
+    }
+    /* Section rhythm: one shared top/bottom padding for every content section. */
+    :root{--fiq-sec-pad:64px;}
+    #showcase,#services-overview,#video-showcase,#projects-showcase,#usps,#form{padding-top:var(--fiq-sec-pad)!important;padding-bottom:var(--fiq-sec-pad)!important;box-sizing:border-box;}
+    /* Desktop: each section fills the screen below the 80px nav, content centred vertically.
+       Sections taller than the screen simply grow. Phones keep natural heights. */
+    @media(min-width:961px){
+      :root{--fiq-sec-pad:clamp(64px,7vh,112px);}
+      #showcase,#services-overview,#video-showcase,#projects-showcase,#usps,#form{min-height:calc(100vh - 80px);min-height:calc(100svh - 80px);display:flex;flex-direction:column;justify-content:center;}
+      /* Flex items with auto side margins shrink to fit; make them fill the row again (max-width still caps them). */
+      #showcase > *,#services-overview > *,#video-showcase > *,#projects-showcase > *,#usps > *,#form > *{flex:none;width:100%;width:-webkit-fill-available;width:-moz-available;width:stretch;}
+      /* Package cards scale with screen height so the section fits on ~900px-tall laptops, but
+         keep a floor: the loop only wraps if one set of 3 cards (3 x card + 3 x 24px gap) is at
+         least the visible track width + 22px, i.e. card >= (track - 50px) / 3. Floor used:
+         track / 3 - 12px, a ~14px safety margin. Below it the carousel sticks at its end. */
+      .fiq-svc-card{width:clamp(270px,max(min(32vw,calc(52vh - 108px)),calc(min(1280px,100vw - 2 * clamp(24px,5vw,80px)) / 3 - 12px)),460px)!important;}
+      .fiq-svc-head{margin-bottom:clamp(24px,3vh,64px)!important;row-gap:clamp(24px,3.4vh,48px)!important;}
+    }
+    /* Video pop-up (built by script, appended to <body>). */
+    .fiq-vmodal{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;padding:72px 24px 24px;box-sizing:border-box;background:rgba(15,12,10,0.94);opacity:0;visibility:hidden;transition:opacity 0.35s cubic-bezier(0.25,0.46,0.45,0.94),visibility 0s linear 0.35s;}
+    .fiq-vmodal.is-open{opacity:1;visibility:visible;transition:opacity 0.35s cubic-bezier(0.25,0.46,0.45,0.94),visibility 0s;}
+    .fiq-vmodal-frame{position:relative;width:min(100%,calc((100vh - 96px) * 16 / 9));aspect-ratio:16/9;background:#000;}
+    .fiq-vmodal-frame video{display:block;width:100%;height:100%;background:#000;}
+    .fiq-vmodal-note{position:absolute;inset:auto 0 0 0;padding:20px 24px;font-family:'Lama Sans',sans-serif;font-size:14px;color:#FFFFFF;background:rgba(15,12,10,0.6);text-align:center;}
+    .fiq-vmodal-close{position:absolute;top:16px;right:16px;width:48px;height:48px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,0.4);border-radius:50%;background:transparent;cursor:pointer;padding:0;transition:background 0.3s cubic-bezier(0.25,0.46,0.45,0.94);}
+    .fiq-vmodal-close:hover,.fiq-vmodal-close:focus-visible{background:rgba(255,255,255,0.12);}
+    @media(prefers-reduced-motion:reduce){.fiq-vmodal,.fiq-vmodal.is-open{transition:none;}}
+    /* Project preview pop-up (built by script, appended to <body>): full image, details overlaid on a bottom gradient. */
+    .fiq-pmodal{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;padding:72px 24px 24px;box-sizing:border-box;background:rgba(15,12,10,0.94);opacity:0;visibility:hidden;transition:opacity 0.35s cubic-bezier(0.25,0.46,0.45,0.94),visibility 0s linear 0.35s;}
+    .fiq-pmodal.is-open{opacity:1;visibility:visible;transition:opacity 0.35s cubic-bezier(0.25,0.46,0.45,0.94),visibility 0s;}
+    .fiq-pmodal-body{position:relative;width:min(100%,calc((100vh - 96px) * 16 / 9));aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:#000;box-shadow:0 24px 80px rgba(0,0,0,0.4);transform:translateY(16px);transition:transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94);}
+    .fiq-pmodal.is-open .fiq-pmodal-body{transform:none;}
+    .fiq-pmodal-body > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+    .fiq-pmodal-info{position:absolute;left:0;right:0;bottom:0;padding:clamp(72px,9vh,110px) clamp(24px,3vw,44px) clamp(22px,2.6vw,36px);background:linear-gradient(to top,rgba(0,0,0,0.9) 0%,rgba(0,0,0,0.72) 55%,rgba(0,0,0,0) 100%);display:flex;flex-direction:column;gap:clamp(16px,2vw,24px);}
+    .fiq-pmodal-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;}
+    .fiq-pmodal-svcs{display:grid;grid-template-columns:repeat(var(--fiq-svc-n,4),minmax(0,1fr));gap:clamp(16px,2vw,28px);padding-top:clamp(14px,1.6vw,20px);border-top:1px solid rgba(255,255,255,0.18);}
+    .fiq-pmodal-svcs a{color:#D6C2A8;text-decoration:none;transition:color 0.25s cubic-bezier(0.25,0.46,0.45,0.94);}
+    .fiq-pmodal-svcs a:hover{color:#FFFFFF;}
+    /* Prev/next: vertically centred on the photo.
+       Previous sits on the left (arrow points left), next on the right. */
+    .fiq-pmodal-nav{position:absolute;top:50%;z-index:2;width:56px;height:56px;margin-top:-28px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,0.45);border-radius:50%;background:rgba(15,12,10,0.35);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);cursor:pointer;padding:0;transition:background 0.3s cubic-bezier(0.25,0.46,0.45,0.94),border-color 0.3s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.3s cubic-bezier(0.25,0.46,0.45,0.94);}
+    .fiq-pmodal-nav:hover,.fiq-pmodal-nav:focus-visible{background:#D6C2A8;border-color:#D6C2A8;outline:none;}
+    .fiq-pmodal-nav:hover svg,.fiq-pmodal-nav:focus-visible svg{stroke:#1F1F1F;}
+    .fiq-pmodal-nav svg{transition:stroke 0.3s cubic-bezier(0.25,0.46,0.45,0.94);}
+    .fiq-pmodal-nav--prev{left:clamp(16px,2vw,28px);}
+    .fiq-pmodal-nav--next{right:clamp(16px,2vw,28px);}
+    .fiq-pmodal-nav:active{transform:scale(0.94);}
+    /* Mouse devices: arrows stay hidden until the image is hovered (or one is keyboard-focused).
+       Touch screens have no hover, so there they are always shown. */
+    @media(hover:hover){
+      .fiq-pmodal-nav{opacity:0;pointer-events:none;transition:opacity 0.3s cubic-bezier(0.25,0.46,0.45,0.94),background 0.3s cubic-bezier(0.25,0.46,0.45,0.94),border-color 0.3s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.3s cubic-bezier(0.25,0.46,0.45,0.94);}
+      .fiq-pmodal-body:hover .fiq-pmodal-nav,.fiq-pmodal-nav:focus-visible{opacity:1;pointer-events:auto;}
+    }
+    .fiq-pmodal-body > img{transition:opacity 0.35s cubic-bezier(0.25,0.46,0.45,0.94);}
+    .fiq-pmodal-close{position:absolute;top:16px;right:16px;width:48px;height:48px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,0.4);border-radius:50%;background:transparent;cursor:pointer;padding:0;transition:background 0.3s cubic-bezier(0.25,0.46,0.45,0.94);}
+    .fiq-pmodal-close:hover,.fiq-pmodal-close:focus-visible{background:rgba(255,255,255,0.12);}
+    .fiq-pmodal-cta{flex-shrink:0;font-family:'Lama Sans',sans-serif;font-size:13px;color:#1F1F1F;background:#D6C2A8;border:1px solid #D6C2A8;padding:14px 28px;text-decoration:none;transition:background 0.3s cubic-bezier(0.25,0.46,0.45,0.94),color 0.3s cubic-bezier(0.25,0.46,0.45,0.94);}
+    .fiq-pmodal-cta:hover,.fiq-pmodal-cta:focus-visible{background:transparent;color:#FFFFFF;border-color:rgba(255,255,255,0.4);}
+    /* Narrow or short screens: image on top, details below on charcoal, scrolling. */
+    @media(max-width:900px),(max-height:620px){
+      .fiq-pmodal{align-items:flex-start;padding:72px 16px 16px;}
+      .fiq-pmodal-body{width:100%;aspect-ratio:auto;max-height:100%;overflow-y:auto;background:#1F1F1F;scrollbar-width:thin;scrollbar-color:rgba(214,194,168,0.35) transparent;}
+      .fiq-pmodal-body > img{position:static;display:block;height:auto;aspect-ratio:16/10;}
+      .fiq-pmodal-info{position:static;background:none;padding:24px;}
+      .fiq-pmodal-head{flex-direction:column;align-items:flex-start;}
+      .fiq-pmodal-svcs{grid-template-columns:1fr;}
+      /* Centre on the 16:10 photo at the top of the scrolling panel. */
+      .fiq-pmodal-nav{top:calc((100vw - 32px) * 10 / 32);width:44px;height:44px;margin-top:-22px;}
+      .fiq-pmodal-nav--prev{left:12px;}
+      .fiq-pmodal-nav--next{right:12px;}
+    }
+    @media(prefers-reduced-motion:reduce){.fiq-pmodal,.fiq-pmodal.is-open,.fiq-pmodal-body,.fiq-pmodal-body > img,.fiq-pmodal-nav{transition:none;}}
+    /* Legal pop-up (privacy policy): full-screen reading view, built by script. */
+    .fiq-legal{position:fixed;inset:0;z-index:1000;display:flex;flex-direction:column;background:#F5F2ED;opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity 0.35s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94),visibility 0s linear 0.35s;}
+    .fiq-legal.is-open{opacity:1;visibility:visible;transform:none;transition:opacity 0.35s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94),visibility 0s;}
+    .fiq-legal-bar{flex-shrink:0;display:flex;align-items:center;height:80px;box-sizing:border-box;padding-right:var(--fiq-sbw,0px);border-bottom:1px solid rgba(58,45,37,0.12);background:#F5F2ED;}
+    .fiq-legal-bar-inner{max-width:1280px;margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between;gap:24px;}
+    .fiq-legal-close{width:48px;height:48px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(58,45,37,0.3);border-radius:50%;background:transparent;cursor:pointer;padding:0;transition:background 0.3s cubic-bezier(0.25,0.46,0.45,0.94),border-color 0.3s cubic-bezier(0.25,0.46,0.45,0.94);}
+    .fiq-legal-close:hover,.fiq-legal-close:focus-visible{background:#1F1F1F;border-color:#1F1F1F;outline:none;}
+    .fiq-legal-close:hover svg,.fiq-legal-close:focus-visible svg{stroke:#FFFFFF;}
+    .fiq-legal-scroll{flex:1;overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(58,45,37,0.3) transparent;}
+    .fiq-legal-doc{max-width:760px;margin:0 auto;padding:clamp(40px,6vw,72px) clamp(20px,5vw,40px) clamp(64px,8vw,96px);font-family:'Lama Sans',sans-serif;color:#1F1F1F;}
+    .fiq-legal-doc h2{font-size:clamp(28px,3vw,40px);font-weight:500;line-height:1.3;margin:0 0 10px;}
+    .fiq-legal-doc h3{font-size:18px;font-weight:500;color:#3A2D25;margin:40px 0 12px;padding-top:28px;border-top:1px solid rgba(58,45,37,0.12);}
+    .fiq-legal-doc p,.fiq-legal-doc li,.fiq-legal-doc h2,.fiq-legal-doc h3,.fiq-legal-doc a{font-family:'Lama Sans',sans-serif;}
+    .fiq-legal-doc p,.fiq-legal-doc li{font-size:15px;line-height:1.95;color:#5B4636;}
+    .fiq-legal-doc p{margin:0 0 12px;}
+    .fiq-legal-doc ul{margin:0 0 12px;padding-inline-start:22px;}
+    .fiq-legal-doc li{margin-bottom:6px;}
+    .fiq-legal-doc strong{color:#1F1F1F;font-weight:500;}
+    .fiq-legal-doc a{color:#8B6B4A;}
+    .fiq-legal-doc .fiq-legal-meta{font-size:13px;color:rgba(58,45,37,0.6);margin-bottom:28px;}
+    @media(prefers-reduced-motion:reduce){.fiq-legal,.fiq-legal.is-open{transition:none;transform:none;}}
+    /* Entrance animations. Each [data-reveal] names its start state; the script sets the end
+       state inline when the element scrolls into view (inline styles survive template re-renders).
+       Luxury ease throughout, no bounce. data-reveal-delay (seconds) becomes the transition delay. */
+    body{overflow-x:clip;} /* side slides must never widen the page on phones */
+    [data-reveal]{opacity:0;transition:opacity 0.9s cubic-bezier(0.25,0.46,0.45,0.94),transform 1.1s cubic-bezier(0.25,0.46,0.45,0.94),filter 1s cubic-bezier(0.25,0.46,0.45,0.94),clip-path 1.4s cubic-bezier(0.65,0,0.35,1);will-change:opacity,transform;}
+    [data-reveal="up"]{transform:translateY(28px);}
+    [data-reveal="left"]{transform:translateX(-64px);}
+    [data-reveal="right"]{transform:translateX(64px);}
+    [data-reveal="fade"]{transition-duration:1.3s;}
+    [data-reveal="zoom"]{transform:scale(0.94);}
+    [data-reveal="blur"]{filter:blur(12px);transform:translateY(14px);}
+    [data-reveal="wipe"]{opacity:1;clip-path:inset(0 0 100% 0);}
+    [data-reveal="kenburns"]{opacity:1;transform:scale(1.12);transition:transform 2.8s cubic-bezier(0.25,0.46,0.45,0.94);}
+    @media(max-width:768px){
+      [data-reveal="left"]{transform:translateX(-32px);}
+      [data-reveal="right"]{transform:translateX(32px);}
+    }
+    @media(prefers-reduced-motion:reduce){[data-reveal]{transition:none!important;}}
+    /* Phones: every call-to-action button spans the full content width. */
+    @media(max-width:768px){
+      .fiq-hero-ctas{width:100%;flex-direction:column;}
+      .fiq-hero-cta-primary,.fiq-hero-cta-secondary{width:100%!important;}
+      .fiq-vid-btn-primary,.fiq-vid-btn-secondary{flex:1 1 100%;text-align:center;box-sizing:border-box;}
+      .fiq-svc-cta{display:flex!important;width:100%;box-sizing:border-box;justify-content:space-between;}
+      .fiq-pmodal-head > div:last-child{width:100%;flex-wrap:wrap;}
+      .fiq-pmodal-cta{flex:1 1 100%;text-align:center;}
+    }
+    /* Phones: compact hero so it fits one screen; stats become a 2 x 2 grid of smaller figures. */
+    @media(max-width:768px){
+      .fiq-hero-inner{padding-top:112px!important;padding-bottom:48px!important;}
+      .fiq-hero-inner h1{margin-bottom:18px!important;}
+      .fiq-hero-inner p{margin-bottom:28px!important;}
+      .fiq-hero-ctas{gap:12px!important;margin-bottom:32px!important;}
+      .fiq-hero-stats{display:grid!important;grid-template-columns:1fr 1fr;row-gap:18px;column-gap:16px;padding-top:24px!important;}
+      .fiq-hero-stats > div > div:first-child{font-size:30px!important;-webkit-text-stroke-width:0.8px!important;margin-bottom:6px!important;}
+      .fiq-hero-stats > div > div:last-child{font-size:10px!important;letter-spacing:0.14em!important;}
+    }
+    /* Tablet and phone: the "needs" photo becomes the full-bleed section background (no white frame card). */
+    @media(max-width:1024px){
+      #showcase{padding:0!important;background:#1F1F1F!important;display:flex;flex-direction:column;}
+      .fiq-showcase-frame{flex:1 1 auto!important;display:flex;flex-direction:column;max-width:none!important;padding:0!important;background:transparent!important;border-radius:0!important;}
+      .fiq-showcase-inner{flex:1 1 auto;border-radius:0!important;padding-top:var(--fiq-sec-pad)!important;padding-bottom:var(--fiq-sec-pad)!important;}
+    }
+    /* Phones: the form's frosted overlay covers the whole section edge to edge, square corners. */
+    @media(max-width:900px){
+      #form{padding:0!important;}
+      .fiq-form-wrap > :last-child{border:none!important;border-radius:0!important;box-shadow:none!important;padding:var(--fiq-sec-pad) clamp(20px,6vw,40px)!important;}
+    }
+    /* Phones only: a light blur behind the form so field text stays legible. Tablet and desktop: none. */
+    @media(max-width:768px){
+      .fiq-form-wrap > :last-child{-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);}
+    }
+    /* Hero CTAs swap styles on hover: filled <-> outlined. !important beats the inline styles. */
+    .fiq-hero-cta-primary:hover,.fiq-hero-cta-primary:focus-visible{background:transparent!important;color:#FFFFFF!important;border-color:rgba(255,255,255,0.4)!important;}
+    .fiq-hero-cta-secondary:hover,.fiq-hero-cta-secondary:focus-visible{background:#D6C2A8!important;color:#1F1F1F!important;border-color:#D6C2A8!important;}
+    /* Showcase carousel */
+    .fiq-showcase-track{scrollbar-width:none;-ms-overflow-style:none;}
+    .fiq-showcase-track::-webkit-scrollbar{display:none;}
+    .fiq-showcase-card{box-shadow:0 18px 36px -8px rgba(0,0,0,0.45),0 6px 14px rgba(0,0,0,0.22);transition:transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94),box-shadow 0.5s cubic-bezier(0.25,0.46,0.45,0.94);}
+    .fiq-showcase-card:hover{transform:translateY(-4px);box-shadow:0 26px 44px -8px rgba(0,0,0,0.5),0 8px 18px rgba(0,0,0,0.25);}
+    .fiq-showcase-btn{transition:background 0.3s cubic-bezier(0.25,0.46,0.45,0.94),opacity 0.3s;}
+    /* Arrows sit on the card row, centred on the cards. The empty 26% column is on the left,
+       then a 16px gap, then the first card; so "prev" (points left) at left:26% - 40px leaves
+       exactly the 16px card gap. "next" (points right) sits 16px in from the frame's right edge. */
+    .fiq-showcase-btn--prev,.fiq-showcase-btn--next{position:absolute;top:50%;transform:translateY(-50%);z-index:2;}
+    .fiq-showcase-btn--prev{left:calc(26% - 40px);}
+    .fiq-showcase-btn--next{right:calc(16px - clamp(20px,3.4vw,48px));}
+    @media(max-width:768px){
+      .fiq-showcase-bottom{grid-template-columns:1fr!important;}
+      .fiq-showcase-viewall{display:none;}
+      .fiq-showcase-btn--prev{left:calc(16px - clamp(20px,3.4vw,48px));background:rgba(31,31,31,0.35)!important;}
+      .fiq-showcase-track{margin-inline-start:calc(-1 * clamp(20px,3.4vw,48px))!important;padding-inline-start:clamp(20px,3.4vw,48px)!important;scroll-padding-inline-start:clamp(20px,3.4vw,48px);}
+    }
+    @media(prefers-reduced-motion:reduce){
+      .fiq-showcase-track{scroll-behavior:auto!important;}
+      .fiq-showcase-card:hover{transform:none;}
+    }
+    /* Services carousel */
+    .fiq-svc-track{scrollbar-width:none;-ms-overflow-style:none;}
+    .fiq-svc-track::-webkit-scrollbar{display:none;}
+    .fiq-svc-card[data-svc-i="2"]{margin-top:clamp(14px,1.6vw,24px);}
+    .fiq-svc-card img{transition:transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);}
+    .fiq-svc-card:hover img{transform:scale(1.04);}
+    .fiq-svc-btn{transition:border-color 0.3s cubic-bezier(0.25,0.46,0.45,0.94),background 0.3s cubic-bezier(0.25,0.46,0.45,0.94),opacity 0.3s;}
+    .fiq-svc-btn:hover:not(:disabled){border-color:#FFFFFF;background:rgba(255,255,255,0.08);}
+    .fiq-svc-cta{transition:border-color 0.3s cubic-bezier(0.25,0.46,0.45,0.94),background 0.3s cubic-bezier(0.25,0.46,0.45,0.94);}
+    .fiq-svc-cta:hover{border-color:#FFFFFF;background:rgba(255,255,255,0.06);}
+    @media(max-width:900px){
+      .fiq-svc-head{grid-template-columns:1fr!important;}
+      .fiq-svc-head > :nth-child(2){order:1;}
+      .fiq-svc-head > :nth-child(4){order:2;}
+      .fiq-svc-head > :nth-child(3){order:3;}
     }
     @media(max-width:520px){
-      .fiq-work-grid{grid-template-columns:1fr!important;}
-      .fiq-usps-grid{grid-template-columns:1fr!important;}
+      .fiq-svc-card{width:78vw!important;}
     }
+    @media(prefers-reduced-motion:reduce){
+      .fiq-svc-track{scroll-behavior:auto!important;}
+      .fiq-svc-card:hover img{transform:none;}
+    }
+    /* Video carousel */
+    .fiq-vid-col{container-type:inline-size;min-width:0;}
+    .fiq-vid-track{scrollbar-width:none;-ms-overflow-style:none;}
+    .fiq-vid-track::-webkit-scrollbar{display:none;}
+    .fiq-vid-slide{width:600px;width:92cqw;}
+    .fiq-vid-play{transition:transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94),background 0.3s cubic-bezier(0.25,0.46,0.45,0.94);}
+    .fiq-vid-play:hover{transform:scale(1.06);background:#FFFFFF;}
+    .fiq-vid-dot{transition:background 0.3s cubic-bezier(0.25,0.46,0.45,0.94),width 0.3s cubic-bezier(0.25,0.46,0.45,0.94);}
+    .fiq-vid-arrow{transition:border-color 0.3s cubic-bezier(0.25,0.46,0.45,0.94),opacity 0.3s;}
+    .fiq-vid-arrow:hover{border-color:#1F1F1F;}
+    .fiq-vid-btn-primary{transition:background 0.3s cubic-bezier(0.25,0.46,0.45,0.94);}
+    .fiq-vid-btn-primary:hover{background:#5B4636;}
+    .fiq-vid-btn-secondary{transition:border-color 0.3s cubic-bezier(0.25,0.46,0.45,0.94);}
+    .fiq-vid-btn-secondary:hover{border-color:#5B4636;}
+    @media(max-width:900px){
+      .fiq-vid-grid{grid-template-columns:1fr!important;}
+      .fiq-vid-slide{width:85cqw;}
+    }
+    @media(prefers-reduced-motion:reduce){
+      .fiq-vid-track{scroll-behavior:auto!important;}
+      .fiq-vid-play:hover{transform:none;}
+    }
+    /* Projects drag carousel */
+    .fiq-prj-track{scrollbar-width:none;-ms-overflow-style:none;cursor:grab;user-select:none;-webkit-user-select:none;}
+    .fiq-prj-track::-webkit-scrollbar{display:none;}
+    .fiq-prj-track.is-dragging{cursor:grabbing;}
+    .fiq-prj-track.is-dragging .fiq-prj-card{pointer-events:none;}
+    .fiq-prj-card{border:1px solid transparent;transition:border-color 0.4s cubic-bezier(0.25,0.46,0.45,0.94);}
+    .fiq-prj-card:hover,.fiq-prj-card:focus-visible{border-color:rgba(255,255,255,0.85);outline:none;}
+    .fiq-prj-card img{-webkit-user-drag:none;filter:grayscale(1);transition:filter 0.6s cubic-bezier(0.25,0.46,0.45,0.94);}
+    .fiq-prj-card:hover img,.fiq-prj-card:focus-visible img{filter:grayscale(0);}
+    .fiq-prj-thumb{transition:inset-inline-start 0.15s linear,width 0.3s cubic-bezier(0.25,0.46,0.45,0.94);}
+    @media(max-width:600px){
+      .fiq-prj-card{width:72vw!important;}
+    }
+    /* Form section */
+    /* Fields: transparent over the frosted panel, border only. */
+    .fiq-form-field,.fiq-phone{transition:border-color 0.3s cubic-bezier(0.25,0.46,0.45,0.94),background-color 0.3s cubic-bezier(0.25,0.46,0.45,0.94),box-shadow 0.3s cubic-bezier(0.25,0.46,0.45,0.94);}
+    .fiq-form-field:hover,.fiq-phone:hover{border-color:rgba(58,45,37,0.55)!important;}
+    .fiq-form-field:focus{outline:none;border-color:#3A2D25!important;background-color:rgba(255,255,255,0.18)!important;box-shadow:0 0 0 3px rgba(58,45,37,0.10);}
+    .fiq-form-field::placeholder,.fiq-phone input::placeholder{color:rgba(58,45,37,0.5);}
+    /* Custom select: native list; the chevron is an inline SVG laid over it (a CSS
+       background-image chevron rendered clipped on its right arm). */
+    .fiq-select{-webkit-appearance:none;appearance:none;cursor:pointer;padding-right:44px!important;}
+    .fiq-select option{background:#F5F2ED;color:#1F1F1F;}
+    /* Styleable picker where supported (Chrome/Edge 135+); other browsers keep the native list. */
+    @supports (appearance:base-select){
+      .fiq-select,.fiq-select::picker(select){appearance:base-select;}
+      .fiq-select{display:flex;align-items:center;}
+      .fiq-select::picker-icon{display:none;}
+      /* Same width as the field (long options wrap) so the list never overhangs it on narrow screens. */
+      .fiq-select::picker(select){width:anchor-size(width);box-sizing:border-box;margin-top:6px;padding:6px;border:1px solid rgba(58,45,37,0.18);border-radius:10px;background:rgba(245,242,237,0.96);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:0 24px 80px rgba(58,45,37,0.20);opacity:1;transition:opacity 0.2s cubic-bezier(0.25,0.46,0.45,0.94),display 0.2s allow-discrete,overlay 0.2s allow-discrete;}
+      @starting-style{.fiq-select:open::picker(select){opacity:0;}}
+      .fiq-select option{display:flex;align-items:center;gap:10px;white-space:normal;line-height:1.5;padding:12px 14px;border-radius:6px;background:transparent;font-family:'Lama Sans',sans-serif;font-size:14px;color:#1F1F1F;cursor:pointer;transition:background-color 0.2s cubic-bezier(0.25,0.46,0.45,0.94);}
+      .fiq-select option::checkmark{display:none;}
+      .fiq-select option:hover,.fiq-select option:focus-visible{background:rgba(214,194,168,0.35);outline:none;}
+      .fiq-select option:checked{background:rgba(214,194,168,0.6);color:#3A2D25;}
+      .fiq-select option[value=""]{color:rgba(58,45,37,0.5);}
+      .fiq-select option[value=""]:checked{background:transparent;}
+    }
+    @media(prefers-reduced-motion:reduce){.fiq-select::picker(select){transition:none;}}
+    .fiq-form-submit:hover{background:#3A2D25!important;}
+    /* Country code: a native <select> laid invisibly over the visible code, so the
+       list stays native (keyboard, screen readers, phone pickers) but the closed
+       state shows just "+966". */
+    .fiq-phone{transition:border-color 0.3s cubic-bezier(0.25,0.46,0.45,0.94);}
+    .fiq-phone:focus-within{border-color:#3A2D25!important;background-color:rgba(255,255,255,0.18)!important;box-shadow:0 0 0 3px rgba(58,45,37,0.10);}
+    .fiq-phone input:focus,.fiq-phone select:focus{outline:none;}
+    .fiq-phone input::placeholder{color:#9A8F85;}
+    @media(max-width:900px){
+      /* Stack: the panel runs full width over the photo (no empty band above it);
+         lighter so the photo shows through (phones add a light blur, below). */
+      .fiq-form-wrap{grid-template-columns:1fr!important;}
+      .fiq-form-wrap > :first-child{display:none;}
+      .fiq-form-wrap > :last-child{background:rgba(245,242,237,0.55)!important;}
+    }
+    @media(max-width:560px){
+      .fiq-form-row{grid-template-columns:1fr!important;}
+    }
+    /* Footer */
+    .fiq-foot-link{transition:color 0.3s cubic-bezier(0.25,0.46,0.45,0.94);}
+    .fiq-foot-link:hover{color:#FFFFFF!important;}
   </style>
 </helmet>
 
@@ -535,121 +810,414 @@ input:focus, select:focus, textarea:focus {
       <img id="id-logo-d" src="assets/logo-scrolled.png" width="264" height="90" alt="FurnishIQ" style="position:absolute;inset:0;height:36px;width:auto;max-width:172px;object-fit:contain;object-position:left center;opacity:0;transition:opacity 0.4s cubic-bezier(0.25,0.46,0.45,0.94);">
     </a>
     <div class="fiq-nav-links" style="display:flex;gap:clamp(24px,3.5vw,48px);align-items:center;flex:1;justify-content:center;">
-      <a href="/" data-nav-link style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;transition:color 0.25s,opacity 0.25s;opacity:0.8;">Home</a>
-      <a href="/about-us" data-nav-link style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;transition:color 0.25s,opacity 0.25s;opacity:0.8;">About Us</a>
-      <a href="/services" data-nav-link style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;transition:color 0.25s,opacity 0.25s;opacity:0.8;">Services</a>
-      <a href="/projects" data-nav-link style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;transition:color 0.25s,opacity 0.25s;opacity:0.8;">Projects</a>
-      <a href="/blog" data-nav-link style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;transition:color 0.25s,opacity 0.25s;opacity:0.8;">Insights</a>
-      <a href="/ar/landing-turnkey" data-nav-link data-lang-switch style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;transition:color 0.25s,opacity 0.25s;opacity:0.8;">عربي</a>
+      <a href="#showcase" data-nav-link data-nav-section style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;transition:color 0.25s,opacity 0.25s;opacity:0.8;">Your Needs</a>
+      <a href="#services-overview" data-nav-link data-nav-section style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;transition:color 0.25s,opacity 0.25s;opacity:0.8;">Package</a>
+      <a href="#video-showcase" data-nav-link data-nav-section style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;transition:color 0.25s,opacity 0.25s;opacity:0.8;">Watch</a>
+      <a href="#projects-showcase" data-nav-link data-nav-section style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;transition:color 0.25s,opacity 0.25s;opacity:0.8;">Our Work</a>
+      <a href="#usps" data-nav-link data-nav-section style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;transition:color 0.25s,opacity 0.25s;opacity:0.8;">Benefits</a>
     </div>
-    <a href="#form" class="fiq-nav-cta-btn" id="id-nav-cta" style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;border:1px solid rgba(214,194,168,0.5);padding:12px 28px;flex-shrink:0;transition:all 0.3s cubic-bezier(0.25,0.46,0.45,0.94);white-space:nowrap;background:transparent;">Start Your Project</a>
+    <a href="#form" class="fiq-nav-cta-btn" id="id-nav-cta" style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;border:1px solid rgba(214,194,168,0.5);padding:12px 28px;flex-shrink:0;transition:all 0.3s cubic-bezier(0.25,0.46,0.45,0.94);white-space:nowrap;background:transparent;">Start Your Project</a>
   </div>
 </nav>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ HERO ━━ -->
-<section id="hero" data-screen-label="Hero" style="position:relative;min-height:88vh;display:flex;align-items:center;background:#1F1F1F;overflow:hidden;">
-  <div style="position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=2400&q=30');background-size:cover;background-position:center;opacity:0.28;pointer-events:none;"></div>
-  <div style="position:relative;z-index:1;max-width:1000px;margin:0 auto;padding:clamp(140px,14vw,180px) clamp(24px,5vw,80px) clamp(80px,8vw,120px);width:100%;text-align:center;display:flex;flex-direction:column;align-items:center;">
-    <span data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:block;font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:rgba(214,194,168,0.8);margin-bottom:20px;">Turnkey Delivery</span>
-    <h1 data-reveal data-reveal-delay="0.08" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Lama Sans',sans-serif;font-size:clamp(34px,4.4vw,64px);font-weight:500;color:#FFFFFF;line-height:1.1;letter-spacing:-0.015em;max-width:820px;margin-bottom:24px;text-wrap:balance;">From Concept to Turnkey Delivery.</h1>
-    <p data-reveal data-reveal-delay="0.16" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Lama Sans',sans-serif;font-size:clamp(16px,1.6vw,19px);color:rgba(255,255,255,0.82);line-height:1.6;max-width:640px;margin-bottom:40px;">All your space needs&mdash;interior design, luxury fit-out, and turnkey furnishing&mdash;managed by a single partner dedicated to precision execution and bringing your vision to life.</p>
-    <div data-reveal data-reveal-delay="0.24" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-bottom:64px;">
-      <a href="#form" style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#1F1F1F;background:#D6C2A8;padding:19px 36px;border:1px solid #D6C2A8;text-decoration:none;transition:all 0.3s cubic-bezier(0.25,0.46,0.45,0.94);width:240px;text-align:center;box-sizing:border-box;">Contact Our Team</a>
-      <a href="#work" style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#FFFFFF;background:transparent;padding:19px 36px;border:1px solid rgba(255,255,255,0.4);text-decoration:none;transition:all 0.3s cubic-bezier(0.25,0.46,0.45,0.94);width:240px;text-align:center;box-sizing:border-box;">View Our Projects</a>
+<section id="hero" data-screen-label="Hero" style="position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:center;background:#1F1F1F;overflow:hidden;">
+  <img src="uploads/landing-ar-hero-1920.jpg" srcset="uploads/landing-ar-hero-1280.jpg 1280w, uploads/landing-ar-hero-1920.jpg 1920w, uploads/landing-ar-hero-2560.jpg 2560w" sizes="100vw" alt="" fetchpriority="high" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;pointer-events:none;">
+  <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(ellipse 62% 58% at 50% 56%,rgba(20,16,13,0.66) 0%,rgba(20,16,13,0.42) 55%,rgba(20,16,13,0.18) 100%);pointer-events:none;"></div>
+  <div class="fiq-hero-inner" style="position:relative;z-index:1;max-width:1000px;margin:0 auto;padding:clamp(140px,14vw,180px) clamp(24px,5vw,80px) clamp(80px,8vw,120px);width:100%;text-align:center;display:flex;flex-direction:column;align-items:center;">
+    <h1 data-reveal="blur" data-reveal-delay="0.1" style="font-family:'Lama Sans',sans-serif;font-size:clamp(34px,4.4vw,64px);font-weight:500;color:#FFFFFF;line-height:1.1;letter-spacing:normal;max-width:820px;margin-bottom:24px;text-wrap:balance;">From Concept to Turnkey Delivery</h1>
+    <p data-reveal="fade" data-reveal-delay="0.35" style="font-family:'Lama Sans',sans-serif;font-size:clamp(16px,1.6vw,19px);color:rgba(255,255,255,0.82);line-height:1.6;max-width:640px;margin-bottom:40px;">All your space needs&mdash;interior design, luxury fit-out, and turnkey furnishing&mdash;managed by a single partner dedicated to precision execution and bringing your vision to life.</p>
+    <div class="fiq-hero-ctas" data-reveal="up" data-reveal-delay="0.5" style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-bottom:64px;">
+      <a href="#form" class="fiq-hero-cta-primary" style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#1F1F1F;background:#D6C2A8;padding:19px 36px;border:1px solid #D6C2A8;text-decoration:none;transition:all 0.3s cubic-bezier(0.25,0.46,0.45,0.94);width:240px;text-align:center;box-sizing:border-box;">Contact Our Team</a>
+      <a href="#projects-showcase" class="fiq-hero-cta-secondary" style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#FFFFFF;background:transparent;padding:19px 36px;border:1px solid rgba(255,255,255,0.4);text-decoration:none;transition:all 0.3s cubic-bezier(0.25,0.46,0.45,0.94);width:240px;text-align:center;box-sizing:border-box;">View Our Projects</a>
     </div>
-    <div data-reveal data-reveal-delay="0.32" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;gap:clamp(28px,5vw,64px);flex-wrap:wrap;justify-content:center;border-top:1px solid rgba(255,255,255,0.16);padding-top:36px;width:100%;">
-      <div>
-        <div style="font-family:'Lama Sans',sans-serif;font-size:clamp(26px,2.6vw,36px);font-weight:500;color:#D6C2A8;margin-bottom:6px;">15+</div>
-        <div style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.6);">Years of Experience</div>
+    <div class="fiq-hero-stats" data-reveal="fade" data-reveal-delay="0.6" style="display:flex;gap:clamp(28px,5vw,64px);flex-wrap:wrap;justify-content:center;border-top:1px solid rgba(255,255,255,0.16);padding-top:36px;width:100%;">
+      <div data-reveal="up" data-reveal-delay="0.7">
+        <div style="font-family:'Lama Sans',sans-serif;font-size:clamp(40px,4.2vw,60px);font-weight:500;color:#D6C2A8;-webkit-text-stroke:1.2px #D6C2A8;line-height:1;margin-bottom:12px;"><span data-count-to="15" style="display:inline-block;min-width:2ch;text-align:right;font-variant-numeric:tabular-nums;">15</span>+</div>
+        <div style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.6);">Years of Experience</div>
       </div>
-      <div>
-        <div style="font-family:'Lama Sans',sans-serif;font-size:clamp(26px,2.6vw,36px);font-weight:500;color:#D6C2A8;margin-bottom:6px;">150+</div>
-        <div style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.6);">Completed Projects</div>
+      <div data-reveal="up" data-reveal-delay="0.8">
+        <div style="font-family:'Lama Sans',sans-serif;font-size:clamp(40px,4.2vw,60px);font-weight:500;color:#D6C2A8;-webkit-text-stroke:1.2px #D6C2A8;line-height:1;margin-bottom:12px;"><span data-count-to="150" style="display:inline-block;min-width:3ch;text-align:right;font-variant-numeric:tabular-nums;">150</span>+</div>
+        <div style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.6);">Completed Projects</div>
       </div>
-      <div>
-        <div style="font-family:'Lama Sans',sans-serif;font-size:clamp(26px,2.6vw,36px);font-weight:500;color:#D6C2A8;margin-bottom:6px;">40+</div>
-        <div style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.6);">Engineers &amp; Experts</div>
+      <div data-reveal="up" data-reveal-delay="0.9">
+        <div style="font-family:'Lama Sans',sans-serif;font-size:clamp(40px,4.2vw,60px);font-weight:500;color:#D6C2A8;-webkit-text-stroke:1.2px #D6C2A8;line-height:1;margin-bottom:12px;"><span data-count-to="40" style="display:inline-block;min-width:2ch;text-align:right;font-variant-numeric:tabular-nums;">40</span>+</div>
+        <div style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.6);">Engineers &amp; Experts</div>
       </div>
-      <div>
-        <div style="font-family:'Lama Sans',sans-serif;font-size:clamp(26px,2.6vw,36px);font-weight:500;color:#D6C2A8;margin-bottom:6px;">80+</div>
-        <div style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.6);">Clients</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ NEEDS ━━ -->
-<section id="needs" data-screen-label="Needs" style="background:#FFFFFF;padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px);">
-  <div style="max-width:1280px;margin:0 auto;">
-    <h2 data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Lama Sans',sans-serif;font-size:clamp(28px,3.2vw,44px);font-weight:500;color:#1F1F1F;line-height:1.15;letter-spacing:-0.015em;text-align:center;max-width:760px;margin:0 auto 56px;text-wrap:balance;">What would you like FurnishIQ to achieve for your space?</h2>
-    <div class="fiq-needs-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:32px;">
-      <div data-reveal style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);background:#F5F2ED;padding:clamp(32px,3vw,44px) clamp(28px,2.6vw,36px);display:flex;flex-direction:column;min-height:220px;">
-        <p style="font-family:'Lama Sans',sans-serif;font-size:18px;color:#1F1F1F;line-height:1.5;flex:1;margin-bottom:28px;">Complete end-to-end transformation&mdash;from initial design to turnkey handover.</p>
-        <a href="#form" style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#5B4636;text-decoration:none;border-bottom:1px solid #5B4636;padding-bottom:4px;align-self:flex-start;">Get a Consultation</a>
-      </div>
-      <div data-reveal data-reveal-delay="0.08" style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);background:#F5F2ED;padding:clamp(32px,3vw,44px) clamp(28px,2.6vw,36px);display:flex;flex-direction:column;min-height:220px;">
-        <p style="font-family:'Lama Sans',sans-serif;font-size:18px;color:#1F1F1F;line-height:1.5;flex:1;margin-bottom:28px;">Bespoke interior design services.</p>
-        <a href="#service" style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#5B4636;text-decoration:none;border-bottom:1px solid #5B4636;padding-bottom:4px;align-self:flex-start;">Explore Service</a>
-      </div>
-      <div data-reveal data-reveal-delay="0.16" style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);background:#F5F2ED;padding:clamp(32px,3vw,44px) clamp(28px,2.6vw,36px);display:flex;flex-direction:column;min-height:220px;">
-        <p style="font-family:'Lama Sans',sans-serif;font-size:18px;color:#1F1F1F;line-height:1.5;flex:1;margin-bottom:28px;">Shell and core space needing premium fit-out and luxury furnishing.</p>
-        <a href="#form" style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#5B4636;text-decoration:none;border-bottom:1px solid #5B4636;padding-bottom:4px;align-self:flex-start;">Get a Consultation</a>
+      <div data-reveal="up" data-reveal-delay="1">
+        <div style="font-family:'Lama Sans',sans-serif;font-size:clamp(40px,4.2vw,60px);font-weight:500;color:#D6C2A8;-webkit-text-stroke:1.2px #D6C2A8;line-height:1;margin-bottom:12px;"><span data-count-to="80" style="display:inline-block;min-width:2ch;text-align:right;font-variant-numeric:tabular-nums;">80</span>+</div>
+        <div style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.6);">Clients</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ SERVICE ━━ -->
-<section id="service" data-screen-label="Service Package" style="background:#F5F2ED;padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px);">
-  <div style="max-width:900px;margin:0 auto;text-align:center;">
-    <span data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:block;font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:#8B6B4A;margin-bottom:18px;">The Package</span>
-    <h2 data-reveal data-reveal-delay="0.08" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Lama Sans',sans-serif;font-size:clamp(28px,3.2vw,44px);font-weight:500;color:#1F1F1F;line-height:1.15;letter-spacing:-0.015em;margin-bottom:24px;text-wrap:balance;">Integrated Turnkey Engineering Package</h2>
-    <p data-reveal data-reveal-delay="0.16" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Lama Sans',sans-serif;font-size:16px;color:#5B4636;line-height:1.6;margin-bottom:8px;">We manage every phase of your space creation, from concept to reality.</p>
-    <p data-reveal data-reveal-delay="0.2" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Lama Sans',sans-serif;font-size:16px;color:#1F1F1F;font-weight:500;margin-bottom:8px;">Residential interior design packages starting from 29.99 SAR/m&sup2;.</p>
-    <p data-reveal data-reveal-delay="0.24" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Lama Sans',sans-serif;font-size:13px;color:#8B6B4A;line-height:1.6;margin-bottom:48px;">(Separate quotes provided for execution, fit-out, and furnishing based on your project scope and requirements.)</p>
-    <div class="fiq-service-inclusions" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;text-align:left;margin-bottom:48px;">
-      <div data-reveal style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);background:#FFFFFF;padding:28px;">
-        <h3 style="font-family:'Lama Sans',sans-serif;font-size:15px;font-weight:500;color:#1F1F1F;margin-bottom:10px;">Photorealistic 3D Interior Design</h3>
-        <p style="font-family:'Lama Sans',sans-serif;font-size:14px;color:#5B4636;line-height:1.6;">Intelligently crafted spaces reflecting your unique identity, meeting practical needs, and elevating lifestyle.</p>
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ SHOWCASE ━━ -->
+<section id="showcase" data-screen-label="Showcase" style="background:#F5F2ED;padding:clamp(64px,8vw,112px) clamp(16px,5vw,80px);">
+  <div class="fiq-showcase-frame" data-reveal="zoom" style="max-width:1280px;margin:0 auto;background:#FFFFFF;padding:10px;border-radius:clamp(16px,1.8vw,24px);box-sizing:border-box;">
+    <div class="fiq-showcase-inner" style="position:relative;overflow:hidden;border-radius:calc(clamp(16px,1.8vw,24px) - 10px);background:#1F1F1F;min-height:clamp(520px,46vw,660px);display:flex;flex-direction:column;justify-content:space-between;gap:40px;padding:clamp(20px,3.4vw,48px);box-sizing:border-box;">
+      <img src="uploads/landing-ar-needs-bg-1920.jpg" srcset="uploads/landing-ar-needs-bg-1280.jpg 1280w, uploads/landing-ar-needs-bg-1920.jpg 1920w, uploads/landing-ar-needs-bg-2560.jpg 2560w" sizes="(max-width:1440px) 100vw, 1280px" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:right center;pointer-events:none;">
+      <div aria-hidden="true" style="position:absolute;inset:0 0 auto 0;height:55%;background:linear-gradient(to bottom,rgba(15,12,10,0.62) 0%,rgba(15,12,10,0.34) 45%,rgba(15,12,10,0) 100%);pointer-events:none;"></div>
+
+      <div style="position:relative;display:flex;align-items:flex-start;justify-content:space-between;gap:24px;">
+        <h2 data-reveal="left" data-reveal-delay="0.25" style="font-family:'Lama Sans',sans-serif;font-size:clamp(24px,3.4vw,48px);font-weight:500;color:#FFFFFF;line-height:1.1;margin:0;text-wrap:balance;max-width:720px;">What would you like FurnishIQ to achieve for your space?</h2>
       </div>
-      <div data-reveal data-reveal-delay="0.08" style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);background:#FFFFFF;padding:28px;">
-        <h3 style="font-family:'Lama Sans',sans-serif;font-size:15px;font-weight:500;color:#1F1F1F;margin-bottom:10px;">Luxury Fit-Out &amp; Execution</h3>
-        <p style="font-family:'Lama Sans',sans-serif;font-size:14px;color:#5B4636;line-height:1.6;">Translating blueprints into reality using premium materials under rigorous engineering supervision.</p>
-      </div>
-      <div data-reveal data-reveal-delay="0.16" style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);background:#FFFFFF;padding:28px;">
-        <h3 style="font-family:'Lama Sans',sans-serif;font-size:15px;font-weight:500;color:#1F1F1F;margin-bottom:10px;">Complete Furnishing &amp; Procurement</h3>
-        <p style="font-family:'Lama Sans',sans-serif;font-size:14px;color:#5B4636;line-height:1.6;">Bespoke furniture pieces matching approved designs and spatial dimensions with 100% precision.</p>
+
+      <div class="fiq-showcase-bottom" style="position:relative;display:grid;grid-template-columns:26% 1fr;align-items:end;gap:16px;">
+        <span class="fiq-showcase-viewall" aria-hidden="true"></span>
+        <button type="button" class="fiq-showcase-btn fiq-showcase-btn--prev" data-showcase-prev aria-label="Previous" style="width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,0.7);background:rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        </button>
+        <button type="button" class="fiq-showcase-btn fiq-showcase-btn--next" data-showcase-next aria-label="Next" style="width:40px;height:40px;border-radius:50%;border:1px solid #FFFFFF;background:#FFFFFF;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1F1F1F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+        <div class="fiq-showcase-track" data-showcase-track data-reveal="right" data-reveal-delay="0.4" style="display:flex;gap:16px;overflow-x:auto;padding-top:12px;margin-top:-12px;padding-bottom:40px;margin-bottom:-40px;scroll-snap-type:x mandatory;scroll-behavior:smooth;margin-inline-end:calc(-1 * clamp(20px,3.4vw,48px));padding-inline-end:clamp(20px,3.4vw,48px);">
+        <a href="#form" class="fiq-showcase-card" data-showcase-clone aria-hidden="true" tabindex="-1" data-showcase-card style="flex:0 0 auto;width:clamp(260px,24vw,340px);height:calc(clamp(260px,24vw,340px) * 10 / 11 + 100px);scroll-snap-align:start;display:block;position:relative;background:#FFFFFF;padding:10px;border-radius:clamp(16px,1.8vw,24px);text-decoration:none;box-sizing:border-box;">
+          <img src="uploads/landing-ar-need-turnkey.jpg" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;border-radius:calc(clamp(16px,1.8vw,24px) - 10px);">
+          <div aria-hidden="true" style="position:absolute;left:10px;right:10px;bottom:10px;height:58%;border-radius:0 0 calc(clamp(16px,1.8vw,24px) - 10px) calc(clamp(16px,1.8vw,24px) - 10px);background:linear-gradient(to top,rgba(0,0,0,0.72) 0%,rgba(0,0,0,0.38) 45%,rgba(0,0,0,0) 100%);pointer-events:none;"></div>
+          <div style="position:absolute;bottom:10px;left:10px;right:10px;padding:18px 20px 20px;box-sizing:border-box;display:flex;flex-direction:column;gap:12px;">
+            <span style="font-family:'Lama Sans',sans-serif;font-size:clamp(14px,1.1vw,16px);font-weight:500;color:#FFFFFF;line-height:1.5;">Complete end-to-end transformation, from initial design to turnkey handover.</span>
+            <span style="font-family:'Lama Sans',sans-serif;font-size:11px;color:rgba(245,242,237,0.85);display:inline-flex;align-items:center;gap:6px;">Get a Consultation <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
+          </div>
+        </a>
+        <a href="#services-overview" class="fiq-showcase-card" data-showcase-clone aria-hidden="true" tabindex="-1" data-showcase-card style="flex:0 0 auto;width:clamp(260px,24vw,340px);height:calc(clamp(260px,24vw,340px) * 10 / 11 + 100px);scroll-snap-align:start;display:block;position:relative;background:#FFFFFF;padding:10px;border-radius:clamp(16px,1.8vw,24px);text-decoration:none;box-sizing:border-box;">
+          <img src="uploads/landing-ar-need-design.jpg" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;border-radius:calc(clamp(16px,1.8vw,24px) - 10px);">
+          <div aria-hidden="true" style="position:absolute;left:10px;right:10px;bottom:10px;height:58%;border-radius:0 0 calc(clamp(16px,1.8vw,24px) - 10px) calc(clamp(16px,1.8vw,24px) - 10px);background:linear-gradient(to top,rgba(0,0,0,0.72) 0%,rgba(0,0,0,0.38) 45%,rgba(0,0,0,0) 100%);pointer-events:none;"></div>
+          <div style="position:absolute;bottom:10px;left:10px;right:10px;padding:18px 20px 20px;box-sizing:border-box;display:flex;flex-direction:column;gap:12px;">
+            <span style="font-family:'Lama Sans',sans-serif;font-size:clamp(14px,1.1vw,16px);font-weight:500;color:#FFFFFF;line-height:1.5;">Bespoke interior design services.</span>
+            <span style="font-family:'Lama Sans',sans-serif;font-size:11px;color:rgba(245,242,237,0.85);display:inline-flex;align-items:center;gap:6px;">Explore Service <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
+          </div>
+        </a>
+        <a href="#form" class="fiq-showcase-card" data-showcase-clone aria-hidden="true" tabindex="-1" data-showcase-card style="flex:0 0 auto;width:clamp(260px,24vw,340px);height:calc(clamp(260px,24vw,340px) * 10 / 11 + 100px);scroll-snap-align:start;display:block;position:relative;background:#FFFFFF;padding:10px;border-radius:clamp(16px,1.8vw,24px);text-decoration:none;box-sizing:border-box;">
+          <img src="uploads/landing-ar-need-fitout.jpg" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;border-radius:calc(clamp(16px,1.8vw,24px) - 10px);">
+          <div aria-hidden="true" style="position:absolute;left:10px;right:10px;bottom:10px;height:58%;border-radius:0 0 calc(clamp(16px,1.8vw,24px) - 10px) calc(clamp(16px,1.8vw,24px) - 10px);background:linear-gradient(to top,rgba(0,0,0,0.72) 0%,rgba(0,0,0,0.38) 45%,rgba(0,0,0,0) 100%);pointer-events:none;"></div>
+          <div style="position:absolute;bottom:10px;left:10px;right:10px;padding:18px 20px 20px;box-sizing:border-box;display:flex;flex-direction:column;gap:12px;">
+            <span style="font-family:'Lama Sans',sans-serif;font-size:clamp(14px,1.1vw,16px);font-weight:500;color:#FFFFFF;line-height:1.5;">Shell and core space needing premium fit-out and luxury furnishing.</span>
+            <span style="font-family:'Lama Sans',sans-serif;font-size:11px;color:rgba(245,242,237,0.85);display:inline-flex;align-items:center;gap:6px;">Get a Consultation <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
+          </div>
+        </a>
+        <a href="#form" class="fiq-showcase-card" data-showcase-card style="flex:0 0 auto;width:clamp(260px,24vw,340px);height:calc(clamp(260px,24vw,340px) * 10 / 11 + 100px);scroll-snap-align:start;display:block;position:relative;background:#FFFFFF;padding:10px;border-radius:clamp(16px,1.8vw,24px);text-decoration:none;box-sizing:border-box;">
+          <img src="uploads/landing-ar-need-turnkey.jpg" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;border-radius:calc(clamp(16px,1.8vw,24px) - 10px);">
+          <div aria-hidden="true" style="position:absolute;left:10px;right:10px;bottom:10px;height:58%;border-radius:0 0 calc(clamp(16px,1.8vw,24px) - 10px) calc(clamp(16px,1.8vw,24px) - 10px);background:linear-gradient(to top,rgba(0,0,0,0.72) 0%,rgba(0,0,0,0.38) 45%,rgba(0,0,0,0) 100%);pointer-events:none;"></div>
+          <div style="position:absolute;bottom:10px;left:10px;right:10px;padding:18px 20px 20px;box-sizing:border-box;display:flex;flex-direction:column;gap:12px;">
+            <span style="font-family:'Lama Sans',sans-serif;font-size:clamp(14px,1.1vw,16px);font-weight:500;color:#FFFFFF;line-height:1.5;">Complete end-to-end transformation, from initial design to turnkey handover.</span>
+            <span style="font-family:'Lama Sans',sans-serif;font-size:11px;color:rgba(245,242,237,0.85);display:inline-flex;align-items:center;gap:6px;">Get a Consultation <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
+          </div>
+        </a>
+        <a href="#services-overview" class="fiq-showcase-card" data-showcase-card style="flex:0 0 auto;width:clamp(260px,24vw,340px);height:calc(clamp(260px,24vw,340px) * 10 / 11 + 100px);scroll-snap-align:start;display:block;position:relative;background:#FFFFFF;padding:10px;border-radius:clamp(16px,1.8vw,24px);text-decoration:none;box-sizing:border-box;">
+          <img src="uploads/landing-ar-need-design.jpg" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;border-radius:calc(clamp(16px,1.8vw,24px) - 10px);">
+          <div aria-hidden="true" style="position:absolute;left:10px;right:10px;bottom:10px;height:58%;border-radius:0 0 calc(clamp(16px,1.8vw,24px) - 10px) calc(clamp(16px,1.8vw,24px) - 10px);background:linear-gradient(to top,rgba(0,0,0,0.72) 0%,rgba(0,0,0,0.38) 45%,rgba(0,0,0,0) 100%);pointer-events:none;"></div>
+          <div style="position:absolute;bottom:10px;left:10px;right:10px;padding:18px 20px 20px;box-sizing:border-box;display:flex;flex-direction:column;gap:12px;">
+            <span style="font-family:'Lama Sans',sans-serif;font-size:clamp(14px,1.1vw,16px);font-weight:500;color:#FFFFFF;line-height:1.5;">Bespoke interior design services.</span>
+            <span style="font-family:'Lama Sans',sans-serif;font-size:11px;color:rgba(245,242,237,0.85);display:inline-flex;align-items:center;gap:6px;">Explore Service <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
+          </div>
+        </a>
+        <a href="#form" class="fiq-showcase-card" data-showcase-card style="flex:0 0 auto;width:clamp(260px,24vw,340px);height:calc(clamp(260px,24vw,340px) * 10 / 11 + 100px);scroll-snap-align:start;display:block;position:relative;background:#FFFFFF;padding:10px;border-radius:clamp(16px,1.8vw,24px);text-decoration:none;box-sizing:border-box;">
+          <img src="uploads/landing-ar-need-fitout.jpg" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;border-radius:calc(clamp(16px,1.8vw,24px) - 10px);">
+          <div aria-hidden="true" style="position:absolute;left:10px;right:10px;bottom:10px;height:58%;border-radius:0 0 calc(clamp(16px,1.8vw,24px) - 10px) calc(clamp(16px,1.8vw,24px) - 10px);background:linear-gradient(to top,rgba(0,0,0,0.72) 0%,rgba(0,0,0,0.38) 45%,rgba(0,0,0,0) 100%);pointer-events:none;"></div>
+          <div style="position:absolute;bottom:10px;left:10px;right:10px;padding:18px 20px 20px;box-sizing:border-box;display:flex;flex-direction:column;gap:12px;">
+            <span style="font-family:'Lama Sans',sans-serif;font-size:clamp(14px,1.1vw,16px);font-weight:500;color:#FFFFFF;line-height:1.5;">Shell and core space needing premium fit-out and luxury furnishing.</span>
+            <span style="font-family:'Lama Sans',sans-serif;font-size:11px;color:rgba(245,242,237,0.85);display:inline-flex;align-items:center;gap:6px;">Get a Consultation <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
+          </div>
+        </a>
+        <a href="#form" class="fiq-showcase-card" data-showcase-clone aria-hidden="true" tabindex="-1" data-showcase-card style="flex:0 0 auto;width:clamp(260px,24vw,340px);height:calc(clamp(260px,24vw,340px) * 10 / 11 + 100px);scroll-snap-align:start;display:block;position:relative;background:#FFFFFF;padding:10px;border-radius:clamp(16px,1.8vw,24px);text-decoration:none;box-sizing:border-box;">
+          <img src="uploads/landing-ar-need-turnkey.jpg" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;border-radius:calc(clamp(16px,1.8vw,24px) - 10px);">
+          <div aria-hidden="true" style="position:absolute;left:10px;right:10px;bottom:10px;height:58%;border-radius:0 0 calc(clamp(16px,1.8vw,24px) - 10px) calc(clamp(16px,1.8vw,24px) - 10px);background:linear-gradient(to top,rgba(0,0,0,0.72) 0%,rgba(0,0,0,0.38) 45%,rgba(0,0,0,0) 100%);pointer-events:none;"></div>
+          <div style="position:absolute;bottom:10px;left:10px;right:10px;padding:18px 20px 20px;box-sizing:border-box;display:flex;flex-direction:column;gap:12px;">
+            <span style="font-family:'Lama Sans',sans-serif;font-size:clamp(14px,1.1vw,16px);font-weight:500;color:#FFFFFF;line-height:1.5;">Complete end-to-end transformation, from initial design to turnkey handover.</span>
+            <span style="font-family:'Lama Sans',sans-serif;font-size:11px;color:rgba(245,242,237,0.85);display:inline-flex;align-items:center;gap:6px;">Get a Consultation <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
+          </div>
+        </a>
+        <a href="#services-overview" class="fiq-showcase-card" data-showcase-clone aria-hidden="true" tabindex="-1" data-showcase-card style="flex:0 0 auto;width:clamp(260px,24vw,340px);height:calc(clamp(260px,24vw,340px) * 10 / 11 + 100px);scroll-snap-align:start;display:block;position:relative;background:#FFFFFF;padding:10px;border-radius:clamp(16px,1.8vw,24px);text-decoration:none;box-sizing:border-box;">
+          <img src="uploads/landing-ar-need-design.jpg" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;border-radius:calc(clamp(16px,1.8vw,24px) - 10px);">
+          <div aria-hidden="true" style="position:absolute;left:10px;right:10px;bottom:10px;height:58%;border-radius:0 0 calc(clamp(16px,1.8vw,24px) - 10px) calc(clamp(16px,1.8vw,24px) - 10px);background:linear-gradient(to top,rgba(0,0,0,0.72) 0%,rgba(0,0,0,0.38) 45%,rgba(0,0,0,0) 100%);pointer-events:none;"></div>
+          <div style="position:absolute;bottom:10px;left:10px;right:10px;padding:18px 20px 20px;box-sizing:border-box;display:flex;flex-direction:column;gap:12px;">
+            <span style="font-family:'Lama Sans',sans-serif;font-size:clamp(14px,1.1vw,16px);font-weight:500;color:#FFFFFF;line-height:1.5;">Bespoke interior design services.</span>
+            <span style="font-family:'Lama Sans',sans-serif;font-size:11px;color:rgba(245,242,237,0.85);display:inline-flex;align-items:center;gap:6px;">Explore Service <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
+          </div>
+        </a>
+        <a href="#form" class="fiq-showcase-card" data-showcase-clone aria-hidden="true" tabindex="-1" data-showcase-card style="flex:0 0 auto;width:clamp(260px,24vw,340px);height:calc(clamp(260px,24vw,340px) * 10 / 11 + 100px);scroll-snap-align:start;display:block;position:relative;background:#FFFFFF;padding:10px;border-radius:clamp(16px,1.8vw,24px);text-decoration:none;box-sizing:border-box;">
+          <img src="uploads/landing-ar-need-fitout.jpg" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;border-radius:calc(clamp(16px,1.8vw,24px) - 10px);">
+          <div aria-hidden="true" style="position:absolute;left:10px;right:10px;bottom:10px;height:58%;border-radius:0 0 calc(clamp(16px,1.8vw,24px) - 10px) calc(clamp(16px,1.8vw,24px) - 10px);background:linear-gradient(to top,rgba(0,0,0,0.72) 0%,rgba(0,0,0,0.38) 45%,rgba(0,0,0,0) 100%);pointer-events:none;"></div>
+          <div style="position:absolute;bottom:10px;left:10px;right:10px;padding:18px 20px 20px;box-sizing:border-box;display:flex;flex-direction:column;gap:12px;">
+            <span style="font-family:'Lama Sans',sans-serif;font-size:clamp(14px,1.1vw,16px);font-weight:500;color:#FFFFFF;line-height:1.5;">Shell and core space needing premium fit-out and luxury furnishing.</span>
+            <span style="font-family:'Lama Sans',sans-serif;font-size:11px;color:rgba(245,242,237,0.85);display:inline-flex;align-items:center;gap:6px;">Get a Consultation <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
+          </div>
+        </a>
+        </div>
       </div>
     </div>
-    <a href="#form" data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:inline-block;font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#FFFFFF;background:#3A2D25;padding:19px 40px;border:1px solid #3A2D25;text-decoration:none;">Get Your Free Engineering Consultation</a>
   </div>
 </section>
 
-<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ MEDIA ━━ -->
-<section id="media" data-screen-label="Media" style="position:relative;background:#1F1F1F;min-height:60vh;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px);">
-  <div style="position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=2400&q=30');background-size:cover;background-position:center;opacity:0.5;pointer-events:none;"></div>
-  <div style="position:relative;z-index:1;max-width:760px;text-align:center;">
-    <div data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);width:76px;height:76px;border:1px solid rgba(255,255,255,0.6);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 36px;">
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M8 5v14l11-7z"/></svg>
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ SERVICES ━━ -->
+<section id="services-overview" data-screen-label="Services" style="background:#1F1F1F;padding:clamp(80px,10vw,128px) 0;overflow:hidden;">
+  <div style="max-width:1280px;margin:0 auto;padding:0 clamp(24px,5vw,80px);box-sizing:content-box;">
+    <div class="fiq-svc-head" style="display:grid;grid-template-columns:1.3fr 1fr;column-gap:clamp(32px,5vw,80px);row-gap:clamp(32px,3.4vw,48px);align-items:start;margin-bottom:clamp(40px,4.4vw,64px);">
+      <div data-reveal="left">
+        <h2 style="font-family:'Lama Sans',sans-serif;font-size:clamp(30px,3.3vw,48px);font-weight:500;color:#FFFFFF;line-height:1.2;margin:0;">Integrated Turnkey<br><span style="color:#D6C2A8;">Engineering Package</span></h2>
+      </div>
+      <div data-reveal="right" data-reveal-delay="0.15" style="max-width:520px;">
+        <p style="font-family:'Lama Sans',sans-serif;font-size:clamp(15px,1.25vw,17px);color:#FFFFFF;line-height:1.75;margin:0 0 14px;">We manage every phase of your space creation, from concept to reality. <span style="color:rgba(255,255,255,0.5);">Residential interior design packages starting from 29.99 SAR/m&sup2;.</span></p>
+        <p style="font-family:'Lama Sans',sans-serif;font-size:12px;color:rgba(255,255,255,0.4);line-height:1.7;margin:0;">(Separate quotes provided for execution, fit-out, and furnishing based on your project scope and requirements.)</p>
+      </div>
+      <div data-reveal="fade" data-reveal-delay="0.3" style="display:flex;align-items:center;gap:20px;min-height:44px;">
+        <div style="display:flex;gap:12px;">
+          <button type="button" class="fiq-svc-btn" data-svc-prev aria-label="Previous" style="width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,0.3);background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button type="button" class="fiq-svc-btn" data-svc-next aria-label="Next" style="width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,0.7);background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+        <span style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(255,255,255,0.6);">The Package Includes:</span>
+      </div>
+      <div data-reveal="fade" data-reveal-delay="0.4">
+        <a href="#form" class="fiq-svc-cta" style="display:inline-flex;align-items:center;gap:18px;font-family:'Lama Sans',sans-serif;font-size:13px;color:#FFFFFF;text-decoration:none;border:1px solid rgba(255,255,255,0.5);border-radius:999px;padding:5px;padding-inline-start:22px;">
+          Get Your Free Engineering Consultation Now
+          <span style="flex-shrink:0;width:36px;height:36px;border-radius:50%;background:#FFFFFF;display:flex;align-items:center;justify-content:center;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1F1F1F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </span>
+        </a>
+      </div>
     </div>
-    <h2 data-reveal data-reveal-delay="0.08" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Lama Sans',sans-serif;font-size:clamp(26px,3vw,40px);font-weight:500;color:#FFFFFF;line-height:1.2;margin-bottom:20px;text-wrap:balance;">Envision the Design.. Experience the Luxury.</h2>
-    <p data-reveal data-reveal-delay="0.16" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Lama Sans',sans-serif;font-size:15px;color:rgba(255,255,255,0.82);line-height:1.7;margin-bottom:32px;">Watch how we transform engineering schematics into living, breathing spaces. At FurnishIQ, we offer more than visionary ideas&mdash;we deliver a seamless journey spanning bespoke interior design, MEP installation, luxury fit-out, and 100% design-matched turnkey furnishing.</p>
-    <a href="#form" data-reveal data-reveal-delay="0.24" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:inline-block;font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#1F1F1F;background:#D6C2A8;padding:19px 36px;border:1px solid #D6C2A8;text-decoration:none;">Book Your Engineering Consultation</a>
+    <div class="fiq-svc-track" data-svc-track data-reveal="right" data-reveal-delay="0.2" style="display:flex;align-items:flex-start;gap:clamp(16px,1.8vw,24px);overflow-x:auto;scroll-behavior:smooth;">
+        <a href="/services-interior-design" class="fiq-svc-card" data-svc-card data-svc-clone aria-hidden="true" tabindex="-1" data-svc-i="1" style="flex:0 0 auto;width:clamp(270px,32vw,460px);display:block;text-decoration:none;">
+          <div style="overflow:hidden;border-radius:10px;aspect-ratio:6/5;background:#2A2522;margin-bottom:18px;">
+            <img src="uploads/landing-ar-pkg-design.jpg" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:10px;">
+            <h3 style="font-family:'Lama Sans',sans-serif;font-size:clamp(15px,1.25vw,18px);font-weight:500;color:#FFFFFF;line-height:1.35;margin:0;">Photorealistic 3D Interior Design</h3>
+          </div>
+          <p style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(255,255,255,0.55);line-height:1.7;margin:0;max-width:400px;">Intelligently crafted spaces reflecting your unique identity, meeting practical needs, and elevating your lifestyle.</p>
+        </a>
+        <a href="/services-fitout" class="fiq-svc-card" data-svc-card data-svc-clone aria-hidden="true" tabindex="-1" data-svc-i="2" style="flex:0 0 auto;width:clamp(270px,32vw,460px);display:block;text-decoration:none;">
+          <div style="overflow:hidden;border-radius:10px;aspect-ratio:6/5;background:#2A2522;margin-bottom:18px;">
+            <img src="uploads/landing-ar-pkg-fitout.jpg" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:10px;">
+            <h3 style="font-family:'Lama Sans',sans-serif;font-size:clamp(15px,1.25vw,18px);font-weight:500;color:#FFFFFF;line-height:1.35;margin:0;">Luxury Fit-Out &amp; Execution</h3>
+          </div>
+          <p style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(255,255,255,0.55);line-height:1.7;margin:0;max-width:400px;">Translating blueprints into reality using premium materials, under rigorous engineering supervision that adheres to the highest quality standards.</p>
+        </a>
+        <a href="/services-furniture" class="fiq-svc-card" data-svc-card data-svc-clone aria-hidden="true" tabindex="-1" data-svc-i="3" style="flex:0 0 auto;width:clamp(270px,32vw,460px);display:block;text-decoration:none;">
+          <div style="overflow:hidden;border-radius:10px;aspect-ratio:6/5;background:#2A2522;margin-bottom:18px;">
+            <img src="uploads/landing-ar-pkg-furniture.jpg" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:10px;">
+            <h3 style="font-family:'Lama Sans',sans-serif;font-size:clamp(15px,1.25vw,18px);font-weight:500;color:#FFFFFF;line-height:1.35;margin:0;">Complete Furnishing &amp; Procurement</h3>
+          </div>
+          <p style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(255,255,255,0.55);line-height:1.7;margin:0;max-width:400px;">Enhancing elegance with bespoke furniture pieces that match the approved design and spatial dimensions with 100% precision.</p>
+        </a>
+        <a href="/services-interior-design" class="fiq-svc-card" data-svc-card data-svc-i="1" style="flex:0 0 auto;width:clamp(270px,32vw,460px);display:block;text-decoration:none;">
+          <div style="overflow:hidden;border-radius:10px;aspect-ratio:6/5;background:#2A2522;margin-bottom:18px;">
+            <img src="uploads/landing-ar-pkg-design.jpg" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:10px;">
+            <h3 style="font-family:'Lama Sans',sans-serif;font-size:clamp(15px,1.25vw,18px);font-weight:500;color:#FFFFFF;line-height:1.35;margin:0;">Photorealistic 3D Interior Design</h3>
+          </div>
+          <p style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(255,255,255,0.55);line-height:1.7;margin:0;max-width:400px;">Intelligently crafted spaces reflecting your unique identity, meeting practical needs, and elevating your lifestyle.</p>
+        </a>
+        <a href="/services-fitout" class="fiq-svc-card" data-svc-card data-svc-i="2" style="flex:0 0 auto;width:clamp(270px,32vw,460px);display:block;text-decoration:none;">
+          <div style="overflow:hidden;border-radius:10px;aspect-ratio:6/5;background:#2A2522;margin-bottom:18px;">
+            <img src="uploads/landing-ar-pkg-fitout.jpg" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:10px;">
+            <h3 style="font-family:'Lama Sans',sans-serif;font-size:clamp(15px,1.25vw,18px);font-weight:500;color:#FFFFFF;line-height:1.35;margin:0;">Luxury Fit-Out &amp; Execution</h3>
+          </div>
+          <p style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(255,255,255,0.55);line-height:1.7;margin:0;max-width:400px;">Translating blueprints into reality using premium materials, under rigorous engineering supervision that adheres to the highest quality standards.</p>
+        </a>
+        <a href="/services-furniture" class="fiq-svc-card" data-svc-card data-svc-i="3" style="flex:0 0 auto;width:clamp(270px,32vw,460px);display:block;text-decoration:none;">
+          <div style="overflow:hidden;border-radius:10px;aspect-ratio:6/5;background:#2A2522;margin-bottom:18px;">
+            <img src="uploads/landing-ar-pkg-furniture.jpg" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:10px;">
+            <h3 style="font-family:'Lama Sans',sans-serif;font-size:clamp(15px,1.25vw,18px);font-weight:500;color:#FFFFFF;line-height:1.35;margin:0;">Complete Furnishing &amp; Procurement</h3>
+          </div>
+          <p style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(255,255,255,0.55);line-height:1.7;margin:0;max-width:400px;">Enhancing elegance with bespoke furniture pieces that match the approved design and spatial dimensions with 100% precision.</p>
+        </a>
+        <a href="/services-interior-design" class="fiq-svc-card" data-svc-card data-svc-clone aria-hidden="true" tabindex="-1" data-svc-i="1" style="flex:0 0 auto;width:clamp(270px,32vw,460px);display:block;text-decoration:none;">
+          <div style="overflow:hidden;border-radius:10px;aspect-ratio:6/5;background:#2A2522;margin-bottom:18px;">
+            <img src="uploads/landing-ar-pkg-design.jpg" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:10px;">
+            <h3 style="font-family:'Lama Sans',sans-serif;font-size:clamp(15px,1.25vw,18px);font-weight:500;color:#FFFFFF;line-height:1.35;margin:0;">Photorealistic 3D Interior Design</h3>
+          </div>
+          <p style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(255,255,255,0.55);line-height:1.7;margin:0;max-width:400px;">Intelligently crafted spaces reflecting your unique identity, meeting practical needs, and elevating your lifestyle.</p>
+        </a>
+        <a href="/services-fitout" class="fiq-svc-card" data-svc-card data-svc-clone aria-hidden="true" tabindex="-1" data-svc-i="2" style="flex:0 0 auto;width:clamp(270px,32vw,460px);display:block;text-decoration:none;">
+          <div style="overflow:hidden;border-radius:10px;aspect-ratio:6/5;background:#2A2522;margin-bottom:18px;">
+            <img src="uploads/landing-ar-pkg-fitout.jpg" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:10px;">
+            <h3 style="font-family:'Lama Sans',sans-serif;font-size:clamp(15px,1.25vw,18px);font-weight:500;color:#FFFFFF;line-height:1.35;margin:0;">Luxury Fit-Out &amp; Execution</h3>
+          </div>
+          <p style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(255,255,255,0.55);line-height:1.7;margin:0;max-width:400px;">Translating blueprints into reality using premium materials, under rigorous engineering supervision that adheres to the highest quality standards.</p>
+        </a>
+        <a href="/services-furniture" class="fiq-svc-card" data-svc-card data-svc-clone aria-hidden="true" tabindex="-1" data-svc-i="3" style="flex:0 0 auto;width:clamp(270px,32vw,460px);display:block;text-decoration:none;">
+          <div style="overflow:hidden;border-radius:10px;aspect-ratio:6/5;background:#2A2522;margin-bottom:18px;">
+            <img src="uploads/landing-ar-pkg-furniture.jpg" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:10px;">
+            <h3 style="font-family:'Lama Sans',sans-serif;font-size:clamp(15px,1.25vw,18px);font-weight:500;color:#FFFFFF;line-height:1.35;margin:0;">Complete Furnishing &amp; Procurement</h3>
+          </div>
+          <p style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(255,255,255,0.55);line-height:1.7;margin:0;max-width:400px;">Enhancing elegance with bespoke furniture pieces that match the approved design and spatial dimensions with 100% precision.</p>
+        </a>
+      </div>
   </div>
 </section>
 
-<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ OUR WORK ━━ -->
-<section id="work" data-screen-label="Our Work" style="background:#FFFFFF;padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px);">
-  <div style="max-width:1280px;margin:0 auto;">
-    <div style="text-align:center;margin-bottom:56px;">
-      <h2 data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Lama Sans',sans-serif;font-size:clamp(28px,3.2vw,44px);font-weight:500;color:#1F1F1F;margin-bottom:14px;">Spaces Designed to be Lived In</h2>
-      <p data-reveal data-reveal-delay="0.08" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Lama Sans',sans-serif;font-size:16px;color:#5B4636;">See how our ideas turn into real-world projects</p>
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ VIDEO ━━ -->
+<section id="video-showcase" data-screen-label="Video" style="background:#FFFFFF;padding:clamp(80px,10vw,128px) 0;overflow:hidden;">
+  <div style="max-width:1280px;margin:0 auto;padding:0 clamp(24px,5vw,80px);box-sizing:content-box;">
+    <div class="fiq-vid-grid" style="display:grid;grid-template-columns:0.8fr 1.2fr;gap:clamp(40px,5vw,72px);align-items:center;">
+      <div data-reveal="left">
+        <h2 style="font-family:'Lama Sans',sans-serif;font-size:clamp(28px,3vw,42px);font-weight:500;color:#1F1F1F;line-height:1.3;margin:0 0 20px;">Envision the Design. Experience the Luxury.</h2>
+        <p style="font-family:'Lama Sans',sans-serif;font-size:15px;color:#5B4636;line-height:1.85;margin:0 0 32px;">Watch how we transform engineering schematics into living, breathing spaces. At FurnishIQ, we offer more than visionary ideas&mdash;we deliver a seamless journey spanning bespoke interior design, MEP installation, luxury fit-out, and 100% design-matched turnkey furnishing.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a href="#form" class="fiq-vid-btn-primary" style="font-family:'Lama Sans',sans-serif;font-size:12px;color:#FFFFFF;background:#3A2D25;border:1px solid #3A2D25;padding:14px 26px;text-decoration:none;">Book Your Engineering Consultation</a>
+          <a href="#projects-showcase" class="fiq-vid-btn-secondary" style="font-family:'Lama Sans',sans-serif;font-size:12px;color:#1F1F1F;background:transparent;border:1px solid #D6C2A8;padding:14px 26px;text-decoration:none;">View Our Projects</a>
+        </div>
+      </div>
+      <div class="fiq-vid-col" data-reveal="right" data-reveal-delay="0.15">
+        <div class="fiq-vid-track" data-vid-track style="display:flex;gap:16px;overflow-x:auto;scroll-behavior:smooth;margin-inline-end:calc(-1 * max(clamp(24px,5vw,80px),calc((100vw - 1280px) / 2)));padding-inline-end:max(clamp(24px,5vw,80px),calc((100vw - 1280px) / 2));">
+          <div class="fiq-vid-slide" data-vid-slide data-vid-clone aria-hidden="true" data-vid-i="0" data-video-src="" style="flex:0 0 auto;position:relative;aspect-ratio:16/9;background:#1F1F1F;overflow:hidden;">
+            <img src="uploads/landing-ar-video-design.jpg" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+            <div style="position:absolute;inset:0;background:rgba(31,31,31,0.28);pointer-events:none;"></div>
+            <button type="button" class="fiq-vid-play" data-vid-play tabindex="-1" aria-label="Play video 1" style="position:absolute;top:50%;left:50%;width:68px;height:68px;margin:-34px 0 0 -34px;border-radius:50%;border:none;background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="#1F1F1F" style="margin-left:3px;"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+          </div>
+          <div class="fiq-vid-slide" data-vid-slide data-vid-clone aria-hidden="true" data-vid-i="1" data-video-src="" style="flex:0 0 auto;position:relative;aspect-ratio:16/9;background:#1F1F1F;overflow:hidden;">
+            <img src="uploads/landing-ar-video-mep.jpg" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+            <div style="position:absolute;inset:0;background:rgba(31,31,31,0.28);pointer-events:none;"></div>
+            <button type="button" class="fiq-vid-play" data-vid-play tabindex="-1" aria-label="Play video 2" style="position:absolute;top:50%;left:50%;width:68px;height:68px;margin:-34px 0 0 -34px;border-radius:50%;border:none;background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="#1F1F1F" style="margin-left:3px;"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+          </div>
+          <div class="fiq-vid-slide" data-vid-slide data-vid-clone aria-hidden="true" data-vid-i="2" data-video-src="" style="flex:0 0 auto;position:relative;aspect-ratio:16/9;background:#1F1F1F;overflow:hidden;">
+            <img src="uploads/landing-ar-video-reveal.jpg" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+            <div style="position:absolute;inset:0;background:rgba(31,31,31,0.28);pointer-events:none;"></div>
+            <button type="button" class="fiq-vid-play" data-vid-play tabindex="-1" aria-label="Play video 3" style="position:absolute;top:50%;left:50%;width:68px;height:68px;margin:-34px 0 0 -34px;border-radius:50%;border:none;background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="#1F1F1F" style="margin-left:3px;"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+          </div>
+          <div class="fiq-vid-slide" data-vid-slide data-vid-i="0" data-video-src="" style="flex:0 0 auto;position:relative;aspect-ratio:16/9;background:#1F1F1F;overflow:hidden;">
+            <img src="uploads/landing-ar-video-design.jpg" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+            <div style="position:absolute;inset:0;background:rgba(31,31,31,0.28);pointer-events:none;"></div>
+            <button type="button" class="fiq-vid-play" data-vid-play aria-label="Play video 1" style="position:absolute;top:50%;left:50%;width:68px;height:68px;margin:-34px 0 0 -34px;border-radius:50%;border:none;background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="#1F1F1F" style="margin-left:3px;"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+          </div>
+          <div class="fiq-vid-slide" data-vid-slide data-vid-i="1" data-video-src="" style="flex:0 0 auto;position:relative;aspect-ratio:16/9;background:#1F1F1F;overflow:hidden;">
+            <img src="uploads/landing-ar-video-mep.jpg" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+            <div style="position:absolute;inset:0;background:rgba(31,31,31,0.28);pointer-events:none;"></div>
+            <button type="button" class="fiq-vid-play" data-vid-play aria-label="Play video 2" style="position:absolute;top:50%;left:50%;width:68px;height:68px;margin:-34px 0 0 -34px;border-radius:50%;border:none;background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="#1F1F1F" style="margin-left:3px;"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+          </div>
+          <div class="fiq-vid-slide" data-vid-slide data-vid-i="2" data-video-src="" style="flex:0 0 auto;position:relative;aspect-ratio:16/9;background:#1F1F1F;overflow:hidden;">
+            <img src="uploads/landing-ar-video-reveal.jpg" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+            <div style="position:absolute;inset:0;background:rgba(31,31,31,0.28);pointer-events:none;"></div>
+            <button type="button" class="fiq-vid-play" data-vid-play aria-label="Play video 3" style="position:absolute;top:50%;left:50%;width:68px;height:68px;margin:-34px 0 0 -34px;border-radius:50%;border:none;background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="#1F1F1F" style="margin-left:3px;"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+          </div>
+          <div class="fiq-vid-slide" data-vid-slide data-vid-clone aria-hidden="true" data-vid-i="0" data-video-src="" style="flex:0 0 auto;position:relative;aspect-ratio:16/9;background:#1F1F1F;overflow:hidden;">
+            <img src="uploads/landing-ar-video-design.jpg" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+            <div style="position:absolute;inset:0;background:rgba(31,31,31,0.28);pointer-events:none;"></div>
+            <button type="button" class="fiq-vid-play" data-vid-play tabindex="-1" aria-label="Play video 1" style="position:absolute;top:50%;left:50%;width:68px;height:68px;margin:-34px 0 0 -34px;border-radius:50%;border:none;background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="#1F1F1F" style="margin-left:3px;"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+          </div>
+          <div class="fiq-vid-slide" data-vid-slide data-vid-clone aria-hidden="true" data-vid-i="1" data-video-src="" style="flex:0 0 auto;position:relative;aspect-ratio:16/9;background:#1F1F1F;overflow:hidden;">
+            <img src="uploads/landing-ar-video-mep.jpg" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+            <div style="position:absolute;inset:0;background:rgba(31,31,31,0.28);pointer-events:none;"></div>
+            <button type="button" class="fiq-vid-play" data-vid-play tabindex="-1" aria-label="Play video 2" style="position:absolute;top:50%;left:50%;width:68px;height:68px;margin:-34px 0 0 -34px;border-radius:50%;border:none;background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="#1F1F1F" style="margin-left:3px;"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+          </div>
+          <div class="fiq-vid-slide" data-vid-slide data-vid-clone aria-hidden="true" data-vid-i="2" data-video-src="" style="flex:0 0 auto;position:relative;aspect-ratio:16/9;background:#1F1F1F;overflow:hidden;">
+            <img src="uploads/landing-ar-video-reveal.jpg" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+            <div style="position:absolute;inset:0;background:rgba(31,31,31,0.28);pointer-events:none;"></div>
+            <button type="button" class="fiq-vid-play" data-vid-play tabindex="-1" aria-label="Play video 3" style="position:absolute;top:50%;left:50%;width:68px;height:68px;margin:-34px 0 0 -34px;border-radius:50%;border:none;background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="#1F1F1F" style="margin-left:3px;"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-top:24px;">
+          <div style="display:flex;gap:6px;align-items:center;">
+            <button type="button" class="fiq-vid-dot" data-vid-dot="0" aria-label="Video 1" style="width:6px;height:6px;border-radius:999px;border:none;padding:0;background:#1F1F1F;cursor:pointer;"></button>
+            <button type="button" class="fiq-vid-dot" data-vid-dot="1" aria-label="Video 2" style="width:6px;height:6px;border-radius:999px;border:none;padding:0;background:#B8A08C;cursor:pointer;"></button>
+            <button type="button" class="fiq-vid-dot" data-vid-dot="2" aria-label="Video 3" style="width:6px;height:6px;border-radius:999px;border:none;padding:0;background:#B8A08C;cursor:pointer;"></button>
+          </div>
+          <div style="display:flex;gap:10px;">
+            <button type="button" class="fiq-vid-arrow" data-vid-prev aria-label="Previous" style="width:36px;height:36px;border-radius:50%;border:1px solid #B8A08C;background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1F1F1F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <button type="button" class="fiq-vid-arrow" data-vid-next aria-label="Next" style="width:36px;height:36px;border-radius:50%;border:1px solid #B8A08C;background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1F1F1F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="fiq-work-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;">
-      <a href="/projects" data-reveal style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:block;aspect-ratio:3/4;background-image:url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=900&q=30');background-size:cover;background-position:center;"></a>
-      <a href="/projects" data-reveal data-reveal-delay="0.06" style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:block;aspect-ratio:3/4;background-image:url('https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=900&q=30');background-size:cover;background-position:center;"></a>
-      <a href="/projects" data-reveal data-reveal-delay="0.12" style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:block;aspect-ratio:3/4;background-image:url('https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=900&q=30');background-size:cover;background-position:center;"></a>
-      <a href="/projects" data-reveal data-reveal-delay="0.18" style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:block;aspect-ratio:3/4;background-image:url('https://images.unsplash.com/photo-1604328698692-f76ea9498e76?auto=format&fit=crop&w=900&q=30');background-size:cover;background-position:center;"></a>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ PROJECTS ━━ -->
+<section id="projects-showcase" data-screen-label="Projects" style="background:#1F1F1F;padding:clamp(80px,10vw,128px) 0;overflow:hidden;">
+  <div style="max-width:1280px;margin:0 auto;padding:0 clamp(24px,5vw,80px);box-sizing:content-box;">
+    <h2 data-reveal="blur" style="font-family:'Lama Sans',sans-serif;font-size:clamp(28px,3vw,42px);font-weight:500;color:#FFFFFF;line-height:1.3;margin:0 0 16px;">Spaces Designed to Be Lived In</h2>
+    <p data-reveal="fade" data-reveal-delay="0.15" style="font-family:'Lama Sans',sans-serif;font-size:clamp(15px,1.3vw,18px);color:rgba(255,255,255,0.6);line-height:1.7;margin:0 0 clamp(40px,5vw,72px);">See how our ideas turn into real-world projects</p>
+  </div>
+  <div class="fiq-prj-track" data-prj-track data-reveal="right" data-reveal-delay="0.25" style="display:flex;gap:0;overflow-x:auto;padding-inline:8px;">
+      <a href="/projects" class="fiq-prj-card" data-prj-card style="flex:0 0 auto;width:clamp(290px,27vw,420px);display:block;padding:7px;text-decoration:none;box-sizing:border-box;">
+        <img src="uploads/landing-ar-prj-villas.jpg" alt="" loading="lazy" draggable="false" style="display:block;width:100%;aspect-ratio:16/10.5;object-fit:cover;margin-bottom:16px;">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;">
+          <span style="font-family:'Lama Sans',sans-serif;font-size:12px;color:#FFFFFF;">Residential Villas</span>
+          <span style="font-family:'Lama Sans',sans-serif;font-size:12px;color:rgba(255,255,255,0.7);" dir="ltr">42</span>
+        </div>
+      </a>
+      <a href="/projects" class="fiq-prj-card" data-prj-card style="flex:0 0 auto;width:clamp(290px,27vw,420px);display:block;padding:7px;text-decoration:none;box-sizing:border-box;">
+        <img src="uploads/landing-ar-prj-apartments.jpg" alt="" loading="lazy" draggable="false" style="display:block;width:100%;aspect-ratio:16/10.5;object-fit:cover;margin-bottom:16px;">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;">
+          <span style="font-family:'Lama Sans',sans-serif;font-size:12px;color:#FFFFFF;">Apartments</span>
+          <span style="font-family:'Lama Sans',sans-serif;font-size:12px;color:rgba(255,255,255,0.7);" dir="ltr">36</span>
+        </div>
+      </a>
+      <a href="/projects" class="fiq-prj-card" data-prj-card style="flex:0 0 auto;width:clamp(290px,27vw,420px);display:block;padding:7px;text-decoration:none;box-sizing:border-box;">
+        <img src="uploads/landing-ar-prj-offices.jpg" alt="" loading="lazy" draggable="false" style="display:block;width:100%;aspect-ratio:16/10.5;object-fit:cover;margin-bottom:16px;">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;">
+          <span style="font-family:'Lama Sans',sans-serif;font-size:12px;color:#FFFFFF;">Offices &amp; Headquarters</span>
+          <span style="font-family:'Lama Sans',sans-serif;font-size:12px;color:rgba(255,255,255,0.7);" dir="ltr">27</span>
+        </div>
+      </a>
+      <a href="/projects" class="fiq-prj-card" data-prj-card style="flex:0 0 auto;width:clamp(290px,27vw,420px);display:block;padding:7px;text-decoration:none;box-sizing:border-box;">
+        <img src="uploads/landing-ar-prj-restaurants.jpg" alt="" loading="lazy" draggable="false" style="display:block;width:100%;aspect-ratio:16/10.5;object-fit:cover;margin-bottom:16px;">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;">
+          <span style="font-family:'Lama Sans',sans-serif;font-size:12px;color:#FFFFFF;">Restaurants &amp; Caf&eacute;s</span>
+          <span style="font-family:'Lama Sans',sans-serif;font-size:12px;color:rgba(255,255,255,0.7);" dir="ltr">18</span>
+        </div>
+      </a>
+      <a href="/projects" class="fiq-prj-card" data-prj-card style="flex:0 0 auto;width:clamp(290px,27vw,420px);display:block;padding:7px;text-decoration:none;box-sizing:border-box;">
+        <img src="uploads/landing-ar-prj-hotels.jpg" alt="" loading="lazy" draggable="false" style="display:block;width:100%;aspect-ratio:16/10.5;object-fit:cover;margin-bottom:16px;">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;">
+          <span style="font-family:'Lama Sans',sans-serif;font-size:12px;color:#FFFFFF;">Hotels &amp; Hospitality</span>
+          <span style="font-family:'Lama Sans',sans-serif;font-size:12px;color:rgba(255,255,255,0.7);" dir="ltr">15</span>
+        </div>
+      </a>
+      <a href="/projects" class="fiq-prj-card" data-prj-card style="flex:0 0 auto;width:clamp(290px,27vw,420px);display:block;padding:7px;text-decoration:none;box-sizing:border-box;">
+        <img src="uploads/landing-ar-prj-retail.jpg" alt="" loading="lazy" draggable="false" style="display:block;width:100%;aspect-ratio:16/10.5;object-fit:cover;margin-bottom:16px;">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;">
+          <span style="font-family:'Lama Sans',sans-serif;font-size:12px;color:#FFFFFF;">Retail Stores</span>
+          <span style="font-family:'Lama Sans',sans-serif;font-size:12px;color:rgba(255,255,255,0.7);" dir="ltr">12</span>
+        </div>
+      </a>
+  </div>
+  <div style="padding:0 16px;">
+    <div style="position:relative;height:1px;background:rgba(255,255,255,0.25);margin-top:clamp(48px,5vw,72px);">
+      <div class="fiq-prj-thumb" data-prj-thumb style="position:absolute;top:-1px;inset-inline-start:0;height:3px;width:30%;background:#FFFFFF;"></div>
     </div>
   </div>
 </section>
@@ -657,85 +1225,181 @@ input:focus, select:focus, textarea:focus {
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ USPS ━━ -->
 <section id="usps" data-screen-label="USPs" style="background:#1F1F1F;padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px);">
   <div style="max-width:1280px;margin:0 auto;">
-    <div style="text-align:center;margin-bottom:56px;">
-      <h2 data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Lama Sans',sans-serif;font-size:clamp(28px,3.2vw,44px);font-weight:500;color:#FFFFFF;margin-bottom:14px;">Why Choose FurnishIQ?</h2>
-      <p data-reveal data-reveal-delay="0.08" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Lama Sans',sans-serif;font-size:15px;color:rgba(255,255,255,0.7);max-width:640px;margin:0 auto;line-height:1.7;">Your complete space supervised by a single engineering authority for a hassle-free turnkey experience.</p>
-    </div>
-    <div class="fiq-usps-grid" style="display:grid;grid-template-columns:repeat(5,1fr);gap:20px;">
-      <div data-reveal style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);border:1px solid rgba(255,255,255,0.12);padding:24px 20px;">
-        <h3 style="font-family:'Lama Sans',sans-serif;font-size:14px;font-weight:500;color:#D6C2A8;margin-bottom:10px;">Integrated Engineering System</h3>
-        <p style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(255,255,255,0.65);line-height:1.6;">Managing your project journey from innovative interior design to turnkey handover.</p>
+    <div class="fiq-usps-card" style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,8vw,128px);align-items:center;">
+      <div>
+        <span data-reveal="fade" style="display:block;font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#8FBF9F;margin-bottom:14px;">Benefits</span>
+        <h2 data-reveal="blur" data-reveal-delay="0.1" style="font-family:'Lama Sans',sans-serif;font-size:clamp(26px,2.8vw,38px);font-weight:500;color:#FFFFFF;margin-bottom:16px;">Why Choose FurnishIQ?</h2>
+        <p data-reveal="fade" data-reveal-delay="0.2" style="font-family:'Lama Sans',sans-serif;font-size:14px;color:rgba(255,255,255,0.62);line-height:1.8;margin-bottom:28px;">Your complete space, supervised by a single engineering authority for a hassle-free turnkey experience.</p>
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <div data-reveal="left" data-reveal-delay="0.3" style="display:flex;align-items:center;gap:14px;">
+            <span aria-hidden="true" style="flex-shrink:0;width:40px;height:40px;border-radius:50%;border:1px solid rgba(214,194,168,0.35);display:flex;align-items:center;justify-content:center;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D6C2A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg>
+            </span>
+            <span style="font-family:'Lama Sans',sans-serif;font-size:14px;color:#F5F2ED;">Integrated Engineering System</span>
+          </div>
+          <div data-reveal="left" data-reveal-delay="0.4" style="display:flex;align-items:center;gap:14px;">
+            <span aria-hidden="true" style="flex-shrink:0;width:40px;height:40px;border-radius:50%;border:1px solid rgba(214,194,168,0.35);display:flex;align-items:center;justify-content:center;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D6C2A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/></svg>
+            </span>
+            <span style="font-family:'Lama Sans',sans-serif;font-size:14px;color:#F5F2ED;">Single Partner from Concept to Completion</span>
+          </div>
+          <div data-reveal="left" data-reveal-delay="0.5" style="display:flex;align-items:center;gap:14px;">
+            <span aria-hidden="true" style="flex-shrink:0;width:40px;height:40px;border-radius:50%;border:1px solid rgba(214,194,168,0.35);display:flex;align-items:center;justify-content:center;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D6C2A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>
+            </span>
+            <span style="font-family:'Lama Sans',sans-serif;font-size:14px;color:#F5F2ED;">Precision &amp; Coordination with BIM Technology</span>
+          </div>
+          <div data-reveal="left" data-reveal-delay="0.6" style="display:flex;align-items:center;gap:14px;">
+            <span aria-hidden="true" style="flex-shrink:0;width:40px;height:40px;border-radius:50%;border:1px solid rgba(214,194,168,0.35);display:flex;align-items:center;justify-content:center;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D6C2A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.41 2.41 0 0 1 0-3.4l2.6-2.6a2.41 2.41 0 0 1 3.4 0Z"/><path d="m14.5 12.5 2-2"/><path d="m11.5 9.5 2-2"/><path d="m8.5 6.5 2-2"/><path d="m17.5 15.5 2-2"/></svg>
+            </span>
+            <span style="font-family:'Lama Sans',sans-serif;font-size:14px;color:#F5F2ED;">Tailored Solutions for Your Space</span>
+          </div>
+          <div data-reveal="left" data-reveal-delay="0.7" style="display:flex;align-items:center;gap:14px;">
+            <span aria-hidden="true" style="flex-shrink:0;width:40px;height:40px;border-radius:50%;border:1px solid rgba(214,194,168,0.35);display:flex;align-items:center;justify-content:center;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D6C2A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"/><circle cx="7.5" cy="7.5" r="1"/></svg>
+            </span>
+            <span style="font-family:'Lama Sans',sans-serif;font-size:14px;color:#F5F2ED;">Start with Exceptional Value (29.99 SAR/m&sup2;)</span>
+          </div>
+        </div>
       </div>
-      <div data-reveal data-reveal-delay="0.06" style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);border:1px solid rgba(255,255,255,0.12);padding:24px 20px;">
-        <h3 style="font-family:'Lama Sans',sans-serif;font-size:14px;font-weight:500;color:#D6C2A8;margin-bottom:10px;">Single Partner, Concept to Completion</h3>
-        <p style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(255,255,255,0.65);line-height:1.6;">We design, engineer MEP systems, execute fit-outs, and completely furnish your space.</p>
-      </div>
-      <div data-reveal data-reveal-delay="0.12" style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);border:1px solid rgba(255,255,255,0.12);padding:24px 20px;">
-        <h3 style="font-family:'Lama Sans',sans-serif;font-size:14px;font-weight:500;color:#D6C2A8;margin-bottom:10px;">Precision with BIM Technology</h3>
-        <p style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(255,255,255,0.65);line-height:1.6;">Advanced Building Information Modeling prevents clashes between design and utilities.</p>
-      </div>
-      <div data-reveal data-reveal-delay="0.18" style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);border:1px solid rgba(255,255,255,0.12);padding:24px 20px;">
-        <h3 style="font-family:'Lama Sans',sans-serif;font-size:14px;font-weight:500;color:#D6C2A8;margin-bottom:10px;">Tailored Solutions</h3>
-        <p style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(255,255,255,0.65);line-height:1.6;">100% exact match between 3D renderings and reality, curated with high-grade materials.</p>
-      </div>
-      <div data-reveal data-reveal-delay="0.24" style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);border:1px solid rgba(255,255,255,0.12);padding:24px 20px;">
-        <h3 style="font-family:'Lama Sans',sans-serif;font-size:14px;font-weight:500;color:#D6C2A8;margin-bottom:10px;">Exceptional Value</h3>
-        <p style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(255,255,255,0.65);line-height:1.6;">Residential design packages starting from just 29.99 SAR/m&sup2;.</p>
+      <div data-reveal="wipe" data-reveal-delay="0.15" style="position:relative;--fiq-usp-pad:clamp(12px,1.25vw,18px);--fiq-usp-curve:clamp(120px,19vw,280px);">
+        <div style="padding:var(--fiq-usp-pad);background:#2E2824;border-radius:var(--fiq-usp-curve) 24px 24px 24px;">
+          <img src="uploads/landing-ar-usps-villa.jpg" alt="" loading="lazy" style="display:block;width:100%;height:calc(clamp(340px,36vw,520px) + 100px);object-fit:cover;border-radius:calc(var(--fiq-usp-curve) - var(--fiq-usp-pad)) calc(24px - var(--fiq-usp-pad)) calc(24px - var(--fiq-usp-pad)) calc(24px - var(--fiq-usp-pad));">
+        </div>
+        <div data-reveal="up" data-reveal-delay="1" style="position:absolute;bottom:calc(var(--fiq-usp-pad) + 20px);left:calc(var(--fiq-usp-pad) + 20px);right:calc(var(--fiq-usp-pad) + 20px);background:rgba(31,31,31,0.88);backdrop-filter:blur(6px);border-radius:14px;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;">
+          <div>
+            <div style="font-family:'Lama Sans',sans-serif;font-size:13px;font-weight:500;color:#FFFFFF;margin-bottom:6px;">40+ Employees</div>
+            <div style="display:flex;align-items:center;gap:6px;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="#D6C2A8"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.8-6.2 3.8 1.6-7-5.4-4.7 7.1-.6z"/></svg>
+              <span style="font-family:'Lama Sans',sans-serif;font-size:11px;color:rgba(255,255,255,0.7);">4.9 (120 reviews)</span>
+            </div>
+          </div>
+          <div style="display:flex;">
+            <span style="width:24px;height:24px;border-radius:50%;background:#8B6B4A;border:2px solid #1F1F1F;margin-inline-start:-8px;"></span>
+            <span style="width:24px;height:24px;border-radius:50%;background:#B8A08C;border:2px solid #1F1F1F;margin-inline-start:-8px;"></span>
+            <span style="width:24px;height:24px;border-radius:50%;background:#D6C2A8;border:2px solid #1F1F1F;margin-inline-start:-8px;"></span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ FORM ━━ -->
-<section id="form" data-screen-label="Form" style="background:#F5F2ED;padding:clamp(80px,10vw,136px) clamp(24px,5vw,80px);">
-  <div style="max-width:560px;margin:0 auto;">
-    <div style="text-align:center;margin-bottom:44px;">
-      <h2 data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Lama Sans',sans-serif;font-size:clamp(28px,3.2vw,44px);font-weight:500;color:#1F1F1F;margin-bottom:16px;text-wrap:balance;">Ready to Start Transforming Your Space?</h2>
-      <p data-reveal data-reveal-delay="0.08" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Lama Sans',sans-serif;font-size:15px;color:#5B4636;line-height:1.7;">Whether seeking an exceptional interior design or full shell-and-core turnkey fit-out and furnishing, begin your journey with FurnishIQ.</p>
+<section id="form" data-screen-label="Form" style="position:relative;overflow:hidden;background:#2A2522;padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px);">
+  <!-- Full-bleed photo; its main subject should sit on the right, the form panel covers the left. -->
+  <img data-reveal="kenburns" src="uploads/landing-ar-form-bg-1920.jpg" srcset="uploads/landing-ar-form-bg-1280.jpg 1280w, uploads/landing-ar-form-bg-1920.jpg 1920w, uploads/landing-ar-form-bg-2560.jpg 2560w" sizes="100vw" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:right center;pointer-events:none;">
+  <div class="fiq-form-wrap" style="position:relative;max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;">
+    <div aria-hidden="true" style="order:2;"></div>
+    <div data-reveal="left" data-reveal-delay="0.15" style="padding:clamp(32px,4vw,56px) clamp(24px,3.6vw,52px);background:rgba(245,242,237,0.65);border:1px solid rgba(255,255,255,0.45);border-radius:16px;box-shadow:0 24px 80px rgba(58,45,37,0.20);display:flex;flex-direction:column;justify-content:center;">
+      <h2 style="font-family:'Lama Sans',sans-serif;font-size:clamp(28px,3vw,40px);font-weight:500;color:#1F1F1F;line-height:1.3;margin:0 0 14px;">Ready to Start Transforming Your Space?</h2>
+      <p style="font-family:'Lama Sans',sans-serif;font-size:15px;color:#5B4636;line-height:1.75;margin:0 0 32px;max-width:480px;">Whether you are seeking an exceptional interior design or a full shell-and-core turnkey fit-out and furnishing, begin your journey with FurnishIQ.</p>
+
+      <sc-if value="{{ formNotDone }}" hint-placeholder-val="{{ true }}">
+        <form onSubmit="{{ onFormSubmit }}" style="display:flex;flex-direction:column;gap:22px;">
+          <div aria-hidden="true" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">
+            <input type="text" value="{{ formHoneypot }}" onChange="{{ onHoneypotChange }}" name="company_website" tabindex="-1" autocomplete="off">
+          </div>
+          <div class="fiq-form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+            <div>
+              <label for="id-form-name" style="display:block;font-family:'Lama Sans',sans-serif;font-size:13px;font-weight:500;color:#1F1F1F;margin-bottom:8px;">Full Name<span style="color:#B33A3A;margin-inline-start:4px;">*</span></label>
+              <input id="id-form-name" class="fiq-form-field" type="text" placeholder="Your full name" autocomplete="name" value="{{ formName }}" onChange="{{ onNameChange }}" style="width:100%;box-sizing:border-box;height:52px;padding:0 16px;border:1px solid rgba(58,45,37,0.32);border-radius:8px;background-color:transparent;font-family:'Lama Sans',sans-serif;font-size:14px;color:#1F1F1F;">
+              <sc-if value="{{ nameError }}" hint-placeholder-val="{{ '' }}"><span style="display:block;font-family:'Lama Sans',sans-serif;font-size:12px;color:#B33A3A;margin-top:6px;">{{ nameError }}</span></sc-if>
+            </div>
+            <div>
+              <label for="id-form-phone" style="display:block;font-family:'Lama Sans',sans-serif;font-size:13px;font-weight:500;color:#1F1F1F;margin-bottom:8px;">Phone Number<span style="color:#B33A3A;margin-inline-start:4px;">*</span></label>
+              <div class="fiq-phone" dir="ltr" style="display:flex;align-items:stretch;height:52px;box-sizing:border-box;border:1px solid rgba(58,45,37,0.32);border-radius:8px;background-color:transparent;overflow:hidden;">
+                <div style="position:relative;flex-shrink:0;display:flex;align-items:center;gap:6px;padding:0 14px 0 16px;border-right:1px solid rgba(58,45,37,0.32);">
+                  <span aria-hidden="true" style="font-family:'Lama Sans',sans-serif;font-size:14px;color:#1F1F1F;">{{ countryCode }}</span>
+                  <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3A2D25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                  <select aria-label="Country code" value="{{ countryCode }}" onChange="{{ onCountryChange }}" style="position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer;font-size:16px;">
+                  <option value="+966">Saudi Arabia (+966)</option>
+                  <option value="+971">United Arab Emirates (+971)</option>
+                  <option value="+965">Kuwait (+965)</option>
+                  <option value="+974">Qatar (+974)</option>
+                  <option value="+973">Bahrain (+973)</option>
+                  <option value="+968">Oman (+968)</option>
+                  <option value="+20">Egypt (+20)</option>
+                  <option value="+962">Jordan (+962)</option>
+                  <option value="+961">Lebanon (+961)</option>
+                  <option value="+964">Iraq (+964)</option>
+                  <option value="+963">Syria (+963)</option>
+                  <option value="+970">Palestine (+970)</option>
+                  <option value="+967">Yemen (+967)</option>
+                  <option value="+249">Sudan (+249)</option>
+                  <option value="+212">Morocco (+212)</option>
+                  <option value="+216">Tunisia (+216)</option>
+                  <option value="+213">Algeria (+213)</option>
+                  <option value="+218">Libya (+218)</option>
+                  <option value="+90">Turkey (+90)</option>
+                  <option value="+92">Pakistan (+92)</option>
+                  <option value="+91">India (+91)</option>
+                  <option value="+880">Bangladesh (+880)</option>
+                  <option value="+63">Philippines (+63)</option>
+                  <option value="+44">United Kingdom (+44)</option>
+                  <option value="+1">United States / Canada (+1)</option>
+                  <option value="+33">France (+33)</option>
+                  <option value="+49">Germany (+49)</option>
+                  <option value="+39">Italy (+39)</option>
+                  <option value="+34">Spain (+34)</option>
+                  <option value="+86">China (+86)</option>
+                  </select>
+                </div>
+                <input id="id-form-phone" type="tel" inputmode="tel" placeholder="5XXXXXXXX" autocomplete="tel-national" value="{{ formPhone }}" onChange="{{ onPhoneChange }}" style="flex:1;min-width:0;box-sizing:border-box;padding:0 16px;border:none;background:transparent;font-family:'Lama Sans',sans-serif;font-size:14px;color:#1F1F1F;text-align:left;">
+              </div>
+              <sc-if value="{{ phoneError }}" hint-placeholder-val="{{ '' }}"><span style="display:block;font-family:'Lama Sans',sans-serif;font-size:12px;color:#B33A3A;margin-top:6px;">{{ phoneError }}</span></sc-if>
+            </div>
+          </div>
+          <div>
+            <label for="id-form-need" style="display:block;font-family:'Lama Sans',sans-serif;font-size:13px;font-weight:500;color:#1F1F1F;margin-bottom:8px;">What do you need?<span style="color:#B33A3A;margin-inline-start:4px;">*</span></label>
+            <div style="position:relative;">
+              <select id="id-form-need" class="fiq-form-field fiq-select" value="{{ selectedNeed }}" onChange="{{ onNeedChange }}" style="width:100%;box-sizing:border-box;height:52px;padding:0 16px;border:1px solid rgba(58,45,37,0.32);border-radius:8px;background-color:transparent;font-family:'Lama Sans',sans-serif;font-size:14px;color:#1F1F1F;">
+                <option value="">Choose an option</option>
+                <option value="turnkey">Integrated Turnkey Package (Design, Fit-Out &amp; Furnishing)</option>
+                <option value="design_only">Interior Design Only</option>
+                <option value="fit_out">Fit-Out Execution for Existing Blueprints</option>
+                <option value="furniture">Luxury Furniture Procurement</option>
+                <option value="other">Other Services</option>
+              </select>
+              <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3A2D25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="position:absolute;right:16px;top:50%;margin-top:-8px;pointer-events:none;"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <sc-if value="{{ needError }}" hint-placeholder-val="{{ '' }}"><span style="display:block;font-family:'Lama Sans',sans-serif;font-size:12px;color:#B33A3A;margin-top:6px;">{{ needError }}</span></sc-if>
+          </div>
+          <div>
+            <label for="id-form-message" style="display:block;font-family:'Lama Sans',sans-serif;font-size:13px;font-weight:500;color:#1F1F1F;margin-bottom:8px;">Project Details <span style="font-weight:400;color:rgba(58,45,37,0.55);">(optional)</span></label>
+            <textarea id="id-form-message" class="fiq-form-field" rows="3" placeholder="Tell us about your space: its type, approximate size, or location" value="{{ formMessage }}" onChange="{{ onMessageChange }}" style="width:100%;box-sizing:border-box;min-height:112px;padding:14px 16px;resize:vertical;line-height:1.7;display:block;border:1px solid rgba(58,45,37,0.32);border-radius:8px;background-color:transparent;font-family:'Lama Sans',sans-serif;font-size:14px;color:#1F1F1F;"></textarea>
+          </div>
+          <button type="submit" id="id-submit-btn" class="fiq-form-submit" style="font-family:'Lama Sans',sans-serif;font-size:14px;color:#FFFFFF;background:#1F1F1F;padding:14px 24px;border:none;border-radius:6px;cursor:pointer;width:100%;margin-top:6px;transition:background 0.3s cubic-bezier(0.25,0.46,0.45,0.94);">
+            <span id="id-submit-btn-label">Start Your Project with FurnishIQ</span>
+          </button>
+        </form>
+      </sc-if>
+
+      <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
+        <div style="background:#FFFFFF;border-radius:10px;padding:clamp(28px,3vw,40px);">
+          <h3 style="font-family:'Lama Sans',sans-serif;font-size:22px;font-weight:500;color:#1F1F1F;margin:0 0 14px;">Your Request Has Been Received</h3>
+          <p style="font-family:'Lama Sans',sans-serif;font-size:15px;color:#5B4636;line-height:1.7;margin:0 0 12px;">Your space has taken its first step toward luxury with FurnishIQ.</p>
+          <p style="font-family:'Lama Sans',sans-serif;font-size:15px;color:#5B4636;line-height:1.7;margin:0;">Our engineering team is currently reviewing your project details. One of our specialists will reach out shortly to discuss your needs and begin turning your vision into a meticulously executed reality.</p>
+        </div>
+      </sc-if>
     </div>
-
-    <sc-if value="{{ formNotDone }}" hint-placeholder-val="{{ true }}">
-      <form onSubmit="{{ onFormSubmit }}" style="display:flex;flex-direction:column;gap:20px;">
-        <div aria-hidden="true" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">
-          <input type="text" value="{{ formHoneypot }}" onChange="{{ onHoneypotChange }}" name="company_website" tabindex="-1" autocomplete="off">
-        </div>
-        <div>
-          <label style="display:block;font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#5B4636;margin-bottom:8px;">Full Name</label>
-          <input type="text" value="{{ formName }}" onChange="{{ onNameChange }}" style="width:100%;padding:16px 18px;border:1px solid #D6C2A8;background:#FFFFFF;font-family:'Lama Sans',sans-serif;font-size:15px;color:#1F1F1F;">
-          <sc-if value="{{ nameError }}" hint-placeholder-val="{{ '' }}"><span style="display:block;font-family:'Lama Sans',sans-serif;font-size:12px;color:#B33A3A;margin-top:6px;">{{ nameError }}</span></sc-if>
-        </div>
-        <div>
-          <label style="display:block;font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#5B4636;margin-bottom:8px;">Phone Number</label>
-          <input type="tel" value="{{ formPhone }}" onChange="{{ onPhoneChange }}" style="width:100%;padding:16px 18px;border:1px solid #D6C2A8;background:#FFFFFF;font-family:'Lama Sans',sans-serif;font-size:15px;color:#1F1F1F;">
-          <sc-if value="{{ phoneError }}" hint-placeholder-val="{{ '' }}"><span style="display:block;font-family:'Lama Sans',sans-serif;font-size:12px;color:#B33A3A;margin-top:6px;">{{ phoneError }}</span></sc-if>
-        </div>
-        <div>
-          <label style="display:block;font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#5B4636;margin-bottom:8px;">What do you need?</label>
-          <select value="{{ selectedNeed }}" onChange="{{ onNeedChange }}" style="width:100%;padding:16px 18px;border:1px solid #D6C2A8;background:#FFFFFF;font-family:'Lama Sans',sans-serif;font-size:15px;color:#1F1F1F;">
-            <option value="">Select an option</option>
-            <option value="turnkey">Integrated Turnkey Package (Design, Fit-Out &amp; Furnishing)</option>
-            <option value="design_only">Interior Design Only</option>
-            <option value="fit_out">Fit-Out Execution for Existing Blueprints</option>
-            <option value="furniture">Luxury Furniture Procurement</option>
-            <option value="other">Other Services</option>
-          </select>
-          <sc-if value="{{ needError }}" hint-placeholder-val="{{ '' }}"><span style="display:block;font-family:'Lama Sans',sans-serif;font-size:12px;color:#B33A3A;margin-top:6px;">{{ needError }}</span></sc-if>
-        </div>
-        <button type="submit" id="id-submit-btn" style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#FFFFFF;background:#3A2D25;padding:19px 36px;border:1px solid #3A2D25;cursor:pointer;width:100%;transition:all 0.3s cubic-bezier(0.25,0.46,0.45,0.94);">
-          <span id="id-submit-btn-label">Start Your Project with FurnishIQ</span>
-        </button>
-      </form>
-    </sc-if>
-
-    <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
-      <div style="text-align:center;background:#FFFFFF;padding:clamp(40px,4vw,56px) clamp(28px,3vw,40px);">
-        <h3 style="font-family:'Lama Sans',sans-serif;font-size:22px;font-weight:500;color:#1F1F1F;margin-bottom:16px;">Your Request Has Been Received</h3>
-        <p style="font-family:'Lama Sans',sans-serif;font-size:15px;color:#5B4636;line-height:1.7;margin-bottom:12px;">Your space has taken its first step toward luxury with FurnishIQ.</p>
-        <p style="font-family:'Lama Sans',sans-serif;font-size:15px;color:#5B4636;line-height:1.7;">Our engineering team is currently reviewing your project details. One of our specialists will reach out shortly to discuss your needs and begin turning your vision into a meticulously executed reality.</p>
-      </div>
-    </sc-if>
   </div>
 </section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ FOOTER ━━ -->
+<footer style="background:#1F1F1F;padding:clamp(40px,5vw,56px) clamp(24px,5vw,80px);">
+  <div style="max-width:1280px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center;">
+    <a href="/" style="display:block;flex-shrink:0;">
+      <img src="assets/logo-default.png" width="264" height="90" alt="FurnishIQ" loading="lazy" decoding="async" style="display:block;height:30px;width:auto;">
+    </a>
+    <p style="font-family:'Lama Sans',sans-serif;font-size:12px;color:rgba(255,255,255,0.5);margin:0;">© 2026 FurnishIQ. All rights reserved.</p>
+    <nav aria-label="Legal links" style="display:flex;gap:24px;">
+      <a href="#privacy-policy" class="fiq-foot-link" data-legal-open="privacy" style="font-family:'Lama Sans',sans-serif;font-size:12px;color:rgba(255,255,255,0.6);text-decoration:none;">Privacy Policy</a>
+      <a href="#terms" class="fiq-foot-link" data-legal-open="terms" style="font-family:'Lama Sans',sans-serif;font-size:12px;color:rgba(255,255,255,0.6);text-decoration:none;">Terms &amp; Conditions</a>
+    </nav>
+  </div>
+</footer>
 
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1440}}">
@@ -743,7 +1407,9 @@ class Component extends DCLogic {
   state = {
     formName: '',
     formPhone: '',
+    countryCode: '+966',
     selectedNeed: '',
+    formMessage: '',
     formHoneypot: '',
     nameError: '',
     phoneError: '',
@@ -758,8 +1424,12 @@ class Component extends DCLogic {
       onNameChange: (e) => self.setState({ formName: e.target.value }),
       formPhone: self.state.formPhone,
       onPhoneChange: (e) => self.setState({ formPhone: e.target.value }),
+      countryCode: self.state.countryCode,
+      onCountryChange: (e) => self.setState({ countryCode: e.target.value }),
       selectedNeed: self.state.selectedNeed,
       onNeedChange: (e) => self.setState({ selectedNeed: e.target.value }),
+      formMessage: self.state.formMessage,
+      onMessageChange: (e) => self.setState({ formMessage: e.target.value }),
       formHoneypot: self.state.formHoneypot,
       onHoneypotChange: (e) => self.setState({ formHoneypot: e.target.value }),
       nameError: self.state.nameError,
@@ -771,8 +1441,12 @@ class Component extends DCLogic {
         e.preventDefault();
         if (self.state.formHoneypot) return;
         const nameError = self.state.formName.trim() ? '' : 'Please enter your full name.';
-        const phoneError = self.state.formPhone.trim() ? '' : 'Please enter your phone number.';
-        const needError = self.state.selectedNeed ? '' : 'Please select what you need.';
+        // Digits only, and drop the trunk 0 people type locally (05XXXXXXXX -> 5XXXXXXXX)
+        // because the country code already replaces it.
+        const phoneDigits = self.state.formPhone.replace(/\D/g, '').replace(/^0+/, '');
+        const phoneError = !self.state.formPhone.trim() ? 'Please enter your phone number.'
+          : (phoneDigits.length < 6 || phoneDigits.length > 14) ? 'Please enter a valid phone number.' : '';
+        const needError = self.state.selectedNeed ? '' : 'Please choose what you need.';
         if (nameError || phoneError || needError) {
           self.setState({ nameError, phoneError, needError });
           return;
@@ -784,8 +1458,9 @@ class Component extends DCLogic {
         const payload = {
           formType: 'landing_turnkey',
           name: self.state.formName,
-          phone: self.state.formPhone,
+          phone: self.state.countryCode + ' ' + phoneDigits,
           need: self.state.selectedNeed,
+          message: self.state.formMessage.trim(),
           honeypot: self.state.formHoneypot,
         };
         fetch('/api/send-email', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
@@ -798,7 +1473,7 @@ class Component extends DCLogic {
           .catch(() => {
             if (btn) btn.disabled = false;
             if (btnLabel) btnLabel.textContent = 'Start Your Project with FurnishIQ';
-            alert('Something went wrong — please try again or email us directly at info@furnishiq.net');
+            alert('Something went wrong. Please try again or email us directly at info@furnishiq.net');
           });
       },
     };
@@ -806,6 +1481,22 @@ class Component extends DCLogic {
 
   componentDidMount() {
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Hero stats count up from 0 with an ease-out curve, starting as the row fades in.
+    // The final numbers stay in the markup, so no-JS and reduced-motion visitors see them as-is.
+    const counters = document.querySelectorAll('[data-count-to]');
+    if (!reduced && counters.length) {
+      counters.forEach((el) => { el.textContent = '0'; });
+      const countStart = performance.now() + 700; // the first stat's reveal delay
+      const countDur = 2200;
+      const countTick = (now) => {
+        const t = Math.min(Math.max((now - countStart) / countDur, 0), 1);
+        const eased = 1 - Math.pow(1 - t, 4); // ease-out quart: fast start, gentle landing
+        counters.forEach((el) => { el.textContent = String(Math.round(eased * Number(el.dataset.countTo))); });
+        if (t < 1) requestAnimationFrame(countTick);
+      };
+      requestAnimationFrame(countTick);
+    }
 
     const nav = document.getElementById('id-nav');
     if (window.FIQMobileNav) window.FIQMobileNav(nav);
@@ -835,26 +1526,688 @@ class Component extends DCLogic {
     window.addEventListener('scroll', syncNav, { passive: true });
     syncNav();
 
-    const revealEls = document.querySelectorAll('[data-reveal]');
-    if (reduced || !('IntersectionObserver' in window)) {
-      revealEls.forEach((el) => {
-        el.style.opacity = '1';
-        el.style.transform = 'none';
+    const track = document.querySelector('[data-showcase-track]');
+    const prevBtn = document.querySelector('[data-showcase-prev]');
+    const nextBtn = document.querySelector('[data-showcase-next]');
+    if (track && prevBtn && nextBtn) {
+      // Infinite loop: the markup holds [clones][originals][clones]. Whenever a
+      // scroll settles inside a clone set, jump one set-width back into the
+      // originals; clones sit at identical offsets so the jump is invisible.
+      // RTL scrollLeft runs 0 -> negative, so work in a positive offset.
+      const dir = getComputedStyle(track).direction === 'rtl' ? -1 : 1;
+      const cards = track.querySelectorAll('[data-showcase-card]');
+      const count = cards.length / 3;
+      let setWidth = 0;
+      const measure = () => {
+        setWidth = Math.abs(cards[count].offsetLeft - cards[0].offsetLeft);
+      };
+      const jumpTo = (offset) => {
+        const behavior = track.style.scrollBehavior;
+        track.style.scrollBehavior = 'auto';
+        track.scrollLeft = dir * offset;
+        track.style.scrollBehavior = behavior;
+      };
+      const normalise = () => {
+        if (!setWidth) return;
+        const offset = Math.abs(track.scrollLeft);
+        if (offset < setWidth - 2) jumpTo(offset + setWidth);
+        else if (offset >= setWidth * 2 - 2) jumpTo(offset - setWidth);
+      };
+      const step = () => cards[0].getBoundingClientRect().width + 16;
+      prevBtn.addEventListener('click', () => track.scrollBy({ left: -dir * step(), behavior: reduced ? 'auto' : 'smooth' }));
+      nextBtn.addEventListener('click', () => track.scrollBy({ left: dir * step(), behavior: reduced ? 'auto' : 'smooth' }));
+      if ('onscrollend' in window) {
+        track.addEventListener('scrollend', normalise);
+      } else {
+        let settle;
+        track.addEventListener('scroll', () => {
+          clearTimeout(settle);
+          settle = setTimeout(normalise, 150);
+        }, { passive: true });
+      }
+      window.addEventListener('resize', () => {
+        const ratio = setWidth ? Math.abs(track.scrollLeft) / setWidth : 1;
+        measure();
+        jumpTo(ratio * setWidth);
+        normalise();
       });
+      measure();
+      jumpTo(setWidth);
+    }
+
+    const svcTrack = document.querySelector('[data-svc-track]');
+    const svcPrev = document.querySelector('[data-svc-prev]');
+    const svcNext = document.querySelector('[data-svc-next]');
+    if (svcTrack && svcPrev && svcNext) {
+      // Infinite loop: the markup holds [clones][originals][clones]. Whenever a
+      // scroll settles inside a clone set, jump one set-width back into the
+      // originals; clones sit at identical offsets so the jump is invisible.
+      // RTL scrollLeft runs 0 -> negative, so work in a positive offset.
+      const svcDir = getComputedStyle(svcTrack).direction === 'rtl' ? -1 : 1;
+      const svcCards = svcTrack.querySelectorAll('[data-svc-card]');
+      const svcCount = svcCards.length / 3;
+      let svcSet = 0;
+      const svcMeasure = () => {
+        svcSet = Math.abs(svcCards[svcCount].offsetLeft - svcCards[0].offsetLeft);
+      };
+      const svcJump = (offset) => {
+        const behavior = svcTrack.style.scrollBehavior;
+        svcTrack.style.scrollBehavior = 'auto';
+        svcTrack.scrollLeft = svcDir * offset;
+        svcTrack.style.scrollBehavior = behavior;
+      };
+      const svcNormalise = () => {
+        if (!svcSet) return;
+        const offset = Math.abs(svcTrack.scrollLeft);
+        if (offset < svcSet - 2) svcJump(offset + svcSet);
+        else if (offset >= svcSet * 2 - 2) svcJump(offset - svcSet);
+      };
+      const svcStep = () => Math.abs(svcCards[1].offsetLeft - svcCards[0].offsetLeft);
+      svcPrev.addEventListener('click', () => svcTrack.scrollBy({ left: -svcDir * svcStep(), behavior: reduced ? 'auto' : 'smooth' }));
+      svcNext.addEventListener('click', () => svcTrack.scrollBy({ left: svcDir * svcStep(), behavior: reduced ? 'auto' : 'smooth' }));
+      if ('onscrollend' in window) {
+        svcTrack.addEventListener('scrollend', svcNormalise);
+      } else {
+        let svcSettle;
+        svcTrack.addEventListener('scroll', () => {
+          clearTimeout(svcSettle);
+          svcSettle = setTimeout(svcNormalise, 150);
+        }, { passive: true });
+      }
+      window.addEventListener('resize', () => {
+        const ratio = svcSet ? Math.abs(svcTrack.scrollLeft) / svcSet : 1;
+        svcMeasure();
+        svcJump(ratio * svcSet);
+        svcNormalise();
+      });
+      svcMeasure();
+      svcJump(svcSet);
+    }
+
+    const vidTrack = document.querySelector('[data-vid-track]');
+    const vidPrev = document.querySelector('[data-vid-prev]');
+    const vidNext = document.querySelector('[data-vid-next]');
+    if (vidTrack && vidPrev && vidNext) {
+      // Infinite loop: the markup holds [clones][originals][clones]. Whenever a
+      // scroll settles inside a clone set, jump one set-width back into the
+      // originals; clones sit at identical offsets so the jump is invisible.
+      // RTL scrollLeft runs 0 -> negative, so work in a positive offset.
+      const vidDir = getComputedStyle(vidTrack).direction === 'rtl' ? -1 : 1;
+      const vidSlides = vidTrack.querySelectorAll('[data-vid-slide]');
+      const vidCount = vidSlides.length / 3;
+      const vidDots = document.querySelectorAll('[data-vid-dot]');
+      let vidSet = 0;
+      const vidStep = () => Math.abs(vidSlides[1].offsetLeft - vidSlides[0].offsetLeft);
+      const vidMeasure = () => {
+        vidSet = Math.abs(vidSlides[vidCount].offsetLeft - vidSlides[0].offsetLeft);
+      };
+      const vidJump = (offset) => {
+        const behavior = vidTrack.style.scrollBehavior;
+        vidTrack.style.scrollBehavior = 'auto';
+        vidTrack.scrollLeft = vidDir * offset;
+        vidTrack.style.scrollBehavior = behavior;
+      };
+      const vidNormalise = () => {
+        if (!vidSet) return;
+        const offset = Math.abs(vidTrack.scrollLeft);
+        if (offset < vidSet - 2) vidJump(offset + vidSet);
+        else if (offset >= vidSet * 2 - 2) vidJump(offset - vidSet);
+      };
+      const syncVid = () => {
+        const raw = Math.round((Math.abs(vidTrack.scrollLeft) - vidSet) / vidStep());
+        const active = ((raw % vidCount) + vidCount) % vidCount;
+        vidDots.forEach((dot, i) => {
+          dot.style.background = i === active ? '#1F1F1F' : '#B8A08C';
+          dot.style.width = i === active ? '18px' : '6px';
+        });
+      };
+      vidPrev.addEventListener('click', () => vidTrack.scrollBy({ left: -vidDir * vidStep(), behavior: reduced ? 'auto' : 'smooth' }));
+      vidNext.addEventListener('click', () => vidTrack.scrollBy({ left: vidDir * vidStep(), behavior: reduced ? 'auto' : 'smooth' }));
+      vidDots.forEach((dot) => dot.addEventListener('click', () => {
+        vidTrack.scrollTo({ left: vidDir * (vidSet + Number(dot.dataset.vidDot) * vidStep()), behavior: reduced ? 'auto' : 'smooth' });
+      }));
+      vidTrack.addEventListener('scroll', syncVid, { passive: true });
+      if ('onscrollend' in window) {
+        vidTrack.addEventListener('scrollend', vidNormalise);
+      } else {
+        let vidSettle;
+        vidTrack.addEventListener('scroll', () => {
+          clearTimeout(vidSettle);
+          vidSettle = setTimeout(vidNormalise, 150);
+        }, { passive: true });
+      }
+      window.addEventListener('resize', () => {
+        const ratio = vidSet ? Math.abs(vidTrack.scrollLeft) / vidSet : 1;
+        vidMeasure();
+        vidJump(ratio * vidSet);
+        vidNormalise();
+        syncVid();
+      });
+      vidMeasure();
+      vidJump(vidSet);
+      syncVid();
+
+      // Video pop-up. Set data-video-src on the three original slides (not the clones);
+      // until then the pop-up shows the slide's cover image with a short note.
+      // Built here and appended to <body>, outside the template, so re-renders never touch it.
+      const vmodal = document.createElement('div');
+      vmodal.className = 'fiq-vmodal';
+      vmodal.setAttribute('role', 'dialog');
+      vmodal.setAttribute('aria-modal', 'true');
+      vmodal.setAttribute('aria-label', 'Video player');
+      vmodal.setAttribute('dir', 'ltr');
+      vmodal.innerHTML = '<button type="button" class="fiq-vmodal-close" aria-label="Close"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></button>'
+        + '<div class="fiq-vmodal-frame"><video controls playsinline preload="none"></video><p class="fiq-vmodal-note" hidden>The video will be added soon.</p></div>';
+      document.body.appendChild(vmodal);
+      const vmVideo = vmodal.querySelector('video');
+      const vmNote = vmodal.querySelector('.fiq-vmodal-note');
+      const vmClose = vmodal.querySelector('.fiq-vmodal-close');
+      let vmOpener = null;
+      const closeVideo = () => {
+        if (!vmodal.classList.contains('is-open')) return;
+        vmodal.classList.remove('is-open');
+        vmVideo.pause();
+        vmVideo.removeAttribute('src');
+        vmVideo.load();
+        document.documentElement.style.overflow = '';
+        if (vmOpener) vmOpener.focus();
+      };
+      const openVideo = (slideIndex, opener) => {
+        const original = vidSlides[vidCount + slideIndex];
+        const src = original.dataset.videoSrc;
+        const poster = original.querySelector('img');
+        vmVideo.poster = poster ? poster.currentSrc || poster.src : '';
+        vmNote.textContent = 'The video will be added soon.';
+        vmNote.hidden = !!src;
+        vmVideo.controls = !!src;
+        if (src) vmVideo.src = src;
+        vmOpener = opener;
+        vmodal.classList.add('is-open');
+        document.documentElement.style.overflow = 'hidden';
+        vmClose.focus();
+        if (src) vmVideo.play().catch(() => {});
+      };
+      vidTrack.querySelectorAll('[data-vid-play]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const slide = btn.closest('[data-vid-slide]');
+          if (slide) openVideo(Number(slide.dataset.vidI), btn);
+        });
+      });
+      // If the file cannot be played (missing, or a browser without H.264 support such as
+      // editor preview panes), say so instead of leaving a silent frozen cover image.
+      vmVideo.addEventListener('error', () => {
+        if (!vmVideo.getAttribute('src')) return;
+        vmNote.textContent = 'This video cannot be played in this browser.';
+        vmNote.hidden = false;
+      });
+      vmClose.addEventListener('click', closeVideo);
+      vmodal.addEventListener('click', (e) => { if (e.target === vmodal) closeVideo(); });
+      document.addEventListener('keydown', (e) => {
+        if (!vmodal.classList.contains('is-open')) return;
+        if (e.key === 'Escape') closeVideo();
+        // Keep Tab inside the dialog: only the close button and the video are focusable.
+        if (e.key === 'Tab') {
+          const items = [vmClose].concat(vmVideo.controls ? [vmVideo] : []);
+          const i = items.indexOf(document.activeElement);
+          e.preventDefault();
+          items[(i + (e.shiftKey ? -1 : 1) + items.length) % items.length].focus();
+        }
+      });
+    }
+
+    const prjTrack = document.querySelector('[data-prj-track]');
+    const prjThumb = document.querySelector('[data-prj-thumb]');
+    if (prjTrack && prjThumb) {
+      // Progress bar: thumb width = visible share (capped), position = scroll progress.
+      // RTL scrollLeft runs 0 -> negative; inset-inline-start mirrors the thumb for us.
+      const syncPrj = () => {
+        const max = prjTrack.scrollWidth - prjTrack.clientWidth;
+        // Capped so the thumb keeps the design's slim proportion even with few cards.
+        const share = Math.min(prjTrack.clientWidth / prjTrack.scrollWidth, 0.28);
+        const progress = max > 0 ? Math.abs(prjTrack.scrollLeft) / max : 0;
+        prjThumb.style.width = (share * 100) + '%';
+        prjThumb.style.insetInlineStart = (progress * (1 - share) * 100) + '%';
+      };
+      prjTrack.addEventListener('scroll', syncPrj, { passive: true });
+      window.addEventListener('resize', syncPrj);
+      syncPrj();
+
+      // Mouse drag to scroll (touch and trackpads already scroll natively).
+      let prjDown = false;
+      let prjMoved = false;
+      let prjStartX = 0;
+      let prjStartScroll = 0;
+      prjTrack.addEventListener('pointerdown', (e) => {
+        if (e.pointerType !== 'mouse' || e.button !== 0) return;
+        prjDown = true;
+        prjMoved = false;
+        prjStartX = e.clientX;
+        prjStartScroll = prjTrack.scrollLeft;
+      });
+      window.addEventListener('pointermove', (e) => {
+        if (!prjDown) return;
+        const dx = e.clientX - prjStartX;
+        if (!prjMoved && Math.abs(dx) > 5) {
+          prjMoved = true;
+          prjTrack.classList.add('is-dragging');
+        }
+        if (prjMoved) prjTrack.scrollLeft = prjStartScroll - dx;
+      });
+      window.addEventListener('pointerup', () => {
+        if (!prjDown) return;
+        prjDown = false;
+        prjTrack.classList.remove('is-dragging');
+      });
+      // A drag that ends over a card must not also open it.
+      prjTrack.addEventListener('click', (e) => {
+        if (prjMoved) {
+          e.preventDefault();
+          e.stopPropagation();
+          prjMoved = false;
+        }
+      }, true);
+      prjTrack.addEventListener('dragstart', (e) => e.preventDefault());
+
+      // Project preview pop-up. Card image, title and count are read from the card;
+      // services and summaries come from prjDetails (same order as the cards).
+      // Placeholder copy until real project summaries are supplied.
+      const SVC = {
+        design: { name: 'Interior Design', href: '/services-interior-design' },
+        fitout: { name: 'Fit-Out', href: '/services-fitout' },
+        mep: { name: 'MEP Engineering', href: '/services-mep' },
+        furniture: { name: 'Furniture Solutions', href: '/services-furniture' },
+      };
+      const prjDetails = [
+        { intro: 'Private villas handed over ready to live in, from the first plan to the last piece of furniture.', svcs: [
+          ['design', 'Space planning and photorealistic 3D designs for every room, with an identity that joins heritage and contemporary living.'],
+          ['mep', 'HVAC, lighting and plumbing systems designed, installed and coordinated in BIM before work begins on site.'],
+          ['fitout', 'Travertine cladding, walnut joinery and suspended ceilings, finished precisely under daily engineering supervision.'],
+          ['furniture', 'Made-to-measure pieces, supplied and installed in full to match the approved design.'],
+        ] },
+        { intro: 'Luxury apartments designed to make every metre count and frame the city with elegance.', svcs: [
+          ['design', 'Replanned layouts that open up the sense of space, with a warm, coherent material palette.'],
+          ['furniture', 'Built-in and bespoke furniture that uses space intelligently, supplied and installed in full.'],
+        ] },
+        { intro: 'Headquarters and executive offices that express the organisation and support a productive workplace.', svcs: [
+          ['design', 'Workspaces and meeting rooms planned around a visual identity aligned with the client brand.'],
+          ['mep', 'Smart HVAC and lighting with network infrastructure designed for continuous, reliable operation.'],
+          ['fitout', 'Glass partitions, timber cladding and acoustic ceilings delivered without disrupting daily work.'],
+        ] },
+        { intro: 'Restaurants and cafés designed for a memorable guest experience and smooth daily operation.', svcs: [
+          ['design', 'The guest journey designed from entrance to table, with carefully planned service routes.'],
+          ['fitout', 'Hard-wearing finishes in premium materials, with lighting that sets the atmosphere.'],
+          ['furniture', 'Bespoke seating sized for the venue capacity and its identity.'],
+        ] },
+        { intro: 'Hotel suites and lobbies that combine refined comfort with the durability hospitality demands.', svcs: [
+          ['design', 'Suites and lobbies with a contemporary local character and international hospitality standards.'],
+          ['mep', 'Independent HVAC and lighting control in every suite, with high-performance acoustic insulation.'],
+          ['furniture', 'Bespoke hospitality furniture that pairs luxury with durability, supplied and fully installed.'],
+        ] },
+        { intro: 'Stores and showrooms that put the product first and guide customers through a seamless purchase.', svcs: [
+          ['fitout', 'Display frontages, flooring and product lighting delivered on a fast-track schedule.'],
+          ['furniture', 'Made-to-measure display units and shelving finished in walnut and brass.'],
+        ] },
+      ];
+      const pm = document.createElement('div');
+      pm.className = 'fiq-pmodal';
+      pm.setAttribute('role', 'dialog');
+      pm.setAttribute('aria-modal', 'true');
+      pm.setAttribute('dir', 'ltr');
+      pm.innerHTML = '<button type="button" class="fiq-pmodal-close" aria-label="Close"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></button>'
+        + '<div class="fiq-pmodal-body"><img alt="">'
+        + '<button type="button" class="fiq-pmodal-nav fiq-pmodal-nav--prev" data-pm-prev aria-label="Previous project"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></button>'
+        + '<button type="button" class="fiq-pmodal-nav fiq-pmodal-nav--next" data-pm-next aria-label="Next project"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>'
+        + '<div class="fiq-pmodal-info"></div></div>';
+      document.body.appendChild(pm);
+      const pmImg = pm.querySelector('.fiq-pmodal-body > img');
+      const pmInfo = pm.querySelector('.fiq-pmodal-info');
+      const pmClose = pm.querySelector('.fiq-pmodal-close');
+      const pmPrev = pm.querySelector('[data-pm-prev]');
+      const pmNext = pm.querySelector('[data-pm-next]');
+      const prjCards = [...prjTrack.querySelectorAll('[data-prj-card]')];
+      const lgSrc = (card) => { const im = card.querySelector('img'); return im ? im.getAttribute('src').replace(/\.jpg$/, '-lg.jpg') : ''; };
+      let pmIndex = 0;
+      const F = "font-family:'Lama Sans',sans-serif;";
+      let pmOpener = null;
+      const closeProject = () => {
+        if (!pm.classList.contains('is-open')) return;
+        pm.classList.remove('is-open');
+        document.documentElement.style.overflow = '';
+        if (pmOpener) pmOpener.focus();
+      };
+      // stepping = moving with prev/next while already open: keep focus where it is, crossfade the photo.
+      const openProject = (card, i, stepping) => {
+        const d = prjDetails[i];
+        if (!d) return;
+        const labels = card.querySelectorAll('span');
+        const title = labels[0] ? labels[0].textContent : '';
+        const count = labels[1] ? labels[1].textContent : '';
+        // The pop-up uses the 2400px version (…-lg.jpg); cards keep the light 900px file.
+        const src = lgSrc(card);
+        if (stepping && !reduced) {
+          pmImg.style.opacity = '0';
+          const show = () => { pmImg.style.opacity = '1'; };
+          pmImg.onload = show;
+          setTimeout(() => { pmImg.src = src; if (pmImg.complete) show(); }, 180);
+        } else {
+          pmImg.onload = null;
+          pmImg.style.opacity = '1';
+          pmImg.src = src;
+        }
+        pmIndex = i;
+        // Warm the neighbours so stepping is instant.
+        [i - 1, i + 1].forEach((j) => { const c = prjCards[(j + prjCards.length) % prjCards.length]; if (c) new Image().src = lgSrc(c); });
+        pmImg.alt = title;
+        pmInfo.style.setProperty('--fiq-svc-n', d.svcs.length);
+        pmInfo.innerHTML =
+          '<div class="fiq-pmodal-head">'
+          + '<div style="max-width:560px;"><h3 id="fiq-pmodal-title" style="' + F + 'font-size:clamp(24px,2.3vw,34px);font-weight:500;color:#FFFFFF;line-height:1.25;margin:0 0 8px;">' + title + '</h3>'
+          + '<p style="' + F + 'font-size:14px;color:rgba(255,255,255,0.75);line-height:1.7;margin:0;">' + d.intro + '</p></div>'
+          + '<div style="display:flex;align-items:center;gap:clamp(20px,2.4vw,36px);">'
+          + '<div style="display:flex;align-items:baseline;gap:10px;"><span style="' + F + 'font-size:clamp(30px,2.8vw,42px);font-weight:500;color:#D6C2A8;line-height:1;">' + count + '+</span>'
+          + '<span style="' + F + 'font-size:13px;color:rgba(255,255,255,0.8);">Completed Projects</span></div>'
+          + '<a href="#form" class="fiq-pmodal-cta" data-pm-cta>Start Your Project</a></div>'
+          + '</div>'
+          + '<div class="fiq-pmodal-svcs">'
+          + d.svcs.map(([key, text]) => '<div><a href="' + SVC[key].href + '" style="' + F + 'display:inline-block;font-size:14px;font-weight:500;margin-bottom:6px;">' + SVC[key].name + '</a>'
+            + '<p style="' + F + 'font-size:12.5px;color:rgba(255,255,255,0.72);line-height:1.7;margin:0;">' + text + '</p></div>').join('')
+          + '</div>';
+        pm.setAttribute('aria-labelledby', 'fiq-pmodal-title');
+        pm.querySelector('.fiq-pmodal-body').scrollTop = 0;
+        pmOpener = card; // closing returns focus to the card of the project being viewed
+        if (stepping) return;
+        pm.classList.add('is-open');
+        document.documentElement.style.overflow = 'hidden';
+        pmClose.focus();
+      };
+      // Loop through the projects in both directions.
+      const stepProject = (dir) => {
+        const n = prjCards.length;
+        const j = (pmIndex + dir + n) % n;
+        openProject(prjCards[j], j, true);
+      };
+      pmPrev.addEventListener('click', () => stepProject(-1));
+      pmNext.addEventListener('click', () => stepProject(1));
+      prjTrack.querySelectorAll('[data-prj-card]').forEach((card, i) => {
+        card.addEventListener('click', (e) => {
+          e.preventDefault();
+          openProject(card, i);
+        });
+      });
+      pmClose.addEventListener('click', closeProject);
+      pm.addEventListener('click', (e) => {
+        if (e.target === pm) closeProject();
+        // Links inside (services, CTA) close the pop-up first so the page can scroll/navigate.
+        if (e.target.closest('a')) { pmOpener = null; closeProject(); }
+      });
+      document.addEventListener('keydown', (e) => {
+        if (!pm.classList.contains('is-open')) return;
+        if (e.key === 'Escape') closeProject();
+        if (e.key === 'ArrowRight') { e.preventDefault(); stepProject(1); }
+        if (e.key === 'ArrowLeft') { e.preventDefault(); stepProject(-1); }
+        if (e.key === 'Tab') {
+          const items = [pmClose, pmPrev, pmNext].concat([...pmInfo.querySelectorAll('a')]);
+          const idx = items.indexOf(document.activeElement);
+          e.preventDefault();
+          items[(idx + (e.shiftKey ? -1 : 1) + items.length) % items.length].focus();
+        }
+      });
+    }
+
+    // Privacy policy pop-up: full-screen reading view opened from the footer link
+    // (or directly via #privacy-policy). Built here and appended to <body>.
+    // Legal pop-up: one full-screen reading view for both documents.
+    // Placeholder copy drafted for review — have it checked before relying on it.
+    const LEGAL_DOCS = {
+      privacy: { hash: '#privacy-policy', html: `<h2 id="fiq-legal-title">Privacy Policy</h2>
+<p class="fiq-legal-meta">Last updated: 26 September 2026</p>
+<p>FurnishIQ, the interior design, fit-out and furnishing arm of Arsan Global, headquartered in Riyadh, Kingdom of Saudi Arabia, is committed to protecting the privacy of its website visitors and clients. This policy explains the data we collect when you use our website and contact us, how we use and protect it, and the rights you have under the Saudi Personal Data Protection Law and its Implementing Regulations.</p>
+
+<h3>1. Data We Collect</h3>
+<p><strong>Data you give us directly</strong> when you complete the consultation request form or contact us:</p>
+<ul>
+<li>Your full name.</li>
+<li>Your mobile number, with country code.</li>
+<li>The type of service you need.</li>
+<li>Any project details you choose to share, such as the type of space, its approximate size and its location.</li>
+</ul>
+<p><strong>Data collected automatically</strong> when you browse the website, such as your device and browser type, the pages you visit and how long you stay, the page that referred you to us, and your IP address and the approximate location derived from it. This data is collected through cookies and similar technologies described in section 6.</p>
+<p>We do not ask for sensitive data such as health, financial or national ID information, and we ask that you do not include it in the project details field.</p>
+
+<h3>2. How We Use Your Data</h3>
+<ul>
+<li>To respond to your request and contact you by phone or WhatsApp to discuss your space and arrange the consultation.</li>
+<li>To prepare an initial proposal or concept suited to the service and project details you shared.</li>
+<li>To improve the website and user experience, and to understand how its pages perform.</li>
+<li>To measure the effectiveness of our advertising campaigns and show relevant advertising for our services.</li>
+<li>To protect against misuse and spam, and to comply with applicable regulations.</li>
+</ul>
+
+<h3>3. Legal Basis for Processing</h3>
+<p>We process your data on the basis of your consent when you submit the form or accept cookies, to fulfil the request you initiated, for our legitimate interest in operating, protecting and developing the website without prejudice to your rights, and to meet our legal obligations.</p>
+
+<h3>4. Sharing Your Data</h3>
+<p><strong>We do not sell or rent your personal data to anyone.</strong> We share it only as far as necessary with:</p>
+<ul>
+<li><strong>The FurnishIQ and Arsan Global teams</strong> responsible for following up your request and delivering your project.</li>
+<li><strong>Technology service providers</strong> acting on our behalf under contractual confidentiality and security obligations: Vercel for website hosting, Resend for delivering form submissions to our email, Google tools for analytics and tag management to measure website use, and the Meta Pixel for advertising measurement.</li>
+<li><strong>Competent government or judicial authorities</strong> where required by law.</li>
+</ul>
+
+<h3>5. Transfers Outside the Kingdom</h3>
+<p>Some of the service providers listed above may host data on servers outside the Kingdom of Saudi Arabia. Where this happens, we ensure the transfer follows the controls set out in the Personal Data Protection Law and its regulations, and that your data receives an adequate level of protection.</p>
+
+<h3>6. Cookies and Tracking</h3>
+<p>The website uses cookies and similar technologies through Google Tag Manager, Google analytics tools and the Meta Pixel to understand how the website is used and to measure advertising results. You can control, delete or block cookies in your browser settings, and manage your advertising preferences in your Google and Meta account settings. Disabling them may stop some website features from working as expected.</p>
+
+<h3>7. Contact via WhatsApp</h3>
+<p>When you tap the WhatsApp button you move to WhatsApp, which is owned by Meta, and the conversation is subject to WhatsApp's own privacy policy. We use what you share with us in the conversation only to respond to your enquiry.</p>
+
+<h3>8. Data Retention</h3>
+<p>We keep your request data for as long as we are in contact with you and delivering your project, and then for no longer than two years from our last contact, unless an applicable regulation requires a longer period. After that, we securely destroy it or make it no longer linked to your identity.</p>
+
+<h3>9. Data Protection</h3>
+<p>We apply appropriate technical and organisational measures to protect your data, including encrypted connections to the website (HTTPS) and access restricted to the staff who need it. However, no transmission over the internet can be guaranteed to be completely secure.</p>
+
+<h3>10. Your Rights</h3>
+<p>Under the Personal Data Protection Law, you have the right to:</p>
+<ul>
+<li>Be informed of how your data is collected and processed, and why.</li>
+<li>Access your data and obtain a copy of it.</li>
+<li>Request that your data be corrected, completed or updated.</li>
+<li>Request that your data be destroyed once it is no longer needed.</li>
+<li>Withdraw your consent to processing at any time, without affecting processing carried out before the withdrawal.</li>
+</ul>
+<p>To exercise any of these rights, email us at the address below and we will respond within the period set by law. You may also lodge a complaint with the Saudi Data and Artificial Intelligence Authority (SDAIA) if you believe your data has been processed in breach of the law.</p>
+
+<h3>11. Children's Privacy</h3>
+<p>Our services are intended for adults, and we do not knowingly collect data from anyone under 18. If you become aware that a minor has given us their data, please contact us so we can delete it.</p>
+
+<h3>12. Changes to This Policy</h3>
+<p>We may update this policy from time to time to reflect changes in our services or in regulations. The date of the latest update appears at the top of this page, and continuing to use the website after an update means you have been informed of the revised policy.</p>
+
+<h3>13. Contact Us</h3>
+<p>For any question about this policy or your personal data:</p>
+<ul>
+<li>Email: <a href="mailto:info@furnishiq.net">info@furnishiq.net</a></li>
+<li>Phone and WhatsApp: <a href="tel:+966580330627">+966 58 033 0627</a></li>
+<li>Address: Riyadh, Kingdom of Saudi Arabia</li>
+</ul>` },
+      terms: { hash: '#terms', html: `<h2 id="fiq-legal-title">Terms &amp; Conditions</h2>
+<p class="fiq-legal-meta">Last updated: 26 September 2026</p>
+<p>Welcome to the website of FurnishIQ, the interior design, fit-out and furnishing arm of Arsan Global, headquartered in Riyadh, Kingdom of Saudi Arabia. By using this website or submitting a request through it, you agree to these terms and conditions. If you do not agree, please do not use the website.</p>
+
+<h3>1. Scope of These Terms</h3>
+<p>These terms govern your use of the website, its content and its contact forms. Design, execution and furnishing projects themselves are governed by a separate contract signed between you and FurnishIQ, and that contract prevails in the event of any conflict.</p>
+
+<h3>2. Information and Pricing</h3>
+<ul>
+<li>Content published on the website, including service and package descriptions, is for general information and does not constitute a binding offer.</li>
+<li>Advertised prices, such as residential interior design package prices, are indicative starting prices in Saudi riyals and may change without prior notice.</li>
+<li>Separate quotations are provided for execution, fit-out and furnishing according to the scope and requirements of each project. No price or timeline is binding until confirmed in a written quotation or signed contract.</li>
+</ul>
+
+<h3>3. Images and Designs Shown</h3>
+<p>Some images on the website are illustrative visualisations or concept designs that show our approach, and may differ from completed projects. Final materials, colours and finishes vary according to what is approved for each project, and colours may appear slightly different on screen.</p>
+
+<h3>4. Consultation Requests and Contact</h3>
+<ul>
+<li>Submitting the consultation request form does not create a contract or obligation for either party; it allows our team to contact you and understand your needs.</li>
+<li>You confirm that the information you provide is accurate and that you are authorised to share it.</li>
+<li>The free consultation referred to on the website is an initial introductory consultation, subject to team availability and project scope.</li>
+<li>Your data is processed in accordance with our <a href="#privacy-policy" data-legal-open="privacy">Privacy Policy</a>.</li>
+</ul>
+
+<h3>5. Acceptable Use</h3>
+<p>You agree not to use the website for any unlawful purpose, including:</p>
+<ul>
+<li>Submitting misleading information, fake requests or spam.</li>
+<li>Attempting unauthorised access to the website or its systems, or disrupting its operation.</li>
+<li>Collecting website content or data by automated means without our written permission.</li>
+</ul>
+
+<h3>6. Intellectual Property</h3>
+<p>All website content, including text, images, designs, logos and trademarks, is owned by or licensed to FurnishIQ and protected under the intellectual property laws of the Kingdom of Saudi Arabia. It may not be copied, republished or used commercially without prior written consent. Designs and drawings provided for any project remain the property of FurnishIQ unless the contract states otherwise.</p>
+
+<h3>7. Third-Party Links and Services</h3>
+<p>The website may contain links to or services from third parties, such as WhatsApp. We are not responsible for the content or policies of these services, and your use of them is subject to their own terms.</p>
+
+<h3>8. Disclaimer and Limitation of Liability</h3>
+<p>We aim to keep the information on the website accurate and up to date, but it is provided "as is", without any express or implied warranty of completeness or freedom from error. To the extent permitted by applicable law, FurnishIQ is not liable for any indirect or consequential loss arising from use of, or inability to access, the website. Nothing in this section affects any rights you have by law that cannot be waived.</p>
+
+<h3>9. Changes to These Terms</h3>
+<p>We may amend these terms at any time, and changes take effect from the date they are published on the website. The date of the latest update appears at the top of this page, and continuing to use the website constitutes acceptance of the amended terms.</p>
+
+<h3>10. Governing Law</h3>
+<p>These terms are governed by and interpreted in accordance with the laws of the Kingdom of Saudi Arabia, and the competent courts of Riyadh have jurisdiction over any dispute arising from them.</p>
+
+<h3>11. Contact Us</h3>
+<p>For any question about these terms:</p>
+<ul>
+<li>Email: <a href="mailto:info@furnishiq.net">info@furnishiq.net</a></li>
+<li>Phone and WhatsApp: <a href="tel:+966580330627">+966 58 033 0627</a></li>
+<li>Address: Riyadh, Kingdom of Saudi Arabia</li>
+</ul>` },
+    };
+    const legal = document.createElement('div');
+    legal.className = 'fiq-legal';
+    legal.setAttribute('role', 'dialog');
+    legal.setAttribute('aria-modal', 'true');
+    legal.setAttribute('aria-labelledby', 'fiq-legal-title');
+    legal.setAttribute('dir', 'ltr');
+    // The bar mirrors the page nav (1280px container, 172x36 logo box) so the logo sits in the same spot.
+    legal.innerHTML = '<div class="fiq-legal-bar"><div class="fiq-legal-bar-inner">'
+      + '<span style="flex-shrink:0;position:relative;height:36px;width:172px;display:block;"><img src="assets/logo-scrolled.png" width="264" height="90" alt="FurnishIQ" style="position:absolute;inset:0;height:36px;width:auto;max-width:172px;object-fit:contain;object-position:left center;"></span>'
+      + '<button type="button" class="fiq-legal-close" aria-label="Close"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1F1F1F" stroke-width="1.5" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></button>'
+      + '</div></div><div class="fiq-legal-scroll"><article class="fiq-legal-doc"></article></div>';
+    document.body.appendChild(legal);
+    const legalClose = legal.querySelector('.fiq-legal-close');
+    const legalScroll = legal.querySelector('.fiq-legal-scroll');
+    const legalDoc = legal.querySelector('.fiq-legal-doc');
+    let legalOpener = null;
+    let legalKey = null;
+    const openLegal = (key, opener) => {
+      const doc = LEGAL_DOCS[key];
+      if (!doc) return;
+      legalKey = key;
+      legalDoc.innerHTML = doc.html;
+      history.replaceState(null, '', doc.hash);
+      if (opener) legalOpener = opener;
+      legalScroll.scrollTop = 0;
+      // Match the page's width including its scrollbar, so the bar lines up with the nav behind it.
+      if (!legal.classList.contains('is-open')) legal.style.setProperty('--fiq-sbw', (window.innerWidth - document.documentElement.clientWidth) + 'px');
+      legal.classList.add('is-open');
+      document.documentElement.style.overflow = 'hidden';
+      legalClose.focus();
+    };
+    const closeLegal = () => {
+      if (!legal.classList.contains('is-open')) return;
+      legal.classList.remove('is-open');
+      document.documentElement.style.overflow = '';
+      history.replaceState(null, '', location.pathname + location.search);
+      legalKey = null;
+      if (legalOpener) legalOpener.focus();
+    };
+    // Delegated so links inside a document (terms -> privacy) switch documents too.
+    document.addEventListener('click', (e) => {
+      const a = e.target.closest('[data-legal-open]');
+      if (!a) return;
+      e.preventDefault();
+      openLegal(a.dataset.legalOpen, legal.contains(a) ? null : a);
+    });
+    legalClose.addEventListener('click', closeLegal);
+    document.addEventListener('keydown', (e) => {
+      if (!legal.classList.contains('is-open')) return;
+      if (e.key === 'Escape') closeLegal();
+      if (e.key === 'Tab') {
+        const items = [legalClose].concat([...legal.querySelectorAll('.fiq-legal-doc a')]);
+        const i = items.indexOf(document.activeElement);
+        e.preventDefault();
+        items[(i + (e.shiftKey ? -1 : 1) + items.length) % items.length].focus();
+      }
+    });
+    Object.keys(LEGAL_DOCS).forEach((k) => { if (location.hash === LEGAL_DOCS[k].hash) openLegal(k); });
+
+    // Scroll-spy: mark the nav link whose section is under the nav bar.
+    // Queried from document so the mobile overlay's cloned links stay in sync too.
+    const spySections = ['showcase', 'services-overview', 'video-showcase', 'projects-showcase', 'usps']
+      .map((id) => document.getElementById(id))
+      .filter(Boolean);
+    const syncSpy = () => {
+      const line = 81 + window.innerHeight * 0.25;
+      let current = '';
+      spySections.forEach((sec) => {
+        if (sec.getBoundingClientRect().top <= line) current = sec.id;
+      });
+      // Past the last tracked section (form / footer) nothing is active.
+      const form = document.getElementById('form');
+      if (form && form.getBoundingClientRect().top <= line) current = '';
+      document.querySelectorAll('[data-nav-section]').forEach((a) => {
+        a.classList.toggle('is-active', a.getAttribute('href') === '#' + current);
+      });
+    };
+    window.addEventListener('scroll', syncSpy, { passive: true });
+    window.addEventListener('resize', syncSpy);
+    syncSpy();
+
+    const revealEls = document.querySelectorAll('[data-reveal]');
+    const reveal = (el) => {
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+      el.style.filter = 'none';
+      el.style.clipPath = 'inset(0 0 0 0)';
+      // Drop the stagger delay once played, so it never lags a later transition.
+      setTimeout(() => { el.style.transitionDelay = '0s'; el.style.willChange = 'auto'; }, 3200);
+      // A wiped element's contents are clipped until the wipe runs, so the observer never sees
+      // them; reveal them with it (their own delays still sequence them).
+      if (el.dataset.reveal === 'wipe') el.querySelectorAll('[data-reveal]').forEach(reveal);
+    };
+    if (reduced || !('IntersectionObserver' in window)) {
+      revealEls.forEach(reveal);
     } else {
+      revealEls.forEach((el) => {
+        if (el.dataset.revealDelay) el.style.transitionDelay = el.dataset.revealDelay + 's';
+      });
+      const revealFor = new Map();
       const io = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
-              entry.target.style.opacity = '1';
-              entry.target.style.transform = 'none';
+              reveal(revealFor.get(entry.target) || entry.target);
               io.unobserve(entry.target);
             }
           });
         },
         { threshold: 0.15, rootMargin: '0px 0px -60px 0px' }
       );
-      revealEls.forEach((el) => io.observe(el));
+      // A fully wiped element has no visible area, so the observer never reports it; watch its
+      // container instead and reveal the element when that comes into view.
+      revealEls.forEach((el) => {
+        if (el.parentElement.closest('[data-reveal="wipe"]')) return;
+        const target = el.dataset.reveal === 'wipe' ? el.parentElement : el;
+        revealFor.set(target, el);
+        io.observe(target);
+      });
     }
   }
 }
