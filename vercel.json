@@ -32,7 +32,8 @@
     { "source": "/services-mep.ar.dc.html", "destination": "/ar/services-mep", "permanent": true },
     { "source": "/services-furniture.dc.html", "destination": "/services-furniture", "permanent": true },
     { "source": "/services-furniture.ar.dc.html", "destination": "/ar/services-furniture", "permanent": true },
-    { "source": "/landing-turnkey.dc.html", "destination": "/landing-turnkey", "permanent": true },
+    { "source": "/landing-turnkey.dc.html", "destination": "/concept-to-turnkey", "permanent": true },
+    { "source": "/landing-turnkey", "destination": "/concept-to-turnkey", "permanent": true },
     { "source": "/landing-turnkey.ar.dc.html", "destination": "/ar/concept-to-turnkey", "permanent": true },
     { "source": "/ar/landing-turnkey", "destination": "/ar/concept-to-turnkey", "permanent": true }
   ],
@@ -99,7 +100,7 @@
     { "source": "/services-fitout", "destination": "/Furnishiq.net/services-fitout.dc.html" },
     { "source": "/services-mep", "destination": "/Furnishiq.net/services-mep.dc.html" },
     { "source": "/services-furniture", "destination": "/Furnishiq.net/services-furniture.dc.html" },
-    { "source": "/landing-turnkey", "destination": "/Furnishiq.net/landing-turnkey.dc.html" },
+    { "source": "/concept-to-turnkey", "destination": "/Furnishiq.net/landing-turnkey.dc.html" },
     { "source": "/api/:path*", "destination": "/api/:path*" },
     { "source": "/:path*", "destination": "/Furnishiq.net/:path*" }
   ]
