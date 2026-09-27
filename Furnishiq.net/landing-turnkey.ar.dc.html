@@ -617,6 +617,58 @@ input:focus, select:focus, textarea:focus {
     .fiq-legal-doc a{color:#8B6B4A;}
     .fiq-legal-doc .fiq-legal-meta{font-size:13px;color:rgba(58,45,37,0.6);margin-bottom:28px;}
     @media(prefers-reduced-motion:reduce){.fiq-legal,.fiq-legal.is-open{transition:none;transform:none;}}
+    /* Entrance animations. Each [data-reveal] names its start state; the script sets the end
+       state inline when the element scrolls into view (inline styles survive template re-renders).
+       Luxury ease throughout, no bounce. data-reveal-delay (seconds) becomes the transition delay.
+       RTL: text columns start on the right, so they enter from the right and card rows from the left. */
+    body{overflow-x:clip;} /* side slides must never widen the page on phones */
+    [data-reveal]{opacity:0;transition:opacity 0.9s cubic-bezier(0.25,0.46,0.45,0.94),transform 1.1s cubic-bezier(0.25,0.46,0.45,0.94),filter 1s cubic-bezier(0.25,0.46,0.45,0.94),clip-path 1.4s cubic-bezier(0.65,0,0.35,1);will-change:opacity,transform;}
+    [data-reveal="up"]{transform:translateY(28px);}
+    [data-reveal="left"]{transform:translateX(-64px);}
+    [data-reveal="right"]{transform:translateX(64px);}
+    [data-reveal="fade"]{transition-duration:1.3s;}
+    [data-reveal="zoom"]{transform:scale(0.94);}
+    [data-reveal="blur"]{filter:blur(12px);transform:translateY(14px);}
+    [data-reveal="wipe"]{opacity:1;clip-path:inset(0 0 100% 0);}
+    [data-reveal="kenburns"]{opacity:1;transform:scale(1.12);transition:transform 2.8s cubic-bezier(0.25,0.46,0.45,0.94);}
+    @media(max-width:768px){
+      [data-reveal="left"]{transform:translateX(-32px);}
+      [data-reveal="right"]{transform:translateX(32px);}
+    }
+    @media(prefers-reduced-motion:reduce){[data-reveal]{transition:none!important;}}
+    /* Phones: every call-to-action button spans the full content width. */
+    @media(max-width:768px){
+      .fiq-hero-ctas{width:100%;flex-direction:column;}
+      .fiq-hero-cta-primary,.fiq-hero-cta-secondary{width:100%!important;}
+      .fiq-vid-btn-primary,.fiq-vid-btn-secondary{flex:1 1 100%;text-align:center;box-sizing:border-box;}
+      .fiq-svc-cta{display:flex!important;width:100%;box-sizing:border-box;justify-content:space-between;}
+      .fiq-pmodal-head > div:last-child{width:100%;flex-wrap:wrap;}
+      .fiq-pmodal-cta{flex:1 1 100%;text-align:center;}
+    }
+    /* Phones: compact hero so it fits one screen; stats become a 2 x 2 grid of smaller figures. */
+    @media(max-width:768px){
+      .fiq-hero-inner{padding-top:112px!important;padding-bottom:48px!important;}
+      .fiq-hero-inner h1{margin-bottom:18px!important;}
+      .fiq-hero-inner p{margin-bottom:28px!important;}
+      .fiq-hero-ctas{gap:12px!important;margin-bottom:32px!important;}
+      .fiq-hero-stats{display:grid!important;grid-template-columns:1fr 1fr;row-gap:18px;column-gap:16px;padding-top:24px!important;}
+      .fiq-hero-stats > div > div:first-child{font-size:30px!important;-webkit-text-stroke-width:0.8px!important;margin-bottom:6px!important;}
+    }
+    /* Tablet and phone: the "needs" photo becomes the full-bleed section background (no white frame card). */
+    @media(max-width:1024px){
+      #showcase{padding:0!important;background:#1F1F1F!important;display:flex;flex-direction:column;}
+      .fiq-showcase-frame{flex:1 1 auto!important;display:flex;flex-direction:column;max-width:none!important;padding:0!important;background:transparent!important;border-radius:0!important;}
+      .fiq-showcase-inner{flex:1 1 auto;border-radius:0!important;padding-top:var(--fiq-sec-pad)!important;padding-bottom:var(--fiq-sec-pad)!important;}
+    }
+    /* Phones: the form's frosted overlay covers the whole section edge to edge, square corners. */
+    @media(max-width:900px){
+      #form{padding:0!important;}
+      .fiq-form-wrap > :last-child{border:none!important;border-radius:0!important;box-shadow:none!important;padding:var(--fiq-sec-pad) clamp(20px,6vw,40px)!important;}
+    }
+    /* Phones only: a light blur behind the form so field text stays legible. Tablet and desktop: none. */
+    @media(max-width:768px){
+      .fiq-form-wrap > :last-child{-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);}
+    }
     /* Hero CTAs swap styles on hover: filled <-> outlined. !important beats the inline styles. */
     .fiq-hero-cta-primary:hover,.fiq-hero-cta-primary:focus-visible{background:transparent!important;color:#FFFFFF!important;border-color:rgba(255,255,255,0.4)!important;}
     .fiq-hero-cta-secondary:hover,.fiq-hero-cta-secondary:focus-visible{background:#D6C2A8!important;color:#1F1F1F!important;border-color:#D6C2A8!important;}
@@ -636,7 +688,7 @@ input:focus, select:focus, textarea:focus {
       .fiq-showcase-bottom{grid-template-columns:1fr!important;}
       .fiq-showcase-viewall{display:none;}
       .fiq-showcase-btn--prev{right:calc(16px - clamp(20px,3.4vw,48px));background:rgba(31,31,31,0.35)!important;}
-      .fiq-showcase-track{margin-inline-start:calc(-1 * clamp(20px,3.4vw,48px))!important;padding-inline-start:clamp(20px,3.4vw,48px)!important;}
+      .fiq-showcase-track{margin-inline-start:calc(-1 * clamp(20px,3.4vw,48px))!important;padding-inline-start:clamp(20px,3.4vw,48px)!important;scroll-padding-inline-start:clamp(20px,3.4vw,48px);}
     }
     @media(prefers-reduced-motion:reduce){
       .fiq-showcase-track{scroll-behavior:auto!important;}
@@ -736,10 +788,10 @@ input:focus, select:focus, textarea:focus {
     .fiq-phone input::placeholder{color:#9A8F85;}
     @media(max-width:900px){
       /* Stack: the panel runs full width over the photo (no empty band above it);
-         lighter and unblurred so the photo shows through. */
+         lighter so the photo shows through (phones add a light blur, below). */
       .fiq-form-wrap{grid-template-columns:1fr!important;}
       .fiq-form-wrap > :first-child{display:none;}
-      .fiq-form-wrap > :last-child{background:rgba(245,242,237,0.55)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;}
+      .fiq-form-wrap > :last-child{background:rgba(245,242,237,0.55)!important;}
     }
     @media(max-width:560px){
       .fiq-form-row{grid-template-columns:1fr!important;}
@@ -772,28 +824,28 @@ input:focus, select:focus, textarea:focus {
 <section id="hero" data-screen-label="Hero" style="position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:center;background:#1F1F1F;overflow:hidden;">
   <img src="uploads/landing-ar-hero-1920.jpg" srcset="uploads/landing-ar-hero-1280.jpg 1280w, uploads/landing-ar-hero-1920.jpg 1920w, uploads/landing-ar-hero-2560.jpg 2560w" sizes="100vw" alt="" fetchpriority="high" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;pointer-events:none;">
   <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(ellipse 62% 58% at 50% 56%,rgba(20,16,13,0.66) 0%,rgba(20,16,13,0.42) 55%,rgba(20,16,13,0.18) 100%);pointer-events:none;"></div>
-  <div style="position:relative;z-index:1;max-width:1000px;margin:0 auto;padding:clamp(140px,14vw,180px) clamp(24px,5vw,80px) clamp(80px,8vw,120px);width:100%;text-align:center;display:flex;flex-direction:column;align-items:center;">
-    <h1 data-reveal data-reveal-delay="0.08" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'GE SS Two',sans-serif;font-size:clamp(34px,4.4vw,64px);font-weight:500;color:#FFFFFF;line-height:1.1;letter-spacing:normal;max-width:820px;margin-bottom:24px;text-wrap:balance;">في الـ96... من المخطط إلى تسليم المفتاح.</h1>
-    <p data-reveal data-reveal-delay="0.16" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'GE SS Two',sans-serif;font-size:clamp(16px,1.6vw,19px);color:rgba(255,255,255,0.82);line-height:1.6;max-width:640px;margin-bottom:40px;">كل احتياجات مساحتك من التصميم الداخلي، التشطيبات الفاخرة (Fit-out)، والتأثيث المتكامل.. مع جهة واحدة تضمن لك دقة التنفيذ والتطابق التام مع رؤيتك.</p>
-    <div data-reveal data-reveal-delay="0.24" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-bottom:64px;">
+  <div class="fiq-hero-inner" style="position:relative;z-index:1;max-width:1000px;margin:0 auto;padding:clamp(140px,14vw,180px) clamp(24px,5vw,80px) clamp(80px,8vw,120px);width:100%;text-align:center;display:flex;flex-direction:column;align-items:center;">
+    <h1 data-reveal="blur" data-reveal-delay="0.1" style="font-family:'GE SS Two',sans-serif;font-size:clamp(34px,4.4vw,64px);font-weight:500;color:#FFFFFF;line-height:1.1;letter-spacing:normal;max-width:820px;margin-bottom:24px;text-wrap:balance;">في الـ96... من المخطط إلى تسليم المفتاح.</h1>
+    <p data-reveal="fade" data-reveal-delay="0.35" style="font-family:'GE SS Two',sans-serif;font-size:clamp(16px,1.6vw,19px);color:rgba(255,255,255,0.82);line-height:1.6;max-width:640px;margin-bottom:40px;">كل احتياجات مساحتك من التصميم الداخلي، التشطيبات الفاخرة (Fit-out)، والتأثيث المتكامل.. مع جهة واحدة تضمن لك دقة التنفيذ والتطابق التام مع رؤيتك.</p>
+    <div class="fiq-hero-ctas" data-reveal="up" data-reveal-delay="0.5" style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-bottom:64px;">
       <a href="#form" class="fiq-hero-cta-primary" style="font-family:'GE SS Two',sans-serif;font-size:11px;letter-spacing:normal;text-transform:uppercase;color:#1F1F1F;background:#D6C2A8;padding:19px 36px;border:1px solid #D6C2A8;text-decoration:none;transition:all 0.3s cubic-bezier(0.25,0.46,0.45,0.94);width:240px;text-align:center;box-sizing:border-box;">تواصل مع فريقنا</a>
       <a href="#projects-showcase" class="fiq-hero-cta-secondary" style="font-family:'GE SS Two',sans-serif;font-size:11px;letter-spacing:normal;text-transform:uppercase;color:#FFFFFF;background:transparent;padding:19px 36px;border:1px solid rgba(255,255,255,0.4);text-decoration:none;transition:all 0.3s cubic-bezier(0.25,0.46,0.45,0.94);width:240px;text-align:center;box-sizing:border-box;">شاهد أعمالنا</a>
     </div>
-    <div data-reveal data-reveal-delay="0.32" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;gap:clamp(28px,5vw,64px);flex-wrap:wrap;justify-content:center;border-top:1px solid rgba(255,255,255,0.16);padding-top:36px;width:100%;">
-      <div>
-        <div style="font-family:'GE SS Two',sans-serif;font-size:clamp(26px,2.6vw,36px);font-weight:500;color:#D6C2A8;margin-bottom:6px;">+15</div>
+    <div class="fiq-hero-stats" data-reveal="fade" data-reveal-delay="0.6" style="display:flex;gap:clamp(28px,5vw,64px);flex-wrap:wrap;justify-content:center;border-top:1px solid rgba(255,255,255,0.16);padding-top:36px;width:100%;">
+      <div data-reveal="up" data-reveal-delay="0.7">
+        <div style="font-family:'GE SS Two',sans-serif;font-size:clamp(40px,4.2vw,60px);font-weight:500;color:#D6C2A8;-webkit-text-stroke:1.2px #D6C2A8;line-height:1;margin-bottom:12px;">+<span data-count-to="15" style="display:inline-block;min-width:2ch;text-align:right;font-variant-numeric:tabular-nums;">15</span></div>
         <div style="font-family:'GE SS Two',sans-serif;font-size:11px;letter-spacing:normal;text-transform:uppercase;color:rgba(255,255,255,0.6);">سنة خبرة</div>
       </div>
-      <div>
-        <div style="font-family:'GE SS Two',sans-serif;font-size:clamp(26px,2.6vw,36px);font-weight:500;color:#D6C2A8;margin-bottom:6px;">+150</div>
+      <div data-reveal="up" data-reveal-delay="0.8">
+        <div style="font-family:'GE SS Two',sans-serif;font-size:clamp(40px,4.2vw,60px);font-weight:500;color:#D6C2A8;-webkit-text-stroke:1.2px #D6C2A8;line-height:1;margin-bottom:12px;">+<span data-count-to="150" style="display:inline-block;min-width:3ch;text-align:right;font-variant-numeric:tabular-nums;">150</span></div>
         <div style="font-family:'GE SS Two',sans-serif;font-size:11px;letter-spacing:normal;text-transform:uppercase;color:rgba(255,255,255,0.6);">مشروع مكتمل</div>
       </div>
-      <div>
-        <div style="font-family:'GE SS Two',sans-serif;font-size:clamp(26px,2.6vw,36px);font-weight:500;color:#D6C2A8;margin-bottom:6px;">+40</div>
+      <div data-reveal="up" data-reveal-delay="0.9">
+        <div style="font-family:'GE SS Two',sans-serif;font-size:clamp(40px,4.2vw,60px);font-weight:500;color:#D6C2A8;-webkit-text-stroke:1.2px #D6C2A8;line-height:1;margin-bottom:12px;">+<span data-count-to="40" style="display:inline-block;min-width:2ch;text-align:right;font-variant-numeric:tabular-nums;">40</span></div>
         <div style="font-family:'GE SS Two',sans-serif;font-size:11px;letter-spacing:normal;text-transform:uppercase;color:rgba(255,255,255,0.6);">مهندس وخبير</div>
       </div>
-      <div>
-        <div style="font-family:'GE SS Two',sans-serif;font-size:clamp(26px,2.6vw,36px);font-weight:500;color:#D6C2A8;margin-bottom:6px;">+80</div>
+      <div data-reveal="up" data-reveal-delay="1">
+        <div style="font-family:'GE SS Two',sans-serif;font-size:clamp(40px,4.2vw,60px);font-weight:500;color:#D6C2A8;-webkit-text-stroke:1.2px #D6C2A8;line-height:1;margin-bottom:12px;">+<span data-count-to="80" style="display:inline-block;min-width:2ch;text-align:right;font-variant-numeric:tabular-nums;">80</span></div>
         <div style="font-family:'GE SS Two',sans-serif;font-size:11px;letter-spacing:normal;text-transform:uppercase;color:rgba(255,255,255,0.6);">عميل</div>
       </div>
     </div>
@@ -802,12 +854,13 @@ input:focus, select:focus, textarea:focus {
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ SHOWCASE ━━ -->
 <section id="showcase" data-screen-label="Showcase" style="background:#F5F2ED;padding:clamp(64px,8vw,112px) clamp(16px,5vw,80px);">
-  <div data-reveal style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);max-width:1280px;margin:0 auto;background:#FFFFFF;padding:10px;border-radius:clamp(16px,1.8vw,24px);box-sizing:border-box;">
-    <div style="position:relative;overflow:hidden;border-radius:calc(clamp(16px,1.8vw,24px) - 10px);background:#1F1F1F;min-height:clamp(520px,46vw,660px);display:flex;flex-direction:column;justify-content:space-between;gap:40px;padding:clamp(20px,3.4vw,48px);box-sizing:border-box;">
+  <div class="fiq-showcase-frame" data-reveal="zoom" style="max-width:1280px;margin:0 auto;background:#FFFFFF;padding:10px;border-radius:clamp(16px,1.8vw,24px);box-sizing:border-box;">
+    <div class="fiq-showcase-inner" style="position:relative;overflow:hidden;border-radius:calc(clamp(16px,1.8vw,24px) - 10px);background:#1F1F1F;min-height:clamp(520px,46vw,660px);display:flex;flex-direction:column;justify-content:space-between;gap:40px;padding:clamp(20px,3.4vw,48px);box-sizing:border-box;">
       <img src="uploads/landing-ar-needs-bg-1920.jpg" srcset="uploads/landing-ar-needs-bg-1280.jpg 1280w, uploads/landing-ar-needs-bg-1920.jpg 1920w, uploads/landing-ar-needs-bg-2560.jpg 2560w" sizes="(max-width:1440px) 100vw, 1280px" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:right center;pointer-events:none;">
+      <div aria-hidden="true" style="position:absolute;inset:0 0 auto 0;height:55%;background:linear-gradient(to bottom,rgba(15,12,10,0.62) 0%,rgba(15,12,10,0.34) 45%,rgba(15,12,10,0) 100%);pointer-events:none;"></div>
 
       <div style="position:relative;display:flex;align-items:flex-start;justify-content:space-between;gap:24px;">
-        <h2 style="font-family:'GE SS Two',sans-serif;font-size:clamp(24px,3.4vw,48px);font-weight:500;color:#FFFFFF;line-height:1.1;margin:0;text-wrap:balance;max-width:720px;">وش تحتاج فيرنيش آي كيو تنجز لمساحتك؟</h2>
+        <h2 data-reveal="right" data-reveal-delay="0.25" style="font-family:'GE SS Two',sans-serif;font-size:clamp(24px,3.4vw,48px);font-weight:500;color:#FFFFFF;line-height:1.1;margin:0;text-wrap:balance;max-width:720px;">وش تحتاج فيرنيش آي كيو تنجز لمساحتك؟</h2>
       </div>
 
       <div class="fiq-showcase-bottom" style="position:relative;display:grid;grid-template-columns:26% 1fr;align-items:end;gap:16px;">
@@ -818,7 +871,7 @@ input:focus, select:focus, textarea:focus {
         <button type="button" class="fiq-showcase-btn fiq-showcase-btn--next" data-showcase-next aria-label="التالي" style="width:40px;height:40px;border-radius:50%;border:1px solid #FFFFFF;background:#FFFFFF;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1F1F1F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
         </button>
-        <div class="fiq-showcase-track" data-showcase-track style="display:flex;gap:16px;overflow-x:auto;padding-top:12px;margin-top:-12px;padding-bottom:40px;margin-bottom:-40px;scroll-snap-type:x mandatory;scroll-behavior:smooth;margin-inline-end:calc(-1 * clamp(20px,3.4vw,48px));padding-inline-end:clamp(20px,3.4vw,48px);">
+        <div class="fiq-showcase-track" data-showcase-track data-reveal="left" data-reveal-delay="0.4" style="display:flex;gap:16px;overflow-x:auto;padding-top:12px;margin-top:-12px;padding-bottom:40px;margin-bottom:-40px;scroll-snap-type:x mandatory;scroll-behavior:smooth;margin-inline-end:calc(-1 * clamp(20px,3.4vw,48px));padding-inline-end:clamp(20px,3.4vw,48px);">
         <a href="#form" class="fiq-showcase-card" data-showcase-clone aria-hidden="true" tabindex="-1" data-showcase-card style="flex:0 0 auto;width:clamp(260px,24vw,340px);height:calc(clamp(260px,24vw,340px) * 10 / 11 + 100px);scroll-snap-align:start;display:block;position:relative;background:#FFFFFF;padding:10px;border-radius:clamp(16px,1.8vw,24px);text-decoration:none;box-sizing:border-box;">
           <img src="uploads/landing-ar-need-turnkey.jpg" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;border-radius:calc(clamp(16px,1.8vw,24px) - 10px);">
           <div aria-hidden="true" style="position:absolute;left:10px;right:10px;bottom:10px;height:58%;border-radius:0 0 calc(clamp(16px,1.8vw,24px) - 10px) calc(clamp(16px,1.8vw,24px) - 10px);background:linear-gradient(to top,rgba(0,0,0,0.72) 0%,rgba(0,0,0,0.38) 45%,rgba(0,0,0,0) 100%);pointer-events:none;"></div>
@@ -901,14 +954,14 @@ input:focus, select:focus, textarea:focus {
 <section id="services-overview" data-screen-label="Services" style="background:#1F1F1F;padding:clamp(80px,10vw,128px) 0;overflow:hidden;">
   <div style="max-width:1280px;margin:0 auto;padding:0 clamp(24px,5vw,80px);box-sizing:content-box;">
     <div class="fiq-svc-head" style="display:grid;grid-template-columns:1.3fr 1fr;column-gap:clamp(32px,5vw,80px);row-gap:clamp(32px,3.4vw,48px);align-items:start;margin-bottom:clamp(40px,4.4vw,64px);">
-      <div data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);">
+      <div data-reveal="right">
         <h2 style="font-family:'GE SS Two',sans-serif;font-size:clamp(30px,3.3vw,48px);font-weight:500;color:#FFFFFF;line-height:1.2;margin:0;">الباقة الهندسية المتكاملة<br><span style="color:#D6C2A8;">(تسليم مفتاح)</span></h2>
       </div>
-      <div data-reveal data-reveal-delay="0.08" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);max-width:520px;">
+      <div data-reveal="left" data-reveal-delay="0.15" style="max-width:520px;">
         <p style="font-family:'GE SS Two',sans-serif;font-size:clamp(15px,1.25vw,17px);color:#FFFFFF;line-height:1.75;margin:0 0 14px;">ندير كافة مراحل تجهيز مساحتك من الفكرة إلى الواقع. <span style="color:rgba(255,255,255,0.5);">باقات التصميم الداخلي السكني فقط تبدأ من 29.99 ريال/م&sup2;.</span></p>
         <p style="font-family:'GE SS Two',sans-serif;font-size:12px;color:rgba(255,255,255,0.4);line-height:1.7;margin:0;">(يتم تقديم عروض منفصلة لخدمات التنفيذ، التشطيبات، والتأثيث حسب نطاق ومتطلبات مشروعك).</p>
       </div>
-      <div style="display:flex;align-items:center;gap:20px;min-height:44px;">
+      <div data-reveal="fade" data-reveal-delay="0.3" style="display:flex;align-items:center;gap:20px;min-height:44px;">
         <div style="display:flex;gap:12px;">
           <button type="button" class="fiq-svc-btn" data-svc-prev aria-label="السابق" style="width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,0.3);background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
@@ -919,7 +972,7 @@ input:focus, select:focus, textarea:focus {
         </div>
         <span style="font-family:'GE SS Two',sans-serif;font-size:13px;color:rgba(255,255,255,0.6);">الباقة تشمل:</span>
       </div>
-      <div>
+      <div data-reveal="fade" data-reveal-delay="0.4">
         <a href="#form" class="fiq-svc-cta" style="display:inline-flex;align-items:center;gap:18px;font-family:'GE SS Two',sans-serif;font-size:13px;color:#FFFFFF;text-decoration:none;border:1px solid rgba(255,255,255,0.5);border-radius:999px;padding:5px;padding-inline-start:22px;">
           احصل على استشارة هندسية مجانية الان
           <span style="flex-shrink:0;width:36px;height:36px;border-radius:50%;background:#FFFFFF;display:flex;align-items:center;justify-content:center;">
@@ -928,7 +981,7 @@ input:focus, select:focus, textarea:focus {
         </a>
       </div>
     </div>
-    <div class="fiq-svc-track" data-svc-track data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;align-items:flex-start;gap:clamp(16px,1.8vw,24px);overflow-x:auto;scroll-behavior:smooth;">
+    <div class="fiq-svc-track" data-svc-track data-reveal="left" data-reveal-delay="0.2" style="display:flex;align-items:flex-start;gap:clamp(16px,1.8vw,24px);overflow-x:auto;scroll-behavior:smooth;">
         <a href="/ar/services-interior-design" class="fiq-svc-card" data-svc-card data-svc-clone aria-hidden="true" tabindex="-1" data-svc-i="1" style="flex:0 0 auto;width:clamp(270px,32vw,460px);display:block;text-decoration:none;">
           <div style="overflow:hidden;border-radius:10px;aspect-ratio:6/5;background:#2A2522;margin-bottom:18px;">
             <img src="uploads/landing-ar-pkg-design.jpg" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;">
@@ -1018,7 +1071,7 @@ input:focus, select:focus, textarea:focus {
 <section id="video-showcase" data-screen-label="Video" style="background:#FFFFFF;padding:clamp(80px,10vw,128px) 0;overflow:hidden;">
   <div style="max-width:1280px;margin:0 auto;padding:0 clamp(24px,5vw,80px);box-sizing:content-box;">
     <div class="fiq-vid-grid" style="display:grid;grid-template-columns:0.8fr 1.2fr;gap:clamp(40px,5vw,72px);align-items:center;">
-      <div data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);">
+      <div data-reveal="right">
         <h2 style="font-family:'GE SS Two',sans-serif;font-size:clamp(28px,3vw,42px);font-weight:500;color:#1F1F1F;line-height:1.3;margin:0 0 20px;">تصميم تراه.. وواقع تعيش فخامته</h2>
         <p style="font-family:'GE SS Two',sans-serif;font-size:15px;color:#5B4636;line-height:1.85;margin:0 0 32px;">شاهد كيف نترجم المخططات الهندسية إلى مساحات تنبض بالحياة. في فيرنيش آي كيو، نحن لا نبيعك مجرد أفكار خيالية، بل نلتزم بتقديم منظومة متكاملة تبدأ من التصميم الداخلي المدروس، وتمر بتأسيس الأنظمة (MEP) والتشطيبات الفاخرة، لتنتهي بتأثيث مساحتك بتطابق تام بنسبة 100% مع المخطط المعتمد.</p>
         <div style="display:flex;gap:12px;flex-wrap:wrap;">
@@ -1026,7 +1079,7 @@ input:focus, select:focus, textarea:focus {
           <a href="#projects-showcase" class="fiq-vid-btn-secondary" style="font-family:'GE SS Two',sans-serif;font-size:12px;color:#1F1F1F;background:transparent;border:1px solid #D6C2A8;padding:14px 26px;text-decoration:none;">شاهد أعمالنا</a>
         </div>
       </div>
-      <div class="fiq-vid-col" data-reveal data-reveal-delay="0.08" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);">
+      <div class="fiq-vid-col" data-reveal="left" data-reveal-delay="0.15">
         <div class="fiq-vid-track" data-vid-track style="display:flex;gap:16px;overflow-x:auto;scroll-behavior:smooth;margin-inline-end:calc(-1 * max(clamp(24px,5vw,80px),calc((100vw - 1280px) / 2)));padding-inline-end:max(clamp(24px,5vw,80px),calc((100vw - 1280px) / 2));">
           <div class="fiq-vid-slide" data-vid-slide data-vid-clone aria-hidden="true" data-vid-i="0" data-video-src="" style="flex:0 0 auto;position:relative;aspect-ratio:16/9;background:#1F1F1F;overflow:hidden;">
             <img src="uploads/landing-ar-video-design.jpg" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
@@ -1115,10 +1168,10 @@ input:focus, select:focus, textarea:focus {
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ PROJECTS ━━ -->
 <section id="projects-showcase" data-screen-label="Projects" style="background:#1F1F1F;padding:clamp(80px,10vw,128px) 0;overflow:hidden;">
   <div style="max-width:1280px;margin:0 auto;padding:0 clamp(24px,5vw,80px);box-sizing:content-box;">
-    <h2 data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'GE SS Two',sans-serif;font-size:clamp(28px,3vw,42px);font-weight:500;color:#FFFFFF;line-height:1.3;margin:0 0 16px;">أعمال صُممت لتُعاش</h2>
-    <p data-reveal data-reveal-delay="0.08" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'GE SS Two',sans-serif;font-size:clamp(15px,1.3vw,18px);color:rgba(255,255,255,0.6);line-height:1.7;margin:0 0 clamp(40px,5vw,72px);">شوف كيف تتحول أفكارنا إلى مشاريع</p>
+    <h2 data-reveal="blur" style="font-family:'GE SS Two',sans-serif;font-size:clamp(28px,3vw,42px);font-weight:500;color:#FFFFFF;line-height:1.3;margin:0 0 16px;">أعمال صُممت لتُعاش</h2>
+    <p data-reveal="fade" data-reveal-delay="0.15" style="font-family:'GE SS Two',sans-serif;font-size:clamp(15px,1.3vw,18px);color:rgba(255,255,255,0.6);line-height:1.7;margin:0 0 clamp(40px,5vw,72px);">شوف كيف تتحول أفكارنا إلى مشاريع</p>
   </div>
-  <div class="fiq-prj-track" data-prj-track data-reveal data-reveal-delay="0.12" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;gap:0;overflow-x:auto;padding-inline:8px;">
+  <div class="fiq-prj-track" data-prj-track data-reveal="left" data-reveal-delay="0.25" style="display:flex;gap:0;overflow-x:auto;padding-inline:8px;">
       <a href="/ar/projects" class="fiq-prj-card" data-prj-card style="flex:0 0 auto;width:clamp(290px,27vw,420px);display:block;padding:7px;text-decoration:none;box-sizing:border-box;">
         <img src="uploads/landing-ar-prj-villas.jpg" alt="" loading="lazy" draggable="false" style="display:block;width:100%;aspect-ratio:16/10.5;object-fit:cover;margin-bottom:16px;">
         <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;">
@@ -1172,37 +1225,37 @@ input:focus, select:focus, textarea:focus {
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ USPS ━━ -->
 <section id="usps" data-screen-label="USPs" style="background:#1F1F1F;padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px);">
   <div style="max-width:1280px;margin:0 auto;">
-    <div class="fiq-usps-card" data-reveal style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,8vw,128px);align-items:center;">
+    <div class="fiq-usps-card" style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,8vw,128px);align-items:center;">
       <div>
-        <span style="display:block;font-family:'GE SS Two',sans-serif;font-size:11px;letter-spacing:normal;text-transform:uppercase;color:#8FBF9F;margin-bottom:14px;">المزايا</span>
-        <h2 style="font-family:'GE SS Two',sans-serif;font-size:clamp(26px,2.8vw,38px);font-weight:500;color:#FFFFFF;margin-bottom:16px;">ليش تختار فيرنيش آي كيو؟</h2>
-        <p style="font-family:'GE SS Two',sans-serif;font-size:14px;color:rgba(255,255,255,0.62);line-height:1.8;margin-bottom:28px;">مساحتك بالكامل.. تحت إشراف جهة هندسية واحدة لتجربة تسليم مفتاح خالية من التشتت.</p>
+        <span data-reveal="fade" style="display:block;font-family:'GE SS Two',sans-serif;font-size:11px;letter-spacing:normal;text-transform:uppercase;color:#8FBF9F;margin-bottom:14px;">المزايا</span>
+        <h2 data-reveal="blur" data-reveal-delay="0.1" style="font-family:'GE SS Two',sans-serif;font-size:clamp(26px,2.8vw,38px);font-weight:500;color:#FFFFFF;margin-bottom:16px;">ليش تختار فيرنيش آي كيو؟</h2>
+        <p data-reveal="fade" data-reveal-delay="0.2" style="font-family:'GE SS Two',sans-serif;font-size:14px;color:rgba(255,255,255,0.62);line-height:1.8;margin-bottom:28px;">مساحتك بالكامل.. تحت إشراف جهة هندسية واحدة لتجربة تسليم مفتاح خالية من التشتت.</p>
         <div style="display:flex;flex-direction:column;gap:16px;">
-          <div style="display:flex;align-items:center;gap:14px;">
+          <div data-reveal="right" data-reveal-delay="0.3" style="display:flex;align-items:center;gap:14px;">
             <span aria-hidden="true" style="flex-shrink:0;width:40px;height:40px;border-radius:50%;border:1px solid rgba(214,194,168,0.35);display:flex;align-items:center;justify-content:center;">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D6C2A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg>
             </span>
             <span style="font-family:'GE SS Two',sans-serif;font-size:14px;color:#F5F2ED;">منظومة هندسية متكاملة</span>
           </div>
-          <div style="display:flex;align-items:center;gap:14px;">
+          <div data-reveal="right" data-reveal-delay="0.4" style="display:flex;align-items:center;gap:14px;">
             <span aria-hidden="true" style="flex-shrink:0;width:40px;height:40px;border-radius:50%;border:1px solid rgba(214,194,168,0.35);display:flex;align-items:center;justify-content:center;">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D6C2A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/></svg>
             </span>
             <span style="font-family:'GE SS Two',sans-serif;font-size:14px;color:#F5F2ED;">جهة واحدة من التصميم للتشطيب</span>
           </div>
-          <div style="display:flex;align-items:center;gap:14px;">
+          <div data-reveal="right" data-reveal-delay="0.5" style="display:flex;align-items:center;gap:14px;">
             <span aria-hidden="true" style="flex-shrink:0;width:40px;height:40px;border-radius:50%;border:1px solid rgba(214,194,168,0.35);display:flex;align-items:center;justify-content:center;">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D6C2A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>
             </span>
             <span style="font-family:'GE SS Two',sans-serif;font-size:14px;color:#F5F2ED;">دقة وتنسيق بتقنية (BIM)</span>
           </div>
-          <div style="display:flex;align-items:center;gap:14px;">
+          <div data-reveal="right" data-reveal-delay="0.6" style="display:flex;align-items:center;gap:14px;">
             <span aria-hidden="true" style="flex-shrink:0;width:40px;height:40px;border-radius:50%;border:1px solid rgba(214,194,168,0.35);display:flex;align-items:center;justify-content:center;">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D6C2A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.41 2.41 0 0 1 0-3.4l2.6-2.6a2.41 2.41 0 0 1 3.4 0Z"/><path d="m14.5 12.5 2-2"/><path d="m11.5 9.5 2-2"/><path d="m8.5 6.5 2-2"/><path d="m17.5 15.5 2-2"/></svg>
             </span>
             <span style="font-family:'GE SS Two',sans-serif;font-size:14px;color:#F5F2ED;">حلول مخصصة لمساحتك</span>
           </div>
-          <div style="display:flex;align-items:center;gap:14px;">
+          <div data-reveal="right" data-reveal-delay="0.7" style="display:flex;align-items:center;gap:14px;">
             <span aria-hidden="true" style="flex-shrink:0;width:40px;height:40px;border-radius:50%;border:1px solid rgba(214,194,168,0.35);display:flex;align-items:center;justify-content:center;">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D6C2A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"/><circle cx="7.5" cy="7.5" r="1"/></svg>
             </span>
@@ -1210,11 +1263,11 @@ input:focus, select:focus, textarea:focus {
           </div>
         </div>
       </div>
-      <div style="position:relative;--fiq-usp-pad:clamp(12px,1.25vw,18px);--fiq-usp-curve:clamp(120px,19vw,280px);">
+      <div data-reveal="wipe" data-reveal-delay="0.15" style="position:relative;--fiq-usp-pad:clamp(12px,1.25vw,18px);--fiq-usp-curve:clamp(120px,19vw,280px);">
         <div style="padding:var(--fiq-usp-pad);background:#2E2824;border-radius:24px var(--fiq-usp-curve) 24px 24px;">
           <img src="uploads/landing-ar-usps-villa.jpg" alt="" loading="lazy" style="display:block;width:100%;height:calc(clamp(340px,36vw,520px) + 100px);object-fit:cover;border-radius:calc(24px - var(--fiq-usp-pad)) calc(var(--fiq-usp-curve) - var(--fiq-usp-pad)) calc(24px - var(--fiq-usp-pad)) calc(24px - var(--fiq-usp-pad));">
         </div>
-        <div style="position:absolute;bottom:calc(var(--fiq-usp-pad) + 20px);left:calc(var(--fiq-usp-pad) + 20px);right:calc(var(--fiq-usp-pad) + 20px);background:rgba(31,31,31,0.88);backdrop-filter:blur(6px);border-radius:14px;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;">
+        <div data-reveal="up" data-reveal-delay="1" style="position:absolute;bottom:calc(var(--fiq-usp-pad) + 20px);left:calc(var(--fiq-usp-pad) + 20px);right:calc(var(--fiq-usp-pad) + 20px);background:rgba(31,31,31,0.88);backdrop-filter:blur(6px);border-radius:14px;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;">
           <div>
             <div style="font-family:'GE SS Two',sans-serif;font-size:13px;font-weight:500;color:#FFFFFF;margin-bottom:6px;">+40 موظف</div>
             <div style="display:flex;align-items:center;gap:6px;">
@@ -1236,10 +1289,10 @@ input:focus, select:focus, textarea:focus {
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ FORM ━━ -->
 <section id="form" data-screen-label="Form" style="position:relative;overflow:hidden;background:#2A2522;padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px);">
   <!-- Full-bleed photo; its main subject should sit on the right, the form panel covers the left. -->
-  <img src="uploads/landing-ar-form-bg-1920.jpg" srcset="uploads/landing-ar-form-bg-1280.jpg 1280w, uploads/landing-ar-form-bg-1920.jpg 1920w, uploads/landing-ar-form-bg-2560.jpg 2560w" sizes="100vw" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:right center;pointer-events:none;">
+  <img data-reveal="kenburns" src="uploads/landing-ar-form-bg-1920.jpg" srcset="uploads/landing-ar-form-bg-1280.jpg 1280w, uploads/landing-ar-form-bg-1920.jpg 1920w, uploads/landing-ar-form-bg-2560.jpg 2560w" sizes="100vw" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:right center;pointer-events:none;">
   <div class="fiq-form-wrap" style="position:relative;max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;">
     <div aria-hidden="true"></div>
-    <div data-reveal style="opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);padding:clamp(32px,4vw,56px) clamp(24px,3.6vw,52px);background:rgba(245,242,237,0.65);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,0.45);border-radius:16px;box-shadow:0 24px 80px rgba(58,45,37,0.20);display:flex;flex-direction:column;justify-content:center;">
+    <div data-reveal="left" data-reveal-delay="0.15" style="padding:clamp(32px,4vw,56px) clamp(24px,3.6vw,52px);background:rgba(245,242,237,0.65);border:1px solid rgba(255,255,255,0.45);border-radius:16px;box-shadow:0 24px 80px rgba(58,45,37,0.20);display:flex;flex-direction:column;justify-content:center;">
       <h2 style="font-family:'GE SS Two',sans-serif;font-size:clamp(28px,3vw,40px);font-weight:500;color:#1F1F1F;line-height:1.3;margin:0 0 14px;">جاهز تبدأ رحلة تجهيز مساحتك؟</h2>
       <p style="font-family:'GE SS Two',sans-serif;font-size:15px;color:#5B4636;line-height:1.75;margin:0 0 32px;max-width:480px;">سواء كنت تبحث عن تصميم داخلي استثنائي، أو تمتلك مساحة (عظم) وتحتاج إلى تشطيب وتأثيث شامل (تسليم مفتاح).. خلّ البداية الأصح مع فيرنيش آي كيو.</p>
 
@@ -1428,6 +1481,22 @@ class Component extends DCLogic {
 
   componentDidMount() {
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Hero stats count up from 0 with an ease-out curve, starting as the row fades in.
+    // The final numbers stay in the markup, so no-JS and reduced-motion visitors see them as-is.
+    const counters = document.querySelectorAll('[data-count-to]');
+    if (!reduced && counters.length) {
+      counters.forEach((el) => { el.textContent = '0'; });
+      const countStart = performance.now() + 700; // the first stat's reveal delay
+      const countDur = 2200;
+      const countTick = (now) => {
+        const t = Math.min(Math.max((now - countStart) / countDur, 0), 1);
+        const eased = 1 - Math.pow(1 - t, 4); // ease-out quart: fast start, gentle landing
+        counters.forEach((el) => { el.textContent = String(Math.round(eased * Number(el.dataset.countTo))); });
+        if (t < 1) requestAnimationFrame(countTick);
+      };
+      requestAnimationFrame(countTick);
+    }
 
     const nav = document.getElementById('id-nav');
     if (window.FIQMobileNav) window.FIQMobileNav(nav);
@@ -2103,25 +2172,43 @@ class Component extends DCLogic {
     syncSpy();
 
     const revealEls = document.querySelectorAll('[data-reveal]');
+    const reveal = (el) => {
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+      el.style.filter = 'none';
+      el.style.clipPath = 'inset(0 0 0 0)';
+      // Drop the stagger delay once played, so it never lags a later transition.
+      setTimeout(() => { el.style.transitionDelay = '0s'; el.style.willChange = 'auto'; }, 3200);
+      // A wiped element's contents are clipped until the wipe runs, so the observer never sees
+      // them; reveal them with it (their own delays still sequence them).
+      if (el.dataset.reveal === 'wipe') el.querySelectorAll('[data-reveal]').forEach(reveal);
+    };
     if (reduced || !('IntersectionObserver' in window)) {
-      revealEls.forEach((el) => {
-        el.style.opacity = '1';
-        el.style.transform = 'none';
-      });
+      revealEls.forEach(reveal);
     } else {
+      revealEls.forEach((el) => {
+        if (el.dataset.revealDelay) el.style.transitionDelay = el.dataset.revealDelay + 's';
+      });
+      const revealFor = new Map();
       const io = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
-              entry.target.style.opacity = '1';
-              entry.target.style.transform = 'none';
+              reveal(revealFor.get(entry.target) || entry.target);
               io.unobserve(entry.target);
             }
           });
         },
         { threshold: 0.15, rootMargin: '0px 0px -60px 0px' }
       );
-      revealEls.forEach((el) => io.observe(el));
+      // A fully wiped element has no visible area, so the observer never reports it; watch its
+      // container instead and reveal the element when that comes into view.
+      revealEls.forEach((el) => {
+        if (el.parentElement.closest('[data-reveal="wipe"]')) return;
+        const target = el.dataset.reveal === 'wipe' ? el.parentElement : el;
+        revealFor.set(target, el);
+        io.observe(target);
+      });
     }
   }
 }
