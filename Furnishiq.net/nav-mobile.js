@@ -69,6 +69,8 @@
     var overlay = document.createElement('div');
     overlay.className = 'fiq-nav-overlay';
     overlay.setAttribute('aria-hidden', 'true');
+    // Closed menu: out of the tab order too, not just hidden from screen readers.
+    overlay.inert = true;
 
     var linksClone = linksBox.cloneNode(true);
     linksClone.className = 'fiq-nav-overlay-links';
@@ -94,6 +96,7 @@
       toggle.classList.remove('fiq-nav-toggle--open');
       toggle.setAttribute('aria-expanded', 'false');
       overlay.setAttribute('aria-hidden', 'true');
+      overlay.inert = true;
       document.body.classList.remove('fiq-nav-open');
     }
     function open() {
@@ -101,6 +104,7 @@
       toggle.classList.add('fiq-nav-toggle--open');
       toggle.setAttribute('aria-expanded', 'true');
       overlay.setAttribute('aria-hidden', 'false');
+      overlay.inert = false;
       document.body.classList.add('fiq-nav-open');
     }
     toggle.addEventListener('click', function () {

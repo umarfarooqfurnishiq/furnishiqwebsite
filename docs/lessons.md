@@ -21,3 +21,14 @@ The looping carousels (`[clones][originals][clones]`) only wrap if one set of ca
 - Cause: Chrome's IntersectionObserver applies the target's own clip-path; a fully clipped element has zero visible area and is never reported as intersecting.
 - Fix: observe the element's container instead (a target → element map), and reveal nested reveal elements together with the wipe.
 - Rule: any start state that hides an element's box entirely (clip-path, `scale(0)`) must be triggered from an unclipped container. Opacity and translate start states are fine to observe directly.
+
+## Don't start the hero headline or intro at opacity 0
+- Symptom: on the turnkey landing pages, mobile LCP was 3.8s (EN) and 9.5s (AR). Lighthouse attributed 1.7s and 4.0s of that to "element render delay".
+- Cause: the LCP element (the hero H1 or intro paragraph) had an entrance animation starting at `opacity:0`. Chrome ignores invisible text for LCP, so LCP waited for the JS reveal plus its delay and transition.
+- Fix: the hero text uses a `sharpen` reveal (`opacity:1`, blur and offset only). Render delay dropped to 0.3–0.4s.
+- Rule: animate above-the-fold text with transform/filter only. Keep fade-from-zero for content below the fold.
+
+## Inline `display` beats a stylesheet rule
+- Symptom: `.fiq-vid-slide[data-video-src=""] .fiq-vid-play{display:none}` matched but had no effect.
+- Cause: the buttons carry `display:flex` inline.
+- Rule: when hiding an element whose layout is set in a `style=""` attribute, use `!important` (or move its layout into the stylesheet).
