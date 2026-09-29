@@ -32,3 +32,9 @@ The looping carousels (`[clones][originals][clones]`) only wrap if one set of ca
 - Symptom: `.fiq-vid-slide[data-video-src=""] .fiq-vid-play{display:none}` matched but had no effect.
 - Cause: the buttons carry `display:flex` inline.
 - Rule: when hiding an element whose layout is set in a `style=""` attribute, use `!important` (or move its layout into the stylesheet).
+
+## Video seeking fails under `python -m http.server` (2026-09-29)
+- Symptom: the landing-page video plays, but dragging the progress bar snaps back to ~0s.
+- Cause: Python's `http.server` ignores `Range` requests (returns 200, no `Accept-Ranges`), so `video.seekable` is `[0,0]`. Vercel serves ranges, so production seeks fine.
+- Test video seeking locally with a range-capable server, e.g. `npx http-server -p 8766 -s -c-1`.
+- Related: the site-wide form input style adds a 1px border to every `<input>`, including `type="range"`; the custom seek bar needs `border:none!important`.

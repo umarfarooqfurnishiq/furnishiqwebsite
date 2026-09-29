@@ -568,15 +568,6 @@ input:focus, select:focus, textarea:focus {
       .fiq-svc-card{width:clamp(270px,max(min(32vw,calc(52vh - 108px)),calc(min(1280px,100vw - 2 * clamp(24px,5vw,80px)) / 3 - 12px)),460px)!important;}
       .fiq-svc-head{margin-bottom:clamp(24px,3vh,64px)!important;row-gap:clamp(24px,3.4vh,48px)!important;}
     }
-    /* Video pop-up (built by script, appended to <body>). */
-    .fiq-vmodal{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;padding:72px 24px 24px;box-sizing:border-box;background:rgba(15,12,10,0.94);opacity:0;visibility:hidden;transition:opacity 0.35s cubic-bezier(0.25,0.46,0.45,0.94),visibility 0s linear 0.35s;}
-    .fiq-vmodal.is-open{opacity:1;visibility:visible;transition:opacity 0.35s cubic-bezier(0.25,0.46,0.45,0.94),visibility 0s;}
-    .fiq-vmodal-frame{position:relative;width:min(100%,calc((100vh - 96px) * 16 / 9));aspect-ratio:16/9;background:#000;}
-    .fiq-vmodal-frame video{display:block;width:100%;height:100%;background:#000;}
-    .fiq-vmodal-note{position:absolute;inset:auto 0 0 0;padding:20px 24px;font-family:'GE SS Two',sans-serif;font-size:14px;color:#FFFFFF;background:rgba(15,12,10,0.6);text-align:center;}
-    .fiq-vmodal-close{position:absolute;top:16px;left:16px;width:48px;height:48px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,0.4);border-radius:50%;background:transparent;cursor:pointer;padding:0;transition:background 0.3s cubic-bezier(0.25,0.46,0.45,0.94);}
-    .fiq-vmodal-close:hover,.fiq-vmodal-close:focus-visible{background:rgba(255,255,255,0.12);}
-    @media(prefers-reduced-motion:reduce){.fiq-vmodal,.fiq-vmodal.is-open{transition:none;}}
     /* Project preview pop-up (built by script, appended to <body>): full image, details overlaid on a bottom gradient. */
     .fiq-pmodal{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;padding:72px 24px 24px;box-sizing:border-box;background:rgba(15,12,10,0.94);opacity:0;visibility:hidden;transition:opacity 0.35s cubic-bezier(0.25,0.46,0.45,0.94),visibility 0s linear 0.35s;}
     .fiq-pmodal.is-open{opacity:1;visibility:visible;transition:opacity 0.35s cubic-bezier(0.25,0.46,0.45,0.94),visibility 0s;}
@@ -745,29 +736,55 @@ input:focus, select:focus, textarea:focus {
       .fiq-svc-track{scroll-behavior:auto!important;}
       .fiq-svc-card:hover img{transform:none;}
     }
-    /* Video carousel */
-    .fiq-vid-col{container-type:inline-size;min-width:0;}
-    .fiq-vid-track{scrollbar-width:none;-ms-overflow-style:none;}
-    .fiq-vid-track::-webkit-scrollbar{display:none;}
-    .fiq-vid-slide{width:600px;width:92cqw;}
-    .fiq-vid-play{transition:transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94),background 0.3s cubic-bezier(0.25,0.46,0.45,0.94);}
-    .fiq-vid-play:hover{transform:scale(1.06);background:#FFFFFF;}
-    /* No video file yet: show the cover only (no play button that leads nowhere). */
-    .fiq-vid-slide[data-video-src=""] .fiq-vid-play{display:none!important;} /* !important: the button sets display inline */
-    .fiq-vid-dot{transition:background 0.3s cubic-bezier(0.25,0.46,0.45,0.94),width 0.3s cubic-bezier(0.25,0.46,0.45,0.94);}
-    .fiq-vid-arrow{transition:border-color 0.3s cubic-bezier(0.25,0.46,0.45,0.94),opacity 0.3s;}
-    .fiq-vid-arrow:hover{border-color:#1F1F1F;}
+    /* Video: full-width player with a custom control bar (rounded, sand, dark icons) */
+    .fiq-vid-card{cursor:pointer;border-radius:12px;clip-path:inset(0 round 12px);}
+    .fiq-vid-card video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#1F1F1F;}
+    .fiq-vid-cover{transition:transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);}
+    .fiq-vid-card:hover .fiq-vid-cover{transform:scale(1.02);}
+    .fiq-vid-card.has-started .fiq-vid-cover,.fiq-vid-card.has-started .fiq-vid-shade{display:none;}
+    .fiq-vid-play{position:absolute;top:50%;left:50%;width:164px;height:104px;transform:translate(-50%,-50%);border:none;border-radius:8px;background:rgba(214,194,168,0.82);color:#3A2D25;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;transition:transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94),background 0.3s cubic-bezier(0.25,0.46,0.45,0.94),opacity 0.3s,visibility 0s linear 0s;}
+    .fiq-vid-card:hover .fiq-vid-play{transform:translate(-50%,-50%) scale(1.04);background:rgba(214,194,168,0.95);}
+    .fiq-vid-card.is-playing .fiq-vid-play{opacity:0;visibility:hidden;transition:opacity 0.3s,visibility 0s linear 0.3s;}
+    .fiq-vid-bar{position:absolute;left:6px;right:6px;bottom:6px;height:44px;display:flex;align-items:center;gap:12px;padding:0 12px;box-sizing:border-box;border-radius:8px;background:rgba(214,194,168,0.9);color:#3A2D25;cursor:default;transition:opacity 0.35s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94);}
+    /* While playing, the bar hides after a few idle seconds and returns on movement or tap. */
+    .fiq-vid-card.is-playing.is-idle{cursor:none;}
+    .fiq-vid-card.is-playing.is-idle .fiq-vid-bar{opacity:0;transform:translateY(8px);pointer-events:none;}
+    .fiq-vid-ctl{width:32px;height:32px;flex:none;border:none;border-radius:4px;background:transparent;color:inherit;padding:0;display:flex;align-items:center;justify-content:center;cursor:pointer;}
+    .fiq-vid-ctl:hover{background:rgba(58,45,37,0.1);}
+    .fiq-vid-ctl:focus-visible,.fiq-vid-play:focus-visible,.fiq-vid-seek:focus-visible{outline:2px solid #3A2D25;outline-offset:2px;}
+    .fiq-vid-ctl .i-b{display:none;}
+    .fiq-vid-card.is-playing [data-vid-toggle] .i-a,.fiq-vid-card.is-muted [data-vid-mute] .i-a,.fiq-vid-card.is-fullscreen [data-vid-fs] .i-a{display:none;}
+    .fiq-vid-card.is-playing [data-vid-toggle] .i-b,.fiq-vid-card.is-muted [data-vid-mute] .i-b,.fiq-vid-card.is-fullscreen [data-vid-fs] .i-b{display:block;}
+    .fiq-vid-time{flex:none;font-family:'Lama Sans',sans-serif;font-size:14px;font-variant-numeric:tabular-nums;white-space:nowrap;}
+    .fiq-vid-seek{--p:0%;flex:1 1 auto;min-width:0;height:24px;margin:0;padding:0;border:none!important;border-radius:0;box-shadow:none!important;background:transparent;-webkit-appearance:none;appearance:none;cursor:pointer;} /* !important: overrides the site-wide form input border */
+    .fiq-vid-seek::-webkit-slider-runnable-track{height:2px;border-radius:2px;background:linear-gradient(to right,#3A2D25 var(--p),rgba(58,45,37,0.3) var(--p));} /* hard stop: played / remaining */
+    .fiq-vid-seek::-webkit-slider-thumb{-webkit-appearance:none;width:10px;height:10px;margin-top:-4px;border:none;border-radius:50%;background:#3A2D25;}
+    .fiq-vid-seek::-moz-range-track{height:2px;border-radius:2px;background:rgba(58,45,37,0.3);}
+    .fiq-vid-seek::-moz-range-progress{height:2px;border-radius:2px;background:#3A2D25;}
+    .fiq-vid-seek::-moz-range-thumb{width:10px;height:10px;border:none;border-radius:50%;background:#3A2D25;}
+    .fiq-vid-note{position:absolute;inset:auto 0 56px 0;margin:0;padding:12px 24px;font-family:'GE SS Two',sans-serif;font-size:14px;color:#FFFFFF;background:rgba(15,12,10,0.7);text-align:center;}
+    .fiq-vid-card.is-fullscreen{border-radius:0;clip-path:none;background:#000;}
+    .fiq-vid-card.is-fullscreen video{object-fit:contain;background:#000;}
     .fiq-vid-btn-primary{transition:background 0.3s cubic-bezier(0.25,0.46,0.45,0.94);}
     .fiq-vid-btn-primary:hover{background:#5B4636;}
     .fiq-vid-btn-secondary{transition:border-color 0.3s cubic-bezier(0.25,0.46,0.45,0.94);}
     .fiq-vid-btn-secondary:hover{border-color:#5B4636;}
     @media(max-width:900px){
-      .fiq-vid-grid{grid-template-columns:1fr!important;}
-      .fiq-vid-slide{width:85cqw;}
+      .fiq-vid-head{grid-template-columns:1fr!important;}
+    }
+    @media(max-width:600px){
+      .fiq-vid-card{border-radius:8px;clip-path:inset(0 round 8px);}
+      .fiq-vid-play{width:96px;height:62px;border-radius:6px;}
+      .fiq-vid-play svg{width:24px;height:24px;}
+      .fiq-vid-bar{left:4px;right:4px;bottom:4px;height:36px;gap:6px;padding:0 6px;border-radius:6px;}
+      .fiq-vid-ctl{width:28px;height:28px;}
+      .fiq-vid-time{font-size:12px;}
+      .fiq-vid-note{bottom:44px;}
     }
     @media(prefers-reduced-motion:reduce){
-      .fiq-vid-track{scroll-behavior:auto!important;}
-      .fiq-vid-play:hover{transform:none;}
+      .fiq-vid-card:hover .fiq-vid-cover{transform:none;}
+      .fiq-vid-card:hover .fiq-vid-play{transform:translate(-50%,-50%);}
+      .fiq-vid-bar{transition:none;}
     }
     /* Projects drag carousel */
     .fiq-prj-track{scrollbar-width:none;-ms-overflow-style:none;cursor:grab;user-select:none;-webkit-user-select:none;}
@@ -1100,96 +1117,29 @@ input:focus, select:focus, textarea:focus {
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ VIDEO ━━ -->
 <section id="video-showcase" data-screen-label="Video" style="background:#FFFFFF;padding:clamp(80px,10vw,128px) 0;overflow:hidden;">
   <div style="max-width:1280px;margin:0 auto;padding:0 clamp(24px,5vw,80px);box-sizing:content-box;">
-    <div class="fiq-vid-grid" style="display:grid;grid-template-columns:0.8fr 1.2fr;gap:clamp(40px,5vw,72px);align-items:center;">
+    <div class="fiq-vid-head" style="display:grid;grid-template-columns:1.3fr 1fr;column-gap:clamp(32px,5vw,80px);row-gap:24px;align-items:start;margin-bottom:clamp(40px,4.4vw,64px);">
       <div data-reveal="right">
-        <h2 style="font-family:'GE SS Two',sans-serif;font-size:clamp(28px,3vw,42px);font-weight:500;color:#1F1F1F;line-height:1.3;margin:0 0 20px;">تصميم تراه.. وواقع تعيش فخامته</h2>
-        <p style="font-family:'GE SS Two',sans-serif;font-size:15px;color:#5B4636;line-height:1.85;margin:0 0 32px;">شاهد كيف نترجم المخططات الهندسية إلى مساحات تنبض بالحياة. في فيرنيش آي كيو، نحن لا نبيعك مجرد أفكار خيالية، بل نلتزم بتقديم منظومة متكاملة تبدأ من التصميم الداخلي المدروس، وتمر بتأسيس الأنظمة (MEP) والتشطيبات الفاخرة، لتنتهي بتأثيث مساحتك بتطابق تام بنسبة 100% مع المخطط المعتمد.</p>
+        <h2 style="font-family:'GE SS Two',sans-serif;font-size:clamp(30px,3.3vw,48px);font-weight:500;color:#1F1F1F;line-height:1.2;margin:0;">تصميم تراه..<br><span style="color:#8B6B4A;">وواقع تعيش فخامته</span></h2>
+      </div>
+      <div data-reveal="left" data-reveal-delay="0.15" style="max-width:520px;">
+        <p style="font-family:'GE SS Two',sans-serif;font-size:clamp(15px,1.25vw,17px);color:#1F1F1F;line-height:1.75;margin:0 0 28px;">شاهد كيف نترجم المخططات الهندسية إلى مساحات تنبض بالحياة. <span style="color:rgba(58,45,37,0.6);">في فيرنيش آي كيو، نحن لا نبيعك مجرد أفكار خيالية، بل نلتزم بتقديم منظومة متكاملة تبدأ من التصميم الداخلي المدروس، وتمر بتأسيس الأنظمة (MEP) والتشطيبات الفاخرة، لتنتهي بتأثيث مساحتك بتطابق تام بنسبة 100% مع المخطط المعتمد.</span></p>
         <div style="display:flex;gap:12px;flex-wrap:wrap;">
           <a href="#form" class="fiq-vid-btn-primary" style="font-family:'GE SS Two',sans-serif;font-size:12px;color:#FFFFFF;background:#3A2D25;border:1px solid #3A2D25;padding:14px 26px;text-decoration:none;">احجز استشارتك الهندسية</a>
           <a href="#projects-showcase" class="fiq-vid-btn-secondary" style="font-family:'GE SS Two',sans-serif;font-size:12px;color:#1F1F1F;background:transparent;border:1px solid #D6C2A8;padding:14px 26px;text-decoration:none;">شاهد أعمالنا</a>
         </div>
       </div>
-      <div class="fiq-vid-col" data-reveal="left" data-reveal-delay="0.15">
-        <div class="fiq-vid-track" data-vid-track style="display:flex;gap:16px;overflow-x:auto;scroll-behavior:smooth;margin-inline-end:calc(-1 * max(clamp(24px,5vw,80px),calc((100vw - 1280px) / 2)));padding-inline-end:max(clamp(24px,5vw,80px),calc((100vw - 1280px) / 2));">
-          <div class="fiq-vid-slide" data-vid-slide data-vid-clone aria-hidden="true" data-vid-i="0" data-video-src="" style="flex:0 0 auto;position:relative;aspect-ratio:16/9;background:#1F1F1F;overflow:hidden;">
-            <img src="uploads/landing-ar-video-design-1600.webp" srcset="uploads/landing-ar-video-design-800.webp 800w, uploads/landing-ar-video-design-1600.webp 1600w" sizes="(max-width:900px) 85vw, 720px" alt="تصوّر تصميم داخلي لمجلس" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-            <div style="position:absolute;inset:0;background:rgba(31,31,31,0.28);pointer-events:none;"></div>
-            <button type="button" class="fiq-vid-play" data-vid-play tabindex="-1" aria-label="تشغيل الفيديو 1" style="position:absolute;top:50%;left:50%;width:68px;height:68px;margin:-34px 0 0 -34px;border-radius:50%;border:none;background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="#1F1F1F" style="margin-left:3px;"><path d="M8 5v14l11-7z"/></svg>
-            </button>
-          </div>
-          <div class="fiq-vid-slide" data-vid-slide data-vid-clone aria-hidden="true" data-vid-i="1" data-video-src="" style="flex:0 0 auto;position:relative;aspect-ratio:16/9;background:#1F1F1F;overflow:hidden;">
-            <img src="uploads/landing-ar-video-mep-1600.webp" srcset="uploads/landing-ar-video-mep-800.webp 800w, uploads/landing-ar-video-mep-1600.webp 1600w" sizes="(max-width:900px) 85vw, 720px" alt="تأسيس الأنظمة أثناء التشطيب" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-            <div style="position:absolute;inset:0;background:rgba(31,31,31,0.28);pointer-events:none;"></div>
-            <button type="button" class="fiq-vid-play" data-vid-play tabindex="-1" aria-label="تشغيل الفيديو 2" style="position:absolute;top:50%;left:50%;width:68px;height:68px;margin:-34px 0 0 -34px;border-radius:50%;border:none;background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="#1F1F1F" style="margin-left:3px;"><path d="M8 5v14l11-7z"/></svg>
-            </button>
-          </div>
-          <div class="fiq-vid-slide" data-vid-slide data-vid-clone aria-hidden="true" data-vid-i="2" data-video-src="" style="flex:0 0 auto;position:relative;aspect-ratio:16/9;background:#1F1F1F;overflow:hidden;">
-            <img src="uploads/landing-ar-video-reveal-1600.webp" srcset="uploads/landing-ar-video-reveal-800.webp 800w, uploads/landing-ar-video-reveal-1600.webp 1600w" sizes="(max-width:900px) 85vw, 720px" alt="الكشف عن مساحة مكتملة" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-            <div style="position:absolute;inset:0;background:rgba(31,31,31,0.28);pointer-events:none;"></div>
-            <button type="button" class="fiq-vid-play" data-vid-play tabindex="-1" aria-label="تشغيل الفيديو 3" style="position:absolute;top:50%;left:50%;width:68px;height:68px;margin:-34px 0 0 -34px;border-radius:50%;border:none;background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="#1F1F1F" style="margin-left:3px;"><path d="M8 5v14l11-7z"/></svg>
-            </button>
-          </div>
-          <div class="fiq-vid-slide" data-vid-slide data-vid-i="0" data-video-src="" style="flex:0 0 auto;position:relative;aspect-ratio:16/9;background:#1F1F1F;overflow:hidden;">
-            <img src="uploads/landing-ar-video-design-1600.webp" srcset="uploads/landing-ar-video-design-800.webp 800w, uploads/landing-ar-video-design-1600.webp 1600w" sizes="(max-width:900px) 85vw, 720px" alt="تصوّر تصميم داخلي لمجلس" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-            <div style="position:absolute;inset:0;background:rgba(31,31,31,0.28);pointer-events:none;"></div>
-            <button type="button" class="fiq-vid-play" data-vid-play aria-label="تشغيل الفيديو 1" style="position:absolute;top:50%;left:50%;width:68px;height:68px;margin:-34px 0 0 -34px;border-radius:50%;border:none;background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="#1F1F1F" style="margin-left:3px;"><path d="M8 5v14l11-7z"/></svg>
-            </button>
-          </div>
-          <div class="fiq-vid-slide" data-vid-slide data-vid-i="1" data-video-src="" style="flex:0 0 auto;position:relative;aspect-ratio:16/9;background:#1F1F1F;overflow:hidden;">
-            <img src="uploads/landing-ar-video-mep-1600.webp" srcset="uploads/landing-ar-video-mep-800.webp 800w, uploads/landing-ar-video-mep-1600.webp 1600w" sizes="(max-width:900px) 85vw, 720px" alt="تأسيس الأنظمة أثناء التشطيب" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-            <div style="position:absolute;inset:0;background:rgba(31,31,31,0.28);pointer-events:none;"></div>
-            <button type="button" class="fiq-vid-play" data-vid-play aria-label="تشغيل الفيديو 2" style="position:absolute;top:50%;left:50%;width:68px;height:68px;margin:-34px 0 0 -34px;border-radius:50%;border:none;background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="#1F1F1F" style="margin-left:3px;"><path d="M8 5v14l11-7z"/></svg>
-            </button>
-          </div>
-          <div class="fiq-vid-slide" data-vid-slide data-vid-i="2" data-video-src="" style="flex:0 0 auto;position:relative;aspect-ratio:16/9;background:#1F1F1F;overflow:hidden;">
-            <img src="uploads/landing-ar-video-reveal-1600.webp" srcset="uploads/landing-ar-video-reveal-800.webp 800w, uploads/landing-ar-video-reveal-1600.webp 1600w" sizes="(max-width:900px) 85vw, 720px" alt="الكشف عن مساحة مكتملة" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-            <div style="position:absolute;inset:0;background:rgba(31,31,31,0.28);pointer-events:none;"></div>
-            <button type="button" class="fiq-vid-play" data-vid-play aria-label="تشغيل الفيديو 3" style="position:absolute;top:50%;left:50%;width:68px;height:68px;margin:-34px 0 0 -34px;border-radius:50%;border:none;background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="#1F1F1F" style="margin-left:3px;"><path d="M8 5v14l11-7z"/></svg>
-            </button>
-          </div>
-          <div class="fiq-vid-slide" data-vid-slide data-vid-clone aria-hidden="true" data-vid-i="0" data-video-src="" style="flex:0 0 auto;position:relative;aspect-ratio:16/9;background:#1F1F1F;overflow:hidden;">
-            <img src="uploads/landing-ar-video-design-1600.webp" srcset="uploads/landing-ar-video-design-800.webp 800w, uploads/landing-ar-video-design-1600.webp 1600w" sizes="(max-width:900px) 85vw, 720px" alt="تصوّر تصميم داخلي لمجلس" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-            <div style="position:absolute;inset:0;background:rgba(31,31,31,0.28);pointer-events:none;"></div>
-            <button type="button" class="fiq-vid-play" data-vid-play tabindex="-1" aria-label="تشغيل الفيديو 1" style="position:absolute;top:50%;left:50%;width:68px;height:68px;margin:-34px 0 0 -34px;border-radius:50%;border:none;background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="#1F1F1F" style="margin-left:3px;"><path d="M8 5v14l11-7z"/></svg>
-            </button>
-          </div>
-          <div class="fiq-vid-slide" data-vid-slide data-vid-clone aria-hidden="true" data-vid-i="1" data-video-src="" style="flex:0 0 auto;position:relative;aspect-ratio:16/9;background:#1F1F1F;overflow:hidden;">
-            <img src="uploads/landing-ar-video-mep-1600.webp" srcset="uploads/landing-ar-video-mep-800.webp 800w, uploads/landing-ar-video-mep-1600.webp 1600w" sizes="(max-width:900px) 85vw, 720px" alt="تأسيس الأنظمة أثناء التشطيب" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-            <div style="position:absolute;inset:0;background:rgba(31,31,31,0.28);pointer-events:none;"></div>
-            <button type="button" class="fiq-vid-play" data-vid-play tabindex="-1" aria-label="تشغيل الفيديو 2" style="position:absolute;top:50%;left:50%;width:68px;height:68px;margin:-34px 0 0 -34px;border-radius:50%;border:none;background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="#1F1F1F" style="margin-left:3px;"><path d="M8 5v14l11-7z"/></svg>
-            </button>
-          </div>
-          <div class="fiq-vid-slide" data-vid-slide data-vid-clone aria-hidden="true" data-vid-i="2" data-video-src="" style="flex:0 0 auto;position:relative;aspect-ratio:16/9;background:#1F1F1F;overflow:hidden;">
-            <img src="uploads/landing-ar-video-reveal-1600.webp" srcset="uploads/landing-ar-video-reveal-800.webp 800w, uploads/landing-ar-video-reveal-1600.webp 1600w" sizes="(max-width:900px) 85vw, 720px" alt="الكشف عن مساحة مكتملة" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-            <div style="position:absolute;inset:0;background:rgba(31,31,31,0.28);pointer-events:none;"></div>
-            <button type="button" class="fiq-vid-play" data-vid-play tabindex="-1" aria-label="تشغيل الفيديو 3" style="position:absolute;top:50%;left:50%;width:68px;height:68px;margin:-34px 0 0 -34px;border-radius:50%;border:none;background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="#1F1F1F" style="margin-left:3px;"><path d="M8 5v14l11-7z"/></svg>
-            </button>
-          </div>
-        </div>
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-top:24px;">
-          <div style="display:flex;gap:6px;align-items:center;">
-            <button type="button" class="fiq-vid-dot" data-vid-dot="0" aria-label="الفيديو 1" style="width:6px;height:6px;border-radius:999px;border:none;padding:0;background:#1F1F1F;cursor:pointer;"></button>
-            <button type="button" class="fiq-vid-dot" data-vid-dot="1" aria-label="الفيديو 2" style="width:6px;height:6px;border-radius:999px;border:none;padding:0;background:#B8A08C;cursor:pointer;"></button>
-            <button type="button" class="fiq-vid-dot" data-vid-dot="2" aria-label="الفيديو 3" style="width:6px;height:6px;border-radius:999px;border:none;padding:0;background:#B8A08C;cursor:pointer;"></button>
-          </div>
-          <div style="display:flex;gap:10px;">
-            <button type="button" class="fiq-vid-arrow" data-vid-prev aria-label="السابق" style="width:36px;height:36px;border-radius:50%;border:1px solid #B8A08C;background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1F1F1F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-            </button>
-            <button type="button" class="fiq-vid-arrow" data-vid-next aria-label="التالي" style="width:36px;height:36px;border-radius:50%;border:1px solid #B8A08C;background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1F1F1F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-            </button>
-          </div>
-        </div>
+    </div>
+    <div class="fiq-vid-card" data-vid-card data-reveal="up" data-reveal-delay="0.2" style="position:relative;aspect-ratio:16/9;background:#1F1F1F;overflow:hidden;">
+      <video data-vid-video preload="none" playsinline src="uploads/landing-video-arabic.mp4" aria-label="فيلم فيرنيش آي كيو عن التصميم الداخلي وتسليم المفتاح"></video>
+      <img class="fiq-vid-cover" src="uploads/landing-ar-video-design-1600.webp" srcset="uploads/landing-ar-video-design-800.webp 800w, uploads/landing-ar-video-design-1600.webp 1600w" sizes="(max-width:1440px) 92vw, 1280px" alt="تصوّر تصميم داخلي لمجلس" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+      <div class="fiq-vid-shade" style="position:absolute;inset:0;background:rgba(31,31,31,0.18);pointer-events:none;"></div>
+      <button type="button" class="fiq-vid-play" data-vid-play aria-label="تشغيل فيلم فيرنيش آي كيو"><svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="margin-left:3px;"><path d="M8 5v14l11-7z"/></svg></button>
+      <div class="fiq-vid-bar" dir="ltr">
+        <button type="button" class="fiq-vid-ctl" data-vid-toggle aria-label="تشغيل"><svg class="i-a" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg><svg class="i-b" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14"/><rect x="14" y="5" width="4" height="14"/></svg></button>
+        <span class="fiq-vid-time" data-vid-time>0:00</span>
+        <input type="range" class="fiq-vid-seek" data-vid-seek min="0" max="1000" step="1" value="0" aria-label="تقدم الفيديو">
+        <button type="button" class="fiq-vid-ctl" data-vid-mute aria-label="كتم الصوت"><svg class="i-a" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg><svg class="i-b" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor"/><line x1="22" y1="9" x2="16" y2="15"/><line x1="16" y1="9" x2="22" y2="15"/></svg></button>
+        <button type="button" class="fiq-vid-ctl" data-vid-fs aria-label="ملء الشاشة"><svg class="i-a" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/></svg><svg class="i-b" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3v3a2 2 0 0 1-2 2H3"/><path d="M21 8h-3a2 2 0 0 1-2-2V3"/><path d="M3 16h3a2 2 0 0 1 2 2v3"/><path d="M16 21v-3a2 2 0 0 1 2-2h3"/></svg></button>
       </div>
     </div>
   </div>
@@ -1651,135 +1601,110 @@ class Component extends DCLogic {
       svcJump(svcSet);
     }
 
-    const vidTrack = document.querySelector('[data-vid-track]');
-    const vidPrev = document.querySelector('[data-vid-prev]');
-    const vidNext = document.querySelector('[data-vid-next]');
-    if (vidTrack && vidPrev && vidNext) {
-      // Infinite loop: the markup holds [clones][originals][clones]. Whenever a
-      // scroll settles inside a clone set, jump one set-width back into the
-      // originals; clones sit at identical offsets so the jump is invisible.
-      // RTL scrollLeft runs 0 -> negative, so work in a positive offset.
-      const vidDir = getComputedStyle(vidTrack).direction === 'rtl' ? -1 : 1;
-      const vidSlides = vidTrack.querySelectorAll('[data-vid-slide]');
-      const vidCount = vidSlides.length / 3;
-      const vidDots = document.querySelectorAll('[data-vid-dot]');
-      let vidSet = 0;
-      const vidStep = () => Math.abs(vidSlides[1].offsetLeft - vidSlides[0].offsetLeft);
-      const vidMeasure = () => {
-        vidSet = Math.abs(vidSlides[vidCount].offsetLeft - vidSlides[0].offsetLeft);
-      };
-      const vidJump = (offset) => {
-        const behavior = vidTrack.style.scrollBehavior;
-        vidTrack.style.scrollBehavior = 'auto';
-        vidTrack.scrollLeft = vidDir * offset;
-        vidTrack.style.scrollBehavior = behavior;
-      };
-      const vidNormalise = () => {
-        if (!vidSet) return;
-        const offset = Math.abs(vidTrack.scrollLeft);
-        if (offset < vidSet - 2) vidJump(offset + vidSet);
-        else if (offset >= vidSet * 2 - 2) vidJump(offset - vidSet);
-      };
-      const syncVid = () => {
-        const raw = Math.round((Math.abs(vidTrack.scrollLeft) - vidSet) / vidStep());
-        const active = ((raw % vidCount) + vidCount) % vidCount;
-        vidDots.forEach((dot, i) => {
-          dot.style.background = i === active ? '#1F1F1F' : '#B8A08C';
-          dot.style.width = i === active ? '18px' : '6px';
-        });
-      };
-      vidPrev.addEventListener('click', () => vidTrack.scrollBy({ left: -vidDir * vidStep(), behavior: reduced ? 'auto' : 'smooth' }));
-      vidNext.addEventListener('click', () => vidTrack.scrollBy({ left: vidDir * vidStep(), behavior: reduced ? 'auto' : 'smooth' }));
-      vidDots.forEach((dot) => dot.addEventListener('click', () => {
-        vidTrack.scrollTo({ left: vidDir * (vidSet + Number(dot.dataset.vidDot) * vidStep()), behavior: reduced ? 'auto' : 'smooth' });
-      }));
-      vidTrack.addEventListener('scroll', syncVid, { passive: true });
-      if ('onscrollend' in window) {
-        vidTrack.addEventListener('scrollend', vidNormalise);
-      } else {
-        let vidSettle;
-        vidTrack.addEventListener('scroll', () => {
-          clearTimeout(vidSettle);
-          vidSettle = setTimeout(vidNormalise, 150);
-        }, { passive: true });
-      }
-      window.addEventListener('resize', () => {
-        const ratio = vidSet ? Math.abs(vidTrack.scrollLeft) / vidSet : 1;
-        vidMeasure();
-        vidJump(ratio * vidSet);
-        vidNormalise();
-        syncVid();
-      });
-      vidMeasure();
-      vidJump(vidSet);
-      syncVid();
-
-      // Video pop-up. Set data-video-src on the three original slides (not the clones);
-      // until then the pop-up shows the slide's cover image with a short note.
-      // Built here and appended to <body>, outside the template, so re-renders never touch it.
-      const vmodal = document.createElement('div');
-      vmodal.className = 'fiq-vmodal';
-      vmodal.setAttribute('role', 'dialog');
-      vmodal.setAttribute('aria-modal', 'true');
-      vmodal.setAttribute('aria-label', 'مشغل الفيديو');
-      vmodal.setAttribute('dir', 'rtl');
-      vmodal.innerHTML = '<button type="button" class="fiq-vmodal-close" aria-label="إغلاق"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></button>'
-        + '<div class="fiq-vmodal-frame"><video controls playsinline preload="none"></video><p class="fiq-vmodal-note" hidden>سيتم إضافة الفيديو قريباً.</p></div>';
-      document.body.appendChild(vmodal);
-      const vmVideo = vmodal.querySelector('video');
-      const vmNote = vmodal.querySelector('.fiq-vmodal-note');
-      const vmClose = vmodal.querySelector('.fiq-vmodal-close');
-      let vmOpener = null;
-      const closeVideo = () => {
-        if (!vmodal.classList.contains('is-open')) return;
-        vmodal.classList.remove('is-open');
-        vmVideo.pause();
-        vmVideo.removeAttribute('src');
-        vmVideo.load();
-        document.documentElement.style.overflow = '';
-        if (vmOpener) vmOpener.focus();
-      };
-      const openVideo = (slideIndex, opener) => {
-        const original = vidSlides[vidCount + slideIndex];
-        const src = original.dataset.videoSrc;
-        const poster = original.querySelector('img');
-        vmVideo.poster = poster ? poster.currentSrc || poster.src : '';
-        vmNote.textContent = 'سيتم إضافة الفيديو قريباً.';
-        vmNote.hidden = !!src;
-        vmVideo.controls = !!src;
-        if (src) vmVideo.src = src;
-        vmOpener = opener;
-        vmodal.classList.add('is-open');
-        document.documentElement.style.overflow = 'hidden';
-        vmClose.focus();
-        if (src) vmVideo.play().catch(() => {});
-      };
-      vidTrack.querySelectorAll('[data-vid-play]').forEach((btn) => {
-        btn.addEventListener('click', () => {
-          const slide = btn.closest('[data-vid-slide]');
-          if (slide) openVideo(Number(slide.dataset.vidI), btn);
-        });
-      });
-      // If the file cannot be played (missing, or a browser without H.264 support such as
-      // editor preview panes), say so instead of leaving a silent frozen cover image.
-      vmVideo.addEventListener('error', () => {
-        if (!vmVideo.getAttribute('src')) return;
-        vmNote.textContent = 'تعذّر تشغيل الفيديو في هذا المتصفح.';
-        vmNote.hidden = false;
-      });
-      vmClose.addEventListener('click', closeVideo);
-      vmodal.addEventListener('click', (e) => { if (e.target === vmodal) closeVideo(); });
-      document.addEventListener('keydown', (e) => {
-        if (!vmodal.classList.contains('is-open')) return;
-        if (e.key === 'Escape') closeVideo();
-        // Keep Tab inside the dialog: only the close button and the video are focusable.
-        if (e.key === 'Tab') {
-          const items = [vmClose].concat(vmVideo.controls ? [vmVideo] : []);
-          const i = items.indexOf(document.activeElement);
-          e.preventDefault();
-          items[(i + (e.shiftKey ? -1 : 1) + items.length) % items.length].focus();
+    const vidCard = document.querySelector('[data-vid-card]');
+    if (vidCard) {
+      // Custom player. The <video> uses preload="none", so the file only downloads on first play.
+      const video = vidCard.querySelector('[data-vid-video]');
+      const toggle = vidCard.querySelector('[data-vid-toggle]');
+      const seek = vidCard.querySelector('[data-vid-seek]');
+      const time = vidCard.querySelector('[data-vid-time]');
+      const mute = vidCard.querySelector('[data-vid-mute]');
+      const fs = vidCard.querySelector('[data-vid-fs]');
+      const T = { play: 'تشغيل', pause: 'إيقاف مؤقت', mute: 'كتم الصوت', unmute: 'تشغيل الصوت', fs: 'ملء الشاشة', exitFs: 'الخروج من ملء الشاشة', err: 'لا يمكن تشغيل هذا الفيديو في هذا المتصفح.' };
+      const fmt = (t) => { t = Math.max(0, Math.floor(t || 0)); return Math.floor(t / 60) + ':' + String(t % 60).padStart(2, '0'); };
+      let dragging = false;
+      let pending = null; // seek position chosen before the file's length is known
+      const sync = () => {
+        const d = video.duration;
+        const known = isFinite(d) && d > 0;
+        time.textContent = fmt(video.currentTime) + (known ? ' / ' + fmt(d) : '');
+        if (known && !dragging) {
+          const pct = (video.currentTime / d) * 100;
+          seek.value = pct * 10;
+          seek.style.setProperty('--p', pct + '%');
         }
+      };
+      let idle;
+      const wake = () => {
+        vidCard.classList.remove('is-idle');
+        clearTimeout(idle);
+        if (!video.paused) idle = setTimeout(() => vidCard.classList.add('is-idle'), 2500);
+      };
+      const play = () => { vidCard.classList.add('has-started'); video.play().catch(() => {}); };
+      const togglePlay = () => (video.paused ? play() : video.pause());
+
+      // The picture (cover, video, big button) toggles playback; the bar handles its own clicks.
+      // On touch, the first tap on a hidden bar only brings it back.
+      vidCard.addEventListener('click', (e) => {
+        if (e.target.closest('.fiq-vid-bar')) return;
+        if (vidCard.classList.contains('is-idle')) { wake(); return; }
+        togglePlay();
       });
+      toggle.addEventListener('click', togglePlay);
+      vidCard.addEventListener('pointermove', (e) => { if (e.pointerType === 'mouse') wake(); });
+      vidCard.addEventListener('focusin', wake);
+      video.addEventListener('play', () => {
+        vidCard.classList.add('is-playing', 'has-started');
+        toggle.setAttribute('aria-label', T.pause);
+        wake();
+      });
+      video.addEventListener('pause', () => {
+        vidCard.classList.remove('is-playing', 'is-idle');
+        toggle.setAttribute('aria-label', T.play);
+        clearTimeout(idle);
+      });
+      video.addEventListener('timeupdate', sync);
+      video.addEventListener('loadedmetadata', () => {
+        if (pending !== null) { video.currentTime = pending * video.duration; pending = null; }
+        sync();
+      });
+
+      seek.addEventListener('pointerdown', () => { dragging = true; });
+      window.addEventListener('pointerup', () => { dragging = false; });
+      seek.addEventListener('input', () => {
+        const f = seek.value / 1000;
+        seek.style.setProperty('--p', f * 100 + '%');
+        if (isFinite(video.duration)) video.currentTime = f * video.duration;
+        else { pending = f; play(); }
+      });
+
+      mute.addEventListener('click', () => { video.muted = !video.muted; });
+      video.addEventListener('volumechange', () => {
+        vidCard.classList.toggle('is-muted', video.muted);
+        mute.setAttribute('aria-label', video.muted ? T.unmute : T.mute);
+      });
+
+      // Full screen keeps the custom bar (the card goes full screen, not the bare video);
+      // iPhone Safari only allows the native player, so it falls back to that.
+      const fsEl = () => document.fullscreenElement || document.webkitFullscreenElement;
+      fs.addEventListener('click', () => {
+        if (fsEl()) { (document.exitFullscreen || document.webkitExitFullscreen).call(document); return; }
+        const req = vidCard.requestFullscreen || vidCard.webkitRequestFullscreen;
+        if (req) req.call(vidCard);
+        else if (video.webkitEnterFullscreen) { play(); video.webkitEnterFullscreen(); }
+      });
+      const onFs = () => {
+        const on = fsEl() === vidCard;
+        vidCard.classList.toggle('is-fullscreen', on);
+        fs.setAttribute('aria-label', on ? T.exitFs : T.fs);
+      };
+      document.addEventListener('fullscreenchange', onFs);
+      document.addEventListener('webkitfullscreenchange', onFs);
+
+      // If the file cannot be played (e.g. a browser without H.264 support), say so.
+      video.addEventListener('error', () => {
+        if (vidCard.querySelector('.fiq-vid-note')) return;
+        const note = document.createElement('p');
+        note.className = 'fiq-vid-note';
+        note.textContent = T.err;
+        vidCard.appendChild(note);
+      });
+      // Pause when the section scrolls out of view.
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver((entries) => {
+          if (!entries[0].isIntersecting && !video.paused && !fsEl()) video.pause();
+        }, { threshold: 0.15 }).observe(vidCard);
+      }
     }
 
     const prjTrack = document.querySelector('[data-prj-track]');
