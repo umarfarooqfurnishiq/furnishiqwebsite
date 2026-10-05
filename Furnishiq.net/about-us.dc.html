@@ -1397,7 +1397,7 @@ input:focus, select:focus, textarea:focus {
 </section>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ FOUR-STEP PROCESS ━ -->
-<section id="journey-section" data-journey style="position:relative;background:#1E1610;height:440vh;">
+<section id="journey-section" data-journey style="position:relative;background:#1E1610;height:540vh;">
   <style>
     #journey-section .jr-stage{position:sticky;top:0;height:100vh;min-height:600px;display:flex;flex-direction:column;padding-top:80px;box-sizing:border-box;overflow:hidden;}
     #journey-section .jr-view{position:relative;flex:1;min-height:0;overflow:hidden;background:#1E1610;}
@@ -1416,6 +1416,13 @@ input:focus, select:focus, textarea:focus {
     #journey-section .jr-label i{display:block;width:32px;height:1px;background:var(--ink2,#D6C2A8);}
     #journey-section .jr-h2{font-family:'Lama Sans',sans-serif;font-size:clamp(28px,3.2vw,52px);font-weight:500;line-height:1.08;letter-spacing:-0.02em;color:var(--ink,#FFFFFF);margin:0;}
     #journey-section .jr-status{display:grid;margin-top:18px;}
+    #journey-section .jr-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:clamp(20px,2.4vw,30px);opacity:var(--cta,0);transform:translateY(calc((1 - var(--cta,0)) * 36px));visibility:hidden;}
+    #journey-section.has-cta .jr-cta{visibility:visible;}
+    #journey-section .jr-btn{display:inline-flex;align-items:center;gap:12px;padding:15px 26px;font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;text-decoration:none;transition:gap 0.4s cubic-bezier(0.25,0.46,0.45,0.94),background 0.4s cubic-bezier(0.25,0.46,0.45,0.94),color 0.4s cubic-bezier(0.25,0.46,0.45,0.94);}
+    #journey-section .jr-btn--solid{background:var(--ink,#FFFFFF);color:#F5F2ED;border:1px solid var(--ink,#FFFFFF);}
+    #journey-section .jr-btn--solid:hover,#journey-section .jr-btn--solid:focus-visible{background:#8B6B4A;border-color:#8B6B4A;gap:18px;}
+    #journey-section .jr-btn--line{color:var(--ink,#FFFFFF);border:1px solid var(--ink,#FFFFFF);}
+    #journey-section .jr-btn--line:hover,#journey-section .jr-btn--line:focus-visible{color:#8B6B4A;border-color:#8B6B4A;}
     #journey-section .jr-hint{grid-area:1/1;display:flex;align-items:center;gap:12px;font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink,#FFFFFF);opacity:calc(1 - var(--hint,0));}
     #journey-section .jr-hint svg{animation:jrBob 2.4s cubic-bezier(0.25,0.46,0.45,0.94) infinite;}
     @keyframes jrBob{0%,100%{transform:translateY(-2px);}50%{transform:translateY(3px);}}
@@ -1441,6 +1448,8 @@ input:focus, select:focus, textarea:focus {
       #journey-section{--ink:#FFFFFF!important;--ink2:#D6C2A8!important;}
       #journey-section .jr-head{position:relative;top:auto;max-width:none;padding:20px 24px 18px;background:#1E1610;}
       #journey-section .jr-d{max-width:none;}
+      #journey-section .jr-btn--solid{background:#D6C2A8;border-color:#D6C2A8;color:#3A2D25;}
+      #journey-section .jr-btn{padding:14px 20px;}
     }
     @media(prefers-reduced-motion:reduce){
       #journey-section .jr-hint svg{animation:none;}
@@ -1454,6 +1463,10 @@ input:focus, select:focus, textarea:focus {
       <div class="jr-status" aria-hidden="true">
       <div class="jr-hint"><svg width="12" height="16" viewBox="0 0 12 16" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M6 1v13M1.5 9.5L6 14l4.5-4.5"/></svg>Scroll to build the room</div>
       <div class="jr-stamps"><span class="jr-stamp is-active" data-jr-stamp><b dir="ltr">01 / 04</b>Site survey</span><span class="jr-stamp" data-jr-stamp><b dir="ltr">02 / 04</b>Design intent</span><span class="jr-stamp" data-jr-stamp><b dir="ltr">03 / 04</b>On site</span><span class="jr-stamp" data-jr-stamp><b dir="ltr">04 / 04</b>Handed over</span></div>
+      </div>
+      <div class="jr-cta" data-jr-cta>
+        <a class="jr-btn jr-btn--solid" href="/contact">Book a Consultation<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        <a class="jr-btn jr-btn--line" href="/projects">Discover Projects</a>
       </div>
     </div>
     <div class="jr-view">
@@ -2045,47 +2058,6 @@ class Component extends DCLogic {
       }
     }
 
-    // ── JOURNEY: ONE ROOM, FOUR STATES (scroll scrubs survey → drawing → build → handover) ──
-    {
-      const jr = document.querySelector('[data-journey]');
-      if (jr) {
-        const steps = [...jr.querySelectorAll('[data-jr-step]')], stamps = [...jr.querySelectorAll('[data-jr-stamp]')];
-        const clamp = (v) => Math.min(Math.max(v, 0), 1);
-        const ease = (t) => t * t * (3 - 2 * t);
-        const seg = (p, a, b) => ease(clamp((p - a) / (b - a)));
-        let cur = -1, ticking = false;
-        const update = () => {
-          ticking = false;
-          const r = jr.getBoundingClientRect(), total = jr.offsetHeight - window.innerHeight;
-          const p = clamp(-r.top / (total || 1));
-          const s = jr.style;
-          s.setProperty('--survey', seg(p, 0.02, 0.2).toFixed(4));
-          s.setProperty('--survey-o', (1 - seg(p, 0.26, 0.36)).toFixed(4));
-          s.setProperty('--hint', seg(p, 0.01, 0.08).toFixed(4));
-          s.setProperty('--draw', (0.22 + 0.78 * seg(p, 0.24, 0.36) - seg(p, 0.66, 0.84)).toFixed(4));
-          const rise = seg(p, 0.5, 0.72);
-          s.setProperty('--rise', (100 - rise * 100).toFixed(3));
-          s.setProperty('--edge', (rise > 0 && rise < 1 ? 1 : 0));
-          s.setProperty('--gray', (1 - seg(p, 0.76, 0.92)).toFixed(4));
-          s.setProperty('--settle', seg(p, 0.76, 1).toFixed(4));
-          // text over the image: white on the dark drawing, walnut once the finished room is lit
-          const t = seg(p, 0.8, 0.9), mix = (a, b) => a.map((v, i) => Math.round(v + (b[i] - v) * t)).join(',');
-          s.setProperty('--ink', 'rgb(' + mix([255, 255, 255], [58, 45, 37]) + ')');
-          s.setProperty('--ink2', 'rgb(' + mix([214, 194, 168], [91, 70, 54]) + ')');
-          steps.forEach((st, k) => st.style.setProperty('--fill', clamp(p * 4 - k).toFixed(4)));
-          const n = Math.min(Math.floor(p * 4), 3);
-          if (n !== cur) {
-            cur = n;
-            steps.forEach((st, k) => { st.classList.toggle('is-active', k === n); st.classList.toggle('is-done', k < n); });
-            stamps.forEach((st, k) => st.classList.toggle('is-active', k === n));
-          }
-        };
-        update();
-        window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
-        window.addEventListener('resize', update);
-      }
-    }
-
     // ── DISCIPLINES: TABS WITH WIPING IMAGE STAGE ────────────────────────────
     {
       const sv = document.querySelector('[data-svc]');
@@ -2297,6 +2269,51 @@ class Component extends DCLogic {
         };
         if (first.complete) open(); else { first.addEventListener('load', open); setTimeout(open, 1800); }
         document.addEventListener('visibilitychange', () => { if (document.hidden) clearTimeout(timer); else schedule(); });
+      }
+    }
+
+    // ── JOURNEY: ONE ROOM, FOUR STATES (scroll scrubs survey → drawing → build → handover) ──
+    {
+      const jr = document.querySelector('[data-journey]');
+      if (jr) {
+        const steps = [...jr.querySelectorAll('[data-jr-step]')], stamps = [...jr.querySelectorAll('[data-jr-stamp]')];
+        const clamp = (v) => Math.min(Math.max(v, 0), 1);
+        const ease = (t) => t * t * (3 - 2 * t);
+        const seg = (p, a, b) => ease(clamp((p - a) / (b - a)));
+        let cur = -1, ticking = false;
+        const update = () => {
+          ticking = false;
+          const r = jr.getBoundingClientRect(), total = jr.offsetHeight - window.innerHeight;
+          // the room builds over the first 80% of the scroll; the last stretch brings in the call to action
+          const P = clamp(-r.top / (total || 1)), p = clamp(P / 0.8);
+          const s = jr.style;
+          const cta = seg(P, 0.84, 0.96);
+          s.setProperty('--cta', cta.toFixed(4));
+          jr.classList.toggle('has-cta', cta > 0.02);
+          s.setProperty('--survey', seg(p, 0.02, 0.2).toFixed(4));
+          s.setProperty('--survey-o', (1 - seg(p, 0.26, 0.36)).toFixed(4));
+          s.setProperty('--hint', seg(p, 0.01, 0.08).toFixed(4));
+          s.setProperty('--draw', (0.22 + 0.78 * seg(p, 0.24, 0.36) - seg(p, 0.66, 0.84)).toFixed(4));
+          const rise = seg(p, 0.5, 0.72);
+          s.setProperty('--rise', (100 - rise * 100).toFixed(3));
+          s.setProperty('--edge', (rise > 0 && rise < 1 ? 1 : 0));
+          s.setProperty('--gray', (1 - seg(p, 0.76, 0.92)).toFixed(4));
+          s.setProperty('--settle', seg(p, 0.76, 1).toFixed(4));
+          // text over the image: white on the dark drawing, walnut once the finished room is lit
+          const t = seg(p, 0.8, 0.9), mix = (a, b) => a.map((v, i) => Math.round(v + (b[i] - v) * t)).join(',');
+          s.setProperty('--ink', 'rgb(' + mix([255, 255, 255], [58, 45, 37]) + ')');
+          s.setProperty('--ink2', 'rgb(' + mix([214, 194, 168], [91, 70, 54]) + ')');
+          steps.forEach((st, k) => st.style.setProperty('--fill', clamp(p * 4 - k).toFixed(4)));
+          const n = Math.min(Math.floor(p * 4), 3);
+          if (n !== cur) {
+            cur = n;
+            steps.forEach((st, k) => { st.classList.toggle('is-active', k === n); st.classList.toggle('is-done', k < n); });
+            stamps.forEach((st, k) => st.classList.toggle('is-active', k === n));
+          }
+        };
+        update();
+        window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+        window.addEventListener('resize', update);
       }
     }
 
