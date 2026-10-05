@@ -1633,17 +1633,17 @@ input:focus, select:focus, textarea:focus {
     #threshold .th-btn--line{color:#F5F2ED;border:1px solid rgba(245,242,237,0.55);}
     #threshold .th-btn--line:hover,#threshold .th-btn--line:focus-visible{background:#F5F2ED;border-color:#F5F2ED;color:#3A2D25;}
     #threshold .th-cap{position:absolute;top:clamp(18px,2vw,28px);inset-inline-end:clamp(18px,2vw,28px);font-family:'GE SS Two','Arial',sans-serif;font-size:12px;letter-spacing:normal;text-transform:uppercase;color:rgba(245,242,237,0.75);opacity:var(--e,0);}
-    #threshold .th-info{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:clamp(40px,4.4vw,64px);border-top:1px solid rgba(214,194,168,0.2);}
-    #threshold .th-cell{padding:clamp(22px,2.4vw,32px) clamp(16px,2vw,28px) 0;border-inline-start:1px solid rgba(214,194,168,0.14);text-decoration:none;color:inherit;}
-    #threshold .th-cell:first-child{border-inline-start:none;padding-inline-start:0;}
+    #threshold .th-info{--gap:clamp(28px,3.6vw,56px);display:grid;grid-template-columns:minmax(0,1.3fr) repeat(3,minmax(0,1fr));column-gap:var(--gap);row-gap:clamp(28px,4vw,40px);margin-top:clamp(40px,4.4vw,64px);padding-top:clamp(26px,2.6vw,36px);border-top:1px solid rgba(214,194,168,0.2);}
+    #threshold .th-cell{position:relative;min-width:0;text-decoration:none;color:inherit;}
+    #threshold .th-cell+.th-cell::before{content:"";position:absolute;top:0;bottom:0;inset-inline-start:calc(var(--gap) / -2);width:1px;background:rgba(214,194,168,0.14);}
     #threshold .th-k{display:block;margin-bottom:12px;font-family:'GE SS Two','Arial',sans-serif;font-size:12px;letter-spacing:normal;text-transform:uppercase;color:#D6C2A8;}
     #threshold .th-v{display:block;font-family:'GE SS Two','Arial',sans-serif;font-size:clamp(15px,1.25vw,18px);line-height:1.5;color:#F5F2ED;transition:color 0.4s cubic-bezier(0.25,0.46,0.45,0.94);}
     #threshold .th-s{display:block;margin-top:6px;font-family:'GE SS Two','Arial',sans-serif;font-size:13px;color:rgba(245,242,237,0.55);}
     #threshold a.th-cell:hover .th-v,#threshold a.th-cell:focus-visible .th-v{color:#D6C2A8;}
     @media(max-width:900px){
       #threshold .th-stage{height:clamp(520px,82vh,680px);}
-      #threshold .th-info{grid-template-columns:1fr 1fr;}
-      #threshold .th-cell:nth-child(3){border-inline-start:none;padding-inline-start:0;}
+      #threshold .th-info{grid-template-columns:repeat(2,minmax(0,1fr));}
+      #threshold .th-cell:nth-child(3)::before{display:none;}
       #threshold .th-btn{padding:15px 22px;}
     }
     @media(max-width:600px){
