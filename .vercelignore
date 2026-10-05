@@ -1,0 +1,11 @@
+# Internal files that must not be served on the live site.
+# Vercel publishes everything else in the repo, so keep this list up to date.
+CLAUDE.md
+docs/
+scripts/
+.claude/
+.agents/
+.superpowers/
+.playwright-mcp/
+_claude-session-archive/
+skills-lock.json
