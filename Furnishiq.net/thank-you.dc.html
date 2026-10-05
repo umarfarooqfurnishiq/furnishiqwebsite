@@ -44,6 +44,14 @@ fbq('track', 'PageView');
 <script src="./analytics-events.js" defer></script>
 <script src="./newsletter.js" defer></script>
 <link rel="preload" as="font" type="font/ttf" href="_ds/furnishiq-design-system-ea658a9e-dd64-48ad-ab93-f0196a53ec9c/uploads/LamaSans-Medium_English.ttf" crossorigin>
+<style data-fiq-pair>
+  /* button pairs: both buttons share one width; stacked full width on phones */
+  .fiq-pair{display:inline-grid!important;grid-template-columns:1fr 1fr!important;flex-direction:row!important;}
+  .fiq-pair>a{display:flex!important;align-items:center;justify-content:center!important;text-align:center;white-space:nowrap;box-sizing:border-box;}
+  @media(max-width:600px){.fiq-pair{display:grid!important;grid-template-columns:1fr!important;width:100%!important;}.fiq-pair>a{width:100%!important;}}
+  /* outlined button inverts on hover: it fills with its own line colour */
+  .fiq-btn-ghost:hover,.fiq-btn-ghost:focus-visible{background:var(--ghost-bg,#D6C2A8)!important;color:var(--ghost-fg,#1E1610)!important;border-color:var(--ghost-bg,#D6C2A8)!important;}
+</style>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -220,11 +228,11 @@ input {
     <h1 style="font-family:'Lama Sans',sans-serif;font-size:clamp(32px,4.5vw,56px);font-weight:500;color:#FFFFFF;line-height:1.15;letter-spacing:-0.015em;margin-bottom:22px;">Thank you<span id="id-ty-name"></span>.</h1>
     <p style="font-family:'Lama Sans',sans-serif;font-size:clamp(15px,1.4vw,17px);line-height:1.85;color:rgba(214,194,168,0.75);max-width:460px;margin-bottom:44px;">Your inquiry is with our consulting team. A senior consultant will review your project and reply within one working day — usually much sooner.</p>
 
-    <div class="fiq-ty-actions" style="display:flex;gap:16px;">
+    <div class="fiq-pair fiq-ty-actions" style="display:flex;gap:16px;">
       <a href="/" style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#1E1610;background:#D6C2A8;padding:19px 36px;border:1px solid #D6C2A8;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:12px;transition:all 0.3s cubic-bezier(0.25,0.46,0.45,0.94);" style-hover="background:#FFFFFF;border-color:#FFFFFF;">
         Back to Home
       </a>
-      <a href="/projects" style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#FFFFFF;background:transparent;padding:19px 36px;border:1px solid rgba(214,194,168,0.4);text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:12px;transition:all 0.3s cubic-bezier(0.25,0.46,0.45,0.94);" style-hover="border-color:#D6C2A8;background:rgba(214,194,168,0.08);">
+      <a class="fiq-btn-ghost" href="/projects" style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#FFFFFF;background:transparent;padding:19px 36px;border:1px solid rgba(214,194,168,0.4);text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:12px;transition:all 0.3s cubic-bezier(0.25,0.46,0.45,0.94);" style-hover="border-color:#D6C2A8;background:rgba(214,194,168,0.08);">
         View Our Projects
       </a>
     </div>

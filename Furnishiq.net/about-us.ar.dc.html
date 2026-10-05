@@ -1626,12 +1626,12 @@ input:focus, select:focus, textarea:focus {
     #threshold.is-open .th-copy{opacity:1;transform:none;pointer-events:auto;}
     #threshold .th-h2{font-family:'GE SS Two','Arial',sans-serif;font-size:clamp(32px,4.4vw,72px);font-weight:500;line-height:1.35;letter-spacing:normal;color:#FFFFFF;margin:0;max-width:1000px;text-wrap:balance;}
     #threshold .th-body{font-family:'GE SS Two','Arial',sans-serif;font-size:17px;line-height:1.75;color:rgba(245,242,237,0.82);margin:clamp(16px,1.6vw,22px) 0 0;max-width:560px;}
-    #threshold .th-ctas{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-top:clamp(24px,2.6vw,36px);}
-    #threshold .th-btn{display:inline-flex;align-items:center;gap:12px;padding:16px 30px;font-family:'GE SS Two','Arial',sans-serif;font-size:13px;letter-spacing:normal;text-transform:uppercase;text-decoration:none;transition:background 0.4s cubic-bezier(0.25,0.46,0.45,0.94),color 0.4s cubic-bezier(0.25,0.46,0.45,0.94),border-color 0.4s cubic-bezier(0.25,0.46,0.45,0.94),gap 0.4s cubic-bezier(0.25,0.46,0.45,0.94);}
+    #threshold .th-ctas{display:inline-grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:clamp(24px,2.6vw,36px);}
+    #threshold .th-btn{display:flex;align-items:center;justify-content:center;white-space:nowrap;gap:12px;padding:16px 30px;font-family:'GE SS Two','Arial',sans-serif;font-size:13px;letter-spacing:normal;text-transform:uppercase;text-decoration:none;transition:background 0.4s cubic-bezier(0.25,0.46,0.45,0.94),color 0.4s cubic-bezier(0.25,0.46,0.45,0.94),border-color 0.4s cubic-bezier(0.25,0.46,0.45,0.94),gap 0.4s cubic-bezier(0.25,0.46,0.45,0.94);}
     #threshold .th-btn--solid{background:#D6C2A8;color:#3A2D25;border:1px solid #D6C2A8;}
     #threshold .th-btn--solid:hover,#threshold .th-btn--solid:focus-visible{background:#F5F2ED;border-color:#F5F2ED;gap:18px;}
     #threshold .th-btn--line{color:#F5F2ED;border:1px solid rgba(245,242,237,0.55);}
-    #threshold .th-btn--line:hover,#threshold .th-btn--line:focus-visible{border-color:#D6C2A8;color:#D6C2A8;gap:18px;}
+    #threshold .th-btn--line:hover,#threshold .th-btn--line:focus-visible{background:#F5F2ED;border-color:#F5F2ED;color:#3A2D25;}
     #threshold .th-cap{position:absolute;top:clamp(18px,2vw,28px);inset-inline-end:clamp(18px,2vw,28px);font-family:'GE SS Two','Arial',sans-serif;font-size:12px;letter-spacing:normal;text-transform:uppercase;color:rgba(245,242,237,0.75);opacity:var(--e,0);}
     #threshold .th-info{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:clamp(40px,4.4vw,64px);border-top:1px solid rgba(214,194,168,0.2);}
     #threshold .th-cell{padding:clamp(22px,2.4vw,32px) clamp(16px,2vw,28px) 0;border-inline-start:1px solid rgba(214,194,168,0.14);text-decoration:none;color:inherit;}
@@ -1645,6 +1645,10 @@ input:focus, select:focus, textarea:focus {
       #threshold .th-info{grid-template-columns:1fr 1fr;}
       #threshold .th-cell:nth-child(3){border-inline-start:none;padding-inline-start:0;}
       #threshold .th-btn{padding:15px 22px;}
+    }
+    @media(max-width:600px){
+      #threshold .th-copy{align-items:stretch;}
+      #threshold .th-ctas{display:grid;grid-template-columns:1fr;width:100%;}
     }
     @media(prefers-reduced-motion:reduce){
       #threshold *{transition:none!important;}
@@ -2173,37 +2177,6 @@ class Component extends DCLogic {
       }
     }
 
-    // ── THRESHOLD: THE DOORWAY OPENS INTO THE SPACE ON SCROLL ────────────────
-    {
-      const th = document.querySelector('[data-threshold]');
-      if (th) {
-        const stage = th.querySelector('[data-th-stage]'), clock = th.querySelector('[data-th-time]');
-        let ticking = false;
-        const update = () => {
-          ticking = false;
-          const r = stage.getBoundingClientRect(), vh = window.innerHeight, W = stage.offsetWidth;
-          const p = reduced ? 1 : Math.min(Math.max((vh - r.top) / (vh * 0.85), 0), 1);
-          const e = p * p * (3 - 2 * p);
-          const w0 = Math.min(W, Math.max(200, W * 0.34));
-          const w = w0 + (W - w0) * e;
-          th.style.setProperty('--w0', w0.toFixed(1) + 'px');
-          th.style.setProperty('--w', w.toFixed(1) + 'px');
-          th.style.setProperty('--r', ((w / 2) * (1 - e)).toFixed(1) + 'px');
-          th.style.setProperty('--e', e.toFixed(4));
-          th.classList.toggle('is-open', e > 0.82);
-        };
-        update();
-        window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
-        window.addEventListener('resize', update);
-        // live Riyadh time beside the headquarters
-        if (clock) {
-          const fmt = new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Riyadh', hour: '2-digit', minute: '2-digit' });
-          const tick = () => { clock.textContent = fmt.format(new Date()); };
-          tick(); setInterval(tick, 30000);
-        }
-      }
-    }
-
     // ── OUR STORY: GAP CLOSES, GROUP ORBIT DRAWS ─────────────────────────────
     {
       const sy = document.querySelector('[data-story]');
@@ -2318,6 +2291,37 @@ class Component extends DCLogic {
         update();
         window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
         window.addEventListener('resize', update);
+      }
+    }
+
+    // ── THRESHOLD: THE DOORWAY OPENS INTO THE SPACE ON SCROLL ────────────────
+    {
+      const th = document.querySelector('[data-threshold]');
+      if (th) {
+        const stage = th.querySelector('[data-th-stage]'), clock = th.querySelector('[data-th-time]');
+        let ticking = false;
+        const update = () => {
+          ticking = false;
+          const r = stage.getBoundingClientRect(), vh = window.innerHeight, W = stage.offsetWidth;
+          const p = reduced ? 1 : Math.min(Math.max((vh - r.top) / (vh * 0.85), 0), 1);
+          const e = p * p * (3 - 2 * p);
+          const w0 = Math.min(W, Math.max(200, W * 0.34));
+          const w = w0 + (W - w0) * e;
+          th.style.setProperty('--w0', w0.toFixed(1) + 'px');
+          th.style.setProperty('--w', w.toFixed(1) + 'px');
+          th.style.setProperty('--r', ((w / 2) * (1 - e)).toFixed(1) + 'px');
+          th.style.setProperty('--e', e.toFixed(4));
+          th.classList.toggle('is-open', e > 0.82);
+        };
+        update();
+        window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+        window.addEventListener('resize', update);
+        // live Riyadh time beside the headquarters
+        if (clock) {
+          const fmt = new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Riyadh', hour: '2-digit', minute: '2-digit' });
+          const tick = () => { clock.textContent = fmt.format(new Date()); };
+          tick(); setInterval(tick, 30000);
+        }
       }
     }
 

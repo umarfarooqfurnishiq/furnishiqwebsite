@@ -55,6 +55,14 @@ fbq('track', 'PageView');
 <script src="./analytics-events.js" defer></script>
 <script src="./newsletter.js" defer></script>
 <link rel="preload" as="font" type="font/ttf" href="_ds/furnishiq-design-system-ea658a9e-dd64-48ad-ab93-f0196a53ec9c/uploads/LamaSans-Medium_English.ttf" crossorigin>
+<style data-fiq-pair>
+  /* button pairs: both buttons share one width; stacked full width on phones */
+  .fiq-pair{display:inline-grid!important;grid-template-columns:1fr 1fr!important;flex-direction:row!important;}
+  .fiq-pair>a{display:flex!important;align-items:center;justify-content:center!important;text-align:center;white-space:nowrap;box-sizing:border-box;}
+  @media(max-width:600px){.fiq-pair{display:grid!important;grid-template-columns:1fr!important;width:100%!important;}.fiq-pair>a{width:100%!important;}}
+  /* outlined button inverts on hover: it fills with its own line colour */
+  .fiq-btn-ghost:hover,.fiq-btn-ghost:focus-visible{background:var(--ghost-bg,#D6C2A8)!important;color:var(--ghost-fg,#1E1610)!important;border-color:var(--ghost-bg,#D6C2A8)!important;}
+</style>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -774,11 +782,11 @@ input:focus, select:focus, textarea:focus {
               </sc-for>
             </div>
 
-            <div style="display:flex;gap:14px;flex-wrap:wrap;">
+            <div class="fiq-pair" style="display:flex;gap:14px;flex-wrap:wrap;">
               <a href="https://wa.me/966580330627" target="_blank" data-detail-wa style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#1E1610;text-decoration:none;background:#D6C2A8;padding:17px 30px;display:inline-flex;align-items:center;gap:12px;transition:background 0.3s;">
                 Start Your Project
               </a>
-              <a href="{{ selDetailsHref }}" data-detail-contact style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#D6C2A8;text-decoration:none;border:1px solid rgba(214,194,168,0.4);padding:17px 30px;display:inline-flex;align-items:center;gap:12px;transition:all 0.3s;">
+              <a class="fiq-btn-ghost" href="{{ selDetailsHref }}" data-detail-contact style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#D6C2A8;text-decoration:none;border:1px solid rgba(214,194,168,0.4);padding:17px 30px;display:inline-flex;align-items:center;gap:12px;transition:all 0.3s;">
                 View Details
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </a>

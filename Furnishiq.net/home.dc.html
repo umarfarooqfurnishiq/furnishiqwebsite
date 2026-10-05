@@ -67,6 +67,14 @@ fbq('track', 'PageView');
   </svg>
 </template>
 <link rel="preload" as="font" type="font/ttf" href="_ds/furnishiq-design-system-ea658a9e-dd64-48ad-ab93-f0196a53ec9c/uploads/LamaSans-Medium_English.ttf" crossorigin>
+<style data-fiq-pair>
+  /* button pairs: both buttons share one width; stacked full width on phones */
+  .fiq-pair{display:inline-grid!important;grid-template-columns:1fr 1fr!important;flex-direction:row!important;}
+  .fiq-pair>a{display:flex!important;align-items:center;justify-content:center!important;text-align:center;white-space:nowrap;box-sizing:border-box;}
+  @media(max-width:600px){.fiq-pair{display:grid!important;grid-template-columns:1fr!important;width:100%!important;}.fiq-pair>a{width:100%!important;}}
+  /* outlined button inverts on hover: it fills with its own line colour */
+  .fiq-btn-ghost:hover,.fiq-btn-ghost:focus-visible{background:var(--ghost-bg,#D6C2A8)!important;color:var(--ghost-fg,#1E1610)!important;border-color:var(--ghost-bg,#D6C2A8)!important;}
+</style>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -665,9 +673,9 @@ input:focus, select:focus, textarea:focus {
       </div>
       <h1 class="fiq-hero-h1" data-reveal data-reveal-delay="0.1" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Lama Sans',sans-serif;font-size:clamp(48px,7.5vw,116px);font-weight:500;line-height:1.0;letter-spacing:-0.025em;color:#FFFFFF;margin-bottom:28px;pointer-events:auto;text-wrap:balance;">Where Vision<br>Meets Precision.</h1>
       <p class="fiq-hero-sub" data-reveal data-reveal-delay="0.2" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Lama Sans',sans-serif;font-size:16px;line-height:1.75;color:rgba(255,255,255,0.65);max-width:520px;margin-bottom:40px;pointer-events:auto;">We don't just design; we deliver. FurnishIQ provides integrated Design–Build solutions that turn ambitious architectural concepts into functional, inspiring realities across Saudi Arabia.</p>
-      <div data-reveal data-reveal-delay="0.3" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;gap:14px;flex-wrap:wrap;pointer-events:auto;">
+      <div class="fiq-pair" data-reveal data-reveal-delay="0.3" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;gap:14px;flex-wrap:wrap;pointer-events:auto;">
         <a href="#services" id="cta-primary" style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#3A2D25;background:#D6C2A8;padding:15px 36px;text-decoration:none;display:inline-block;transition:background 0.3s cubic-bezier(0.25,0.46,0.45,0.94),color 0.3s;border:1px solid #D6C2A8;white-space:nowrap;">Visualize Your Project</a>
-        <a href="#portfolio" id="cta-secondary" style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#D6C2A8;background:transparent;padding:15px 36px;text-decoration:none;display:inline-block;transition:background 0.3s,color 0.3s,border-color 0.3s;border:1px solid rgba(214,194,168,0.45);white-space:nowrap;">View Our Portfolio</a>
+        <a class="fiq-btn-ghost" href="#portfolio" id="cta-secondary" style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#D6C2A8;background:transparent;padding:15px 36px;text-decoration:none;display:inline-block;transition:background 0.3s,color 0.3s,border-color 0.3s;border:1px solid rgba(214,194,168,0.45);white-space:nowrap;">View Our Portfolio</a>
       </div>
     </div>
   </div>
