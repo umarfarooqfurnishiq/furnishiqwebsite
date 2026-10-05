@@ -85,3 +85,9 @@ The looping carousels (`[clones][originals][clones]`) only wrap if one set of ca
 - Symptom: after the session ended abruptly, `about-us.dc.html`, `about-us.ar.dc.html` and one build script kept their byte length but every byte was zero. A day of uncommitted About page work was gone from disk.
 - Recovery: restore the pages from the last commit, rerun each section's build script (each rebuilds its whole section), then replay the few direct page edits recorded in the session transcript.
 - Rule: keep generated sections reproducible from scripts, and commit (or copy) work-in-progress pages after each approved section instead of leaving a whole page's redesign uncommitted.
+
+## Adding z-index to one layer can bury its unindexed siblings (2026-10-05)
+- Symptom: on the About hero, the headline, labels and figures lost contrast. The photo looked bright and the text faded into it.
+- Cause: the crossfade fix gave the slides `z-index:1`/`2`. The dark veil and the bottom fade sat after them in the markup with no z-index, so the slides now painted above both.
+- Fix: give every layer in the stack an explicit place (slides 1–2, veil and fade 3, copy 4, opening doors 6), noted in a comment next to the rules.
+- Rule: when adding z-index to an element, check every positioned sibling in the same container, and confirm the result with `document.elementsFromPoint` rather than by eye.
