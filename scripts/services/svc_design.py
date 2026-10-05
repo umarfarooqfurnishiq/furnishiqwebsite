@@ -70,12 +70,14 @@ def build(lang):
     [data-svc-design] .sd-h2{{font-family:{font};font-weight:500;font-size:clamp(32px,3.8vw,54px);line-height:1.08;letter-spacing:{'0' if ar else '-0.015em'};color:#1F1F1F;margin:0;text-wrap:balance;}}
     [data-svc-design] .sd-body{{font-family:{font};font-size:{'16px' if ar else '15px'};line-height:1.85;color:#5B4636;margin:0;}}
     [data-svc-design] .sd-main{{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:clamp(28px,3.4vw,48px);align-items:stretch;}}
-    [data-svc-design] .sd-fig{{margin:0;}}
+    [data-svc-design] .sd-fig{{margin:0;margin-inline-start:calc(var(--sd-bleed,0px) * -1);}}
     [data-svc-design] .sd-photo{{position:relative;aspect-ratio:1920/1072;overflow:hidden;background:#3A2D25;}}
     [data-svc-design] .sd-photo>img{{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.04);transition:transform 2.4s {EASE};}}
     [data-svc-design].is-in .sd-photo>img{{transform:none;}}
     [data-svc-design] .sd-frame{{position:absolute;left:var(--x,40%);top:var(--y,40%);width:var(--w,20%);height:var(--h,20%);border:1px solid rgba(245,242,237,0.9);box-shadow:0 0 0 200vmax rgba(18,13,9,0);opacity:0;pointer-events:none;transition:left 0.9s {EASE},top 0.9s {EASE},width 0.9s {EASE},height 0.9s {EASE},box-shadow 0.7s {EASE},opacity 0.5s {EASE};}}
     [data-svc-design].has-pick .sd-frame{{opacity:1;box-shadow:0 0 0 200vmax rgba(18,13,9,0.56);}}
+    [data-svc-design] .sd-zoom{{position:absolute;inset:0;overflow:hidden;}}
+    [data-svc-design] .sd-zoom img{{position:absolute;max-width:none;transition:left 0.9s {EASE},top 0.9s {EASE},width 0.9s {EASE},height 0.9s {EASE};}}
     [data-svc-design] .sd-frame::before,[data-svc-design] .sd-frame::after{{content:"";position:absolute;width:14px;height:14px;border-color:#D6C2A8;border-style:solid;}}
     [data-svc-design] .sd-frame::before{{top:-4px;left:-4px;border-width:2px 0 0 2px;}}
     [data-svc-design] .sd-frame::after{{bottom:-4px;right:-4px;border-width:0 2px 2px 0;}}
@@ -85,7 +87,8 @@ def build(lang):
     [data-svc-design] .sd-mark:hover,[data-svc-design] .sd-mark:focus-visible{{background:#F5F2ED;color:#3A2D25;outline:none;}}
     [data-svc-design].has-pick .sd-mark{{opacity:0;pointer-events:none;}}
     [data-svc-design].has-pick .sd-photo:hover .sd-mark{{opacity:1;pointer-events:auto;}}
-    [data-svc-design] .sd-cap{{display:flex;justify-content:space-between;gap:16px;margin-top:14px;font-family:{font};font-size:{'12px' if ar else '11px'};color:#8B6B4A;}}
+    [data-svc-design].has-pick .sd-photo:hover .sd-mark.is-on{{opacity:0;pointer-events:none;}}
+    [data-svc-design] .sd-cap{{display:flex;justify-content:space-between;gap:16px;margin-top:14px;padding-inline-start:var(--sd-bleed,0px);font-family:{font};font-size:{'12px' if ar else '11px'};color:#8B6B4A;}}
     [data-svc-design] .sd-side{{display:flex;flex-direction:column;}}
     [data-svc-design] .sd-keyh{{font-family:{font};font-size:{small};letter-spacing:{track};text-transform:uppercase;color:#8B6B4A;margin:0 0 6px;}}
     [data-svc-design] .sd-key{{list-style:none;margin:0;padding:0;flex:1;display:flex;flex-direction:column;}}
@@ -111,6 +114,8 @@ def build(lang):
     @media(max-width:960px){{
       [data-svc-design] .sd-head,[data-svc-design] .sd-main{{grid-template-columns:1fr;}}
       [data-svc-design] .sd-key li{{flex:none;}}
+      [data-svc-design] .sd-fig{{margin-inline:calc(clamp(24px,5vw,80px) * -1);}}
+      [data-svc-design] .sd-cap{{padding-inline:clamp(24px,5vw,80px);}}
     }}
     @media(max-width:600px){{
       [data-svc-design] .sd-mark{{width:26px;height:26px;font-size:9px;}}
@@ -133,8 +138,8 @@ def build(lang):
     <div class="sd-main">
       <figure class="sd-fig sd-rise sd-rise--2">
         <div class="sd-photo">
-          <img src="uploads/{IMG}-1920.webp" srcset="{srcset}" sizes="(max-width:960px) 100vw, 860px" alt="{c['alt']}" width="1920" height="1072" loading="lazy" decoding="async">
-          <span class="sd-frame" aria-hidden="true"><span class="sd-chip"></span></span>
+          <img src="uploads/{IMG}-1920.webp" srcset="{srcset}" sizes="(max-width:960px) 100vw, 960px" alt="{c['alt']}" width="1920" height="1072" loading="lazy" decoding="async">
+          <span class="sd-frame" aria-hidden="true"><span class="sd-zoom"><img src="uploads/{IMG}-1920.webp" srcset="{srcset}" sizes="(max-width:960px) 200vw, 2000px" alt="" loading="lazy" decoding="async"></span><span class="sd-chip"></span></span>
           {marks}
         </div>
         <figcaption class="sd-cap"><span>{c['cap']}</span><span>{c['hint']}</span></figcaption>
@@ -158,9 +163,30 @@ JS = """    // ── SERVICES, INTERIOR DESIGN: MATERIAL KEY AND VIEWFINDER ─
       if (sec) {
         const items = Array.from(sec.querySelectorAll('.sd-item'));
         const frame = sec.querySelector('.sd-frame'), chip = sec.querySelector('.sd-chip');
-        let auto = !reduced, timer = null, idx = 0, visible = false;
+        const photo = sec.querySelector('.sd-photo'), loupe = sec.querySelector('.sd-zoom img');
+        const marks = Array.from(sec.querySelectorAll('.sd-mark'));
+        let auto = !reduced, timer = null, idx = 0, visible = false, cur = null, over = false;
+        // loupe: the copy inside the frame is scaled by k around the frame's centre
+        const zoom = () => {
+          if (cur === null) return;
+          const [x, y, w, h] = items[cur].dataset.f.split(',').map(Number), k = over ? 1.6 : 1.2;
+          const cx = x + w / 2, cy = y + h / 2;
+          loupe.style.width = (k * 100 / w * 100) + '%'; loupe.style.height = (k * 100 / h * 100) + '%';
+          loupe.style.left = ((w / 2 - k * cx) / w * 100) + '%'; loupe.style.top = ((h / 2 - k * cy) / h * 100) + '%';
+        };
+        photo.addEventListener('mouseenter', () => { over = true; zoom(); });
+        photo.addEventListener('mouseleave', () => { over = false; zoom(); });
+        // the photo runs out to the screen edge on the reading-start side
+        const bleed = () => {
+          const r = sec.querySelector('.sd-wrap').getBoundingClientRect();
+          const b = sec.getAttribute('dir') === 'rtl' ? document.documentElement.clientWidth - r.right : r.left;
+          sec.style.setProperty('--sd-bleed', Math.max(0, b) + 'px');
+        };
+        bleed(); window.addEventListener('resize', bleed);
         const pick = (n) => {
+          cur = n;
           items.forEach((b, i) => { b.classList.toggle('is-on', i === n); b.setAttribute('aria-pressed', i === n ? 'true' : 'false'); });
+          marks.forEach((m, i) => m.classList.toggle('is-on', i === n));
           sec.classList.toggle('has-pick', n !== null);
           if (n === null) return;
           const [x, y, w, h] = items[n].dataset.f.split(',').map(Number);
@@ -168,6 +194,7 @@ JS = """    // ── SERVICES, INTERIOR DESIGN: MATERIAL KEY AND VIEWFINDER ─
           frame.style.setProperty('--w', w + '%'); frame.style.setProperty('--h', h + '%');
           frame.classList.toggle('is-top', y < 8);
           chip.textContent = items[n].dataset.label;
+          zoom();
         };
         const stop = () => { auto = false; clearInterval(timer); };
         const tick = () => { if (auto && visible) { pick(idx % items.length); idx++; } };
