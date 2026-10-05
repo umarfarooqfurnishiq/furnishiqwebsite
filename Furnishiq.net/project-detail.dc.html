@@ -53,6 +53,7 @@ fbq('track', 'PageView');
 <script src="./nav-mobile.js" defer></script>
 <script src="./floating-buttons.js" defer></script>
 <script src="./analytics-events.js" defer></script>
+<script src="./newsletter.js" defer></script>
 <link rel="preload" as="font" type="font/ttf" href="_ds/furnishiq-design-system-ea658a9e-dd64-48ad-ab93-f0196a53ec9c/uploads/LamaSans-Medium_English.ttf" crossorigin>
 </head>
 <body>
@@ -529,6 +530,11 @@ input:focus, select:focus, textarea:focus {
       .fiq-pd-sidebar{position:static!important;top:auto!important;}
       .fiq-pd-meta{flex-wrap:wrap!important;gap:20px 32px!important;}
       .fiq-pd-related{grid-template-columns:1fr!important;}
+      .fiq-footer-grid{grid-template-columns:1fr 1fr!important;gap:48px!important;}
+      .fiq-footer-brand{grid-column:1/-1!important;}
+    }
+    @media(max-width:600px){
+      .fiq-footer-grid{grid-template-columns:1fr!important;}
     }
     @keyframes fiqHeroIn{from{opacity:0;transform:translateY(50px);}to{opacity:1;transform:translateY(0);}}
   </style>
@@ -554,6 +560,12 @@ input:focus, select:focus, textarea:focus {
 
 <section data-screen-label="Hero" style="position:relative;height:82vh;min-height:520px;background:#1E1610;overflow:hidden;">
   <img src="{{ heroImage }}" alt="{{ title }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+  <sc-if value="{{ hasFilm }}" hint-placeholder-val="{{ false }}">
+  <video data-pd-film muted loop playsinline preload="none" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+    <source data-src="{{ filmSd }}" type="video/mp4" media="(max-width: 768px)">
+    <source data-src="{{ filmHd }}" type="video/mp4">
+  </video>
+  </sc-if>
   <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,15,10,0.55) 0%,rgba(20,15,10,0.15) 35%,rgba(15,11,8,0.92) 100%);"></div>
 
   <a href="/projects" style="position:absolute;top:104px;left:clamp(24px,5vw,80px);z-index:2;display:inline-flex;align-items:center;gap:10px;font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.85);text-decoration:none;">
@@ -568,6 +580,9 @@ input:focus, select:focus, textarea:focus {
     </div>
     <h1 style="font-family:'Lama Sans',sans-serif;font-size:clamp(30px,4.4vw,58px);font-weight:600;line-height:1.08;letter-spacing:-0.01em;color:#FFFFFF;margin:0;max-width:900px;text-wrap:balance;">{{ title }}</h1>
   </div>
+  <sc-if value="{{ hasFilm }}" hint-placeholder-val="{{ false }}">
+  <button type="button" data-pd-film-toggle data-label-pause="Pause film" data-label-play="Play film" aria-label="Pause film" style="position:absolute;bottom:clamp(48px,6vw,72px);inset-inline-end:clamp(24px,5vw,80px);z-index:3;width:44px;height:44px;border-radius:50%;background:rgba(15,11,8,0.35);border:1px solid rgba(214,194,168,0.6);color:#D6C2A8;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background 0.3s cubic-bezier(0.25,0.46,0.45,0.94);"><svg data-icon-pause width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="9" y1="5" x2="9" y2="19"></line><line x1="15" y1="5" x2="15" y2="19"></line></svg><svg data-icon-play width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><polygon points="7 5 19 12 7 19 7 5"></polygon></svg></button>
+  </sc-if>
 </section>
 
 <section data-screen-label="Meta Strip" style="background:#1F1F1F;border-bottom:1px solid rgba(214,194,168,0.12);">
@@ -578,7 +593,7 @@ input:focus, select:focus, textarea:focus {
         <div style="font-family:'Lama Sans',sans-serif;font-size:15px;color:#FFFFFF;">{{ area }}</div>
       </div>
       <div>
-        <div style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(214,194,168,0.4);margin-bottom:6px;">Completion</div>
+        <div style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(214,194,168,0.4);margin-bottom:6px;">Status</div>
         <div style="font-family:'Lama Sans',sans-serif;font-size:15px;color:#FFFFFF;">{{ date }}</div>
       </div>
       <div>
@@ -602,29 +617,6 @@ input:focus, select:focus, textarea:focus {
           <p style="font-family:'Lama Sans',sans-serif;font-size:16px;line-height:2;color:rgba(232,223,216,0.75);margin:0;">{{ para.text }}</p>
         </sc-for>
       </div>
-      <div style="aspect-ratio:3/2;overflow:hidden;margin-bottom:52px;">
-        <img src="{{ secondaryImage }}" alt="{{ title }}" style="display:block;width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async">
-      </div>
-
-      <div style="display:flex;align-items:center;gap:16px;margin-bottom:24px;">
-        <span style="display:block;width:28px;height:1px;background:#D6C2A8;flex-shrink:0;"></span>
-        <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:rgba(214,194,168,0.6);">Views of the Project</span>
-      </div>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
-        <sc-for list="{{ gallery }}" as="shot" hint-placeholder-count="3">
-          <div data-gallery-item data-gallery-src="{{ shot.image }}" data-gallery-caption="{{ shot.caption }}" data-gallery-title="{{ title }}" style="cursor:pointer;">
-            <div style="aspect-ratio:3/2;overflow:hidden;margin-bottom:12px;position:relative;">
-              <img src="{{ shot.image }}" alt="{{ shot.caption }}" style="display:block;width:100%;height:100%;object-fit:cover;transition:transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94);" loading="lazy" decoding="async">
-              <div data-gallery-zoom style="position:absolute;inset:0;background:rgba(20,15,10,0.15);opacity:0;transition:opacity 0.3s ease;display:flex;align-items:center;justify-content:center;">
-                <div style="width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,0.7);display:flex;align-items:center;justify-content:center;">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
-                </div>
-              </div>
-            </div>
-            <span style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.06em;color:rgba(214,194,168,0.55);">{{ shot.caption }}</span>
-          </div>
-        </sc-for>
-      </div>
     </div>
 
     <aside id="pd-details-anchor" class="fiq-pd-sidebar" style="position:sticky;top:110px;background:#26201A;border:1px solid rgba(214,194,168,0.14);padding:clamp(28px,3vw,40px);">
@@ -643,7 +635,7 @@ input:focus, select:focus, textarea:focus {
           <span style="font-family:'Lama Sans',sans-serif;font-size:12px;color:#FFFFFF;">{{ area }}</span>
         </div>
         <div style="display:flex;justify-content:space-between;gap:12px;">
-          <span style="font-family:'Lama Sans',sans-serif;font-size:12px;color:rgba(214,194,168,0.55);">Completion</span>
+          <span style="font-family:'Lama Sans',sans-serif;font-size:12px;color:rgba(214,194,168,0.55);">Status</span>
           <span style="font-family:'Lama Sans',sans-serif;font-size:12px;color:#FFFFFF;">{{ date }}</span>
         </div>
       </div>
@@ -652,6 +644,43 @@ input:focus, select:focus, textarea:focus {
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
       </a>
     </aside>
+  </div>
+</section>
+
+<style>
+  .fiq-pd-mosaic{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:clamp(150px,17vw,250px);gap:12px;grid-auto-flow:dense;}
+  .fiq-pd-tile{position:relative;margin:0;overflow:hidden;cursor:pointer;background:#26201A;grid-column:span 4;grid-row:span 1;}
+  .fiq-pd-mosaic > .fiq-pd-tile:nth-child(6n+1){grid-column:span 8;grid-row:span 2;}
+  .fiq-pd-mosaic > .fiq-pd-tile:nth-child(6n+4),
+  .fiq-pd-mosaic > .fiq-pd-tile:nth-child(6n+5),
+  .fiq-pd-mosaic > .fiq-pd-tile:nth-child(6n){grid-row:span 2;}
+  .fiq-pd-tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);}
+  .fiq-pd-tile::after{content:"";position:absolute;inset:auto 0 0 0;height:45%;background:linear-gradient(to top,rgba(15,11,8,0.7),rgba(15,11,8,0));pointer-events:none;}
+  .fiq-pd-tile figcaption{position:absolute;inset-inline-start:18px;bottom:16px;z-index:1;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:#D6C2A8;}
+  .fiq-pd-tile:hover img,.fiq-pd-tile:focus-visible img{transform:scale(1.04);}
+  .fiq-pd-tile:focus-visible{outline:1px solid #D6C2A8;outline-offset:3px;}
+  @media (max-width:768px){
+    .fiq-pd-mosaic{grid-template-columns:repeat(2,1fr);grid-auto-rows:clamp(140px,42vw,220px);gap:8px;}
+    .fiq-pd-mosaic > .fiq-pd-tile,
+    .fiq-pd-mosaic > .fiq-pd-tile:nth-child(6n+4),.fiq-pd-mosaic > .fiq-pd-tile:nth-child(6n+5),.fiq-pd-mosaic > .fiq-pd-tile:nth-child(6n){grid-column:span 1;grid-row:span 1;}
+    .fiq-pd-mosaic > .fiq-pd-tile:nth-child(6n+1){grid-column:span 2;grid-row:span 1;}
+  }
+  @media (prefers-reduced-motion:reduce){.fiq-pd-tile img{transition:none;}}
+</style>
+<section data-screen-label="Project Gallery" style="background:#1F1F1F;padding:0 clamp(24px,5vw,80px) clamp(64px,8vw,100px);">
+  <div style="max-width:1280px;margin:0 auto;">
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:24px;">
+      <span style="display:block;width:28px;height:1px;background:#D6C2A8;flex-shrink:0;"></span>
+      <span style="font-family:'Lama Sans',sans-serif;font-size:9px;text-transform:uppercase;color:rgba(214,194,168,0.6);letter-spacing:0.28em;">Views of the Project</span>
+    </div>
+    <div class="fiq-pd-mosaic">
+      <sc-for list="{{ gallery }}" as="shot" hint-placeholder-count="6">
+        <figure class="fiq-pd-tile" data-gallery-item tabindex="0" role="button" data-gallery-src="{{ shot.full }}" data-gallery-caption="{{ shot.caption }}" data-gallery-title="{{ title }}" data-pos="{{ shot.pos }}" data-gallery-note="{{ shot.note }}">
+          <img src="{{ shot.image }}" alt="{{ shot.caption }}" loading="lazy" decoding="async">
+          <figcaption style="font-family:'Lama Sans',sans-serif;">{{ shot.caption }}</figcaption>
+        </figure>
+      </sc-for>
+    </div>
   </div>
 </section>
 
@@ -731,77 +760,178 @@ input:focus, select:focus, textarea:focus {
   </div>
 </section>
 
-<footer style="background:#1F1F1F;padding:clamp(64px,8vw,96px) clamp(24px,5vw,80px) 40px;border-top:1px solid rgba(91,70,54,0.25);">
+<footer id="fiq-footer" style="overflow:hidden;background:#1F1F1F;padding:clamp(72px,9vw,120px) clamp(24px,5vw,80px) 32px;">
+  <style>
+    #fiq-footer .fiq-ft-top{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(40px,6vw,96px);align-items:end;}
+    #fiq-footer .fiq-ft-statement{font-family:'Lama Sans',sans-serif;font-size:clamp(26px,2.8vw,42px);font-weight:500;line-height:1.2;letter-spacing:-0.01em;color:#F5F2ED;margin:28px 0 0;max-width:640px;}
+    #fiq-footer .fiq-ft-label{display:block;font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#D6C2A8;margin-bottom:22px;}
+    #fiq-footer .fiq-ft-form{display:flex;align-items:center;gap:16px;border-bottom:1px solid rgba(214,194,168,0.35);transition:border-color 0.4s cubic-bezier(0.25,0.46,0.45,0.94);}
+    #fiq-footer .fiq-ft-form:focus-within{border-color:#D6C2A8;}
+    #fiq-footer .fiq-ft-form input{flex:1;min-width:0;background:transparent;border:none;outline:none;padding:16px 0;font-family:'Lama Sans',sans-serif;font-size:15px;color:#FFFFFF;}
+    #fiq-footer .fiq-ft-form input::placeholder{color:rgba(245,242,237,0.45);}
+    #fiq-footer .fiq-ft-form button{display:inline-flex;align-items:center;gap:12px;background:none;border:none;padding:16px 0;cursor:pointer;font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#D6C2A8;transition:color 0.3s cubic-bezier(0.25,0.46,0.45,0.94);}
+    #fiq-footer .fiq-ft-form button:hover,#fiq-footer .fiq-ft-form button:focus-visible{color:#FFFFFF;}
+    #fiq-footer .fiq-ft-frieze{margin:clamp(56px,7vw,88px) calc(50% - 50vw);border-top:1px solid rgba(214,194,168,0.14);border-bottom:1px solid rgba(214,194,168,0.14);opacity:0.5;}
+    #fiq-footer .fiq-ft-frieze svg{opacity:0.45;}
+    #fiq-footer .fiq-ft-cols{display:grid;grid-template-columns:1.25fr 1fr 1fr 1fr;gap:clamp(32px,4vw,64px);}
+    #fiq-footer .fiq-ft-desc{font-family:'Lama Sans',sans-serif;font-size:14px;line-height:1.8;color:rgba(245,242,237,0.6);max-width:300px;margin:0;}
+    #fiq-footer nav{display:flex;flex-direction:column;align-items:flex-start;gap:14px;}
+    #fiq-footer .fiq-ft-link{position:relative;font-family:'Lama Sans',sans-serif;font-size:14px;color:rgba(245,242,237,0.78);text-decoration:none;padding-bottom:2px;transition:color 0.3s cubic-bezier(0.25,0.46,0.45,0.94);}
+    #fiq-footer .fiq-ft-link::after{content:"";position:absolute;inset-inline-start:0;bottom:0;width:100%;height:1px;background:#D6C2A8;transform:scaleX(0);transform-origin:left;transition:transform 0.45s cubic-bezier(0.25,0.46,0.45,0.94);}
+    #fiq-footer .fiq-ft-link:hover,#fiq-footer .fiq-ft-link:focus-visible{color:#D6C2A8;}
+    #fiq-footer .fiq-ft-link:hover::after,#fiq-footer .fiq-ft-link:focus-visible::after{transform:scaleX(1);}
+    #fiq-footer .fiq-ft-k{display:block;font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(214,194,168,0.6);margin-bottom:6px;}
+    #fiq-footer .fiq-ft-v{font-family:'Lama Sans',sans-serif;font-size:14px;color:rgba(245,242,237,0.78);margin:0;}
+    #fiq-footer .fiq-ft-fact{display:flex;align-items:baseline;gap:14px;padding:14px 0;border-top:1px solid rgba(214,194,168,0.14);}
+    #fiq-footer .fiq-ft-fact:last-child{border-bottom:1px solid rgba(214,194,168,0.14);}
+    #fiq-footer .fiq-ft-fact-n{font-family:'Lama Sans',sans-serif;font-size:26px;line-height:1;color:#F5F2ED;min-width:56px;}
+    #fiq-footer .fiq-ft-fact-k{font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(245,242,237,0.6);}
+    #fiq-footer .fiq-ft-bottom{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px 32px;margin-top:clamp(56px,7vw,88px);padding-top:28px;border-top:1px solid rgba(214,194,168,0.14);}
+    #fiq-footer .fiq-ft-fine{font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.04em;line-height:1.7;color:rgba(245,242,237,0.5);margin:0;}
+    #fiq-footer .fiq-ft-lang{justify-self:end;font-family:GE SS Two,'Arial',sans-serif;font-size:13px;color:#D6C2A8;text-decoration:none;padding:8px 18px;border:1px solid rgba(214,194,168,0.35);transition:background 0.3s cubic-bezier(0.25,0.46,0.45,0.94),color 0.3s cubic-bezier(0.25,0.46,0.45,0.94);}
+    #fiq-footer .fiq-ft-lang:hover,#fiq-footer .fiq-ft-lang:focus-visible{background:#D6C2A8;color:#1F1F1F;}
+    @media(max-width:1024px){
+      #fiq-footer .fiq-ft-cols{grid-template-columns:1fr 1fr;}
+    }
+    @media(max-width:900px){
+      #fiq-footer .fiq-ft-top{grid-template-columns:1fr;}
+      #fiq-footer .fiq-ft-bottom{grid-template-columns:1fr;justify-items:start;}
+      #fiq-footer .fiq-ft-lang{justify-self:start;}
+    }
+    @media(max-width:600px){
+      #fiq-footer .fiq-ft-cols{grid-template-columns:1fr;}
+    }
+    @media(prefers-reduced-motion:reduce){
+      #fiq-footer .fiq-ft-link::after,#fiq-footer .fiq-ft-form,#fiq-footer .fiq-ft-link{transition:none;}
+    }
+  </style>
   <div style="max-width:1280px;margin:0 auto;">
-    <div class="fiq-footer-grid" style="display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:clamp(28px,4vw,64px);margin-bottom:64px;">
-      <div class="fiq-footer-brand">
-        <img src="assets/logo-default.png" width="264" height="90" alt="FurnishIQ" style="height:36px;width:auto;max-width:160px;object-fit:contain;object-position:left center;margin-bottom:22px;display:block;" loading="lazy" decoding="async">
-        <p style="font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.8;color:rgba(214,194,168,0.65);margin-bottom:0;max-width:260px;">Integrated Design–Build solutions transforming ambitious architectural concepts into inspiring realities across Saudi Arabia.</p>
+    <div class="fiq-ft-top">
+      <div>
+        <a href="/" style="display:inline-block;text-decoration:none;"><img src="assets/logo-default.png" width="264" height="90" alt="FurnishIQ" style="height:40px;width:auto;display:block;margin-inline-start:-8px;" loading="lazy" decoding="async"></a>
+        <p class="fiq-ft-statement">Integrated design&ndash;build, from first concept to final handover.</p>
       </div>
       <div>
-        <div style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.26em;text-transform:uppercase;color:rgba(214,194,168,0.65);margin-bottom:22px;">Services</div>
-        <nav style="display:flex;flex-direction:column;gap:13px;">
-          <a href="/services-interior-design" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Interior Design</a>
-          <a href="/services-fitout" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Fit-Out</a>
-          <a href="/services-mep" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Engineering &amp; MEP</a>
-          <a href="/services-furniture" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Furniture Solutions</a>
-          <a href="#" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Project Management</a>
-        </nav>
+        <span class="fiq-ft-label">Join the IQ</span>
+        <p class="fiq-ft-desc" style="margin-bottom:8px;">Monthly notes on materials, projects and craft.</p>
+        <form class="fiq-ft-form" data-fiq-newsletter novalidate>
+          <input type="email" name="email" required autocomplete="email" placeholder="Your email address" aria-label="Your email address">
+          <button type="submit">Subscribe<svg width="16" height="6" viewBox="0 0 16 6" fill="none" aria-hidden="true" style="transform:none;flex-shrink:0;"><path d="M0 3H14M14 3L11.5 1M14 3L11.5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+        </form>
+        <p class="fiq-ft-fine" data-fiq-newsletter-thanks style="display:none;margin-top:12px;color:#D6C2A8;">Thank you &mdash; monthly updates, strictly no spam.</p>
       </div>
+    </div>
+
+    <div class="fiq-ft-frieze" aria-hidden="true"><svg width="100%" height="64" xmlns="http://www.w3.org/2000/svg" style="display:block;"><defs><pattern id="fiq-ft-khatam-en" width="64" height="64" patternUnits="userSpaceOnUse"><g fill="none" stroke="#D6C2A8" stroke-width="1"><rect x="16.44" y="16.44" width="31.12" height="31.12"/><path d="M32 10L54 32L32 54L10 32Z"/><path d="M0 32H10M54 32H64"/></g></pattern></defs><rect width="100%" height="64" fill="url(#fiq-ft-khatam-en)"/></svg></div>
+
+    <div class="fiq-ft-cols">
       <div>
-        <div style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.26em;text-transform:uppercase;color:rgba(214,194,168,0.65);margin-bottom:22px;">Company</div>
-        <nav style="display:flex;flex-direction:column;gap:13px;">
-          <a href="/about-us" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">About Us</a>
-          <a href="/services" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Services</a>
-          <a href="/projects" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:#D6C2A8;text-decoration:none;">Portfolio</a>
-          <a href="#" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Terms &amp; Conditions</a>
-          <a href="/contact" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Contact</a>
-          <a href="/blog" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Insights</a>
-        </nav>
-      </div>
-      <div>
-        <div style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.26em;text-transform:uppercase;color:rgba(214,194,168,0.65);margin-bottom:22px;">Find Us</div>
+        <span class="fiq-ft-label">Find Us</span>
         <div style="display:flex;flex-direction:column;gap:20px;">
-          <div>
-            <div style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(214,194,168,0.65);margin-bottom:5px;">Address</div>
-            <p style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);line-height:1.65;">Riyadh, KSA.</p>
-          </div>
-          <div>
-            <div style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(214,194,168,0.65);margin-bottom:5px;">Email</div>
-            <a href="mailto:info@furnishiq.net" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">info@furnishiq.net</a>
-          </div>
-          <div>
-            <div style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(214,194,168,0.65);margin-bottom:5px;">Phone — Ibrahim Al Ali</div>
-            <a href="tel:+966580330627" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">+966 58 033 0627</a>
-          </div>
+          <div><span class="fiq-ft-k">Address</span><p class="fiq-ft-v">Riyadh, KSA.</p></div>
+          <div><span class="fiq-ft-k">Email</span><a class="fiq-ft-link" href="mailto:info@furnishiq.net">info@furnishiq.net</a></div>
+          <div><span class="fiq-ft-k">Phone &mdash; Ibrahim Al Ali</span><a class="fiq-ft-link" href="tel:+966580330627" dir="ltr">+966 58 033 0627</a></div>
+        </div>
+      </div>
+      <div>
+        <span class="fiq-ft-label">Services</span>
+        <nav aria-label="Services">
+            <a class="fiq-ft-link" href="/services-interior-design">Interior Design</a>
+            <a class="fiq-ft-link" href="/services-fitout">Fit-Out</a>
+            <a class="fiq-ft-link" href="/services-mep">Engineering &amp; MEP</a>
+            <a class="fiq-ft-link" href="/services-furniture">Furniture Solutions</a>
+            <a class="fiq-ft-link" href="#">Project Management</a>
+        </nav>
+      </div>
+      <div>
+        <span class="fiq-ft-label">Company</span>
+        <nav aria-label="Company">
+            <a class="fiq-ft-link" href="/about-us">About Us</a>
+            <a class="fiq-ft-link" href="/services">Services</a>
+            <a class="fiq-ft-link" href="/projects">Portfolio</a>
+            <a class="fiq-ft-link" href="/blog">Insights</a>
+            <a class="fiq-ft-link" href="/contact">Contact Us</a>
+            <a class="fiq-ft-link" href="#">Terms &amp; Conditions</a>
+        </nav>
+      </div>
+      <div>
+        <span class="fiq-ft-label">At a Glance</span>
+        <div>
+            <div class="fiq-ft-fact"><span class="fiq-ft-fact-n" dir="ltr">15+</span><span class="fiq-ft-fact-k">Years of practice</span></div>
+            <div class="fiq-ft-fact"><span class="fiq-ft-fact-n" dir="ltr">40+</span><span class="fiq-ft-fact-k">Completed projects</span></div>
+            <div class="fiq-ft-fact"><span class="fiq-ft-fact-n" dir="ltr">20+</span><span class="fiq-ft-fact-k">Team members</span></div>
         </div>
       </div>
     </div>
-    <div style="border-top:1px solid rgba(214,194,168,0.1);padding-top:28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
-      <p style="font-family:'Lama Sans',sans-serif;font-size:11px;color:rgba(214,194,168,0.65);letter-spacing:0.04em;">© 2026 FurnishIQ. All rights reserved.</p>
-      <p style="font-family:'Lama Sans',sans-serif;font-size:11px;color:rgba(214,194,168,0.65);letter-spacing:0.04em;">Crafted with precision in Saudi Arabia.</p>
+
+    <div class="fiq-ft-bottom">
+      <div>
+        <p class="fiq-ft-fine">&copy; 2026 FurnishIQ. All rights reserved.</p>
+        <p class="fiq-ft-fine">Basic Step for Contracting Company &middot; C.R. 2050155201</p>
+      </div>
+      <p class="fiq-ft-fine">Crafted with precision in Saudi Arabia.</p>
+      <a class="fiq-ft-lang" href="/ar/project-detail" lang="ar" dir="rtl">عربي</a>
     </div>
   </div>
 </footer>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ GALLERY LIGHTBOX ━━━━ -->
-<div id="pd-lightbox" style="position:fixed;inset:0;z-index:500;display:none;align-items:center;justify-content:center;background:rgba(15,11,8,0.94);padding:clamp(24px,5vw,64px);opacity:0;transition:opacity 0.3s ease;">
-  <button type="button" id="pd-lightbox-close" aria-label="Close gallery" style="position:absolute;top:clamp(20px,3vw,36px);right:clamp(20px,3vw,36px);width:44px;height:44px;border-radius:50%;background:transparent;border:1px solid rgba(214,194,168,0.4);display:flex;align-items:center;justify-content:center;cursor:pointer;color:#D6C2A8;transition:all 0.3s;">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"></line><line x1="18" y1="6" x2="6" y2="18"></line></svg>
-  </button>
-  <div style="max-width:1100px;width:100%;max-height:88vh;display:flex;flex-direction:column;align-items:center;">
-    <div style="position:relative;width:100%;aspect-ratio:3/2;overflow:hidden;background:#000;">
-      <img id="pd-lightbox-img" src="" alt="" style="display:block;width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async">
-      <button type="button" id="pd-lightbox-prev" aria-label="Previous image" style="position:absolute;top:50%;left:16px;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:rgba(15,11,8,0.55);border:1px solid rgba(214,194,168,0.4);display:flex;align-items:center;justify-content:center;cursor:pointer;color:#D6C2A8;transition:all 0.3s;">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
-      </button>
-      <button type="button" id="pd-lightbox-next" aria-label="Next image" style="position:absolute;top:50%;right:16px;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:rgba(15,11,8,0.55);border:1px solid rgba(214,194,168,0.4);display:flex;align-items:center;justify-content:center;cursor:pointer;color:#D6C2A8;transition:all 0.3s;">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
-      </button>
-    </div>
-    <div style="width:100%;padding-top:24px;">
-      <span id="pd-lightbox-caption" style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.24em;text-transform:uppercase;color:rgba(214,194,168,0.55);display:block;margin-bottom:8px;"></span>
-      <h3 id="pd-lightbox-title" style="font-family:'Lama Sans',sans-serif;font-size:clamp(18px,2.2vw,26px);font-weight:500;color:#FFFFFF;line-height:1.3;margin:0;text-wrap:balance;"></h3>
+<style>
+  /* Project image modal: one fixed 16:9 frame for every image, details on a bottom gradient (pattern from the turnkey landing pop-up, square corners per the design system) */
+  #pd-lightbox{position:fixed;inset:0;z-index:500;display:none;align-items:center;justify-content:center;padding:72px 24px 24px;box-sizing:border-box;background:rgba(15,11,8,0.95);opacity:0;transition:opacity 0.35s cubic-bezier(0.25,0.46,0.45,0.94);}
+  .fiq-lb-frame{position:relative;width:min(100%,1600px,calc((100vh - 96px) * 16 / 9));aspect-ratio:16/9;overflow:hidden;background:#1E1610;box-shadow:0 24px 80px rgba(0,0,0,0.4);}
+  .fiq-lb-frame > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .fiq-lb-info{position:absolute;left:0;right:0;bottom:0;padding:clamp(80px,12vh,140px) clamp(24px,3vw,44px) clamp(22px,2.6vw,34px);background:linear-gradient(to top,rgba(15,11,8,0.94) 0%,rgba(15,11,8,0.78) 55%,rgba(15,11,8,0) 100%);display:flex;flex-direction:column;gap:clamp(16px,2vw,22px);}
+  .fiq-lb-head{display:flex;align-items:flex-end;justify-content:space-between;gap:32px;}
+  .fiq-lb-note{font-size:14px;line-height:1.75;color:rgba(232,223,216,0.78);margin:10px 0 0;max-width:620px;}
+  .fiq-lb-side{display:flex;align-items:center;gap:20px;flex-shrink:0;}
+  .fiq-lb-count{font-size:11px;letter-spacing:0.2em;color:rgba(214,194,168,0.7);white-space:nowrap;}
+  .fiq-lb-cta{display:inline-flex;align-items:center;gap:10px;font-size:10px;text-transform:uppercase;color:#1F1F1F;background:#D6C2A8;border:1px solid #D6C2A8;padding:15px 26px;text-decoration:none;white-space:nowrap;transition:background 0.3s cubic-bezier(0.25,0.46,0.45,0.94),color 0.3s cubic-bezier(0.25,0.46,0.45,0.94),border-color 0.3s cubic-bezier(0.25,0.46,0.45,0.94);}
+  .fiq-lb-cta:hover,.fiq-lb-cta:focus-visible{background:transparent;color:#FFFFFF;border-color:rgba(255,255,255,0.45);outline:none;}
+  .fiq-lb-params{display:grid;grid-template-columns:repeat(4,minmax(0,0.7fr)) minmax(0,1.6fr);gap:clamp(16px,2vw,28px);padding-top:clamp(14px,1.6vw,18px);border-top:1px solid rgba(255,255,255,0.16);}
+  .fiq-lb-params dt{font-size:9px;text-transform:uppercase;color:rgba(214,194,168,0.55);margin:0 0 6px;}
+  .fiq-lb-params dd{font-size:13px;color:#FFFFFF;margin:0;}
+  .fiq-lb-nav{position:absolute;top:42%;z-index:2;width:52px;height:52px;margin-top:-26px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,0.45);border-radius:50%;background:rgba(15,11,8,0.35);color:#D6C2A8;cursor:pointer;padding:0;transition:background 0.3s cubic-bezier(0.25,0.46,0.45,0.94),color 0.3s cubic-bezier(0.25,0.46,0.45,0.94);}
+  .fiq-lb-nav:hover,.fiq-lb-nav:focus-visible{background:#D6C2A8;color:#1F1F1F;outline:none;}
+  #pd-lightbox-prev{left:clamp(14px,2vw,26px);} #pd-lightbox-next{right:clamp(14px,2vw,26px);}
+  #pd-lightbox-close{position:absolute;top:16px;right:16px;width:48px;height:48px;border-radius:50%;background:transparent;border:1px solid rgba(214,194,168,0.45);display:flex;align-items:center;justify-content:center;cursor:pointer;color:#D6C2A8;}
+  @media(max-width:900px),(max-height:620px){
+    #pd-lightbox{align-items:flex-start;padding:72px 16px 16px;overflow-y:auto;}
+    .fiq-lb-frame{width:100%;aspect-ratio:auto;overflow:visible;background:#1E1610;}
+    .fiq-lb-frame > img{position:relative;display:block;aspect-ratio:16/9;height:auto;}
+    .fiq-lb-info{position:relative;padding:22px 20px 24px;background:#1E1610;}
+    .fiq-lb-head{flex-direction:column;align-items:stretch;gap:18px;}
+    .fiq-lb-side{justify-content:space-between;}
+    .fiq-lb-params{grid-template-columns:1fr 1fr;}
+    .fiq-lb-params > div:last-child{grid-column:1/-1;}
+    .fiq-lb-nav{top:calc((100vw - 32px) * 9 / 32);width:44px;height:44px;margin-top:-22px;}
+  }
+</style>
+<div id="pd-lightbox" role="dialog" aria-modal="true" aria-labelledby="pd-lightbox-title" data-wa-template="Hello FurnishIQ, I would like to discuss a project like {title} ({caption}).">
+  <button type="button" id="pd-lightbox-close" aria-label="Close gallery"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"></line><line x1="18" y1="6" x2="6" y2="18"></line></svg></button>
+  <div class="fiq-lb-frame">
+    <img id="pd-lightbox-img" src="" alt="" decoding="async">
+    <button type="button" id="pd-lightbox-prev" class="fiq-lb-nav" aria-label="Previous image"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+    <button type="button" id="pd-lightbox-next" class="fiq-lb-nav" aria-label="Next image"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+    <div class="fiq-lb-info">
+      <div class="fiq-lb-head">
+        <div>
+          <span id="pd-lightbox-caption" style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.24em;text-transform:uppercase;color:#D6C2A8;display:block;margin-bottom:8px;"></span>
+          <h3 id="pd-lightbox-title" style="font-family:'Lama Sans',sans-serif;font-size:clamp(20px,2.2vw,28px);font-weight:500;color:#FFFFFF;line-height:1.25;margin:0;"></h3>
+          <p id="pd-lightbox-note" class="fiq-lb-note" style="font-family:'Lama Sans',sans-serif;"></p>
+        </div>
+        <div class="fiq-lb-side">
+          <span id="pd-lightbox-count" class="fiq-lb-count" style="font-family:'Lama Sans',sans-serif;"></span>
+          <a id="pd-lightbox-wa" class="fiq-lb-cta" href="https://wa.me/966580330627" target="_blank" rel="noopener" style="font-family:'Lama Sans',sans-serif;letter-spacing:0.2em;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path></svg>Discuss on WhatsApp</a>
+        </div>
+      </div>
+      <dl class="fiq-lb-params" style="margin:0;">
+        <div><dt style="font-family:'Lama Sans',sans-serif;letter-spacing:0.2em;">Category</dt><dd style="font-family:'Lama Sans',sans-serif;">{{ category }}</dd></div>
+        <div><dt style="font-family:'Lama Sans',sans-serif;letter-spacing:0.2em;">Location</dt><dd style="font-family:'Lama Sans',sans-serif;">{{ location }}</dd></div>
+        <div><dt style="font-family:'Lama Sans',sans-serif;letter-spacing:0.2em;">Built-up Area</dt><dd style="font-family:'Lama Sans',sans-serif;">{{ area }}</dd></div>
+        <div><dt style="font-family:'Lama Sans',sans-serif;letter-spacing:0.2em;">Status</dt><dd style="font-family:'Lama Sans',sans-serif;">{{ date }}</dd></div>
+        <div><dt style="font-family:'Lama Sans',sans-serif;letter-spacing:0.2em;">FurnishIQ Scope</dt><dd style="font-family:'Lama Sans',sans-serif;">{{ scopeText }}</dd></div>
+      </dl>
     </div>
   </div>
 </div>
@@ -810,134 +940,98 @@ input:focus, select:focus, textarea:focus {
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
   PROJECTS = [
-    { category: 'Residential', location: 'Riyadh', title: 'A private residence in layered walnut and stone', image: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1400&q=30' },
-    { category: 'Hospitality', location: 'Jeddah', title: 'Boutique hotel lobby, reimagined in warm brass', image: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1400&q=30' },
-    { category: 'Workplace', location: 'Riyadh', title: 'A 90-day headquarters fit-out for a growing fintech', image: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1400&q=30' },
-    { category: 'Retail', location: 'Khobar', title: 'Flagship concept store with sculptural fixtures', image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1400&q=30' },
-    { category: 'Residential', location: 'Dammam', title: 'Coastal villa, engineered for light and shade', image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1400&q=30' },
-    { category: 'Hospitality', location: 'AlUla', title: 'Desert retreat restaurant, stone and steel', image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1400&q=30' },
-    { category: 'Workplace', location: 'Riyadh', title: 'Executive floor, invisible MEP by design', image: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1400&q=30' },
-    { category: 'Retail', location: 'Jeddah', title: 'Furniture showroom, custom joinery throughout', image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1400&q=30' },
-    { category: 'Workplace', location: 'Jeddah', title: 'Law firm chambers in oak and smoked glass', image: 'https://images.unsplash.com/photo-1604328698692-f76ea9498e76?auto=format&fit=crop&w=1400&q=30' },
-    { category: 'Residential', location: 'Riyadh', title: 'Penthouse duplex above the diplomatic quarter', image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=30' },
-    { category: 'Hospitality', location: 'Riyadh', title: 'Specialty coffee house with in-house roastery', image: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1400&q=30' },
-    { category: 'Retail', location: 'Riyadh', title: 'Jewellery atelier behind a bronze veil facade', image: 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1400&q=30' },
-    { category: 'Hospitality', location: 'Khobar', title: 'Waterfront brasserie, seating for two hundred', image: 'https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1400&q=30' },
-    { category: 'Workplace', location: 'Dammam', title: 'Regional logistics HQ with a client showroom', image: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1400&q=30' },
+    { category: 'Residential', location: 'North Riyadh', title: 'The Courtyard Residence', image: 'uploads/courtyard-residence-grand-majlis-riyadh-1920.webp' },
+    { category: 'Workplace', location: 'West Riyadh', title: 'Family Office HQ', image: 'uploads/family-office-courtyard-olive-tree-riyadh-1920.webp' },
+    { category: 'Retail', location: 'Olaya, Riyadh', title: 'Central Commons', image: 'uploads/central-commons-plaza-dusk-riyadh-1920.webp' },
+    { category: 'Residential', location: 'North Jeddah', title: 'Obhur Beach Estate', image: 'uploads/obhur-estate-great-room-red-sea-jeddah-1920.webp' },
+    { category: 'Hospitality', location: 'AlUla', title: 'Desert Stone Resort', image: 'uploads/desert-stone-resort-lobby-lounge-alula-1920.webp' },
+    { category: 'Workplace', location: 'North Riyadh', title: 'The Executive Floors', image: 'uploads/executive-floors-sky-lobby-reception-riyadh-1920.webp' },
+    { category: 'Retail', location: 'North Riyadh', title: 'The Furniture Gallery', image: 'uploads/furniture-gallery-atrium-stair-riyadh-1920.webp' },
+    { category: 'Residential', location: 'West Riyadh', title: 'Penthouse Above the Wadi', image: 'uploads/penthouse-wadi-double-height-living-riyadh-1920.webp' },
+    { category: 'Hospitality', location: 'North Riyadh', title: 'Roastery House Flagship', image: 'uploads/roastery-house-roasting-hall-riyadh-1920.webp' },
+    { category: 'Retail', location: 'Jeddah', title: 'Maison de Joaillerie', image: 'uploads/maison-joaillerie-main-salon-jeddah-1920.webp' },
   ];
 
   DETAILS = {
-    'A private residence in layered walnut and stone': { area: '1,450 m\u00B2', date: 'Completed 2025', paras: [
-      'A family villa in north Riyadh conceived as a sequence of calm, material-led rooms. The brief asked for warmth without ornament: hand-finished walnut joinery, honed Omani limestone, and brushed brass detailing carry the palette from the entry gallery through to the private wing.',
-      'FurnishIQ delivered the project end to end — interior architecture, custom joinery, lighting design, and full MEP coordination. Every touched surface is genuine material; engineered alternatives were reserved for high-level planes where the hand never reaches.',
-      'The result is a residence that photographs quietly and lives generously: daylight is shaped by deep reveals and timber screens, while concealed services keep every ceiling clean and every wall silent.',
-      'The entry sequence was choreographed deliberately — a compressed, low-lit vestibule releases into a double-height gallery, resetting the visitor\u2019s pace before the main living wing unfolds.',
-      'Bespoke joinery was produced in our own workshop, allowing wall panelling, cabinetry, and the central staircase balustrade to share one continuous grain and jointing language throughout.',
-      'Climate and lighting are managed on a single home-automation backbone, with scenes tuned room by room alongside the family before handover.',
+    "The Courtyard Residence": { area: "3,800 m²", date: "Design Concept", film: { poster: 'uploads/courtyard-residence-film-poster.webp', hd: 'uploads/courtyard-residence-film-1080.mp4', sd: 'uploads/courtyard-residence-film-720.mp4' }, secondary: "uploads/courtyard-residence-central-courtyard-reflecting-pool-1920.webp", gallery: [{ caption: "Grand Majlis", image: "uploads/courtyard-residence-grand-majlis-riyadh-1280.webp", full: "uploads/courtyard-residence-grand-majlis-riyadh-2752.webp", pos: "center", note: "The 220 m² grand majlis: honed travertine, fluted walnut and walnut mashrabiya screens, with low seating for formal gatherings." }, { caption: "Central Courtyard at Dusk", image: "uploads/courtyard-residence-central-courtyard-reflecting-pool-1280.webp", full: "uploads/courtyard-residence-central-courtyard-reflecting-pool-2752.webp", pos: "center", note: "The central courtyard links all three wings around a dark-stone reflecting pool, lit at dusk by the glow of the mashrabiya screens." }, { caption: "Walnut Mashrabiya Detail", image: "uploads/courtyard-residence-walnut-mashrabiya-detail-1200.webp", full: "uploads/courtyard-residence-walnut-mashrabiya-detail-2400.webp", pos: "60% center", note: "Hand-finished walnut mashrabiya filters the western sun into a soft geometric light across the majlis." }, { caption: "Majlis Seating Detail", image: "uploads/courtyard-residence-majlis-seating-detail-1200.webp", full: "uploads/courtyard-residence-majlis-seating-detail-2400.webp", pos: "62% center", note: "Low majlis seating in ivory bouclé on walnut plinths, with cognac leather bolsters, made to the room’s exact dimensions." }, { caption: "Formal Dining Room", image: "uploads/courtyard-residence-formal-dining-room-1280.webp", full: "uploads/courtyard-residence-formal-dining-room-2752.webp", pos: "center", note: "A formal dining room for sixteen beneath a linear bronze pendant, opening onto the garden through mashrabiya doors." }, { caption: "Entrance Hall Staircase", image: "uploads/luxury-villa-fit-out-travertine-staircase-walnut-wall-riyadh-1200.webp", full: "uploads/luxury-villa-fit-out-travertine-staircase-walnut-wall-riyadh-1600.webp", pos: "42% center", note: "Cantilevered travertine treads rise along a fluted walnut wall in the double-height entrance hall." }], scope: "Interior Design · Fit-Out · MEP Engineering · Bespoke Furniture", paras: [
+      "The Courtyard Residence is a FurnishIQ design concept for a multi-generational family in north Riyadh who host often and live privately. The 3,800 m² home is organised into three wings — a formal majlis wing, a family wing and a guest wing — all opening onto a central courtyard with a long reflecting pool. Every principal room looks onto it, and every route through the house passes it.",
+      "The majlis wing is designed for receiving guests at scale without compromising family privacy. The 220 m² grand majlis is wrapped in honed travertine and fluted walnut, with walnut mashrabiya screens that temper the afternoon sun and cast a moving pattern across the floor. A separate women’s majlis and a formal dining room for sixteen complete the guest sequence, served by a catering kitchen with its own staff access.",
+      "The palette is deliberately narrow: travertine, walnut, bronze and limestone, repeated across every wing so the house reads as one composition. Detail does the work that ornament would elsewhere — shadow gaps at every ceiling junction, bronze inlays set flush into stone, and joinery aligned to a single setting-out grid from floor to ceiling.",
+      "The MEP strategy is planned alongside the interior from the first sketch. Conditioned air is delivered through linear slot diffusers concealed in ceiling shadow gaps; acoustic separation isolates the majlis wing from the family wing; lighting, shading, climate and security run on a single KNX smart-home system, with scene control in every room.",
+      "FurnishIQ specifies and sources the furniture as part of the same design: low majlis seating in ivory bouclé on walnut plinths, a sixteen-seat dining table in book-matched walnut, and lounge pieces in cognac leather. Each piece is selected or made to order against the approved 3D visualisation, so the rooms match the design without substitution.",
+      "FurnishIQ’s scope covers the complete design-build: interior design and photoreal 3D visualisation, fit-out across all three levels, full MEP engineering with smart-home integration, and furniture specification, sourcing and installation.",
     ]},
-    'Boutique hotel lobby, reimagined in warm brass': { area: '620 m\u00B2', date: 'Completed 2025', paras: [
-      'A tired arrival hall in central Jeddah transformed into a compressed, atmospheric threshold. Unlacquered brass, fluted timber, and a monolithic stone reception desk set a tone the guest rooms above now follow.',
-      'The fit-out was phased overnight across six weeks so the hotel never closed. Acoustic ceilings, integrated lighting scenes, and new air handling were threaded through the existing structure without a single visible grille.',
-      'Since reopening, the lobby has become the property\u2019s most photographed space — and the benchmark for the operator\u2019s regional refurbishment programme.',
-      'A hand-hammered brass reception desk anchors the arrival sequence, backed by a fluted timber wall that carries concealed task lighting for the front desk team.',
-      'Seating clusters were zoned acoustically with felt-lined banquettes, letting the lobby serve both quick check-ins and lingering guests without either group intruding on the other.',
-      'Every finish was specified for a high-traffic hospitality environment, holding its warmth under continuous daily wear.',
+    "Family Office HQ": { area: "3,200 m²", date: "Design Concept", film: { poster: 'uploads/family-office-film-poster.webp', hd: 'uploads/family-office-film-1080.mp4', sd: 'uploads/family-office-film-720.mp4' }, secondary: "uploads/family-office-council-room-oak-table-1920.webp", gallery: [{ caption: "Entrance Courtyard", image: "uploads/family-office-courtyard-olive-tree-riyadh-1280.webp", full: "uploads/family-office-courtyard-olive-tree-riyadh-2752.webp", pos: "center", note: "The entrance courtyard: limestone walls, a single olive tree and a long water rill leading to the reception." }, { caption: "Family Council Room", image: "uploads/family-office-council-room-oak-table-1280.webp", full: "uploads/family-office-council-room-oak-table-2752.webp", pos: "center", note: "The council room seats sixteen around a smoked oak table beneath athel timber beams." }, { caption: "Library and Archive", image: "uploads/family-office-library-archive-1280.webp", full: "uploads/family-office-library-archive-2752.webp", pos: "center", note: "Floor-to-ceiling oak shelving with a bronze ladder holds the family archive above two reading tables." }, { caption: "Principal’s Office", image: "uploads/family-office-principal-office-1280.webp", full: "uploads/family-office-principal-office-2752.webp", pos: "55% center", note: "The principal’s office looks into the courtyard through a deep limestone reveal." }, { caption: "Guest Majlis", image: "uploads/family-office-guest-majlis-1280.webp", full: "uploads/family-office-guest-majlis-2752.webp", pos: "center", note: "A guest majlis with low tobacco suede seating beneath a limestone wall lit through triangular Najdi openings." }, { caption: "Limestone and Bronze Detail", image: "uploads/family-office-limestone-bronze-detail-1200.webp", full: "uploads/family-office-limestone-bronze-detail-2400.webp", pos: "75% center", note: "Triangular Najdi openings cut into limestone, framed in dark bronze." }], scope: "Interior Design · Fit-Out · MEP Engineering · Bespoke Furniture", paras: [
+      "Family Office HQ is a FurnishIQ design concept for the private headquarters of a family office in west Riyadh. The 3,200 m² building presents a quiet limestone wall to the street and opens inward, around a courtyard with an olive tree and a long water rill.",
+      "Every principal room faces the courtyard: the family council room, the principal’s office, the library and a private dining room on the upper floor; a guest majlis, meeting rooms and the investment team studio below. A lower-ground level holds the archive and a secure records room.",
+      "The architecture draws on Najdi building: thick limestone walls with small triangular openings, athel timber beams across the ceilings, and deep reveals that keep the interiors cool and calm. Smoked oak joinery, dark bronze and tobacco suede bring the rooms to the scale of a private house rather than a corporate office.",
+      "The family council room seats sixteen around a single smoked oak table beneath athel beams, with acoustic lime plaster walls, concealed AV and a view into the courtyard. Next to it, the library combines reading tables with the family’s archive, housed in floor-to-ceiling oak shelving with a bronze ladder.",
+      "Privacy and security shape the engineering. FurnishIQ plans acoustic separation between every meeting room, secure data and records rooms with dedicated cooling and fire suppression, displacement ventilation concealed in the reveals, and a single smart-building system for lighting, shading, climate and access control.",
+      "Furniture is specified to last a generation: a council table in solid smoked oak, chairs in tobacco suede, library tables in oak and bronze, and hand-knotted wool rugs. FurnishIQ’s scope covers the complete design-build — interior design and photoreal 3D visualisation, fit-out across all three levels, MEP engineering, and furniture specification, sourcing and installation.",
     ]},
-    'A 90-day headquarters fit-out for a growing fintech': { area: '2,300 m\u00B2', date: 'Completed 2024', paras: [
-      'Three floors of shell-and-core in Riyadh\u2019s digital district, handed over as a working headquarters in ninety days. Parallel workstreams — joinery off-site, MEP first fix, and furniture procurement — ran against a single integrated programme.',
-      'The workplace balances focus and gathering: acoustic pods and a central social stair sit within a calm envelope of oak, felt, and warm neutrals drawn from the client\u2019s brand.',
-      'Handover included every workstation live, every meeting room commissioned, and a snag list of eleven items — all closed within the first week of occupation.',
-      'The social stair connecting all three floors became the project\u2019s spatial spine, doubling as informal meeting space and an all-hands gathering point.',
-      'Furniture, signage, and AV packages were procured and installed in parallel with construction, compressing what is typically a sequential process into a single overlapping programme.',
-      'Post-occupancy surveys logged the highest satisfaction score in the client\u2019s portfolio of regional offices.',
+    "Central Commons": { area: "22,000 m²", date: "Design Concept", film: { poster: 'uploads/central-commons-film-poster.webp', hd: 'uploads/central-commons-film-1080.mp4', sd: 'uploads/central-commons-film-720.mp4' }, secondary: "uploads/central-commons-covered-galleria-1920.webp", gallery: [{ caption: "Central Plaza at Dusk", image: "uploads/central-commons-plaza-dusk-riyadh-1280.webp", full: "uploads/central-commons-plaza-dusk-riyadh-2752.webp", pos: "center", note: "The central square at dusk, beneath a lit canopy of perforated bronze shading." }, { caption: "Covered Galleria", image: "uploads/central-commons-covered-galleria-1280.webp", full: "uploads/central-commons-covered-galleria-2752.webp", pos: "center", note: "A covered galleria runs from the square through two retail levels beneath a louvred glass roof." }, { caption: "Central Atrium", image: "uploads/central-commons-central-atrium-1280.webp", full: "uploads/central-commons-central-atrium-2752.webp", pos: "center", note: "The central atrium beneath a vaulted skylight, with bridges linking the retail levels." }, { caption: "Food Hall", image: "uploads/central-commons-food-hall-1280.webp", full: "uploads/central-commons-food-hall-2752.webp", pos: "60% center", note: "A food hall in oak, terrazzo and terracotta leather, looking out over the square." }, { caption: "Office Tower Lobby", image: "uploads/central-commons-office-lobby-1280.webp", full: "uploads/central-commons-office-lobby-2752.webp", pos: "55% center", note: "A double-height office lobby in limestone, oak and cognac leather." }, { caption: "Shading Canopy Detail", image: "uploads/central-commons-shading-canopy-detail-1200.webp", full: "uploads/central-commons-shading-canopy-detail-1816.webp", pos: "45% center", note: "Perforated bronze shading filters the sun into dappled light on the limestone paving." }], scope: "Interior Design · Fit-Out · MEP Engineering · Bespoke Furniture", paras: [
+      "Central Commons is a FurnishIQ design concept for the public spaces of a mixed-use development in Olaya, in the centre of Riyadh. FurnishIQ’s 22,000 m² scope covers everything a visitor walks through: a shaded central square, a covered retail galleria, a central atrium, a food hall and the lobbies of the office towers above.",
+      "The square is designed for Riyadh’s climate. A tall canopy of perforated bronze-anodised shading filters the sun into a soft dappled light, linear water features and planted beds cool the air, and limestone paving stays pale and comfortable underfoot. In the evening the canopy is lit from below and the square becomes a place to meet.",
+      "From the square, a covered galleria runs through the retail levels to a central atrium under a vaulted skylight. Shopfronts follow FurnishIQ design guidelines — bronze frames, limestone surrounds and a consistent signage zone — so that each brand has its own character while the galleria reads as one calm space.",
+      "A food hall for 600 guests sits on the retail level, with communal tables in oak, terracotta leather booths and a terrazzo floor, and kitchens planned around a single service spine. Tall arched windows look out over the square.",
+      "Public spaces of this scale carry heavy engineering. FurnishIQ plans displacement cooling in the galleria and atrium, misting and air movement in the shaded square, smoke management for the atrium, kitchen extract and grease management for the food hall, wayfinding and lighting control across the whole public realm, and accessible routes throughout.",
+      "Benches, planters, kiosks, seating and lighting are designed as one family in limestone, oak and bronze, built to last in heavy public use. FurnishIQ’s scope covers the complete design-build of the public realm — interior design and photoreal 3D visualisation, fit-out, MEP engineering, shopfront guidelines, and furniture specification, sourcing and installation.",
     ]},
-    'Flagship concept store with sculptural fixtures': { area: '480 m\u00B2', date: 'Completed 2024', paras: [
-      'A retail flagship in Khobar built around a single idea: the fixtures are the architecture. CNC-cut display monoliths in travertine-toned terrazzo anchor the floor, freeing the perimeter for full-height product walls.',
-      'Lighting was engineered at fixture level — every shelf edge-lit, every plinth grazed — so the merchandise reads as the only source of colour in a deliberately quiet envelope.',
-      'The store opened to the brand\u2019s highest first-quarter sales in the Kingdom and now serves as the template for two further locations.',
-      'The terrazzo monoliths were cast and CNC-finished off-site, then craned into position through a temporary opening in the mall facade over a single weekend.',
-      'A concealed service spine behind the perimeter wall carries power and data to every fixture, keeping the shopfloor free of visible cabling or conduit.',
-      'Sightlines were modelled in 3D before construction to guarantee the flagship\u2019s hero pieces remain visible from the mall concourse at every approach angle.',
+    "Obhur Beach Estate": { area: "2,600 m²", date: "Design Concept", film: { poster: 'uploads/obhur-estate-film-poster.webp', hd: 'uploads/obhur-estate-film-1080.mp4', sd: 'uploads/obhur-estate-film-720.mp4' }, secondary: "uploads/obhur-estate-pool-beach-pavilion-1920.webp", gallery: [{ caption: "Sea-Facing Great Room", image: "uploads/obhur-estate-great-room-red-sea-jeddah-1280.webp", full: "uploads/obhur-estate-great-room-red-sea-jeddah-2752.webp", pos: "center", note: "The great room opens fully to the terrace and the Red Sea through retractable glazing, under a teak-boarded ceiling." }, { caption: "Pool and Beach Pavilion", image: "uploads/obhur-estate-pool-beach-pavilion-1280.webp", full: "uploads/obhur-estate-pool-beach-pavilion-2752.webp", pos: "center", note: "A 30-metre pool runs from the main house toward the shoreline and the shaded beach pavilion." }, { caption: "Rawasheen Gallery", image: "uploads/obhur-estate-teak-rawasheen-gallery-1200.webp", full: "uploads/obhur-estate-teak-rawasheen-gallery-2400.webp", pos: "center", note: "Hand-carved teak rawasheen screens filter the western light along the gallery that links the house." }, { caption: "Coral Stone Detail", image: "uploads/obhur-estate-coral-stone-detail-1200.webp", full: "uploads/obhur-estate-coral-stone-detail-2400.webp", pos: "30% center", note: "Coral stone and ivory lime plaster, cool to the touch, with an aged brass inlay." }, { caption: "Master Suite", image: "uploads/obhur-estate-master-suite-sea-view-1280.webp", full: "uploads/obhur-estate-master-suite-sea-view-2752.webp", pos: "60% center", note: "The master suite opens directly onto a private teak deck above the beach." }, { caption: "Beach Pavilion Lounge", image: "uploads/obhur-estate-beach-pavilion-lounge-1200.webp", full: "uploads/obhur-estate-beach-pavilion-lounge-2400.webp", pos: "center", note: "Low teak-and-linen lounge seating in the beach pavilion, shaded and open to the breeze." }], scope: "Interior Design · Fit-Out · MEP Engineering · Bespoke Furniture", paras: [
+      "Obhur Beach Estate is a FurnishIQ design concept for a family estate on the Red Sea coast in north Jeddah. The 2,600 m² programme is divided across three buildings: a main house, a guest pavilion and a beach pavilion, all aligned on a single axis that runs from the entrance court to the shoreline.",
+      "At the centre of the main house, a sea-facing great room opens fully through retractable glazing onto a shaded terrace and the 30-metre pool. Dining for fourteen sits beneath a teak-boarded ceiling, with the family majlis and a show kitchen arranged behind it, away from the sun.",
+      "Jeddah’s historic rawasheen — carved timber bay screens — are reinterpreted in hand-carved teak along the gallery that links the house. They filter the western light, give privacy from the beach, and let the sea breeze move through the plan.",
+      "Coral stone, ivory lime plaster and sand travertine are chosen to stay calm and cool in a humid coastal climate. Bleached oak, natural linen and woven rattan keep the rooms light; aged brass is used sparingly, where the hand meets the house.",
+      "Salt air and humidity shape every engineering decision. FurnishIQ plans dehumidification integrated with concealed linear air distribution, marine-grade fixings and hardware, corrosion-resistant MEP routing, and a single smart-home system controlling lighting, shading, climate and the retractable glazing room by room.",
+      "Furniture is specified for the coast: performance linen upholstery, solid teak and rattan that weather gracefully, and low lounge pieces that keep the horizon in view. FurnishIQ’s scope covers the complete design-build — interior design and photoreal 3D visualisation, fit-out of all three buildings, MEP engineering, and furniture specification, sourcing and installation.",
     ]},
-    'Coastal villa, engineered for light and shade': { area: '980 m\u00B2', date: 'Completed 2023', paras: [
-      'On the Dammam corniche, this villa negotiates a demanding climate with deep loggias, operable timber screens, and glazing tuned by orientation. Interior and envelope were designed as one system.',
-      'Passive shading carries most of the cooling load; the mechanical system that remains is silent, concealed, and zoned room by room. Materials — bleached oak, lime plaster, cool stone underfoot — were chosen to feel right at 45 degrees outside.',
-      'The clients describe the house in one word: unhurried. Light moves through it all day; nothing else needs to.',
-      'Operable timber screens were engineered to fold flat against the facade, letting residents open the house fully to the corniche breeze on cooler evenings.',
-      'Every wet area was tanked and finished in a single continuous stone, eliminating grout lines that would otherwise fail first under the coastal humidity.',
-      'Landscape and pool works were coordinated within the same programme, so exterior and interior handed over together as one finished environment.',
+    "Desert Stone Resort": { area: "4,500 m²", date: "Design Concept", film: { poster: 'uploads/desert-stone-resort-film-poster.webp', hd: 'uploads/desert-stone-resort-film-1080.mp4', sd: 'uploads/desert-stone-resort-film-720.mp4' }, secondary: "uploads/desert-stone-resort-arrival-court-1920.webp", gallery: [{ caption: "Lobby Lounge", image: "uploads/desert-stone-resort-lobby-lounge-alula-1280.webp", full: "uploads/desert-stone-resort-lobby-lounge-alula-2752.webp", pos: "center", note: "The lobby lounge frames the sandstone formations through full-height glazing set between rammed-earth walls." }, { caption: "Arrival Court", image: "uploads/desert-stone-resort-arrival-court-1280.webp", full: "uploads/desert-stone-resort-arrival-court-2752.webp", pos: "center", note: "Guests arrive through a court between rammed-earth walls toward a glazed pavilion beneath the rock." }, { caption: "Signature Restaurant", image: "uploads/desert-stone-resort-signature-restaurant-1280.webp", full: "uploads/desert-stone-resort-signature-restaurant-2752.webp", pos: "center", note: "The restaurant seats 120 beneath dark timber beams, facing the rock formations at sunset." }, { caption: "Fire-Pit Terrace", image: "uploads/desert-stone-resort-fire-pit-terrace-1280.webp", full: "uploads/desert-stone-resort-fire-pit-terrace-2752.webp", pos: "center", note: "After dark, the sunken fire-pit terrace becomes the resort’s evening gathering place." }, { caption: "Library Lounge", image: "uploads/desert-stone-resort-library-lounge-1280.webp", full: "uploads/desert-stone-resort-library-lounge-2752.webp", pos: "55% center", note: "A quiet library lounge in handwoven wool and oiled timber, with a deep window seat facing the rock." }, { caption: "Rammed Earth Detail", image: "uploads/desert-stone-resort-rammed-earth-detail-1200.webp", full: "uploads/desert-stone-resort-rammed-earth-detail-2400.webp", pos: "60% center", note: "Layered rammed earth meets a blackened-steel window frame and a solid timber sill." }], scope: "Interior Design · Fit-Out · MEP Engineering · Bespoke Furniture", paras: [
+      "Desert Stone Resort is a FurnishIQ design concept for the public and guest spaces of a resort in AlUla. The 4,500 m² scope covers the arrival pavilion, the lobby lounge, a signature restaurant, a library lounge, a fire-pit terrace and the spa reception — the spaces every guest passes through.",
+      "Guests arrive through a court between rammed-earth walls, then step into a lobby lounge whose full-height glazing frames the sandstone formations outside. Each space in the sequence is oriented on a different view of the valley, so the landscape is revealed one frame at a time.",
+      "The palette is taken from the site: rammed earth in the tones of the surrounding sand, local sandstone for floors and counters, and blackened steel for frames and screens. Handwoven wool in ochre and terracotta, dark oiled timber and aged brass keep the interiors warm against the scale of the landscape.",
+      "The restaurant seats 120 under a ceiling of dark timber beams, with an open kitchen behind a sandstone counter and a long glazed wall facing the rock formations at sunset. After dark, the sunken fire-pit terrace outside becomes the resort’s evening gathering place.",
+      "A remote desert site with large temperature swings shapes the engineering. FurnishIQ plans thermal mass in the rammed-earth walls, low-level displacement cooling hidden in the joinery, solar shading tuned to each façade, dust-sealed glazing systems, and lighting kept low and warm to protect the night sky.",
+      "Furniture is specified to belong to the landscape: low lounge seating in handwoven wool and linen, dining tables in solid dark oak with woven leather chairs, sandstone side tables and blackened-steel lamps. FurnishIQ’s scope covers the complete design-build — interior design and photoreal 3D visualisation, fit-out, MEP engineering, and furniture specification, sourcing and installation.",
     ]},
-    'Desert retreat restaurant, stone and steel': { area: '740 m\u00B2', date: 'Completed 2023', paras: [
-      'A destination restaurant at the edge of AlUla\u2019s heritage zone, built from local stone, blackened steel, and little else. The dining room frames the escarpment through a single twelve-metre opening.',
-      'Every service — kitchen extract, cooling, water, power — arrives underground and rises through two service cores, keeping the roofline and the desert silhouette untouched.',
-      'The project was delivered with a light-touch site protocol agreed with the heritage authority, including full reversibility of the structural footprint.',
-      'Blackened steel trusses were pre-fabricated off-site and craned into place in a single mobilisation, minimising equipment time on the protected escarpment.',
-      'The open kitchen was positioned to let guests watch the fire-grill service without exposing the extract and utility runs feeding it.',
-      'Night lighting was kept to a strict low-glare spec so the restaurant reads as a lantern against the escarpment rather than a floodlit structure.',
+    "The Executive Floors": { area: "14,000 m²", date: "Design Concept", film: { poster: 'uploads/executive-floors-film-poster.webp', hd: 'uploads/executive-floors-film-1080.mp4', sd: 'uploads/executive-floors-film-720.mp4' }, secondary: "uploads/executive-floors-boardroom-walnut-table-1920.webp", gallery: [{ caption: "Sky Lobby and Reception", image: "uploads/executive-floors-sky-lobby-reception-riyadh-1280.webp", full: "uploads/executive-floors-sky-lobby-reception-riyadh-2752.webp", pos: "center", note: "A double-height sky lobby with a monolithic travertine reception desk beneath the slatted walnut ceiling." }, { caption: "Boardroom", image: "uploads/executive-floors-boardroom-walnut-table-1280.webp", full: "uploads/executive-floors-boardroom-walnut-table-2752.webp", pos: "center", note: "A boardroom for twenty-four around a single book-matched walnut table, facing the city skyline." }, { caption: "Open Workplace Floor", image: "uploads/luxury-office-fit-out-riyadh-1280.webp", full: "uploads/luxury-office-fit-out-riyadh-2560.webp", pos: "center", note: "Workplace floors under a continuous walnut ceiling, with lighting and services concealed between the slats." }, { caption: "Chairman’s Office", image: "uploads/executive-floors-chairman-office-1280.webp", full: "uploads/executive-floors-chairman-office-2752.webp", pos: "40% center", note: "The chairman’s office: walnut panelling, a bronze-framed desk and a private lounge facing the city." }, { caption: "Client Majlis", image: "uploads/executive-floors-client-majlis-1280.webp", full: "uploads/executive-floors-client-majlis-2752.webp", pos: "center", note: "A client majlis off the sky lobby, with low cognac leather seating and a travertine coffee table." }, { caption: "Walnut Ceiling Detail", image: "uploads/executive-floors-walnut-ceiling-detail-1200.webp", full: "uploads/executive-floors-walnut-ceiling-detail-2400.webp", pos: "30% center", note: "Walnut slats with integrated linear light; air distribution and services sit in the shadow gaps between them." }], scope: "Interior Design · Fit-Out · MEP Engineering · Bespoke Furniture", paras: [
+      "The Executive Floors is a FurnishIQ design concept for a corporate headquarters on eight upper floors of an office tower in north Riyadh. The 14,000 m² programme is organised vertically: arrival and client spaces at the top, executive offices below, and six open workplace floors connected by a feature stair.",
+      "Visitors arrive in a double-height sky lobby with full-height glazing over the city. A monolithic travertine reception desk sits beneath a slatted walnut ceiling; a client majlis and meeting suites open directly off the lobby, so guests never enter the working floors.",
+      "The boardroom seats twenty-four at a single book-matched walnut table, with acoustic walls, concealed AV and a view along the city skyline. The chairman’s office and executive suites share a private reception, a dining room and their own vertical connection to the sky lobby.",
+      "The slatted walnut ceiling is the project’s organising element. Linear lighting, air distribution, sprinklers, speakers and sensors are coordinated into the gaps between slats, so the ceiling reads as one continuous plane from the lobby to the workplace floors.",
+      "The workplace floors are planned for 900 staff, with zoned air handling, demand-controlled ventilation, acoustic separation between focus and collaboration areas, and a building management system that controls lighting, shading and climate floor by floor. Prayer rooms, ablution areas and a staff café are provided on every floor.",
+      "Workstations, executive desks, the boardroom table and lounge pieces are specified in the same walnut, bronze and cognac leather as the architecture. FurnishIQ’s scope covers the complete design-build — interior design and photoreal 3D visualisation, fit-out across all eight floors, MEP engineering, and furniture specification, sourcing and installation.",
     ]},
-    'Executive floor, invisible MEP by design': { area: '1,100 m\u00B2', date: 'Completed 2024', paras: [
-      'The leadership floor of a Riyadh holding company, where the engineering brief was one line: nothing visible, nothing audible. Displacement ventilation, chilled beams, and edge-lit stretched ceilings deliver comfort with no registers, no grilles, and NC-25 acoustics.',
-      'Interiors follow the same discipline — book-matched walnut walls conceal storage, servicing, and two private suites. Boardroom AV rises from the table only when called.',
-      'The floor was commissioned over a single quarter and has run without a comfort complaint since handover.',
-      'Displacement diffusers were integrated into the skirting line rather than the ceiling, keeping the stretched-ceiling plane completely uninterrupted.',
-      'Acoustic modelling to NC-25 meant every duct run and diffuser location was engineered before a single wall was built, not adjusted after the fact.',
-      'A dedicated commissioning week validated comfort, acoustics, and AV integration room by room before the floor went live.',
+    "Penthouse Above the Wadi": { area: "1,400 m²", date: "Design Concept", film: { poster: 'uploads/penthouse-wadi-film-poster.webp', hd: 'uploads/penthouse-wadi-film-1080.mp4', sd: 'uploads/penthouse-wadi-film-720.mp4' }, secondary: "uploads/penthouse-wadi-roof-terrace-infinity-pool-1920.webp", gallery: [{ caption: "Double-Height Living Room", image: "uploads/penthouse-wadi-double-height-living-riyadh-1280.webp", full: "uploads/penthouse-wadi-double-height-living-riyadh-2752.webp", pos: "center", note: "The 8-metre living room faces Wadi Hanifa through full-height glazing, anchored by a backlit onyx wall and the oak-and-bronze staircase." }, { caption: "Roof Terrace and Pool", image: "uploads/penthouse-wadi-roof-terrace-infinity-pool-1280.webp", full: "uploads/penthouse-wadi-roof-terrace-infinity-pool-2752.webp", pos: "center", note: "An infinity-edge pool on the roof terrace aligns with the line of the escarpment at sunset." }, { caption: "Backlit Onyx Detail", image: "uploads/penthouse-wadi-backlit-onyx-detail-1200.webp", full: "uploads/penthouse-wadi-backlit-onyx-detail-2400.webp", pos: "40% center", note: "Book-matched honey onyx, backlit and framed in smoked bronze, glows as daylight fades." }, { caption: "Staircase Detail", image: "uploads/penthouse-wadi-oak-bronze-staircase-detail-1200.webp", full: "uploads/penthouse-wadi-oak-bronze-staircase-detail-2400.webp", pos: "45% center", note: "Smoked oak treads on a folded bronze stringer, with a warm light line beneath every step." }, { caption: "Master Suite", image: "uploads/penthouse-wadi-master-suite-spa-bath-1280.webp", full: "uploads/penthouse-wadi-master-suite-spa-bath-2752.webp", pos: "35% center", note: "The master suite and its freestanding stone bath look directly across the wadi." }, { caption: "View Across Wadi Hanifa", image: "uploads/penthouse-wadi-view-over-wadi-hanifa-1200.webp", full: "uploads/penthouse-wadi-view-over-wadi-hanifa-1920.webp", pos: "62% center", note: "At golden hour the full-height glazing frames the escarpment and the palm groves along the wadi floor." }], scope: "Interior Design · Fit-Out · MEP Engineering · Bespoke Furniture", paras: [
+      "Penthouse Above the Wadi is a FurnishIQ design concept for a full-floor duplex at the top of a residential tower in west Riyadh. The 1,400 m² plan is organised around a single decision: the double-height living room faces Wadi Hanifa directly, and every principal space on the entertaining level opens toward it.",
+      "The lower level is for hosting — the 8-metre living room, a private majlis, dining for twelve, a show kitchen with a separate service kitchen, and a backlit onyx bar. The upper level is for the family: five suites, a master wing with a spa bath that looks across the wadi, and a private gym. A roof terrace with an infinity-edge pool completes the composition.",
+      "The palette is chosen for a home that is lit by the sky. Honey onyx is backlit so it glows at dusk; dark smoked oak and smoked bronze give the double-height volume weight; crema limestone floors carry the daylight deep into the plan. Ivory plaster keeps the upper level calm.",
+      "A sculptural staircase in smoked oak treads on a folded bronze stringer connects the two levels inside the living room. It is detailed as a piece of furniture — no visible fixings, a continuous bronze handrail, and an integrated warm light line under every tread.",
+      "Full-height glazing on a west-facing elevation demands a precise climate strategy. FurnishIQ plans concealed linear diffusers along the glazing line, motorised solar and blackout blinds recessed into the ceiling, acoustic separation between the two levels, and a single smart-home system controlling lighting scenes, shading and climate room by room. The pool and terrace services are coordinated with the tower’s structure from the first design stage.",
+      "Seating is kept low so the view stays uninterrupted: a long sofa in sand bouclé, lounge chairs in cognac leather, and a dining table in smoked oak for twelve. FurnishIQ’s scope covers the complete design-build — interior design and photoreal 3D visualisation, fit-out across both levels and the terraces, MEP engineering, and furniture specification, sourcing and installation.",
     ]},
-    'Law firm chambers in oak and smoked glass': { area: '860 m\u00B2', date: 'Completed 2025', paras: [
-      'Chambers for a Jeddah litigation practice, planned around confidentiality: smoked-glass partitions read as solid from the corridor yet keep daylight moving through the plan.',
-      'Rift-cut oak, dark bronze, and a controlled acoustic spec give the client-facing suites the gravity the partners asked for, while the working floor behind stays open and light.',
-      'Delivered over a summer recess with zero disruption to the firm\u2019s active caseload.',
-      'Each partner suite was fitted with independently zoned acoustics and lighting, letting sensitive client meetings run alongside normal office activity.',
-      'The reception sequence was designed to project discretion first: a single controlled entry point routes every visitor past a manned desk before any chamber becomes visible.',
-      'Cable and AV infrastructure was distributed through a raised access floor, keeping the historic building\u2019s original ceiling heights intact.',
+    "Roastery House Flagship": { area: "1,200 m²", date: "Design Concept", film: { poster: 'uploads/roastery-house-film-poster.webp', hd: 'uploads/roastery-house-film-1080.mp4', sd: 'uploads/roastery-house-film-720.mp4' }, secondary: "uploads/roastery-house-espresso-bar-travertine-1920.webp", gallery: [{ caption: "Roasting Hall", image: "uploads/roastery-house-roasting-hall-riyadh-1280.webp", full: "uploads/roastery-house-roasting-hall-riyadh-2752.webp", pos: "center", note: "The double-height hall, with the roaster on show behind a brass-framed glazed wall and the espresso bar in front." }, { caption: "Espresso Bar", image: "uploads/roastery-house-espresso-bar-travertine-1280.webp", full: "uploads/roastery-house-espresso-bar-travertine-2752.webp", pos: "center", note: "A 14-metre bar in travertine and aged brass, fronted in handmade terracotta tile." }, { caption: "Mezzanine Lounge", image: "uploads/roastery-house-mezzanine-lounge-1280.webp", full: "uploads/roastery-house-mezzanine-lounge-2752.webp", pos: "center", note: "The mezzanine lounge overlooks the roastery below across a timber balustrade." }, { caption: "Slow-Bar and Cupping Lab", image: "uploads/roastery-house-cupping-lab-1280.webp", full: "uploads/roastery-house-cupping-lab-2752.webp", pos: "45% center", note: "The cupping lab, where coffees are tasted side by side on a long travertine counter." }, { caption: "Banquette Seating", image: "uploads/roastery-house-leather-banquettes-1280.webp", full: "uploads/roastery-house-leather-banquettes-2752.webp", pos: "40% center", note: "Cognac leather banquettes and smoked oak tables beside a wall of terracotta tile." }, { caption: "Terracotta and Brass Detail", image: "uploads/roastery-house-terracotta-brass-detail-1200.webp", full: "uploads/roastery-house-terracotta-brass-detail-2400.webp", pos: "50% center", note: "Handmade terracotta tiles meet an aged brass edge beneath the travertine bar top." }], scope: "Interior Design · Fit-Out · MEP Engineering · Bespoke Furniture", paras: [
+      "Roastery House Flagship is a FurnishIQ design concept for a flagship roastery café in north Riyadh. The 1,200 m² space puts production on show: the roaster sits behind a glazed wall at the centre of a double-height hall, so every guest sees the coffee they drink being roasted.",
+      "A 14-metre bar in travertine and aged brass runs the length of the hall, with an espresso station at one end and a slow-bar for filter coffee at the other. Behind the bar, a wall of smoked oak shelving holds the retail range and the cups and equipment in daily use.",
+      "The palette follows the coffee itself: handmade terracotta tile on the bar front and walls, clay-toned terrazzo floors, lime-washed plaster, smoked oak and aged brass. Cognac leather banquettes and oak tables give the seating the comfort of a lounge rather than a quick-service café.",
+      "A mezzanine lounge overlooks the roastery below, with quieter seating, a cupping lab for tastings and a training room for baristas. The green-bean store sits behind the roaster, visible through a second glazed wall.",
+      "A roaster inside a café demands careful engineering. FurnishIQ plans dedicated roaster exhaust with afterburner treatment, make-up air and pressure control so roasting smoke never reaches the seating, heavy-duty power and gas services, acoustic treatment for the grinders and roaster, and water filtration for every espresso and brewing station.",
+      "Furniture is designed for guests who stay: cognac leather banquettes, smoked oak tables with brass edges, oak chairs with woven leather seats and bar stools in oak and leather. FurnishIQ’s scope covers the complete design-build — interior design and photoreal 3D visualisation, fit-out, MEP engineering, and furniture specification, sourcing and installation.",
     ]},
-    'Penthouse duplex above the diplomatic quarter': { area: '1,150 m\u00B2', date: 'Completed 2025', paras: [
-      'A two-level penthouse where the stair is the centrepiece: a sculpted ribbon of plaster and travertine linking formal entertaining below to the private floor above.',
-      'FurnishIQ handled interior architecture, bespoke furniture, and full home automation — lighting, shading, and climate scenes tuned room by room with the owners in residence.',
-      'The terraces were re-engineered with concealed drainage and integrated planters, doubling the usable outdoor living area.',
-      'The upper private floor was planned around a single axis of morning light, with the master suite oriented to catch it first while guest rooms sit in cooler, shaded bays.',
-      'Furniture was designed bespoke throughout, scaled specifically to the duplex\u2019s double-height volumes rather than sourced off the shelf.',
-      'A discreet service lift and back-of-house corridor keep staff movement entirely separate from the family\u2019s living spaces.',
+    "Maison de Joaillerie": { area: "900 m²", date: "Design Concept", film: { poster: 'uploads/maison-joaillerie-film-poster.webp', hd: 'uploads/maison-joaillerie-film-1080.mp4', sd: 'uploads/maison-joaillerie-film-720.mp4' }, secondary: "uploads/maison-joaillerie-bronze-screen-facade-1920.webp", gallery: [{ caption: "Main Salon", image: "uploads/maison-joaillerie-main-salon-jeddah-1280.webp", full: "uploads/maison-joaillerie-main-salon-jeddah-2752.webp", pos: "center", note: "The main salon: a backlit rose onyx counter, a wall of lit vitrines and the spiral stair." }, { caption: "Bronze Screen Façade", image: "uploads/maison-joaillerie-bronze-screen-facade-1280.webp", full: "uploads/maison-joaillerie-bronze-screen-facade-2752.webp", pos: "center", note: "A perforated bronze screen filters the street into a soft glow at dusk." }, { caption: "Spiral Stair", image: "uploads/maison-joaillerie-spiral-stair-1280.webp", full: "uploads/maison-joaillerie-spiral-stair-2752.webp", pos: "center", note: "A sculptural spiral stair in champagne-gold metal with white marble treads." }, { caption: "Private Salon", image: "uploads/maison-joaillerie-private-salon-1280.webp", full: "uploads/maison-joaillerie-private-salon-2752.webp", pos: "center", note: "A private salon for appointments, in cream velvet, walnut and onyx." }, { caption: "Bridal Salon", image: "uploads/maison-joaillerie-bridal-salon-1280.webp", full: "uploads/maison-joaillerie-bridal-salon-2752.webp", pos: "center", note: "The bridal salon, a round room in ivory silk around a table of backlit rose onyx." }, { caption: "Vitrine Detail", image: "uploads/maison-joaillerie-vitrine-detail-1200.webp", full: "uploads/maison-joaillerie-vitrine-detail-2400.webp", pos: "center", note: "A vitrine in champagne-gold metal set into an ivory silk wall, lit for a single piece." }], scope: "Interior Design · Fit-Out · MEP Engineering · Bespoke Furniture", paras: [
+      "Maison de Joaillerie is a FurnishIQ design concept for a flagship jewellery house in Jeddah. The 900 m² building sits behind a perforated bronze screen that filters the street into a soft glow, giving privacy without closing the house off.",
+      "Inside, a calm main salon is lined with vitrines set into ivory silk panels. A backlit rose onyx counter sits at its centre, and a sculptural spiral stair in champagne-gold metal and white marble leads to the upper level.",
+      "Upstairs, two private salons and a bridal salon receive clients by appointment. Each has its own lounge seating in cream velvet, a viewing table in walnut and onyx, and controlled lighting for looking at stones in true colour.",
+      "The materials are chosen to flatter both the jewellery and the client: rose onyx lit from within, ivory silk on the walls, honed white marble underfoot, champagne-gold metal for frames and fittings, and cream velvet for seating.",
+      "A jewellery house carries particular demands. FurnishIQ plans museum-grade vitrine lighting with high colour rendering, glass and locking systems to insurance standards, a secure vault and back-of-house with separate access, integrated CCTV and access control hidden in the joinery, and quiet, precise climate control for the private salons.",
+      "Every vitrine, counter, viewing table and seat is designed for the house: vitrines in champagne-gold metal and low-iron glass, viewing tables in walnut and onyx, and lounge chairs in cream velvet. FurnishIQ’s scope covers the complete design-build — interior design and photoreal 3D visualisation, fit-out, MEP engineering, and bespoke furniture and display joinery.",
     ]},
-    'Specialty coffee house with in-house roastery': { area: '340 m\u00B2', date: 'Completed 2024', paras: [
-      'A Riyadh coffee destination organised around the roaster itself, placed behind glass as the room\u2019s working heart. Counter, cupping bar, and seating radiate from it.',
-      'Materials stay honest — waxed steel, ash timber, and clay render — with extraction and make-up air engineered so the roast aroma reaches the room, not the neighbours.',
-      'The fit-out completed in nine weeks, opening in time for the brand\u2019s third anniversary.',
-      'The roaster\u2019s exhaust and cooling tray were integrated into a custom steel canopy, engineered specifically for the equipment rather than adapted from a standard kitchen hood.',
-      'Seating was split between a fast counter for takeaway and a slower cupping bar at the rear, letting the space serve two very different customer visits equally well.',
-      'Acoustic clay render on the ceiling plane tames the noise of the grinder and roaster without deadening the room.',
-    ]},
-    'Jewellery atelier behind a bronze veil facade': { area: '210 m\u00B2', date: 'Completed 2023', paras: [
-      'A compact atelier where a perforated bronze screen filters the street to a glow, giving privacy without blackout. Inside, a single continuous display ribbon carries the collection.',
-      'Museum-grade lighting, discreet security integration, and a private salon for appointments were delivered within a demanding mall-authority approval window.',
-      'The screen has since become the brand\u2019s visual signature across its regional campaigns.',
-      'The bronze veil was fabricated as a series of removable panels, allowing the security team to service the facade without disturbing the display ribbon behind it.',
-      'A private appointment salon sits just beyond the main floor, reachable without crossing the public display area, for the brand\u2019s high-value clients.',
-      'Display vitrines were fitted with individually addressable lighting so pieces can be re-lit for photography without altering the shopfloor ambience.',
-    ]},
-    'Waterfront brasserie, seating for two hundred': { area: '1,050 m\u00B2', date: 'Completed 2024', paras: [
-      'A Khobar waterfront brasserie balancing scale with intimacy: two hundred covers broken into terraces, banquettes, and a raw bar without a single dead corner.',
-      'Marine-grade finishes and a hidden services spine handle the corniche climate; the kitchen line was commissioned to serve a full house within four minutes of first order.',
-      'Opened to a six-week waiting list and now anchors the development\u2019s dining promenade.',
-      'Zoning ran from a raw bar at the water\u2019s edge through open terraces to enclosed banquette rows, letting the same restaurant handle sun, wind, or a full covers night without reconfiguration.',
-      'All exterior metalwork and hardware were specified to a marine-grade standard, tested against the corniche\u2019s salt exposure before final sign-off.',
-      'The kitchen line was laid out and timed with the operator\u2019s chefs on-site before finishes were locked, so service flow drove the plan rather than the reverse.',
-    ]},
-    'Regional logistics HQ with a client showroom': { area: '3,400 m\u00B2', date: 'Completed 2023', paras: [
-      'Headquarters for a Dammam logistics group pairing a working operations floor with a client-facing showroom that walks visitors through the company\u2019s network in physical form.',
-      'The project unified four departments from three buildings into one plan, with wayfinding, acoustics, and lighting engineered for a 24-hour operation.',
-      'Delivered design-to-occupancy in seven months, including a live migration weekend with no downtime.',
-      'The client showroom was routed as a guided path through scale models and live network dashboards, turning an operational capability into a sales tool.',
-      'Lighting and HVAC were zoned independently for the 24-hour operations floor versus daytime office areas, cutting energy use outside peak shifts.',
-      'A weekend migration plan moved all four legacy departments in a single continuous window, with the new HQ live before Monday shift change.',
-    ]},
-    'Furniture showroom, custom joinery throughout': { area: '1,650 m\u00B2', date: 'Completed 2022', paras: [
-      'A two-level showroom in Jeddah for a European furniture house, fitted entirely with joinery from our own workshop — display platforms, wall systems, stair balustrade, and the espresso bar at its heart.',
-      'The architecture stays deliberately recessive: pale floors, white ceilings, and daylight-balanced lighting let the collections carry the colour. Room-set vignettes rotate seasonally on a concealed track-and-plinth system.',
-      'Delivered design-to-handover in five months, the showroom doubled the brand\u2019s regional retail footprint.',
-      'The concealed track-and-plinth system lets the visual merchandising team rebuild entire room-sets overnight without any contractor return visit.',
-      'The espresso bar at the stair landing was built specifically to slow visitors mid-journey, encouraging a second pass through the collection on the way back down.',
-      'Structural balustrade elements were engineered in the same joinery workshop as the display walls, so the showroom reads as one unbroken material story floor to floor.',
+    "The Furniture Gallery": { area: "4,000 m²", date: "Design Concept", film: { poster: 'uploads/furniture-gallery-film-poster.webp', hd: 'uploads/furniture-gallery-film-1080.mp4', sd: 'uploads/furniture-gallery-film-720.mp4' }, secondary: "uploads/furniture-gallery-living-room-set-1920.webp", gallery: [{ caption: "Atrium and Stair", image: "uploads/furniture-gallery-atrium-stair-riyadh-1280.webp", full: "uploads/furniture-gallery-atrium-stair-riyadh-2752.webp", pos: "center", note: "The double-height atrium, lit by a long skylight, with a sculptural stair in plaster and oak." }, { caption: "Living Room Gallery", image: "uploads/furniture-gallery-living-room-set-1280.webp", full: "uploads/furniture-gallery-living-room-set-2752.webp", pos: "center", note: "A living room-set built as a real interior, with its own walls, lighting and flooring." }, { caption: "Design Studio", image: "uploads/furniture-gallery-design-studio-material-library-1280.webp", full: "uploads/furniture-gallery-design-studio-material-library-2752.webp", pos: "center", note: "The client design studio and material library, where whole homes are planned." }, { caption: "Dining Room Gallery", image: "uploads/furniture-gallery-dining-room-set-1280.webp", full: "uploads/furniture-gallery-dining-room-set-2752.webp", pos: "center", note: "A dining room-set in white oak and bouclé beneath a sculptural brass pendant." }, { caption: "Bedroom Suite Gallery", image: "uploads/furniture-gallery-bedroom-suite-1280.webp", full: "uploads/furniture-gallery-bedroom-suite-2752.webp", pos: "center", note: "A bedroom suite gallery in linen, bouclé and fluted white oak." }, { caption: "Oak and Brass Detail", image: "uploads/furniture-gallery-oak-brass-detail-1200.webp", full: "uploads/furniture-gallery-oak-brass-detail-2400.webp", pos: "35% center", note: "A white oak display plinth with an aged brass inlay on a travertine floor." }], scope: "Interior Design · Fit-Out · MEP Engineering · Bespoke Furniture", paras: [
+      "The Furniture Gallery is a FurnishIQ design concept for a two-level furniture showroom in north Riyadh. Instead of open retail floors, the 4,000 m² plan is a sequence of rooms — living, dining, bedroom and study — so clients see each piece in the setting it is made for.",
+      "Clients enter a double-height atrium lit from above by a long skylight. A sculptural stair in plaster and white oak rises through it to the upper galleries, and the first room-sets open off the atrium on both levels.",
+      "Each room-set is built as a real interior, with its own walls, ceiling, lighting and flooring. Ivory lime plaster, white oak, travertine and aged brass form a quiet background that lets the furniture change season by season without rebuilding the rooms.",
+      "On the upper level, a client design studio and material library hold fabric, leather, timber, stone and metal samples alongside large worktables. Here FurnishIQ designers plan complete homes with clients, from a single room to a full villa.",
+      "A showroom lives on its lighting. FurnishIQ plans a flexible track and recessed lighting grid with high colour rendering, daylight control under the skylight, zoned air conditioning for each gallery, concealed power in the floors for lamps and displays, and a back-of-house loading and assembly area connected by a goods lift.",
+      "Display platforms, wall systems, the stair and the studio worktables are part of the same design, made in white oak, plaster and brass. FurnishIQ’s scope covers the complete design-build — interior design and photoreal 3D visualisation, fit-out across both floors, MEP engineering, and display furniture and joinery.",
     ]},
   };
 
@@ -967,20 +1061,86 @@ class Component extends DCLogic {
       category: proj.category,
       location: proj.location,
       heroImage: proj.image,
-      secondaryImage: proj.image.replace('w=1400', 'w=2000') + '&crop=entropy',
-      gallery: (this.VIEW_LABELS[proj.category] || this.VIEW_LABELS.Residential).map((caption, i) => ({
+      secondaryImage: (det && det.secondary) || (proj.image.replace('w=1400', 'w=2000') + '&crop=entropy'),
+      gallery: (det && det.gallery) || (this.VIEW_LABELS[proj.category] || this.VIEW_LABELS.Residential).map((caption, i) => ({
         caption,
         image: proj.image.replace('w=1400', 'w=900') + `&crop=${this.VIEW_CROPS[i]}`,
+        full: proj.image.replace('w=1400', 'w=2000'),
+        pos: 'center',
+        note: '',
       })),
       area: det.area,
       date: det.date,
       paras: det.paras.map(t => ({ text: t })),
       related,
       hasRelated: related.length > 0,
+      hasFilm: !!(det && det.film),
+      scopeText: (det && det.scope) || '',
+      filmPoster: det && det.film ? det.film.poster : '',
+      filmHd: det && det.film ? det.film.hd : '',
+      filmSd: det && det.film ? det.film.sd : '',
     };
   }
 
   componentDidMount() {
+    // Project film in the hero: always autoplays in a loop (owner's decision, overrides reduced motion);
+    // visible pause button for anyone who wants it still; pauses off-screen to save battery
+    (() => {
+      let tries = 0;
+      const setup = () => {
+        const v = document.querySelector('[data-pd-film]');
+        const btn = document.querySelector('[data-pd-film-toggle]');
+        if (!v || !btn) { if (tries++ < 40) setTimeout(setup, 100); return; }
+        if (v.dataset.ready) return;
+        v.dataset.ready = '1';
+        // The template renderer drops boolean attributes (muted, loop); browsers only autoplay muted video
+        v.muted = true; v.defaultMuted = true; v.setAttribute('muted', '');
+        v.loop = true;
+        let userPaused = false;
+        const load = () => {
+          if (v.dataset.loaded) return;
+          v.querySelectorAll('source[data-src]').forEach((s) => { s.src = s.dataset.src; });
+          v.load();
+          v.dataset.loaded = '1';
+        };
+        const sync = () => {
+          const playing = !v.paused;
+          btn.querySelector('[data-icon-pause]').style.display = playing ? '' : 'none';
+          btn.querySelector('[data-icon-play]').style.display = playing ? 'none' : '';
+          btn.setAttribute('aria-label', playing ? btn.dataset.labelPause : btn.dataset.labelPlay);
+        };
+        const play = () => { load(); const p = v.play(); if (p && p.catch) p.catch(() => sync()); };
+        v.addEventListener('play', sync);
+        v.addEventListener('pause', sync);
+        btn.addEventListener('click', () => {
+          if (v.paused) { userPaused = false; play(); } else { userPaused = true; v.pause(); }
+        });
+        if ('IntersectionObserver' in window) {
+          new IntersectionObserver((entries) => {
+            entries.forEach((e) => {
+              if (e.isIntersecting) { if (!userPaused) play(); } else if (!v.paused) { v.pause(); }
+            });
+          }, { threshold: 0.2 }).observe(v);
+        } else if (!userPaused) { play(); }
+        sync();
+      };
+      setup();
+    })();
+    // Gallery tiles: per-image focal point + keyboard open
+    (() => {
+      let tries = 0;
+      const setup = () => {
+        const tiles = document.querySelectorAll('.fiq-pd-tile');
+        if (!tiles.length) { if (tries++ < 40) setTimeout(setup, 100); return; }
+        tiles.forEach((t) => {
+          const img = t.querySelector('img');
+          if (img && t.dataset.pos && t.dataset.pos.indexOf('{') === -1) img.style.objectPosition = t.dataset.pos;
+          t.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); t.click(); } });
+        });
+      };
+      setup();
+    })();
+
     const nav = document.getElementById('id-nav');
     if (window.FIQMobileNav) window.FIQMobileNav(nav);
     const logoW = document.getElementById('id-logo-w');
@@ -1091,11 +1251,6 @@ class Component extends DCLogic {
       if (el.hasAttribute('data-pd-contact')) { el.style.background = 'transparent'; el.style.borderColor = 'rgba(214,194,168,0.4)'; }
     });
 
-    document.querySelectorAll('footer a').forEach(a => {
-      if (a.style.color === 'rgb(214, 194, 168)') return;
-      a.addEventListener('mouseenter', () => { a.style.color = '#D6C2A8'; });
-      a.addEventListener('mouseleave', () => { a.style.color = 'rgba(214,194,168,0.65)'; });
-    });
 
     // ── GALLERY LIGHTBOX ─────────────────────────────────────────────────────
     const lightbox = document.getElementById('pd-lightbox');
@@ -1117,6 +1272,17 @@ class Component extends DCLogic {
       lightboxImg.alt = item.dataset.galleryCaption || '';
       lightboxCaption.textContent = item.dataset.galleryCaption || '';
       lightboxTitle.textContent = item.dataset.galleryTitle || '';
+      const pos = item.dataset.pos && item.dataset.pos.indexOf('{') === -1 ? item.dataset.pos : 'center';
+      lightboxImg.style.objectPosition = pos;
+      const noteEl = document.getElementById('pd-lightbox-note');
+      if (noteEl) { const n = item.dataset.galleryNote || ''; noteEl.textContent = n.indexOf('{{') === -1 ? n : ''; noteEl.style.display = noteEl.textContent ? '' : 'none'; }
+      const countEl = document.getElementById('pd-lightbox-count');
+      if (countEl) countEl.textContent = String(galleryIndex + 1).padStart(2, '0') + ' / ' + String(galleryItems.length).padStart(2, '0');
+      const waEl = document.getElementById('pd-lightbox-wa');
+      if (waEl && lightbox) {
+        const msg = (lightbox.dataset.waTemplate || '').replace('{title}', item.dataset.galleryTitle || '').replace('{caption}', item.dataset.galleryCaption || '');
+        waEl.href = 'https://wa.me/966580330627?text=' + encodeURIComponent(msg);
+      }
     };
     const openLightbox = (index) => {
       if (!lightbox) return;

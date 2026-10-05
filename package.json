@@ -1,6 +1,9 @@
 {
   "name": "furnishiq-site",
   "private": true,
+  "scripts": {
+    "serve": "node scripts/dev-server.js"
+  },
   "dependencies": {
     "resend": "^4.0.1"
   }

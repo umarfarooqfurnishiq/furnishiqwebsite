@@ -38,3 +38,40 @@ The looping carousels (`[clones][originals][clones]`) only wrap if one set of ca
 - Cause: Python's `http.server` ignores `Range` requests (returns 200, no `Accept-Ranges`), so `video.seekable` is `[0,0]`. Vercel serves ranges, so production seeks fine.
 - Test video seeking locally with a range-capable server, e.g. `npx http-server -p 8766 -s -c-1`.
 - Related: the site-wide form input style adds a 1px border to every `<input>`, including `type="range"`; the custom seek bar needs `border:none!important`.
+
+## Template renderer drops `muted` and `loop` on `<video>` (2026-10-04)
+- Symptom: the project-page hero film loaded but never autoplayed (worked on one desktop test, failed on mobile and in a normal browser).
+- Cause: the `.dc.html` template renderer leaves `video.muted === false` even when the markup says `muted`. Browsers only autoplay muted video, so `play()` is rejected. Chrome's media-engagement score on localhost can hide this during testing.
+- Fix: set `v.muted = true; v.defaultMuted = true; v.loop = true;` in JS before calling `play()`. Assume any boolean attribute may be dropped and set it as a property.
+- Also: Windows "Animation effects" off sets `prefers-reduced-motion: reduce`. The owner chose to autoplay project films regardless (2026-10-04), so a visible pause button is mandatory. Never ship looping video without one.
+
+## Project-detail pages lacked mobile footer rules (2026-10-04)
+- Symptom: on phones the Arabic project page shifted about 95px sideways, cutting off the hero title.
+- Cause: `.fiq-footer-grid` (4 columns) had no `@media` override on `project-detail(.ar).dc.html`; every other page has one.
+- When creating a new page from a template, copy the full `@media(max-width:960px)` and `@media(max-width:600px)` blocks, including the footer rules.
+
+## Scrolling to an element that is still animating in (2026-10-04)
+- Symptom: opening a project quick view on `projects(.ar).dc.html` left its top ~45px hidden under the fixed nav.
+- Cause: `scrollToDetail` used `getBoundingClientRect().top` 60ms after insertion, while the `fiqDetailIn` slide-in (`translateY(64px)`) was still running. The rect included about 55px of transform, so the target was too low.
+- Fix: sum `offsetTop` up the `offsetParent` chain (layout position, ignores transforms) and subtract the real nav height (`#id-nav.offsetHeight`).
+
+## The template renderer rewrites inline `style` attributes (2026-10-04)
+- Symptom: a phone-only rule written as `.fiq-detail-scroll > div[style*="gap:14px"]{flex-wrap:wrap}` matched in the source file but never applied in the browser.
+- Cause: the `.dc.html` renderer re-serialises inline styles (`gap:14px` becomes `gap: 14px`), so a selector that matches the style text finds nothing.
+- Rule: never select elements by their `style` attribute text. Add a class (here `.fiq-detail-meta`) and target that.
+- Related: bound attributes such as `srcset="{{ project.srcset }}"` log "Dropped srcset candidate" warnings while the template placeholder is on screen. They are harmless; the bound value loads correctly once rendered.
+
+## Pages under a nested URL need a matching asset rewrite (2026-10-05)
+- Pages load `./support.js`, `uploads/...` and `_ds/...` with relative paths, so a page served at `/blog/<slug>` asks for `/blog/support.js`.
+- Fix: every nested prefix needs a catch-all rewrite to the site root, placed after its specific page rewrites and before the broader catch-alls (`/blog/:path*` and `/ar/blog/:path*` → `/Furnishiq.net/:path*`, like the existing `/ar/:path*`).
+- Check with `curl` on `/<prefix>/support.js` and one image under the prefix; both should return 200.
+
+## The template renderer drops the boolean `hidden` attribute (2026-10-05)
+- Symptom: the footer newsletter "Thank you" line showed on page load on every page.
+- Cause: `<p hidden ...>` lost its `hidden` attribute when the `.dc.html` renderer rebuilt the DOM.
+- Rule: hide template-rendered elements with an inline `style="display:none"` and toggle `style.display` in script.
+
+## Replacing the site footer: match the site footer, not any `<footer>` (2026-10-05)
+- Symptom: on article pages the new footer appeared inside the pull quote and the old footer stayed at the bottom, widening the article on phones.
+- Cause: a quote attribution `<footer>` inside `<blockquote>` came before the site footer, and the replacement matched the first `<footer>`.
+- Rule: select the site footer by `id="fiq-footer"` or its own `background:#1F1F1F` style, and confirm each page ends with exactly one `#fiq-footer`.

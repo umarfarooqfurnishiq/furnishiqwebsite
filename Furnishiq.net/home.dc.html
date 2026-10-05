@@ -30,8 +30,8 @@ fbq('track', 'PageView');
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
-<link rel="preload" as="image" fetchpriority="high" href="https://images.unsplash.com/photo-1631679706909-1844bbd07221?auto=format&w=1920&q=30" imagesrcset="https://images.unsplash.com/photo-1631679706909-1844bbd07221?auto=format&w=640&q=30 640w, https://images.unsplash.com/photo-1631679706909-1844bbd07221?auto=format&w=960&q=30 960w, https://images.unsplash.com/photo-1631679706909-1844bbd07221?auto=format&w=1120&q=30 1120w, https://images.unsplash.com/photo-1631679706909-1844bbd07221?auto=format&w=1280&q=30 1280w, https://images.unsplash.com/photo-1631679706909-1844bbd07221?auto=format&w=1400&q=30 1400w, https://images.unsplash.com/photo-1631679706909-1844bbd07221?auto=format&w=1600&q=30 1600w, https://images.unsplash.com/photo-1631679706909-1844bbd07221?auto=format&w=1920&q=30 1920w" imagesizes="100vw">
-<link rel="preload" as="image" fetchpriority="high" href="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&w=1920&q=30" imagesrcset="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&w=640&q=30 640w, https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&w=960&q=30 960w, https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&w=1120&q=30 1120w, https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&w=1280&q=30 1280w, https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&w=1400&q=30 1400w, https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&w=1600&q=30 1600w, https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&w=1920&q=30 1920w" imagesizes="100vw">
+<link rel="preload" as="image" fetchpriority="high" href="uploads/luxury-office-fit-out-riyadh-1920.webp" imagesrcset="uploads/luxury-office-fit-out-riyadh-1280.webp 1280w, uploads/luxury-office-fit-out-riyadh-1920.webp 1920w, uploads/luxury-office-fit-out-riyadh-2560.webp 2560w" imagesizes="100vw">
+<link rel="preload" as="image" fetchpriority="high" href="uploads/office-shell-and-core-before-fit-out-riyadh-1920.webp" imagesrcset="uploads/office-shell-and-core-before-fit-out-riyadh-1280.webp 1280w, uploads/office-shell-and-core-before-fit-out-riyadh-1920.webp 1920w, uploads/office-shell-and-core-before-fit-out-riyadh-2560.webp 2560w" imagesizes="100vw">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <title>FurnishIQ | Luxury Interior Design &amp; Fit-Out in Saudi Arabia</title>
 <meta name="description" content="FurnishIQ crafts integrated interior design, fit-out, engineering, and furniture solutions for villas and commercial spaces across Saudi Arabia.">
@@ -44,17 +44,18 @@ fbq('track', 'PageView');
 <meta property="og:url" content="https://www.furnishiq.net/">
 <meta property="og:title" content="FurnishIQ | Luxury Interior Design &amp; Fit-Out in Saudi Arabia">
 <meta property="og:description" content="FurnishIQ crafts integrated interior design, fit-out, engineering, and furniture solutions for villas and commercial spaces across Saudi Arabia.">
-<meta property="og:image" content="https://images.unsplash.com/photo-1631679706909-1844bbd07221?auto=format&fit=crop&w=1200&h=630&q=30">
+<meta property="og:image" content="https://www.furnishiq.net/uploads/luxury-office-fit-out-riyadh-og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="FurnishIQ | Luxury Interior Design &amp; Fit-Out in Saudi Arabia">
 <meta name="twitter:description" content="FurnishIQ crafts integrated interior design, fit-out, engineering, and furniture solutions for villas and commercial spaces across Saudi Arabia.">
-<meta name="twitter:image" content="https://images.unsplash.com/photo-1631679706909-1844bbd07221?auto=format&fit=crop&w=1200&h=630&q=30">
+<meta name="twitter:image" content="https://www.furnishiq.net/uploads/luxury-office-fit-out-riyadh-og.jpg">
 <script src="./support.js" defer></script>
 <script src="./nav-mobile.js" defer></script>
 <script src="./floating-buttons.js" defer></script>
 <script src="./analytics-events.js" defer></script>
+<script src="./newsletter.js" defer></script>
 <template id="__bundler_thumbnail" data-bg-color="#3A2D25">
   <svg viewBox="0 0 1440 900" xmlns="http://www.w3.org/2000/svg">
     <rect width="1440" height="900" fill="#3A2D25"/>
@@ -595,9 +596,8 @@ input:focus, select:focus, textarea:focus {
       #fiq-logo-link{position:absolute!important;left:50%!important;top:50%!important;transform:translate(-50%,-50%)!important;width:110px!important;max-width:110px!important;}
       #fiq-logo-w,#fiq-logo-d{left:50%!important;right:auto!important;transform:translateX(-50%)!important;}
       #hero-comparison{cursor:default!important;}
-      #hero-right-panel,#hero-slider-line,#hero-slider-handle,#hero-scroll-hint{display:none!important;}
-      #hero-render-panel{width:100%!important;}
-      #hero-render-overlay{background:linear-gradient(to top,rgba(58,45,37,0.96) 0%,rgba(58,45,37,0.65) 45%,rgba(58,45,37,0.35) 100%)!important;}
+      #hero-render-panel,#hero-slider-line,#hero-slider-handle,#hero-scroll-hint{display:none!important;}
+      #hero-finished-overlay{background:linear-gradient(to top,rgba(58,45,37,0.96) 0%,rgba(58,45,37,0.65) 45%,rgba(58,45,37,0.35) 100%)!important;}
     }
   </style>
 </helmet>
@@ -625,28 +625,27 @@ input:focus, select:focus, textarea:focus {
 
   <!-- RIGHT: Finished Build — warm -->
   <div id="hero-right-panel" style="position:absolute;inset:0;">
-    <img src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?auto=format&w=1920&q=30" srcset="https://images.unsplash.com/photo-1631679706909-1844bbd07221?auto=format&w=640&q=30 640w, https://images.unsplash.com/photo-1631679706909-1844bbd07221?auto=format&w=960&q=30 960w, https://images.unsplash.com/photo-1631679706909-1844bbd07221?auto=format&w=1120&q=30 1120w, https://images.unsplash.com/photo-1631679706909-1844bbd07221?auto=format&w=1280&q=30 1280w, https://images.unsplash.com/photo-1631679706909-1844bbd07221?auto=format&w=1400&q=30 1400w, https://images.unsplash.com/photo-1631679706909-1844bbd07221?auto=format&w=1600&q=30 1600w, https://images.unsplash.com/photo-1631679706909-1844bbd07221?auto=format&w=1920&q=30 1920w" sizes="100vw" fetchpriority="high" alt="Finished Interior" style="width:100%;height:100%;object-fit:cover;object-position:center center;">
-    <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(58,45,37,0.92) 0%,rgba(58,45,37,0.35) 55%,rgba(58,45,37,0.12) 100%);"></div>
+    <img src="uploads/luxury-office-fit-out-riyadh-1920.webp" srcset="uploads/luxury-office-fit-out-riyadh-1280.webp 1280w, uploads/luxury-office-fit-out-riyadh-1920.webp 1920w, uploads/luxury-office-fit-out-riyadh-2560.webp 2560w" sizes="100vw" fetchpriority="high" alt="Completed open-plan office interior" style="width:100%;height:100%;object-fit:cover;object-position:center center;">
+    <div id="hero-finished-overlay" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(58,45,37,0.92) 0%,rgba(58,45,37,0.35) 55%,rgba(58,45,37,0.12) 100%);"></div>
     <div style="position:absolute;top:clamp(96px,14vh,136px);right:clamp(24px,4vw,64px);display:flex;align-items:center;gap:12px;">
       <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:rgba(214,194,168,0.65);">Finished Build</span>
       <span style="display:block;width:28px;height:1px;background:rgba(214,194,168,0.45);"></span>
     </div>
   </div>
 
-  <!-- LEFT: 3D Render panel — cool filtered with measurement grid -->
-  <div id="hero-render-panel" style="position:absolute;left:0;top:0;bottom:0;width:50%;overflow:hidden;transition:none;">
-    <div style="position:absolute;inset:0;width:100vw;">
-      <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&w=1920&q=30" srcset="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&w=640&q=30 640w, https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&w=960&q=30 960w, https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&w=1120&q=30 1120w, https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&w=1280&q=30 1280w, https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&w=1400&q=30 1400w, https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&w=1600&q=30 1600w, https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&w=1920&q=30 1920w" sizes="100vw" fetchpriority="high" alt="3D Render" style="width:100vw;height:100%;object-fit:cover;object-position:center;filter:sepia(0.1) saturate(0.5) brightness(0.82) hue-rotate(185deg);">
+  <!-- LEFT: Shell & Core panel — same view before fit-out -->
+  <div id="hero-render-panel" style="position:absolute;inset:0;clip-path:inset(0 50% 0 0);transition:none;">
+    <div style="position:absolute;inset:0;">
+      <img src="uploads/office-shell-and-core-before-fit-out-riyadh-1920.webp" srcset="uploads/office-shell-and-core-before-fit-out-riyadh-1280.webp 1280w, uploads/office-shell-and-core-before-fit-out-riyadh-1920.webp 1920w, uploads/office-shell-and-core-before-fit-out-riyadh-2560.webp 2560w" sizes="100vw" fetchpriority="high" alt="The same office floor at shell-and-core stage, before fit-out" style="width:100%;height:100%;object-fit:cover;object-position:center;">
       <div style="position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 79px,rgba(139,107,74,0.1) 79px,rgba(139,107,74,0.1) 80px),repeating-linear-gradient(90deg,transparent,transparent 79px,rgba(139,107,74,0.1) 79px,rgba(139,107,74,0.1) 80px);"></div>
-      <div style="position:absolute;inset:0;background:rgba(15,30,55,0.22);"></div>
       <div id="hero-render-overlay" style="position:absolute;inset:0;background:linear-gradient(to top,rgba(58,45,37,0.92) 0%,rgba(58,45,37,0.25) 55%,rgba(58,45,37,0.05) 100%);"></div>
     </div>
     <div style="position:absolute;top:clamp(96px,14vh,136px);left:clamp(24px,4vw,64px);display:flex;align-items:center;gap:12px;">
       <span style="display:block;width:28px;height:1px;background:rgba(214,194,168,0.45);"></span>
-      <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:rgba(214,194,168,0.65);">3D Render</span>
+      <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:rgba(214,194,168,0.65);">Shell &amp; Core</span>
     </div>
     <div style="position:absolute;top:clamp(118px,17vh,160px);left:clamp(24px,4vw,64px);">
-      <span style="font-family:'Lama Sans',sans-serif;font-size:8px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(139,107,74,0.55);">FLOOR PLAN — LEVEL 01 · SCALE 1:50</span>
+      <span style="font-family:'Lama Sans',sans-serif;font-size:8px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(139,107,74,0.55);">Before Fit-Out</span>
     </div>
   </div>
 
@@ -683,149 +682,109 @@ input:focus, select:focus, textarea:focus {
 </section>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ SERVICES GRID ━━━ -->
-<section id="services" style="background:#F5F2ED;padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px);">
+<section id="services" data-sf style="background:#F5F2ED;padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px);">
+  <style>
+    #services .sf-head{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(32px,5vw,96px);align-items:end;margin-bottom:clamp(48px,6vw,80px);}
+    #services .sf-all{display:inline-flex;align-items:center;gap:14px;margin-top:28px;font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#3A2D25;text-decoration:none;padding-bottom:6px;border-bottom:1px solid #8B6B4A;transition:color 0.4s cubic-bezier(0.25,0.46,0.45,0.94),border-color 0.4s cubic-bezier(0.25,0.46,0.45,0.94);}
+    #services .sf-all:hover,#services .sf-all:focus-visible{color:#8B6B4A;border-color:#3A2D25;}
+    #services .sf-stack{display:flex;flex-direction:column;gap:clamp(32px,6vh,72px);}
+    #services .sf-card{position:sticky;top:calc(104px + var(--i) * 18px);height:min(calc(100vh - 190px),720px);min-height:500px;}
+    #services .sf-inner{position:relative;height:100%;display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);overflow:hidden;background:var(--panel);box-shadow:0 24px 80px rgba(58,45,37,0.20);transform-origin:50% 0;}
+    #services .sf-media{position:relative;overflow:hidden;}
+    #services .sf-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(var(--zoom,1.1));}
+    #services .sf-panel{display:flex;flex-direction:column;justify-content:space-between;gap:32px;padding:clamp(32px,4vw,64px);color:#F5F2ED;}
+    #services .sf-meta{display:flex;align-items:center;gap:14px;font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.2em;color:#D6C2A8;}
+    #services .sf-meta-rule{display:block;width:40px;height:1px;background:rgba(214,194,168,0.5);}
+    #services .sf-title{font-family:'Lama Sans',sans-serif;font-size:clamp(34px,4vw,60px);font-weight:500;line-height:1.05;letter-spacing:-0.02em;color:#FFFFFF;margin:0;}
+    #services .sf-tag{font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#D6C2A8;margin:18px 0 0;}
+    #services .sf-body{font-family:'Lama Sans',sans-serif;font-size:15px;line-height:1.85;color:rgba(245,242,237,0.82);margin:24px 0 0;max-width:420px;}
+    #services .sf-cta{display:inline-flex;align-items:center;gap:14px;margin-top:32px;font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#3A2D25;background:#D6C2A8;padding:17px 28px;text-decoration:none;transition:background 0.4s cubic-bezier(0.25,0.46,0.45,0.94);}
+    #services .sf-cta:hover,#services .sf-cta:focus-visible{background:#FFFFFF;}
+    #services .sf-dim{position:absolute;inset:0;background:#1F1F1F;opacity:0;pointer-events:none;}
+    @media(max-width:900px){
+      #services .sf-head{grid-template-columns:1fr;}
+      #services .sf-card{position:static;height:auto;min-height:0;}
+      #services .sf-inner{grid-template-columns:1fr;transform:none!important;}
+      #services .sf-media{aspect-ratio:4/3;}
+      #services .sf-img{transform:none;}
+      #services .sf-dim{display:none;}
+    }
+  </style>
   <div style="max-width:1280px;margin:0 auto;">
-    <div style="margin-bottom:clamp(48px,6vw,80px);">
-      <div data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;align-items:center;gap:16px;margin-bottom:20px;">
-        <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
-        <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#8B6B4A;">What We Do</span>
-      </div>
-      <h2 data-reveal data-reveal-delay="0.1" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Lama Sans',sans-serif;font-size:clamp(28px,3.5vw,52px);font-weight:500;color:#1F1F1F;line-height:1.1;letter-spacing:-0.015em;">Integrated Expertise.<br>Exceptional Results.</h2>
-    </div>
-
-    <div data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);position:relative;">
-      <button type="button" id="services-prev" aria-label="Previous service" class="services-arrow-btn" style="position:absolute;left:-52px;top:50%;transform:translateY(-50%);width:40px;height:40px;border:none;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:2;padding:0;">
-        <svg width="30" height="22" viewBox="0 0 30 22" fill="none"><path d="M29 11H1M1 11L11 1M1 11L11 21" stroke="#3A2D25" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="transition:stroke 0.3s,transform 0.3s;"></path></svg>
-      </button>
-      <button type="button" id="services-next" aria-label="Next service" class="services-arrow-btn" style="position:absolute;right:-52px;top:50%;transform:translateY(-50%);width:40px;height:40px;border:none;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:2;padding:0;">
-        <svg width="30" height="22" viewBox="0 0 30 22" fill="none"><path d="M1 11H29M19 1L29 11M19 21L29 11" stroke="#3A2D25" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="transition:stroke 0.3s,transform 0.3s;"></path></svg>
-      </button>
-
-      <div id="services-slider-viewport" style="overflow:hidden;">
-        <div id="services-slider-track" style="display:flex;align-items:stretch;transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);">
-            <div class="svc-slide-wrap" aria-hidden="false">
-              <a href="/services-interior-design" tabindex="0" class="services-slide-card">
-                <div class="svc-img-wrap">
-                  <img src="https://images.unsplash.com/photo-1615874959474-d609969a20ed?auto=format&fit=crop&w=700&q=30" srcset="https://images.unsplash.com/photo-1615874959474-d609969a20ed?auto=format&fit=crop&w=350&q=30 350w, https://images.unsplash.com/photo-1615874959474-d609969a20ed?auto=format&fit=crop&w=525&q=30 525w, https://images.unsplash.com/photo-1615874959474-d609969a20ed?auto=format&fit=crop&w=700&q=30 700w" sizes="(max-width:600px) 90vw, (max-width:960px) 45vw, 30vw" alt="Interior Design" class="services-slide-img" loading="lazy" decoding="async">
-                </div>
-                <div class="services-slide-content">
-                  <h3 class="services-slide-title">Interior Design</h3>
-                  <p class="services-slide-tagline">Thoughtful, Bespoke &amp; Visionary</p>
-                  <p class="services-slide-body">We create personalised, livable environments balancing high-end aesthetics with practical functionality. Full Photoreal 3D visuals before any construction begins.</p>
-                  <span class="services-slide-arrow-circle">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D6C2A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svc-arrow-svg"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-                  </span>
-                </div>
-              </a>
-            </div>
-            <div class="svc-slide-wrap" aria-hidden="false">
-              <a href="/services-fitout" tabindex="0" class="services-slide-card">
-                <div class="svc-img-wrap">
-                  <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=700&q=30" srcset="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=350&q=30 350w, https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=525&q=30 525w, https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=700&q=30 700w" sizes="(max-width:600px) 90vw, (max-width:960px) 45vw, 30vw" alt="Fit-Out" class="services-slide-img" loading="lazy" decoding="async">
-                </div>
-                <div class="services-slide-content">
-                  <h3 class="services-slide-title">Fit-Out</h3>
-                  <p class="services-slide-tagline">Turning Raw Shells into Masterpieces</p>
-                  <p class="services-slide-body">The core of our business. Complete transformation of raw shells into fully functional, turnkey environments through Brand-Led Planning and our Zero-Snag Promise.</p>
-                  <span class="services-slide-arrow-circle">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D6C2A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svc-arrow-svg"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-                  </span>
-                </div>
-              </a>
-            </div>
-            <div class="svc-slide-wrap" aria-hidden="false">
-              <a href="/services-mep" tabindex="0" class="services-slide-card">
-                <div class="svc-img-wrap">
-                  <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=700&q=30" srcset="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=350&q=30 350w, https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=525&q=30 525w, https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=700&q=30 700w" sizes="(max-width:600px) 90vw, (max-width:960px) 45vw, 30vw" alt="Engineering &amp; MEP" class="services-slide-img" loading="lazy" decoding="async">
-                </div>
-                <div class="services-slide-content">
-                  <h3 class="services-slide-title">Engineering &amp; MEP</h3>
-                  <p class="services-slide-tagline">The Precision Backbone</p>
-                  <p class="services-slide-body">True luxury depends on invisible systems. Our MEP services provide high-performance infrastructure seamlessly integrated into the architectural fabric.</p>
-                  <span class="services-slide-arrow-circle">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D6C2A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svc-arrow-svg"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-                  </span>
-                </div>
-              </a>
-            </div>
-            <div class="svc-slide-wrap" aria-hidden="false">
-              <a href="/services-furniture" tabindex="0" class="services-slide-card">
-                <div class="svc-img-wrap">
-                  <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=700&q=30" srcset="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=350&q=30 350w, https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=525&q=30 525w, https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=700&q=30 700w" sizes="(max-width:600px) 90vw, (max-width:960px) 45vw, 30vw" alt="Furniture Solutions" class="services-slide-img" loading="lazy" decoding="async">
-                </div>
-                <div class="services-slide-content">
-                  <h3 class="services-slide-title">Furniture Solutions</h3>
-                  <p class="services-slide-tagline">Strategic Sourcing &amp; Curation</p>
-                  <p class="services-slide-body">We strategically source furniture aligned with your approved 3D renders, matching your aesthetic, budget, and operational needs — floor to ceiling coherence.</p>
-                  <span class="services-slide-arrow-circle">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D6C2A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svc-arrow-svg"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-                  </span>
-                </div>
-              </a>
-            </div>
-            <div class="svc-slide-wrap" aria-hidden="true">
-              <a href="/services-interior-design" tabindex="-1" class="services-slide-card">
-                <div class="svc-img-wrap">
-                  <img src="https://images.unsplash.com/photo-1615874959474-d609969a20ed?auto=format&fit=crop&w=700&q=30" srcset="https://images.unsplash.com/photo-1615874959474-d609969a20ed?auto=format&fit=crop&w=350&q=30 350w, https://images.unsplash.com/photo-1615874959474-d609969a20ed?auto=format&fit=crop&w=525&q=30 525w, https://images.unsplash.com/photo-1615874959474-d609969a20ed?auto=format&fit=crop&w=700&q=30 700w" sizes="(max-width:600px) 90vw, (max-width:960px) 45vw, 30vw" alt="Interior Design" class="services-slide-img" loading="lazy" decoding="async">
-                </div>
-                <div class="services-slide-content">
-                  <h3 class="services-slide-title">Interior Design</h3>
-                  <p class="services-slide-tagline">Thoughtful, Bespoke &amp; Visionary</p>
-                  <p class="services-slide-body">We create personalised, livable environments balancing high-end aesthetics with practical functionality. Full Photoreal 3D visuals before any construction begins.</p>
-                  <span class="services-slide-arrow-circle">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D6C2A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svc-arrow-svg"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-                  </span>
-                </div>
-              </a>
-            </div>
-            <div class="svc-slide-wrap" aria-hidden="true">
-              <a href="/services-fitout" tabindex="-1" class="services-slide-card">
-                <div class="svc-img-wrap">
-                  <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=700&q=30" srcset="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=350&q=30 350w, https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=525&q=30 525w, https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=700&q=30 700w" sizes="(max-width:600px) 90vw, (max-width:960px) 45vw, 30vw" alt="Fit-Out" class="services-slide-img" loading="lazy" decoding="async">
-                </div>
-                <div class="services-slide-content">
-                  <h3 class="services-slide-title">Fit-Out</h3>
-                  <p class="services-slide-tagline">Turning Raw Shells into Masterpieces</p>
-                  <p class="services-slide-body">The core of our business. Complete transformation of raw shells into fully functional, turnkey environments through Brand-Led Planning and our Zero-Snag Promise.</p>
-                  <span class="services-slide-arrow-circle">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D6C2A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svc-arrow-svg"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-                  </span>
-                </div>
-              </a>
-            </div>
-            <div class="svc-slide-wrap" aria-hidden="true">
-              <a href="/services-mep" tabindex="-1" class="services-slide-card">
-                <div class="svc-img-wrap">
-                  <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=700&q=30" srcset="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=350&q=30 350w, https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=525&q=30 525w, https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=700&q=30 700w" sizes="(max-width:600px) 90vw, (max-width:960px) 45vw, 30vw" alt="Engineering &amp; MEP" class="services-slide-img" loading="lazy" decoding="async">
-                </div>
-                <div class="services-slide-content">
-                  <h3 class="services-slide-title">Engineering &amp; MEP</h3>
-                  <p class="services-slide-tagline">The Precision Backbone</p>
-                  <p class="services-slide-body">True luxury depends on invisible systems. Our MEP services provide high-performance infrastructure seamlessly integrated into the architectural fabric.</p>
-                  <span class="services-slide-arrow-circle">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D6C2A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svc-arrow-svg"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-                  </span>
-                </div>
-              </a>
-            </div>
-            <div class="svc-slide-wrap" aria-hidden="true">
-              <a href="/services-furniture" tabindex="-1" class="services-slide-card">
-                <div class="svc-img-wrap">
-                  <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=700&q=30" srcset="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=350&q=30 350w, https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=525&q=30 525w, https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=700&q=30 700w" sizes="(max-width:600px) 90vw, (max-width:960px) 45vw, 30vw" alt="Furniture Solutions" class="services-slide-img" loading="lazy" decoding="async">
-                </div>
-                <div class="services-slide-content">
-                  <h3 class="services-slide-title">Furniture Solutions</h3>
-                  <p class="services-slide-tagline">Strategic Sourcing &amp; Curation</p>
-                  <p class="services-slide-body">We strategically source furniture aligned with your approved 3D renders, matching your aesthetic, budget, and operational needs — floor to ceiling coherence.</p>
-                  <span class="services-slide-arrow-circle">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D6C2A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svc-arrow-svg"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-                  </span>
-                </div>
-              </a>
-            </div>
+    <div class="sf-head">
+      <div data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);">
+        <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;">
+          <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
+          <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#8B6B4A;">What We Do</span>
         </div>
+        <h2 style="font-family:'Lama Sans',sans-serif;font-size:clamp(28px,3.5vw,52px);font-weight:500;color:#1F1F1F;line-height:1.1;letter-spacing:-0.015em;margin:0;">Integrated Expertise.<br>Exceptional Results.</h2>
       </div>
+      <div data-reveal data-reveal-delay="0.15" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);">
+        <p style="font-family:'Lama Sans',sans-serif;font-size:15px;line-height:1.8;color:#5B4636;max-width:400px;margin:0;">Four disciplines under one roof, from the first sketch to the final piece of furniture.</p>
+        <a href="/services" class="sf-all">All Services<svg width="16" height="6" viewBox="0 0 16 6" fill="none" aria-hidden="true" style="transform:none;flex-shrink:0;"><path d="M0 3H14M14 3L11.5 1M14 3L11.5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
       </div>
+    </div>
+    <div class="sf-stack">
+      <article class="sf-card" data-sf-card style="--i:0;--panel:#3A2D25;">
+        <div class="sf-inner">
+          <div class="sf-media"><img class="sf-img" src="uploads/penthouse-wadi-double-height-living-riyadh-1920.webp" srcset="uploads/penthouse-wadi-double-height-living-riyadh-1280.webp 1280w, uploads/penthouse-wadi-double-height-living-riyadh-1920.webp 1920w" sizes="(max-width:900px) 100vw, 60vw" alt="Interior Design" loading="lazy" decoding="async"></div>
+          <div class="sf-panel">
+            <div class="sf-meta"><span dir="ltr">01</span><span class="sf-meta-rule"></span><span dir="ltr">04</span></div>
+            <div>
+              <h3 class="sf-title">Interior Design</h3>
+              <p class="sf-tag">Thoughtful, Bespoke &amp; Visionary</p>
+              <p class="sf-body">We create personalised, livable environments balancing high-end aesthetics with practical functionality. Full Photoreal 3D visuals before any construction begins.</p>
+              <a class="sf-cta" href="/services-interior-design">Explore Interior Design<svg width="16" height="6" viewBox="0 0 16 6" fill="none" aria-hidden="true" style="transform:none;flex-shrink:0;"><path d="M0 3H14M14 3L11.5 1M14 3L11.5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+            </div>
+          </div>
+          <div class="sf-dim" aria-hidden="true"></div>
+        </div>
+      </article>
+      <article class="sf-card" data-sf-card style="--i:1;--panel:#5B4636;">
+        <div class="sf-inner">
+          <div class="sf-media"><img class="sf-img" src="uploads/executive-floors-sky-lobby-reception-riyadh-1920.webp" srcset="uploads/executive-floors-sky-lobby-reception-riyadh-1280.webp 1280w, uploads/executive-floors-sky-lobby-reception-riyadh-1920.webp 1920w" sizes="(max-width:900px) 100vw, 60vw" alt="Fit-Out" loading="lazy" decoding="async"></div>
+          <div class="sf-panel">
+            <div class="sf-meta"><span dir="ltr">02</span><span class="sf-meta-rule"></span><span dir="ltr">04</span></div>
+            <div>
+              <h3 class="sf-title">Fit-Out</h3>
+              <p class="sf-tag">Turning Raw Shells into Masterpieces</p>
+              <p class="sf-body">The core of our business. Complete transformation of raw shells into fully functional, turnkey environments through Brand-Led Planning and our <span style='white-space:nowrap'>Zero-Snag</span> Promise.</p>
+              <a class="sf-cta" href="/services-fitout">Explore Fit-Out<svg width="16" height="6" viewBox="0 0 16 6" fill="none" aria-hidden="true" style="transform:none;flex-shrink:0;"><path d="M0 3H14M14 3L11.5 1M14 3L11.5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+            </div>
+          </div>
+          <div class="sf-dim" aria-hidden="true"></div>
+        </div>
+      </article>
+      <article class="sf-card" data-sf-card style="--i:2;--panel:#1F1F1F;">
+        <div class="sf-inner">
+          <div class="sf-media"><img class="sf-img" src="uploads/mep-ceiling-services-installation-riyadh-1200.webp" srcset="uploads/mep-ceiling-services-installation-riyadh-900.webp 900w, uploads/mep-ceiling-services-installation-riyadh-1200.webp 1200w" sizes="(max-width:900px) 100vw, 60vw" alt="Engineering &amp; MEP" loading="lazy" decoding="async"></div>
+          <div class="sf-panel">
+            <div class="sf-meta"><span dir="ltr">03</span><span class="sf-meta-rule"></span><span dir="ltr">04</span></div>
+            <div>
+              <h3 class="sf-title">Engineering &amp; MEP</h3>
+              <p class="sf-tag">The Precision Backbone</p>
+              <p class="sf-body">True luxury depends on invisible systems. Our MEP services provide high-performance infrastructure seamlessly integrated into the architectural fabric.</p>
+              <a class="sf-cta" href="/services-mep">Explore Engineering &amp; MEP<svg width="16" height="6" viewBox="0 0 16 6" fill="none" aria-hidden="true" style="transform:none;flex-shrink:0;"><path d="M0 3H14M14 3L11.5 1M14 3L11.5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+            </div>
+          </div>
+          <div class="sf-dim" aria-hidden="true"></div>
+        </div>
+      </article>
+      <article class="sf-card" data-sf-card style="--i:3;--panel:#3A2D25;">
+        <div class="sf-inner">
+          <div class="sf-media"><img class="sf-img" src="uploads/furniture-gallery-living-room-set-1920.webp" srcset="uploads/furniture-gallery-living-room-set-1280.webp 1280w, uploads/furniture-gallery-living-room-set-1920.webp 1920w" sizes="(max-width:900px) 100vw, 60vw" alt="Furniture Solutions" loading="lazy" decoding="async"></div>
+          <div class="sf-panel">
+            <div class="sf-meta"><span dir="ltr">04</span><span class="sf-meta-rule"></span><span dir="ltr">04</span></div>
+            <div>
+              <h3 class="sf-title">Furniture Solutions</h3>
+              <p class="sf-tag">Strategic Sourcing &amp; Curation</p>
+              <p class="sf-body">We strategically source furniture aligned with your approved 3D renders, matching your aesthetic, budget, and operational needs &mdash; floor to ceiling coherence.</p>
+              <a class="sf-cta" href="/services-furniture">Explore Furniture Solutions<svg width="16" height="6" viewBox="0 0 16 6" fill="none" aria-hidden="true" style="transform:none;flex-shrink:0;"><path d="M0 3H14M14 3L11.5 1M14 3L11.5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+            </div>
+          </div>
+          <div class="sf-dim" aria-hidden="true"></div>
+        </div>
+      </article>
     </div>
   </div>
 </section>
@@ -834,15 +793,15 @@ input:focus, select:focus, textarea:focus {
 <section id="fitout" style="background:#3A2D25;overflow:hidden;">
   <div class="fiq-fitout-layout" style="display:flex;align-items:stretch;min-height:640px;">
     <div class="fiq-fitout-img" id="fitout-img-wrap" style="position:relative;width:54%;flex-shrink:0;overflow:hidden;min-height:480px;">
-      <img id="fitout-img" src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&w=1400&q=30" srcset="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&w=700&q=30 700w, https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&w=1050&q=30 1050w, https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&w=1220&q=30 1220w, https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&w=1400&q=30 1400w" sizes="(max-width:768px) 100vw, 54vw" alt="Fit-Out Masterpiece" style="width:100%;height:100%;object-fit:cover;object-position:center;transition:transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);" loading="lazy" decoding="async">
+      <img id="fitout-img" src="uploads/luxury-villa-fit-out-travertine-staircase-walnut-wall-riyadh-1200.webp" srcset="uploads/luxury-villa-fit-out-travertine-staircase-walnut-wall-riyadh-800.webp 800w, uploads/luxury-villa-fit-out-travertine-staircase-walnut-wall-riyadh-1200.webp 1200w, uploads/luxury-villa-fit-out-travertine-staircase-walnut-wall-riyadh-1600.webp 1600w" sizes="(max-width:768px) 100vw, 54vw" alt="Floating travertine staircase against a fluted walnut wall in a luxury villa entrance hall" style="width:100%;height:100%;object-fit:cover;object-position:center;transition:transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);" loading="lazy" decoding="async">
       <div style="position:absolute;inset:0;background:linear-gradient(to right,transparent 60%,rgba(58,45,37,0.5) 100%);"></div>
       <div style="position:absolute;bottom:28px;left:28px;font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(214,194,168,0.45);">Shell → Masterpiece</div>
     </div>
     <div style="flex:1;padding:clamp(48px,6vw,88px);display:flex;flex-direction:column;justify-content:center;">
       <div data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);">
         <div style="display:flex;align-items:center;gap:16px;margin-bottom:36px;">
+          <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
           <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#8B6B4A;">Featured Service</span>
-          <span style="display:block;width:40px;height:1px;background:#8B6B4A;"></span>
         </div>
         <h2 style="font-family:'Lama Sans',sans-serif;font-size:clamp(26px,3.2vw,48px);font-weight:500;color:#FFFFFF;line-height:1.15;margin-bottom:24px;letter-spacing:-0.01em;">Turn Any Shell Into<br>a Masterpiece.</h2>
         <p style="font-family:'Lama Sans',sans-serif;font-size:14px;line-height:1.8;color:rgba(214,194,168,0.7);margin-bottom:14px;">Our Fit-Out services are the core of our business. We take raw, structural shells and transform them into fully functional, turnkey environments.</p>
@@ -854,67 +813,130 @@ input:focus, select:focus, textarea:focus {
 </section>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ VALUE PROPOSITION ━━━ -->
-<section data-value-section style="background:#FFFFFF;padding:clamp(80px,10vw,128px) 0;">
-  <div style="width:95vw;max-width:1800px;margin:0 auto;border-radius:0;padding:clamp(48px,6vw,72px) clamp(24px,4vw,56px);position:relative;overflow:hidden;background-image:linear-gradient(rgba(245,242,237,0.9),rgba(245,242,237,0.9)),url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=2000&q=30');background-size:cover;background-position:center;">
-    <div style="position:absolute;inset:20px;border:2px solid rgba(58,45,37,0.12);border-radius:0;pointer-events:none;"></div>
-
-    <div style="position:relative;max-width:1280px;margin:0 auto clamp(48px,6vw,72px);">
-      <div data-value-eyebrow style="opacity:0;display:flex;align-items:center;gap:16px;margin-bottom:22px;transition:opacity 0.6s cubic-bezier(0.25,0.46,0.45,0.94);">
-        <span data-value-eyebrow-line style="display:block;width:0px;height:1px;background:#8B6B4A;flex-shrink:0;transition:width 0.7s cubic-bezier(0.25,0.46,0.45,0.94);"></span>
-        <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#8B6B4A;">The FurnishIQ Edge</span>
+<section id="edge" data-edge style="--edge-gap:clamp(24px,5vw,80px);background:#F5F2ED;padding:clamp(80px,10vw,128px) 0 var(--edge-gap);">
+  <style>
+    #edge .fiq-edge-head{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(32px,5vw,96px);align-items:end;margin-bottom:clamp(48px,6vw,72px);}
+    #edge .fiq-edge-cta{display:inline-flex;align-items:center;gap:14px;margin-top:28px;font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#3A2D25;text-decoration:none;padding-bottom:6px;border-bottom:1px solid #8B6B4A;transition:color 0.4s cubic-bezier(0.25,0.46,0.45,0.94),border-color 0.4s cubic-bezier(0.25,0.46,0.45,0.94);}
+    #edge .fiq-edge-cta:hover,#edge .fiq-edge-cta:focus-visible{color:#8B6B4A;border-color:#3A2D25;}
+    #edge .fiq-edge-panels{margin:0 var(--edge-gap);display:flex;gap:clamp(6px,0.6vw,10px);height:clamp(520px,44vw,760px);}
+    #edge .fiq-edge-panel{position:relative;flex:1 1 0;min-width:0;overflow:hidden;cursor:pointer;background:#1F1F1F;outline:none;transition:flex-grow 0.9s cubic-bezier(0.25,0.46,0.45,0.94);}
+    #edge .fiq-edge-panel.is-active{flex-grow:2.4;cursor:default;}
+    #edge .fiq-edge-panel:focus-visible{box-shadow:inset 0 0 0 1px #D6C2A8;}
+    #edge .fiq-edge-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.08);transition:transform 1.4s cubic-bezier(0.25,0.46,0.45,0.94);}
+    #edge .fiq-edge-panel.is-active .fiq-edge-img{transform:scale(1);}
+    #edge .fiq-edge-shade{position:absolute;inset:0;background:rgba(31,31,31,0.66);transition:background 0.9s cubic-bezier(0.25,0.46,0.45,0.94);}
+    #edge .fiq-edge-panel.is-active .fiq-edge-shade{background:rgba(31,31,31,0.42);}
+    #edge .fiq-edge-panel:not(.is-active):hover .fiq-edge-shade{background:rgba(31,31,31,0.56);}
+    #edge .fiq-edge-progress{position:absolute;top:0;inset-inline:0;height:2px;background:rgba(245,242,237,0.14);}
+    #edge .fiq-edge-progress span{display:block;height:100%;width:0;background:#D6C2A8;}
+    #edge.is-auto .fiq-edge-panel.is-active .fiq-edge-progress span{animation:fiq-edge-fill 7s linear forwards;}
+    #edge:not(.is-auto) .fiq-edge-panel.is-active .fiq-edge-progress span{width:100%;transition:width 0.6s cubic-bezier(0.25,0.46,0.45,0.94);}
+    @keyframes fiq-edge-fill{from{width:0}to{width:100%}}
+    #edge .fiq-edge-top{position:absolute;top:clamp(24px,3vw,56px);inset-inline:clamp(24px,3.4vw,64px);display:flex;justify-content:space-between;align-items:flex-start;gap:16px;}
+    #edge .fiq-edge-idx{white-space:nowrap;font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.2em;color:#D6C2A8;}
+    #edge .fiq-edge-num{position:absolute;top:0;inset-inline-end:0;font-family:'Lama Sans',sans-serif;font-size:clamp(72px,8vw,128px);line-height:0.8;color:transparent;-webkit-text-stroke:1px rgba(214,194,168,0.55);opacity:0;transform:translateY(-12px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94) 0.2s,transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94) 0.2s;}
+    #edge .fiq-edge-panel.is-active .fiq-edge-num{opacity:1;transform:none;}
+    #edge .fiq-edge-body{position:absolute;bottom:0;inset-inline:0;padding:clamp(24px,3.4vw,64px);}
+    #edge .fiq-edge-tag{display:block;font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#D6C2A8;margin-bottom:14px;}
+    #edge .fiq-edge-title{font-family:'Lama Sans',sans-serif;font-size:clamp(22px,2.1vw,32px);font-weight:500;line-height:1.15;letter-spacing:-0.01em;color:#FFFFFF;margin:0;}
+    #edge .fiq-edge-desc{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows 0.7s cubic-bezier(0.25,0.46,0.45,0.94),opacity 0.5s cubic-bezier(0.25,0.46,0.45,0.94);}
+    #edge .fiq-edge-desc p{overflow:hidden;min-height:0;width:min(420px,100%);font-family:'Lama Sans',sans-serif;font-size:14px;line-height:1.8;color:rgba(245,242,237,0.86);margin:0;}
+    #edge .fiq-edge-panel.is-active .fiq-edge-desc{grid-template-rows:1fr;opacity:1;transition:grid-template-rows 0.7s cubic-bezier(0.25,0.46,0.45,0.94) 0.25s,opacity 0.6s cubic-bezier(0.25,0.46,0.45,0.94) 0.45s;}
+    #edge .fiq-edge-panel.is-active .fiq-edge-desc p{padding-top:18px;}
+    @media(max-width:900px){
+      #edge .fiq-edge-head{grid-template-columns:1fr;gap:24px;}
+      #edge .fiq-edge-panels{flex-direction:column;height:auto;}
+      #edge .fiq-edge-panel,#edge .fiq-edge-panel.is-active{flex:none;min-height:440px;cursor:default;}
+      #edge .fiq-edge-shade,#edge .fiq-edge-panel.is-active .fiq-edge-shade{background:rgba(31,31,31,0.5);}
+      #edge .fiq-edge-img{transform:none;}
+      #edge .fiq-edge-num{opacity:1;transform:none;}
+      #edge .fiq-edge-desc{grid-template-rows:1fr;opacity:1;}
+      #edge .fiq-edge-desc p{padding-top:18px;width:100%;}
+      #edge .fiq-edge-progress{display:none;}
+    }
+    @media(prefers-reduced-motion:reduce){
+      #edge .fiq-edge-panel,#edge .fiq-edge-img,#edge .fiq-edge-shade,#edge .fiq-edge-num,#edge .fiq-edge-desc,#edge .fiq-edge-panel.is-active .fiq-edge-desc{transition:none;}
+    }
+  </style>
+  <div style="max-width:1280px;margin:0 auto;padding:0 clamp(24px,5vw,80px);box-sizing:content-box;">
+    <div class="fiq-edge-head">
+      <div data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);">
+        <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;">
+          <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
+          <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#8B6B4A;">The FurnishIQ Edge</span>
+        </div>
+        <h2 style="font-family:'Lama Sans',sans-serif;font-size:clamp(28px,3.5vw,52px);font-weight:500;color:#1F1F1F;line-height:1.1;letter-spacing:-0.015em;margin:0;">The New Standard<br>in KSA Interiors.</h2>
       </div>
-      <div style="font-family:'Lama Sans',sans-serif;font-size:clamp(28px,3.5vw,52px);font-weight:500;color:#1F1F1F;line-height:1.1;letter-spacing:-0.015em;max-width:680px;">
-        <div style="overflow:hidden;display:block;"><span data-value-word style="display:block;transform:translateY(110%);transition:transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);">The New Standard</span></div>
-        <div style="overflow:hidden;display:block;"><span data-value-word style="display:block;transform:translateY(110%);transition:transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);">in KSA Interiors.</span></div>
+      <div data-reveal data-reveal-delay="0.15" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);">
+        <p style="font-family:'Lama Sans',sans-serif;font-size:15px;line-height:1.8;color:#5B4636;max-width:400px;margin:0;">Three commitments shape every FurnishIQ project, from the first render to the final handover.</p>
+        <a href="/contact" class="fiq-edge-cta">Book Free Consultation<svg width="16" height="6" viewBox="0 0 16 6" fill="none" aria-hidden="true" style="transform:none;"><path d="M0 3H14M14 3L11.5 1M14 3L11.5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
       </div>
     </div>
-
-    <div class="fiq-value-pillars" style="position:relative;max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);align-items:start;gap:clamp(40px,5vw,72px);">
-
-      <div data-value-pillar class="fiq-value-pillar-item" style="opacity:0;transform:translateY(22px);transition:opacity 0.65s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.65s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;flex-direction:column;align-items:center;text-align:center;">
-        <div style="width:140px;height:140px;border-radius:50%;background:#3A2D25;box-shadow:0 12px 32px rgba(58,45,37,0.16);display:flex;align-items:center;justify-content:center;margin-bottom:26px;flex-shrink:0;">
-          <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#F5F2ED" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+  </div>
+  <div class="fiq-edge-panels" data-reveal data-reveal-delay="0.2" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);">
+      <article class="fiq-edge-panel is-active" data-edge-panel tabindex="0" aria-label="Visual Certainty">
+        <img class="fiq-edge-img" src="uploads/luxury-interior-design-material-board-riyadh-1200.webp" srcset="uploads/luxury-interior-design-material-board-riyadh-600.webp 600w, uploads/luxury-interior-design-material-board-riyadh-900.webp 900w, uploads/luxury-interior-design-material-board-riyadh-1200.webp 1200w" sizes="(max-width:900px) 100vw, 60vw" alt="" loading="lazy" decoding="async">
+        <div class="fiq-edge-shade"></div>
+        <div class="fiq-edge-progress" aria-hidden="true"><span></span></div>
+        <div class="fiq-edge-top">
+          <span class="fiq-edge-idx" dir="ltr">01 / 03</span>
+          <span class="fiq-edge-num" aria-hidden="true">01</span>
         </div>
-        <h3 style="font-family:'Lama Sans',sans-serif;font-size:21px;font-weight:700;color:#1F1F1F;margin-bottom:14px;line-height:1.2;">Visual Certainty</h3>
-        <div data-value-bar style="width:0px;height:1px;background:rgba(91,70,54,0.3);margin-bottom:18px;transition:width 0.55s cubic-bezier(0.25,0.46,0.45,0.94);"></div>
-        <p style="font-family:'Lama Sans',sans-serif;font-size:13.5px;line-height:1.75;color:#5B4636;margin-bottom:16px;">Decide with total confidence. We provide full Photoreal 3D Renders of every floor and landscape before a single brick is laid.</p>
-        <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:#8B6B4A;">Full 3D Visualization</span>
-      </div>
-
-      <div data-value-pillar class="fiq-value-pillar-item" style="opacity:0;transform:translateY(22px);transition:opacity 0.65s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.65s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;flex-direction:column;align-items:center;text-align:center;">
-        <div style="width:140px;height:140px;border-radius:50%;background:#3A2D25;box-shadow:0 12px 32px rgba(58,45,37,0.16);display:flex;align-items:center;justify-content:center;margin-bottom:26px;flex-shrink:0;">
-          <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#F5F2ED" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="5"></circle><circle cx="12" cy="12" r="1" fill="#F5F2ED"></circle></svg>
+        <div class="fiq-edge-body">
+          <span class="fiq-edge-tag">Full 3D Visualization</span>
+          <h3 class="fiq-edge-title">Visual Certainty</h3>
+          <div class="fiq-edge-desc"><p>Decide with total confidence. We provide full Photoreal 3D Renders of every floor and landscape before a single brick is laid.</p></div>
         </div>
-        <h3 style="font-family:'Lama Sans',sans-serif;font-size:21px;font-weight:700;color:#1F1F1F;margin-bottom:14px;line-height:1.2;">Strategic DNA</h3>
-        <div data-value-bar style="width:0px;height:1px;background:rgba(91,70,54,0.3);margin-bottom:18px;transition:width 0.55s cubic-bezier(0.25,0.46,0.45,0.94);"></div>
-        <p style="font-family:'Lama Sans',sans-serif;font-size:13.5px;line-height:1.75;color:#5B4636;margin-bottom:16px;">We practice Brand-Led Planning. Every layout and spatial flow is strategically engineered to reflect your brand identity.</p>
-        <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:#8B6B4A;">Brand-Led Planning</span>
-      </div>
-
-      <div data-value-pillar class="fiq-value-pillar-item" style="opacity:0;transform:translateY(22px);transition:opacity 0.65s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.65s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;flex-direction:column;align-items:center;text-align:center;">
-        <div style="width:140px;height:140px;border-radius:50%;background:#3A2D25;box-shadow:0 12px 32px rgba(58,45,37,0.16);display:flex;align-items:center;justify-content:center;margin-bottom:26px;flex-shrink:0;">
-          <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#F5F2ED" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.5 9 8 11 4.5-2 8-6 8-11V5z"></path><path d="M9 12l2 2 4-4"></path></svg>
+      </article>
+      <article class="fiq-edge-panel" data-edge-panel tabindex="0" aria-label="Strategic DNA">
+        <img class="fiq-edge-img" src="uploads/maison-joaillerie-main-salon-jeddah-1920.webp" srcset="uploads/maison-joaillerie-main-salon-jeddah-1280.webp 1280w, uploads/maison-joaillerie-main-salon-jeddah-1920.webp 1920w" sizes="(max-width:900px) 100vw, 60vw" alt="" loading="lazy" decoding="async">
+        <div class="fiq-edge-shade"></div>
+        <div class="fiq-edge-progress" aria-hidden="true"><span></span></div>
+        <div class="fiq-edge-top">
+          <span class="fiq-edge-idx" dir="ltr">02 / 03</span>
+          <span class="fiq-edge-num" aria-hidden="true">02</span>
         </div>
-        <h3 style="font-family:'Lama Sans',sans-serif;font-size:21px;font-weight:700;color:#1F1F1F;margin-bottom:14px;line-height:1.2;">Zero-Snag Promise</h3>
-        <div data-value-bar style="width:0px;height:1px;background:rgba(91,70,54,0.3);margin-bottom:18px;transition:width 0.55s cubic-bezier(0.25,0.46,0.45,0.94);"></div>
-        <p style="font-family:'Lama Sans',sans-serif;font-size:13.5px;line-height:1.75;color:#5B4636;margin-bottom:16px;">Our hallmark is excellence in execution. Through rigorous QA/QC and HSE monitoring, we guarantee a flawless, zero-snag handover.</p>
-        <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:#8B6B4A;">Clean Build Guarantee</span>
-      </div>
-
-    </div>
-
-    <div style="position:relative;text-align:center;margin-top:clamp(40px,5vw,56px);">
-      <a href="/contact" class="fiq-value-cta" style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#3A2D25;background:#D6C2A8;padding:15px 36px;border:1px solid #D6C2A8;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:background 0.3s cubic-bezier(0.25,0.46,0.45,0.94),color 0.3s;">
-        Book Free Consultation
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3A2D25" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition:stroke 0.3s;"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-      </a>
-    </div>
+        <div class="fiq-edge-body">
+          <span class="fiq-edge-tag">Brand-Led Planning</span>
+          <h3 class="fiq-edge-title">Strategic DNA</h3>
+          <div class="fiq-edge-desc"><p>We practice Brand-Led Planning. Every layout and spatial flow is strategically engineered to reflect your brand identity.</p></div>
+        </div>
+      </article>
+      <article class="fiq-edge-panel" data-edge-panel tabindex="0" aria-label="Zero-Snag Promise">
+        <img class="fiq-edge-img" src="uploads/office-fit-out-walnut-wall-panel-installation-riyadh-1200.webp" srcset="uploads/office-fit-out-walnut-wall-panel-installation-riyadh-600.webp 600w, uploads/office-fit-out-walnut-wall-panel-installation-riyadh-900.webp 900w, uploads/office-fit-out-walnut-wall-panel-installation-riyadh-1200.webp 1200w" sizes="(max-width:900px) 100vw, 60vw" alt="" loading="lazy" decoding="async">
+        <div class="fiq-edge-shade"></div>
+        <div class="fiq-edge-progress" aria-hidden="true"><span></span></div>
+        <div class="fiq-edge-top">
+          <span class="fiq-edge-idx" dir="ltr">03 / 03</span>
+          <span class="fiq-edge-num" aria-hidden="true">03</span>
+        </div>
+        <div class="fiq-edge-body">
+          <span class="fiq-edge-tag">Clean Build Guarantee</span>
+          <h3 class="fiq-edge-title">Zero-Snag Promise</h3>
+          <div class="fiq-edge-desc"><p>Our hallmark is excellence in execution. Through rigorous QA/QC and HSE monitoring, we guarantee a flawless, <span style='white-space:nowrap'>zero-snag</span> handover.</p></div>
+        </div>
+      </article>
   </div>
 </section>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ PORTFOLIO ━━━━━━━━ -->
-<section id="portfolio" style="background:#3A2D25;padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px);">
-  <div style="max-width:1280px;margin:0 auto;">
+<section id="portfolio" style="position:relative;overflow:hidden;background:#3A2D25;padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px);">
+  <style>
+    /* Selected Work: hovering a card brings its project image in as the section background */
+    .fiq-pf-bgs{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+    .fiq-pf-bg{position:absolute;inset:0;opacity:0;transition:opacity 0.9s cubic-bezier(0.25,0.46,0.45,0.94);}
+    .fiq-pf-bg img{width:100%;height:100%;object-fit:cover;transform:scale(1.08);filter:blur(2px) saturate(0.85);transition:transform 1.8s cubic-bezier(0.25,0.46,0.45,0.94);}
+    .fiq-pf-veil{position:absolute;inset:0;opacity:0;background:linear-gradient(to bottom,rgba(58,45,37,0.55) 0%,rgba(58,45,37,0.3) 50%,rgba(58,45,37,0.6) 100%);transition:opacity 0.9s cubic-bezier(0.25,0.46,0.45,0.94);}
+    [data-portfolio-card]{transition:filter 0.6s cubic-bezier(0.25,0.46,0.45,0.94);}
+    @media (prefers-reduced-motion:reduce){.fiq-pf-bg img{transition:none;transform:none;}}
+  </style>
+  <div class="fiq-pf-bgs" aria-hidden="true">
+    <div class="fiq-pf-bg"><img src="uploads/courtyard-residence-grand-majlis-riyadh-1920.webp" alt="" loading="lazy" decoding="async"></div>
+    <div class="fiq-pf-bg"><img src="uploads/central-commons-plaza-dusk-riyadh-1920.webp" alt="" loading="lazy" decoding="async"></div>
+    <div class="fiq-pf-bg"><img src="uploads/desert-stone-resort-lobby-lounge-alula-1920.webp" alt="" loading="lazy" decoding="async"></div>
+    <div class="fiq-pf-veil"></div>
+  </div>
+  <div style="position:relative;z-index:1;max-width:1280px;margin:0 auto;">
     <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:clamp(44px,6vw,72px);flex-wrap:wrap;gap:24px;">
       <div>
         <div data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;align-items:center;gap:16px;margin-bottom:20px;">
@@ -927,33 +949,33 @@ input:focus, select:focus, textarea:focus {
     </div>
     <div class="fiq-portfolio-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:3px;">
 
-      <a href="/project-detail?project=a-private-residence-in-layered-walnut-and-stone" data-portfolio-card data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);position:relative;aspect-ratio:3/4;overflow:hidden;cursor:pointer;display:block;text-decoration:none;">
-        <img id="pimg-1" src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&w=800&q=30" srcset="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&w=400&q=30 400w, https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&w=600&q=30 600w, https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&w=700&q=30 700w, https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&w=800&q=30 800w" sizes="(max-width:600px) 100vw, (max-width:1024px) 50vw, 33vw" alt="A private residence in layered walnut and stone" style="width:100%;height:100%;object-fit:cover;object-position:center;transition:transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);" loading="lazy" decoding="async">
+      <a href="/project-detail?project=the-courtyard-residence" data-portfolio-card data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);position:relative;aspect-ratio:3/4;overflow:hidden;cursor:pointer;display:block;text-decoration:none;">
+        <img id="pimg-1" src="uploads/courtyard-residence-grand-majlis-riyadh-1280.webp" srcset="uploads/courtyard-residence-grand-majlis-riyadh-1280.webp 1280w, uploads/courtyard-residence-grand-majlis-riyadh-1920.webp 1920w" sizes="(max-width:600px) 100vw, (max-width:1024px) 50vw, 33vw" alt="The Courtyard Residence: grand majlis with walnut mashrabiya screens, design concept by FurnishIQ" style="width:100%;height:100%;object-fit:cover;object-position:center;transition:transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);" loading="lazy" decoding="async">
         <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(58,45,37,0.92) 0%,rgba(58,45,37,0.0) 55%);"></div>
         <div style="position:absolute;bottom:0;left:0;right:0;padding:28px;">
-          <div style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:#8B6B4A;margin-bottom:10px;">Residential · Riyadh</div>
-          <h3 style="font-family:'Lama Sans',sans-serif;font-size:clamp(16px,1.8vw,22px);font-weight:500;color:#FFFFFF;line-height:1.2;margin-bottom:8px;">A Private Residence in Layered Walnut and Stone</h3>
-          <p style="font-family:'Lama Sans',sans-serif;font-size:12px;color:rgba(214,194,168,0.65);line-height:1.5;">A calm, material-led family villa in north Riyadh.</p>
+          <div style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:#D6C2A8;margin-bottom:10px;">Concept · Residential · North Riyadh</div>
+          <h3 style="font-family:'Lama Sans',sans-serif;font-size:clamp(16px,1.8vw,22px);font-weight:500;color:#FFFFFF;line-height:1.2;margin-bottom:8px;">The Courtyard Residence</h3>
+          <p style="font-family:'Lama Sans',sans-serif;font-size:12px;color:rgba(214,194,168,0.65);line-height:1.5;">A 3,800 m² three-wing family residence around a central courtyard.</p>
         </div>
       </a>
 
-      <a href="/project-detail?project=boutique-hotel-lobby-reimagined-in-warm-brass" data-portfolio-card data-reveal data-reveal-delay="0.15" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);position:relative;aspect-ratio:3/4;overflow:hidden;cursor:pointer;display:block;text-decoration:none;">
-        <img id="pimg-2" src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&w=800&q=30" srcset="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&w=400&q=30 400w, https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&w=600&q=30 600w, https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&w=700&q=30 700w, https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&w=800&q=30 800w" sizes="(max-width:600px) 100vw, (max-width:1024px) 50vw, 33vw" alt="Boutique hotel lobby, reimagined in warm brass" style="width:100%;height:100%;object-fit:cover;object-position:center;transition:transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);" loading="lazy" decoding="async">
+      <a href="/project-detail?project=central-commons" data-portfolio-card data-reveal data-reveal-delay="0.15" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);position:relative;aspect-ratio:3/4;overflow:hidden;cursor:pointer;display:block;text-decoration:none;">
+        <img id="pimg-2" src="uploads/central-commons-plaza-dusk-riyadh-1280.webp" srcset="uploads/central-commons-plaza-dusk-riyadh-1280.webp 1280w, uploads/central-commons-plaza-dusk-riyadh-1920.webp 1920w" sizes="(max-width:600px) 100vw, (max-width:1024px) 50vw, 33vw" alt="Central Commons: shaded central plaza at dusk beneath a bronze canopy, design concept by FurnishIQ" style="width:100%;height:100%;object-fit:cover;object-position:center;transition:transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);" loading="lazy" decoding="async">
         <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(58,45,37,0.92) 0%,rgba(58,45,37,0.0) 55%);"></div>
         <div style="position:absolute;bottom:0;left:0;right:0;padding:28px;">
-          <div style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:#8B6B4A;margin-bottom:10px;">Hospitality · Jeddah</div>
-          <h3 style="font-family:'Lama Sans',sans-serif;font-size:clamp(16px,1.8vw,22px);font-weight:500;color:#FFFFFF;line-height:1.2;margin-bottom:8px;">Boutique Hotel Lobby, Reimagined in Warm Brass</h3>
-          <p style="font-family:'Lama Sans',sans-serif;font-size:12px;color:rgba(214,194,168,0.65);line-height:1.5;">Redefining commercial hospitality.</p>
+          <div style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:#D6C2A8;margin-bottom:10px;">Concept · Retail · Olaya, Riyadh</div>
+          <h3 style="font-family:'Lama Sans',sans-serif;font-size:clamp(16px,1.8vw,22px);font-weight:500;color:#FFFFFF;line-height:1.2;margin-bottom:8px;">Central Commons</h3>
+          <p style="font-family:'Lama Sans',sans-serif;font-size:12px;color:rgba(214,194,168,0.65);line-height:1.5;">A 22,000 m² commercial plaza, galleria and food hall in central Riyadh.</p>
         </div>
       </a>
 
-      <a href="/project-detail?project=law-firm-chambers-in-oak-and-smoked-glass" data-portfolio-card data-reveal data-reveal-delay="0.3" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);position:relative;aspect-ratio:3/4;overflow:hidden;cursor:pointer;display:block;text-decoration:none;">
-        <img id="pimg-3" src="https://images.unsplash.com/photo-1604328698692-f76ea9498e76?auto=format&w=800&q=30" srcset="https://images.unsplash.com/photo-1604328698692-f76ea9498e76?auto=format&w=400&q=30 400w, https://images.unsplash.com/photo-1604328698692-f76ea9498e76?auto=format&w=600&q=30 600w, https://images.unsplash.com/photo-1604328698692-f76ea9498e76?auto=format&w=700&q=30 700w, https://images.unsplash.com/photo-1604328698692-f76ea9498e76?auto=format&w=800&q=30 800w" sizes="(max-width:600px) 100vw, (max-width:1024px) 50vw, 33vw" alt="Law firm chambers in oak and smoked glass" style="width:100%;height:100%;object-fit:cover;object-position:center;transition:transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);" loading="lazy" decoding="async">
+      <a href="/project-detail?project=desert-stone-resort" data-portfolio-card data-reveal data-reveal-delay="0.3" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);position:relative;aspect-ratio:3/4;overflow:hidden;cursor:pointer;display:block;text-decoration:none;">
+        <img id="pimg-3" src="uploads/desert-stone-resort-lobby-lounge-alula-1280.webp" srcset="uploads/desert-stone-resort-lobby-lounge-alula-1280.webp 1280w, uploads/desert-stone-resort-lobby-lounge-alula-1920.webp 1920w" sizes="(max-width:600px) 100vw, (max-width:1024px) 50vw, 33vw" alt="Desert Stone Resort: lobby lounge framing sandstone rock formations in AlUla, design concept by FurnishIQ" style="width:100%;height:100%;object-fit:cover;object-position:center;transition:transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);" loading="lazy" decoding="async">
         <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(58,45,37,0.92) 0%,rgba(58,45,37,0.0) 55%);"></div>
         <div style="position:absolute;bottom:0;left:0;right:0;padding:28px;">
-          <div style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:#8B6B4A;margin-bottom:10px;">Workplace · Jeddah</div>
-          <h3 style="font-family:'Lama Sans',sans-serif;font-size:clamp(16px,1.8vw,22px);font-weight:500;color:#FFFFFF;line-height:1.2;margin-bottom:8px;">Law Firm Chambers in Oak and Smoked Glass</h3>
-          <p style="font-family:'Lama Sans',sans-serif;font-size:12px;color:rgba(214,194,168,0.65);line-height:1.5;">Chambers planned around confidentiality and light.</p>
+          <div style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:#D6C2A8;margin-bottom:10px;">Concept · Hospitality · AlUla</div>
+          <h3 style="font-family:'Lama Sans',sans-serif;font-size:clamp(16px,1.8vw,22px);font-weight:500;color:#FFFFFF;line-height:1.2;margin-bottom:8px;">Desert Stone Resort</h3>
+          <p style="font-family:'Lama Sans',sans-serif;font-size:12px;color:rgba(214,194,168,0.65);line-height:1.5;">4,500 m² of arrival, lounge and dining spaces among sandstone formations.</p>
         </div>
       </a>
 
@@ -963,146 +985,278 @@ input:focus, select:focus, textarea:focus {
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ BLOG ━━━━━━━━━━━━ -->
 <section id="blog" style="background:#FFFFFF;padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px);">
+  <style>
+    #blog .jr-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:clamp(40px,5vw,64px);}
+    #blog .jr-all{display:inline-flex;align-items:center;gap:14px;font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#3A2D25;text-decoration:none;padding-bottom:6px;border-bottom:1px solid #8B6B4A;transition:color 0.4s cubic-bezier(0.25,0.46,0.45,0.94),border-color 0.4s cubic-bezier(0.25,0.46,0.45,0.94);}
+    #blog .jr-all:hover,#blog .jr-all:focus-visible{color:#8B6B4A;border-color:#3A2D25;}
+    #blog .bs-paper{border-top:3px solid #1F1F1F;border-bottom:1px solid #1F1F1F;}
+    #blog .bs-mast{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:14px 0;border-bottom:1px solid #1F1F1F;font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#3A2D25;}
+    #blog .bs-mast strong{font-weight:500;color:#1F1F1F;}
+    #blog .bs-cols{--bs-pad:clamp(20px,2.4vw,40px);display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr) minmax(0,1fr);grid-template-rows:auto auto auto auto 1fr;margin-inline:calc(var(--bs-pad) * -1);}
+    #blog .bs-story{display:flex;flex-direction:column;text-decoration:none;color:inherit;padding:clamp(28px,3vw,44px) var(--bs-pad);outline:none;}
+    #blog .bs-lead{grid-row:1 / span 5;}
+    #blog .bs-lead .bs-read{align-self:flex-start;}
+    #blog .bs-side{display:grid;grid-row:1 / span 5;grid-template-rows:subgrid;align-content:start;}
+    #blog .bs-story + .bs-story{border-inline-start:1px solid rgba(31,31,31,0.18);}
+    #blog .bs-img{display:block;position:relative;overflow:hidden;background:#F5F2ED;}
+    #blog .bs-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.4s cubic-bezier(0.25,0.46,0.45,0.94);}
+    #blog .bs-story:hover .bs-img img,#blog .bs-story:focus-visible .bs-img img{transform:scale(1.04);}
+    #blog .bs-img--lead{aspect-ratio:3/2;margin-bottom:28px;}
+    #blog .bs-img--side{aspect-ratio:4/3;margin:22px 0 20px;}
+    #blog .bs-kicker{display:flex;align-items:center;flex-wrap:wrap;gap:10px;font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#8B6B4A;margin-bottom:14px;}
+    #blog .bs-kicker [dir]{font-family:'Lama Sans',sans-serif;letter-spacing:0.2em;}
+    #blog .bs-dot{width:3px;height:3px;border-radius:50%;background:#B8A08C;}
+    #blog .bs-head{font-family:'Lama Sans',sans-serif;font-size:clamp(19px,1.5vw,22px);font-weight:500;line-height:1.3;letter-spacing:-0.005em;color:#1F1F1F;margin:0;transition:color 0.4s cubic-bezier(0.25,0.46,0.45,0.94);}
+    #blog .bs-head--lead{font-size:clamp(28px,2.9vw,44px);line-height:1.12;letter-spacing:-0.015em;}
+    #blog .bs-story:hover .bs-head,#blog .bs-story:focus-visible .bs-head{color:#5B4636;}
+    #blog .bs-excerpt{font-family:'Lama Sans',sans-serif;font-size:14px;line-height:1.8;color:#5B4636;margin:0;}
+    #blog .bs-excerpt--lead{font-size:16px;margin-top:20px;max-width:600px;}
+    #blog .bs-excerpt--lead::first-letter{float:left;font-size:4.1em;line-height:0.82;margin:0.06em 0.12em 0 0;color:#3A2D25;font-weight:500;}
+    #blog .bs-read{display:inline-flex;align-items:center;justify-self:start;align-self:end;gap:12px;margin-top:auto;padding-top:24px;font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#3A2D25;}
+    #blog .bs-read svg{transition:transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94);}
+    #blog .bs-story:hover .bs-read svg,#blog .bs-story:focus-visible .bs-read svg{transform:translateX(6px) ;}
+    @media(max-width:1024px){
+      #blog .bs-cols{grid-template-columns:1fr 1fr;grid-template-rows:auto auto auto auto auto 1fr;}
+      #blog .bs-lead{grid-column:1/-1;grid-row:1;border-bottom:1px solid rgba(31,31,31,0.18);}
+      #blog .bs-side{grid-row:2 / span 5;}
+      #blog .bs-lead + .bs-story{border-inline-start:none;}
+    }
+    @media(max-width:640px){
+      #blog .bs-cols{grid-template-columns:1fr;grid-template-rows:none;margin-inline:0;}
+      #blog .bs-story,#blog .bs-side{padding-inline:0;grid-row:auto;display:flex;}
+      #blog .bs-story + .bs-story{border-inline-start:none;border-top:1px solid rgba(31,31,31,0.18);}
+      #blog .bs-lead{border-bottom:none;}
+      #blog .bs-mast span:nth-child(2){display:none;}
+    }
+    @media(prefers-reduced-motion:reduce){
+      #blog .bs-img img,#blog .bs-head,#blog .bs-read svg{transition:none;}
+    }
+  </style>
   <div style="max-width:1280px;margin:0 auto;">
-    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:clamp(44px,6vw,72px);flex-wrap:wrap;gap:24px;">
-      <div>
-        <div data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;align-items:center;gap:16px;margin-bottom:20px;">
+    <div class="jr-head">
+      <div data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);">
+        <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;">
           <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
           <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#8B6B4A;">From the Studio</span>
         </div>
-        <h2 data-reveal data-reveal-delay="0.1" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Lama Sans',sans-serif;font-size:clamp(28px,3.5vw,52px);font-weight:500;color:#1F1F1F;line-height:1.1;letter-spacing:-0.015em;">Expertise Shared.</h2>
+        <h2 style="font-family:'Lama Sans',sans-serif;font-size:clamp(28px,3.5vw,52px);font-weight:500;color:#1F1F1F;line-height:1.1;letter-spacing:-0.015em;margin:0;">Expertise Shared.</h2>
       </div>
-      <a href="/blog" style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#5B4636;text-decoration:none;border-bottom:1px solid #D6C2A8;padding-bottom:4px;white-space:nowrap;flex-shrink:0;align-self:flex-end;margin-bottom:4px;transition:color 0.25s,border-color 0.25s;">All Articles</a>
+      <a href="/blog" class="jr-all" data-reveal data-reveal-delay="0.15" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);">All Articles<svg width="16" height="6" viewBox="0 0 16 6" fill="none" aria-hidden="true" style="transform:none;flex-shrink:0;"><path d="M0 3H14M14 3L11.5 1M14 3L11.5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
     </div>
-    <div class="fiq-blog-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,3.5vw,48px);">
-
-      <article data-reveal data-blog-card style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);cursor:pointer;">
-        <div style="overflow:hidden;aspect-ratio:16/9;margin-bottom:24px;">
-          <img data-blog-img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&w=600&q=30" srcset="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&w=300&q=30 300w, https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&w=450&q=30 450w, https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&w=520&q=30 520w, https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&w=600&q=30 600w" sizes="(max-width:600px) 100vw, (max-width:1024px) 50vw, 33vw" alt="Material Honesty: Why the Finishes You Touch Matter More Than the Ones You See" style="width:100%;height:100%;object-fit:cover;transition:transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);" loading="lazy" decoding="async">
-        </div>
-        <div style="font-family:'Lama Sans',sans-serif;font-size:8px;letter-spacing:0.26em;text-transform:uppercase;color:#8B6B4A;margin-bottom:14px;">Interior Design</div>
-        <h3 data-blog-title style="font-family:'Lama Sans',sans-serif;font-size:clamp(15px,1.6vw,20px);font-weight:500;color:#1F1F1F;line-height:1.35;margin-bottom:14px;transition:color 0.25s;">Material Honesty: Why the Finishes You Touch Matter More Than the Ones You See.</h3>
-        <p style="font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.75;color:#8B6B4A;">From hand-finished walnut to honed stone — a look inside our material selection process.</p>
-        <div style="margin-top:20px;display:flex;align-items:center;gap:10px;">
-          <span data-blog-link style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#5B4636;transition:color 0.25s;">Read Article</span>
-          <svg width="16" height="6" viewBox="0 0 16 6" fill="none"><path d="M0 3H14M14 3L11.5 1M14 3L11.5 5" stroke="#5B4636" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-        </div>
-      </article>
-
-      <article data-reveal data-reveal-delay="0.12" data-blog-card style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);cursor:pointer;">
-        <div style="overflow:hidden;aspect-ratio:16/9;margin-bottom:24px;">
-          <img data-blog-img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&w=600&q=30" srcset="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&w=300&q=30 300w, https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&w=450&q=30 450w, https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&w=520&q=30 520w, https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&w=600&q=30 600w" sizes="(max-width:600px) 100vw, (max-width:1024px) 50vw, 33vw" alt="The 90-Day Office: Compressing Commercial Fit-Out Timelines Without Cutting Corners" style="width:100%;height:100%;object-fit:cover;transition:transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);" loading="lazy" decoding="async">
-        </div>
-        <div style="font-family:'Lama Sans',sans-serif;font-size:8px;letter-spacing:0.26em;text-transform:uppercase;color:#8B6B4A;margin-bottom:14px;">Fit-Out</div>
-        <h3 data-blog-title style="font-family:'Lama Sans',sans-serif;font-size:clamp(15px,1.6vw,20px);font-weight:500;color:#1F1F1F;line-height:1.35;margin-bottom:14px;transition:color 0.25s;">The 90-Day Office: Compressing Commercial Fit-Out Timelines Without Cutting Corners.</h3>
-        <p style="font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.75;color:#8B6B4A;">Parallel workstreams, early procurement, and the schedule discipline that makes it possible.</p>
-        <div style="margin-top:20px;display:flex;align-items:center;gap:10px;">
-          <span data-blog-link style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#5B4636;transition:color 0.25s;">Read Article</span>
-          <svg width="16" height="6" viewBox="0 0 16 6" fill="none"><path d="M0 3H14M14 3L11.5 1M14 3L11.5 5" stroke="#5B4636" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-        </div>
-      </article>
-
-      <article data-reveal data-reveal-delay="0.24" data-blog-card style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);cursor:pointer;">
-        <div style="overflow:hidden;aspect-ratio:16/9;margin-bottom:24px;">
-          <img data-blog-img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&w=600&q=30" srcset="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&w=300&q=30 300w, https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&w=450&q=30 450w, https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&w=520&q=30 520w, https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&w=600&q=30 600w" sizes="(max-width:600px) 100vw, (max-width:1024px) 50vw, 33vw" alt="Invisible Infrastructure: Designing MEP Systems You'll Never Notice — By Design" style="width:100%;height:100%;object-fit:cover;transition:transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);" loading="lazy" decoding="async">
-        </div>
-        <div style="font-family:'Lama Sans',sans-serif;font-size:8px;letter-spacing:0.26em;text-transform:uppercase;color:#8B6B4A;margin-bottom:14px;">Engineering &amp; MEP</div>
-        <h3 data-blog-title style="font-family:'Lama Sans',sans-serif;font-size:clamp(15px,1.6vw,20px);font-weight:500;color:#1F1F1F;line-height:1.35;margin-bottom:14px;transition:color 0.25s;">Invisible Infrastructure: Designing MEP Systems You'll Never Notice — By Design.</h3>
-        <p style="font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.75;color:#8B6B4A;">Great engineering disappears. How we route, size, and conceal the systems that keep a building alive.</p>
-        <div style="margin-top:20px;display:flex;align-items:center;gap:10px;">
-          <span data-blog-link style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#5B4636;transition:color 0.25s;">Read Article</span>
-          <svg width="16" height="6" viewBox="0 0 16 6" fill="none"><path d="M0 3H14M14 3L11.5 1M14 3L11.5 5" stroke="#5B4636" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-        </div>
-      </article>
-
+    <div class="bs-paper" data-reveal data-reveal-delay="0.1" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);">
+      <div class="bs-mast"><strong>The FurnishIQ Journal</strong><span>Notes on design, fit-out and engineering</span><span>Riyadh</span></div>
+      <div class="bs-cols">
+      <a class="bs-story bs-lead" href="/blog/material-honesty">
+        <span class="bs-img bs-img--lead"><img src="uploads/penthouse-wadi-oak-bronze-staircase-detail-2400.webp" srcset="uploads/penthouse-wadi-oak-bronze-staircase-detail-1200.webp 1200w, uploads/penthouse-wadi-oak-bronze-staircase-detail-2400.webp 2400w" sizes="(max-width:900px) 100vw, 50vw" alt="" loading="lazy" decoding="async"></span>
+        <span class="bs-kicker"><span>No. <span dir="ltr">01</span></span><span class="bs-dot"></span>Interior Design<span class="bs-dot"></span>June 22, 2026</span>
+        <h3 class="bs-head bs-head--lead">Material Honesty: Why the Finishes You Touch Matter More Than the Ones You See</h3>
+        <p class="bs-excerpt bs-excerpt--lead">From hand-finished walnut to honed stone: why the surfaces within reach decide how a space is remembered.</p>
+        <span class="bs-read">Read Article<svg width="16" height="6" viewBox="0 0 16 6" fill="none" aria-hidden="true" style="transform:none;flex-shrink:0;"><path d="M0 3H14M14 3L11.5 1M14 3L11.5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+      </a>
+      <a class="bs-story bs-side" href="/blog/the-90-day-office">
+        <span class="bs-kicker"><span>No. <span dir="ltr">02</span></span><span class="bs-dot"></span>Fit-Out</span>
+        <h3 class="bs-head">The 90-Day Office: Compressing Commercial Fit-Out Timelines Without Cutting Corners</h3>
+        <span class="bs-img bs-img--side"><img src="uploads/executive-floors-boardroom-walnut-table-2752.webp" srcset="uploads/executive-floors-boardroom-walnut-table-1280.webp 1280w, uploads/executive-floors-boardroom-walnut-table-1920.webp 1920w, uploads/executive-floors-boardroom-walnut-table-2752.webp 2752w" sizes="(max-width:900px) 100vw, 25vw" alt="" loading="lazy" decoding="async"></span>
+        <p class="bs-excerpt">Parallel workstreams, early procurement and the schedule discipline that makes a short programme possible.</p>
+        <span class="bs-read">Read Article<svg width="16" height="6" viewBox="0 0 16 6" fill="none" aria-hidden="true" style="transform:none;flex-shrink:0;"><path d="M0 3H14M14 3L11.5 1M14 3L11.5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+      </a>
+      <a class="bs-story bs-side" href="/blog/invisible-infrastructure">
+        <span class="bs-kicker"><span>No. <span dir="ltr">03</span></span><span class="bs-dot"></span>Engineering &amp; MEP</span>
+        <h3 class="bs-head">Invisible Infrastructure: Designing MEP Systems You'll Never Notice, By Design</h3>
+        <span class="bs-img bs-img--side"><img src="uploads/executive-floors-walnut-ceiling-detail-2400.webp" srcset="uploads/executive-floors-walnut-ceiling-detail-1200.webp 1200w, uploads/executive-floors-walnut-ceiling-detail-2400.webp 2400w" sizes="(max-width:900px) 100vw, 25vw" alt="" loading="lazy" decoding="async"></span>
+        <p class="bs-excerpt">Great engineering disappears. How services are routed, sized and concealed to keep a building comfortable.</p>
+        <span class="bs-read">Read Article<svg width="16" height="6" viewBox="0 0 16 6" fill="none" aria-hidden="true" style="transform:none;flex-shrink:0;"><path d="M0 3H14M14 3L11.5 1M14 3L11.5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+      </a>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ CONTACT BANNER ━━━ -->
-<section id="contact" style="background:#5B4636;padding:clamp(72px,9vw,104px) clamp(24px,5vw,80px);position:relative;overflow:hidden;">
-  <div style="position:absolute;top:-80px;right:-80px;width:280px;height:280px;border:1px solid rgba(214,194,168,0.08);border-radius:50%;pointer-events:none;"></div>
-  <div style="position:absolute;bottom:-60px;left:-40px;width:200px;height:200px;border:1px solid rgba(214,194,168,0.06);border-radius:50%;pointer-events:none;"></div>
-  <div style="max-width:1280px;margin:0 auto;">
-    <div class="fiq-cta-row" style="display:flex;justify-content:space-between;align-items:center;gap:clamp(32px,5vw,64px);flex-wrap:wrap;">
+<section id="contact" style="background:#5B4636;padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px);position:relative;overflow:hidden;">
+  <style>
+    #contact .fiq-cta2-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(48px,6vw,96px);align-items:center;}
+    #contact .fiq-cta2-row{display:grid;grid-template-columns:44px 1fr auto;align-items:center;gap:16px;padding:26px 0;border-top:1px solid rgba(214,194,168,0.18);text-decoration:none;transition:border-color 0.4s cubic-bezier(0.25,0.46,0.45,0.94);}
+    #contact .fiq-cta2-row:last-child{border-bottom:1px solid rgba(214,194,168,0.18);}
+    #contact .fiq-cta2-idx{font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.2em;color:rgba(214,194,168,0.45);}
+    #contact .fiq-cta2-key{font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(214,194,168,0.65);}
+    #contact .fiq-cta2-val{font-family:'Lama Sans',sans-serif;font-size:clamp(17px,1.5vw,21px);color:#FFFFFF;letter-spacing:0.01em;transition:color 0.4s cubic-bezier(0.25,0.46,0.45,0.94);text-align:left;overflow-wrap:anywhere;}
+    #contact .fiq-cta2-arrow{color:#D6C2A8;transform:none;transition:transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94);}
+    #contact .fiq-cta2-row:hover,#contact .fiq-cta2-row:focus-visible{border-color:rgba(214,194,168,0.5);}
+    #contact .fiq-cta2-row:hover .fiq-cta2-val,#contact .fiq-cta2-row:focus-visible .fiq-cta2-val{color:#D6C2A8;}
+    #contact .fiq-cta2-row:hover .fiq-cta2-arrow,#contact .fiq-cta2-row:focus-visible .fiq-cta2-arrow{transform:translateX(6px) ;}
+    #contact .fiq-cta2-btn{display:inline-flex;align-items:center;gap:14px;margin-top:44px;font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#3A2D25;background:#D6C2A8;padding:18px 34px;text-decoration:none;transition:background 0.4s cubic-bezier(0.25,0.46,0.45,0.94);}
+    #contact .fiq-cta2-btn:hover,#contact .fiq-cta2-btn:focus-visible{background:#FFFFFF;}
+    @media(max-width:900px){
+      #contact .fiq-cta2-grid{grid-template-columns:1fr;gap:56px;}
+      #contact .fiq-cta2-btn{width:100%;justify-content:center;box-sizing:border-box;}
+      #contact .fiq-cta2-screen{width:100%!important;top:auto!important;height:52%!important;border-inline-start:none!important;border-top:1px solid rgba(214,194,168,0.18);}
+    }
+    #contact .fiq-cta2-nw{white-space:nowrap;}
+    @media(max-width:600px){
+      #contact .fiq-cta2-br{display:none;}
+      #contact .fiq-cta2-nw{white-space:normal;}
+    }
+    @media(prefers-reduced-motion:reduce){
+      #contact .fiq-cta2-row,#contact .fiq-cta2-val,#contact .fiq-cta2-arrow,#contact .fiq-cta2-btn{transition:none;}
+    }
+  </style>
+  <div class="fiq-cta2-screen" aria-hidden="true" style="position:absolute;top:0;bottom:0;inset-inline-end:0;width:44%;background:#4F3C2F;border-inline-start:1px solid rgba(214,194,168,0.18);pointer-events:none;">
+    <div style="position:absolute;inset:0;opacity:0.12;"><svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style="display:block;"><defs><pattern id="fiq-khatam-en" width="64" height="64" patternUnits="userSpaceOnUse"><g fill="none" stroke="#D6C2A8" stroke-width="1"><rect x="16.44" y="16.44" width="31.12" height="31.12"/><path d="M32 10L54 32L32 54L10 32Z"/><path d="M32 0V10M32 54V64M0 32H10M54 32H64"/></g></pattern></defs><rect width="100%" height="100%" fill="url(#fiq-khatam-en)"/></svg></div>
+  </div>
+  <div style="max-width:1280px;margin:0 auto;position:relative;">
+    <div class="fiq-cta2-grid">
       <div data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);">
-        <div style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:rgba(214,194,168,0.6);margin-bottom:16px;">Ready to Begin</div>
-        <h2 style="font-family:'Lama Sans',sans-serif;font-size:clamp(28px,4vw,60px);font-weight:500;color:#FFFFFF;line-height:1.05;letter-spacing:-0.02em;">Let's Build Something<br>Extraordinary.</h2>
+        <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;">
+          <span style="display:block;width:32px;height:1px;background:#D6C2A8;flex-shrink:0;"></span>
+          <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#D6C2A8;">Ready to Begin</span>
+        </div>
+        <h2 style="font-family:'Lama Sans',sans-serif;font-size:clamp(28px,3.5vw,52px);font-weight:500;color:#FFFFFF;line-height:1.1;letter-spacing:-0.015em;margin:0;">Let's Build<br class="fiq-cta2-br"> <span class="fiq-cta2-nw">Something Extraordinary.</span></h2>
+        <p style="font-family:'Lama Sans',sans-serif;font-size:15px;line-height:1.8;color:rgba(214,194,168,0.8);max-width:440px;margin:28px 0 0;">Share the space, the timeline and the ambition. FurnishIQ shapes the rest, from first sketch to final handover.</p>
+        <a href="/contact" class="fiq-cta2-btn">Book Free Consultation<svg style="transform:none" class="fiq-cta2-btn-arrow" width="18" height="8" viewBox="0 0 16 6" fill="none" aria-hidden="true"><path d="M0 3H14M14 3L11.5 1M14 3L11.5 5" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
       </div>
-      <div data-reveal data-reveal-delay="0.15" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;gap:14px;flex-wrap:wrap;align-items:center;">
-        <a href="https://wa.me/966580330627" target="_blank" id="wa-btn" style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#3A2D25;background:#D6C2A8;padding:15px 32px;text-decoration:none;transition:background 0.3s;display:inline-flex;align-items:center;gap:10px;white-space:nowrap;">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-          Open WhatsApp
-        </a>
-        <a href="tel:+966580330627" id="phone-btn" style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#D6C2A8;background:transparent;padding:15px 32px;text-decoration:none;transition:all 0.3s;border:1px solid rgba(214,194,168,0.4);display:inline-block;white-space:nowrap;">Call +966 58 033 0627</a>
-      </div>
+      <nav data-reveal data-reveal-delay="0.15" aria-label="Contact FurnishIQ" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;flex-direction:column;">
+          <a class="fiq-cta2-row" href="https://wa.me/966580330627" target="_blank" rel="noopener">
+            <span class="fiq-cta2-idx">01</span>
+            <span style="display:flex;flex-direction:column;gap:8px;min-width:0;">
+              <span class="fiq-cta2-key">WhatsApp</span>
+              <span class="fiq-cta2-val" dir="ltr">+966 58 033 0627</span>
+            </span>
+            <svg class="fiq-cta2-arrow" width="18" height="8" viewBox="0 0 16 6" fill="none" aria-hidden="true"><path d="M0 3H14M14 3L11.5 1M14 3L11.5 5" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          </a>
+          <a class="fiq-cta2-row" href="tel:+966580330627">
+            <span class="fiq-cta2-idx">02</span>
+            <span style="display:flex;flex-direction:column;gap:8px;min-width:0;">
+              <span class="fiq-cta2-key">Call</span>
+              <span class="fiq-cta2-val" dir="ltr">+966 58 033 0627</span>
+            </span>
+            <svg class="fiq-cta2-arrow" width="18" height="8" viewBox="0 0 16 6" fill="none" aria-hidden="true"><path d="M0 3H14M14 3L11.5 1M14 3L11.5 5" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          </a>
+          <a class="fiq-cta2-row" href="mailto:info@furnishiq.net">
+            <span class="fiq-cta2-idx">03</span>
+            <span style="display:flex;flex-direction:column;gap:8px;min-width:0;">
+              <span class="fiq-cta2-key">Email</span>
+              <span class="fiq-cta2-val" dir="ltr">info@furnishiq.net</span>
+            </span>
+            <svg class="fiq-cta2-arrow" width="18" height="8" viewBox="0 0 16 6" fill="none" aria-hidden="true"><path d="M0 3H14M14 3L11.5 1M14 3L11.5 5" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          </a>
+      </nav>
     </div>
   </div>
 </section>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ FOOTER ━━━━━━━━━━━ -->
-<footer style="background:#1F1F1F;padding:clamp(64px,8vw,96px) clamp(24px,5vw,80px) 40px;border-top:1px solid rgba(91,70,54,0.25);">
+<footer id="fiq-footer" style="overflow:hidden;background:#1F1F1F;padding:clamp(72px,9vw,120px) clamp(24px,5vw,80px) 32px;">
+  <style>
+    #fiq-footer .fiq-ft-top{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(40px,6vw,96px);align-items:end;}
+    #fiq-footer .fiq-ft-statement{font-family:'Lama Sans',sans-serif;font-size:clamp(26px,2.8vw,42px);font-weight:500;line-height:1.2;letter-spacing:-0.01em;color:#F5F2ED;margin:28px 0 0;max-width:640px;}
+    #fiq-footer .fiq-ft-label{display:block;font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#D6C2A8;margin-bottom:22px;}
+    #fiq-footer .fiq-ft-form{display:flex;align-items:center;gap:16px;border-bottom:1px solid rgba(214,194,168,0.35);transition:border-color 0.4s cubic-bezier(0.25,0.46,0.45,0.94);}
+    #fiq-footer .fiq-ft-form:focus-within{border-color:#D6C2A8;}
+    #fiq-footer .fiq-ft-form input{flex:1;min-width:0;background:transparent;border:none;outline:none;padding:16px 0;font-family:'Lama Sans',sans-serif;font-size:15px;color:#FFFFFF;}
+    #fiq-footer .fiq-ft-form input::placeholder{color:rgba(245,242,237,0.45);}
+    #fiq-footer .fiq-ft-form button{display:inline-flex;align-items:center;gap:12px;background:none;border:none;padding:16px 0;cursor:pointer;font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#D6C2A8;transition:color 0.3s cubic-bezier(0.25,0.46,0.45,0.94);}
+    #fiq-footer .fiq-ft-form button:hover,#fiq-footer .fiq-ft-form button:focus-visible{color:#FFFFFF;}
+    #fiq-footer .fiq-ft-frieze{margin:clamp(56px,7vw,88px) calc(50% - 50vw);border-top:1px solid rgba(214,194,168,0.14);border-bottom:1px solid rgba(214,194,168,0.14);opacity:0.5;}
+    #fiq-footer .fiq-ft-frieze svg{opacity:0.45;}
+    #fiq-footer .fiq-ft-cols{display:grid;grid-template-columns:1.25fr 1fr 1fr 1fr;gap:clamp(32px,4vw,64px);}
+    #fiq-footer .fiq-ft-desc{font-family:'Lama Sans',sans-serif;font-size:14px;line-height:1.8;color:rgba(245,242,237,0.6);max-width:300px;margin:0;}
+    #fiq-footer nav{display:flex;flex-direction:column;align-items:flex-start;gap:14px;}
+    #fiq-footer .fiq-ft-link{position:relative;font-family:'Lama Sans',sans-serif;font-size:14px;color:rgba(245,242,237,0.78);text-decoration:none;padding-bottom:2px;transition:color 0.3s cubic-bezier(0.25,0.46,0.45,0.94);}
+    #fiq-footer .fiq-ft-link::after{content:"";position:absolute;inset-inline-start:0;bottom:0;width:100%;height:1px;background:#D6C2A8;transform:scaleX(0);transform-origin:left;transition:transform 0.45s cubic-bezier(0.25,0.46,0.45,0.94);}
+    #fiq-footer .fiq-ft-link:hover,#fiq-footer .fiq-ft-link:focus-visible{color:#D6C2A8;}
+    #fiq-footer .fiq-ft-link:hover::after,#fiq-footer .fiq-ft-link:focus-visible::after{transform:scaleX(1);}
+    #fiq-footer .fiq-ft-k{display:block;font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(214,194,168,0.6);margin-bottom:6px;}
+    #fiq-footer .fiq-ft-v{font-family:'Lama Sans',sans-serif;font-size:14px;color:rgba(245,242,237,0.78);margin:0;}
+    #fiq-footer .fiq-ft-fact{display:flex;align-items:baseline;gap:14px;padding:14px 0;border-top:1px solid rgba(214,194,168,0.14);}
+    #fiq-footer .fiq-ft-fact:last-child{border-bottom:1px solid rgba(214,194,168,0.14);}
+    #fiq-footer .fiq-ft-fact-n{font-family:'Lama Sans',sans-serif;font-size:26px;line-height:1;color:#F5F2ED;min-width:56px;}
+    #fiq-footer .fiq-ft-fact-k{font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(245,242,237,0.6);}
+    #fiq-footer .fiq-ft-bottom{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px 32px;margin-top:clamp(56px,7vw,88px);padding-top:28px;border-top:1px solid rgba(214,194,168,0.14);}
+    #fiq-footer .fiq-ft-fine{font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.04em;line-height:1.7;color:rgba(245,242,237,0.5);margin:0;}
+    #fiq-footer .fiq-ft-lang{justify-self:end;font-family:GE SS Two,'Arial',sans-serif;font-size:13px;color:#D6C2A8;text-decoration:none;padding:8px 18px;border:1px solid rgba(214,194,168,0.35);transition:background 0.3s cubic-bezier(0.25,0.46,0.45,0.94),color 0.3s cubic-bezier(0.25,0.46,0.45,0.94);}
+    #fiq-footer .fiq-ft-lang:hover,#fiq-footer .fiq-ft-lang:focus-visible{background:#D6C2A8;color:#1F1F1F;}
+    @media(max-width:1024px){
+      #fiq-footer .fiq-ft-cols{grid-template-columns:1fr 1fr;}
+    }
+    @media(max-width:900px){
+      #fiq-footer .fiq-ft-top{grid-template-columns:1fr;}
+      #fiq-footer .fiq-ft-bottom{grid-template-columns:1fr;justify-items:start;}
+      #fiq-footer .fiq-ft-lang{justify-self:start;}
+    }
+    @media(max-width:600px){
+      #fiq-footer .fiq-ft-cols{grid-template-columns:1fr;}
+    }
+    @media(prefers-reduced-motion:reduce){
+      #fiq-footer .fiq-ft-link::after,#fiq-footer .fiq-ft-form,#fiq-footer .fiq-ft-link{transition:none;}
+    }
+  </style>
   <div style="max-width:1280px;margin:0 auto;">
-    <div class="fiq-footer-grid" style="display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:clamp(28px,4vw,64px);margin-bottom:64px;">
-
-      <div class="fiq-footer-brand">
-        <a href="/" style="display:block;text-decoration:none;"><img src="assets/logo-default.png" width="264" height="90" alt="FurnishIQ" style="height:36px;width:auto;max-width:160px;object-fit:contain;object-position:left center;margin-bottom:22px;display:block;" loading="lazy" decoding="async"></a>
-        <p style="font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.8;color:rgba(214,194,168,0.65);margin-bottom:32px;max-width:260px;">Integrated Design–Build solutions transforming ambitious architectural concepts into inspiring realities across Saudi Arabia.</p>
-        <div style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(214,194,168,0.65);margin-bottom:14px;">Join the IQ</div>
-        <div style="display:flex;border:1px solid rgba(214,194,168,0.2);">
-          <input id="newsletter-input" type="email" placeholder="Your email address" value="{{ newsletterEmail }}" onChange="{{ onNewsletterChange }}" style="flex:1;background:transparent;border:none;padding:13px 16px;font-family:'Lama Sans',sans-serif;font-size:13px;color:#FFFFFF;outline:none;min-width:0;">
-          <button onClick="{{ onNewsletterSubmit }}" style="background:#5B4636;border:none;padding:13px 20px;cursor:pointer;font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:#D6C2A8;flex-shrink:0;transition:background 0.3s;">Subscribe</button>
-        </div>
-        <sc-if value="{{ newsletterStatus }}" hint-placeholder-val="{{ null }}">
-          <p style="font-family:'Lama Sans',sans-serif;font-size:12px;color:rgba(214,194,168,0.65);margin-top:10px;">Thank you — monthly updates, strictly no spam.</p>
-        </sc-if>
-      </div>
-
+    <div class="fiq-ft-top">
       <div>
-        <div style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.26em;text-transform:uppercase;color:rgba(214,194,168,0.65);margin-bottom:22px;">Services</div>
-        <nav style="display:flex;flex-direction:column;gap:13px;">
-          <a href="/services-interior-design" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Interior Design</a>
-          <a href="/services-fitout" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Fit-Out</a>
-          <a href="/services-mep" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Engineering &amp; MEP</a>
-          <a href="/services-furniture" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Furniture Solutions</a>
-          <a href="#" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Project Management</a>
-        </nav>
+        <a href="/" style="display:inline-block;text-decoration:none;"><img src="assets/logo-default.png" width="264" height="90" alt="FurnishIQ" style="height:40px;width:auto;display:block;margin-inline-start:-8px;" loading="lazy" decoding="async"></a>
+        <p class="fiq-ft-statement">Integrated design&ndash;build, from first concept to final handover.</p>
       </div>
-
       <div>
-        <div style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.26em;text-transform:uppercase;color:rgba(214,194,168,0.65);margin-bottom:22px;">Company</div>
-        <nav style="display:flex;flex-direction:column;gap:13px;">
-          <a href="/about-us" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">About Us</a>
-          <a href="/services" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Services</a>
-          <a href="/projects" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Portfolio</a>
-          <a href="/blog" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Insights</a>
-          <a href="/contact" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Contact Us</a>
-          <a href="#" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Terms &amp; Conditions</a>
-        </nav>
+        <span class="fiq-ft-label">Join the IQ</span>
+        <p class="fiq-ft-desc" style="margin-bottom:8px;">Monthly notes on materials, projects and craft.</p>
+        <form class="fiq-ft-form" data-fiq-newsletter novalidate>
+          <input type="email" name="email" required autocomplete="email" placeholder="Your email address" aria-label="Your email address">
+          <button type="submit">Subscribe<svg width="16" height="6" viewBox="0 0 16 6" fill="none" aria-hidden="true" style="transform:none;flex-shrink:0;"><path d="M0 3H14M14 3L11.5 1M14 3L11.5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+        </form>
+        <p class="fiq-ft-fine" data-fiq-newsletter-thanks style="display:none;margin-top:12px;color:#D6C2A8;">Thank you &mdash; monthly updates, strictly no spam.</p>
       </div>
-
-      <div>
-        <div style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.26em;text-transform:uppercase;color:rgba(214,194,168,0.65);margin-bottom:22px;">Find Us</div>
-        <div style="display:flex;flex-direction:column;gap:20px;">
-          <div>
-            <div style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(214,194,168,0.65);margin-bottom:5px;">Address</div>
-            <p style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);line-height:1.65;">Riyadh, KSA.</p>
-          </div>
-          <div>
-            <div style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(214,194,168,0.65);margin-bottom:5px;">Email</div>
-            <a href="mailto:info@furnishiq.net" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">info@furnishiq.net</a>
-          </div>
-          <div>
-            <div style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(214,194,168,0.65);margin-bottom:5px;">Phone — Ibrahim Al Ali</div>
-            <a href="tel:+966580330627" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">+966 58 033 0627</a>
-          </div>
-        </div>
-      </div>
-
     </div>
-    <div style="border-top:1px solid rgba(214,194,168,0.1);padding-top:28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
-      <p style="font-family:'Lama Sans',sans-serif;font-size:11px;color:rgba(214,194,168,0.65);letter-spacing:0.04em;">© 2026 FurnishIQ. All rights reserved.</p>
-      <p style="font-family:'Lama Sans',sans-serif;font-size:11px;color:rgba(214,194,168,0.65);letter-spacing:0.04em;">Crafted with precision in Saudi Arabia.</p>
+
+    <div class="fiq-ft-frieze" aria-hidden="true"><svg width="100%" height="64" xmlns="http://www.w3.org/2000/svg" style="display:block;"><defs><pattern id="fiq-ft-khatam-en" width="64" height="64" patternUnits="userSpaceOnUse"><g fill="none" stroke="#D6C2A8" stroke-width="1"><rect x="16.44" y="16.44" width="31.12" height="31.12"/><path d="M32 10L54 32L32 54L10 32Z"/><path d="M0 32H10M54 32H64"/></g></pattern></defs><rect width="100%" height="64" fill="url(#fiq-ft-khatam-en)"/></svg></div>
+
+    <div class="fiq-ft-cols">
+      <div>
+        <span class="fiq-ft-label">Find Us</span>
+        <div style="display:flex;flex-direction:column;gap:20px;">
+          <div><span class="fiq-ft-k">Address</span><p class="fiq-ft-v">Riyadh, KSA.</p></div>
+          <div><span class="fiq-ft-k">Email</span><a class="fiq-ft-link" href="mailto:info@furnishiq.net">info@furnishiq.net</a></div>
+          <div><span class="fiq-ft-k">Phone &mdash; Ibrahim Al Ali</span><a class="fiq-ft-link" href="tel:+966580330627" dir="ltr">+966 58 033 0627</a></div>
+        </div>
+      </div>
+      <div>
+        <span class="fiq-ft-label">Services</span>
+        <nav aria-label="Services">
+            <a class="fiq-ft-link" href="/services-interior-design">Interior Design</a>
+            <a class="fiq-ft-link" href="/services-fitout">Fit-Out</a>
+            <a class="fiq-ft-link" href="/services-mep">Engineering &amp; MEP</a>
+            <a class="fiq-ft-link" href="/services-furniture">Furniture Solutions</a>
+            <a class="fiq-ft-link" href="#">Project Management</a>
+        </nav>
+      </div>
+      <div>
+        <span class="fiq-ft-label">Company</span>
+        <nav aria-label="Company">
+            <a class="fiq-ft-link" href="/about-us">About Us</a>
+            <a class="fiq-ft-link" href="/services">Services</a>
+            <a class="fiq-ft-link" href="/projects">Portfolio</a>
+            <a class="fiq-ft-link" href="/blog">Insights</a>
+            <a class="fiq-ft-link" href="/contact">Contact Us</a>
+            <a class="fiq-ft-link" href="#">Terms &amp; Conditions</a>
+        </nav>
+      </div>
+      <div>
+        <span class="fiq-ft-label">At a Glance</span>
+        <div>
+            <div class="fiq-ft-fact"><span class="fiq-ft-fact-n" dir="ltr">15+</span><span class="fiq-ft-fact-k">Years of practice</span></div>
+            <div class="fiq-ft-fact"><span class="fiq-ft-fact-n" dir="ltr">40+</span><span class="fiq-ft-fact-k">Completed projects</span></div>
+            <div class="fiq-ft-fact"><span class="fiq-ft-fact-n" dir="ltr">20+</span><span class="fiq-ft-fact-k">Team members</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fiq-ft-bottom">
+      <div>
+        <p class="fiq-ft-fine">&copy; 2026 FurnishIQ. All rights reserved.</p>
+        <p class="fiq-ft-fine">Basic Step for Contracting Company &middot; C.R. 2050155201</p>
+      </div>
+      <p class="fiq-ft-fine">Crafted with precision in Saudi Arabia.</p>
+      <a class="fiq-ft-lang" href="/ar" lang="ar" dir="rtl">عربي</a>
     </div>
   </div>
 </footer>
@@ -1190,7 +1344,7 @@ class Component extends DCLogic {
       const moveTo = (clientX) => {
         const rect = heroEl.getBoundingClientRect();
         const pct = Math.max(10, Math.min(90, ((clientX - rect.left) / rect.width) * 100));
-        renderPanel.style.width = pct + '%';
+        renderPanel.style.clipPath = 'inset(0 ' + (100 - pct) + '% 0 0)';
         if (sliderLine) sliderLine.style.left = pct + '%';
         if (sliderHandle) sliderHandle.style.left = pct + '%';
       };
@@ -1272,17 +1426,44 @@ class Component extends DCLogic {
     }
 
     // ── PORTFOLIO HOVER ────────────────────────────────────────────────────
-    document.querySelectorAll('[data-portfolio-card]').forEach((card, i) => {
+    // Card zooms; on devices with a mouse the section background crossfades to that project's image
+    // and the other cards dim slightly.
+    const pfCards = [...document.querySelectorAll('[data-portfolio-card]')];
+    const pfBgs = [...document.querySelectorAll('.fiq-pf-bg')];
+    const pfVeil = document.querySelector('.fiq-pf-veil');
+    const pfHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    pfCards.forEach((card, i) => {
       const img = card.querySelector('img');
       card.addEventListener('mouseenter', () => {
         if (img) img.style.transform = 'scale(1.07)';
         card.style.zIndex = '2';
+        if (!pfHover) return;
+        pfBgs.forEach((bg, k) => {
+          const on = k === i;
+          bg.style.opacity = on ? '0.25' : '0';  // a glimpse, not the full image
+          const bi = bg.querySelector('img');
+          if (bi) bi.style.transform = on ? 'scale(1)' : 'scale(1.08)';
+        });
+        if (pfVeil) pfVeil.style.opacity = '1';
+        pfCards.forEach((c) => { c.style.filter = c === card ? 'none' : 'brightness(0.5) saturate(0.85)'; });
       });
       card.addEventListener('mouseleave', () => {
         if (img) img.style.transform = 'scale(1)';
         card.style.zIndex = '1';
       });
     });
+    const pfGrid = document.querySelector('.fiq-portfolio-grid');
+    if (pfGrid && pfHover) {
+      pfGrid.addEventListener('mouseleave', () => {
+        pfBgs.forEach((bg) => {
+          bg.style.opacity = '0';
+          const bi = bg.querySelector('img');
+          if (bi) bi.style.transform = 'scale(1.08)';
+        });
+        if (pfVeil) pfVeil.style.opacity = '0';
+        pfCards.forEach((c) => { c.style.filter = 'none'; });
+      });
+    }
 
     // ── BLOG HOVER ─────────────────────────────────────────────────────────
     document.querySelectorAll('[data-blog-card]').forEach(card => {
@@ -1337,77 +1518,110 @@ class Component extends DCLogic {
       phoneBtn.addEventListener('mouseleave', () => { phoneBtn.style.background = 'transparent'; phoneBtn.style.borderColor = 'rgba(214,194,168,0.4)'; });
     }
 
-    // ── FOOTER LINK HOVERS ────────────────────────────────────────────────
-    document.querySelectorAll('footer a').forEach(a => {
-      a.addEventListener('mouseenter', () => { a.style.color = '#D6C2A8'; });
-      a.addEventListener('mouseleave', () => { a.style.color = 'rgba(214,194,168,0.65)'; });
-    });
 
-    // ── VALUE PROP SEQUENTIAL ANIMATION ───────────────────────────────────
-    const valueSec = document.querySelector('[data-value-section]');
-    if (valueSec) {
-      const showValueAll = () => {
-        const eyebrow = valueSec.querySelector('[data-value-eyebrow]');
-        const eyebrowLine = valueSec.querySelector('[data-value-eyebrow-line]');
-        const topLine = valueSec.querySelector('[data-value-topline]');
-        if (eyebrow) eyebrow.style.opacity = '1';
-        if (eyebrowLine) eyebrowLine.style.width = '32px';
-        if (topLine) topLine.style.width = '100%';
-        valueSec.querySelectorAll('[data-value-word]').forEach(w => { w.style.transform = 'translateY(0)'; });
-        valueSec.querySelectorAll('[data-value-pillar]').forEach(p => { p.style.opacity = '1'; p.style.transform = 'translateY(0)'; });
-        valueSec.querySelectorAll('[data-value-bar]').forEach(b => { b.style.width = '36px'; });
-      };
-
-      const runValueSequence = () => {
-        const eyebrow = valueSec.querySelector('[data-value-eyebrow]');
-        const eyebrowLine = valueSec.querySelector('[data-value-eyebrow-line]');
-        const topLine = valueSec.querySelector('[data-value-topline]');
-        const words = valueSec.querySelectorAll('[data-value-word]');
-        const pillars = valueSec.querySelectorAll('[data-value-pillar]');
-
-        setTimeout(() => { if (eyebrow) eyebrow.style.opacity = '1'; }, 0);
-        setTimeout(() => { if (eyebrowLine) eyebrowLine.style.width = '32px'; }, 80);
-        setTimeout(() => { if (words[0]) words[0].style.transform = 'translateY(0)'; }, 220);
-        setTimeout(() => { if (words[1]) words[1].style.transform = 'translateY(0)'; }, 440);
-        setTimeout(() => { if (topLine) topLine.style.width = '100%'; }, 640);
-
-        pillars.forEach((pillar, i) => {
-          const base = 880 + i * 250;
-          const bar = pillar.querySelector('[data-value-bar]');
-          setTimeout(() => { pillar.style.opacity = '1'; pillar.style.transform = 'translateY(0)'; }, base);
-          setTimeout(() => { if (bar) bar.style.width = '36px'; }, base + 190);
-        });
-      };
-
-      if (reduced) {
-        showValueAll();
-      } else {
-        const valueObs = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (!entry.isIntersecting) return;
-            valueObs.unobserve(entry.target);
-            runValueSequence();
+    // ── SERVICES: STACKED FLOORS ──────────────────────────────────────────
+    {
+      const sf = document.querySelector('[data-sf]');
+      if (sf) {
+        const cards = [...sf.querySelectorAll('[data-sf-card]')];
+        const stacked = window.matchMedia('(max-width: 900px)');
+        let ticking = false;
+        const update = () => {
+          ticking = false;
+          const vh = window.innerHeight;
+          cards.forEach((card, i) => {
+            const inner = card.firstElementChild;
+            const img = card.querySelector('.sf-img');
+            const dim = card.querySelector('.sf-dim');
+            if (reduced || stacked.matches) { inner.style.transform = ''; dim.style.opacity = '0'; img.style.setProperty('--zoom', '1'); return; }
+            const top = card.getBoundingClientRect().top;
+            const stick = parseFloat(getComputedStyle(card).top);
+            // Photo settles from a slight zoom as the card rises into place
+            const arrive = Math.min(Math.max((vh - top) / (vh - stick), 0), 1);
+            img.style.setProperty('--zoom', (1.1 - 0.1 * arrive).toFixed(4));
+            // Card eases back as the next floor covers it
+            const next = cards[i + 1];
+            let cover = 0;
+            if (next) cover = Math.min(Math.max((stick + card.offsetHeight - next.getBoundingClientRect().top) / card.offsetHeight, 0), 1);
+            inner.style.transform = `scale(${(1 - 0.06 * cover).toFixed(4)})`;
+            dim.style.opacity = (0.55 * cover).toFixed(3);
           });
-        }, { threshold: 0.15 });
-        valueObs.observe(valueSec);
+        };
+        const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
+        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('resize', onScroll);
+        update();
       }
+    }
 
-      // Per-pillar hover replay
-      valueSec.querySelectorAll('[data-value-pillar]').forEach(pillar => {
-        const bar = pillar.querySelector('[data-value-bar]');
-        const h3 = pillar.querySelector('h3');
-        pillar.addEventListener('mouseenter', () => {
-          if (bar) {
-            bar.style.transition = 'none';
-            bar.style.width = '0px';
-            requestAnimationFrame(() => requestAnimationFrame(() => {
-              bar.style.transition = 'width 0.55s cubic-bezier(0.25,0.46,0.45,0.94)';
-              bar.style.width = '36px';
-            }));
-          }
-          if (h3) { h3.style.color = '#8B6B4A'; setTimeout(() => { h3.style.color = '#1F1F1F'; }, 600); }
+    // ── SECTION HEADINGS: LABEL RULE DRAWS, THEN LINES RISE ───────────────
+    if (!reduced) {
+      const ease = 'cubic-bezier(0.25,0.46,0.45,0.94)';
+      document.querySelectorAll('section h2').forEach(h2 => {
+        // Label rule: the last 1px-high span that precedes the heading within its block
+        let rule = null;
+        for (let el = h2.parentElement, depth = 0; el && depth < 4 && !rule; el = el.parentElement, depth++) {
+          const before = [...el.querySelectorAll('span')]
+            .filter(s => s.style.height === '1px' && (s.compareDocumentPosition(h2) & Node.DOCUMENT_POSITION_FOLLOWING));
+          rule = before[before.length - 1] || null;
+        }
+        const ruleWidth = rule ? rule.style.width : '';
+        if (rule) { rule.style.transition = `width 0.7s ${ease}`; rule.style.width = '0px'; }
+
+        // Heading: one mask per visible line break
+        const groups = [[]];
+        [...h2.childNodes].forEach(n => {
+          if (n.nodeName === 'BR' && getComputedStyle(n).display !== 'none') groups.push([]);
+          else groups[groups.length - 1].push(n);
         });
+        h2.textContent = '';
+        const lines = groups.map(nodes => {
+          const mask = document.createElement('span');
+          mask.style.cssText = 'display:block;overflow:hidden;padding-bottom:0.14em;margin-bottom:-0.14em;';
+          const inner = document.createElement('span');
+          inner.style.cssText = `display:block;transform:translateY(110%);transition:transform 0.9s ${ease};`;
+          nodes.forEach(n => inner.appendChild(n));
+          mask.appendChild(inner);
+          h2.appendChild(mask);
+          return inner;
+        });
+        if (h2.hasAttribute('data-reveal')) { h2.style.opacity = '1'; h2.style.transform = 'none'; }
+
+        const play = () => {
+          if (rule) rule.style.width = ruleWidth;
+          lines.forEach((l, i) => setTimeout(() => { l.style.transform = 'translateY(0)'; }, (rule ? 250 : 0) + i * 140));
+        };
+        const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { io.disconnect(); play(); } }, { threshold: 0.2 });
+        io.observe(h2);
       });
+    }
+
+    // ── VALUE PROP: EXPANDING PANELS ──────────────────────────────────────
+    {
+      const root = document.getElementById('edge');
+      if (!root) return;
+      const panels = [...root.querySelectorAll('[data-edge-panel]')];
+      const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const stacked = matchMedia('(max-width: 900px)');
+      let current = 0, timer = null, touched = false, inView = false;
+      const show = (n) => {
+        current = n;
+        panels.forEach((p, k) => p.classList.toggle('is-active', k === n));
+      };
+      const schedule = () => {
+        clearTimeout(timer);
+        const auto = !touched && !reduced && !stacked.matches && inView;
+        root.classList.toggle('is-auto', auto);
+        if (auto) timer = setTimeout(() => { show((current + 1) % panels.length); schedule(); }, 7000);
+      };
+      panels.forEach((p, k) => {
+        const pick = () => { if (stacked.matches) return; touched = true; show(k); schedule(); };
+        p.addEventListener('mouseenter', pick);
+        p.addEventListener('focus', pick);
+        p.addEventListener('click', pick);
+      });
+      new IntersectionObserver(([e]) => { inView = e.isIntersecting; schedule(); }, { threshold: 0.35 }).observe(root);
+      stacked.addEventListener('change', schedule);
     }
 
   }

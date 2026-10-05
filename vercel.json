@@ -3,7 +3,15 @@
     { "source": "/blog.dc.html", "destination": "/blog", "permanent": true },
     { "source": "/portfolio.dc.html", "destination": "/projects", "permanent": true },
     { "source": "/project-detail.dc.html", "destination": "/project-detail", "permanent": true },
-    { "source": "/single-post.dc.html", "destination": "/single-post", "permanent": true },
+    { "source": "/single-post.dc.html", "destination": "/blog/material-honesty", "permanent": true },
+    { "source": "/single-post", "destination": "/blog/material-honesty", "permanent": true },
+    { "source": "/ar/single-post", "destination": "/ar/blog/material-honesty", "permanent": true },
+    { "source": "/blog-material-honesty.dc.html", "destination": "/blog/material-honesty", "permanent": true },
+    { "source": "/blog-material-honesty.ar.dc.html", "destination": "/ar/blog/material-honesty", "permanent": true },
+    { "source": "/blog-the-90-day-office.dc.html", "destination": "/blog/the-90-day-office", "permanent": true },
+    { "source": "/blog-the-90-day-office.ar.dc.html", "destination": "/ar/blog/the-90-day-office", "permanent": true },
+    { "source": "/blog-invisible-infrastructure.dc.html", "destination": "/blog/invisible-infrastructure", "permanent": true },
+    { "source": "/blog-invisible-infrastructure.ar.dc.html", "destination": "/ar/blog/invisible-infrastructure", "permanent": true },
 
     { "source": "/portfolio", "destination": "/projects", "permanent": true },
 
@@ -85,6 +93,10 @@
     { "source": "/ar/blog", "destination": "/Furnishiq.net/blog.ar.dc.html" },
     { "source": "/ar/single-post", "destination": "/Furnishiq.net/single-post.ar.dc.html" },
     { "source": "/ar/concept-to-turnkey", "destination": "/Furnishiq.net/landing-turnkey.ar.dc.html" },
+    { "source": "/ar/blog/material-honesty", "destination": "/Furnishiq.net/blog-material-honesty.ar.dc.html" },
+    { "source": "/ar/blog/the-90-day-office", "destination": "/Furnishiq.net/blog-the-90-day-office.ar.dc.html" },
+    { "source": "/ar/blog/invisible-infrastructure", "destination": "/Furnishiq.net/blog-invisible-infrastructure.ar.dc.html" },
+    { "source": "/ar/blog/:path*", "destination": "/Furnishiq.net/:path*" },
     { "source": "/en/:path*", "destination": "/Furnishiq.net/:path*" },
     { "source": "/ar/:path*", "destination": "/Furnishiq.net/:path*" },
     { "source": "/contact", "destination": "/Furnishiq.net/contact.dc.html" },
@@ -101,6 +113,10 @@
     { "source": "/services-mep", "destination": "/Furnishiq.net/services-mep.dc.html" },
     { "source": "/services-furniture", "destination": "/Furnishiq.net/services-furniture.dc.html" },
     { "source": "/concept-to-turnkey", "destination": "/Furnishiq.net/landing-turnkey.dc.html" },
+    { "source": "/blog/material-honesty", "destination": "/Furnishiq.net/blog-material-honesty.dc.html" },
+    { "source": "/blog/the-90-day-office", "destination": "/Furnishiq.net/blog-the-90-day-office.dc.html" },
+    { "source": "/blog/invisible-infrastructure", "destination": "/Furnishiq.net/blog-invisible-infrastructure.dc.html" },
+    { "source": "/blog/:path*", "destination": "/Furnishiq.net/:path*" },
     { "source": "/api/:path*", "destination": "/api/:path*" },
     { "source": "/:path*", "destination": "/Furnishiq.net/:path*" }
   ]

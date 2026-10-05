@@ -53,6 +53,7 @@ fbq('track', 'PageView');
 <script src="./nav-mobile.js" defer></script>
 <script src="./floating-buttons.js" defer></script>
 <script src="./analytics-events.js" defer></script>
+<script src="./newsletter.js" defer></script>
 <link rel="preload" as="font" type="font/otf" href="_ds/furnishiq-design-system-ea658a9e-dd64-48ad-ab93-f0196a53ec9c/uploads/GE_SS_Two_Medium_Arabic.otf" crossorigin>
 </head>
 <body>
@@ -529,6 +530,11 @@ input:focus, select:focus, textarea:focus {
       .fiq-pd-sidebar{position:static!important;top:auto!important;}
       .fiq-pd-meta{flex-wrap:wrap!important;gap:20px 32px!important;}
       .fiq-pd-related{grid-template-columns:1fr!important;}
+      .fiq-footer-grid{grid-template-columns:1fr 1fr!important;gap:48px!important;}
+      .fiq-footer-brand{grid-column:1/-1!important;}
+    }
+    @media(max-width:600px){
+      .fiq-footer-grid{grid-template-columns:1fr!important;}
     }
     @keyframes fiqHeroIn{from{opacity:0;transform:translateY(50px);}to{opacity:1;transform:translateY(0);}}
   </style>
@@ -554,6 +560,12 @@ input:focus, select:focus, textarea:focus {
 
 <section data-screen-label="Hero" style="position:relative;height:82vh;min-height:520px;background:#1E1610;overflow:hidden;">
   <img src="{{ heroImage }}" alt="{{ title }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+  <sc-if value="{{ hasFilm }}" hint-placeholder-val="{{ false }}">
+  <video data-pd-film muted loop playsinline preload="none" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+    <source data-src="{{ filmSd }}" type="video/mp4" media="(max-width: 768px)">
+    <source data-src="{{ filmHd }}" type="video/mp4">
+  </video>
+  </sc-if>
   <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,15,10,0.55) 0%,rgba(20,15,10,0.15) 35%,rgba(15,11,8,0.92) 100%);"></div>
 
   <a href="/ar/projects" style="position:absolute;top:104px;right:clamp(24px,5vw,80px);z-index:2;display:inline-flex;align-items:center;gap:10px;font-family:'GE SS Two','Arial',sans-serif;font-size:10px;letter-spacing:normal;text-transform:uppercase;color:rgba(255,255,255,0.85);text-decoration:none;">
@@ -568,6 +580,9 @@ input:focus, select:focus, textarea:focus {
     </div>
     <h1 style="font-family:'GE SS Two','Arial',sans-serif;font-size:clamp(30px,4.4vw,58px);font-weight:600;line-height:1.08;letter-spacing:-0.01em;color:#FFFFFF;margin:0;max-width:900px;text-wrap:balance;">{{ title }}</h1>
   </div>
+  <sc-if value="{{ hasFilm }}" hint-placeholder-val="{{ false }}">
+  <button type="button" data-pd-film-toggle data-label-pause="إيقاف الفيلم مؤقتًا" data-label-play="تشغيل الفيلم" aria-label="إيقاف الفيلم مؤقتًا" style="position:absolute;bottom:clamp(48px,6vw,72px);inset-inline-end:clamp(24px,5vw,80px);z-index:3;width:44px;height:44px;border-radius:50%;background:rgba(15,11,8,0.35);border:1px solid rgba(214,194,168,0.6);color:#D6C2A8;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background 0.3s cubic-bezier(0.25,0.46,0.45,0.94);"><svg data-icon-pause width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="9" y1="5" x2="9" y2="19"></line><line x1="15" y1="5" x2="15" y2="19"></line></svg><svg data-icon-play width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><polygon points="7 5 19 12 7 19 7 5"></polygon></svg></button>
+  </sc-if>
 </section>
 
 <section data-screen-label="Meta Strip" style="background:#1F1F1F;border-bottom:1px solid rgba(214,194,168,0.12);">
@@ -578,7 +593,7 @@ input:focus, select:focus, textarea:focus {
         <div style="font-family:'GE SS Two','Arial',sans-serif;font-size:15px;color:#FFFFFF;">{{ area }}</div>
       </div>
       <div>
-        <div style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:rgba(214,194,168,0.4);margin-bottom:6px;">التسليم</div>
+        <div style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:rgba(214,194,168,0.4);margin-bottom:6px;">الحالة</div>
         <div style="font-family:'GE SS Two','Arial',sans-serif;font-size:15px;color:#FFFFFF;">{{ date }}</div>
       </div>
       <div>
@@ -602,29 +617,6 @@ input:focus, select:focus, textarea:focus {
           <p style="font-family:'GE SS Two','Arial',sans-serif;font-size:16px;line-height:2;color:rgba(232,223,216,0.75);margin:0;">{{ para.text }}</p>
         </sc-for>
       </div>
-      <div style="aspect-ratio:3/2;overflow:hidden;margin-bottom:52px;">
-        <img src="{{ secondaryImage }}" alt="{{ title }}" style="display:block;width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async">
-      </div>
-
-      <div style="display:flex;align-items:center;gap:16px;margin-bottom:24px;">
-        <span style="display:block;width:28px;height:1px;background:#D6C2A8;flex-shrink:0;"></span>
-        <span style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:rgba(214,194,168,0.6);">لقطات من المشروع</span>
-      </div>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
-        <sc-for list="{{ gallery }}" as="shot" hint-placeholder-count="3">
-          <div data-gallery-item data-gallery-src="{{ shot.image }}" data-gallery-caption="{{ shot.caption }}" data-gallery-title="{{ title }}" style="cursor:pointer;">
-            <div style="aspect-ratio:3/2;overflow:hidden;margin-bottom:12px;position:relative;">
-              <img src="{{ shot.image }}" alt="{{ shot.caption }}" style="display:block;width:100%;height:100%;object-fit:cover;transition:transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94);" loading="lazy" decoding="async">
-              <div data-gallery-zoom style="position:absolute;inset:0;background:rgba(20,15,10,0.15);opacity:0;transition:opacity 0.3s ease;display:flex;align-items:center;justify-content:center;">
-                <div style="width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,0.7);display:flex;align-items:center;justify-content:center;">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
-                </div>
-              </div>
-            </div>
-            <span style="font-family:'GE SS Two','Arial',sans-serif;font-size:11px;letter-spacing:normal;color:rgba(214,194,168,0.55);">{{ shot.caption }}</span>
-          </div>
-        </sc-for>
-      </div>
     </div>
 
     <aside id="pd-details-anchor" class="fiq-pd-sidebar" style="position:sticky;top:110px;background:#26201A;border:1px solid rgba(214,194,168,0.14);padding:clamp(28px,3vw,40px);">
@@ -643,7 +635,7 @@ input:focus, select:focus, textarea:focus {
           <span style="font-family:'GE SS Two','Arial',sans-serif;font-size:12px;color:#FFFFFF;">{{ area }}</span>
         </div>
         <div style="display:flex;justify-content:space-between;gap:12px;">
-          <span style="font-family:'GE SS Two','Arial',sans-serif;font-size:12px;color:rgba(214,194,168,0.55);">التسليم</span>
+          <span style="font-family:'GE SS Two','Arial',sans-serif;font-size:12px;color:rgba(214,194,168,0.55);">الحالة</span>
           <span style="font-family:'GE SS Two','Arial',sans-serif;font-size:12px;color:#FFFFFF;">{{ date }}</span>
         </div>
       </div>
@@ -652,6 +644,43 @@ input:focus, select:focus, textarea:focus {
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="transform:scaleX(-1);"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
       </a>
     </aside>
+  </div>
+</section>
+
+<style>
+  .fiq-pd-mosaic{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:clamp(150px,17vw,250px);gap:12px;grid-auto-flow:dense;}
+  .fiq-pd-tile{position:relative;margin:0;overflow:hidden;cursor:pointer;background:#26201A;grid-column:span 4;grid-row:span 1;}
+  .fiq-pd-mosaic > .fiq-pd-tile:nth-child(6n+1){grid-column:span 8;grid-row:span 2;}
+  .fiq-pd-mosaic > .fiq-pd-tile:nth-child(6n+4),
+  .fiq-pd-mosaic > .fiq-pd-tile:nth-child(6n+5),
+  .fiq-pd-mosaic > .fiq-pd-tile:nth-child(6n){grid-row:span 2;}
+  .fiq-pd-tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);}
+  .fiq-pd-tile::after{content:"";position:absolute;inset:auto 0 0 0;height:45%;background:linear-gradient(to top,rgba(15,11,8,0.7),rgba(15,11,8,0));pointer-events:none;}
+  .fiq-pd-tile figcaption{position:absolute;inset-inline-start:18px;bottom:16px;z-index:1;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:#D6C2A8;}
+  .fiq-pd-tile:hover img,.fiq-pd-tile:focus-visible img{transform:scale(1.04);}
+  .fiq-pd-tile:focus-visible{outline:1px solid #D6C2A8;outline-offset:3px;}
+  @media (max-width:768px){
+    .fiq-pd-mosaic{grid-template-columns:repeat(2,1fr);grid-auto-rows:clamp(140px,42vw,220px);gap:8px;}
+    .fiq-pd-mosaic > .fiq-pd-tile,
+    .fiq-pd-mosaic > .fiq-pd-tile:nth-child(6n+4),.fiq-pd-mosaic > .fiq-pd-tile:nth-child(6n+5),.fiq-pd-mosaic > .fiq-pd-tile:nth-child(6n){grid-column:span 1;grid-row:span 1;}
+    .fiq-pd-mosaic > .fiq-pd-tile:nth-child(6n+1){grid-column:span 2;grid-row:span 1;}
+  }
+  @media (prefers-reduced-motion:reduce){.fiq-pd-tile img{transition:none;}}
+</style>
+<section data-screen-label="Project Gallery" style="background:#1F1F1F;padding:0 clamp(24px,5vw,80px) clamp(64px,8vw,100px);">
+  <div style="max-width:1280px;margin:0 auto;">
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:24px;">
+      <span style="display:block;width:28px;height:1px;background:#D6C2A8;flex-shrink:0;"></span>
+      <span style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;text-transform:uppercase;color:rgba(214,194,168,0.6);letter-spacing:normal;">لقطات من المشروع</span>
+    </div>
+    <div class="fiq-pd-mosaic">
+      <sc-for list="{{ gallery }}" as="shot" hint-placeholder-count="6">
+        <figure class="fiq-pd-tile" data-gallery-item tabindex="0" role="button" data-gallery-src="{{ shot.full }}" data-gallery-caption="{{ shot.caption }}" data-gallery-title="{{ title }}" data-pos="{{ shot.pos }}" data-gallery-note="{{ shot.note }}">
+          <img src="{{ shot.image }}" alt="{{ shot.caption }}" loading="lazy" decoding="async">
+          <figcaption style="font-family:'GE SS Two','Arial',sans-serif;font-size:11px;letter-spacing:normal;">{{ shot.caption }}</figcaption>
+        </figure>
+      </sc-for>
+    </div>
   </div>
 </section>
 
@@ -731,77 +760,178 @@ input:focus, select:focus, textarea:focus {
   </div>
 </section>
 
-<footer style="background:#1F1F1F;padding:clamp(64px,8vw,96px) clamp(24px,5vw,80px) 40px;border-top:1px solid rgba(91,70,54,0.25);">
+<footer id="fiq-footer" style="overflow:hidden;background:#1F1F1F;padding:clamp(72px,9vw,120px) clamp(24px,5vw,80px) 32px;">
+  <style>
+    #fiq-footer .fiq-ft-top{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(40px,6vw,96px);align-items:end;}
+    #fiq-footer .fiq-ft-statement{font-family:'GE SS Two','Arial',sans-serif;font-size:clamp(26px,2.8vw,42px);font-weight:500;line-height:1.2;letter-spacing:normal;color:#F5F2ED;margin:28px 0 0;max-width:640px;}
+    #fiq-footer .fiq-ft-label{display:block;font-family:'GE SS Two','Arial',sans-serif;font-size:12px;letter-spacing:normal;text-transform:uppercase;color:#D6C2A8;margin-bottom:22px;}
+    #fiq-footer .fiq-ft-form{display:flex;align-items:center;gap:16px;border-bottom:1px solid rgba(214,194,168,0.35);transition:border-color 0.4s cubic-bezier(0.25,0.46,0.45,0.94);}
+    #fiq-footer .fiq-ft-form:focus-within{border-color:#D6C2A8;}
+    #fiq-footer .fiq-ft-form input{flex:1;min-width:0;background:transparent;border:none;outline:none;padding:16px 0;font-family:'GE SS Two','Arial',sans-serif;font-size:15px;color:#FFFFFF;}
+    #fiq-footer .fiq-ft-form input::placeholder{color:rgba(245,242,237,0.45);}
+    #fiq-footer .fiq-ft-form button{display:inline-flex;align-items:center;gap:12px;background:none;border:none;padding:16px 0;cursor:pointer;font-family:'GE SS Two','Arial',sans-serif;font-size:13px;letter-spacing:normal;text-transform:uppercase;color:#D6C2A8;transition:color 0.3s cubic-bezier(0.25,0.46,0.45,0.94);}
+    #fiq-footer .fiq-ft-form button:hover,#fiq-footer .fiq-ft-form button:focus-visible{color:#FFFFFF;}
+    #fiq-footer .fiq-ft-frieze{margin:clamp(56px,7vw,88px) calc(50% - 50vw);border-top:1px solid rgba(214,194,168,0.14);border-bottom:1px solid rgba(214,194,168,0.14);opacity:0.5;}
+    #fiq-footer .fiq-ft-frieze svg{opacity:0.45;}
+    #fiq-footer .fiq-ft-cols{display:grid;grid-template-columns:1.25fr 1fr 1fr 1fr;gap:clamp(32px,4vw,64px);}
+    #fiq-footer .fiq-ft-desc{font-family:'GE SS Two','Arial',sans-serif;font-size:15px;line-height:1.8;color:rgba(245,242,237,0.6);max-width:300px;margin:0;}
+    #fiq-footer nav{display:flex;flex-direction:column;align-items:flex-start;gap:14px;}
+    #fiq-footer .fiq-ft-link{position:relative;font-family:'GE SS Two','Arial',sans-serif;font-size:15px;color:rgba(245,242,237,0.78);text-decoration:none;padding-bottom:2px;transition:color 0.3s cubic-bezier(0.25,0.46,0.45,0.94);}
+    #fiq-footer .fiq-ft-link::after{content:"";position:absolute;inset-inline-start:0;bottom:0;width:100%;height:1px;background:#D6C2A8;transform:scaleX(0);transform-origin:right;transition:transform 0.45s cubic-bezier(0.25,0.46,0.45,0.94);}
+    #fiq-footer .fiq-ft-link:hover,#fiq-footer .fiq-ft-link:focus-visible{color:#D6C2A8;}
+    #fiq-footer .fiq-ft-link:hover::after,#fiq-footer .fiq-ft-link:focus-visible::after{transform:scaleX(1);}
+    #fiq-footer .fiq-ft-k{display:block;font-family:'GE SS Two','Arial',sans-serif;font-size:12px;letter-spacing:normal;text-transform:uppercase;color:rgba(214,194,168,0.6);margin-bottom:6px;}
+    #fiq-footer .fiq-ft-v{font-family:'GE SS Two','Arial',sans-serif;font-size:15px;color:rgba(245,242,237,0.78);margin:0;}
+    #fiq-footer .fiq-ft-fact{display:flex;align-items:baseline;gap:14px;padding:14px 0;border-top:1px solid rgba(214,194,168,0.14);}
+    #fiq-footer .fiq-ft-fact:last-child{border-bottom:1px solid rgba(214,194,168,0.14);}
+    #fiq-footer .fiq-ft-fact-n{font-family:'Lama Sans',sans-serif;font-size:26px;line-height:1;color:#F5F2ED;min-width:56px;}
+    #fiq-footer .fiq-ft-fact-k{font-family:'GE SS Two','Arial',sans-serif;font-size:14px;color:rgba(245,242,237,0.6);}
+    #fiq-footer .fiq-ft-bottom{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px 32px;margin-top:clamp(56px,7vw,88px);padding-top:28px;border-top:1px solid rgba(214,194,168,0.14);}
+    #fiq-footer .fiq-ft-fine{font-family:'GE SS Two','Arial',sans-serif;font-size:13px;letter-spacing:normal;line-height:1.7;color:rgba(245,242,237,0.5);margin:0;}
+    #fiq-footer .fiq-ft-lang{justify-self:end;font-family:Lama Sans,'Arial',sans-serif;font-size:13px;color:#D6C2A8;text-decoration:none;padding:8px 18px;border:1px solid rgba(214,194,168,0.35);transition:background 0.3s cubic-bezier(0.25,0.46,0.45,0.94),color 0.3s cubic-bezier(0.25,0.46,0.45,0.94);}
+    #fiq-footer .fiq-ft-lang:hover,#fiq-footer .fiq-ft-lang:focus-visible{background:#D6C2A8;color:#1F1F1F;}
+    @media(max-width:1024px){
+      #fiq-footer .fiq-ft-cols{grid-template-columns:1fr 1fr;}
+    }
+    @media(max-width:900px){
+      #fiq-footer .fiq-ft-top{grid-template-columns:1fr;}
+      #fiq-footer .fiq-ft-bottom{grid-template-columns:1fr;justify-items:start;}
+      #fiq-footer .fiq-ft-lang{justify-self:start;}
+    }
+    @media(max-width:600px){
+      #fiq-footer .fiq-ft-cols{grid-template-columns:1fr;}
+    }
+    @media(prefers-reduced-motion:reduce){
+      #fiq-footer .fiq-ft-link::after,#fiq-footer .fiq-ft-form,#fiq-footer .fiq-ft-link{transition:none;}
+    }
+  </style>
   <div style="max-width:1280px;margin:0 auto;">
-    <div class="fiq-footer-grid" style="display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:clamp(28px,4vw,64px);margin-bottom:64px;">
-      <div class="fiq-footer-brand">
-        <img src="assets/logo-default.png" width="264" height="90" alt="FurnishIQ" style="height:36px;width:auto;max-width:160px;object-fit:contain;object-position:left center;margin-bottom:22px;display:block;" loading="lazy" decoding="async">
-        <p style="font-family:'GE SS Two','Arial',sans-serif;font-size:13px;line-height:1.8;color:rgba(214,194,168,0.65);margin-bottom:0;max-width:260px;">حلول تصميم وتنفيذ متكاملة تُحوّل المفاهيم المعمارية الطموحة إلى واقع ملهم في جميع أنحاء المملكة العربية السعودية.</p>
+    <div class="fiq-ft-top">
+      <div>
+        <a href="/ar" style="display:inline-block;text-decoration:none;"><img src="assets/logo-default.png" width="264" height="90" alt="FurnishIQ" style="height:40px;width:auto;display:block;margin-inline-start:-11px;" loading="lazy" decoding="async"></a>
+        <p class="fiq-ft-statement">تصميم وتنفيذ متكاملان، من المفهوم الأول حتى التسليم النهائي.</p>
       </div>
       <div>
-        <div style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:rgba(214,194,168,0.65);margin-bottom:22px;">الخدمات</div>
-        <nav style="display:flex;flex-direction:column;gap:13px;">
-          <a href="/ar/services-interior-design" style="font-family:'GE SS Two','Arial',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">التصميم الداخلي</a>
-          <a href="/ar/services-fitout" style="font-family:'GE SS Two','Arial',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">التشطيبات</a>
-          <a href="/ar/services-mep" style="font-family:'GE SS Two','Arial',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">الهندسة والأنظمة الكهروميكانيكية</a>
-          <a href="/ar/services-furniture" style="font-family:'GE SS Two','Arial',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">حلول الأثاث</a>
-          <a href="#" style="font-family:'GE SS Two','Arial',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">إدارة المشاريع</a>
-        </nav>
+        <span class="fiq-ft-label">انضم إلى IQ</span>
+        <p class="fiq-ft-desc" style="margin-bottom:8px;">رسائل شهرية عن المواد والمشاريع والحِرفة.</p>
+        <form class="fiq-ft-form" data-fiq-newsletter novalidate>
+          <input type="email" name="email" required autocomplete="email" placeholder="بريدك الإلكتروني" aria-label="بريدك الإلكتروني">
+          <button type="submit">اشترك<svg width="16" height="6" viewBox="0 0 16 6" fill="none" aria-hidden="true" style="transform:scaleX(-1);flex-shrink:0;"><path d="M0 3H14M14 3L11.5 1M14 3L11.5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+        </form>
+        <p class="fiq-ft-fine" data-fiq-newsletter-thanks style="display:none;margin-top:12px;color:#D6C2A8;">شكراً لك — تحديثات شهرية، دون أي رسائل مزعجة.</p>
       </div>
+    </div>
+
+    <div class="fiq-ft-frieze" aria-hidden="true"><svg width="100%" height="64" xmlns="http://www.w3.org/2000/svg" style="display:block;"><defs><pattern id="fiq-ft-khatam-ar" width="64" height="64" patternUnits="userSpaceOnUse"><g fill="none" stroke="#D6C2A8" stroke-width="1"><rect x="16.44" y="16.44" width="31.12" height="31.12"/><path d="M32 10L54 32L32 54L10 32Z"/><path d="M0 32H10M54 32H64"/></g></pattern></defs><rect width="100%" height="64" fill="url(#fiq-ft-khatam-ar)"/></svg></div>
+
+    <div class="fiq-ft-cols">
       <div>
-        <div style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:rgba(214,194,168,0.65);margin-bottom:22px;">الشركة</div>
-        <nav style="display:flex;flex-direction:column;gap:13px;">
-          <a href="/ar/about-us" style="font-family:'GE SS Two','Arial',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">من نحن</a>
-          <a href="/ar/services" style="font-family:'GE SS Two','Arial',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">الخدمات</a>
-          <a href="/ar/projects" style="font-family:'GE SS Two','Arial',sans-serif;font-size:13px;color:#D6C2A8;text-decoration:none;">أعمالنا</a>
-          <a href="#" style="font-family:'GE SS Two','Arial',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">الشروط والأحكام</a>
-          <a href="/ar/contact" style="font-family:'GE SS Two','Arial',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">تواصل معنا</a>
-          <a href="/ar/blog" style="font-family:'GE SS Two','Arial',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">المقالات</a>
-        </nav>
-      </div>
-      <div>
-        <div style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:rgba(214,194,168,0.65);margin-bottom:22px;">موقعنا</div>
+        <span class="fiq-ft-label">موقعنا</span>
         <div style="display:flex;flex-direction:column;gap:20px;">
-          <div>
-            <div style="font-family:'GE SS Two','Arial',sans-serif;font-size:10px;letter-spacing:normal;text-transform:uppercase;color:rgba(214,194,168,0.65);margin-bottom:5px;">العنوان</div>
-            <p style="font-family:'GE SS Two','Arial',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);line-height:1.65;">الرياض، المملكة العربية السعودية.</p>
-          </div>
-          <div>
-            <div style="font-family:'GE SS Two','Arial',sans-serif;font-size:10px;letter-spacing:normal;text-transform:uppercase;color:rgba(214,194,168,0.65);margin-bottom:5px;">البريد الإلكتروني</div>
-            <a href="mailto:info@furnishiq.net" style="font-family:'GE SS Two','Arial',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">info@furnishiq.net</a>
-          </div>
-          <div>
-            <div style="font-family:'GE SS Two','Arial',sans-serif;font-size:10px;letter-spacing:normal;text-transform:uppercase;color:rgba(214,194,168,0.65);margin-bottom:5px;">الهاتف — إبراهيم العلي</div>
-            <a href="tel:+966580330627" style="font-family:'GE SS Two','Arial',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">+966 58 033 0627</a>
-          </div>
+          <div><span class="fiq-ft-k">العنوان</span><p class="fiq-ft-v">الرياض، المملكة العربية السعودية.</p></div>
+          <div><span class="fiq-ft-k">البريد الإلكتروني</span><a class="fiq-ft-link" href="mailto:info@furnishiq.net">info@furnishiq.net</a></div>
+          <div><span class="fiq-ft-k">الهاتف — إبراهيم العلي</span><a class="fiq-ft-link" href="tel:+966580330627" dir="ltr">+966 58 033 0627</a></div>
+        </div>
+      </div>
+      <div>
+        <span class="fiq-ft-label">الخدمات</span>
+        <nav aria-label="الخدمات">
+            <a class="fiq-ft-link" href="/ar/services-interior-design">التصميم الداخلي</a>
+            <a class="fiq-ft-link" href="/ar/services-fitout">التشطيبات</a>
+            <a class="fiq-ft-link" href="/ar/services-mep">الهندسة والأنظمة الكهروميكانيكية</a>
+            <a class="fiq-ft-link" href="/ar/services-furniture">حلول الأثاث</a>
+            <a class="fiq-ft-link" href="#">إدارة المشاريع</a>
+        </nav>
+      </div>
+      <div>
+        <span class="fiq-ft-label">الشركة</span>
+        <nav aria-label="الشركة">
+            <a class="fiq-ft-link" href="/ar/about-us">من نحن</a>
+            <a class="fiq-ft-link" href="/ar/services">الخدمات</a>
+            <a class="fiq-ft-link" href="/ar/projects">أعمالنا</a>
+            <a class="fiq-ft-link" href="/ar/blog">المقالات</a>
+            <a class="fiq-ft-link" href="/ar/contact">تواصل معنا</a>
+            <a class="fiq-ft-link" href="#">الشروط والأحكام</a>
+        </nav>
+      </div>
+      <div>
+        <span class="fiq-ft-label">لمحة سريعة</span>
+        <div>
+            <div class="fiq-ft-fact"><span class="fiq-ft-fact-n" dir="ltr">+15</span><span class="fiq-ft-fact-k">عاماً من الخبرة</span></div>
+            <div class="fiq-ft-fact"><span class="fiq-ft-fact-n" dir="ltr">+40</span><span class="fiq-ft-fact-k">مشروعاً منجزاً</span></div>
+            <div class="fiq-ft-fact"><span class="fiq-ft-fact-n" dir="ltr">+20</span><span class="fiq-ft-fact-k">عضواً في فريقنا</span></div>
         </div>
       </div>
     </div>
-    <div style="border-top:1px solid rgba(214,194,168,0.1);padding-top:28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
-      <p style="font-family:'GE SS Two','Arial',sans-serif;font-size:11px;color:rgba(214,194,168,0.65);letter-spacing:normal;">© 2026 FurnishIQ. جميع الحقوق محفوظة.</p>
-      <p style="font-family:'GE SS Two','Arial',sans-serif;font-size:11px;color:rgba(214,194,168,0.65);letter-spacing:normal;">صُنع بدقة في المملكة العربية السعودية.</p>
+
+    <div class="fiq-ft-bottom">
+      <div>
+        <p class="fiq-ft-fine">© 2026 FurnishIQ. جميع الحقوق محفوظة.</p>
+        <p class="fiq-ft-fine"><span dir="ltr">Basic Step for Contracting Company</span> · سجل تجاري 2050155201</p>
+      </div>
+      <p class="fiq-ft-fine">صُنع بدقة في المملكة العربية السعودية.</p>
+      <a class="fiq-ft-lang" href="/project-detail" lang="en" dir="ltr">English</a>
     </div>
   </div>
 </footer>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ GALLERY LIGHTBOX ━━━━ -->
-<div id="pd-lightbox" style="position:fixed;inset:0;z-index:500;display:none;align-items:center;justify-content:center;background:rgba(15,11,8,0.94);padding:clamp(24px,5vw,64px);opacity:0;transition:opacity 0.3s ease;">
-  <button type="button" id="pd-lightbox-close" aria-label="إغلاق المعرض" style="position:absolute;top:clamp(20px,3vw,36px);right:clamp(20px,3vw,36px);width:44px;height:44px;border-radius:50%;background:transparent;border:1px solid rgba(214,194,168,0.4);display:flex;align-items:center;justify-content:center;cursor:pointer;color:#D6C2A8;transition:all 0.3s;">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"></line><line x1="18" y1="6" x2="6" y2="18"></line></svg>
-  </button>
-  <div style="max-width:1100px;width:100%;max-height:88vh;display:flex;flex-direction:column;align-items:center;">
-    <div style="position:relative;width:100%;aspect-ratio:3/2;overflow:hidden;background:#000;">
-      <img id="pd-lightbox-img" src="" alt="" style="display:block;width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async">
-      <button type="button" id="pd-lightbox-prev" aria-label="الصورة السابقة" style="position:absolute;top:50%;left:16px;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:rgba(15,11,8,0.55);border:1px solid rgba(214,194,168,0.4);display:flex;align-items:center;justify-content:center;cursor:pointer;color:#D6C2A8;transition:all 0.3s;">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
-      </button>
-      <button type="button" id="pd-lightbox-next" aria-label="الصورة التالية" style="position:absolute;top:50%;right:16px;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:rgba(15,11,8,0.55);border:1px solid rgba(214,194,168,0.4);display:flex;align-items:center;justify-content:center;cursor:pointer;color:#D6C2A8;transition:all 0.3s;">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
-      </button>
-    </div>
-    <div style="width:100%;padding-top:24px;">
-      <span id="pd-lightbox-caption" style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:rgba(214,194,168,0.55);display:block;margin-bottom:8px;"></span>
-      <h3 id="pd-lightbox-title" style="font-family:'GE SS Two','Arial',sans-serif;font-size:clamp(18px,2.2vw,26px);font-weight:500;color:#FFFFFF;line-height:1.3;margin:0;text-wrap:balance;"></h3>
+<style>
+  /* Project image modal: one fixed 16:9 frame for every image, details on a bottom gradient (pattern from the turnkey landing pop-up, square corners per the design system) */
+  #pd-lightbox{position:fixed;inset:0;z-index:500;display:none;align-items:center;justify-content:center;padding:72px 24px 24px;box-sizing:border-box;background:rgba(15,11,8,0.95);opacity:0;transition:opacity 0.35s cubic-bezier(0.25,0.46,0.45,0.94);}
+  .fiq-lb-frame{position:relative;width:min(100%,1600px,calc((100vh - 96px) * 16 / 9));aspect-ratio:16/9;overflow:hidden;background:#1E1610;box-shadow:0 24px 80px rgba(0,0,0,0.4);}
+  .fiq-lb-frame > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .fiq-lb-info{position:absolute;left:0;right:0;bottom:0;padding:clamp(80px,12vh,140px) clamp(24px,3vw,44px) clamp(22px,2.6vw,34px);background:linear-gradient(to top,rgba(15,11,8,0.94) 0%,rgba(15,11,8,0.78) 55%,rgba(15,11,8,0) 100%);display:flex;flex-direction:column;gap:clamp(16px,2vw,22px);}
+  .fiq-lb-head{display:flex;align-items:flex-end;justify-content:space-between;gap:32px;}
+  .fiq-lb-note{font-size:14px;line-height:1.75;color:rgba(232,223,216,0.78);margin:10px 0 0;max-width:620px;}
+  .fiq-lb-side{display:flex;align-items:center;gap:20px;flex-shrink:0;}
+  .fiq-lb-count{font-size:11px;letter-spacing:0.2em;color:rgba(214,194,168,0.7);white-space:nowrap;}
+  .fiq-lb-cta{display:inline-flex;align-items:center;gap:10px;font-size:10px;text-transform:uppercase;color:#1F1F1F;background:#D6C2A8;border:1px solid #D6C2A8;padding:15px 26px;text-decoration:none;white-space:nowrap;transition:background 0.3s cubic-bezier(0.25,0.46,0.45,0.94),color 0.3s cubic-bezier(0.25,0.46,0.45,0.94),border-color 0.3s cubic-bezier(0.25,0.46,0.45,0.94);}
+  .fiq-lb-cta:hover,.fiq-lb-cta:focus-visible{background:transparent;color:#FFFFFF;border-color:rgba(255,255,255,0.45);outline:none;}
+  .fiq-lb-params{display:grid;grid-template-columns:repeat(4,minmax(0,0.7fr)) minmax(0,1.6fr);gap:clamp(16px,2vw,28px);padding-top:clamp(14px,1.6vw,18px);border-top:1px solid rgba(255,255,255,0.16);}
+  .fiq-lb-params dt{font-size:9px;text-transform:uppercase;color:rgba(214,194,168,0.55);margin:0 0 6px;}
+  .fiq-lb-params dd{font-size:13px;color:#FFFFFF;margin:0;}
+  .fiq-lb-nav{position:absolute;top:42%;z-index:2;width:52px;height:52px;margin-top:-26px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,0.45);border-radius:50%;background:rgba(15,11,8,0.35);color:#D6C2A8;cursor:pointer;padding:0;transition:background 0.3s cubic-bezier(0.25,0.46,0.45,0.94),color 0.3s cubic-bezier(0.25,0.46,0.45,0.94);}
+  .fiq-lb-nav:hover,.fiq-lb-nav:focus-visible{background:#D6C2A8;color:#1F1F1F;outline:none;}
+  #pd-lightbox-prev{left:clamp(14px,2vw,26px);} #pd-lightbox-next{right:clamp(14px,2vw,26px);}
+  #pd-lightbox-close{position:absolute;top:16px;right:16px;width:48px;height:48px;border-radius:50%;background:transparent;border:1px solid rgba(214,194,168,0.45);display:flex;align-items:center;justify-content:center;cursor:pointer;color:#D6C2A8;}
+  @media(max-width:900px),(max-height:620px){
+    #pd-lightbox{align-items:flex-start;padding:72px 16px 16px;overflow-y:auto;}
+    .fiq-lb-frame{width:100%;aspect-ratio:auto;overflow:visible;background:#1E1610;}
+    .fiq-lb-frame > img{position:relative;display:block;aspect-ratio:16/9;height:auto;}
+    .fiq-lb-info{position:relative;padding:22px 20px 24px;background:#1E1610;}
+    .fiq-lb-head{flex-direction:column;align-items:stretch;gap:18px;}
+    .fiq-lb-side{justify-content:space-between;}
+    .fiq-lb-params{grid-template-columns:1fr 1fr;}
+    .fiq-lb-params > div:last-child{grid-column:1/-1;}
+    .fiq-lb-nav{top:calc((100vw - 32px) * 9 / 32);width:44px;height:44px;margin-top:-22px;}
+  }
+</style>
+<div id="pd-lightbox" role="dialog" aria-modal="true" aria-labelledby="pd-lightbox-title" data-wa-template="مرحبًا FurnishIQ، أرغب في مناقشة مشروع مشابه لـ «{title}» ({caption}).">
+  <button type="button" id="pd-lightbox-close" aria-label="إغلاق المعرض"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"></line><line x1="18" y1="6" x2="6" y2="18"></line></svg></button>
+  <div class="fiq-lb-frame">
+    <img id="pd-lightbox-img" src="" alt="" decoding="async">
+    <button type="button" id="pd-lightbox-prev" class="fiq-lb-nav" aria-label="الصورة السابقة"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+    <button type="button" id="pd-lightbox-next" class="fiq-lb-nav" aria-label="الصورة التالية"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+    <div class="fiq-lb-info">
+      <div class="fiq-lb-head">
+        <div>
+          <span id="pd-lightbox-caption" style="font-family:'GE SS Two','Arial',sans-serif;font-size:10px;letter-spacing:normal;text-transform:uppercase;color:#D6C2A8;display:block;margin-bottom:8px;"></span>
+          <h3 id="pd-lightbox-title" style="font-family:'GE SS Two','Arial',sans-serif;font-size:clamp(20px,2.2vw,28px);font-weight:500;color:#FFFFFF;line-height:1.25;margin:0;"></h3>
+          <p id="pd-lightbox-note" class="fiq-lb-note" style="font-family:'GE SS Two','Arial',sans-serif;"></p>
+        </div>
+        <div class="fiq-lb-side">
+          <span id="pd-lightbox-count" class="fiq-lb-count" style="font-family:'GE SS Two','Arial',sans-serif;"></span>
+          <a id="pd-lightbox-wa" class="fiq-lb-cta" href="https://wa.me/966580330627" target="_blank" rel="noopener" style="font-family:'GE SS Two','Arial',sans-serif;letter-spacing:normal;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path></svg>تواصل عبر واتساب</a>
+        </div>
+      </div>
+      <dl class="fiq-lb-params" style="margin:0;">
+        <div><dt style="font-family:'GE SS Two','Arial',sans-serif;letter-spacing:normal;">التصنيف</dt><dd style="font-family:'GE SS Two','Arial',sans-serif;">{{ category }}</dd></div>
+        <div><dt style="font-family:'GE SS Two','Arial',sans-serif;letter-spacing:normal;">الموقع</dt><dd style="font-family:'GE SS Two','Arial',sans-serif;">{{ location }}</dd></div>
+        <div><dt style="font-family:'GE SS Two','Arial',sans-serif;letter-spacing:normal;">المساحة المبنية</dt><dd style="font-family:'GE SS Two','Arial',sans-serif;">{{ area }}</dd></div>
+        <div><dt style="font-family:'GE SS Two','Arial',sans-serif;letter-spacing:normal;">الحالة</dt><dd style="font-family:'GE SS Two','Arial',sans-serif;">{{ date }}</dd></div>
+        <div><dt style="font-family:'GE SS Two','Arial',sans-serif;letter-spacing:normal;">نطاق عمل FurnishIQ</dt><dd style="font-family:'GE SS Two','Arial',sans-serif;">{{ scopeText }}</dd></div>
+      </dl>
     </div>
   </div>
 </div>
@@ -810,92 +940,98 @@ input:focus, select:focus, textarea:focus {
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
   PROJECTS = [
-    { slug: 'a-private-residence-in-layered-walnut-and-stone', category: 'سكني', location: 'الرياض', title: 'إقامة خاصة بطبقات من خشب الجوز والحجر', image: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1400&q=30' },
-    { slug: 'boutique-hotel-lobby-reimagined-in-warm-brass', category: 'ضيافة', location: 'جدة', title: 'ردهة فندق بوتيك، أُعيد تصميمها بالنحاس الدافئ', image: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1400&q=30' },
-    { slug: 'a-90-day-headquarters-fit-out-for-a-growing-fintech', category: 'مكاتب', location: 'الرياض', title: 'تشطيب مقر رئيسي خلال 90 يوماً لشركة تقنية مالية ناشئة', image: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1400&q=30' },
-    { slug: 'flagship-concept-store-with-sculptural-fixtures', category: 'تجزئة', location: 'الخبر', title: 'متجر رائد بتجهيزات نحتية مميزة', image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1400&q=30' },
-    { slug: 'coastal-villa-engineered-for-light-and-shade', category: 'سكني', location: 'الدمام', title: 'فيلا ساحلية، مصممة هندسياً للضوء والظل', image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1400&q=30' },
-    { slug: 'desert-retreat-restaurant-stone-and-steel', category: 'ضيافة', location: 'العُلا', title: 'مطعم منتجع صحراوي، من الحجر والصلب', image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1400&q=30' },
-    { slug: 'executive-floor-invisible-mep-by-design', category: 'مكاتب', location: 'الرياض', title: 'طابق تنفيذي، بأنظمة كهروميكانيكية غير مرئية بالتصميم', image: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1400&q=30' },
-    { slug: 'furniture-showroom-custom-joinery-throughout', category: 'تجزئة', location: 'جدة', title: 'صالة عرض أثاث، بأعمال نجارة مخصصة بالكامل', image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1400&q=30' },
-    { slug: 'law-firm-chambers-in-oak-and-smoked-glass', category: 'مكاتب', location: 'جدة', title: 'مكاتب محاماة من خشب البلوط والزجاج المدخن', image: 'https://images.unsplash.com/photo-1604328698692-f76ea9498e76?auto=format&fit=crop&w=1400&q=30' },
-    { slug: 'penthouse-duplex-above-the-diplomatic-quarter', category: 'سكني', location: 'الرياض', title: 'شقة بنتهاوس مزدوجة فوق الحي الدبلوماسي', image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=30' },
-    { slug: 'specialty-coffee-house-with-in-house-roastery', category: 'ضيافة', location: 'الرياض', title: 'مقهى متخصص بمحمصة داخلية', image: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1400&q=30' },
-    { slug: 'jewellery-atelier-behind-a-bronze-veil-facade', category: 'تجزئة', location: 'الرياض', title: 'أتيليه مجوهرات خلف واجهة نحاسية مثقبة', image: 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1400&q=30' },
-    { slug: 'waterfront-brasserie-seating-for-two-hundred', category: 'ضيافة', location: 'الخبر', title: 'مطعم على الواجهة البحرية بسعة مئتي مقعد', image: 'https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1400&q=30' },
-    { slug: 'regional-logistics-hq-with-a-client-showroom', category: 'مكاتب', location: 'الدمام', title: 'مقر لوجستي إقليمي مع صالة عرض للعملاء', image: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1400&q=30' },
+    { slug: 'the-courtyard-residence', category: 'سكني', location: 'شمال الرياض', title: 'مسكن الفناء', image: 'uploads/courtyard-residence-grand-majlis-riyadh-1920.webp' },
+    { slug: 'family-office-hq', category: 'مكاتب', location: 'غرب الرياض', title: 'مقر المكتب العائلي', image: 'uploads/family-office-courtyard-olive-tree-riyadh-1920.webp' },
+    { slug: 'central-commons', category: 'تجزئة', location: 'العليا، الرياض', title: 'الساحة المركزية', image: 'uploads/central-commons-plaza-dusk-riyadh-1920.webp' },
+    { slug: 'obhur-beach-estate', category: 'سكني', location: 'شمال جدة', title: 'دارة شاطئ أبحر', image: 'uploads/obhur-estate-great-room-red-sea-jeddah-1920.webp' },
+    { slug: 'desert-stone-resort', category: 'ضيافة', location: 'العُلا', title: 'منتجع الحجر الصحراوي', image: 'uploads/desert-stone-resort-lobby-lounge-alula-1920.webp' },
+    { slug: 'the-executive-floors', category: 'مكاتب', location: 'شمال الرياض', title: 'الطوابق التنفيذية', image: 'uploads/executive-floors-sky-lobby-reception-riyadh-1920.webp' },
+    { slug: 'the-furniture-gallery', category: 'تجزئة', location: 'شمال الرياض', title: 'معرض الأثاث', image: 'uploads/furniture-gallery-atrium-stair-riyadh-1920.webp' },
+    { slug: 'penthouse-above-the-wadi', category: 'سكني', location: 'غرب الرياض', title: 'بنتهاوس فوق الوادي', image: 'uploads/penthouse-wadi-double-height-living-riyadh-1920.webp' },
+    { slug: 'roastery-house-flagship', category: 'ضيافة', location: 'شمال الرياض', title: 'بيت المحمصة — الفرع الرئيسي', image: 'uploads/roastery-house-roasting-hall-riyadh-1920.webp' },
+    { slug: 'maison-de-joaillerie', category: 'تجزئة', location: 'جدة', title: 'دار المجوهرات', image: 'uploads/maison-joaillerie-main-salon-jeddah-1920.webp' },
   ];
 
   DETAILS = {
-    'إقامة خاصة بطبقات من خشب الجوز والحجر': { area: '1,450 م²', date: 'اكتمل 2025', paras: [
-      'فيلا عائلية في شمال الرياض صُممت كسلسلة من الغرف الهادئة التي تقودها المواد. طلب العميل دفئاً دون زخرفة زائدة: أعمال نجارة من خشب الجوز مصنّعة يدوياً، وحجر جيري عماني مصقول، وتفاصيل من النحاس المصقول تحمل نفس اللوحة اللونية من ردهة المدخل وصولاً إلى الجناح الخاص.',
-      'نفّذت FurnishIQ المشروع من البداية حتى النهاية — العمارة الداخلية، والنجارة المخصصة، وتصميم الإضاءة، والتنسيق الكامل للأنظمة الكهروميكانيكية. كل سطح ملموس هو مادة أصيلة؛ واقتصر استخدام البدائل المصنّعة على الأسطح العلوية التي لا تصلها اليد.',
-      'والنتيجة إقامة تصوَّر بهدوء وتُعاش بسخاء: يتشكل ضوء النهار عبر فتحات عميقة وحواجز خشبية، بينما تُبقي الخدمات المخفية كل سقف نظيفاً وكل جدار صامتاً.',
+    "مسكن الفناء": { area: "3,800 م²", date: "تصور تصميمي", film: { poster: 'uploads/courtyard-residence-film-poster.webp', hd: 'uploads/courtyard-residence-film-1080.mp4', sd: 'uploads/courtyard-residence-film-720.mp4' }, secondary: "uploads/courtyard-residence-central-courtyard-reflecting-pool-1920.webp", gallery: [{ caption: "المجلس الكبير", image: "uploads/courtyard-residence-grand-majlis-riyadh-1280.webp", full: "uploads/courtyard-residence-grand-majlis-riyadh-2752.webp", pos: "center", note: "المجلس الكبير بمساحة 220 م²: ترافرتين مصقول وخشب جوز مضلع ومشربيات من الجوز، بجلسات منخفضة للمناسبات الرسمية." }, { caption: "الفناء المركزي عند الغروب", image: "uploads/courtyard-residence-central-courtyard-reflecting-pool-1280.webp", full: "uploads/courtyard-residence-central-courtyard-reflecting-pool-2752.webp", pos: "center", note: "يربط الفناء المركزي الأجنحة الثلاثة حول بركة عاكسة من الحجر الداكن، يضيئها عند الغروب وهج المشربيات." }, { caption: "تفاصيل مشربية خشب الجوز", image: "uploads/courtyard-residence-walnut-mashrabiya-detail-1200.webp", full: "uploads/courtyard-residence-walnut-mashrabiya-detail-2400.webp", pos: "60% center", note: "مشربية من خشب الجوز بتشطيب يدوي تحوّل شمس الغروب إلى ضوء هندسي ناعم داخل المجلس." }, { caption: "تفاصيل جلسة المجلس", image: "uploads/courtyard-residence-majlis-seating-detail-1200.webp", full: "uploads/courtyard-residence-majlis-seating-detail-2400.webp", pos: "62% center", note: "جلسات مجلس منخفضة بقماش البوكليه العاجي على قواعد من خشب الجوز، مع مساند من الجلد بلون الكونياك، مصنوعة بمقاسات الغرفة تمامًا." }, { caption: "غرفة الطعام الرسمية", image: "uploads/courtyard-residence-formal-dining-room-1280.webp", full: "uploads/courtyard-residence-formal-dining-room-2752.webp", pos: "center", note: "غرفة طعام رسمية لستة عشر ضيفًا تحت ثريا خطية من البرونز، تنفتح على الحديقة عبر أبواب من المشربيات." }, { caption: "درج قاعة المدخل", image: "uploads/luxury-villa-fit-out-travertine-staircase-walnut-wall-riyadh-1200.webp", full: "uploads/luxury-villa-fit-out-travertine-staircase-walnut-wall-riyadh-1600.webp", pos: "42% center", note: "درجات معلّقة من الترافرتين ترتفع بمحاذاة جدار من خشب الجوز المضلع في قاعة المدخل مزدوجة الارتفاع." }], scope: "التصميم الداخلي · التشطيبات · الهندسة الكهروميكانيكية · الأثاث المخصص", paras: [
+      "«مسكن الفناء» تصور تصميمي من FurnishIQ لعائلة متعددة الأجيال في شمال الرياض، تستقبل ضيوفها كثيرًا وتحرص على خصوصيتها. يتوزع المسكن على 3,800 م² في ثلاثة أجنحة — جناح المجلس الرسمي، وجناح العائلة، وجناح الضيوف — تنفتح جميعها على فناء مركزي تتوسطه بركة عاكسة طويلة. تطل عليه كل الغرف الرئيسية، ويمر به كل مسار داخل المنزل.",
+      "صُمم جناح المجلس لاستقبال الضيوف على نطاق واسع دون المساس بخصوصية العائلة. يكسو المجلسَ الكبير بمساحة 220 م² حجرُ الترافرتين المصقول وخشبُ الجوز المضلع، وتلطّف مشربياتُ الجوز شمسَ العصر فتنثر نقوشًا من الضوء على الأرضية. ويكتمل مسار الضيافة بمجلس للنساء وغرفة طعام رسمية تتسع لستة عشر ضيفًا، يخدمها مطبخ ضيافة بمدخل مستقل للعاملين.",
+      "لوحة المواد محدودة عن قصد: الترافرتين وخشب الجوز والبرونز والحجر الجيري، تتكرر في كل الأجنحة ليبدو المسكن تكوينًا واحدًا. وتؤدي التفاصيل دور الزخرفة: فواصل ظل عند كل التقاء بالسقف، وتطعيمات برونزية مستوية مع الحجر، وأعمال نجارة مضبوطة على شبكة واحدة من الأرض حتى السقف.",
+      "تُخطط الأنظمة الكهروميكانيكية جنبًا إلى جنب مع التصميم الداخلي منذ الرسم الأول. يصل الهواء المكيّف عبر فتحات خطية مخفية في فواصل الظل بالسقف، ويفصل العزل الصوتي جناح المجلس عن جناح العائلة، وتعمل الإضاءة والستائر والتكييف والأمن على نظام منزل ذكي واحد مع مشاهد تحكم في كل غرفة.",
+      "تتولى FurnishIQ تحديد الأثاث وتوريده ضمن التصميم نفسه: جلسات مجلس منخفضة بقماش البوكليه العاجي على قواعد من خشب الجوز، وطاولة طعام لستة عشر شخصًا من خشب الجوز المتناظر العروق، وقطع جلوس من الجلد بلون الكونياك. تُختار كل قطعة أو تُصنع حسب الطلب وفق التصور ثلاثي الأبعاد المعتمد، لتطابق الغرف التصميم دون بدائل.",
+      "يشمل نطاق عمل FurnishIQ التصميم والتنفيذ بالكامل: التصميم الداخلي والتصور ثلاثي الأبعاد الواقعي، وأعمال التشطيب في الطوابق الثلاثة، والهندسة الكهروميكانيكية الكاملة مع تكامل المنزل الذكي، وتحديد الأثاث وتوريده وتركيبه.",
     ]},
-    'ردهة فندق بوتيك، أُعيد تصميمها بالنحاس الدافئ': { area: '620 م²', date: 'اكتمل 2025', paras: [
-      'صالة استقبال متعبة في وسط جدة تحوّلت إلى مدخل مضغوط ومليء بالأجواء. نحاس غير مطلي، وخشب مضلّع، ومكتب استقبال حجري متجانس يحددون نغمة تتبعها الآن الغرف في الطوابق العلوية.',
-      'نُفّذ التشطيب على مراحل ليلية على مدى ستة أسابيع دون إغلاق الفندق. جرى تمرير أسقف عازلة للصوت، ومشاهد إضاءة متكاملة، وأنظمة تهوية جديدة عبر الهيكل القائم دون أي فتحة تهوية ظاهرة.',
-      'منذ إعادة الافتتاح، أصبحت الردهة المساحة الأكثر تصويراً في العقار — والمعيار الذي يُقاس عليه برنامج التجديد الإقليمي للمشغّل.',
+    "مقر المكتب العائلي": { area: "3,200 م²", date: "تصور تصميمي", film: { poster: 'uploads/family-office-film-poster.webp', hd: 'uploads/family-office-film-1080.mp4', sd: 'uploads/family-office-film-720.mp4' }, secondary: "uploads/family-office-council-room-oak-table-1920.webp", gallery: [{ caption: "فناء المدخل", image: "uploads/family-office-courtyard-olive-tree-riyadh-1280.webp", full: "uploads/family-office-courtyard-olive-tree-riyadh-2752.webp", pos: "center", note: "فناء المدخل: جدران من الحجر الجيري، وشجرة زيتون واحدة، وقناة ماء طويلة تقود إلى الاستقبال." }, { caption: "قاعة مجلس العائلة", image: "uploads/family-office-council-room-oak-table-1280.webp", full: "uploads/family-office-council-room-oak-table-2752.webp", pos: "center", note: "تتسع قاعة مجلس العائلة لستة عشر شخصًا حول طاولة من البلوط المدخن تحت عوارض من خشب الأثل." }, { caption: "المكتبة والأرشيف", image: "uploads/family-office-library-archive-1280.webp", full: "uploads/family-office-library-archive-2752.webp", pos: "center", note: "رفوف من البلوط من الأرض حتى السقف مع سلّم برونزي تضم أرشيف العائلة فوق طاولتين للقراءة." }, { caption: "مكتب الرئيس", image: "uploads/family-office-principal-office-1280.webp", full: "uploads/family-office-principal-office-2752.webp", pos: "55% center", note: "يطل مكتب الرئيس على الفناء عبر فتحة عميقة في جدار الحجر الجيري." }, { caption: "مجلس الضيوف", image: "uploads/family-office-guest-majlis-1280.webp", full: "uploads/family-office-guest-majlis-2752.webp", pos: "center", note: "مجلس للضيوف بجلسات منخفضة من الشمواه بلون التبغ، تحت جدار من الحجر الجيري تضيئه فتحات نجدية مثلثة." }, { caption: "تفاصيل الحجر الجيري والبرونز", image: "uploads/family-office-limestone-bronze-detail-1200.webp", full: "uploads/family-office-limestone-bronze-detail-2400.webp", pos: "75% center", note: "فتحات نجدية مثلثة في الحجر الجيري، مؤطرة بالبرونز الداكن." }], scope: "التصميم الداخلي · التشطيبات · الهندسة الكهروميكانيكية · الأثاث المخصص", paras: [
+      "«مقر المكتب العائلي» تصور تصميمي من FurnishIQ لمقر خاص لمكتب عائلي في غرب الرياض. يقدّم المبنى البالغ 3,200 م² إلى الشارع جدارًا هادئًا من الحجر الجيري، وينفتح إلى الداخل حول فناء تتوسطه شجرة زيتون وقناة ماء طويلة.",
+      "تطل كل الغرف الرئيسية على الفناء: قاعة مجلس العائلة، ومكتب الرئيس، والمكتبة، وغرفة طعام خاصة في الطابق العلوي؛ ومجلس الضيوف وغرف الاجتماعات واستوديو فريق الاستثمار في الطابق الأرضي. ويضم الطابق السفلي الأرشيف وغرفة محفوظات مؤمّنة.",
+      "تستلهم العمارة البناء النجدي: جدران سميكة من الحجر الجيري بفتحات مثلثة صغيرة، وعوارض من خشب الأثل في الأسقف، وفتحات عميقة تحافظ على برودة الداخل وهدوئه. وتمنح نجارة البلوط المدخن والبرونز الداكن والشمواه بلون التبغ الغرفَ مقياس بيت خاص لا مكتب شركة.",
+      "تتسع قاعة مجلس العائلة لستة عشر شخصًا حول طاولة واحدة من البلوط المدخن تحت عوارض الأثل، مع جدران من الجص الجيري العازل للصوت وأنظمة عرض مخفية وإطلالة على الفناء. وبجوارها تجمع المكتبة طاولات القراءة مع أرشيف العائلة، في رفوف من البلوط من الأرض حتى السقف مع سلّم برونزي.",
+      "تحدد الخصوصية والأمان القرارات الهندسية. تخطط FurnishIQ لعزل صوتي بين كل غرف الاجتماعات، وغرف بيانات ومحفوظات مؤمّنة بتبريد مستقل وأنظمة إطفاء مخصصة، وتهوية إزاحية مخفية في الفتحات، ونظام ذكي واحد للمبنى يتحكم في الإضاءة والتظليل والتكييف والتحكم في الدخول.",
+      "يُختار الأثاث ليدوم جيلًا كاملًا: طاولة مجلس من البلوط المدخن الصلب، وكراسٍ من الشمواه بلون التبغ، وطاولات مكتبة من البلوط والبرونز، وسجاد صوفي معقود يدويًا. ويشمل نطاق عمل FurnishIQ التصميم والتنفيذ بالكامل: التصميم الداخلي والتصور ثلاثي الأبعاد الواقعي، وأعمال التشطيب في المستويات الثلاثة، والهندسة الكهروميكانيكية، وتحديد الأثاث وتوريده وتركيبه.",
     ]},
-    'تشطيب مقر رئيسي خلال 90 يوماً لشركة تقنية مالية ناشئة': { area: '2,300 م²', date: 'اكتمل 2024', paras: [
-      'ثلاثة طوابق من الهيكل الخام في الحي الرقمي بالرياض، سُلّمت كمقر عمل جاهز خلال تسعين يوماً. سارت مسارات عمل متوازية — نجارة خارج الموقع، وتمديدات كهروميكانيكية أولية، وتوريد أثاث — ضمن برنامج متكامل واحد.',
-      'يوازن مكان العمل بين التركيز والتجمع: كبائن عازلة للصوت ودرج اجتماعي مركزي ضمن غلاف هادئ من خشب البلوط واللباد والألوان المحايدة الدافئة المستوحاة من هوية العميل.',
-      'شمل التسليم كل محطة عمل جاهزة، وكل غرفة اجتماعات مُشغّلة، وقائمة ملاحظات من أحد عشر بنداً — أُغلقت جميعها خلال الأسبوع الأول من الإشغال.',
+    "الساحة المركزية": { area: "22,000 م²", date: "تصور تصميمي", film: { poster: 'uploads/central-commons-film-poster.webp', hd: 'uploads/central-commons-film-1080.mp4', sd: 'uploads/central-commons-film-720.mp4' }, secondary: "uploads/central-commons-covered-galleria-1920.webp", gallery: [{ caption: "الساحة المركزية عند الغروب", image: "uploads/central-commons-plaza-dusk-riyadh-1280.webp", full: "uploads/central-commons-plaza-dusk-riyadh-2752.webp", pos: "center", note: "الساحة المركزية عند الغروب، تحت مظلة مضاءة من الألواح البرونزية المثقّبة." }, { caption: "الممر التجاري المغطى", image: "uploads/central-commons-covered-galleria-1280.webp", full: "uploads/central-commons-covered-galleria-2752.webp", pos: "center", note: "ممر تجاري مغطى يمتد من الساحة عبر طابقين من المتاجر تحت سقف زجاجي بشرائح تظليل." }, { caption: "الردهة المركزية", image: "uploads/central-commons-central-atrium-1280.webp", full: "uploads/central-commons-central-atrium-2752.webp", pos: "center", note: "الردهة المركزية تحت نافذة سقفية مقببة، مع جسور تربط طوابق المتاجر." }, { caption: "قاعة المطاعم", image: "uploads/central-commons-food-hall-1280.webp", full: "uploads/central-commons-food-hall-2752.webp", pos: "60% center", note: "قاعة مطاعم من البلوط والتيرازو والجلد بلون التراكوتا، تطل على الساحة." }, { caption: "ردهة البرج المكتبي", image: "uploads/central-commons-office-lobby-1280.webp", full: "uploads/central-commons-office-lobby-2752.webp", pos: "55% center", note: "ردهة مزدوجة الارتفاع لبرج مكتبي من الحجر الجيري والبلوط والجلد بلون الكونياك." }, { caption: "تفاصيل مظلة التظليل", image: "uploads/central-commons-shading-canopy-detail-1200.webp", full: "uploads/central-commons-shading-canopy-detail-1816.webp", pos: "45% center", note: "ألواح برونزية مثقّبة تحوّل أشعة الشمس إلى ضوء مرقّط على أرضية الحجر الجيري." }], scope: "التصميم الداخلي · التشطيبات · الهندسة الكهروميكانيكية · الأثاث المخصص", paras: [
+      "«الساحة المركزية» تصور تصميمي من FurnishIQ للمساحات العامة في مشروع متعدد الاستخدامات في حي العليا وسط الرياض. يشمل نطاق عمل FurnishIQ البالغ 22,000 م² كل ما يمر به الزائر: ساحة مركزية مظللة، وممرًا تجاريًا مغطى، وردهة مركزية، وقاعة مطاعم، وردهات الأبراج المكتبية.",
+      "صُممت الساحة لمناخ الرياض. تحوّل مظلة عالية من الألواح البرونزية المثقّبة أشعة الشمس إلى ضوء مرقّط ناعم، وتلطّف قنوات المياه الطولية والأحواض المزروعة الهواء، وتبقى أرضيات الحجر الجيري فاتحة ومريحة للمشي. وفي المساء تُضاء المظلة من الأسفل فتصبح الساحة ملتقى للزوار.",
+      "من الساحة يمتد ممر تجاري مغطى عبر طوابق المتاجر إلى ردهة مركزية تحت نافذة سقفية مقببة. وتتبع واجهات المتاجر إرشادات تصميم وضعتها FurnishIQ — إطارات برونزية وإطارات من الحجر الجيري ومنطقة موحدة للافتات — ليحتفظ كل متجر بطابعه بينما يبدو الممر مساحة واحدة هادئة.",
+      "تقع قاعة مطاعم تتسع لستمئة ضيف في طابق المتاجر، بطاولات مشتركة من البلوط ومقاعد ممتدة من الجلد بلون التراكوتا وأرضية من التيرازو، مع مطابخ مخططة حول ممر خدمة واحد. وتطل نوافذها المقوسة العالية على الساحة.",
+      "تتطلب المساحات العامة بهذا الحجم هندسة متكاملة. تخطط FurnishIQ لتبريد إزاحي في الممر والردهة، وأنظمة رذاذ وتحريك للهواء في الساحة المظللة، وإدارة للدخان في الردهة، وأنظمة شفط ومعالجة للدهون في قاعة المطاعم، وأنظمة إرشاد وتحكم في الإضاءة في كامل المساحات العامة، ومسارات ميسّرة لذوي الإعاقة في كل مكان.",
+      "صُممت المقاعد والأحواض والأكشاك والإضاءة كعائلة واحدة من الحجر الجيري والبلوط والبرونز، لتتحمل الاستخدام العام الكثيف. ويشمل نطاق عمل FurnishIQ التصميم والتنفيذ الكامل للمساحات العامة: التصميم الداخلي والتصور ثلاثي الأبعاد الواقعي، وأعمال التشطيب، والهندسة الكهروميكانيكية، وإرشادات واجهات المتاجر، وتحديد الأثاث وتوريده وتركيبه.",
     ]},
-    'متجر رائد بتجهيزات نحتية مميزة': { area: '480 م²', date: 'اكتمل 2024', paras: [
-      'متجر تجزئة رائد في الخبر بُني حول فكرة واحدة: التجهيزات هي العمارة نفسها. كتل عرض مقطوعة بالحاسوب من التيرازو بلون الترافرتين ترسو في الأرضية، محررة المحيط لجدران عرض المنتجات كاملة الارتفاع.',
-      'صُممت الإضاءة على مستوى كل تجهيزة — كل رف مُضاء من حافته، وكل قاعدة مُبرزة بالضوء — بحيث تبدو البضائع المصدر الوحيد للون في غلاف هادئ بعناية.',
-      'افتتح المتجر بأعلى مبيعات ربع سنوي للعلامة في المملكة، ويُستخدم الآن كنموذج لموقعين إضافيين.',
+    "دارة شاطئ أبحر": { area: "2,600 م²", date: "تصور تصميمي", film: { poster: 'uploads/obhur-estate-film-poster.webp', hd: 'uploads/obhur-estate-film-1080.mp4', sd: 'uploads/obhur-estate-film-720.mp4' }, secondary: "uploads/obhur-estate-pool-beach-pavilion-1920.webp", gallery: [{ caption: "القاعة الكبرى المطلة على البحر", image: "uploads/obhur-estate-great-room-red-sea-jeddah-1280.webp", full: "uploads/obhur-estate-great-room-red-sea-jeddah-2752.webp", pos: "center", note: "تنفتح القاعة الكبرى بالكامل على الشرفة والبحر الأحمر عبر واجهات زجاجية قابلة للسحب، تحت سقف مكسو بألواح خشب الساج." }, { caption: "المسبح وجناح الشاطئ", image: "uploads/obhur-estate-pool-beach-pavilion-1280.webp", full: "uploads/obhur-estate-pool-beach-pavilion-2752.webp", pos: "center", note: "يمتد مسبح بطول ثلاثين مترًا من المنزل الرئيسي نحو الشاطئ وجناح الشاطئ المظلل." }, { caption: "رواق الرواشين", image: "uploads/obhur-estate-teak-rawasheen-gallery-1200.webp", full: "uploads/obhur-estate-teak-rawasheen-gallery-2400.webp", pos: "center", note: "رواشين من خشب الساج المنحوت يدويًا تُرشّح ضوء الغرب على امتداد الرواق الذي يربط أرجاء المنزل." }, { caption: "تفاصيل الحجر المرجاني", image: "uploads/obhur-estate-coral-stone-detail-1200.webp", full: "uploads/obhur-estate-coral-stone-detail-2400.webp", pos: "30% center", note: "حجر مرجاني وجص جيري عاجي، بارد الملمس، مع تطعيم من النحاس المعتّق." }, { caption: "الجناح الرئيسي", image: "uploads/obhur-estate-master-suite-sea-view-1280.webp", full: "uploads/obhur-estate-master-suite-sea-view-2752.webp", pos: "60% center", note: "ينفتح الجناح الرئيسي مباشرة على سطح خاص من خشب الساج يطل على الشاطئ." }, { caption: "جلسة جناح الشاطئ", image: "uploads/obhur-estate-beach-pavilion-lounge-1200.webp", full: "uploads/obhur-estate-beach-pavilion-lounge-2400.webp", pos: "center", note: "جلسات منخفضة من خشب الساج والكتان في جناح الشاطئ، مظللة ومفتوحة على النسيم." }], scope: "التصميم الداخلي · التشطيبات · الهندسة الكهروميكانيكية · الأثاث المخصص", paras: [
+      "«دارة شاطئ أبحر» تصور تصميمي من FurnishIQ لدارة عائلية على ساحل البحر الأحمر في شمال جدة. يتوزع البرنامج البالغ 2,600 م² على ثلاثة مبانٍ: المنزل الرئيسي، وجناح الضيوف، وجناح الشاطئ، تصطف جميعها على محور واحد يمتد من فناء المدخل حتى خط الشاطئ.",
+      "في قلب المنزل الرئيسي، تنفتح القاعة الكبرى المطلة على البحر بالكامل عبر واجهات زجاجية قابلة للسحب على شرفة مظللة ومسبح بطول ثلاثين مترًا. وتقع طاولة طعام لأربعة عشر ضيفًا تحت سقف مكسو بألواح خشب الساج، ويقع خلفها مجلس العائلة ومطبخ العرض بعيدًا عن الشمس.",
+      "يُعاد تفسير رواشين جدة التاريخية — المشربيات الخشبية البارزة المنحوتة — بخشب الساج المنحوت يدويًا على امتداد الرواق الذي يربط أرجاء المنزل. فهي ترشّح ضوء الغرب، وتمنح الخصوصية من جهة الشاطئ، وتسمح لنسيم البحر بالتنقل داخل المخطط.",
+      "اختير الحجر المرجاني والجص الجيري العاجي والترافرتين الرملي ليبقى المنزل هادئًا وباردًا في مناخ ساحلي رطب. ويحافظ البلوط المبيّض والكتان الطبيعي والروطان المنسوج على خفة الغرف، بينما يُستخدم النحاس المعتّق باقتصاد حيث تلامس اليد المنزل.",
+      "يحدد هواء البحر المالح والرطوبة كل قرار هندسي. تخطط FurnishIQ لأنظمة إزالة الرطوبة مدمجة مع توزيع هواء خطي مخفي، ومثبتات وإكسسوارات مقاومة لبيئة البحر، ومسارات كهروميكانيكية مقاومة للتآكل، ونظام منزل ذكي واحد يتحكم في الإضاءة والتظليل والتكييف والواجهات الزجاجية القابلة للسحب غرفة بغرفة.",
+      "يُختار الأثاث ليناسب الساحل: تنجيد من كتان عالي الأداء، وخشب ساج صلب وروطان يزدادان جمالًا مع الزمن، وقطع جلوس منخفضة تُبقي الأفق في مرمى النظر. ويشمل نطاق عمل FurnishIQ التصميم والتنفيذ بالكامل: التصميم الداخلي والتصور ثلاثي الأبعاد الواقعي، وأعمال التشطيب في المباني الثلاثة، والهندسة الكهروميكانيكية، وتحديد الأثاث وتوريده وتركيبه.",
     ]},
-    'فيلا ساحلية، مصممة هندسياً للضوء والظل': { area: '980 م²', date: 'اكتمل 2023', paras: [
-      'على كورنيش الدمام، تتعامل هذه الفيلا مع مناخ قاسٍ عبر أروقة عميقة، وحواجز خشبية قابلة للتشغيل، وزجاج مُعاير حسب الاتجاه. صُمم الداخل والغلاف كنظام واحد.',
-      'يتحمل التظليل السلبي معظم حمل التبريد؛ والنظام الميكانيكي المتبقي صامت ومخفي ومقسّم حسب كل غرفة. اختيرت المواد — خشب البلوط المُبيّض، وطلاء الجير، والحجر البارد تحت القدم — لتشعر بالراحة عند 45 درجة في الخارج.',
-      'يصف الملاك المنزل بكلمة واحدة: غير متعجل. يتحرك الضوء خلاله طوال اليوم؛ ولا حاجة لشيء آخر.',
+    "منتجع الحجر الصحراوي": { area: "4,500 م²", date: "تصور تصميمي", film: { poster: 'uploads/desert-stone-resort-film-poster.webp', hd: 'uploads/desert-stone-resort-film-1080.mp4', sd: 'uploads/desert-stone-resort-film-720.mp4' }, secondary: "uploads/desert-stone-resort-arrival-court-1920.webp", gallery: [{ caption: "صالة الردهة", image: "uploads/desert-stone-resort-lobby-lounge-alula-1280.webp", full: "uploads/desert-stone-resort-lobby-lounge-alula-2752.webp", pos: "center", note: "تؤطر صالة الردهة التكوينات الصخرية الرملية عبر واجهات زجاجية كاملة الارتفاع بين جدران من التراب المدكوك." }, { caption: "فناء الوصول", image: "uploads/desert-stone-resort-arrival-court-1280.webp", full: "uploads/desert-stone-resort-arrival-court-2752.webp", pos: "center", note: "يصل الضيوف عبر فناء بين جدران من التراب المدكوك نحو جناح زجاجي في ظل الصخور." }, { caption: "المطعم الرئيسي", image: "uploads/desert-stone-resort-signature-restaurant-1280.webp", full: "uploads/desert-stone-resort-signature-restaurant-2752.webp", pos: "center", note: "يتسع المطعم لمئة وعشرين ضيفًا تحت عوارض خشبية داكنة، ويطل على التكوينات الصخرية عند الغروب." }, { caption: "شرفة موقد النار", image: "uploads/desert-stone-resort-fire-pit-terrace-1280.webp", full: "uploads/desert-stone-resort-fire-pit-terrace-2752.webp", pos: "center", note: "بعد حلول الظلام تصبح شرفة موقد النار الغائرة ملتقى المساء في المنتجع." }, { caption: "صالة المكتبة", image: "uploads/desert-stone-resort-library-lounge-1280.webp", full: "uploads/desert-stone-resort-library-lounge-2752.webp", pos: "55% center", note: "صالة مكتبة هادئة بالصوف المنسوج يدويًا والخشب المزيّت، مع مقعد عميق عند النافذة يطل على الصخور." }, { caption: "تفاصيل التراب المدكوك", image: "uploads/desert-stone-resort-rammed-earth-detail-1200.webp", full: "uploads/desert-stone-resort-rammed-earth-detail-2400.webp", pos: "60% center", note: "طبقات من التراب المدكوك تلتقي بإطار نافذة من الفولاذ المسوّد وعتبة من الخشب الصلب." }], scope: "التصميم الداخلي · التشطيبات · الهندسة الكهروميكانيكية · الأثاث المخصص", paras: [
+      "«منتجع الحجر الصحراوي» تصور تصميمي من FurnishIQ للمساحات العامة ومساحات الضيوف في منتجع بالعُلا. يشمل النطاق البالغ 4,500 م² جناح الوصول، وصالة الردهة، والمطعم الرئيسي، وصالة المكتبة، وشرفة موقد النار، واستقبال السبا — المساحات التي يمر بها كل ضيف.",
+      "يصل الضيوف عبر فناء بين جدران من التراب المدكوك، ثم يدخلون صالة ردهة تؤطر واجهاتها الزجاجية كاملة الارتفاع التكوينات الصخرية الرملية في الخارج. وتتجه كل مساحة في هذا المسار نحو إطلالة مختلفة على الوادي، فينكشف المشهد إطارًا بعد إطار.",
+      "استُمدت المواد من الموقع نفسه: تراب مدكوك بألوان الرمال المحيطة، وحجر رملي محلي للأرضيات والكاونترات، وفولاذ مسوّد للإطارات والحواجز. ويحافظ الصوف المنسوج يدويًا بلون المغرة والتراكوتا والخشب الداكن المزيّت والنحاس المعتّق على دفء الداخل أمام عظمة المشهد.",
+      "يتسع المطعم لمئة وعشرين ضيفًا تحت سقف من العوارض الخشبية الداكنة، مع مطبخ مفتوح خلف كاونتر من الحجر الرملي، وجدار زجاجي طويل يطل على التكوينات الصخرية عند الغروب. وبعد حلول الظلام تصبح شرفة موقد النار الغائرة في الخارج ملتقى المساء في المنتجع.",
+      "يفرض الموقع الصحراوي النائي بتفاوت درجات حرارته قراراته الهندسية. تخطط FurnishIQ للاستفادة من الكتلة الحرارية لجدران التراب المدكوك، وتبريد إزاحي منخفض مخفي في أعمال النجارة، وتظليل شمسي مضبوط لكل واجهة، وأنظمة زجاج محكمة ضد الغبار، وإضاءة منخفضة ودافئة تحافظ على سماء الليل.",
+      "يُختار الأثاث لينتمي إلى المكان: جلسات منخفضة بالصوف المنسوج يدويًا والكتان، وطاولات طعام من البلوط الداكن الصلب مع كراسٍ بمقاعد من الجلد المجدول، وطاولات جانبية من الحجر الرملي، ومصابيح من الفولاذ المسوّد. ويشمل نطاق عمل FurnishIQ التصميم والتنفيذ بالكامل: التصميم الداخلي والتصور ثلاثي الأبعاد الواقعي، وأعمال التشطيب، والهندسة الكهروميكانيكية، وتحديد الأثاث وتوريده وتركيبه.",
     ]},
-    'مطعم منتجع صحراوي، من الحجر والصلب': { area: '740 م²', date: 'اكتمل 2023', paras: [
-      'مطعم وجهة على أطراف المنطقة التراثية في العُلا، بُني من الحجر المحلي والصلب المُسوّد ولا شيء آخر تقريباً. تؤطر صالة الطعام الجرف الصخري عبر فتحة واحدة بطول اثني عشر متراً.',
-      'تصل كل خدمة — شفط المطبخ، والتبريد، والمياه، والكهرباء — من تحت الأرض وترتفع عبر نواتين خدميتين، حافظةً على خط السقف وسمة الصحراء دون مساس.',
-      'نُفّذ المشروع وفق بروتوكول موقع خفيف الأثر تم الاتفاق عليه مع هيئة التراث، يشمل إمكانية إزالة البصمة الإنشائية بالكامل.',
+    "الطوابق التنفيذية": { area: "14,000 م²", date: "تصور تصميمي", film: { poster: 'uploads/executive-floors-film-poster.webp', hd: 'uploads/executive-floors-film-1080.mp4', sd: 'uploads/executive-floors-film-720.mp4' }, secondary: "uploads/executive-floors-boardroom-walnut-table-1920.webp", gallery: [{ caption: "ردهة الطابق العلوي والاستقبال", image: "uploads/executive-floors-sky-lobby-reception-riyadh-1280.webp", full: "uploads/executive-floors-sky-lobby-reception-riyadh-2752.webp", pos: "center", note: "ردهة مزدوجة الارتفاع في الطابق العلوي، بمكتب استقبال من كتلة واحدة من الترافرتين تحت سقف من شرائح خشب الجوز." }, { caption: "قاعة مجلس الإدارة", image: "uploads/executive-floors-boardroom-walnut-table-1280.webp", full: "uploads/executive-floors-boardroom-walnut-table-2752.webp", pos: "center", note: "قاعة مجلس إدارة لأربعة وعشرين شخصًا حول طاولة واحدة من خشب الجوز متناظر العروق، تطل على أفق المدينة." }, { caption: "طابق العمل المفتوح", image: "uploads/luxury-office-fit-out-riyadh-1280.webp", full: "uploads/luxury-office-fit-out-riyadh-2560.webp", pos: "center", note: "طوابق عمل تحت سقف متصل من خشب الجوز، تختفي الإضاءة والخدمات بين شرائحه." }, { caption: "مكتب رئيس مجلس الإدارة", image: "uploads/executive-floors-chairman-office-1280.webp", full: "uploads/executive-floors-chairman-office-2752.webp", pos: "40% center", note: "مكتب رئيس مجلس الإدارة: تكسيات من خشب الجوز، ومكتب بإطار برونزي، وركن جلوس خاص يطل على المدينة." }, { caption: "مجلس العملاء", image: "uploads/executive-floors-client-majlis-1280.webp", full: "uploads/executive-floors-client-majlis-2752.webp", pos: "center", note: "مجلس لاستقبال العملاء بجوار الردهة، بجلسات منخفضة من الجلد بلون الكونياك وطاولة قهوة من الترافرتين." }, { caption: "تفاصيل سقف خشب الجوز", image: "uploads/executive-floors-walnut-ceiling-detail-1200.webp", full: "uploads/executive-floors-walnut-ceiling-detail-2400.webp", pos: "30% center", note: "شرائح من خشب الجوز بإضاءة خطية مدمجة، وتقع فتحات التكييف والخدمات في فواصل الظل بينها." }], scope: "التصميم الداخلي · التشطيبات · الهندسة الكهروميكانيكية · الأثاث المخصص", paras: [
+      "«الطوابق التنفيذية» تصور تصميمي من FurnishIQ لمقر رئيسي لشركة يشغل ثمانية طوابق علوية في برج مكاتب شمال الرياض. يُنظَّم البرنامج البالغ 14,000 م² عموديًا: مساحات الوصول واستقبال العملاء في الأعلى، والمكاتب التنفيذية أسفلها، ثم ستة طوابق عمل مفتوحة يربطها درج مميز.",
+      "يصل الزوار إلى ردهة مزدوجة الارتفاع في الطابق العلوي بواجهات زجاجية كاملة الارتفاع تطل على المدينة. يقع مكتب استقبال من كتلة واحدة من الترافرتين تحت سقف من شرائح خشب الجوز، وينفتح مجلس العملاء وأجنحة الاجتماعات مباشرة على الردهة، فلا يدخل الضيوف طوابق العمل أبدًا.",
+      "تتسع قاعة مجلس الإدارة لأربعة وعشرين شخصًا حول طاولة واحدة من خشب الجوز متناظر العروق، مع جدران عازلة للصوت وأنظمة عرض مخفية وإطلالة على امتداد أفق المدينة. ويتشارك مكتب رئيس مجلس الإدارة والأجنحة التنفيذية استقبالًا خاصًا وغرفة طعام ومصعدًا خاصًا يصلها بالردهة العلوية.",
+      "سقف شرائح خشب الجوز هو العنصر الذي ينظّم المشروع. تُنسَّق الإضاءة الخطية وفتحات التكييف ورشاشات الحريق ومكبرات الصوت والحساسات في الفواصل بين الشرائح، ليبدو السقف سطحًا واحدًا متصلًا من الردهة حتى طوابق العمل.",
+      "صُممت طوابق العمل لتسع 900 موظف، مع وحدات تكييف مقسّمة حسب المناطق، وتهوية تتكيف مع الإشغال، وعزل صوتي بين مناطق التركيز ومناطق التعاون، ونظام لإدارة المبنى يتحكم في الإضاءة والتظليل والتكييف طابقًا بطابق. وتتوفر مصليات ومواضئ ومقهى للموظفين في كل طابق.",
+      "تُحدَّد محطات العمل والمكاتب التنفيذية وطاولة مجلس الإدارة وقطع الجلوس بخشب الجوز والبرونز والجلد بلون الكونياك نفسها المستخدمة في العمارة الداخلية. ويشمل نطاق عمل FurnishIQ التصميم والتنفيذ بالكامل: التصميم الداخلي والتصور ثلاثي الأبعاد الواقعي، وأعمال التشطيب في الطوابق الثمانية، والهندسة الكهروميكانيكية، وتحديد الأثاث وتوريده وتركيبه.",
     ]},
-    'طابق تنفيذي، بأنظمة كهروميكانيكية غير مرئية بالتصميم': { area: '1,100 م²', date: 'اكتمل 2024', paras: [
-      'طابق القيادة لشركة قابضة في الرياض، حيث كان البريف الهندسي بجملة واحدة: لا شيء مرئي، ولا شيء مسموع. تهوية إزاحة، وعوارض تبريد، وأسقف ممدودة مضاءة من الحافة توفر الراحة دون فتحات أو شبكات ظاهرة، وبمستوى صوتي NC-25.',
-      'تتبع التصاميم الداخلية الانضباط نفسه — جدران من خشب الجوز متطابق التوريق تُخفي التخزين والخدمات وجناحين خاصين. ترتفع أنظمة العرض في قاعة الاجتماعات من الطاولة فقط عند الطلب.',
-      'شُغّل الطابق خلال ربع سنة واحد، ويعمل دون أي شكوى تتعلق بالراحة منذ التسليم.',
+    "بنتهاوس فوق الوادي": { area: "1,400 م²", date: "تصور تصميمي", film: { poster: 'uploads/penthouse-wadi-film-poster.webp', hd: 'uploads/penthouse-wadi-film-1080.mp4', sd: 'uploads/penthouse-wadi-film-720.mp4' }, secondary: "uploads/penthouse-wadi-roof-terrace-infinity-pool-1920.webp", gallery: [{ caption: "غرفة المعيشة مزدوجة الارتفاع", image: "uploads/penthouse-wadi-double-height-living-riyadh-1280.webp", full: "uploads/penthouse-wadi-double-height-living-riyadh-2752.webp", pos: "center", note: "تطل غرفة المعيشة بارتفاع ثمانية أمتار على وادي حنيفة عبر واجهات زجاجية كاملة الارتفاع، ويرتكز تكوينها على جدار من الأونكس المضاء من الخلف ودرج من البلوط والبرونز." }, { caption: "السطح والمسبح", image: "uploads/penthouse-wadi-roof-terrace-infinity-pool-1280.webp", full: "uploads/penthouse-wadi-roof-terrace-infinity-pool-2752.webp", pos: "center", note: "مسبح لا متناهي الحافة على السطح يحاذي خط الجرف الصخري عند الغروب." }, { caption: "تفاصيل الأونكس المضاء", image: "uploads/penthouse-wadi-backlit-onyx-detail-1200.webp", full: "uploads/penthouse-wadi-backlit-onyx-detail-2400.webp", pos: "40% center", note: "ألواح من الأونكس العسلي متناظرة العروق، مضاءة من الخلف ومؤطرة بالبرونز المدخن، تتوهج مع أفول ضوء النهار." }, { caption: "تفاصيل الدرج", image: "uploads/penthouse-wadi-oak-bronze-staircase-detail-1200.webp", full: "uploads/penthouse-wadi-oak-bronze-staircase-detail-2400.webp", pos: "45% center", note: "درجات من البلوط المدخن على حامل برونزي مطوي، مع خط ضوء دافئ أسفل كل درجة." }, { caption: "الجناح الرئيسي", image: "uploads/penthouse-wadi-master-suite-spa-bath-1280.webp", full: "uploads/penthouse-wadi-master-suite-spa-bath-2752.webp", pos: "35% center", note: "يطل الجناح الرئيسي وحوض الاستحمام الحجري القائم بذاته مباشرة على الوادي." }, { caption: "إطلالة على وادي حنيفة", image: "uploads/penthouse-wadi-view-over-wadi-hanifa-1200.webp", full: "uploads/penthouse-wadi-view-over-wadi-hanifa-1920.webp", pos: "62% center", note: "في الساعة الذهبية تؤطر الواجهات الزجاجية الجرف الصخري وبساتين النخيل الممتدة على امتداد الوادي." }], scope: "التصميم الداخلي · التشطيبات · الهندسة الكهروميكانيكية · الأثاث المخصص", paras: [
+      "«بنتهاوس فوق الوادي» تصور تصميمي من FurnishIQ لشقة دوبلكس تشغل طابقًا كاملًا في أعلى برج سكني غرب الرياض. يقوم مخطط المساحة البالغة 1,400 م² على قرار واحد: غرفة المعيشة مزدوجة الارتفاع تواجه وادي حنيفة مباشرة، وكل مساحة رئيسية في طابق الاستقبال تنفتح نحوه.",
+      "الطابق السفلي للضيافة: غرفة المعيشة بارتفاع ثمانية أمتار، ومجلس خاص، وطاولة طعام لاثني عشر ضيفًا، ومطبخ عرض مع مطبخ خدمة مستقل، وبار من الأونكس المضاء من الخلف. أما الطابق العلوي فللعائلة: خمسة أجنحة نوم، وجناح رئيسي بحمام سبا يطل على الوادي، وصالة رياضية خاصة. ويكتمل التكوين بسطح يضم مسبحًا لا متناهي الحافة.",
+      "اختيرت المواد لمنزل تضيئه السماء. يُضاء الأونكس العسلي من الخلف ليتوهج عند الغروب، ويمنح البلوط المدخن الداكن والبرونز المدخن الفراغَ مزدوج الارتفاع ثقله، وتحمل أرضيات الحجر الجيري الكريمي ضوء النهار إلى عمق المخطط. ويحافظ الجص العاجي على هدوء الطابق العلوي.",
+      "يربط درج منحوت بدرجات من البلوط المدخن على حامل برونزي مطوي بين الطابقين داخل غرفة المعيشة. صُمّمت تفاصيله كقطعة أثاث: بلا مثبتات ظاهرة، مع درابزين برونزي متصل، وخط ضوء دافئ مدمج أسفل كل درجة.",
+      "تتطلب الواجهات الزجاجية كاملة الارتفاع على واجهة غربية استراتيجية تكييف دقيقة. تخطط FurnishIQ لفتحات تكييف خطية مخفية على امتداد خط الزجاج، وستائر شمسية وستائر تعتيم آلية مدمجة في السقف، وعزل صوتي بين الطابقين، ونظام منزل ذكي واحد يتحكم في مشاهد الإضاءة والتظليل والتكييف غرفة بغرفة. وتُنسّق خدمات المسبح والسطح مع هيكل البرج منذ المرحلة الأولى للتصميم.",
+      "تبقى الجلسات منخفضة كي لا يُحجب المنظر: أريكة طويلة بقماش البوكليه الرملي، وكراسي استرخاء من الجلد بلون الكونياك، وطاولة طعام من البلوط المدخن لاثني عشر شخصًا. ويشمل نطاق عمل FurnishIQ التصميم والتنفيذ بالكامل: التصميم الداخلي والتصور ثلاثي الأبعاد الواقعي، وأعمال التشطيب في الطابقين والسطح، والهندسة الكهروميكانيكية، وتحديد الأثاث وتوريده وتركيبه.",
     ]},
-    'مكاتب محاماة من خشب البلوط والزجاج المدخن': { area: '860 م²', date: 'اكتمل 2025', paras: [
-      'مكاتب لممارسة قانونية في جدة، صُممت حول السرية: تبدو الفواصل الزجاجية المدخنة صلبة من الممر بينما تُبقي ضوء النهار يتحرك عبر المخطط.',
-      'خشب بلوط مقطوع شعاعياً، وبرونز داكن، ومواصفات صوتية محكومة تمنح الأجنحة المواجهة للعملاء الجدية التي طلبها الشركاء، بينما يبقى طابق العمل خلفها مفتوحاً ومضيئاً.',
-      'نُفّذ خلال عطلة الصيف دون أي تعطيل لقضايا المكتب النشطة.',
+    "بيت المحمصة — الفرع الرئيسي": { area: "1,200 م²", date: "تصور تصميمي", film: { poster: 'uploads/roastery-house-film-poster.webp', hd: 'uploads/roastery-house-film-1080.mp4', sd: 'uploads/roastery-house-film-720.mp4' }, secondary: "uploads/roastery-house-espresso-bar-travertine-1920.webp", gallery: [{ caption: "قاعة التحميص", image: "uploads/roastery-house-roasting-hall-riyadh-1280.webp", full: "uploads/roastery-house-roasting-hall-riyadh-2752.webp", pos: "center", note: "القاعة مزدوجة الارتفاع، تظهر فيها المحمصة خلف جدار زجاجي بإطار نحاسي، وأمامها بار الإسبريسو." }, { caption: "بار الإسبريسو", image: "uploads/roastery-house-espresso-bar-travertine-1280.webp", full: "uploads/roastery-house-espresso-bar-travertine-2752.webp", pos: "center", note: "بار بطول أربعة عشر مترًا من الترافرتين والنحاس المعتّق، بواجهة من بلاط التراكوتا المصنوع يدويًا." }, { caption: "صالة الطابق المعلّق", image: "uploads/roastery-house-mezzanine-lounge-1280.webp", full: "uploads/roastery-house-mezzanine-lounge-2752.webp", pos: "center", note: "تطل صالة الطابق المعلّق على المحمصة في الأسفل عبر درابزين خشبي." }, { caption: "بار التحضير البطيء ومختبر التذوق", image: "uploads/roastery-house-cupping-lab-1280.webp", full: "uploads/roastery-house-cupping-lab-2752.webp", pos: "45% center", note: "مختبر التذوق، حيث تُتذوق أنواع القهوة جنبًا إلى جنب على كاونتر طويل من الترافرتين." }, { caption: "الجلسات الممتدة", image: "uploads/roastery-house-leather-banquettes-1280.webp", full: "uploads/roastery-house-leather-banquettes-2752.webp", pos: "40% center", note: "مقاعد ممتدة من الجلد بلون الكونياك وطاولات من البلوط المدخن بجوار جدار من بلاط التراكوتا." }, { caption: "تفاصيل التراكوتا والنحاس", image: "uploads/roastery-house-terracotta-brass-detail-1200.webp", full: "uploads/roastery-house-terracotta-brass-detail-2400.webp", pos: "50% center", note: "بلاط تراكوتا مصنوع يدويًا يلتقي بحافة من النحاس المعتّق أسفل سطح البار من الترافرتين." }], scope: "التصميم الداخلي · التشطيبات · الهندسة الكهروميكانيكية · الأثاث المخصص", paras: [
+      "«بيت المحمصة — الفرع الرئيسي» تصور تصميمي من FurnishIQ لمقهى ومحمصة رئيسية في شمال الرياض. تضع المساحة البالغة 1,200 م² عملية الإنتاج أمام الزوار: تقع المحمصة خلف جدار زجاجي في قلب قاعة مزدوجة الارتفاع، فيرى كل ضيف القهوة التي يشربها وهي تُحمَّص.",
+      "يمتد بار بطول أربعة عشر مترًا من الترافرتين والنحاس المعتّق على طول القاعة، مع محطة الإسبريسو في طرف وبار للقهوة المقطّرة في الطرف الآخر. وخلف البار، يحمل جدار من رفوف البلوط المدخن منتجات البيع والأكواب والأدوات المستخدمة يوميًا.",
+      "تتبع المواد القهوة نفسها: بلاط تراكوتا مصنوع يدويًا على واجهة البار والجدران، وأرضيات تيرازو بلون الطين، وجص مغسول بالجير، وبلوط مدخن ونحاس معتّق. وتمنح المقاعد الممتدة من الجلد بلون الكونياك وطاولات البلوط الجلساتِ راحة الصالة لا سرعة المقهى العادي.",
+      "يطل طابق معلّق على المحمصة في الأسفل، ويضم جلسات أهدأ ومختبرًا لتذوق القهوة وغرفة لتدريب الباريستا. ويقع مخزن البن الأخضر خلف المحمصة، ويظهر عبر جدار زجاجي ثانٍ.",
+      "يتطلب وجود محمصة داخل مقهى هندسة دقيقة. تخطط FurnishIQ لنظام شفط مخصص للمحمصة مع معالجة الدخان، وتزويد بالهواء النقي وضبط للضغط كي لا يصل دخان التحميص إلى الجلسات، وخدمات كهرباء وغاز للأحمال الثقيلة، ومعالجة صوتية للمطاحن والمحمصة، وفلترة للمياه في كل محطة إسبريسو وتحضير.",
+      "صُمم الأثاث لضيوف يطيلون البقاء: مقاعد ممتدة من الجلد بلون الكونياك، وطاولات من البلوط المدخن بحواف نحاسية، وكراسٍ من البلوط بمقاعد من الجلد المجدول، ومقاعد بار من البلوط والجلد. ويشمل نطاق عمل FurnishIQ التصميم والتنفيذ بالكامل: التصميم الداخلي والتصور ثلاثي الأبعاد الواقعي، وأعمال التشطيب، والهندسة الكهروميكانيكية، وتحديد الأثاث وتوريده وتركيبه.",
     ]},
-    'شقة بنتهاوس مزدوجة فوق الحي الدبلوماسي': { area: '1,150 م²', date: 'اكتمل 2025', paras: [
-      'شقة بنتهاوس من مستويين حيث يمثل الدرج قطعة الصدارة: شريط منحوت من الجص والترافرتين يربط منطقة الاستقبال الرسمية في الأسفل بالطابق الخاص في الأعلى.',
-      'تولّت FurnishIQ العمارة الداخلية، والأثاث المخصص، وأتمتة المنزل الكاملة — مشاهد الإضاءة والتظليل والمناخ مُعايرة غرفة بغرفة مع إقامة الملاك.',
-      'أُعيد هندسة الشرفات بصرف مياه مخفي وأحواض زراعة مدمجة، مما ضاعف مساحة المعيشة الخارجية القابلة للاستخدام.',
+    "دار المجوهرات": { area: "900 م²", date: "تصور تصميمي", film: { poster: 'uploads/maison-joaillerie-film-poster.webp', hd: 'uploads/maison-joaillerie-film-1080.mp4', sd: 'uploads/maison-joaillerie-film-720.mp4' }, secondary: "uploads/maison-joaillerie-bronze-screen-facade-1920.webp", gallery: [{ caption: "الصالون الرئيسي", image: "uploads/maison-joaillerie-main-salon-jeddah-1280.webp", full: "uploads/maison-joaillerie-main-salon-jeddah-2752.webp", pos: "center", note: "الصالون الرئيسي: كاونتر من الأونكس الوردي المضاء من الداخل، وجدار من خزائن العرض المضاءة، والدرج الحلزوني." }, { caption: "واجهة الحاجز البرونزي", image: "uploads/maison-joaillerie-bronze-screen-facade-1280.webp", full: "uploads/maison-joaillerie-bronze-screen-facade-2752.webp", pos: "center", note: "حاجز برونزي مثقّب يحوّل ضوء الشارع إلى توهج ناعم عند الغروب." }, { caption: "الدرج الحلزوني", image: "uploads/maison-joaillerie-spiral-stair-1280.webp", full: "uploads/maison-joaillerie-spiral-stair-2752.webp", pos: "center", note: "درج حلزوني منحوت من معدن بلون الذهب الشمباني بدرجات من الرخام الأبيض." }, { caption: "الصالون الخاص", image: "uploads/maison-joaillerie-private-salon-1280.webp", full: "uploads/maison-joaillerie-private-salon-2752.webp", pos: "center", note: "صالون خاص للمواعيد بالمخمل الكريمي وخشب الجوز والأونكس." }, { caption: "صالون العرائس", image: "uploads/maison-joaillerie-bridal-salon-1280.webp", full: "uploads/maison-joaillerie-bridal-salon-2752.webp", pos: "center", note: "صالون العرائس: غرفة دائرية بجدران من الحرير العاجي حول طاولة من الأونكس الوردي المضاء." }, { caption: "تفاصيل خزانة العرض", image: "uploads/maison-joaillerie-vitrine-detail-1200.webp", full: "uploads/maison-joaillerie-vitrine-detail-2400.webp", pos: "center", note: "خزانة عرض بإطار بلون الذهب الشمباني في جدار من الحرير العاجي، مضاءة لقطعة واحدة." }], scope: "التصميم الداخلي · التشطيبات · الهندسة الكهروميكانيكية · الأثاث المخصص", paras: [
+      "«دار المجوهرات» تصور تصميمي من FurnishIQ لدار مجوهرات رئيسية في جدة. يقع المبنى البالغ 900 م² خلف حاجز برونزي مثقّب يحوّل ضوء الشارع إلى توهج ناعم، فيمنح الخصوصية دون أن يغلق الدار على نفسها.",
+      "في الداخل، يمتد صالون رئيسي هادئ تصطف فيه خزائن العرض داخل ألواح من الحرير العاجي. ويتوسطه كاونتر من الأونكس الوردي المضاء من الداخل، ويقود درج حلزوني منحوت من معدن بلون الذهب الشمباني والرخام الأبيض إلى الطابق العلوي.",
+      "في الطابق العلوي، يستقبل صالونان خاصان وصالون للعرائس العملاءَ بمواعيد مسبقة. ولكل منها جلسات من المخمل الكريمي، وطاولة عرض من خشب الجوز والأونكس، وإضاءة مضبوطة لرؤية الأحجار بألوانها الحقيقية.",
+      "اختيرت المواد لتُبرز جمال المجوهرات والعميل معًا: أونكس وردي مضاء من الداخل، وحرير عاجي على الجدران، ورخام أبيض مصقول على الأرضيات، ومعدن بلون الذهب الشمباني للإطارات والتجهيزات، ومخمل كريمي للمقاعد.",
+      "لدار المجوهرات متطلبات خاصة. تخطط FurnishIQ لإضاءة خزائن عرض بمستوى المتاحف ودقة عالية في إظهار الألوان، وأنظمة زجاج وإقفال وفق معايير التأمين، وخزنة آمنة ومنطقة خلفية بمدخل مستقل، وكاميرات مراقبة وتحكم في الدخول مخفية في أعمال النجارة، وتكييف هادئ ودقيق للصالونات الخاصة.",
+      "صُممت كل خزانة عرض وكاونتر وطاولة ومقعد خصيصًا للدار: خزائن عرض من معدن بلون الذهب الشمباني وزجاج منخفض الحديد، وطاولات عرض من خشب الجوز والأونكس، وكراسٍ من المخمل الكريمي. ويشمل نطاق عمل FurnishIQ التصميم والتنفيذ بالكامل: التصميم الداخلي والتصور ثلاثي الأبعاد الواقعي، وأعمال التشطيب، والهندسة الكهروميكانيكية، والأثاث المخصص وأعمال نجارة العرض.",
     ]},
-    'مقهى متخصص بمحمصة داخلية': { area: '340 م²', date: 'اكتمل 2024', paras: [
-      'وجهة قهوة في الرياض نُظمت حول المحمصة نفسها، الموضوعة خلف الزجاج كقلب العمل في المكان. تشعّ منها منطقة الكاونتر، وطاولة التذوق، والجلسات.',
-      'تبقى المواد صادقة — صلب مشمّع، وخشب الرماد، وطلاء طيني — مع أنظمة شفط وتغذية هواء مصممة هندسياً بحيث تصل رائحة التحميص إلى الغرفة، لا إلى الجيران.',
-      'اكتمل التشطيب خلال تسعة أسابيع، وافتُتح في الوقت المناسب للذكرى السنوية الثالثة للعلامة.',
-    ]},
-    'أتيليه مجوهرات خلف واجهة نحاسية مثقبة': { area: '210 م²', date: 'اكتمل 2023', paras: [
-      'أتيليه مدمج حيث تُصفّي شاشة نحاسية مثقبة الشارع إلى توهج، مانحةً الخصوصية دون حجب كامل. في الداخل، شريط عرض واحد متواصل يحمل المجموعة.',
-      'أُنجزت إضاءة بمعايير المتاحف، وتكامل أمني غير ظاهر، وصالة خاصة للمواعيد ضمن نافذة موافقة صارمة من إدارة المول.',
-      'أصبحت الشاشة منذ ذلك الحين التوقيع البصري للعلامة عبر حملاتها الإقليمية.',
-    ]},
-    'مطعم على الواجهة البحرية بسعة مئتي مقعد': { area: '1,050 م²', date: 'اكتمل 2024', paras: [
-      'مطعم على واجهة الخبر البحرية يوازن بين الحجم والحميمية: مئتا مقعد موزعة على تراسات وجلسات مقصورة وبار مفتوح دون زاوية ميتة واحدة.',
-      'تتحمل التشطيبات البحرية المستوى وخط الخدمات المخفي مناخ الكورنيش؛ وشُغّل خط المطبخ لخدمة صالة كاملة خلال أربع دقائق من أول طلب.',
-      'افتُتح بقائمة انتظار لستة أسابيع، ويشكّل الآن محور ممشى تناول الطعام في المشروع.',
-    ]},
-    'مقر لوجستي إقليمي مع صالة عرض للعملاء': { area: '3,400 م²', date: 'اكتمل 2023', paras: [
-      'مقر لمجموعة لوجستية في الدمام يجمع بين طابق تشغيلي فعّال وصالة عرض مواجهة للعملاء تأخذ الزوار عبر شبكة الشركة في شكل مادي ملموس.',
-      'وحّد المشروع أربعة أقسام من ثلاثة مبانٍ في مخطط واحد، مع توجيه مساري وأنظمة صوتية وإضاءة مصممة هندسياً لتشغيل على مدار الساعة.',
-      'نُفّذ من التصميم إلى الإشغال خلال سبعة أشهر، شملت عطلة نهاية أسبوع للترحيل الحي دون توقف.',
-    ]},
-    'صالة عرض أثاث، بأعمال نجارة مخصصة بالكامل': { area: '1,650 م²', date: 'اكتمل 2022', paras: [
-      'صالة عرض من طابقين في جدة لدار أثاث أوروبية، مُجهزة بالكامل بأعمال نجارة من ورشتنا الخاصة — منصات العرض، وأنظمة الجدران، ودرابزين الدرج، وبار الإسبريسو في قلبها.',
-      'تبقى العمارة متراجعة بعناية: أرضيات فاتحة، وأسقف بيضاء، وإضاءة متوازنة مع ضوء النهار تترك للمجموعات حمل اللون. تتناوب لقطات الغرف موسمياً على نظام مسار وقاعدة مخفي.',
-      'نُفّذ من التصميم إلى التسليم خلال خمسة أشهر، وضاعفت صالة العرض حضور العلامة الإقليمي في التجزئة.',
+    "معرض الأثاث": { area: "4,000 م²", date: "تصور تصميمي", film: { poster: 'uploads/furniture-gallery-film-poster.webp', hd: 'uploads/furniture-gallery-film-1080.mp4', sd: 'uploads/furniture-gallery-film-720.mp4' }, secondary: "uploads/furniture-gallery-living-room-set-1920.webp", gallery: [{ caption: "الردهة والدرج", image: "uploads/furniture-gallery-atrium-stair-riyadh-1280.webp", full: "uploads/furniture-gallery-atrium-stair-riyadh-2752.webp", pos: "center", note: "الردهة مزدوجة الارتفاع تضيئها نافذة سقفية طويلة، مع درج منحوت من الجص والبلوط." }, { caption: "جناح غرفة المعيشة", image: "uploads/furniture-gallery-living-room-set-1280.webp", full: "uploads/furniture-gallery-living-room-set-2752.webp", pos: "center", note: "غرفة معيشة معروضة كمساحة داخلية حقيقية، بجدرانها وإضاءتها وأرضياتها الخاصة." }, { caption: "استوديو التصميم", image: "uploads/furniture-gallery-design-studio-material-library-1280.webp", full: "uploads/furniture-gallery-design-studio-material-library-2752.webp", pos: "center", note: "استوديو التصميم ومكتبة المواد، حيث تُخطَّط المنازل بالكامل مع العملاء." }, { caption: "جناح غرفة الطعام", image: "uploads/furniture-gallery-dining-room-set-1280.webp", full: "uploads/furniture-gallery-dining-room-set-2752.webp", pos: "center", note: "غرفة طعام من البلوط الأبيض والبوكليه تحت ثريا نحاسية منحوتة." }, { caption: "جناح غرفة النوم", image: "uploads/furniture-gallery-bedroom-suite-1280.webp", full: "uploads/furniture-gallery-bedroom-suite-2752.webp", pos: "center", note: "جناح غرفة نوم بالكتان والبوكليه وألواح البلوط الأبيض المضلعة." }, { caption: "تفاصيل البلوط والنحاس", image: "uploads/furniture-gallery-oak-brass-detail-1200.webp", full: "uploads/furniture-gallery-oak-brass-detail-2400.webp", pos: "35% center", note: "قاعدة عرض من البلوط الأبيض بتطعيم من النحاس المعتّق على أرضية من الترافرتين." }], scope: "التصميم الداخلي · التشطيبات · الهندسة الكهروميكانيكية · الأثاث المخصص", paras: [
+      "«معرض الأثاث» تصور تصميمي من FurnishIQ لصالة عرض أثاث من طابقين في شمال الرياض. بدلًا من طوابق بيع مفتوحة، يقوم مخطط المساحة البالغة 4,000 م² على تسلسل من الغرف — المعيشة والطعام والنوم والمكتب — ليرى العملاء كل قطعة في المكان الذي صُنعت له.",
+      "يدخل العملاء ردهة مزدوجة الارتفاع تضيئها من الأعلى نافذة سقفية طويلة. ويرتفع فيها درج منحوت من الجص والبلوط الأبيض إلى أجنحة الطابق العلوي، وتنفتح أولى الغرف المعروضة على الردهة في الطابقين.",
+      "تُبنى كل غرفة معروضة كمساحة داخلية حقيقية، بجدرانها وسقفها وإضاءتها وأرضياتها. ويشكّل الجص الجيري العاجي والبلوط الأبيض والترافرتين والنحاس المعتّق خلفية هادئة تسمح بتغيير الأثاث من موسم إلى آخر دون إعادة بناء الغرف.",
+      "في الطابق العلوي، يضم استوديو تصميم العملاء ومكتبة المواد عينات الأقمشة والجلود والأخشاب والأحجار والمعادن إلى جانب طاولات عمل كبيرة. وهنا يخطط مصممو FurnishIQ مع العملاء منازل كاملة، من غرفة واحدة إلى فيلا بأكملها.",
+      "تعيش صالة العرض على إضاءتها. تخطط FurnishIQ لشبكة إضاءة مرنة على مسارات وأخرى غائرة بدقة عالية في إظهار الألوان، وتحكم في ضوء النهار تحت النافذة السقفية، وتكييف مقسّم لكل جناح، وتمديدات كهربائية مخفية في الأرضيات للمصابيح ووحدات العرض، ومنطقة خلفية للتحميل والتجميع يصلها مصعد بضائع.",
+      "منصات العرض وأنظمة الجدران والدرج وطاولات الاستوديو جزء من التصميم نفسه، مصنوعة من البلوط الأبيض والجص والنحاس. ويشمل نطاق عمل FurnishIQ التصميم والتنفيذ بالكامل: التصميم الداخلي والتصور ثلاثي الأبعاد الواقعي، وأعمال التشطيب في الطابقين، والهندسة الكهروميكانيكية، وأثاث العرض وأعمال النجارة.",
     ]},
   };
 
@@ -925,20 +1061,86 @@ class Component extends DCLogic {
       category: proj.category,
       location: proj.location,
       heroImage: proj.image,
-      secondaryImage: proj.image.replace('w=1400', 'w=2000') + '&crop=entropy',
-      gallery: (this.VIEW_LABELS[proj.category] || this.VIEW_LABELS['سكني']).map((caption, i) => ({
+      secondaryImage: (det && det.secondary) || (proj.image.replace('w=1400', 'w=2000') + '&crop=entropy'),
+      gallery: (det && det.gallery) || (this.VIEW_LABELS[proj.category] || this.VIEW_LABELS['سكني']).map((caption, i) => ({
         caption,
         image: proj.image.replace('w=1400', 'w=900') + `&crop=${this.VIEW_CROPS[i]}`,
+        full: proj.image.replace('w=1400', 'w=2000'),
+        pos: 'center',
+        note: '',
       })),
       area: det.area,
       date: det.date,
       paras: det.paras.map(t => ({ text: t })),
       related,
       hasRelated: related.length > 0,
+      hasFilm: !!(det && det.film),
+      scopeText: (det && det.scope) || '',
+      filmPoster: det && det.film ? det.film.poster : '',
+      filmHd: det && det.film ? det.film.hd : '',
+      filmSd: det && det.film ? det.film.sd : '',
     };
   }
 
   componentDidMount() {
+    // Project film in the hero: always autoplays in a loop (owner's decision, overrides reduced motion);
+    // visible pause button for anyone who wants it still; pauses off-screen to save battery
+    (() => {
+      let tries = 0;
+      const setup = () => {
+        const v = document.querySelector('[data-pd-film]');
+        const btn = document.querySelector('[data-pd-film-toggle]');
+        if (!v || !btn) { if (tries++ < 40) setTimeout(setup, 100); return; }
+        if (v.dataset.ready) return;
+        v.dataset.ready = '1';
+        // The template renderer drops boolean attributes (muted, loop); browsers only autoplay muted video
+        v.muted = true; v.defaultMuted = true; v.setAttribute('muted', '');
+        v.loop = true;
+        let userPaused = false;
+        const load = () => {
+          if (v.dataset.loaded) return;
+          v.querySelectorAll('source[data-src]').forEach((s) => { s.src = s.dataset.src; });
+          v.load();
+          v.dataset.loaded = '1';
+        };
+        const sync = () => {
+          const playing = !v.paused;
+          btn.querySelector('[data-icon-pause]').style.display = playing ? '' : 'none';
+          btn.querySelector('[data-icon-play]').style.display = playing ? 'none' : '';
+          btn.setAttribute('aria-label', playing ? btn.dataset.labelPause : btn.dataset.labelPlay);
+        };
+        const play = () => { load(); const p = v.play(); if (p && p.catch) p.catch(() => sync()); };
+        v.addEventListener('play', sync);
+        v.addEventListener('pause', sync);
+        btn.addEventListener('click', () => {
+          if (v.paused) { userPaused = false; play(); } else { userPaused = true; v.pause(); }
+        });
+        if ('IntersectionObserver' in window) {
+          new IntersectionObserver((entries) => {
+            entries.forEach((e) => {
+              if (e.isIntersecting) { if (!userPaused) play(); } else if (!v.paused) { v.pause(); }
+            });
+          }, { threshold: 0.2 }).observe(v);
+        } else if (!userPaused) { play(); }
+        sync();
+      };
+      setup();
+    })();
+    // Gallery tiles: per-image focal point + keyboard open
+    (() => {
+      let tries = 0;
+      const setup = () => {
+        const tiles = document.querySelectorAll('.fiq-pd-tile');
+        if (!tiles.length) { if (tries++ < 40) setTimeout(setup, 100); return; }
+        tiles.forEach((t) => {
+          const img = t.querySelector('img');
+          if (img && t.dataset.pos && t.dataset.pos.indexOf('{') === -1) img.style.objectPosition = t.dataset.pos;
+          t.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); t.click(); } });
+        });
+      };
+      setup();
+    })();
+
     const nav = document.getElementById('id-nav');
     if (window.FIQMobileNav) window.FIQMobileNav(nav);
     const logoW = document.getElementById('id-logo-w');
@@ -1049,11 +1251,6 @@ class Component extends DCLogic {
       if (el.hasAttribute('data-pd-contact')) { el.style.background = 'transparent'; el.style.borderColor = 'rgba(214,194,168,0.4)'; }
     });
 
-    document.querySelectorAll('footer a').forEach(a => {
-      if (a.style.color === 'rgb(214, 194, 168)') return;
-      a.addEventListener('mouseenter', () => { a.style.color = '#D6C2A8'; });
-      a.addEventListener('mouseleave', () => { a.style.color = 'rgba(214,194,168,0.65)'; });
-    });
 
     // ── GALLERY LIGHTBOX ─────────────────────────────────────────────────────
     const lightbox = document.getElementById('pd-lightbox');
@@ -1075,6 +1272,17 @@ class Component extends DCLogic {
       lightboxImg.alt = item.dataset.galleryCaption || '';
       lightboxCaption.textContent = item.dataset.galleryCaption || '';
       lightboxTitle.textContent = item.dataset.galleryTitle || '';
+      const pos = item.dataset.pos && item.dataset.pos.indexOf('{') === -1 ? item.dataset.pos : 'center';
+      lightboxImg.style.objectPosition = pos;
+      const noteEl = document.getElementById('pd-lightbox-note');
+      if (noteEl) { const n = item.dataset.galleryNote || ''; noteEl.textContent = n.indexOf('{{') === -1 ? n : ''; noteEl.style.display = noteEl.textContent ? '' : 'none'; }
+      const countEl = document.getElementById('pd-lightbox-count');
+      if (countEl) countEl.textContent = String(galleryIndex + 1).padStart(2, '0') + ' / ' + String(galleryItems.length).padStart(2, '0');
+      const waEl = document.getElementById('pd-lightbox-wa');
+      if (waEl && lightbox) {
+        const msg = (lightbox.dataset.waTemplate || '').replace('{title}', item.dataset.galleryTitle || '').replace('{caption}', item.dataset.galleryCaption || '');
+        waEl.href = 'https://wa.me/966580330627?text=' + encodeURIComponent(msg);
+      }
     };
     const openLightbox = (index) => {
       if (!lightbox) return;

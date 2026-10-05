@@ -121,16 +121,40 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.furnishiq.net/blog"/>
   </url>
   <url>
-    <loc>https://www.furnishiq.net/single-post</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.furnishiq.net/single-post"/>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.furnishiq.net/ar/single-post"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.furnishiq.net/single-post"/>
+    <loc>https://www.furnishiq.net/blog/material-honesty</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.furnishiq.net/blog/material-honesty"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.furnishiq.net/ar/blog/material-honesty"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.furnishiq.net/blog/material-honesty"/>
   </url>
   <url>
-    <loc>https://www.furnishiq.net/ar/single-post</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.furnishiq.net/single-post"/>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://www.furnishiq.net/ar/single-post"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.furnishiq.net/single-post"/>
+    <loc>https://www.furnishiq.net/ar/blog/material-honesty</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.furnishiq.net/blog/material-honesty"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.furnishiq.net/ar/blog/material-honesty"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.furnishiq.net/blog/material-honesty"/>
+  </url>
+  <url>
+    <loc>https://www.furnishiq.net/blog/the-90-day-office</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.furnishiq.net/blog/the-90-day-office"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.furnishiq.net/ar/blog/the-90-day-office"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.furnishiq.net/blog/the-90-day-office"/>
+  </url>
+  <url>
+    <loc>https://www.furnishiq.net/ar/blog/the-90-day-office</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.furnishiq.net/blog/the-90-day-office"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.furnishiq.net/ar/blog/the-90-day-office"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.furnishiq.net/blog/the-90-day-office"/>
+  </url>
+  <url>
+    <loc>https://www.furnishiq.net/blog/invisible-infrastructure</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.furnishiq.net/blog/invisible-infrastructure"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.furnishiq.net/ar/blog/invisible-infrastructure"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.furnishiq.net/blog/invisible-infrastructure"/>
+  </url>
+  <url>
+    <loc>https://www.furnishiq.net/ar/blog/invisible-infrastructure</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.furnishiq.net/blog/invisible-infrastructure"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.furnishiq.net/ar/blog/invisible-infrastructure"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.furnishiq.net/blog/invisible-infrastructure"/>
   </url>
   <url>
     <loc>https://www.furnishiq.net/contact</loc>

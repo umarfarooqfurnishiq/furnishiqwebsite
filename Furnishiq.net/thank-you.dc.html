@@ -42,6 +42,7 @@ fbq('track', 'PageView');
 <script src="./nav-mobile.js" defer></script>
 <script src="./floating-buttons.js" defer></script>
 <script src="./analytics-events.js" defer></script>
+<script src="./newsletter.js" defer></script>
 <link rel="preload" as="font" type="font/ttf" href="_ds/furnishiq-design-system-ea658a9e-dd64-48ad-ab93-f0196a53ec9c/uploads/LamaSans-Medium_English.ttf" crossorigin>
 </head>
 <body>
@@ -231,68 +232,117 @@ input {
 </section>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ FOOTER ━━━━━━━━━━━ -->
-<footer style="background:#1F1F1F;padding:clamp(64px,8vw,96px) clamp(24px,5vw,80px) 40px;border-top:1px solid rgba(91,70,54,0.25);">
+<footer id="fiq-footer" style="overflow:hidden;background:#1F1F1F;padding:clamp(72px,9vw,120px) clamp(24px,5vw,80px) 32px;">
+  <style>
+    #fiq-footer .fiq-ft-top{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(40px,6vw,96px);align-items:end;}
+    #fiq-footer .fiq-ft-statement{font-family:'Lama Sans',sans-serif;font-size:clamp(26px,2.8vw,42px);font-weight:500;line-height:1.2;letter-spacing:-0.01em;color:#F5F2ED;margin:28px 0 0;max-width:640px;}
+    #fiq-footer .fiq-ft-label{display:block;font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#D6C2A8;margin-bottom:22px;}
+    #fiq-footer .fiq-ft-form{display:flex;align-items:center;gap:16px;border-bottom:1px solid rgba(214,194,168,0.35);transition:border-color 0.4s cubic-bezier(0.25,0.46,0.45,0.94);}
+    #fiq-footer .fiq-ft-form:focus-within{border-color:#D6C2A8;}
+    #fiq-footer .fiq-ft-form input{flex:1;min-width:0;background:transparent;border:none;outline:none;padding:16px 0;font-family:'Lama Sans',sans-serif;font-size:15px;color:#FFFFFF;}
+    #fiq-footer .fiq-ft-form input::placeholder{color:rgba(245,242,237,0.45);}
+    #fiq-footer .fiq-ft-form button{display:inline-flex;align-items:center;gap:12px;background:none;border:none;padding:16px 0;cursor:pointer;font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#D6C2A8;transition:color 0.3s cubic-bezier(0.25,0.46,0.45,0.94);}
+    #fiq-footer .fiq-ft-form button:hover,#fiq-footer .fiq-ft-form button:focus-visible{color:#FFFFFF;}
+    #fiq-footer .fiq-ft-frieze{margin:clamp(56px,7vw,88px) calc(50% - 50vw);border-top:1px solid rgba(214,194,168,0.14);border-bottom:1px solid rgba(214,194,168,0.14);opacity:0.5;}
+    #fiq-footer .fiq-ft-frieze svg{opacity:0.45;}
+    #fiq-footer .fiq-ft-cols{display:grid;grid-template-columns:1.25fr 1fr 1fr 1fr;gap:clamp(32px,4vw,64px);}
+    #fiq-footer .fiq-ft-desc{font-family:'Lama Sans',sans-serif;font-size:14px;line-height:1.8;color:rgba(245,242,237,0.6);max-width:300px;margin:0;}
+    #fiq-footer nav{display:flex;flex-direction:column;align-items:flex-start;gap:14px;}
+    #fiq-footer .fiq-ft-link{position:relative;font-family:'Lama Sans',sans-serif;font-size:14px;color:rgba(245,242,237,0.78);text-decoration:none;padding-bottom:2px;transition:color 0.3s cubic-bezier(0.25,0.46,0.45,0.94);}
+    #fiq-footer .fiq-ft-link::after{content:"";position:absolute;inset-inline-start:0;bottom:0;width:100%;height:1px;background:#D6C2A8;transform:scaleX(0);transform-origin:left;transition:transform 0.45s cubic-bezier(0.25,0.46,0.45,0.94);}
+    #fiq-footer .fiq-ft-link:hover,#fiq-footer .fiq-ft-link:focus-visible{color:#D6C2A8;}
+    #fiq-footer .fiq-ft-link:hover::after,#fiq-footer .fiq-ft-link:focus-visible::after{transform:scaleX(1);}
+    #fiq-footer .fiq-ft-k{display:block;font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(214,194,168,0.6);margin-bottom:6px;}
+    #fiq-footer .fiq-ft-v{font-family:'Lama Sans',sans-serif;font-size:14px;color:rgba(245,242,237,0.78);margin:0;}
+    #fiq-footer .fiq-ft-fact{display:flex;align-items:baseline;gap:14px;padding:14px 0;border-top:1px solid rgba(214,194,168,0.14);}
+    #fiq-footer .fiq-ft-fact:last-child{border-bottom:1px solid rgba(214,194,168,0.14);}
+    #fiq-footer .fiq-ft-fact-n{font-family:'Lama Sans',sans-serif;font-size:26px;line-height:1;color:#F5F2ED;min-width:56px;}
+    #fiq-footer .fiq-ft-fact-k{font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(245,242,237,0.6);}
+    #fiq-footer .fiq-ft-bottom{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px 32px;margin-top:clamp(56px,7vw,88px);padding-top:28px;border-top:1px solid rgba(214,194,168,0.14);}
+    #fiq-footer .fiq-ft-fine{font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.04em;line-height:1.7;color:rgba(245,242,237,0.5);margin:0;}
+    #fiq-footer .fiq-ft-lang{justify-self:end;font-family:GE SS Two,'Arial',sans-serif;font-size:13px;color:#D6C2A8;text-decoration:none;padding:8px 18px;border:1px solid rgba(214,194,168,0.35);transition:background 0.3s cubic-bezier(0.25,0.46,0.45,0.94),color 0.3s cubic-bezier(0.25,0.46,0.45,0.94);}
+    #fiq-footer .fiq-ft-lang:hover,#fiq-footer .fiq-ft-lang:focus-visible{background:#D6C2A8;color:#1F1F1F;}
+    @media(max-width:1024px){
+      #fiq-footer .fiq-ft-cols{grid-template-columns:1fr 1fr;}
+    }
+    @media(max-width:900px){
+      #fiq-footer .fiq-ft-top{grid-template-columns:1fr;}
+      #fiq-footer .fiq-ft-bottom{grid-template-columns:1fr;justify-items:start;}
+      #fiq-footer .fiq-ft-lang{justify-self:start;}
+    }
+    @media(max-width:600px){
+      #fiq-footer .fiq-ft-cols{grid-template-columns:1fr;}
+    }
+    @media(prefers-reduced-motion:reduce){
+      #fiq-footer .fiq-ft-link::after,#fiq-footer .fiq-ft-form,#fiq-footer .fiq-ft-link{transition:none;}
+    }
+  </style>
   <div style="max-width:1280px;margin:0 auto;">
-    <div class="fiq-footer-grid" style="display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:clamp(28px,4vw,64px);margin-bottom:64px;">
-
-      <div class="fiq-footer-brand">
-        <a href="/" style="display:block;text-decoration:none;"><img src="assets/logo-default.png" width="264" height="90" alt="FurnishIQ" style="height:36px;width:auto;max-width:160px;object-fit:contain;object-position:left center;margin-bottom:22px;display:block;" loading="lazy" decoding="async"></a>
-        <p style="font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.8;color:rgba(214,194,168,0.65);margin-bottom:32px;max-width:260px;">Integrated Design–Build solutions transforming ambitious architectural concepts into inspiring realities across Saudi Arabia.</p>
-        <div style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(214,194,168,0.65);margin-bottom:14px;">Join the IQ</div>
-        <div style="display:flex;border:1px solid rgba(214,194,168,0.2);">
-          <input id="newsletter-input" type="email" placeholder="Your email address" value="{{ newsletterEmail }}" onChange="{{ onNewsletterChange }}" style="flex:1;background:transparent;border:none;padding:13px 16px;font-family:'Lama Sans',sans-serif;font-size:13px;color:#FFFFFF;outline:none;min-width:0;">
-          <button onClick="{{ onNewsletterSubmit }}" style="background:#5B4636;border:none;padding:13px 20px;cursor:pointer;font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:#D6C2A8;flex-shrink:0;transition:background 0.3s;">Subscribe</button>
-        </div>
-        <sc-if value="{{ newsletterStatus }}" hint-placeholder-val="{{ null }}">
-          <p style="font-family:'Lama Sans',sans-serif;font-size:12px;color:rgba(214,194,168,0.65);margin-top:10px;">Thank you — monthly updates, strictly no spam.</p>
-        </sc-if>
-      </div>
-
+    <div class="fiq-ft-top">
       <div>
-        <div style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.26em;text-transform:uppercase;color:rgba(214,194,168,0.65);margin-bottom:22px;">Services</div>
-        <nav style="display:flex;flex-direction:column;gap:13px;">
-          <a href="/services-interior-design" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Interior Design</a>
-          <a href="/services-fitout" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Fit-Out</a>
-          <a href="/services-mep" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Engineering &amp; MEP</a>
-          <a href="/services-furniture" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Furniture Solutions</a>
-          <a href="#" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Project Management</a>
-        </nav>
+        <a href="/" style="display:inline-block;text-decoration:none;"><img src="assets/logo-default.png" width="264" height="90" alt="FurnishIQ" style="height:40px;width:auto;display:block;margin-inline-start:-8px;" loading="lazy" decoding="async"></a>
+        <p class="fiq-ft-statement">Integrated design&ndash;build, from first concept to final handover.</p>
       </div>
-
       <div>
-        <div style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.26em;text-transform:uppercase;color:rgba(214,194,168,0.65);margin-bottom:22px;">Company</div>
-        <nav style="display:flex;flex-direction:column;gap:13px;">
-          <a href="/about-us" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">About Us</a>
-          <a href="/services" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Services</a>
-          <a href="/projects" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Portfolio</a>
-          <a href="/blog" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Insights</a>
-          <a href="/contact" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Contact Us</a>
-          <a href="#" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">Terms &amp; Conditions</a>
-        </nav>
+        <span class="fiq-ft-label">Join the IQ</span>
+        <p class="fiq-ft-desc" style="margin-bottom:8px;">Monthly notes on materials, projects and craft.</p>
+        <form class="fiq-ft-form" data-fiq-newsletter novalidate>
+          <input type="email" name="email" required autocomplete="email" placeholder="Your email address" aria-label="Your email address">
+          <button type="submit">Subscribe<svg width="16" height="6" viewBox="0 0 16 6" fill="none" aria-hidden="true" style="transform:none;flex-shrink:0;"><path d="M0 3H14M14 3L11.5 1M14 3L11.5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+        </form>
+        <p class="fiq-ft-fine" data-fiq-newsletter-thanks style="display:none;margin-top:12px;color:#D6C2A8;">Thank you &mdash; monthly updates, strictly no spam.</p>
       </div>
-
-      <div>
-        <div style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.26em;text-transform:uppercase;color:rgba(214,194,168,0.65);margin-bottom:22px;">Find Us</div>
-        <div style="display:flex;flex-direction:column;gap:20px;">
-          <div>
-            <div style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(214,194,168,0.65);margin-bottom:5px;">Address</div>
-            <p style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);line-height:1.65;">Riyadh, KSA.</p>
-          </div>
-          <div>
-            <div style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(214,194,168,0.65);margin-bottom:5px;">Email</div>
-            <a href="mailto:info@furnishiq.net" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">info@furnishiq.net</a>
-          </div>
-          <div>
-            <div style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(214,194,168,0.65);margin-bottom:5px;">Phone — Ibrahim Al Ali</div>
-            <a href="tel:+966580330627" style="font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.25s;">+966 58 033 0627</a>
-          </div>
-        </div>
-      </div>
-
     </div>
-    <div style="border-top:1px solid rgba(214,194,168,0.1);padding-top:28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
-      <p style="font-family:'Lama Sans',sans-serif;font-size:11px;color:rgba(214,194,168,0.65);letter-spacing:0.04em;">© 2026 FurnishIQ. All rights reserved.</p>
-      <p style="font-family:'Lama Sans',sans-serif;font-size:11px;color:rgba(214,194,168,0.65);letter-spacing:0.04em;">Crafted with precision in Saudi Arabia.</p>
+
+    <div class="fiq-ft-frieze" aria-hidden="true"><svg width="100%" height="64" xmlns="http://www.w3.org/2000/svg" style="display:block;"><defs><pattern id="fiq-ft-khatam-en" width="64" height="64" patternUnits="userSpaceOnUse"><g fill="none" stroke="#D6C2A8" stroke-width="1"><rect x="16.44" y="16.44" width="31.12" height="31.12"/><path d="M32 10L54 32L32 54L10 32Z"/><path d="M0 32H10M54 32H64"/></g></pattern></defs><rect width="100%" height="64" fill="url(#fiq-ft-khatam-en)"/></svg></div>
+
+    <div class="fiq-ft-cols">
+      <div>
+        <span class="fiq-ft-label">Find Us</span>
+        <div style="display:flex;flex-direction:column;gap:20px;">
+          <div><span class="fiq-ft-k">Address</span><p class="fiq-ft-v">Riyadh, KSA.</p></div>
+          <div><span class="fiq-ft-k">Email</span><a class="fiq-ft-link" href="mailto:info@furnishiq.net">info@furnishiq.net</a></div>
+          <div><span class="fiq-ft-k">Phone &mdash; Ibrahim Al Ali</span><a class="fiq-ft-link" href="tel:+966580330627" dir="ltr">+966 58 033 0627</a></div>
+        </div>
+      </div>
+      <div>
+        <span class="fiq-ft-label">Services</span>
+        <nav aria-label="Services">
+            <a class="fiq-ft-link" href="/services-interior-design">Interior Design</a>
+            <a class="fiq-ft-link" href="/services-fitout">Fit-Out</a>
+            <a class="fiq-ft-link" href="/services-mep">Engineering &amp; MEP</a>
+            <a class="fiq-ft-link" href="/services-furniture">Furniture Solutions</a>
+            <a class="fiq-ft-link" href="#">Project Management</a>
+        </nav>
+      </div>
+      <div>
+        <span class="fiq-ft-label">Company</span>
+        <nav aria-label="Company">
+            <a class="fiq-ft-link" href="/about-us">About Us</a>
+            <a class="fiq-ft-link" href="/services">Services</a>
+            <a class="fiq-ft-link" href="/projects">Portfolio</a>
+            <a class="fiq-ft-link" href="/blog">Insights</a>
+            <a class="fiq-ft-link" href="/contact">Contact Us</a>
+            <a class="fiq-ft-link" href="#">Terms &amp; Conditions</a>
+        </nav>
+      </div>
+      <div>
+        <span class="fiq-ft-label">At a Glance</span>
+        <div>
+            <div class="fiq-ft-fact"><span class="fiq-ft-fact-n" dir="ltr">15+</span><span class="fiq-ft-fact-k">Years of practice</span></div>
+            <div class="fiq-ft-fact"><span class="fiq-ft-fact-n" dir="ltr">40+</span><span class="fiq-ft-fact-k">Completed projects</span></div>
+            <div class="fiq-ft-fact"><span class="fiq-ft-fact-n" dir="ltr">20+</span><span class="fiq-ft-fact-k">Team members</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fiq-ft-bottom">
+      <div>
+        <p class="fiq-ft-fine">&copy; 2026 FurnishIQ. All rights reserved.</p>
+        <p class="fiq-ft-fine">Basic Step for Contracting Company &middot; C.R. 2050155201</p>
+      </div>
+      <p class="fiq-ft-fine">Crafted with precision in Saudi Arabia.</p>
+      <a class="fiq-ft-lang" href="/ar/thank-you" lang="ar" dir="rtl">عربي</a>
     </div>
   </div>
 </footer>
@@ -370,12 +420,6 @@ class Component extends DCLogic {
       navCta.addEventListener('mouseleave', () => { navCta.style.background = 'transparent'; syncNav(); });
     }
 
-    // ── FOOTER LINK HOVERS ─────────────────────────────────
-    document.querySelectorAll('footer a').forEach(a => {
-      if (a.style.color === 'rgb(214, 194, 168)') return;
-      a.addEventListener('mouseenter', () => { a.style.color = '#D6C2A8'; });
-      a.addEventListener('mouseleave', () => { a.style.color = 'rgba(214,194,168,0.65)'; });
-    });
   }
 }
 </script>
