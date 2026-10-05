@@ -1497,51 +1497,97 @@ input:focus, select:focus, textarea:focus {
 </section>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ MARKETS WE SERVE ━ -->
-<section style="background:#F5F2ED;padding:clamp(64px,8vw,100px) clamp(24px,5vw,80px);">
-  <div style="max-width:1280px;margin:0 auto;">
-    <div data-reveal style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);text-align:center;margin-bottom:clamp(44px,6vw,64px);">
-      <div style="display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:20px;">
-        <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
-        <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#8B6B4A;">Markets We Serve</span>
-        <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
+<section id="markets" data-markets style="position:relative;background:#FFFFFF;padding:clamp(64px,8vw,100px) clamp(24px,5vw,80px);overflow:clip;">
+  <style>
+    #markets .mk-wrap{max-width:1280px;margin:0 auto;}
+    #markets .mk-head{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:clamp(32px,5vw,96px);align-items:end;margin-bottom:clamp(36px,4.5vw,64px);}
+    #markets .mk-label{display:flex;align-items:center;gap:16px;margin-bottom:20px;font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#8B6B4A;}
+    #markets .mk-label i{display:block;width:32px;height:1px;background:#8B6B4A;}
+    #markets .mk-h2{font-family:'Lama Sans',sans-serif;font-size:clamp(28px,3.2vw,50px);font-weight:500;line-height:1.12;letter-spacing:-0.02em;color:#3A2D25;margin:0;max-width:760px;}
+    #markets .mk-note{font-family:'Lama Sans',sans-serif;font-size:13px;line-height:1.7;color:#8B6B4A;margin:0;justify-self:end;text-align:end;}
+    #markets .mk-list{position:relative;border-bottom:1px solid rgba(58,45,37,0.16);}
+    #markets .mk-row{position:relative;display:grid;grid-template-columns:clamp(40px,4vw,64px) minmax(0,1fr) minmax(0,300px) auto;align-items:center;column-gap:clamp(16px,2.4vw,40px);padding:clamp(14px,1.6vw,22px) clamp(12px,1.6vw,24px);text-decoration:none;color:#3A2D25;border-top:1px solid rgba(58,45,37,0.16);isolation:isolate;outline:none;}
+    #markets .mk-row::before{content:"";position:absolute;inset:-1px 0;z-index:-1;background:#3A2D25;transform:scaleX(0);transform-origin:left;transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);}
+    #markets .mk-row.is-hot::before{transform:scaleX(1);}
+    #markets .mk-n{font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.2em;color:#8B6B4A;transition:color 0.5s cubic-bezier(0.25,0.46,0.45,0.94);}
+    #markets .mk-mask{display:block;overflow:hidden;padding-bottom:0.06em;}
+    #markets .mk-word{display:block;font-family:'Lama Sans',sans-serif;font-size:clamp(38px,5.4vw,92px);font-weight:500;line-height:1;letter-spacing:-0.04em;color:#3A2D25;transform:translateY(105%);transition:transform 1s cubic-bezier(0.25,0.46,0.45,0.94) calc(var(--i) * 0.12s),color 0.5s cubic-bezier(0.25,0.46,0.45,0.94);}
+    #markets .mk-row.is-in .mk-word{transform:none;}
+    #markets .mk-desc{font-family:'Lama Sans',sans-serif;font-size:14px;line-height:1.7;color:#5B4636;transition:color 0.5s cubic-bezier(0.25,0.46,0.45,0.94);}
+    #markets .mk-go{display:inline-flex;align-items:center;gap:12px;white-space:nowrap;font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#3A2D25;transition:color 0.5s cubic-bezier(0.25,0.46,0.45,0.94),gap 0.5s cubic-bezier(0.25,0.46,0.45,0.94);}
+    #markets .mk-row.is-hot .mk-word{color:#F5F2ED;}
+    #markets .mk-row.is-hot .mk-desc{color:rgba(245,242,237,0.75);}
+    #markets .mk-row.is-hot .mk-n,#markets .mk-row.is-hot .mk-go{color:#D6C2A8;}
+    #markets .mk-row.is-hot .mk-go{gap:18px;}
+    #markets .mk-row:focus-visible{outline:1px solid #8B6B4A;outline-offset:-1px;}
+    #markets .mk-strip{display:none;}
+    #markets .mk-card{position:absolute;z-index:3;top:0;left:0;width:clamp(240px,21vw,340px);aspect-ratio:4/5;pointer-events:none;overflow:hidden;background:#E5DCD0;box-shadow:0 24px 80px rgba(58,45,37,0.2);clip-path:inset(50% 50% 50% 50%);transition:clip-path 0.55s cubic-bezier(0.25,0.46,0.45,0.94);will-change:transform;}
+    #markets .mk-card.is-on{clip-path:inset(0 0 0 0);}
+    #markets .mk-set{position:absolute;inset:0;display:none;}
+    #markets .mk-set.is-active{display:block;}
+    #markets .mk-set img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.08);transition:opacity 0.5s cubic-bezier(0.25,0.46,0.45,0.94),transform 1.6s cubic-bezier(0.25,0.46,0.45,0.94);}
+    #markets .mk-set img.is-front{opacity:1;transform:scale(1);}
+    #markets .mk-cap{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:10px 14px;background:rgba(30,22,16,0.72);font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:#F5F2ED;}
+    @media(max-width:900px),(hover:none){
+      #markets .mk-head{grid-template-columns:1fr;gap:16px;}
+      #markets .mk-note{display:none;}
+      #markets .mk-card{display:none;}
+      #markets .mk-row{grid-template-columns:auto minmax(0,1fr);row-gap:10px;padding:24px 0;}
+      #markets .mk-row::before{display:none;}
+      #markets .mk-desc,#markets .mk-go{grid-column:2;}
+      #markets .mk-strip{grid-column:1 / -1;display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;margin:8px calc(-1 * clamp(24px,5vw,80px)) 0;padding:0 clamp(24px,5vw,80px);scrollbar-width:none;}
+      #markets .mk-strip::-webkit-scrollbar{display:none;}
+      #markets .mk-strip img{flex:0 0 58%;height:auto;align-self:flex-start;aspect-ratio:4/3;object-fit:cover;scroll-snap-align:start;}
+    }
+    @media(prefers-reduced-motion:reduce){
+      #markets *{transition:none!important;}
+      #markets .mk-word{transform:none;}
+    }
+  </style>
+  <div class="mk-wrap">
+    <div class="mk-head" data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);">
+      <div>
+        <div class="mk-label"><i></i>Markets We Serve</div>
+        <h2 class="mk-h2">One integrated team, delivering across every sector.</h2>
       </div>
-      <h2 style="font-family:'Lama Sans',sans-serif;font-size:clamp(28px,3.4vw,44px);font-weight:500;color:#3A2D25;line-height:1.15;letter-spacing:-0.01em;max-width:640px;margin:0 auto;">One integrated team, delivering across every sector.</h2>
+      <p class="mk-note">Hover a market to preview concept work.</p>
     </div>
-
-    <div class="fiq-markets-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,1.6vw,20px);">
-
-      <a href="/projects?category=Residential" class="fiq-market-card" data-reveal data-reveal-delay="0.06" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);position:relative;aspect-ratio:3/4;overflow:hidden;border-radius:0;display:block;text-decoration:none;">
-        <img class="fiq-market-img" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=700&q=30" srcset="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=350&q=30 350w, https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=525&q=30 525w, https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=610&q=30 610w, https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=700&q=30 700w" sizes="(max-width:600px) 100vw, (max-width:1024px) 50vw, 33vw" alt="Residential" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async">
-        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(30,22,16,0.9) 0%,rgba(30,22,16,0) 55%);"></div>
-        <div style="position:absolute;bottom:0;left:0;right:0;padding:22px;">
-          <span style="font-family:'Lama Sans',sans-serif;font-size:14px;font-weight:500;color:#FFFFFF;">Residential</span>
-        </div>
+    <div class="mk-list" data-mk-list>
+      <a class="mk-row" href="/projects?category=Residential" data-mk-row style="--i:0;">
+        <span class="mk-n" dir="ltr">01</span>
+        <span class="mk-mask"><span class="mk-word">Residential</span></span>
+        <span class="mk-desc">Villas, palaces, penthouses and family estates.</span>
+        <span class="mk-go">View projects<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        <span class="mk-strip" aria-hidden="true"><img src="uploads/penthouse-wadi-double-height-living-riyadh-1280.webp" alt="" width="1280" height="714" loading="lazy" decoding="async"><img src="uploads/obhur-estate-great-room-red-sea-jeddah-1280.webp" alt="" width="1280" height="714" loading="lazy" decoding="async"><img src="uploads/courtyard-residence-formal-dining-room-1280.webp" alt="" width="1280" height="714" loading="lazy" decoding="async"></span>
       </a>
-
-      <a href="/projects?category=Hospitality" class="fiq-market-card" data-reveal data-reveal-delay="0.12" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);position:relative;aspect-ratio:3/4;overflow:hidden;border-radius:0;display:block;text-decoration:none;">
-        <img class="fiq-market-img" src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=700&q=30" srcset="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=350&q=30 350w, https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=525&q=30 525w, https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=610&q=30 610w, https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=700&q=30 700w" sizes="(max-width:600px) 100vw, (max-width:1024px) 50vw, 33vw" alt="Hospitality" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async">
-        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(30,22,16,0.9) 0%,rgba(30,22,16,0) 55%);"></div>
-        <div style="position:absolute;bottom:0;left:0;right:0;padding:22px;">
-          <span style="font-family:'Lama Sans',sans-serif;font-size:14px;font-weight:500;color:#FFFFFF;">Hospitality</span>
-        </div>
+      <a class="mk-row" href="/projects?category=Hospitality" data-mk-row style="--i:1;">
+        <span class="mk-n" dir="ltr">02</span>
+        <span class="mk-mask"><span class="mk-word">Hospitality</span></span>
+        <span class="mk-desc">Resorts, hotels, restaurants and cafés.</span>
+        <span class="mk-go">View projects<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        <span class="mk-strip" aria-hidden="true"><img src="uploads/desert-stone-resort-lobby-lounge-alula-1280.webp" alt="" width="1280" height="714" loading="lazy" decoding="async"><img src="uploads/roastery-house-espresso-bar-travertine-1280.webp" alt="" width="1280" height="714" loading="lazy" decoding="async"><img src="uploads/desert-stone-resort-signature-restaurant-1280.webp" alt="" width="1280" height="714" loading="lazy" decoding="async"></span>
       </a>
-
-      <a href="/projects?category=Workplace" class="fiq-market-card" data-reveal data-reveal-delay="0.18" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);position:relative;aspect-ratio:3/4;overflow:hidden;border-radius:0;display:block;text-decoration:none;">
-        <img class="fiq-market-img" src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=700&q=30" srcset="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=350&q=30 350w, https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=525&q=30 525w, https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=610&q=30 610w, https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=700&q=30 700w" sizes="(max-width:600px) 100vw, (max-width:1024px) 50vw, 33vw" alt="Workplace" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async">
-        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(30,22,16,0.9) 0%,rgba(30,22,16,0) 55%);"></div>
-        <div style="position:absolute;bottom:0;left:0;right:0;padding:22px;">
-          <span style="font-family:'Lama Sans',sans-serif;font-size:14px;font-weight:500;color:#FFFFFF;">Workplace</span>
-        </div>
+      <a class="mk-row" href="/projects?category=Workplace" data-mk-row style="--i:2;">
+        <span class="mk-n" dir="ltr">03</span>
+        <span class="mk-mask"><span class="mk-word">Workplace</span></span>
+        <span class="mk-desc">Headquarters, executive floors and family offices.</span>
+        <span class="mk-go">View projects<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        <span class="mk-strip" aria-hidden="true"><img src="uploads/executive-floors-boardroom-walnut-table-1280.webp" alt="" width="1280" height="714" loading="lazy" decoding="async"><img src="uploads/family-office-council-room-oak-table-1280.webp" alt="" width="1280" height="714" loading="lazy" decoding="async"><img src="uploads/executive-floors-client-majlis-1280.webp" alt="" width="1280" height="714" loading="lazy" decoding="async"></span>
       </a>
-
-      <a href="/projects?category=Retail" class="fiq-market-card" data-reveal data-reveal-delay="0.24" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);position:relative;aspect-ratio:3/4;overflow:hidden;border-radius:0;display:block;text-decoration:none;">
-        <img class="fiq-market-img" src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=700&q=30" srcset="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=350&q=30 350w, https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=525&q=30 525w, https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=610&q=30 610w, https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=700&q=30 700w" sizes="(max-width:600px) 100vw, (max-width:1024px) 50vw, 33vw" alt="Retail" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async">
-        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(30,22,16,0.9) 0%,rgba(30,22,16,0) 55%);"></div>
-        <div style="position:absolute;bottom:0;left:0;right:0;padding:22px;">
-          <span style="font-family:'Lama Sans',sans-serif;font-size:14px;font-weight:500;color:#FFFFFF;">Retail</span>
-        </div>
+      <a class="mk-row" href="/projects?category=Retail" data-mk-row style="--i:3;">
+        <span class="mk-n" dir="ltr">04</span>
+        <span class="mk-mask"><span class="mk-word">Retail</span></span>
+        <span class="mk-desc">Flagship stores, boutiques and destination malls.</span>
+        <span class="mk-go">View projects<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        <span class="mk-strip" aria-hidden="true"><img src="uploads/maison-joaillerie-main-salon-jeddah-1280.webp" alt="" width="1280" height="714" loading="lazy" decoding="async"><img src="uploads/central-commons-covered-galleria-1280.webp" alt="" width="1280" height="714" loading="lazy" decoding="async"><img src="uploads/maison-joaillerie-private-salon-1280.webp" alt="" width="1280" height="714" loading="lazy" decoding="async"></span>
       </a>
-
+      <div class="mk-card" aria-hidden="true">
+        <span class="mk-set" data-mk-set><img class="is-front" src="uploads/penthouse-wadi-double-height-living-riyadh-1280.webp" alt="" width="1280" height="714" loading="lazy" decoding="async"><img src="uploads/obhur-estate-great-room-red-sea-jeddah-1280.webp" alt="" width="1280" height="714" loading="lazy" decoding="async"><img src="uploads/courtyard-residence-formal-dining-room-1280.webp" alt="" width="1280" height="714" loading="lazy" decoding="async"></span>
+        <span class="mk-set" data-mk-set><img class="is-front" src="uploads/desert-stone-resort-lobby-lounge-alula-1280.webp" alt="" width="1280" height="714" loading="lazy" decoding="async"><img src="uploads/roastery-house-espresso-bar-travertine-1280.webp" alt="" width="1280" height="714" loading="lazy" decoding="async"><img src="uploads/desert-stone-resort-signature-restaurant-1280.webp" alt="" width="1280" height="714" loading="lazy" decoding="async"></span>
+        <span class="mk-set" data-mk-set><img class="is-front" src="uploads/executive-floors-boardroom-walnut-table-1280.webp" alt="" width="1280" height="714" loading="lazy" decoding="async"><img src="uploads/family-office-council-room-oak-table-1280.webp" alt="" width="1280" height="714" loading="lazy" decoding="async"><img src="uploads/executive-floors-client-majlis-1280.webp" alt="" width="1280" height="714" loading="lazy" decoding="async"></span>
+        <span class="mk-set" data-mk-set><img class="is-front" src="uploads/maison-joaillerie-main-salon-jeddah-1280.webp" alt="" width="1280" height="714" loading="lazy" decoding="async"><img src="uploads/central-commons-covered-galleria-1280.webp" alt="" width="1280" height="714" loading="lazy" decoding="async"><img src="uploads/maison-joaillerie-private-salon-1280.webp" alt="" width="1280" height="714" loading="lazy" decoding="async"></span>
+        <span class="mk-cap">Concept visualisation</span>
+      </div>
     </div>
   </div>
 </section>
@@ -2123,6 +2169,73 @@ class Component extends DCLogic {
             else if (d) { e.preventDefault(); show((cur + d + tabs.length) % tabs.length, true); }
           });
         });
+      }
+    }
+
+    // ── MARKETS: INDEX ROWS WITH A FLOATING FLIPBOOK PREVIEW ─────────────────
+    {
+      const mk = document.querySelector('[data-markets]');
+      if (mk) {
+        const list = mk.querySelector('[data-mk-list]'), rows = [...mk.querySelectorAll('[data-mk-row]')];
+        const card = mk.querySelector('.mk-card'), sets = [...mk.querySelectorAll('[data-mk-set]')];
+        if (reduced) rows.forEach(r => r.classList.add('is-in'));
+        else {
+          const io = new IntersectionObserver((es) => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -12% 0px' });
+          rows.forEach(r => io.observe(r));
+        }
+        const fine = window.matchMedia('(hover:hover) and (pointer:fine) and (min-width:901px)');
+        let active = -1, tx = 0, ty = 0, x = 0, y = 0, raf = 0, flip = 0, shown = false;
+        const loop = () => {
+          x += (tx - x) * 0.14; y += (ty - y) * 0.14;
+          const tilt = Math.max(-7, Math.min(7, (tx - x) * 0.05));
+          card.style.transform = 'translate3d(' + (x - card.offsetWidth / 2).toFixed(1) + 'px,' + (y - card.offsetHeight / 2).toFixed(1) + 'px,0) rotate(' + tilt.toFixed(2) + 'deg)';
+          raf = Math.abs(tx - x) + Math.abs(ty - y) > 0.3 ? requestAnimationFrame(loop) : 0;
+        };
+        const kick = () => { if (!raf) raf = requestAnimationFrame(loop); };
+        const play = (n) => {
+          clearInterval(flip);
+          const imgs = [...sets[n].querySelectorAll('img')]; let k = 0;
+          imgs.forEach((im, j) => im.classList.toggle('is-front', j === 0));
+          if (!reduced) flip = setInterval(() => { k = (k + 1) % imgs.length; imgs.forEach((im, j) => im.classList.toggle('is-front', j === k)); }, 950);
+        };
+        const activate = (n) => {
+          rows.forEach((r, k) => r.classList.toggle('is-hot', k === n));
+          if (n === active) return;
+          active = n;
+          sets.forEach((s, k) => s.classList.toggle('is-active', k === n));
+          play(n);
+        };
+        const release = () => {
+          rows.forEach(r => r.classList.remove('is-hot'));
+          card.classList.remove('is-on'); shown = false; active = -1; clearInterval(flip);
+        };
+        const rtl = mk.dir === 'rtl';
+        const aim = (cx, cy, snap) => {
+          const r = list.getBoundingClientRect(), w = card.offsetWidth, h = card.offsetHeight;
+          const side = (w / 2 + 32) * (rtl ? -1 : 1);
+          tx = Math.min(Math.max(cx - r.left + side, w / 2), r.width - w / 2);
+          ty = Math.min(Math.max(cy - r.top, h / 2 - 40), r.height - h / 2 + 40);
+          if (snap) { x = tx; y = ty; }
+          kick();
+        };
+        rows.forEach((row, n) => {
+          row.addEventListener('pointerenter', (e) => {
+            if (!fine.matches || reduced) { if (fine.matches) activate(n); return; }
+            activate(n);
+            aim(e.clientX, e.clientY, !shown);
+            shown = true; card.classList.add('is-on');
+          });
+          row.addEventListener('focus', () => {
+            activate(n);
+            if (!fine.matches || reduced) return;
+            const r = row.getBoundingClientRect();
+            aim(r.left + r.width * (rtl ? 0.45 : 0.55), r.top + r.height / 2, !shown);
+            shown = true; card.classList.add('is-on');
+          });
+          row.addEventListener('blur', release);
+        });
+        list.addEventListener('pointermove', (e) => { if (shown) aim(e.clientX, e.clientY, false); });
+        list.addEventListener('pointerleave', release);
       }
     }
 
