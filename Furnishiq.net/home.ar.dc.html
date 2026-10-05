@@ -649,7 +649,7 @@ input:focus, select:focus, textarea:focus {
 
   <!-- Divider line + handle -->
   <div id="hero-slider-line" style="position:absolute;top:0;bottom:0;left:50%;width:1px;background:rgba(214,194,168,0.55);transform:translateX(-50%);pointer-events:none;z-index:10;"></div>
-  <div id="hero-slider-handle" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:52px;height:52px;border-radius:9999px;background:#3A2D25;border:1.5px solid rgba(214,194,168,0.8);z-index:11;display:flex;align-items:center;justify-content:center;cursor:ew-resize;animation:fiq-bounce-lr 3.5s ease-in-out infinite;">
+  <div id="hero-slider-handle" style="position:absolute;top:calc(100% - clamp(112px,15vh,150px));left:50%;transform:translate(-50%,-50%);width:52px;height:52px;border-radius:9999px;background:#3A2D25;border:1.5px solid rgba(214,194,168,0.8);z-index:11;display:flex;align-items:center;justify-content:center;cursor:ew-resize;animation:fiq-bounce-lr 3.5s ease-in-out infinite;">
     <svg width="22" height="10" viewBox="0 0 22 10" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M1 5H21M1 5L5 1M1 5L5 9M21 5L17 1M21 5L17 9" stroke="#D6C2A8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
     </svg>
@@ -680,7 +680,7 @@ input:focus, select:focus, textarea:focus {
 </section>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ SERVICES GRID ━━━ -->
-<section id="services" data-sf dir="rtl" style="background:#F5F2ED;padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px);">
+<section id="services" data-sf dir="rtl" style="background:#F5F2ED;padding:clamp(64px,8vw,100px) clamp(24px,5vw,80px);">
   <style>
     #services .sf-head{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(32px,5vw,96px);align-items:end;margin-bottom:clamp(48px,6vw,80px);}
     #services .sf-all{display:inline-flex;align-items:center;gap:14px;margin-top:28px;font-family:'GE SS Two','Arial',sans-serif;font-size:13px;letter-spacing:normal;text-transform:uppercase;color:#3A2D25;text-decoration:none;padding-bottom:6px;border-bottom:1px solid #8B6B4A;transition:color 0.4s cubic-bezier(0.25,0.46,0.45,0.94),border-color 0.4s cubic-bezier(0.25,0.46,0.45,0.94);}
@@ -811,7 +811,7 @@ input:focus, select:focus, textarea:focus {
 </section>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ VALUE PROPOSITION ━━━ -->
-<section id="edge" data-edge dir="rtl" style="--edge-gap:clamp(24px,5vw,80px);background:#F5F2ED;padding:clamp(80px,10vw,128px) 0 var(--edge-gap);">
+<section id="edge" data-edge dir="rtl" style="--edge-gap:clamp(24px,5vw,80px);background:#F5F2ED;padding:clamp(64px,8vw,100px) 0 var(--edge-gap);">
   <style>
     #edge .fiq-edge-head{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(32px,5vw,96px);align-items:end;margin-bottom:clamp(48px,6vw,72px);}
     #edge .fiq-edge-cta{display:inline-flex;align-items:center;gap:14px;margin-top:28px;font-family:'GE SS Two','Arial',sans-serif;font-size:13px;letter-spacing:normal;text-transform:uppercase;color:#3A2D25;text-decoration:none;padding-bottom:6px;border-bottom:1px solid #8B6B4A;transition:color 0.4s cubic-bezier(0.25,0.46,0.45,0.94),border-color 0.4s cubic-bezier(0.25,0.46,0.45,0.94);}
@@ -918,7 +918,7 @@ input:focus, select:focus, textarea:focus {
 </section>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ PORTFOLIO ━━━━━━━━ -->
-<section id="portfolio" style="position:relative;overflow:hidden;background:#3A2D25;padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px);">
+<section id="portfolio" style="position:relative;overflow:hidden;background:#3A2D25;padding:clamp(64px,8vw,100px) clamp(24px,5vw,80px);">
   <style>
     /* Selected Work: hovering a card brings its project image in as the section background */
     .fiq-pf-bgs{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
@@ -982,7 +982,7 @@ input:focus, select:focus, textarea:focus {
 </section>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ BLOG ━━━━━━━━━━━━ -->
-<section id="blog" dir="rtl" style="background:#FFFFFF;padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px);">
+<section id="blog" dir="rtl" style="background:#FFFFFF;padding:clamp(64px,8vw,100px) clamp(24px,5vw,80px);">
   <style>
     #blog .jr-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:clamp(40px,5vw,64px);}
     #blog .jr-all{display:inline-flex;align-items:center;gap:14px;font-family:'GE SS Two','Arial',sans-serif;font-size:13px;letter-spacing:normal;text-transform:uppercase;color:#3A2D25;text-decoration:none;padding-bottom:6px;border-bottom:1px solid #8B6B4A;transition:color 0.4s cubic-bezier(0.25,0.46,0.45,0.94),border-color 0.4s cubic-bezier(0.25,0.46,0.45,0.94);}
@@ -1071,7 +1071,7 @@ input:focus, select:focus, textarea:focus {
 </section>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ CONTACT BANNER ━━━ -->
-<section id="contact" dir="rtl" style="background:#5B4636;padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px);position:relative;overflow:hidden;">
+<section id="contact" dir="rtl" style="background:#5B4636;padding:clamp(64px,8vw,100px) clamp(24px,5vw,80px);position:relative;overflow:hidden;">
   <style>
     #contact .fiq-cta2-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(48px,6vw,96px);align-items:center;}
     #contact .fiq-cta2-row{display:grid;grid-template-columns:44px 1fr auto;align-items:center;gap:16px;padding:26px 0;border-top:1px solid rgba(214,194,168,0.18);text-decoration:none;transition:border-color 0.4s cubic-bezier(0.25,0.46,0.45,0.94);}
@@ -1144,7 +1144,7 @@ input:focus, select:focus, textarea:focus {
 </section>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ FOOTER ━━━━━━━━━━━ -->
-<footer id="fiq-footer" style="overflow:hidden;background:#1F1F1F;padding:clamp(72px,9vw,120px) clamp(24px,5vw,80px) 32px;">
+<footer id="fiq-footer" style="overflow:hidden;background:#1F1F1F;padding:clamp(64px,8vw,100px) clamp(24px,5vw,80px) 32px;">
   <style>
     #fiq-footer .fiq-ft-top{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(40px,6vw,96px);align-items:end;}
     #fiq-footer .fiq-ft-statement{font-family:'GE SS Two','Arial',sans-serif;font-size:clamp(26px,2.8vw,42px);font-weight:500;line-height:1.2;letter-spacing:normal;color:#F5F2ED;margin:28px 0 0;max-width:640px;}

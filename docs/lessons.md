@@ -75,3 +75,13 @@ The looping carousels (`[clones][originals][clones]`) only wrap if one set of ca
 - Symptom: on article pages the new footer appeared inside the pull quote and the old footer stayed at the bottom, widening the article on phones.
 - Cause: a quote attribution `<footer>` inside `<blockquote>` came before the site footer, and the replacement matched the first `<footer>`.
 - Rule: select the site footer by `id="fiq-footer"` or its own `background:#1F1F1F` style, and confirm each page ends with exactly one `#fiq-footer`.
+
+## Section spacing standard (2026-10-05)
+- Every content section uses `padding: clamp(64px,8vw,100px)` top and bottom (100px on desktop, 64px minimum on phones), with `clamp(24px,5vw,80px)` at the sides.
+- Exceptions: page heroes (the first section, which also clears the fixed header) and full-bleed layouts that carry their spacing on inner elements.
+- When adding a section, use the standard value; do not reintroduce 120/128/136px variants.
+
+## Uncommitted pages can be wiped by an abrupt shutdown (2026-10-05)
+- Symptom: after the session ended abruptly, `about-us.dc.html`, `about-us.ar.dc.html` and one build script kept their byte length but every byte was zero. A day of uncommitted About page work was gone from disk.
+- Recovery: restore the pages from the last commit, rerun each section's build script (each rebuilds its whole section), then replay the few direct page edits recorded in the session transcript.
+- Rule: keep generated sections reproducible from scripts, and commit (or copy) work-in-progress pages after each approved section instead of leaving a whole page's redesign uncommitted.
