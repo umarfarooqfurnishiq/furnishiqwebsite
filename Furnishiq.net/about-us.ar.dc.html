@@ -666,7 +666,9 @@ input:focus, select:focus, textarea:focus {
     [data-about-hero] .sf-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.8s cubic-bezier(0.25,0.46,0.45,0.94);}
     [data-about-hero] .sf-slide.is-active{opacity:1;}
     [data-about-hero] .sf-slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:var(--o1);transform:scale(1.02);}
-    [data-about-hero] .sf-slide.is-active img{animation:sf-drift 10s linear forwards;}
+    [data-about-hero] .sf-slide.is-leaving{z-index:1;}
+    [data-about-hero] .sf-slide.is-active{z-index:2;}
+    [data-about-hero] .sf-slide.is-active img,[data-about-hero] .sf-slide.is-leaving img{animation:sf-drift 10s linear forwards;}
     @keyframes sf-drift{from{transform:scale(1.02);object-position:var(--o1);}to{transform:scale(1.14);object-position:var(--o2);}}
     [data-about-hero] .sf-veil{position:absolute;inset:0;background:rgba(18,13,9,0.46);}
     [data-about-hero] .sf-door{position:absolute;left:0;right:0;height:50.5%;background:#120D09;z-index:4;transition:transform 1.6s cubic-bezier(0.77,0,0.18,1) 0.15s;}
@@ -728,7 +730,7 @@ input:focus, select:focus, textarea:focus {
     @media(prefers-reduced-motion:reduce){
       [data-about-hero] .sf-door{display:none;}
       [data-about-hero] .sf-slide,[data-about-hero] .sf-reveal{transition:none;}
-      [data-about-hero] .sf-slide.is-active img,[data-about-hero] .sf-story svg{animation:none;}
+      [data-about-hero] .sf-slide.is-active img,[data-about-hero] .sf-slide.is-leaving img,[data-about-hero] .sf-story svg{animation:none;}
     }
   </style>
     <div class="sf-slide is-active" data-sf-slide style="--o1:50% 55%;--o2:30% 40%;"><img src="uploads/courtyard-residence-grand-majlis-riyadh-1920.webp" srcset="uploads/courtyard-residence-grand-majlis-riyadh-1280.webp 1280w, uploads/courtyard-residence-grand-majlis-riyadh-1920.webp 1920w, uploads/courtyard-residence-grand-majlis-riyadh-2752.webp 2752w" sizes="100vw" alt="المجلس الكبير" fetchpriority="high" decoding="async"></div>
@@ -1928,51 +1930,6 @@ class Component extends DCLogic {
       }
     }
 
-    // ── HERO: STUDIO FILM (aperture opens, scenes dissolve) ──────────────────
-    {
-      const ah = document.querySelector('[data-about-hero]');
-      if (ah) {
-        const slides = [...ah.querySelectorAll('[data-sf-slide]')];
-        const tabs = [...ah.querySelectorAll('[data-sf-tab]')];
-        const counts = [...ah.querySelectorAll('[data-count]')].filter(el => el.dataset.count !== '2007');
-        let current = 0, timer = null;
-        const show = (n) => {
-          current = n;
-          slides.forEach((s, k) => {
-            const on = k === n;
-            if (on && !s.classList.contains('is-active')) { const im = s.querySelector('img'); im.style.animation = 'none'; void im.offsetWidth; im.style.animation = ''; }
-            s.classList.toggle('is-active', on);
-          });
-          tabs.forEach((t, k) => {
-            t.classList.toggle('is-active', k === n);
-            const bar = t.querySelector('.sf-bar span'); bar.style.animation = 'none'; void bar.offsetWidth; bar.style.animation = '';
-          });
-        };
-        const schedule = () => {
-          clearTimeout(timer);
-          if (reduced || ah.classList.contains('is-paused')) return;
-          timer = setTimeout(() => { show((current + 1) % slides.length); schedule(); }, 7000);
-        };
-        tabs.forEach((t, i) => t.addEventListener('click', () => { ah.classList.add('is-paused'); show(i); clearTimeout(timer); }));
-        const countUp = () => {
-          if (reduced) { counts.forEach(el => { el.textContent = el.dataset.count; }); return; }
-          const t0 = performance.now(), dur = 1600;
-          const tick = (now) => { const p = Math.min((now - t0) / dur, 1), e = 1 - Math.pow(1 - p, 3); counts.forEach(el => { el.textContent = Math.round(+el.dataset.count * e); }); if (p < 1) requestAnimationFrame(tick); };
-          requestAnimationFrame(tick);
-        };
-        const first = slides[0].querySelector('img');
-        const open = () => {
-          if (ah.classList.contains('is-open')) return;
-          ah.classList.add('is-ready');
-          setTimeout(() => ah.classList.add('is-open'), reduced ? 0 : 500);
-          setTimeout(countUp, reduced ? 0 : 2300);
-          schedule();
-        };
-        if (first.complete) open(); else { first.addEventListener('load', open); setTimeout(open, 1800); }
-        document.addEventListener('visibilitychange', () => { if (document.hidden) clearTimeout(timer); else schedule(); });
-      }
-    }
-
     // ── WHY: FOUR PILLARS, ONE ROOF (pillars rise and align on scroll) ──────
     {
       const pl = document.querySelector('[data-pillars]');
@@ -2286,6 +2243,62 @@ class Component extends DCLogic {
           io2.observe(sy.querySelector('.gp'));
           const el = sy.querySelector('.sy-elev'); const io3 = new IntersectionObserver(([e]) => { if (e.isIntersecting) { el.classList.add('is-in'); io3.disconnect(); } }, { threshold: 0.25 }); io3.observe(el);
         }
+      }
+    }
+
+    // ── HERO: STUDIO FILM (aperture opens, scenes dissolve) ──────────────────
+    {
+      const ah = document.querySelector('[data-about-hero]');
+      if (ah) {
+        const slides = [...ah.querySelectorAll('[data-sf-slide]')];
+        const tabs = [...ah.querySelectorAll('[data-sf-tab]')];
+        const counts = [...ah.querySelectorAll('[data-count]')].filter(el => el.dataset.count !== '2007');
+        let current = 0, timer = null;
+        const leaveTimers = new Map();
+        const show = (n) => {
+          if (n === current && slides[n].classList.contains('is-active')) return;
+          current = n;
+          slides.forEach((s, k) => {
+            const on = k === n, was = s.classList.contains('is-active');
+            if (on && !was) {
+              clearTimeout(leaveTimers.get(s)); s.classList.remove('is-leaving');
+              const im = s.querySelector('img'); im.style.animation = 'none'; void im.offsetWidth; im.style.animation = '';
+            }
+            // the outgoing scene keeps its slow zoom while it dissolves, instead of snapping back
+            if (!on && was) {
+              s.classList.add('is-leaving');
+              clearTimeout(leaveTimers.get(s));
+              leaveTimers.set(s, setTimeout(() => s.classList.remove('is-leaving'), 1900));
+            }
+            s.classList.toggle('is-active', on);
+          });
+          tabs.forEach((t, k) => {
+            t.classList.toggle('is-active', k === n);
+            const bar = t.querySelector('.sf-bar span'); bar.style.animation = 'none'; void bar.offsetWidth; bar.style.animation = '';
+          });
+        };
+        const schedule = () => {
+          clearTimeout(timer);
+          if (reduced || ah.classList.contains('is-paused')) return;
+          timer = setTimeout(() => { show((current + 1) % slides.length); schedule(); }, 7000);
+        };
+        tabs.forEach((t, i) => t.addEventListener('click', () => { ah.classList.add('is-paused'); show(i); clearTimeout(timer); }));
+        const countUp = () => {
+          if (reduced) { counts.forEach(el => { el.textContent = el.dataset.count; }); return; }
+          const t0 = performance.now(), dur = 1600;
+          const tick = (now) => { const p = Math.min((now - t0) / dur, 1), e = 1 - Math.pow(1 - p, 3); counts.forEach(el => { el.textContent = Math.round(+el.dataset.count * e); }); if (p < 1) requestAnimationFrame(tick); };
+          requestAnimationFrame(tick);
+        };
+        const first = slides[0].querySelector('img');
+        const open = () => {
+          if (ah.classList.contains('is-open')) return;
+          ah.classList.add('is-ready');
+          setTimeout(() => ah.classList.add('is-open'), reduced ? 0 : 500);
+          setTimeout(countUp, reduced ? 0 : 2300);
+          schedule();
+        };
+        if (first.complete) open(); else { first.addEventListener('load', open); setTimeout(open, 1800); }
+        document.addEventListener('visibilitychange', () => { if (document.hidden) clearTimeout(timer); else schedule(); });
       }
     }
 
