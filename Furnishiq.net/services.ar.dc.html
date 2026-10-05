@@ -587,25 +587,114 @@ input:focus, select:focus, textarea:focus {
 </nav>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ HERO ━━ -->
-<section data-screen-label="Hero" style="position:relative;background:#1E1610;overflow:hidden;min-height:clamp(620px,66vh,760px);display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(100px,14vh,150px) clamp(24px,5vw,80px) clamp(56px,7vw,88px);">
-  <div style="position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=2400&q=30');background-size:cover;background-position:center;opacity:0.16;pointer-events:none;"></div>
-  <div style="position:absolute;inset:0;background:linear-gradient(115deg,rgba(30,22,16,0.96) 0%,rgba(30,22,16,0.72) 55%,rgba(30,22,16,0.94) 100%);pointer-events:none;"></div>
-  <div style="position:absolute;top:-140px;left:-100px;width:480px;height:480px;border:1px solid rgba(214,194,168,0.06);border-radius:50%;pointer-events:none;"></div>
-  <div style="position:absolute;top:-60px;left:20px;width:280px;height:280px;border:1px solid rgba(214,194,168,0.045);border-radius:50%;pointer-events:none;"></div>
-
-  <div style="position:relative;z-index:1;max-width:1280px;width:100%;margin:0 auto;">
-    <div data-reveal style="opacity:0;transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;align-items:center;gap:16px;margin-bottom:28px;">
-      <span style="display:block;width:32px;height:1px;background:#D6C2A8;flex-shrink:0;"></span>
-      <span style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:rgba(214,194,168,0.75);">ما نقدمه</span>
-    </div>
-    <h1 data-reveal data-reveal-delay="0.08" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'GE SS Two','Arial',sans-serif;font-size:clamp(36px,4.6vw,64px);font-weight:600;line-height:1.05;letter-spacing:-0.01em;color:#FFFFFF;margin:0 0 24px;max-width:820px;text-wrap:balance;">خدماتنا</h1>
-    <p data-reveal data-reveal-delay="0.14" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'GE SS Two','Arial',sans-serif;font-size:15px;line-height:1.85;color:rgba(214,194,168,0.6);max-width:560px;margin-bottom:36px;">التصميم الداخلي، التشطيبات، الهندسة والأنظمة الكهروميكانيكية، وحلول الأثاث — استوديو واحد متكامل للتصميم والتنفيذ، يُنجز كل شيء من البداية إلى النهاية.</p>
-    <div data-reveal data-reveal-delay="0.2" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;align-items:center;gap:12px;">
-      <a href="/ar" style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:rgba(214,194,168,0.55);text-decoration:none;transition:color 0.25s;">الرئيسية</a>
-      <span style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;color:rgba(214,194,168,0.3);">/</span>
-      <span style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:rgba(214,194,168,0.8);">الخدمات</span>
+<section data-svc-hero data-screen-label="Hero" dir="rtl" style="position:relative;background:#120D09;overflow:hidden;">
+  <style>
+    [data-svc-hero]{height:100vh;min-height:680px;}
+    [data-svc-hero] .sh-panels{position:absolute;inset:0;display:flex;}
+    [data-svc-hero] .sh-p{position:relative;flex:1 1 0;min-width:0;overflow:hidden;display:block;color:#F5F2ED;text-decoration:none;clip-path:inset(100% 0 0 0);transition:flex-grow 1s cubic-bezier(0.25,0.46,0.45,0.94),clip-path 1.3s cubic-bezier(0.77,0,0.18,1) calc(var(--i) * 0.14s);}
+    [data-svc-hero].is-ready .sh-p{clip-path:inset(0 0 0 0);}
+    [data-svc-hero] .sh-p+.sh-p{border-inline-start:1px solid rgba(214,194,168,0.16);}
+    [data-svc-hero] .sh-p.is-on{flex-grow:2.3;}
+    [data-svc-hero] .sh-img{position:absolute;inset:0;}
+    [data-svc-hero] .sh-img img{width:100%;height:100%;object-fit:cover;transform:scale(1.12);transition:transform 1.8s cubic-bezier(0.25,0.46,0.45,0.94);}
+    [data-svc-hero].is-ready .sh-img img{transform:scale(1.04);}
+    [data-svc-hero] .sh-p.is-on .sh-img img{transform:scale(1);}
+    [data-svc-hero] .sh-veil{position:absolute;inset:0;background:rgba(18,13,9,0.66);transition:background 0.9s cubic-bezier(0.25,0.46,0.45,0.94);}
+    [data-svc-hero] .sh-p.is-on .sh-veil{background:rgba(18,13,9,0.38);}
+    [data-svc-hero] .sh-meta{position:absolute;inset-inline:0;bottom:0;z-index:1;display:flex;flex-direction:column;gap:10px;padding:clamp(24px,2.6vw,44px);}
+    [data-svc-hero] .sh-n{font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.2em;color:#D6C2A8;}
+    [data-svc-hero] .sh-name{font-family:'GE SS Two','Arial',sans-serif;font-size:clamp(18px,1.6vw,26px);line-height:1.25;color:#F5F2ED;}
+    [data-svc-hero] .sh-more{display:grid;grid-template-rows:0fr;transition:grid-template-rows 0.8s cubic-bezier(0.25,0.46,0.45,0.94);}
+    [data-svc-hero] .sh-p.is-on .sh-more{grid-template-rows:1fr;}
+    [data-svc-hero] .sh-more-in{overflow:hidden;display:flex;flex-direction:column;gap:18px;opacity:0;transform:translateY(12px);transition:opacity 0.6s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);}
+    [data-svc-hero] .sh-p.is-on .sh-more-in{opacity:1;transform:none;transition-delay:0.25s;}
+    [data-svc-hero] .sh-tag{font-family:'GE SS Two','Arial',sans-serif;font-size:16px;line-height:1.6;color:rgba(245,242,237,0.82);max-width:30ch;}
+    [data-svc-hero] .sh-go{display:inline-flex;align-items:center;gap:12px;font-family:'GE SS Two','Arial',sans-serif;font-size:13px;letter-spacing:normal;text-transform:uppercase;color:#D6C2A8;}
+    [data-svc-hero] .sh-arrow{display:inline-flex;transform:scaleX(-1);}
+    [data-svc-hero] .sh-p:focus-visible{outline:1px solid #D6C2A8;outline-offset:-8px;}
+    [data-svc-hero] .sh-head{position:absolute;inset-inline:0;top:clamp(130px,21vh,210px);z-index:2;pointer-events:none;padding:0 clamp(24px,5vw,80px);}
+    [data-svc-hero] .sh-head-in{max-width:1280px;margin:0 auto;}
+    [data-svc-hero] .sh-eyebrow{display:flex;align-items:center;gap:16px;margin-bottom:26px;font-family:'GE SS Two','Arial',sans-serif;font-size:12px;letter-spacing:normal;text-transform:uppercase;color:rgba(214,194,168,0.85);}
+    [data-svc-hero] .sh-eyebrow i{display:block;width:32px;height:1px;background:#D6C2A8;}
+    [data-svc-hero] .sh-h1{font-family:'GE SS Two','Arial',sans-serif;font-weight:500;font-size:clamp(52px,8.4vw,136px);line-height:0.98;letter-spacing:0;color:#F5F2ED;margin:0;text-shadow:0 2px 40px rgba(18,13,9,0.45);}
+    [data-svc-hero] .sh-line{display:block;overflow:hidden;padding-bottom:0.12em;margin-bottom:-0.12em;}
+    [data-svc-hero] .sh-line span{display:block;transform:translateY(110%);transition:transform 1.2s cubic-bezier(0.25,0.46,0.45,0.94) 0.55s;}
+    [data-svc-hero].is-ready .sh-line span{transform:none;}
+    [data-svc-hero] .sh-intro{max-width:520px;margin:clamp(22px,2.4vw,32px) 0 0;font-family:'GE SS Two','Arial',sans-serif;font-size:17px;line-height:1.85;color:rgba(245,242,237,0.82);text-shadow:0 1px 18px rgba(18,13,9,0.6);}
+    [data-svc-hero] .sh-crumb{display:flex;align-items:center;gap:12px;margin-top:24px;pointer-events:auto;font-family:'GE SS Two','Arial',sans-serif;font-size:12px;letter-spacing:normal;text-transform:uppercase;}
+    [data-svc-hero] .sh-crumb a{color:rgba(214,194,168,0.65);text-decoration:none;transition:color 0.3s cubic-bezier(0.25,0.46,0.45,0.94);}
+    [data-svc-hero] .sh-crumb a:hover{color:#D6C2A8;}
+    [data-svc-hero] .sh-crumb span{color:rgba(214,194,168,0.9);}
+    [data-svc-hero] .sh-fade{opacity:0;transform:translateY(16px);transition:opacity 0.9s cubic-bezier(0.25,0.46,0.45,0.94) 0.95s,transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94) 0.95s;}
+    [data-svc-hero].is-ready .sh-fade{opacity:1;transform:none;}
+    [data-svc-hero] .sh-roof{position:absolute;top:calc(clamp(130px,21vh,210px) + 2px);inset-inline-end:max(clamp(24px,5vw,80px),calc((100% - 1280px) / 2));z-index:2;display:flex;align-items:center;gap:16px;font-family:'GE SS Two','Arial',sans-serif;font-size:12px;letter-spacing:normal;text-transform:uppercase;color:rgba(214,194,168,0.85);pointer-events:none;}
+    [data-svc-hero] .sh-roof i{display:block;width:32px;height:1px;background:#D6C2A8;}
+    @media(max-width:760px){
+      [data-svc-hero]{height:auto;min-height:0;display:flex;flex-direction:column;}
+      [data-svc-hero] .sh-head{position:relative;top:auto;order:-1;padding:clamp(120px,18vh,150px) 24px 40px;}
+      [data-svc-hero] .sh-roof{display:none;}
+      [data-svc-hero] .sh-panels{position:relative;inset:auto;flex-direction:column;}
+      [data-svc-hero] .sh-p{flex:none;height:104px;}
+      [data-svc-hero] .sh-p+.sh-p{border-inline-start:none;border-top:1px solid rgba(214,194,168,0.16);}
+      [data-svc-hero] .sh-p.is-on{flex-grow:0;}
+      [data-svc-hero] .sh-meta{top:0;flex-direction:row;align-items:center;gap:18px;padding:0 24px;}
+      [data-svc-hero] .sh-more{display:none;}
+      [data-svc-hero] .sh-p::after{content:"";position:absolute;inset-inline-end:24px;top:50%;width:9px;height:9px;border-top:1px solid #D6C2A8;border-inline-end:1px solid #D6C2A8;transform:translateY(-50%) rotate(-45deg);}
+      [data-svc-hero] .sh-veil,[data-svc-hero] .sh-p.is-on .sh-veil{background:rgba(18,13,9,0.58);}
+    }
+    @media(prefers-reduced-motion:reduce){
+      [data-svc-hero] *{transition:none!important;}
+      [data-svc-hero] .sh-p{clip-path:none;}
+      [data-svc-hero] .sh-line span,[data-svc-hero] .sh-fade{transform:none;opacity:1;}
+    }
+  </style>
+  <div class="sh-panels">
+      <a class="sh-p" href="#interior-design" data-sh-panel style="--i:0;">
+        <span class="sh-img"><img src="uploads/luxury-interior-design-material-board-riyadh-900.webp" srcset="uploads/luxury-interior-design-material-board-riyadh-600.webp 600w, uploads/luxury-interior-design-material-board-riyadh-900.webp 900w, uploads/luxury-interior-design-material-board-riyadh-1200.webp 1200w" sizes="(max-width:760px) 100vw, 133vh" alt="لوحة مواد من الحجر والخشب والأقمشة لمشروع داخلي في الرياض" style="object-position:50% 50%;" fetchpriority="high" decoding="async"></span>
+        <span class="sh-veil" aria-hidden="true"></span>
+        <span class="sh-meta">
+          <span class="sh-n">01</span>
+          <span class="sh-name">التصميم الداخلي</span>
+          <span class="sh-more"><span class="sh-more-in"><span class="sh-tag">حيث يتحول الإلهام إلى واقعك</span><span class="sh-go">استكشف<span class="sh-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></span></span></span>
+        </span>
+      </a>
+      <a class="sh-p" href="#fitout" data-sh-panel style="--i:1;">
+        <span class="sh-img"><img src="uploads/luxury-villa-fit-out-travertine-staircase-walnut-wall-riyadh-1200.webp" srcset="uploads/luxury-villa-fit-out-travertine-staircase-walnut-wall-riyadh-800.webp 800w, uploads/luxury-villa-fit-out-travertine-staircase-walnut-wall-riyadh-1200.webp 1200w, uploads/luxury-villa-fit-out-travertine-staircase-walnut-wall-riyadh-1600.webp 1600w" sizes="(max-width:760px) 100vw, 130vh" alt="تشطيب فيلا بدرج من الترافرتين وجدار من خشب الجوز، الرياض" style="object-position:40% 50%;" fetchpriority="high" decoding="async"></span>
+        <span class="sh-veil" aria-hidden="true"></span>
+        <span class="sh-meta">
+          <span class="sh-n">02</span>
+          <span class="sh-name">التشطيبات</span>
+          <span class="sh-more"><span class="sh-more-in"><span class="sh-tag">تحول مكاني كامل</span><span class="sh-go">استكشف<span class="sh-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></span></span></span>
+        </span>
+      </a>
+      <a class="sh-p" href="#mep" data-sh-panel style="--i:2;">
+        <span class="sh-img"><img src="uploads/mep-ceiling-services-installation-riyadh-900.webp" srcset="uploads/mep-ceiling-services-installation-riyadh-600.webp 600w, uploads/mep-ceiling-services-installation-riyadh-900.webp 900w, uploads/mep-ceiling-services-installation-riyadh-1200.webp 1200w" sizes="(max-width:760px) 100vw, 133vh" alt="تركيب الأنظمة فوق السقف في مشروع داخلي، الرياض" style="object-position:50% 40%;" loading="eager" decoding="async"></span>
+        <span class="sh-veil" aria-hidden="true"></span>
+        <span class="sh-meta">
+          <span class="sh-n">03</span>
+          <span class="sh-name">الهندسة والأنظمة الكهروميكانيكية</span>
+          <span class="sh-more"><span class="sh-more-in"><span class="sh-tag">أساس البيئات عالية الأداء</span><span class="sh-go">استكشف<span class="sh-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></span></span></span>
+        </span>
+      </a>
+      <a class="sh-p" href="#furniture" data-sh-panel style="--i:3;">
+        <span class="sh-img"><img src="uploads/furniture-gallery-living-room-set-1920.webp" srcset="uploads/furniture-gallery-living-room-set-1280.webp 1280w, uploads/furniture-gallery-living-room-set-1920.webp 1920w" sizes="(max-width:760px) 100vw, 179vh" alt="غرفة معيشة مؤثثة في معرض أثاث" style="object-position:55% 50%;" loading="eager" decoding="async"></span>
+        <span class="sh-veil" aria-hidden="true"></span>
+        <span class="sh-meta">
+          <span class="sh-n">04</span>
+          <span class="sh-name">حلول الأثاث</span>
+          <span class="sh-more"><span class="sh-more-in"><span class="sh-tag">الطبقة الأخيرة من الكمال المكاني</span><span class="sh-go">استكشف<span class="sh-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></span></span></span>
+        </span>
+      </a>
+  </div>
+  <div class="sh-head">
+    <div class="sh-head-in">
+      <div class="sh-eyebrow sh-fade"><i></i>ما نقدمه</div>
+      <h1 class="sh-h1"><span class="sh-line"><span>خدماتنا</span></span></h1>
+      <p class="sh-intro sh-fade">التصميم الداخلي، التشطيبات، الهندسة والأنظمة الكهروميكانيكية، وحلول الأثاث — استوديو واحد متكامل للتصميم والتنفيذ، يُنجز كل شيء من البداية إلى النهاية.</p>
+      <nav class="sh-crumb sh-fade" aria-label="Breadcrumb"><a href="/ar">الرئيسية</a><span aria-hidden="true">/</span><span>الخدمات</span></nav>
     </div>
   </div>
+  <span class="sh-roof sh-fade" aria-hidden="true">أربعة تخصصات. سقف واحد.<i></i></span>
 </section>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ STICKY SUB-NAV ━━ -->
@@ -1069,6 +1158,31 @@ class Component extends DCLogic {
         card.style.zIndex = '1';
       });
     });
+
+    // ── SERVICES HERO: FOUR PANELS, ONE ROOF ─────────────────────────────────
+    {
+      const hero = document.querySelector('[data-svc-hero]');
+      if (hero) {
+        const panels = Array.from(hero.querySelectorAll('[data-sh-panel]'));
+        const wide = window.matchMedia('(min-width: 761px)');
+        let auto = !reduced, timer = null, idx = 0, visible = true;
+        const set = (p) => panels.forEach((q) => q.classList.toggle('is-on', q === p));
+        const step = () => { if (!auto || !visible || !wide.matches) return; set(panels[idx % panels.length]); idx++; };
+        const stopAuto = () => { auto = false; clearInterval(timer); };
+        panels.forEach((p) => {
+          p.addEventListener('mouseenter', () => { stopAuto(); if (wide.matches) set(p); });
+          p.addEventListener('focus', () => { stopAuto(); set(p); });
+          p.addEventListener('click', (e) => {
+            const t = document.getElementById(p.getAttribute('href').slice(1));
+            if (t) { e.preventDefault(); t.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' }); }
+          });
+        });
+        hero.querySelector('.sh-panels').addEventListener('mouseleave', () => { if (wide.matches) set(null); });
+        new IntersectionObserver((es) => { visible = es[0].isIntersecting; }).observe(hero);
+        requestAnimationFrame(() => requestAnimationFrame(() => hero.classList.add('is-ready')));
+        if (auto) setTimeout(() => { step(); timer = setInterval(step, 3800); }, reduced ? 0 : 2300);
+      }
+    }
 
     // ── SCROLL REVEAL ────────────────────────────────────────────────────────
     if (reduced) {
