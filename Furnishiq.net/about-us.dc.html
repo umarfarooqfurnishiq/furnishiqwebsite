@@ -666,12 +666,13 @@ input:focus, select:focus, textarea:focus {
     [data-about-hero] .sf-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.8s cubic-bezier(0.25,0.46,0.45,0.94);}
     [data-about-hero] .sf-slide.is-active{opacity:1;}
     [data-about-hero] .sf-slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:var(--o1);transform:scale(1.02);}
+    /* layer order: slides 1-2, veil and fade 3, copy 4, opening doors 6 */
     [data-about-hero] .sf-slide.is-leaving{z-index:1;}
     [data-about-hero] .sf-slide.is-active{z-index:2;}
     [data-about-hero] .sf-slide.is-active img,[data-about-hero] .sf-slide.is-leaving img{animation:sf-drift 10s linear forwards;}
     @keyframes sf-drift{from{transform:scale(1.02);object-position:var(--o1);}to{transform:scale(1.14);object-position:var(--o2);}}
-    [data-about-hero] .sf-veil{position:absolute;inset:0;background:rgba(18,13,9,0.46);}
-    [data-about-hero] .sf-door{position:absolute;left:0;right:0;height:50.5%;background:#120D09;z-index:4;transition:transform 1.6s cubic-bezier(0.77,0,0.18,1) 0.15s;}
+    [data-about-hero] .sf-veil{position:absolute;inset:0;z-index:3;background:rgba(18,13,9,0.46);}
+    [data-about-hero] .sf-door{position:absolute;left:0;right:0;height:50.5%;background:#120D09;z-index:6;transition:transform 1.6s cubic-bezier(0.77,0,0.18,1) 0.15s;}
     [data-about-hero] .sf-door--t{top:0;transform-origin:top;}
     [data-about-hero] .sf-door--b{bottom:0;transform-origin:bottom;}
     [data-about-hero] .sf-door::after{content:"";position:absolute;left:0;right:0;height:1px;background:rgba(214,194,168,0.6);transform:scaleX(0);transition:transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);}
@@ -680,7 +681,7 @@ input:focus, select:focus, textarea:focus {
     [data-about-hero].is-ready .sf-door::after{transform:scaleX(1);}
     [data-about-hero].is-open .sf-door--t{transform:translateY(-101%);}
     [data-about-hero].is-open .sf-door--b{transform:translateY(101%);}
-    [data-about-hero] .sf-body{position:relative;z-index:2;flex:1;max-width:1280px;width:100%;margin:0 auto;padding:clamp(120px,18vh,180px) clamp(24px,5vw,80px) clamp(32px,5vh,56px);box-sizing:content-box;display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);align-items:end;gap:clamp(32px,5vw,96px);}
+    [data-about-hero] .sf-body{position:relative;z-index:4;flex:1;max-width:1280px;width:100%;margin:0 auto;padding:clamp(120px,18vh,180px) clamp(24px,5vw,80px) clamp(32px,5vh,56px);box-sizing:content-box;display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);align-items:end;gap:clamp(32px,5vw,96px);}
     [data-about-hero] .sf-h1{font-family:'Lama Sans',sans-serif;font-size:clamp(46px,6.4vw,112px);font-weight:500;line-height:0.98;letter-spacing:-0.03em;color:#FFFFFF;margin:0;}
     [data-about-hero] .sf-side{padding-bottom:0.5em;}
     [data-about-hero] .sf-desc{font-family:'Lama Sans',sans-serif;font-size:16px;line-height:1.8;color:rgba(245,242,237,0.86);margin:0;max-width:440px;}
@@ -691,7 +692,7 @@ input:focus, select:focus, textarea:focus {
     [data-about-hero] .sf-story:hover,[data-about-hero] .sf-story:focus-visible{border-color:#D6C2A8;}
     [data-about-hero] .sf-story svg{animation:sf-bob 2.4s cubic-bezier(0.25,0.46,0.45,0.94) infinite;}
     @keyframes sf-bob{0%,100%{transform:translateY(-2px)}50%{transform:translateY(4px)}}
-    [data-about-hero] .sf-tabs{position:relative;z-index:2;max-width:1280px;width:100%;margin:0 auto;padding:0 clamp(24px,5vw,80px) clamp(22px,3.4vh,34px);box-sizing:content-box;display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) auto;gap:clamp(16px,2.4vw,40px);align-items:end;}
+    [data-about-hero] .sf-tabs{position:relative;z-index:4;max-width:1280px;width:100%;margin:0 auto;padding:0 clamp(24px,5vw,80px) clamp(22px,3.4vh,34px);box-sizing:content-box;display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) auto;gap:clamp(16px,2.4vw,40px);align-items:end;}
     [data-about-hero] .sf-tab{display:flex;flex-direction:column;gap:10px;background:none;border:none;padding:0;cursor:pointer;text-align:start;color:rgba(245,242,237,0.55);transition:color 0.4s cubic-bezier(0.25,0.46,0.45,0.94);}
     [data-about-hero] .sf-tab.is-active,[data-about-hero] .sf-tab:hover,[data-about-hero] .sf-tab:focus-visible{color:#FFFFFF;}
     [data-about-hero] .sf-bar{display:block;height:1px;background:rgba(245,242,237,0.25);}
@@ -703,8 +704,8 @@ input:focus, select:focus, textarea:focus {
     [data-about-hero] .sf-tab-k [dir]{font-family:'Lama Sans',sans-serif;letter-spacing:0.2em;}
     [data-about-hero] .sf-tab-v{font-family:'Lama Sans',sans-serif;font-size:13px;}
     [data-about-hero] .sf-concept{font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.08em;color:rgba(245,242,237,0.5);white-space:nowrap;padding-bottom:2px;}
-    [data-about-hero] .ah-facts{position:relative;z-index:2;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));}
-    [data-about-hero] .sf-fade{position:absolute;left:0;right:0;bottom:0;height:min(42%,380px);background:linear-gradient(to top,#261C16 0%,rgba(38,28,22,0.88) 22%,rgba(38,28,22,0.55) 55%,rgba(38,28,22,0) 100%);pointer-events:none;z-index:1;}
+    [data-about-hero] .ah-facts{position:relative;z-index:4;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));}
+    [data-about-hero] .sf-fade{position:absolute;left:0;right:0;bottom:0;z-index:3;height:min(42%,380px);background:linear-gradient(to top,#261C16 0%,rgba(38,28,22,0.88) 22%,rgba(38,28,22,0.55) 55%,rgba(38,28,22,0) 100%);pointer-events:none;z-index:1;}
     [data-about-hero] .ah-fact{display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;padding:clamp(20px,2.8vh,30px) clamp(20px,3vw,56px) clamp(22px,3.2vh,34px);border-inline-start:1px solid rgba(214,194,168,0.5);}
     [data-about-hero] .ah-fact:first-child{border-inline-start:none;}
     [data-about-hero] .ah-num{font-family:'Lama Sans',sans-serif;font-size:clamp(28px,2.8vw,44px);line-height:1;color:#FFFFFF;letter-spacing:-0.01em;}
@@ -2259,62 +2260,6 @@ class Component extends DCLogic {
       }
     }
 
-    // ── HERO: STUDIO FILM (aperture opens, scenes dissolve) ──────────────────
-    {
-      const ah = document.querySelector('[data-about-hero]');
-      if (ah) {
-        const slides = [...ah.querySelectorAll('[data-sf-slide]')];
-        const tabs = [...ah.querySelectorAll('[data-sf-tab]')];
-        const counts = [...ah.querySelectorAll('[data-count]')].filter(el => el.dataset.count !== '2007');
-        let current = 0, timer = null;
-        const leaveTimers = new Map();
-        const show = (n) => {
-          if (n === current && slides[n].classList.contains('is-active')) return;
-          current = n;
-          slides.forEach((s, k) => {
-            const on = k === n, was = s.classList.contains('is-active');
-            if (on && !was) {
-              clearTimeout(leaveTimers.get(s)); s.classList.remove('is-leaving');
-              const im = s.querySelector('img'); im.style.animation = 'none'; void im.offsetWidth; im.style.animation = '';
-            }
-            // the outgoing scene keeps its slow zoom while it dissolves, instead of snapping back
-            if (!on && was) {
-              s.classList.add('is-leaving');
-              clearTimeout(leaveTimers.get(s));
-              leaveTimers.set(s, setTimeout(() => s.classList.remove('is-leaving'), 1900));
-            }
-            s.classList.toggle('is-active', on);
-          });
-          tabs.forEach((t, k) => {
-            t.classList.toggle('is-active', k === n);
-            const bar = t.querySelector('.sf-bar span'); bar.style.animation = 'none'; void bar.offsetWidth; bar.style.animation = '';
-          });
-        };
-        const schedule = () => {
-          clearTimeout(timer);
-          if (reduced || ah.classList.contains('is-paused')) return;
-          timer = setTimeout(() => { show((current + 1) % slides.length); schedule(); }, 7000);
-        };
-        tabs.forEach((t, i) => t.addEventListener('click', () => { ah.classList.add('is-paused'); show(i); clearTimeout(timer); }));
-        const countUp = () => {
-          if (reduced) { counts.forEach(el => { el.textContent = el.dataset.count; }); return; }
-          const t0 = performance.now(), dur = 1600;
-          const tick = (now) => { const p = Math.min((now - t0) / dur, 1), e = 1 - Math.pow(1 - p, 3); counts.forEach(el => { el.textContent = Math.round(+el.dataset.count * e); }); if (p < 1) requestAnimationFrame(tick); };
-          requestAnimationFrame(tick);
-        };
-        const first = slides[0].querySelector('img');
-        const open = () => {
-          if (ah.classList.contains('is-open')) return;
-          ah.classList.add('is-ready');
-          setTimeout(() => ah.classList.add('is-open'), reduced ? 0 : 500);
-          setTimeout(countUp, reduced ? 0 : 2300);
-          schedule();
-        };
-        if (first.complete) open(); else { first.addEventListener('load', open); setTimeout(open, 1800); }
-        document.addEventListener('visibilitychange', () => { if (document.hidden) clearTimeout(timer); else schedule(); });
-      }
-    }
-
     // ── JOURNEY: ONE ROOM, FOUR STATES (scroll scrubs survey → drawing → build → handover) ──
     {
       const jr = document.querySelector('[data-journey]');
@@ -2402,6 +2347,62 @@ class Component extends DCLogic {
             io.observe(info);
           }
         }
+      }
+    }
+
+    // ── HERO: STUDIO FILM (aperture opens, scenes dissolve) ──────────────────
+    {
+      const ah = document.querySelector('[data-about-hero]');
+      if (ah) {
+        const slides = [...ah.querySelectorAll('[data-sf-slide]')];
+        const tabs = [...ah.querySelectorAll('[data-sf-tab]')];
+        const counts = [...ah.querySelectorAll('[data-count]')].filter(el => el.dataset.count !== '2007');
+        let current = 0, timer = null;
+        const leaveTimers = new Map();
+        const show = (n) => {
+          if (n === current && slides[n].classList.contains('is-active')) return;
+          current = n;
+          slides.forEach((s, k) => {
+            const on = k === n, was = s.classList.contains('is-active');
+            if (on && !was) {
+              clearTimeout(leaveTimers.get(s)); s.classList.remove('is-leaving');
+              const im = s.querySelector('img'); im.style.animation = 'none'; void im.offsetWidth; im.style.animation = '';
+            }
+            // the outgoing scene keeps its slow zoom while it dissolves, instead of snapping back
+            if (!on && was) {
+              s.classList.add('is-leaving');
+              clearTimeout(leaveTimers.get(s));
+              leaveTimers.set(s, setTimeout(() => s.classList.remove('is-leaving'), 1900));
+            }
+            s.classList.toggle('is-active', on);
+          });
+          tabs.forEach((t, k) => {
+            t.classList.toggle('is-active', k === n);
+            const bar = t.querySelector('.sf-bar span'); bar.style.animation = 'none'; void bar.offsetWidth; bar.style.animation = '';
+          });
+        };
+        const schedule = () => {
+          clearTimeout(timer);
+          if (reduced || ah.classList.contains('is-paused')) return;
+          timer = setTimeout(() => { show((current + 1) % slides.length); schedule(); }, 7000);
+        };
+        tabs.forEach((t, i) => t.addEventListener('click', () => { ah.classList.add('is-paused'); show(i); clearTimeout(timer); }));
+        const countUp = () => {
+          if (reduced) { counts.forEach(el => { el.textContent = el.dataset.count; }); return; }
+          const t0 = performance.now(), dur = 1600;
+          const tick = (now) => { const p = Math.min((now - t0) / dur, 1), e = 1 - Math.pow(1 - p, 3); counts.forEach(el => { el.textContent = Math.round(+el.dataset.count * e); }); if (p < 1) requestAnimationFrame(tick); };
+          requestAnimationFrame(tick);
+        };
+        const first = slides[0].querySelector('img');
+        const open = () => {
+          if (ah.classList.contains('is-open')) return;
+          ah.classList.add('is-ready');
+          setTimeout(() => ah.classList.add('is-open'), reduced ? 0 : 500);
+          setTimeout(countUp, reduced ? 0 : 2300);
+          schedule();
+        };
+        if (first.complete) open(); else { first.addEventListener('load', open); setTimeout(open, 1800); }
+        document.addEventListener('visibilitychange', () => { if (document.hidden) clearTimeout(timer); else schedule(); });
       }
     }
 
