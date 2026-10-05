@@ -995,7 +995,7 @@ input:focus, select:focus, textarea:focus {
     #our-story .mp-k{display:block;font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#D6C2A8;margin-bottom:12px;}
     #our-story .mp-s{font-family:'Lama Sans',sans-serif;font-size:clamp(15px,1.15vw,17px);line-height:1.75;color:rgba(245,242,237,0.6);margin:0;max-width:440px;}
     #our-story .mp-head--r .mp-s{margin-inline-start:auto;}
-    #our-story .mp-rows{grid-column:1/-1;display:flex;flex-direction:column;border-top:1px solid rgba(214,194,168,0.14);}
+    #our-story .mp-rows{grid-column:1/-1;display:flex;flex-direction:column;}
     #our-story .mp-row{display:grid;grid-template-columns:auto minmax(40px,1fr) auto;align-items:center;gap:clamp(16px,2vw,32px);padding:clamp(12px,1.4vw,20px) 0;border-bottom:1px solid rgba(214,194,168,0.14);}
     #our-story .mp-need,#our-story .mp-give{font-family:'Lama Sans',sans-serif;font-size:clamp(30px,4.4vw,76px);font-weight:500;line-height:1.05;letter-spacing:-0.03em;}
     #our-story .mp-need{color:transparent;-webkit-text-stroke:1px rgba(214,194,168,0.5);transition:color 0.9s cubic-bezier(0.25,0.46,0.45,0.94) calc(1.1s + var(--i) * 0.35s),-webkit-text-stroke-color 0.9s cubic-bezier(0.25,0.46,0.45,0.94) calc(1.1s + var(--i) * 0.35s);}
@@ -1023,7 +1023,7 @@ input:focus, select:focus, textarea:focus {
     #our-story .sy-elev .ad-dim{stroke:rgba(214,194,168,0.12);}
     #our-story .sy-elev .ad-faint{stroke:rgba(214,194,168,0.07);}
     #our-story .sy-elev.is-in .ad{stroke-dashoffset:0;transform:none;}
-    #our-story .gp{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:clamp(40px,5vw,96px);align-items:center;margin-top:clamp(64px,8vw,100px);padding-top:clamp(64px,8vw,100px);border-top:1px solid rgba(214,194,168,0.16);}
+    #our-story .gp{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:clamp(40px,5vw,96px);align-items:center;margin-top:clamp(64px,8vw,100px);}
     #our-story .ob-svg{width:100%;height:auto;display:block;overflow:visible;}
     #our-story .ob-ring{fill:none;stroke:rgba(214,194,168,0.28);stroke-width:1;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.8s cubic-bezier(0.25,0.46,0.45,0.94) 0.2s;}
     #our-story .ob-ring--outer{stroke:rgba(214,194,168,0.12);stroke-dasharray:0.004 0.008;stroke-dashoffset:0;opacity:0;transition:opacity 1s cubic-bezier(0.25,0.46,0.45,0.94) 0.4s;transform-origin:320px 320px;animation:ob-spin 90s linear infinite;}
@@ -2038,22 +2038,6 @@ class Component extends DCLogic {
       }
     }
 
-    // ── OUR STORY: GAP CLOSES, GROUP ORBIT DRAWS ─────────────────────────────
-    {
-      const sy = document.querySelector('[data-story]');
-      if (sy) {
-        const mp = sy.querySelector('[data-map]');
-        if (mp) { if (reduced) mp.classList.add('is-in'); else { const io4 = new IntersectionObserver(([e]) => { if (e.isIntersecting) { mp.classList.add('is-in'); io4.disconnect(); } }, { threshold: 0.35 }); io4.observe(mp); } }
-        if (reduced) { sy.classList.add('is-in'); sy.querySelector('.sy-elev').classList.add('is-in'); }
-        else {
-          const io2 = new IntersectionObserver((es) => { if (es.some(e => e.isIntersecting)) { sy.classList.add('is-in'); io2.disconnect(); } }, { threshold: 0.15 });
-          io2.observe(sy.querySelector('.sy-gap'));
-          io2.observe(sy.querySelector('.gp'));
-          const el = sy.querySelector('.sy-elev'); const io3 = new IntersectionObserver(([e]) => { if (e.isIntersecting) { el.classList.add('is-in'); io3.disconnect(); } }, { threshold: 0.25 }); io3.observe(el);
-        }
-      }
-    }
-
     // ── CHAIRMAN: ARCH PORTRAIT, QUOTE READS ITSELF ON SCROLL ────────────────
     {
       const ch = document.querySelector('[data-chair]');
@@ -2283,6 +2267,22 @@ class Component extends DCLogic {
           const fmt = new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Riyadh', hour: '2-digit', minute: '2-digit' });
           const tick = () => { clock.textContent = fmt.format(new Date()); };
           tick(); setInterval(tick, 30000);
+        }
+      }
+    }
+
+    // ── OUR STORY: GAP CLOSES, GROUP ORBIT DRAWS ─────────────────────────────
+    {
+      const sy = document.querySelector('[data-story]');
+      if (sy) {
+        const mp = sy.querySelector('[data-map]');
+        if (mp) { if (reduced) mp.classList.add('is-in'); else { const io4 = new IntersectionObserver(([e]) => { if (e.isIntersecting) { mp.classList.add('is-in'); io4.disconnect(); } }, { threshold: 0.35 }); io4.observe(mp); } }
+        if (reduced) { sy.classList.add('is-in'); sy.querySelector('.sy-elev').classList.add('is-in'); }
+        else {
+          const io2 = new IntersectionObserver((es) => { if (es.some(e => e.isIntersecting)) { sy.classList.add('is-in'); io2.disconnect(); } }, { threshold: 0.15 });
+          io2.observe(sy.querySelector('.sy-gap'));
+          io2.observe(sy.querySelector('.gp'));
+          const el = sy.querySelector('.sy-elev'); const io3 = new IntersectionObserver(([e]) => { if (e.isIntersecting) { el.classList.add('is-in'); io3.disconnect(); } }, { threshold: 0.25 }); io3.observe(el);
         }
       }
     }
