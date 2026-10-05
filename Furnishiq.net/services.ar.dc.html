@@ -1286,10 +1286,10 @@ class Component extends DCLogic {
         const photo = sec.querySelector('.sd-photo'), loupe = sec.querySelector('.sd-zoom img');
         const marks = Array.from(sec.querySelectorAll('.sd-mark'));
         let auto = !reduced, timer = null, idx = 0, visible = false, cur = null, over = false;
-        // loupe: the copy inside the frame is scaled by k around the frame's centre
+        // loupe: only while the pointer is over the photo, the copy inside the frame zooms around its centre
         const zoom = () => {
           if (cur === null) return;
-          const [x, y, w, h] = items[cur].dataset.f.split(',').map(Number), k = over ? 1.6 : 1.2;
+          const [x, y, w, h] = items[cur].dataset.f.split(',').map(Number), k = over ? 1.6 : 1;
           const cx = x + w / 2, cy = y + h / 2;
           loupe.style.width = (k * 100 / w * 100) + '%'; loupe.style.height = (k * 100 / h * 100) + '%';
           loupe.style.left = ((w / 2 - k * cx) / w * 100) + '%'; loupe.style.top = ((h / 2 - k * cy) / h * 100) + '%';
