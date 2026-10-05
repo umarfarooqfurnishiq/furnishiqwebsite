@@ -723,7 +723,7 @@ input:focus, select:focus, textarea:focus {
     [data-svc-design] .sd-photo>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.04);transition:transform 2.4s cubic-bezier(0.25,0.46,0.45,0.94);}
     [data-svc-design].is-in .sd-photo>img{transform:none;}
     [data-svc-design] .sd-frame{position:absolute;left:var(--x,40%);top:var(--y,40%);width:var(--w,20%);height:var(--h,20%);border:1px solid rgba(245,242,237,0.9);box-shadow:0 0 0 200vmax rgba(18,13,9,0);opacity:0;pointer-events:none;transition:left 0.9s cubic-bezier(0.25,0.46,0.45,0.94),top 0.9s cubic-bezier(0.25,0.46,0.45,0.94),width 0.9s cubic-bezier(0.25,0.46,0.45,0.94),height 0.9s cubic-bezier(0.25,0.46,0.45,0.94),box-shadow 0.7s cubic-bezier(0.25,0.46,0.45,0.94),opacity 0.5s cubic-bezier(0.25,0.46,0.45,0.94);}
-    [data-svc-design].has-pick .sd-frame{opacity:1;box-shadow:0 0 0 200vmax rgba(18,13,9,0.56);}
+    [data-svc-design].has-pick .sd-frame{opacity:1;box-shadow:0 0 0 200vmax rgba(18,13,9,0.56);pointer-events:auto;cursor:zoom-in;}
     [data-svc-design] .sd-zoom{position:absolute;inset:0;overflow:hidden;}
     [data-svc-design] .sd-zoom img{position:absolute;max-width:none;transition:left 0.9s cubic-bezier(0.25,0.46,0.45,0.94),top 0.9s cubic-bezier(0.25,0.46,0.45,0.94),width 0.9s cubic-bezier(0.25,0.46,0.45,0.94),height 0.9s cubic-bezier(0.25,0.46,0.45,0.94);}
     [data-svc-design] .sd-frame::before,[data-svc-design] .sd-frame::after{content:"";position:absolute;width:14px;height:14px;border-color:#D6C2A8;border-style:solid;}
@@ -1286,7 +1286,7 @@ class Component extends DCLogic {
         const photo = sec.querySelector('.sd-photo'), loupe = sec.querySelector('.sd-zoom img');
         const marks = Array.from(sec.querySelectorAll('.sd-mark'));
         let auto = !reduced, timer = null, idx = 0, visible = false, cur = null, over = false;
-        // loupe: only while the pointer is over the photo, the copy inside the frame zooms around its centre
+        // loupe: only while the pointer is inside the frame, the copy inside it zooms around its centre
         const zoom = () => {
           if (cur === null) return;
           const [x, y, w, h] = items[cur].dataset.f.split(',').map(Number), k = over ? 1.6 : 1;
@@ -1294,8 +1294,8 @@ class Component extends DCLogic {
           loupe.style.width = (k * 100 / w * 100) + '%'; loupe.style.height = (k * 100 / h * 100) + '%';
           loupe.style.left = ((w / 2 - k * cx) / w * 100) + '%'; loupe.style.top = ((h / 2 - k * cy) / h * 100) + '%';
         };
-        photo.addEventListener('mouseenter', () => { over = true; zoom(); });
-        photo.addEventListener('mouseleave', () => { over = false; zoom(); });
+        frame.addEventListener('mouseenter', () => { over = true; zoom(); });
+        frame.addEventListener('mouseleave', () => { over = false; zoom(); });
         // the photo runs out to the screen edge on the reading-start side
         const bleed = () => {
           const r = sec.querySelector('.sd-wrap').getBoundingClientRect();
