@@ -28,5 +28,6 @@ Helpers:
 - `yr_outline.py` generates the double-line outline of "2007" used in `about_story.py` (needs `shapely`).
 - `cta_pairs.py` applies the site-wide button-pair rules (equal width, full width on phones, inverse hover on the outlined button) to the home, projects and thank-you pages.
 - `cta_audit.py` lists every container on a page that holds two or more button-style links.
+- `studio_map.py` draws `uploads/about-studio-map-riyadh.svg`, the line map behind the headquarters panel, from OpenStreetMap data around First Plaza. Fetch the two inputs from Overpass with a GET request and a descriptive User-Agent (POST from curl is refused), using `way["highway"](24.6655,46.6600,24.6865,46.6900);out geom;` and the same with `building`, then run `python scripts/about/studio_map.py osm_highway.json osm_building.json Furnishiq.net/uploads/about-studio-map-riyadh.svg`. The page credits OpenStreetMap, which the data licence requires.
 
 Edit a section by changing its script and rerunning it. Edits made directly in the page are overwritten the next time that section's script runs.

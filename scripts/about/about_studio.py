@@ -12,6 +12,7 @@ C = {
         phone="Phone", email="Email", wa="WhatsApp", wa_txt="Message the studio",
         call="Call the studio directly", write="Write to the studio", plate="Studio contact details",
         wa_sub="Open a conversation", day="The day in Riyadh",
+        addr="First Plaza, Al Takhassousi, Al Mathar Ash Shamali, Riyadh", pin="FurnishIQ Studio", maps="Headquarters: open in Google Maps", osm="Map data © OpenStreetMap contributors",
     ),
     "ar": dict(
         label="ابدأ مشروعك", h2="هل أنت مستعد لتصور مساحتك؟",
@@ -22,6 +23,7 @@ C = {
         phone="الهاتف", email="البريد الإلكتروني", wa="واتساب", wa_txt="راسل الاستوديو",
         call="اتصال مباشر بالاستوديو", write="راسل الاستوديو كتابياً", plate="بيانات التواصل مع الاستوديو",
         wa_sub="ابدأ محادثة", day="اليوم في الرياض",
+        addr="فيرست بلازا، طريق التخصصي، المعذر الشمالي، الرياض", pin="استوديو FurnishIQ", maps="المقر الرئيسي: افتح في خرائط Google", osm="بيانات الخريطة © OpenStreetMap",
     ),
 }
 ARROW_EN = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>'
@@ -93,6 +95,19 @@ def build(lang):
     #threshold a.th-cell:hover .th-go svg,#threshold a.th-cell:focus-visible .th-go svg{{transform:{'scaleX(-1) ' if ar else ''}translate(2px,-2px);}}
     #threshold .th-v{{display:block;font-family:{font};font-size:clamp(19px,1.7vw,24px);line-height:1.25;color:#F5F2ED;overflow-wrap:anywhere;}}
     #threshold .th-s{{display:block;margin-top:12px;font-family:{font};font-size:{'13px' if ar else '12px'};color:rgba(245,242,237,0.55);}}
+    #threshold .th-map{{position:absolute;top:0;bottom:0;inset-inline-start:calc(var(--out) * -1);inset-inline-end:0;overflow:hidden;pointer-events:none;}}
+    #threshold .th-map-a{{position:absolute;top:29%;inset-inline-end:16%;width:0;height:0;}}
+    #threshold .th-map img{{position:absolute;left:-720px;top:-420px;width:1440px;height:840px;max-width:none;opacity:0;transform:scale(1.08);transition:opacity 1.6s {EASE},transform 2.4s {EASE};}}
+    #threshold .th-band.is-in .th-map img{{opacity:0.42;transform:scale(1);}}
+    #threshold a.th-cell--map:hover .th-map img,#threshold a.th-cell--map:focus-visible .th-map img{{opacity:0.8;transform:scale(1.05);transition-duration:0.9s,1.4s;}}
+    #threshold .th-pin{{position:absolute;left:-5px;top:-5px;width:10px;height:10px;background:#D6C2A8;}}
+    #threshold .th-pin::before,#threshold .th-pin::after{{content:"";position:absolute;inset:-1px;border:1px solid #D6C2A8;animation:th-ping 2.8s {EASE} infinite;}}
+    #threshold .th-pin::after{{animation-delay:1.4s;}}
+    @keyframes th-ping{{from{{transform:scale(1);opacity:0.9;}}to{{transform:scale(4.2);opacity:0;}}}}
+    #threshold .th-tag{{position:absolute;top:-14px;inset-inline-end:18px;white-space:nowrap;padding:7px 10px;background:#1E1610;font-family:{font};font-size:{'12px' if ar else '9px'};letter-spacing:{track};text-transform:uppercase;color:#D6C2A8;}}
+    #threshold .th-osm{{position:absolute;bottom:10px;inset-inline-end:14px;z-index:1;font-family:{font};font-size:{'10px' if ar else '9px'};color:rgba(214,194,168,0.4);}}
+    #threshold .th-cell--map::before{{display:none;}}
+    #threshold .th-cell--map .th-s{{max-width:30ch;}}
     #threshold .th-time{{display:block;font-family:'Lama Sans',sans-serif;font-size:clamp(46px,5.4vw,80px);line-height:0.9;letter-spacing:-0.02em;font-variant-numeric:tabular-nums;color:#F5F2ED;}}
     #threshold .th-day{{display:flex;align-items:center;gap:12px;margin-top:clamp(18px,1.8vw,26px);font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.16em;color:rgba(214,194,168,0.6);}}
     #threshold .th-day i{{position:relative;flex:1;height:1px;background:rgba(214,194,168,0.22);}}
@@ -113,10 +128,14 @@ def build(lang):
       #threshold .th-ctas{{display:grid;grid-template-columns:1fr;width:100%;}}
       #threshold .th-grid{{grid-template-columns:1fr;}}
       #threshold .th-cell{{min-height:0;gap:32px;}}
+      #threshold .th-cell--map{{min-height:340px;}}
+      #threshold .th-map-a{{top:30%;inset-inline-end:14%;}}
       #threshold .th-cell+.th-cell{{border-inline-start:none;border-top:1px solid rgba(214,194,168,0.16);}}
     }}
     @media(prefers-reduced-motion:reduce){{
       #threshold *{{transition:none!important;}}
+      #threshold .th-pin::before,#threshold .th-pin::after{{animation:none;opacity:0;}}
+      #threshold .th-map img{{opacity:0.42;transform:none;}}
       #threshold .th-cell{{opacity:1;transform:none;}}
       #threshold .th-band::before{{transform:none;}}
     }}
@@ -142,7 +161,7 @@ def build(lang):
   </div>
   <div class="th-band" role="group" aria-label="{c['plate']}" data-th-info>
     <div class="th-grid">
-    <div class="th-cell"><div class="th-top"><span class="th-k"><span class="th-n">01</span>{c['hq']}</span></div><div class="th-txt"><span class="th-time" dir="ltr" data-th-time aria-label="{c['local']}">--:--</span><span class="th-day" dir="ltr" aria-hidden="true" data-th-day><span>00</span><i><b></b></i><span>24</span></span><span class="th-s">{c['city']}</span></div></div>
+    <a class="th-cell th-cell--map" href="https://www.google.com/maps?cid=2079283542092448688" target="_blank" rel="noopener" aria-label="{c['maps']}"><span class="th-map" aria-hidden="true"><span class="th-map-a"><img src="uploads/about-studio-map-riyadh.svg" alt="" width="2400" height="1400" loading="lazy" decoding="async"><span class="th-pin"></span><span class="th-tag" dir="{'rtl' if ar else 'ltr'}">{c['pin']}</span></span></span><div class="th-top"><span class="th-k"><span class="th-n">01</span>{c['hq']}</span><span class="th-go">{GO}</span></div><div class="th-txt"><span class="th-time" dir="ltr" data-th-time>--:--</span><span class="th-day" dir="ltr" aria-hidden="true" data-th-day><span>00</span><i><b></b></i><span>24</span></span><span class="th-s">{c['addr']}</span></div><span class="th-osm">{c['osm']}</span></a>
     <a class="th-cell" href="tel:+966580330627"><div class="th-top"><span class="th-k"><span class="th-n">02</span>{c['phone']}</span><span class="th-go">{GO}</span></div><div class="th-txt"><span class="th-v" dir="ltr">+966 58 033 0627</span><span class="th-s">{c['call']}</span></div></a>
     <a class="th-cell" href="mailto:info@furnishiq.net"><div class="th-top"><span class="th-k"><span class="th-n">03</span>{c['email']}</span><span class="th-go">{GO}</span></div><div class="th-txt"><span class="th-v" dir="ltr">info@furnishiq.net</span><span class="th-s">{c['write']}</span></div></a>
     <a class="th-cell" href="https://wa.me/966580330627" target="_blank" rel="noopener"><div class="th-top"><span class="th-k"><span class="th-n">04</span>{c['wa']}</span><span class="th-go">{GO}</span></div><div class="th-txt"><span class="th-v">{c['wa_txt']}</span><span class="th-s">{c['wa_sub']}</span></div></a>
