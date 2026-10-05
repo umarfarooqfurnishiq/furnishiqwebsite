@@ -921,121 +921,108 @@ input:focus, select:focus, textarea:focus {
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━ 3. ENGINEERING & MEP ━ -->
 <section id="mep" data-screen-label="Engineering &amp; MEP" data-svc-mep dir="rtl" style="scroll-margin-top:var(--fiq-svc-offset,132px);background:#F5F2ED;color:#3A2D25;position:relative;padding:clamp(64px,8vw,100px) clamp(24px,5vw,80px);overflow:clip;">
   <style>
-    [data-svc-mep] .mx-wrap{max-width:1280px;margin:0 auto;}
-    [data-svc-mep] .mx-head{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:clamp(32px,5vw,88px);align-items:end;margin-bottom:clamp(40px,4.4vw,64px);}
-    [data-svc-mep] .mx-eyebrow{display:flex;align-items:center;gap:16px;margin-bottom:24px;font-family:'GE SS Two','Arial',sans-serif;font-size:12px;letter-spacing:normal;text-transform:uppercase;color:#8B6B4A;}
-    [data-svc-mep] .mx-eyebrow i{display:block;width:32px;height:1px;background:#8B6B4A;}
-    [data-svc-mep] .mx-h2{font-family:'GE SS Two','Arial',sans-serif;font-weight:500;font-size:clamp(32px,3.8vw,54px);line-height:1.08;letter-spacing:0;color:#1F1F1F;margin:0;text-wrap:balance;}
-    [data-svc-mep] .mx-body{font-family:'GE SS Two','Arial',sans-serif;font-size:16px;line-height:1.85;color:#5B4636;margin:0 0 28px;}
-    [data-svc-mep] .mx-cta{display:inline-flex;align-items:center;gap:12px;padding:17px 30px;background:#3A2D25;color:#F5F2ED;text-decoration:none;font-family:'GE SS Two','Arial',sans-serif;font-size:13px;letter-spacing:normal;text-transform:uppercase;border:1px solid #3A2D25;transition:background 0.4s cubic-bezier(0.25,0.46,0.45,0.94),color 0.4s cubic-bezier(0.25,0.46,0.45,0.94);}
-    [data-svc-mep] .mx-cta:hover,[data-svc-mep] .mx-cta:focus-visible{background:transparent;color:#3A2D25;}
-    [data-svc-mep] .mx-sheet{position:relative;border:1px solid rgba(58,45,37,0.22);background:#FBF9F6;padding:clamp(16px,2vw,28px) clamp(16px,2vw,28px) 0;}
-    [data-svc-mep] .mx-pan{overflow-x:auto;scrollbar-width:none;}
-    [data-svc-mep] .mx-pan::-webkit-scrollbar{display:none;}
-    [data-svc-mep] .mx-svg{display:block;width:100%;height:auto;min-width:720px;direction:ltr;overflow:visible;}
-    [data-svc-mep] .mx-svg path{fill:none;stroke-linecap:square;stroke-linejoin:miter;}
-    [data-svc-mep] .mx-arch path{stroke:rgba(58,45,37,0.5);stroke-width:1.4;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 2.2s cubic-bezier(0.25,0.46,0.45,0.94);}
-    [data-svc-mep].is-in .mx-arch path{stroke-dashoffset:0;}
-    [data-svc-mep] .mx-svg .mx-cut path{fill:rgba(58,45,37,0.13);stroke:none;opacity:0;transition:opacity 1.2s cubic-bezier(0.25,0.46,0.45,0.94) 1s;}
-    [data-svc-mep] .mx-svg .mx-ground{stroke:rgba(58,45,37,0.22);stroke-width:1;opacity:0;transition:opacity 1.2s cubic-bezier(0.25,0.46,0.45,0.94) 1.2s;}
-    [data-svc-mep].is-in .mx-cut path,[data-svc-mep].is-in .mx-ground{opacity:1;}
-    [data-svc-mep] .mx-ceil path{stroke:rgba(58,45,37,0.3);stroke-width:1;stroke-dasharray:6 6;opacity:0;transition:opacity 1s cubic-bezier(0.25,0.46,0.45,0.94) 1.2s;}
-    [data-svc-mep] .mx-furn path{stroke:rgba(58,45,37,0.28);stroke-width:1;opacity:0;transition:opacity 1.2s cubic-bezier(0.25,0.46,0.45,0.94) 1.4s;}
-    [data-svc-mep] .mx-rooms text{fill:rgba(58,45,37,0.5);letter-spacing:0;text-transform:uppercase;opacity:0;transition:opacity 1s cubic-bezier(0.25,0.46,0.45,0.94) 1.6s;}
-    [data-svc-mep].is-in .mx-ceil path,[data-svc-mep].is-in .mx-furn path,[data-svc-mep].is-in .mx-rooms text{opacity:1;}
-    [data-svc-mep] .mx-sys--hvac{--tone:#8B6B4A;}
-    [data-svc-mep] .mx-sys--power{--tone:#1F1F1F;}
-    [data-svc-mep] .mx-sys--water{--tone:#5B4636;}
-    [data-svc-mep] .mx-sys--fire{--tone:#3A2D25;}
-    [data-svc-mep] .mx-sys--data{--tone:#8B6B4A;}
-    [data-svc-mep] .mx-sys{transition:opacity 0.6s cubic-bezier(0.25,0.46,0.45,0.94);}
-    [data-svc-mep] .mx-base path{stroke:var(--tone);stroke-width:var(--w);stroke-dasharray:1;stroke-dashoffset:1;opacity:0.55;transition:stroke-dashoffset 2s cubic-bezier(0.25,0.46,0.45,0.94) var(--d),opacity 0.6s cubic-bezier(0.25,0.46,0.45,0.94);}
-    [data-svc-mep].is-in .mx-base path{stroke-dashoffset:0;}
-    [data-svc-mep] .mx-fit{stroke:var(--tone);stroke-width:1.3;opacity:0;transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94) calc(var(--d) + 1.2s);}
-    [data-svc-mep].is-in .mx-fit{opacity:0.55;}
-    [data-svc-mep] .mx-flow path{stroke:var(--tone);stroke-width:calc(var(--w) * 1.5px + 1.6px);stroke-dasharray:var(--dash);opacity:0;animation:mx-flow 1.4s linear infinite;animation-play-state:paused;transition:opacity 0.5s cubic-bezier(0.25,0.46,0.45,0.94);}
-    [data-svc-mep] .mx-lab text{fill:var(--tone);letter-spacing:0;text-transform:uppercase;opacity:0;transition:opacity 0.5s cubic-bezier(0.25,0.46,0.45,0.94);}
-    @keyframes mx-flow{to{stroke-dashoffset:-44;}}
-    [data-svc-mep].has-pick .mx-sys{opacity:0.16;}
-    [data-svc-mep] .mx-sys.is-on{opacity:1!important;}
-    [data-svc-mep] .mx-sys.is-on .mx-base path{opacity:0.9;}
-    [data-svc-mep] .mx-sys.is-on .mx-fit{opacity:1;transition-delay:0s;}
-    [data-svc-mep] .mx-sys.is-on .mx-flow path{opacity:1;animation-play-state:running;}
-    [data-svc-mep] .mx-sys.is-on .mx-lab text{opacity:1;}
-    [data-svc-mep] .mx-ticks path{stroke:#8B6B4A;stroke-width:2.4;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 0.5s cubic-bezier(0.25,0.46,0.45,0.94);}
-    [data-svc-mep].is-test .mx-ticks path{stroke-dashoffset:0;}
-    [data-svc-mep].is-test .mx-ticks path:nth-child(2){transition-delay:0.15s;}
-    [data-svc-mep].is-test .mx-ticks path:nth-child(3){transition-delay:0.3s;}
-    [data-svc-mep].is-test .mx-ticks path:nth-child(4){transition-delay:0.45s;}
-    [data-svc-mep].is-test .mx-ticks path:nth-child(5){transition-delay:0.6s;}
-    [data-svc-mep] .mx-block{display:flex;justify-content:flex-end;margin:0 calc(clamp(16px,2vw,28px) * -1);border-top:1px solid rgba(58,45,37,0.22);}
-    [data-svc-mep] .mx-block span{padding:10px 16px;border-inline-start:1px solid rgba(58,45,37,0.22);font-family:'GE SS Two','Arial',sans-serif;font-size:12px;letter-spacing:normal;text-transform:uppercase;color:#8B6B4A;white-space:nowrap;}
-    [data-svc-mep] .mx-block span:first-child{margin-inline-end:auto;border-inline-start:0;color:#3A2D25;}
-    [data-svc-mep] .mx-scroll{display:none;}
-    [data-svc-mep] .mx-main{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:clamp(28px,3.4vw,48px);align-items:start;}
-    [data-svc-mep] .mx-keys{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;border-bottom:1px solid rgba(58,45,37,0.18);}
-    [data-svc-mep] .mx-key{position:relative;display:grid;grid-template-columns:auto 1fr;column-gap:14px;width:100%;padding:16px 0;background:none;border:0;border-top:1px solid rgba(58,45,37,0.18);text-align:start;cursor:pointer;font:inherit;color:inherit;opacity:0.62;transition:opacity 0.4s cubic-bezier(0.25,0.46,0.45,0.94);}
-    [data-svc-mep] .mx-key::before{content:"";position:absolute;top:-1px;inset-inline:0;height:2px;background:#8B6B4A;transform:scaleX(0);transform-origin:100% 50%;transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);}
-    [data-svc-mep] .mx-key:hover,[data-svc-mep] .mx-key.is-on{opacity:1;}
-    [data-svc-mep] .mx-key.is-on::before{transform:scaleX(1);}
-    [data-svc-mep] .mx-key:focus-visible{outline:1px solid #8B6B4A;outline-offset:4px;}
-    [data-svc-mep] .mx-key b{font-family:'Lama Sans',sans-serif;font-weight:500;font-size:11px;letter-spacing:0.18em;color:#8B6B4A;padding-top:3px;}
-    [data-svc-mep] .mx-kt{font-family:'GE SS Two','Arial',sans-serif;font-size:15px;line-height:1.35;color:#1F1F1F;}
-    [data-svc-mep] .mx-kd{grid-column:2;display:grid;grid-template-rows:0fr;transition:grid-template-rows 0.6s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'GE SS Two','Arial',sans-serif;font-size:13px;line-height:1.6;color:#5B4636;}
-    [data-svc-mep] .mx-kd span{overflow:hidden;}
-    [data-svc-mep] .mx-key.is-on .mx-kd{grid-template-rows:1fr;}
-    [data-svc-mep] .mx-key.is-on .mx-kd span{padding-top:8px;}
-    [data-svc-mep] .mx-rise{opacity:0;transform:translateY(24px);transition:opacity 0.9s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);}
-    [data-svc-mep].is-in .mx-rise{opacity:1;transform:none;}
-    [data-svc-mep].is-in .mx-rise--2{transition-delay:0.12s;}
-    @media(max-width:1100px){
-      [data-svc-mep] .mx-main{grid-template-columns:1fr;}
-      [data-svc-mep] .mx-keys{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 clamp(16px,2vw,28px);border-bottom:0;}
-      [data-svc-mep] .mx-kd{grid-template-rows:1fr;}
-      [data-svc-mep] .mx-kd span{padding-top:8px;}
-    }
+    [data-svc-mep] .mr-wrap{max-width:1280px;margin:0 auto;}
+    [data-svc-mep] .mr-head{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:clamp(32px,5vw,88px);align-items:end;margin-bottom:clamp(40px,4.4vw,64px);}
+    [data-svc-mep] .mr-eyebrow{display:flex;align-items:center;gap:16px;margin-bottom:24px;font-family:'GE SS Two','Arial',sans-serif;font-size:12px;letter-spacing:normal;text-transform:uppercase;color:#8B6B4A;}
+    [data-svc-mep] .mr-eyebrow i{display:block;width:32px;height:1px;background:#8B6B4A;}
+    [data-svc-mep] .mr-h2{font-family:'GE SS Two','Arial',sans-serif;font-weight:500;font-size:clamp(32px,3.8vw,54px);line-height:1.08;letter-spacing:0;color:#1F1F1F;margin:0;text-wrap:balance;}
+    [data-svc-mep] .mr-body{font-family:'GE SS Two','Arial',sans-serif;font-size:16px;line-height:1.85;color:#5B4636;margin:0 0 28px;}
+    [data-svc-mep] .mr-cta{display:inline-flex;align-items:center;gap:12px;padding:17px 30px;background:#3A2D25;color:#F5F2ED;text-decoration:none;font-family:'GE SS Two','Arial',sans-serif;font-size:13px;letter-spacing:normal;text-transform:uppercase;border:1px solid #3A2D25;transition:background 0.4s cubic-bezier(0.25,0.46,0.45,0.94),color 0.4s cubic-bezier(0.25,0.46,0.45,0.94);}
+    [data-svc-mep] .mr-cta:hover,[data-svc-mep] .mr-cta:focus-visible{background:transparent;color:#3A2D25;}
+    [data-svc-mep] .mr-rail{list-style:none;margin:0 calc(var(--mr-bleed,0px) * -1);padding:0 var(--mr-bleed,0px);display:flex;gap:clamp(18px,2vw,28px);overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:var(--mr-bleed,0px);scrollbar-width:none;cursor:grab;user-select:none;-webkit-user-select:none;}
+    [data-svc-mep] .mr-rail::-webkit-scrollbar{display:none;}
+    [data-svc-mep] .mr-rail.is-drag{cursor:grabbing;scroll-snap-type:none;}
+    [data-svc-mep] .mr-card{flex:0 0 clamp(270px,27vw,400px);scroll-snap-align:start;opacity:0;transform:translateY(32px);transition:opacity 0.9s cubic-bezier(0.25,0.46,0.45,0.94) calc(var(--i) * 0.09s),transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94) calc(var(--i) * 0.09s);}
+    [data-svc-mep].is-in .mr-card{opacity:1;transform:none;}
+    [data-svc-mep] .mr-fig{position:relative;margin:0;aspect-ratio:4/5;overflow:hidden;background:#3A2D25;}
+    [data-svc-mep] .mr-fig img{width:100%;height:100%;object-fit:cover;transform:scale(1.02);transition:transform 1.4s cubic-bezier(0.25,0.46,0.45,0.94);pointer-events:none;}
+    [data-svc-mep] .mr-card:hover .mr-fig img{transform:scale(1.08);}
+    [data-svc-mep] .mr-tag{display:flex;align-items:center;gap:12px;margin:22px 0 10px;font-family:'GE SS Two','Arial',sans-serif;font-size:12px;letter-spacing:normal;text-transform:uppercase;color:#8B6B4A;}
+    [data-svc-mep] .mr-tag b{font-family:'Lama Sans',sans-serif;font-weight:500;font-size:11px;letter-spacing:0.18em;}
+    [data-svc-mep] .mr-feel{position:relative;display:inline-block;margin:0 0 12px;padding-bottom:10px;font-family:'GE SS Two','Arial',sans-serif;font-weight:500;font-size:clamp(20px,1.7vw,25px);line-height:1.25;color:#1F1F1F;}
+    [data-svc-mep] .mr-feel::after{content:"";position:absolute;bottom:0;inset-inline-start:0;width:100%;height:1px;background:#8B6B4A;transform:scaleX(0);transform-origin:100% 50%;transition:transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);}
+    [data-svc-mep] .mr-card:hover .mr-feel::after{transform:scaleX(1);}
+    [data-svc-mep] .mr-desc{margin:0;max-width:34ch;font-family:'GE SS Two','Arial',sans-serif;font-size:14px;line-height:1.7;color:#5B4636;}
+    [data-svc-mep] .mr-bar{display:flex;align-items:center;gap:clamp(16px,2vw,28px);margin-top:clamp(32px,3.4vw,48px);}
+    [data-svc-mep] .mr-count{font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.2em;color:#8B6B4A;white-space:nowrap;}
+    [data-svc-mep] .mr-track{position:relative;flex:1;height:1px;background:rgba(58,45,37,0.18);}
+    [data-svc-mep] .mr-fill{position:absolute;top:0;inset-inline-start:0;height:1px;width:100%;background:#3A2D25;transform:scaleX(var(--mr-p,0.17));transform-origin:100% 50%;transition:transform 0.3s cubic-bezier(0.25,0.46,0.45,0.94);}
+    [data-svc-mep] .mr-nav{display:flex;gap:8px;}
+    [data-svc-mep] .mr-btn{width:52px;height:52px;display:grid;place-items:center;padding:0;background:transparent;border:1px solid rgba(58,45,37,0.35);color:#3A2D25;cursor:pointer;transition:background 0.4s cubic-bezier(0.25,0.46,0.45,0.94),color 0.4s cubic-bezier(0.25,0.46,0.45,0.94),border-color 0.4s cubic-bezier(0.25,0.46,0.45,0.94),opacity 0.4s cubic-bezier(0.25,0.46,0.45,0.94);}
+    [data-svc-mep] .mr-btn:hover,[data-svc-mep] .mr-btn:focus-visible{background:#3A2D25;border-color:#3A2D25;color:#F5F2ED;}
+    [data-svc-mep] .mr-btn:disabled{opacity:0.3;pointer-events:none;}
+    [data-svc-mep] .mr-cap{margin:18px 0 0;font-family:'GE SS Two','Arial',sans-serif;font-size:12px;color:#8B6B4A;}
+    [data-svc-mep] .mr-rise{opacity:0;transform:translateY(24px);transition:opacity 0.9s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);}
+    [data-svc-mep].is-in .mr-rise{opacity:1;transform:none;}
+    [data-svc-mep].is-in .mr-rise--2{transition-delay:0.12s;}
     @media(max-width:900px){
-      [data-svc-mep] .mx-head{grid-template-columns:1fr;}
-      [data-svc-mep] .mx-scroll{display:block;margin:10px 0 0;font-family:'GE SS Two','Arial',sans-serif;font-size:12px;color:#8B6B4A;}
+      [data-svc-mep] .mr-head{grid-template-columns:1fr;}
     }
     @media(max-width:600px){
-      [data-svc-mep] .mx-keys{grid-template-columns:repeat(2,minmax(0,1fr));}
-      [data-svc-mep] .mx-cta{width:100%;justify-content:center;box-sizing:border-box;}
-      [data-svc-mep] .mx-block span:not(:first-child):not(:last-child){display:none;}
+      [data-svc-mep] .mr-card{flex-basis:78vw;}
+      [data-svc-mep] .mr-cta{width:100%;justify-content:center;box-sizing:border-box;}
+      [data-svc-mep] .mr-nav{display:none;}
     }
     @media(prefers-reduced-motion:reduce){
-      [data-svc-mep] *{transition:none!important;animation:none!important;}
-      [data-svc-mep] .mx-rise{opacity:1;transform:none;}
+      [data-svc-mep] *{transition:none!important;}
+      [data-svc-mep] .mr-rise,[data-svc-mep] .mr-card{opacity:1;transform:none;}
     }
   </style>
-  <div class="mx-wrap">
-    <div class="mx-head">
-      <div class="mx-rise">
-        <div class="mx-eyebrow"><i></i>خدماتنا الهندسية</div>
-        <h2 class="mx-h2">أساس البيئات عالية الأداء</h2>
+  <div class="mr-wrap">
+    <div class="mr-head">
+      <div class="mr-rise">
+        <div class="mr-eyebrow"><i></i>خدماتنا الهندسية</div>
+        <h2 class="mr-h2">أساس البيئات عالية الأداء</h2>
       </div>
-      <div class="mx-rise mx-rise--2">
-        <p class="mx-body">تعتمد الفخامة الحقيقية والوظائفية على الأنظمة غير المرئية التي تُبقي المبنى يعمل. تقدم خدماتنا الهندسية والأنظمة الكهروميكانيكية (الميكانيكية والكهربائية والصحية) البنية التحتية عالية الأداء اللازمة لتحقيق رؤيتك الداخلية، مدمجة بسلاسة في كل تصميم وتشطيب ننفذه.</p>
-        <a class="mx-cta" href="/ar/services-mep">استكشف الهندسة والأنظمة الكهروميكانيكية<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 5 5 12 12 19"/></svg></a>
+      <div class="mr-rise mr-rise--2">
+        <p class="mr-body">تعتمد الفخامة الحقيقية والوظائفية على الأنظمة غير المرئية التي تُبقي المبنى يعمل. تقدم خدماتنا الهندسية والأنظمة الكهروميكانيكية (الميكانيكية والكهربائية والصحية) البنية التحتية عالية الأداء اللازمة لتحقيق رؤيتك الداخلية، مدمجة بسلاسة في كل تصميم وتشطيب ننفذه.</p>
+        <a class="mr-cta" href="/ar/services-mep">استكشف الهندسة والأنظمة الكهروميكانيكية<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 5 5 12 12 19"/></svg></a>
       </div>
     </div>
-    <div class="mx-main">
-      <div>
-        <div class="mx-sheet">
-          <div class="mx-pan"><svg class="mx-svg" viewBox="0 0 1200 650" role="img" aria-label="مقطع لمبنى من طابقين يوضح أنظمة التكييف والكهرباء والسباكة ومكافحة الحريق والتيار المنخفض"><g class="mx-cut"><path d="M60 600 H1140 V614 H60 Z"/><path d="M60 330 H1140 V344 H60 Z"/><path d="M60 60 H1140 V76 H60 Z"/><path d="M60 76 H74 V600 H60 Z"/><path d="M1126 76 H1140 V600 H1126 Z"/><path d="M540 392 V470 H550 V392 Z"/><path d="M760 124 V230 H770 V124 Z"/></g><path class="mx-ground" d="M40 618 l-12 12 M56 618 l-12 12 M72 618 l-12 12 M88 618 l-12 12 M104 618 l-12 12 M120 618 l-12 12 M136 618 l-12 12 M152 618 l-12 12 M168 618 l-12 12 M184 618 l-12 12 M200 618 l-12 12 M216 618 l-12 12 M232 618 l-12 12 M248 618 l-12 12 M264 618 l-12 12 M280 618 l-12 12 M296 618 l-12 12 M312 618 l-12 12 M328 618 l-12 12 M344 618 l-12 12 M360 618 l-12 12 M376 618 l-12 12 M392 618 l-12 12 M408 618 l-12 12 M424 618 l-12 12 M440 618 l-12 12 M456 618 l-12 12 M472 618 l-12 12 M488 618 l-12 12 M504 618 l-12 12 M520 618 l-12 12 M536 618 l-12 12 M552 618 l-12 12 M568 618 l-12 12 M584 618 l-12 12 M600 618 l-12 12 M616 618 l-12 12 M632 618 l-12 12 M648 618 l-12 12 M664 618 l-12 12 M680 618 l-12 12 M696 618 l-12 12 M712 618 l-12 12 M728 618 l-12 12 M744 618 l-12 12 M760 618 l-12 12 M776 618 l-12 12 M792 618 l-12 12 M808 618 l-12 12 M824 618 l-12 12 M840 618 l-12 12 M856 618 l-12 12 M872 618 l-12 12 M888 618 l-12 12 M904 618 l-12 12 M920 618 l-12 12 M936 618 l-12 12 M952 618 l-12 12 M968 618 l-12 12 M984 618 l-12 12 M1000 618 l-12 12 M1016 618 l-12 12 M1032 618 l-12 12 M1048 618 l-12 12 M1064 618 l-12 12 M1080 618 l-12 12 M1096 618 l-12 12 M1112 618 l-12 12 M1128 618 l-12 12 M1144 618 l-12 12 M1160 618 l-12 12 M1176 618 l-12 12"/><g class="mx-arch"><path d="M20 600 H1180" pathLength="1"/><path d="M60 40 V60 M1140 40 V60" pathLength="1"/><path d="M540 392 V470 H550 V392" pathLength="1"/><path d="M760 124 V230 H770 V124" pathLength="1"/><path d="M60 600 H1140 V614 H60 Z" pathLength="1"/><path d="M60 330 H1140 V344 H60 Z" pathLength="1"/><path d="M60 60 H1140 V76 H60 Z" pathLength="1"/><path d="M60 76 H74 V600 H60 Z" pathLength="1"/><path d="M1126 76 H1140 V600 H1126 Z" pathLength="1"/><path d="M540 392 V470 H550 V392 Z" pathLength="1"/><path d="M760 124 V230 H770 V124 Z" pathLength="1"/><path d="M940 24 H1010 V60 H940 Z" pathLength="1"/><path d="M1030 24 H1100 V60 H1030 Z" pathLength="1"/><path d="M975 42 m-12 0 a12 12 0 1 0 24 0 a12 12 0 1 0 -24 0" pathLength="1"/><path d="M1065 42 m-12 0 a12 12 0 1 0 24 0 a12 12 0 1 0 -24 0" pathLength="1"/><path d="M780 14 H860 V60 H780 Z" pathLength="1"/><path d="M780 26 H860" pathLength="1"/></g><g class="mx-ceil"><path d="M74 124 H1126"/><path d="M74 392 H1126"/></g><g class="mx-furn"><path d="M150 600 V560 H170 V545 H320 V560 H340 V600"/><path d="M170 575 H320"/><path d="M370 600 V578 H450 V600"/><path d="M900 600 V545 H1110 V600 M900 556 H1110 M960 545 V538 H1000 V545"/><path d="M640 600 V560 H800 V600"/><path d="M200 330 V300 H215 V270 H230 V300 H420 V330 M230 300 H420"/><path d="M440 330 V306 H476 V330"/><path d="M980 330 V300 H1110 V330 M990 300 V310 H1100 V300"/><path d="M820 330 V286 H900 V330 M834 250 H886 V276 H834 Z"/></g><g class="mx-rooms" style="font-family:'GE SS Two','Arial',sans-serif;font-size:18px"><text x="300" y="430" text-anchor="middle">المعيشة</text><text x="840" y="430" text-anchor="middle">المطبخ</text><text x="360" y="160" text-anchor="middle">غرفة النوم</text><text x="950" y="160" text-anchor="middle">الحمام</text></g><g class="mx-sys mx-sys--hvac" style="--w:3.2;--dash:10 12;--d:0.5s"><g class="mx-base"><path d="M1060 60 V356" pathLength="1"/><path d="M1060 88 H110" pathLength="1"/><path d="M1060 356 H110" pathLength="1"/></g><path class="mx-fit" d="M220 88 V124 M204 124 H236 M420 88 V124 M404 124 H436 M620 88 V124 M604 124 H636 M860 88 V124 M844 124 H876 M200 356 V392 M184 392 H216 M400 356 V392 M384 392 H416 M660 356 V392 M644 392 H676 M900 356 V392 M884 392 H916"/><g class="mx-flow"><path d="M1060 60 V356"/><path d="M1060 88 H110"/><path d="M1060 356 H110"/></g><g class="mx-lab" style="font-family:'GE SS Two','Arial',sans-serif;font-size:18px"><text x="1020" y="16" text-anchor="middle">وحدات التكثيف</text></g></g><g class="mx-sys mx-sys--power" style="--w:1.6;--dash:3 9;--d:0.75s"><g class="mx-base"><path d="M1109 470 V110" pathLength="1"/><path d="M1109 378 H130" pathLength="1"/><path d="M1109 110 H130" pathLength="1"/><path d="M1109 540 V580 H160" pathLength="1"/></g><path class="mx-fit" d="M1100 470 H1118 V540 H1100 Z M240 378 V387 M240 392 m-5 0 a5 5 0 1 0 10 0 a5 5 0 1 0 -10 0 M440 378 V387 M440 392 m-5 0 a5 5 0 1 0 10 0 a5 5 0 1 0 -10 0 M700 378 V387 M700 392 m-5 0 a5 5 0 1 0 10 0 a5 5 0 1 0 -10 0 M980 378 V387 M980 392 m-5 0 a5 5 0 1 0 10 0 a5 5 0 1 0 -10 0 M260 110 V119 M260 124 m-5 0 a5 5 0 1 0 10 0 a5 5 0 1 0 -10 0 M520 110 V119 M520 124 m-5 0 a5 5 0 1 0 10 0 a5 5 0 1 0 -10 0 M860 110 V119 M860 124 m-5 0 a5 5 0 1 0 10 0 a5 5 0 1 0 -10 0 M1040 110 V119 M1040 124 m-5 0 a5 5 0 1 0 10 0 a5 5 0 1 0 -10 0 M300 580 V572 M760 580 V572 M296.0 564 h8 v8 h-8 Z M756.0 564 h8 v8 h-8 Z"/><g class="mx-flow"><path d="M1109 470 V110"/><path d="M1109 378 H130"/><path d="M1109 110 H130"/><path d="M1109 540 V580 H160"/></g><g class="mx-lab" style="font-family:'GE SS Two','Arial',sans-serif;font-size:18px"><text x="1094" y="506" text-anchor="end">لوحة التوزيع</text></g></g><g class="mx-sys mx-sys--water" style="--w:2.2;--dash:6 10;--d:1.0s"><g class="mx-base"><path d="M820 60 V540 H1000 V560" pathLength="1"/><path d="M820 300 H1040 V306" pathLength="1"/><path d="M860 300 V286" pathLength="1"/><path d="M1040 330 V630 H1180" pathLength="1"/><path d="M860 330 V344 H1040" pathLength="1"/><path d="M1000 600 V630" pathLength="1"/></g><path class="mx-fit" d="M1000 560 h-14 M1000 560 h14"/><g class="mx-flow"><path d="M820 60 V540 H1000 V560"/><path d="M820 300 H1040 V306"/><path d="M860 300 V286"/><path d="M1040 330 V630 H1180"/><path d="M860 330 V344 H1040"/><path d="M1000 600 V630"/></g><g class="mx-lab" style="font-family:'GE SS Two','Arial',sans-serif;font-size:18px"><text x="770" y="44" text-anchor="end">خزان المياه</text></g></g><g class="mx-sys mx-sys--fire" style="--w:2;--dash:2 7;--d:1.25s"><g class="mx-base"><path d="M96 614 V100 H1100" pathLength="1"/><path d="M96 368 H1100" pathLength="1"/></g><path class="mx-fit" d="M180 100 V118 M175 124 L180 118 L185 124 M380 100 V118 M375 124 L380 118 L385 124 M580 100 V118 M575 124 L580 118 L585 124 M800 100 V118 M795 124 L800 118 L805 124 M1000 100 V118 M995 124 L1000 118 L1005 124 M160 368 V386 M155 392 L160 386 L165 392 M360 368 V386 M355 392 L360 386 L365 392 M620 368 V386 M615 392 L620 386 L625 392 M840 368 V386 M835 392 L840 386 L845 392 M1040 368 V386 M1035 392 L1040 386 L1045 392"/><g class="mx-flow"><path d="M96 614 V100 H1100"/><path d="M96 368 H1100"/></g><g class="mx-lab" style="font-family:'GE SS Two','Arial',sans-serif;font-size:18px"><text x="104" y="470" text-anchor="start">صاعد الحريق</text></g></g><g class="mx-sys mx-sys--data" style="--w:1.3;--dash:8 4 2 4;--d:1.5s"><g class="mx-base"><path d="M112 450 V116 H1100" pathLength="1"/><path d="M112 384 H1150 V404" pathLength="1"/><path d="M112 116 H40 V140" pathLength="1"/></g><path class="mx-fit" d="M80 450 H100 V540 H80 Z M86 470 H94 M86 490 H94 M86 510 H94 M396.0 120 h8 v8 h-8 Z M896.0 120 h8 v8 h-8 Z M296.0 388 h8 v8 h-8 Z M816.0 388 h8 v8 h-8 Z M1142 404 h18 v10 h-18 Z M32 140 h18 v10 h-18 Z M86 520 V528"/><g class="mx-flow"><path d="M112 450 V116 H1100"/><path d="M112 384 H1150 V404"/><path d="M112 116 H40 V140"/></g><g class="mx-lab" style="font-family:'GE SS Two','Arial',sans-serif;font-size:18px"><text x="122" y="500" text-anchor="start">خزانة البيانات</text></g></g><g class="mx-ticks"><path d="M1014 72 l4 5 l9 -11" pathLength="1"/><path d="M1103 556 l4 5 l9 -11" pathLength="1"/><path d="M814 72 l4 5 l9 -11" pathLength="1"/><path d="M90 628 l4 5 l9 -11" pathLength="1"/><path d="M84 556 l4 5 l9 -11" pathLength="1"/></g></svg></div>
-          <div class="mx-block" aria-hidden="true"><span>FurnishIQ</span><span>مقطع أ–أ</span><span>تنسيق الأنظمة الكهروميكانيكية</span><span>تصور مفاهيمي</span></div>
-        </div>
-        <p class="mx-scroll">اسحب الرسم أفقياً</p>
-      </div>
-      <ol class="mx-keys">
-        <li><button type="button" class="mx-key" aria-pressed="false"><b>01</b><span class="mx-kt">أنظمة التكييف والتهوية</span><span class="mx-kd"><span>التكييف والتهوية ومجاري الهواء والاختبار لراحة دائمة على مدار العام.</span></span></button></li>
-        <li><button type="button" class="mx-key" aria-pressed="false"><b>02</b><span class="mx-kt">الأنظمة الكهربائية</span><span class="mx-kd"><span>توزيع الطاقة والإنارة وطاقة الطوارئ وإدارة الكابلات، وفق الأكواد المعتمدة.</span></span></button></li>
-        <li><button type="button" class="mx-key" aria-pressed="false"><b>03</b><span class="mx-kt">أنظمة السباكة</span><span class="mx-kd"><span>إمدادات المياه والصرف والصرف الصحي وتركيب المضخات بموثوقية عالية.</span></span></button></li>
-        <li><button type="button" class="mx-key" aria-pressed="false"><b>04</b><span class="mx-kt">أنظمة مكافحة الحريق</span><span class="mx-kd"><span>إنذار الحريق والإطفاء وشبكات الرشاشات والامتثال الكامل لاشتراطات الدفاع المدني.</span></span></button></li>
-        <li><button type="button" class="mx-key" aria-pressed="false"><b>05</b><span class="mx-kt">أنظمة التيار المنخفض</span><span class="mx-kd"><span>الكابلات المهيكلة وكاميرات المراقبة والتحكم في الدخول وتكامل المباني الذكية.</span></span></button></li>
-        <li><button type="button" class="mx-key" aria-pressed="false"><b>06</b><span class="mx-kt">الاختبار والتشغيل</span><span class="mx-kd"><span>الاختبار الوظيفي والتحقق من الأداء ووثائق التسليم المعتمدة.</span></span></button></li>
-      </ol>
+    <ul class="mr-rail" data-mr-rail aria-label="تخصصات الأنظمة الكهروميكانيكية">
+      <li class="mr-card" style="--i:0;">
+        <figure class="mr-fig"><img src="uploads/penthouse-wadi-double-height-living-riyadh-1280.webp" srcset="uploads/penthouse-wadi-double-height-living-riyadh-1280.webp 1280w, uploads/penthouse-wadi-double-height-living-riyadh-1920.webp 1920w" sizes="(max-width:600px) 80vw, 420px" alt="غرفة معيشة بارتفاع مزدوج بجدار من العقيق وإطلالة على الوادي" style="object-position:62% 50%;" loading="lazy" decoding="async" draggable="false"></figure>
+        <p class="mr-tag"><b>01</b>أنظمة التكييف والتهوية</p>
+        <h3 class="mr-feel">راحة في كل مساحة</h3>
+        <p class="mr-desc">التكييف والتهوية ومجاري الهواء والاختبار لراحة دائمة على مدار العام.</p>
+      </li>
+      <li class="mr-card" style="--i:1;">
+        <figure class="mr-fig"><img src="uploads/executive-floors-walnut-ceiling-detail-1200.webp" srcset="uploads/executive-floors-walnut-ceiling-detail-1200.webp 1200w, uploads/executive-floors-walnut-ceiling-detail-2400.webp 2400w" sizes="(max-width:600px) 80vw, 420px" alt="سقف من شرائح خشب الجوز بإضاءة خطية على امتداد ممر" style="object-position:50% 50%;" loading="lazy" decoding="async" draggable="false"></figure>
+        <p class="mr-tag"><b>02</b>الأنظمة الكهربائية</p>
+        <h3 class="mr-feel">إضاءة مدروسة بطبقات</h3>
+        <p class="mr-desc">توزيع الطاقة والإنارة وطاقة الطوارئ وإدارة الكابلات، وفق الأكواد المعتمدة.</p>
+      </li>
+      <li class="mr-card" style="--i:2;">
+        <figure class="mr-fig"><img src="uploads/penthouse-wadi-master-suite-spa-bath-1280.webp" srcset="uploads/penthouse-wadi-master-suite-spa-bath-1280.webp 1280w, uploads/penthouse-wadi-master-suite-spa-bath-2752.webp 2752w" sizes="(max-width:600px) 80vw, 420px" alt="جناح رئيسي بحوض استحمام حجري قائم بجانب السرير" style="object-position:52% 50%;" loading="lazy" decoding="async" draggable="false"></figure>
+        <p class="mr-tag"><b>03</b>أنظمة السباكة</p>
+        <h3 class="mr-feel">المياه، حيث يجب أن تكون</h3>
+        <p class="mr-desc">إمدادات المياه والصرف والصرف الصحي وتركيب المضخات بموثوقية عالية.</p>
+      </li>
+      <li class="mr-card" style="--i:3;">
+        <figure class="mr-fig"><img src="uploads/desert-stone-resort-lobby-lounge-alula-1280.webp" srcset="uploads/desert-stone-resort-lobby-lounge-alula-1280.webp 1280w, uploads/desert-stone-resort-lobby-lounge-alula-1920.webp 1920w" sizes="(max-width:600px) 80vw, 420px" alt="صالة استقبال منتجع بواجهات زجاجية كاملة تطل على صخور العلا" style="object-position:40% 50%;" loading="lazy" decoding="async" draggable="false"></figure>
+        <p class="mr-tag"><b>04</b>أنظمة مكافحة الحريق</p>
+        <h3 class="mr-feel">حماية لا تُرى</h3>
+        <p class="mr-desc">إنذار الحريق والإطفاء وشبكات الرشاشات والامتثال الكامل لاشتراطات الدفاع المدني.</p>
+      </li>
+      <li class="mr-card" style="--i:4;">
+        <figure class="mr-fig"><img src="uploads/executive-floors-boardroom-walnut-table-1280.webp" srcset="uploads/executive-floors-boardroom-walnut-table-1280.webp 1280w, uploads/executive-floors-boardroom-walnut-table-1920.webp 1920w" sizes="(max-width:600px) 80vw, 420px" alt="قاعة اجتماعات بطاولة طويلة من خشب الجوز وشاشة في الجدار البعيد" style="object-position:55% 50%;" loading="lazy" decoding="async" draggable="false"></figure>
+        <p class="mr-tag"><b>05</b>أنظمة التيار المنخفض</p>
+        <h3 class="mr-feel">اتصال بهدوء</h3>
+        <p class="mr-desc">الكابلات المهيكلة وكاميرات المراقبة والتحكم في الدخول وتكامل المباني الذكية.</p>
+      </li>
+      <li class="mr-card" style="--i:5;">
+        <figure class="mr-fig"><img src="uploads/pillar-quality-assurance-level-inspection-900.webp" srcset="uploads/pillar-quality-assurance-level-inspection-900.webp 900w, uploads/pillar-quality-assurance-level-inspection-1536.webp 1536w" sizes="(max-width:600px) 80vw, 420px" alt="يد بقفاز تفحص جداراً من الترافرتين بميزان تسوية نحاسي" style="object-position:50% 50%;" loading="lazy" decoding="async" draggable="false"></figure>
+        <p class="mr-tag"><b>06</b>الاختبار والتشغيل</p>
+        <h3 class="mr-feel">مُختبر قبل التسليم</h3>
+        <p class="mr-desc">الاختبار الوظيفي والتحقق من الأداء ووثائق التسليم المعتمدة.</p>
+      </li>
+    </ul>
+    <div class="mr-bar">
+      <span class="mr-count" dir="ltr"><span data-mr-now>01</span> / 06</span>
+      <span class="mr-track" aria-hidden="true"><span class="mr-fill"></span></span>
+      <span class="mr-nav"><button type="button" class="mr-btn" data-mr-prev aria-label="السابق"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" aria-hidden="true"><polyline points="9 5 16 12 9 19"/></svg></button><button type="button" class="mr-btn" data-mr-next aria-label="التالي"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" aria-hidden="true"><polyline points="15 5 8 12 15 19"/></svg></button></span>
     </div>
+    <p class="mr-cap">هندسة تُحَس ولا تُرى · تصورات مفاهيمية</p>
   </div>
 </section>
 
@@ -1565,35 +1552,55 @@ class Component extends DCLogic {
       }
     }
 
-    // ── SERVICES, MEP: THE BUILDING'S NERVOUS SYSTEM ────────────────────────
+    // ── SERVICES, MEP: ENGINEERING YOU FEEL, NOT SEE ────────────────────────
     {
       const sec = document.querySelector('[data-svc-mep]');
       if (sec) {
-        const keys = Array.from(sec.querySelectorAll('.mx-key')), sys = Array.from(sec.querySelectorAll('.mx-sys'));
-        const last = keys.length - 1;  // testing & commissioning lights every system
-        let auto = !reduced, timer = null, idx = 0, visible = false;
-        const pick = (n) => {
-          keys.forEach((k, i) => { k.classList.toggle('is-on', i === n); k.setAttribute('aria-pressed', i === n ? 'true' : 'false'); });
-          sys.forEach((g, i) => g.classList.toggle('is-on', n === last || i === n));
-          sec.classList.toggle('has-pick', n !== null);
-          sec.classList.toggle('is-test', n === last);
+        const rail = sec.querySelector('[data-mr-rail]'), cards = Array.from(rail.children);
+        const prev = sec.querySelector('[data-mr-prev]'), next = sec.querySelector('[data-mr-next]'), now = sec.querySelector('[data-mr-now]');
+        const rtl = sec.getAttribute('dir') === 'rtl';
+        // the rail starts on the content grid and runs out to the screen edge
+        const bleed = () => {
+          const r = sec.querySelector('.mr-wrap').getBoundingClientRect();
+          sec.style.setProperty('--mr-bleed', Math.max(0, rtl ? document.documentElement.clientWidth - r.right : r.left) + 'px');
         };
-        const stop = () => { auto = false; clearInterval(timer); };
-        keys.forEach((k, i) => {
-          k.addEventListener('mouseenter', () => { stop(); pick(i); });
-          k.addEventListener('focus', () => { stop(); pick(i); });
-          k.addEventListener('click', () => { stop(); pick(i); });
+        const max = () => rail.scrollWidth - rail.clientWidth;
+        const pos = () => Math.abs(rail.scrollLeft);  // RTL scrollLeft runs negative
+        const sync = () => {
+          const m = max(), p = m > 0 ? pos() / m : 1;
+          sec.style.setProperty('--mr-p', Math.max(1 / cards.length, p).toFixed(3));
+          const step = cards[1] ? Math.abs(cards[1].offsetLeft - cards[0].offsetLeft) : 1;
+          const i = m - pos() < 4 ? cards.length - 1 : Math.round(pos() / step);
+          now.textContent = String(Math.min(cards.length, i + 1)).padStart(2, '0');
+          prev.disabled = pos() < 4; next.disabled = m - pos() < 4;
+        };
+        const go = (dir) => {
+          const step = cards[1] ? Math.abs(cards[1].offsetLeft - cards[0].offsetLeft) : rail.clientWidth;
+          rail.scrollBy({ left: dir * step * (rtl ? -1 : 1), behavior: reduced ? 'auto' : 'smooth' });
+        };
+        prev.addEventListener('click', () => go(-1));
+        next.addEventListener('click', () => go(1));
+        rail.addEventListener('scroll', () => requestAnimationFrame(sync), { passive: true });
+        // drag to scroll with a mouse; touch keeps its native swipe
+        let down = false, sx = 0, sl = 0, moved = false;
+        rail.addEventListener('pointerdown', (e) => { if (e.pointerType !== 'mouse' || e.button !== 0) return; down = true; moved = false; sx = e.clientX; sl = rail.scrollLeft; });
+        window.addEventListener('pointermove', (e) => {
+          if (!down) return;
+          const dx = e.clientX - sx;
+          if (!moved && Math.abs(dx) > 4) { moved = true; rail.classList.add('is-drag'); }
+          if (moved) rail.scrollLeft = sl - dx;
         });
-        const tick = () => { if (auto && visible) { pick(idx % keys.length); idx++; } };
-        new IntersectionObserver((es) => {
-          es.forEach((e) => {
-            visible = e.isIntersecting;
-            if (visible) {
-              sec.classList.add('is-in');
-              if (auto && !timer) setTimeout(() => { tick(); timer = setInterval(tick, 3400); }, 3200);
-            }
-          });
-        }, { threshold: 0.2 }).observe(sec);
+        window.addEventListener('pointerup', () => {
+          if (!down) return; down = false;
+          if (moved) {
+            rail.classList.remove('is-drag');
+            const step = cards[1] ? Math.abs(cards[1].offsetLeft - cards[0].offsetLeft) : 1;
+            rail.scrollTo({ left: (rtl ? -1 : 1) * Math.round(pos() / step) * step, behavior: reduced ? 'auto' : 'smooth' });
+          }
+        });
+        bleed(); sync();
+        window.addEventListener('resize', () => { bleed(); sync(); });
+        new IntersectionObserver((es) => { es.forEach((e) => { if (e.isIntersecting) sec.classList.add('is-in'); }); }, { threshold: 0.15 }).observe(sec);
       }
     }
 
