@@ -825,25 +825,29 @@ input:focus, select:focus, textarea:focus {
 </section>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2. FIT-OUT ━ -->
-<section id="fitout" data-screen-label="Fit-Out" data-svc-fitout style="scroll-margin-top:var(--fiq-svc-offset,132px);background:#1E1610;color:#F5F2ED;position:relative;padding:clamp(64px,8vw,100px) clamp(24px,5vw,80px);overflow:clip;">
+<section id="fitout" data-screen-label="Fit-Out" data-svc-fitout style="scroll-margin-top:var(--fiq-svc-offset,132px);background:#1E1610;color:#F5F2ED;position:relative;padding:0 clamp(24px,5vw,80px) clamp(64px,8vw,100px);overflow:clip;">
   <style>
     [data-svc-fitout]{--p:6;}
     [data-svc-fitout] .sf-wrap{max-width:1280px;margin:0 auto;}
-    [data-svc-fitout] .sf-head{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:clamp(32px,5vw,88px);align-items:end;margin-bottom:clamp(40px,4.4vw,64px);}
+    [data-svc-fitout] .sf-head{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:clamp(32px,5vw,88px);align-items:end;max-width:1280px;margin:0 auto;}
     [data-svc-fitout] .sf-eyebrow{display:flex;align-items:center;gap:16px;margin-bottom:24px;font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#D6C2A8;}
     [data-svc-fitout] .sf-eyebrow i{display:block;width:32px;height:1px;background:#D6C2A8;}
     [data-svc-fitout] .sf-h2{font-family:'Lama Sans',sans-serif;font-weight:500;font-size:clamp(34px,4.4vw,64px);line-height:1.04;letter-spacing:-0.02em;color:#F5F2ED;margin:0;}
-    [data-svc-fitout] .sf-body{font-family:'Lama Sans',sans-serif;font-size:15px;line-height:1.85;color:rgba(245,242,237,0.72);margin:0 0 28px;}
+    [data-svc-fitout] .sf-body{font-family:'Lama Sans',sans-serif;font-size:15px;line-height:1.85;color:rgba(245,242,237,0.86);margin:0 0 28px;}
     [data-svc-fitout] .sf-cta{display:inline-flex;align-items:center;gap:12px;padding:17px 30px;background:#D6C2A8;color:#1E1610;text-decoration:none;font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;border:1px solid #D6C2A8;transition:background 0.4s cubic-bezier(0.25,0.46,0.45,0.94),color 0.4s cubic-bezier(0.25,0.46,0.45,0.94);}
     [data-svc-fitout] .sf-cta:hover,[data-svc-fitout] .sf-cta:focus-visible{background:transparent;color:#D6C2A8;}
-    [data-svc-fitout] .sf-stage{position:relative;margin-inline:calc(50% - 50vw);aspect-ratio:1920/1072;max-height:86vh;width:100vw;overflow:hidden;background:#120D09;cursor:ew-resize;touch-action:pan-y;user-select:none;-webkit-user-select:none;}
-    [data-svc-fitout] .sf-stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;}
+    [data-svc-fitout] .sf-stage{position:relative;margin-inline:calc(50% - 50vw);width:100vw;height:max(640px,calc(100vh - var(--fiq-svc-offset,132px)));overflow:hidden;background:#120D09;}
+    [data-svc-fitout] .sf-view{position:absolute;inset:0;cursor:ew-resize;touch-action:pan-y;user-select:none;-webkit-user-select:none;}
+    [data-svc-fitout] .sf-shade{position:absolute;inset:0;background:rgba(18,13,9,0.34);pointer-events:none;}
+    [data-svc-fitout] .sf-over{position:absolute;inset-inline:0;top:0;z-index:2;padding:clamp(64px,8vw,100px) clamp(24px,5vw,80px) 0;pointer-events:none;text-shadow:0 1px 24px rgba(18,13,9,0.55);}
+    [data-svc-fitout] .sf-over .sf-cta{pointer-events:auto;text-shadow:none;}
+    [data-svc-fitout] .sf-view img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;}
     [data-svc-fitout] .sf-after{clip-path:inset(0 calc(100% - var(--p) * 1%) 0 0);}
     [data-svc-fitout] .sf-line{position:absolute;top:0;bottom:0;left:calc(var(--p) * 1%);width:1px;margin-inline-start:-0.5px;background:#D6C2A8;pointer-events:none;}
     [data-svc-fitout] .sf-grip{position:absolute;top:50%;left:calc(var(--p) * 1%);width:56px;height:56px;transform:translate(-50%,-50%);display:grid;place-items:center;background:#D6C2A8;color:#1E1610;border:0;padding:0;cursor:ew-resize;transition:background 0.3s cubic-bezier(0.25,0.46,0.45,0.94),color 0.3s cubic-bezier(0.25,0.46,0.45,0.94);}
     [data-svc-fitout] .sf-grip:hover,[data-svc-fitout].is-drag .sf-grip{background:#F5F2ED;}
     [data-svc-fitout] .sf-grip:focus-visible{outline:1px solid #F5F2ED;outline-offset:4px;}
-    [data-svc-fitout] .sf-tag{position:absolute;top:clamp(18px,2vw,28px);padding:8px 12px;background:rgba(18,13,9,0.6);backdrop-filter:blur(6px);font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.24em;text-transform:uppercase;color:#F5F2ED;transition:opacity 0.4s cubic-bezier(0.25,0.46,0.45,0.94);pointer-events:none;}
+    [data-svc-fitout] .sf-tag{position:absolute;bottom:clamp(18px,2vw,28px);padding:8px 12px;background:rgba(18,13,9,0.6);backdrop-filter:blur(6px);font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.24em;text-transform:uppercase;color:#F5F2ED;transition:opacity 0.4s cubic-bezier(0.25,0.46,0.45,0.94);pointer-events:none;}
     [data-svc-fitout] .sf-tag--a{inset-inline-start:max(clamp(24px,5vw,80px),calc((100% - 1280px) / 2));}
     [data-svc-fitout] .sf-tag--b{inset-inline-end:max(clamp(24px,5vw,80px),calc((100% - 1280px) / 2));}
     [data-svc-fitout] .sf-hint{position:absolute;bottom:clamp(18px,2vw,28px);left:50%;transform:translateX(-50%);padding:8px 14px;background:rgba(18,13,9,0.6);backdrop-filter:blur(6px);font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.24em;text-transform:uppercase;color:#D6C2A8;white-space:nowrap;pointer-events:none;transition:opacity 0.6s cubic-bezier(0.25,0.46,0.45,0.94);}
@@ -864,7 +868,11 @@ input:focus, select:focus, textarea:focus {
     [data-svc-fitout].is-in .sf-rise--2{transition-delay:0.12s;}
     @media(max-width:900px){
       [data-svc-fitout] .sf-head{grid-template-columns:1fr;}
-      [data-svc-fitout] .sf-stage{aspect-ratio:4/3;}
+      [data-svc-fitout] .sf-stage{height:auto;overflow:visible;background:none;display:flex;flex-direction:column;}
+      [data-svc-fitout] .sf-over{order:-1;position:static;padding:clamp(64px,8vw,100px) clamp(24px,5vw,80px) 40px;text-shadow:none;}
+      [data-svc-fitout] .sf-view{position:relative;inset:auto;aspect-ratio:4/3;overflow:hidden;}
+      [data-svc-fitout] .sf-shade{display:none;}
+      [data-svc-fitout] .sf-tag{top:12px;bottom:auto;}
       [data-svc-fitout] .sf-time{grid-template-columns:repeat(5,minmax(110px,1fr));overflow-x:auto;scrollbar-width:none;}
     }
     @media(max-width:600px){
@@ -876,26 +884,31 @@ input:focus, select:focus, textarea:focus {
       [data-svc-fitout] .sf-rise{opacity:1;transform:none;}
     }
   </style>
-  <div class="sf-wrap">
-    <div class="sf-head">
-      <div class="sf-rise">
-        <div class="sf-eyebrow"><i></i>Our Fit-Out Services</div>
-        <h2 class="sf-h2">Total Spatial Transformation</h2>
-      </div>
-      <div class="sf-rise sf-rise--2">
-        <p class="sf-body">At FurnishIQ, our Fit-Out service is our most highlighted offering and the heartbeat of our operational excellence. We specialize in the complete transformation of raw, structural shells into fully functional, finished, and turnkey environments that are ready for immediate occupation — on schedule, and without compromise.</p>
-        <a class="sf-cta" href="/services-fitout">Explore Fit-Out<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-      </div>
-    </div>
-    <div class="sf-stage" data-sf-stage>
+  <div class="sf-stage">
+    <div class="sf-view" data-sf-stage>
       <img src="uploads/office-shell-and-core-before-fit-out-riyadh-1920.webp" srcset="uploads/office-shell-and-core-before-fit-out-riyadh-1280.webp 1280w, uploads/office-shell-and-core-before-fit-out-riyadh-1920.webp 1920w, uploads/office-shell-and-core-before-fit-out-riyadh-2560.webp 2560w" sizes="100vw" alt="Raw office floor in a tower with exposed ducts, sprinkler pipes and bare concrete" width="1920" height="1072" loading="lazy" decoding="async">
       <img class="sf-after" src="uploads/luxury-office-fit-out-riyadh-1920.webp" srcset="uploads/luxury-office-fit-out-riyadh-1280.webp 1280w, uploads/luxury-office-fit-out-riyadh-1920.webp 1920w, uploads/luxury-office-fit-out-riyadh-2560.webp 2560w" sizes="100vw" alt="The same office floor after fit-out, with a walnut slatted ceiling, workstations and a lounge" width="1920" height="1072" loading="lazy" decoding="async">
+      <span class="sf-shade" aria-hidden="true"></span>
       <span class="sf-tag sf-tag--a" aria-hidden="true">Turnkey handover</span>
       <span class="sf-tag sf-tag--b" aria-hidden="true">Shell &amp; core</span>
       <span class="sf-line" aria-hidden="true"></span>
       <button type="button" class="sf-grip" role="slider" aria-label="Fit-out progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="6"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" aria-hidden="true"><polyline points="9 6 3 12 9 18"/><polyline points="15 6 21 12 15 18"/></svg></button>
       <span class="sf-hint" aria-hidden="true">Drag through the fit-out</span>
     </div>
+    <div class="sf-over">
+      <div class="sf-head">
+        <div class="sf-rise">
+          <div class="sf-eyebrow"><i></i>Our Fit-Out Services</div>
+          <h2 class="sf-h2">Total Spatial Transformation</h2>
+        </div>
+        <div class="sf-rise sf-rise--2">
+          <p class="sf-body">At FurnishIQ, our Fit-Out service is our most highlighted offering and the heartbeat of our operational excellence. We specialize in the complete transformation of raw, structural shells into fully functional, finished, and turnkey environments that are ready for immediate occupation — on schedule, and without compromise.</p>
+          <a class="sf-cta" href="/services-fitout">Explore Fit-Out<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="sf-wrap">
     <ol class="sf-time">
         <li><button type="button" class="sf-ph" data-at="0"><b>01</b><span>Shell &amp; core</span></button></li>
         <li><button type="button" class="sf-ph" data-at="25"><b>02</b><span>Partitions &amp; ceilings</span></button></li>

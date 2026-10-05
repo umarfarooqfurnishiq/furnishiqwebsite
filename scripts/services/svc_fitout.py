@@ -57,25 +57,29 @@ def build(lang):
     clip = "inset(0 0 0 calc(100% - var(--p) * 1%))" if ar else "inset(0 calc(100% - var(--p) * 1%) 0 0)"
     pos = "right:calc(var(--p) * 1%)" if ar else "left:calc(var(--p) * 1%)"
     return f"""<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2. FIT-OUT ━ -->
-<section id="fitout" data-screen-label="Fit-Out" data-svc-fitout{' dir="rtl"' if ar else ''} style="scroll-margin-top:var(--fiq-svc-offset,132px);background:#1E1610;color:#F5F2ED;position:relative;padding:clamp(64px,8vw,100px) {side};overflow:clip;">
+<section id="fitout" data-screen-label="Fit-Out" data-svc-fitout{' dir="rtl"' if ar else ''} style="scroll-margin-top:var(--fiq-svc-offset,132px);background:#1E1610;color:#F5F2ED;position:relative;padding:0 {side} clamp(64px,8vw,100px);overflow:clip;">
   <style>
     [data-svc-fitout]{{--p:6;}}
     [data-svc-fitout] .sf-wrap{{max-width:1280px;margin:0 auto;}}
-    [data-svc-fitout] .sf-head{{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:clamp(32px,5vw,88px);align-items:end;margin-bottom:clamp(40px,4.4vw,64px);}}
+    [data-svc-fitout] .sf-head{{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:clamp(32px,5vw,88px);align-items:end;max-width:1280px;margin:0 auto;}}
     [data-svc-fitout] .sf-eyebrow{{display:flex;align-items:center;gap:16px;margin-bottom:24px;font-family:{font};font-size:{small};letter-spacing:{track};text-transform:uppercase;color:#D6C2A8;}}
     [data-svc-fitout] .sf-eyebrow i{{display:block;width:32px;height:1px;background:#D6C2A8;}}
     [data-svc-fitout] .sf-h2{{font-family:{font};font-weight:500;font-size:clamp(34px,4.4vw,64px);line-height:1.04;letter-spacing:{'0' if ar else '-0.02em'};color:#F5F2ED;margin:0;}}
-    [data-svc-fitout] .sf-body{{font-family:{font};font-size:{'16px' if ar else '15px'};line-height:1.85;color:rgba(245,242,237,0.72);margin:0 0 28px;}}
+    [data-svc-fitout] .sf-body{{font-family:{font};font-size:{'16px' if ar else '15px'};line-height:1.85;color:rgba(245,242,237,0.86);margin:0 0 28px;}}
     [data-svc-fitout] .sf-cta{{display:inline-flex;align-items:center;gap:12px;padding:17px 30px;background:#D6C2A8;color:#1E1610;text-decoration:none;font-family:{font};font-size:{'13px' if ar else '10px'};letter-spacing:{'normal' if ar else '0.2em'};text-transform:uppercase;border:1px solid #D6C2A8;transition:background 0.4s {EASE},color 0.4s {EASE};}}
     [data-svc-fitout] .sf-cta:hover,[data-svc-fitout] .sf-cta:focus-visible{{background:transparent;color:#D6C2A8;}}
-    [data-svc-fitout] .sf-stage{{position:relative;margin-inline:calc(50% - 50vw);aspect-ratio:1920/1072;max-height:86vh;width:100vw;overflow:hidden;background:#120D09;cursor:ew-resize;touch-action:pan-y;user-select:none;-webkit-user-select:none;}}
-    [data-svc-fitout] .sf-stage img{{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;}}
+    [data-svc-fitout] .sf-stage{{position:relative;margin-inline:calc(50% - 50vw);width:100vw;height:max(640px,calc(100vh - var(--fiq-svc-offset,132px)));overflow:hidden;background:#120D09;}}
+    [data-svc-fitout] .sf-view{{position:absolute;inset:0;cursor:ew-resize;touch-action:pan-y;user-select:none;-webkit-user-select:none;}}
+    [data-svc-fitout] .sf-shade{{position:absolute;inset:0;background:rgba(18,13,9,0.34);pointer-events:none;}}
+    [data-svc-fitout] .sf-over{{position:absolute;inset-inline:0;top:0;z-index:2;padding:clamp(64px,8vw,100px) {side} 0;pointer-events:none;text-shadow:0 1px 24px rgba(18,13,9,0.55);}}
+    [data-svc-fitout] .sf-over .sf-cta{{pointer-events:auto;text-shadow:none;}}
+    [data-svc-fitout] .sf-view img{{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;}}
     [data-svc-fitout] .sf-after{{clip-path:{clip};}}
     [data-svc-fitout] .sf-line{{position:absolute;top:0;bottom:0;{pos};width:1px;margin-inline-start:-0.5px;background:#D6C2A8;pointer-events:none;}}
     [data-svc-fitout] .sf-grip{{position:absolute;top:50%;{pos};width:56px;height:56px;transform:translate({'50%' if ar else '-50%'},-50%);display:grid;place-items:center;background:#D6C2A8;color:#1E1610;border:0;padding:0;cursor:ew-resize;transition:background 0.3s {EASE},color 0.3s {EASE};}}
     [data-svc-fitout] .sf-grip:hover,[data-svc-fitout].is-drag .sf-grip{{background:#F5F2ED;}}
     [data-svc-fitout] .sf-grip:focus-visible{{outline:1px solid #F5F2ED;outline-offset:4px;}}
-    [data-svc-fitout] .sf-tag{{position:absolute;top:clamp(18px,2vw,28px);padding:8px 12px;background:rgba(18,13,9,0.6);backdrop-filter:blur(6px);font-family:{font};font-size:{'12px' if ar else '9px'};letter-spacing:{'normal' if ar else '0.24em'};text-transform:uppercase;color:#F5F2ED;transition:opacity 0.4s {EASE};pointer-events:none;}}
+    [data-svc-fitout] .sf-tag{{position:absolute;bottom:clamp(18px,2vw,28px);padding:8px 12px;background:rgba(18,13,9,0.6);backdrop-filter:blur(6px);font-family:{font};font-size:{'12px' if ar else '9px'};letter-spacing:{'normal' if ar else '0.24em'};text-transform:uppercase;color:#F5F2ED;transition:opacity 0.4s {EASE};pointer-events:none;}}
     [data-svc-fitout] .sf-tag--a{{inset-inline-start:max({side},calc((100% - 1280px) / 2));}}
     [data-svc-fitout] .sf-tag--b{{inset-inline-end:max({side},calc((100% - 1280px) / 2));}}
     [data-svc-fitout] .sf-hint{{position:absolute;bottom:clamp(18px,2vw,28px);left:50%;transform:translateX(-50%);padding:8px 14px;background:rgba(18,13,9,0.6);backdrop-filter:blur(6px);font-family:{font};font-size:{'12px' if ar else '9px'};letter-spacing:{'normal' if ar else '0.24em'};text-transform:uppercase;color:#D6C2A8;white-space:nowrap;pointer-events:none;transition:opacity 0.6s {EASE};}}
@@ -96,7 +100,11 @@ def build(lang):
     [data-svc-fitout].is-in .sf-rise--2{{transition-delay:0.12s;}}
     @media(max-width:900px){{
       [data-svc-fitout] .sf-head{{grid-template-columns:1fr;}}
-      [data-svc-fitout] .sf-stage{{aspect-ratio:4/3;}}
+      [data-svc-fitout] .sf-stage{{height:auto;overflow:visible;background:none;display:flex;flex-direction:column;}}
+      [data-svc-fitout] .sf-over{{order:-1;position:static;padding:clamp(64px,8vw,100px) {side} 40px;text-shadow:none;}}
+      [data-svc-fitout] .sf-view{{position:relative;inset:auto;aspect-ratio:4/3;overflow:hidden;}}
+      [data-svc-fitout] .sf-shade{{display:none;}}
+      [data-svc-fitout] .sf-tag{{top:12px;bottom:auto;}}
       [data-svc-fitout] .sf-time{{grid-template-columns:repeat({n},minmax(110px,1fr));overflow-x:auto;scrollbar-width:none;}}
     }}
     @media(max-width:600px){{
@@ -108,26 +116,31 @@ def build(lang):
       [data-svc-fitout] .sf-rise{{opacity:1;transform:none;}}
     }}
   </style>
-  <div class="sf-wrap">
-    <div class="sf-head">
-      <div class="sf-rise">
-        <div class="sf-eyebrow"><i></i>{c['eyebrow']}</div>
-        <h2 class="sf-h2">{c['h2']}</h2>
-      </div>
-      <div class="sf-rise sf-rise--2">
-        <p class="sf-body">{c['body']}</p>
-        <a class="sf-cta" href="{c['href']}">{c['cta']}{ARROW_AR if ar else ARROW_EN}</a>
-      </div>
-    </div>
-    <div class="sf-stage" data-sf-stage>
+  <div class="sf-stage">
+    <div class="sf-view" data-sf-stage>
       <img src="uploads/{BEFORE}-1920.webp" srcset="{srcset(BEFORE)}" sizes="100vw" alt="{c['alt_b']}" width="1920" height="1072" loading="lazy" decoding="async">
       <img class="sf-after" src="uploads/{AFTER}-1920.webp" srcset="{srcset(AFTER)}" sizes="100vw" alt="{c['alt_a']}" width="1920" height="1072" loading="lazy" decoding="async">
+      <span class="sf-shade" aria-hidden="true"></span>
       <span class="sf-tag sf-tag--a" aria-hidden="true">{c['after']}</span>
       <span class="sf-tag sf-tag--b" aria-hidden="true">{c['before']}</span>
       <span class="sf-line" aria-hidden="true"></span>
       <button type="button" class="sf-grip" role="slider" aria-label="{c['slider']}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="6">{GRIP}</button>
       <span class="sf-hint" aria-hidden="true">{c['drag']}</span>
     </div>
+    <div class="sf-over">
+      <div class="sf-head">
+        <div class="sf-rise">
+          <div class="sf-eyebrow"><i></i>{c['eyebrow']}</div>
+          <h2 class="sf-h2">{c['h2']}</h2>
+        </div>
+        <div class="sf-rise sf-rise--2">
+          <p class="sf-body">{c['body']}</p>
+          <a class="sf-cta" href="{c['href']}">{c['cta']}{ARROW_AR if ar else ARROW_EN}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="sf-wrap">
     <ol class="sf-time">
 {phases}
     </ol>
