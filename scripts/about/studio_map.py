@@ -2,11 +2,13 @@
 
 Reads OpenStreetMap ways around the studio (fetched with Overpass, see README) and writes
 uploads/about-studio-map-riyadh.svg: sand-coloured streets and building outlines on a
-transparent ground, with the studio at the exact centre of the drawing.
+transparent ground, with the studio at the exact centre of the drawing. Also writes
+studio_map_labels.json: where about_studio.py lays the main road names over the map.
 Map data (c) OpenStreetMap contributors, ODbL.
 """
 import json
 import math
+import os
 import sys
 
 LAT0, LON0 = 24.6759459, 46.6749853      # First Plaza, Al Takhassousi (Google place cid 2079283542092448688)
@@ -35,6 +37,52 @@ def path(geom, close=False):
     return d + ("Z" if close else "")
 
 
+LABELS_JSON = os.path.join(os.path.dirname(os.path.abspath(__file__)), "studio_map_labels.json")
+SHOW = 0.6  # the page draws the map at 60% of the SVG size
+LABELS = [  # (name shown, OSM road whose line carries it, target in English, target in Arabic),
+    # targets relative to the studio in on-page px; Arabic mirrors the panel, so its labels sit elsewhere
+    ("Makkah Al Mukarramah Road", "Makkah Al Mukarramah Branch Road", (70, 26), (-120, 30)),
+    ("Prince Turki Bin Abdulaziz Al Awal Road", "Prince Turki Bin Abdulaziz Al Awal Road", (-304, 130), (-304, 130)),
+    ("Al Takhassousi Road", "Al Takhassousi Road", (172, 100), (172, 100)),
+]
+
+
+def place(roads, src, tx, ty):
+    """Point on the named road's line nearest the target, with the road's angle kept upright."""
+    best = None
+    gx, gy = W / 2 + tx / SHOW, H / 2 + ty / SHOW
+    for e in roads:
+        t = e.get("tags", {})
+        if (t.get("name:en") or t.get("name")) != src or "geometry" not in e:
+            continue
+        pts = [xy(p) for p in e["geometry"]]
+        for i in range(len(pts) - 1):
+            (x1, y1), (x2, y2) = pts[i], pts[i + 1]
+            dx, dy = x2 - x1, y2 - y1
+            k = max(0, min(1, ((gx - x1) * dx + (gy - y1) * dy) / (dx * dx + dy * dy or 1)))
+            px, py = x1 + k * dx, y1 + k * dy
+            d = (px - gx) ** 2 + (py - gy) ** 2
+            if best is None or d < best[0]:
+                a = math.degrees(math.atan2(dy, dx))
+                a = a - 180 if a > 90 else a + 180 if a < -90 else a
+                best = (d, round(px * SHOW, 1), round(py * SHOW, 1), round(a, 1))
+    return best[1:]
+
+
+def labels(roads):
+    names = {}
+    for e in roads:
+        t = e.get("tags", {})
+        if t.get("name:en"):
+            names[t["name:en"]] = t.get("name:ar") or t.get("name")
+    out = []
+    for name, src, en, ar in LABELS:
+        x, y, a = place(roads, src, *en)
+        xa, ya, aa = place(roads, src, *ar)
+        out.append(dict(en=name, ar=names[name], x=x, y=y, a=a, xa=xa, ya=ya, aa=aa))
+    return out
+
+
 def main(highway_json, building_json, out):
     roads = json.load(open(highway_json, encoding="utf-8"))["elements"]
     blds = json.load(open(building_json, encoding="utf-8"))["elements"]
@@ -52,6 +100,9 @@ def main(highway_json, building_json, out):
     svg.append("</svg>")
     open(out, "w", encoding="utf-8").write("\n".join(svg))
     print(out, "written")
+    lab = labels(roads)
+    open(LABELS_JSON, "w", encoding="utf-8").write(json.dumps(lab, ensure_ascii=False, indent=1))
+    print(LABELS_JSON, lab)
 
 
 if __name__ == "__main__":
