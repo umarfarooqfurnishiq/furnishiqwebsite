@@ -30,7 +30,7 @@
     { "source": "/about-us.ar.dc.html", "destination": "/ar/about-us", "permanent": true },
     { "source": "/about-us-2.dc.html", "destination": "/about-us", "permanent": true },
     { "source": "/about-us-2", "destination": "/about-us", "permanent": true },
-    { "source": "/_FurnishIQ About Us.dc.html", "destination": "/about-us", "permanent": true },
+    { "source": "/_FurnishIQ(.*)", "destination": "/about-us", "permanent": true },
     { "source": "/projects.dc.html", "destination": "/projects", "permanent": true },
     { "source": "/services.dc.html", "destination": "/services", "permanent": true },
     { "source": "/services.ar.dc.html", "destination": "/ar/services", "permanent": true },
