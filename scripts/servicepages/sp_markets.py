@@ -52,6 +52,44 @@ PAGE = {
                           "درج حلزوني منحوت، دار المجوهرات"]),
         )),
 }
+PAGE["services-mep"] = dict(
+    sectors=[("Residential", "penthouse-wadi-master-suite-spa-bath", "50% 50%"),
+             ("Hospitality", "roastery-house-roasting-hall-riyadh", "50% 50%"),
+             ("Workplace", "executive-floors-chairman-office", "50% 50%"),
+             ("Retail", "central-commons-covered-galleria", "50% 50%")],
+    over=dict(
+        en=dict(eyebrow="Markets We Serve", h2="Engineering across four sectors.",
+                body="Every sector, engineered in-house and commissioned before handover.",
+                alts=["Master suite with a freestanding stone bath, Penthouse Above the Wadi",
+                      "Roasting hall with its roaster and copper-clad bar, Roastery House Flagship",
+                      "Chairman's office above the Riyadh skyline, The Executive Floors",
+                      "Covered galleria under a long skylight, Central Commons"]),
+        ar=dict(eyebrow="القطاعات التي نخدمها", h2="هندسة في أربعة قطاعات.",
+                body="كل قطاع يُهندَس داخلياً ويُشغَّل قبل التسليم.",
+                alts=["جناح رئيسي بحوض استحمام حجري قائم، بنتهاوس فوق الوادي",
+                      "قاعة التحميص بمحمصتها وبارها المكسو بالنحاس، بيت المحمصة",
+                      "مكتب رئيس مجلس الإدارة فوق أفق الرياض، الطوابق التنفيذية",
+                      "رواق مغطى تحت سقف زجاجي طويل، سنترال كومنز"]),
+    ))
+PAGE["services-furniture"] = dict(
+    sectors=[("Residential", "obhur-estate-great-room-red-sea-jeddah", "50% 50%"),
+             ("Hospitality", "desert-stone-resort-signature-restaurant", "50% 50%"),
+             ("Workplace", "executive-floors-client-majlis", "50% 50%"),
+             ("Retail", "furniture-gallery-bedroom-suite", "50% 50%")],
+    over=dict(
+        en=dict(eyebrow="Markets We Serve", h2="Furniture across four sectors.",
+                body="Every sector, furnished in-house and placed exactly as rendered.",
+                alts=["Great room opening onto the Red Sea, Obhur Beach Estate",
+                      "Signature restaurant with timber tables and woven chairs, Desert Stone Resort",
+                      "Client majlis in leather above the Riyadh skyline, The Executive Floors",
+                      "Bedroom suite in the showroom, The Furniture Gallery"]),
+        ar=dict(eyebrow="القطاعات التي نخدمها", h2="أثاث في أربعة قطاعات.",
+                body="كل قطاع يُؤثَّث داخلياً ويوضع تماماً كما في التصور.",
+                alts=["صالة كبرى تطل على البحر الأحمر، دارة شاطئ أبحر",
+                      "المطعم الرئيسي بطاولات خشبية وكراسٍ منسوجة، منتجع الحجر الصحراوي",
+                      "مجلس الضيوف من الجلد فوق أفق الرياض، الطوابق التنفيذية",
+                      "جناح غرفة نوم في صالة العرض، معرض الأثاث"]),
+    ))
 
 pages = sys.argv[1:] or list(PAGE)
 for page in pages:

@@ -580,350 +580,702 @@ input:focus, select:focus, textarea:focus {
 </nav>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ HERO ━━ -->
-<section data-screen-label="Hero" style="position:relative;min-height:clamp(620px,66vh,760px);background:#3A2D25;display:flex;align-items:flex-end;overflow:hidden;">
-  <!-- Full-bleed photographic background -->
-  <div style="position:absolute;inset:0;background-image:url('uploads/office-shell-and-core-before-fit-out-riyadh-2560.webp');background-size:cover;background-position:center;"></div>
-  <!-- Reference-style overlay: dark top/bottom, clear through the middle -->
-  <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.82) 0%,rgba(0,0,0,0.15) 28.5%,rgba(0,0,0,0.15) 61%,rgba(0,0,0,0.85) 100%);pointer-events:none;"></div>
-  <div style="position:relative;z-index:1;max-width:1440px;margin:0 auto;width:100%;padding:0 clamp(24px,5vw,64px) clamp(48px,6vh,72px);">
-    <h1 data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'GE SS Two','Arial',sans-serif;font-size:clamp(36px,4.6vw,64px);font-weight:600;line-height:1.05;letter-spacing:-0.01em;color:#FFFFFF;margin-bottom:14px;text-wrap:balance;">الهندسة والأنظمة الكهروميكانيكية</h1>
-    <div data-reveal data-reveal-delay="0.08" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;align-items:center;gap:12px;">
-      <a href="/#services" style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:rgba(214,194,168,0.55);text-decoration:none;transition:color 0.25s;">الخدمات</a>
-      <span style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;color:rgba(214,194,168,0.3);">/</span>
-      <span style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:rgba(214,194,168,0.8);">الهندسة والأنظمة الكهروميكانيكية</span>
+<section data-screen-label="Hero" data-sp-hero dir="rtl" style="position:relative;background:#1F1F1F;color:#F5F2ED;overflow:hidden;">
+  <style>
+    /* the hero's links land below the fixed 80px header */
+    #contact{scroll-margin-top:80px;}
+    [data-sp-hero]{min-height:max(720px,100vh);min-height:max(720px,100svh);display:flex;flex-direction:column;}
+    [data-sp-hero] .hs-grid{position:absolute;inset:0;width:100%;height:100%;color:rgba(245,242,237,0.05);opacity:0;transition:opacity 1.6s cubic-bezier(0.25,0.46,0.45,0.94);}
+    [data-sp-hero].is-ready .hs-grid{opacity:1;}
+    [data-sp-hero] .hs-sheet{position:relative;flex:1;display:grid;grid-template-rows:minmax(0,1fr) auto;gap:clamp(28px,4vh,44px);width:100%;max-width:1440px;margin:0 auto;padding:clamp(108px,15vh,136px) clamp(24px,5vw,80px) clamp(20px,3vh,32px);box-sizing:border-box;}
+    [data-sp-hero] .hs-main{position:relative;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);align-items:stretch;min-height:0;}
+    /* the photograph, plotted on the sheet */
+    [data-sp-hero] .hs-plot{position:relative;grid-column:2;margin:22px 0 0;min-height:0;}
+    [data-sp-hero] .hs-photo{position:absolute;inset:0;overflow:hidden;background:#120D09;clip-path:inset(0 0 0 100%);transition:clip-path 1.5s cubic-bezier(0.77,0,0.18,1) 0.25s;}
+    [data-sp-hero].is-ready .hs-photo{clip-path:inset(0 0 0 0);}
+    [data-sp-hero] .hs-photo img{width:100%;height:100%;object-fit:cover;transform:scale(1.08);transition:transform 2.4s cubic-bezier(0.25,0.46,0.45,0.94) 0.25s;}
+    [data-sp-hero].is-ready .hs-photo img{transform:scale(1.02);animation:hsDrift 26s cubic-bezier(0.45,0,0.55,1) 2.7s infinite alternate;}
+    @keyframes hsDrift{from{transform:scale(1.02) translate3d(0,0,0);}to{transform:scale(1.09) translate3d(1.2%,-0.8%,0);}}
+    [data-sp-hero] .hs-mark{position:absolute;width:18px;height:18px;border:0 solid #D6C2A8;opacity:0;transition:opacity 0.6s cubic-bezier(0.25,0.46,0.45,0.94) 1.5s;}
+    [data-sp-hero].is-ready .hs-mark{opacity:1;}
+    [data-sp-hero] .hs-mark--tl{top:-10px;left:-10px;border-width:1px 0 0 1px;}
+    [data-sp-hero] .hs-mark--tr{top:-10px;right:-10px;border-width:1px 1px 0 0;}
+    [data-sp-hero] .hs-mark--bl{bottom:-10px;left:-10px;border-width:0 0 1px 1px;}
+    [data-sp-hero] .hs-mark--br{bottom:-10px;right:-10px;border-width:0 1px 1px 0;}
+    [data-sp-hero] .hs-dim{position:absolute;top:-24px;left:0;right:0;height:9px;}
+    [data-sp-hero] .hs-dim i{position:absolute;top:4px;left:0;right:0;height:1px;background:rgba(214,194,168,0.55);transform:scaleX(0);transform-origin:100% 50%;transition:transform 1.2s cubic-bezier(0.25,0.46,0.45,0.94) 0.9s;}
+    [data-sp-hero].is-ready .hs-dim i{transform:none;}
+    [data-sp-hero] .hs-dim::before,[data-sp-hero] .hs-dim::after{content:"";position:absolute;top:0;width:1px;height:9px;background:rgba(214,194,168,0.55);}
+    [data-sp-hero] .hs-dim::before{left:0;}
+    [data-sp-hero] .hs-dim::after{right:0;}
+    [data-sp-hero] .hs-dim span{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);padding:0 14px;background:#1F1F1F;white-space:nowrap;font-family:'GE SS Two','Arial',sans-serif;font-size:12px;letter-spacing:normal;text-transform:uppercase;color:rgba(214,194,168,0.85);opacity:0;transition:opacity 0.6s cubic-bezier(0.25,0.46,0.45,0.94) 1.6s;}
+    [data-sp-hero].is-ready .hs-dim span{opacity:1;}
+    /* the type, on the sheet; the title runs onto the photograph */
+    [data-sp-hero] .hs-text{position:relative;z-index:2;grid-column:1;grid-row:1;align-self:end;display:flex;flex-direction:column;padding-bottom:clamp(8px,2vh,24px);}
+    [data-sp-hero] .hs-eyebrow{display:flex;align-items:center;gap:14px;margin:0 0 26px;font-family:'GE SS Two','Arial',sans-serif;font-size:12px;letter-spacing:normal;text-transform:uppercase;color:rgba(214,194,168,0.9);}
+    [data-sp-hero] .hs-eyebrow i{display:block;width:32px;height:1px;background:#D6C2A8;}
+    [data-sp-hero] .hs-eyebrow [dir="ltr"]{font-family:'Lama Sans',sans-serif;letter-spacing:0.2em;color:#D6C2A8;}
+    [data-sp-hero] .hs-eyebrow a{color:inherit;text-decoration:none;}
+    [data-sp-hero] .hs-eyebrow a:hover{color:#F5F2ED;}
+    [data-sp-hero] .hs-h1{margin:0 0 0;margin-inline-end:-46%;font-family:'GE SS Two','Arial',sans-serif;font-weight:500;font-size:clamp(46px,6.2vw,104px);line-height:1.12;letter-spacing:0;color:#F5F2ED;text-shadow:0 2px 50px rgba(18,13,9,0.55);text-wrap:balance;}
+    [data-sp-hero] .hs-line{display:block;overflow:hidden;padding:0.1em 0 0.48em;margin-bottom:-0.48em;}
+    [data-sp-hero] .hs-line>span{display:block;transform:translateY(110%);transition:transform 1.2s cubic-bezier(0.25,0.46,0.45,0.94) 0.7s;}
+    [data-sp-hero].is-ready .hs-line>span{transform:none;}
+    [data-sp-hero] .hs-slogan{margin:clamp(22px,2.6vh,32px) 0 0;max-width:480px;font-family:'GE SS Two','Arial',sans-serif;font-weight:500;font-size:clamp(20px,1.8vw,26px);line-height:1.45;letter-spacing:0;color:rgba(245,242,237,0.86);text-wrap:balance;}
+    [data-sp-hero] .hs-ctas{display:flex;align-items:center;flex-wrap:wrap;gap:16px 30px;margin-top:clamp(26px,3.4vh,40px);}
+    [data-sp-hero] .hs-cta{display:inline-flex;align-items:center;gap:14px;padding:18px 32px;background:#D6C2A8;color:#1F1F1F;border:1px solid #D6C2A8;text-decoration:none;font-family:'GE SS Two','Arial',sans-serif;font-size:13px;letter-spacing:normal;text-transform:uppercase;transition:background 0.4s cubic-bezier(0.25,0.46,0.45,0.94),color 0.4s cubic-bezier(0.25,0.46,0.45,0.94);}
+    [data-sp-hero] .hs-cta:hover,[data-sp-hero] .hs-cta:focus-visible{background:transparent;color:#D6C2A8;}
+    [data-sp-hero] .hs-more{display:inline-flex;align-items:center;gap:12px;padding-bottom:6px;border-bottom:1px solid rgba(214,194,168,0.45);color:#F5F2ED;text-decoration:none;font-family:'GE SS Two','Arial',sans-serif;font-size:13px;letter-spacing:normal;text-transform:uppercase;transition:border-color 0.4s cubic-bezier(0.25,0.46,0.45,0.94),color 0.4s cubic-bezier(0.25,0.46,0.45,0.94);}
+    [data-sp-hero] .hs-more:hover,[data-sp-hero] .hs-more:focus-visible{color:#D6C2A8;border-color:#D6C2A8;}
+    [data-sp-hero] .hs-more svg{transition:transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94);}
+    [data-sp-hero] .hs-more:hover svg{transform:translateY(3px);}
+    [data-sp-hero] .hs-fade{opacity:0;transform:translateY(14px);transition:opacity 0.9s cubic-bezier(0.25,0.46,0.45,0.94) 1.05s,transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94) 1.05s;}
+    [data-sp-hero].is-ready .hs-fade{opacity:1;transform:none;}
+    /* the title block: the index of the set */
+    [data-sp-hero] .hs-block{display:grid;grid-template-columns:minmax(0,1.1fr) repeat(4,minmax(0,1fr));border:1px solid rgba(214,194,168,0.28);opacity:0;transform:translateY(14px);transition:opacity 0.9s cubic-bezier(0.25,0.46,0.45,0.94) 1.3s,transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94) 1.3s;}
+    [data-sp-hero].is-ready .hs-block{opacity:1;transform:none;}
+    [data-sp-hero] .hs-cell{position:relative;display:flex;flex-direction:column;justify-content:center;gap:6px;min-height:76px;padding:14px clamp(14px,1.4vw,22px);padding-inline-end:76px;border-inline-start:1px solid rgba(214,194,168,0.28);color:#F5F2ED;text-decoration:none;overflow:hidden;transition:background 0.4s cubic-bezier(0.25,0.46,0.45,0.94),color 0.4s cubic-bezier(0.25,0.46,0.45,0.94);}
+    [data-sp-hero] .hs-set{display:flex;flex-direction:column;justify-content:center;gap:6px;padding:14px clamp(14px,1.4vw,22px);font-family:'GE SS Two','Arial',sans-serif;font-size:12px;letter-spacing:normal;text-transform:uppercase;color:rgba(214,194,168,0.75);}
+    [data-sp-hero] .hs-set b{font-weight:500;color:#F5F2ED;}
+    [data-sp-hero] .hs-code{font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.2em;color:#D6C2A8;}
+    [data-sp-hero] .hs-cname{font-family:'GE SS Two','Arial',sans-serif;font-size:15px;line-height:1.3;}
+    [data-sp-hero] .hs-thumb{position:absolute;top:50%;inset-inline-end:14px;width:46px;height:46px;object-fit:cover;transform:translateY(-50%);opacity:0.4;filter:saturate(0.6);transition:opacity 0.4s cubic-bezier(0.25,0.46,0.45,0.94),filter 0.4s cubic-bezier(0.25,0.46,0.45,0.94);}
+    [data-sp-hero] a.hs-cell:hover,[data-sp-hero] a.hs-cell:focus-visible{background:rgba(245,242,237,0.06);}
+    [data-sp-hero] a.hs-cell:hover .hs-thumb,[data-sp-hero] a.hs-cell:focus-visible .hs-thumb{opacity:1;filter:none;}
+    [data-sp-hero] a.hs-cell:focus-visible{outline:1px solid #D6C2A8;outline-offset:-5px;}
+    [data-sp-hero] .hs-cell.is-current{background:#D6C2A8;color:#1F1F1F;}
+    [data-sp-hero] .hs-cell.is-current .hs-code{color:#5B4636;}
+    [data-sp-hero] .hs-cell.is-current .hs-thumb{opacity:1;filter:none;}
+    @media(max-width:900px){
+      [data-sp-hero]{min-height:0;}
+      [data-sp-hero] .hs-sheet{padding-top:112px;gap:32px;}
+      [data-sp-hero] .hs-main{grid-template-columns:1fr;gap:44px;}
+      [data-sp-hero] .hs-text{grid-column:1;grid-row:1;padding:0;}
+      [data-sp-hero] .hs-h1{margin-inline-end:0;}
+      [data-sp-hero] .hs-plot{grid-column:1;grid-row:2;aspect-ratio:4/3;margin-top:24px;}
+      [data-sp-hero] .hs-cta{width:100%;justify-content:center;box-sizing:border-box;}
+      [data-sp-hero] .hs-block{grid-template-columns:1fr 1fr;}
+      [data-sp-hero] .hs-set{display:none;}
+      [data-sp-hero] .hs-cell{border-top:1px solid rgba(214,194,168,0.28);}
+      [data-sp-hero] .hs-cell:nth-of-type(odd){border-inline-start:0;}
+      [data-sp-hero] .hs-cell:nth-of-type(-n+2){border-top:0;}
+      [data-sp-hero] .hs-thumb{display:none;}
+      [data-sp-hero] .hs-dim span{font-size:11px;letter-spacing:normal;padding:0 10px;max-width:calc(100% - 40px);overflow:hidden;text-overflow:ellipsis;}
+      [data-sp-hero] .hs-cell{padding-inline-end:clamp(14px,1.4vw,22px);}
+    }
+    @media(prefers-reduced-motion:reduce){
+      [data-sp-hero] *{transition:none!important;animation:none!important;}
+      [data-sp-hero] .hs-photo{clip-path:none;}
+      [data-sp-hero] .hs-line>span,[data-sp-hero] .hs-fade,[data-sp-hero] .hs-block{transform:none;opacity:1;}
+      [data-sp-hero] .hs-grid,[data-sp-hero] .hs-mark,[data-sp-hero] .hs-dim span{opacity:1;}
+      [data-sp-hero] .hs-dim i{transform:none;}
+    }
+  </style>
+  <svg class="hs-grid" aria-hidden="true"><defs><pattern id="hs-grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40,0V40M0,40H40" fill="none" stroke="currentColor" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(#hs-grid)"/></svg>
+  <div class="hs-sheet">
+    <div class="hs-main">
+      <div class="hs-text">
+        <p class="hs-eyebrow hs-fade"><i></i><a href="/ar/services">الخدمات</a><span>·</span>اللوحة <span dir="ltr">ME-03</span></p>
+        <h1 class="hs-h1"><span class="hs-line"><span>الهندسة والأنظمة الكهروميكانيكية</span></span></h1>
+        <p class="hs-slogan hs-fade">الطاقة والتكييف والمياه والسلامة، مدمجة هندسياً منذ المخطط الأول.</p>
+        <div class="hs-ctas hs-fade">
+          <a class="hs-cta" href="#contact">احجز استشارة مجانية<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 5 5 12 12 19"/></svg></a>
+          <a class="hs-more" href="#id-render">شاهد ما خلف السقف<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="5 12 12 19 19 12"/></svg></a>
+        </div>
+      </div>
+      <figure class="hs-plot">
+        <div class="hs-dim" aria-hidden="true"><i></i><span>الطوابق التنفيذية · تصور تصميمي</span></div>
+        <div class="hs-photo"><img src="uploads/executive-floors-walnut-ceiling-detail-2400.webp" srcset="uploads/executive-floors-walnut-ceiling-detail-1200.webp 1200w, uploads/executive-floors-walnut-ceiling-detail-2400.webp 2400w" sizes="(max-width:900px) 100vw, 58vw" alt="سقف من شرائح خشب الجوز بإضاءة خطية على امتداد ممر تنفيذي" style="object-position:50% 50%;" fetchpriority="high" decoding="async"></div>
+        <i class="hs-mark hs-mark--tl" aria-hidden="true"></i><i class="hs-mark hs-mark--tr" aria-hidden="true"></i><i class="hs-mark hs-mark--bl" aria-hidden="true"></i><i class="hs-mark hs-mark--br" aria-hidden="true"></i>
+      </figure>
     </div>
+    <nav class="hs-block" aria-label="صفحات الخدمات">
+      <span class="hs-set"><span>مجموعة اللوحات</span><b>خدمات FurnishIQ</b></span>
+      <a class="hs-cell" href="/ar/services-interior-design"><span class="hs-code" dir="ltr">ID-01</span><span class="hs-cname">التصميم الداخلي</span><img class="hs-thumb" src="uploads/luxury-interior-design-material-board-riyadh-600.webp" alt="" loading="lazy" decoding="async"></a>
+      <a class="hs-cell" href="/ar/services-fitout"><span class="hs-code" dir="ltr">FO-02</span><span class="hs-cname">التشطيبات</span><img class="hs-thumb" src="uploads/luxury-villa-fit-out-travertine-staircase-walnut-wall-riyadh-800.webp" alt="" loading="lazy" decoding="async"></a>
+      <span class="hs-cell is-current" aria-current="page"><span class="hs-code" dir="ltr">ME-03</span><span class="hs-cname">الهندسة والأنظمة الكهروميكانيكية</span><img class="hs-thumb" src="uploads/mep-ceiling-services-installation-riyadh-600.webp" alt="" loading="lazy" decoding="async"></span>
+      <a class="hs-cell" href="/ar/services-furniture"><span class="hs-code" dir="ltr">FF-04</span><span class="hs-cname">حلول الأثاث</span><img class="hs-thumb" src="uploads/furniture-gallery-living-room-set-1280.webp" alt="" loading="lazy" decoding="async"></a>
+    </nav>
   </div>
 </section>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ INTRO ━━━━━ -->
-<section data-screen-label="Intro" style="background:#F5F2ED;padding:clamp(64px,8vw,100px) clamp(24px,5vw,80px);">
-  <div style="max-width:1280px;margin:0 auto;">
-    <div class="fiq-intro-cols" style="display:flex;gap:clamp(48px,7vw,120px);align-items:flex-start;">
-      <div class="fiq-intro-left" style="flex:0 0 auto;width:clamp(240px,36%,460px);">
-        <div data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;align-items:center;gap:16px;margin-bottom:24px;">
-          <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
-          <span style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:#8B6B4A;">خدماتنا الهندسية</span>
+<section id="id-render" data-screen-label="Intro" data-id-render dir="rtl" style="scroll-margin-top:80px;background:#F5F2ED;color:#3A2D25;position:relative;padding:clamp(64px,8vw,100px) clamp(24px,5vw,80px) 0;overflow:clip;">
+  <style>
+    [data-id-render] .ir-wrap{max-width:1280px;margin:0 auto;}
+    [data-id-render] .ir-head{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:clamp(32px,5vw,88px);align-items:end;margin-bottom:clamp(40px,4.4vw,64px);}
+    [data-id-render] .ir-eyebrow{display:flex;align-items:center;gap:16px;margin-bottom:24px;font-family:'GE SS Two','Arial',sans-serif;font-size:12px;letter-spacing:normal;text-transform:uppercase;color:#8B6B4A;}
+    [data-id-render] .ir-eyebrow i{display:block;width:32px;height:1px;background:#8B6B4A;}
+    [data-id-render] .ir-h2{font-family:'GE SS Two','Arial',sans-serif;font-weight:500;font-size:clamp(32px,3.8vw,54px);line-height:1.08;letter-spacing:0;color:#1F1F1F;margin:0;text-wrap:balance;}
+    [data-id-render] .ir-sub{font-family:'GE SS Two','Arial',sans-serif;font-weight:500;font-size:clamp(22px,2vw,28px);line-height:1.4;letter-spacing:0;text-wrap:balance;max-width:18em;color:#3A2D25;margin:0;}
+    [data-id-render] .ir-rise{opacity:0;transform:translateY(24px);transition:opacity 0.9s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);}
+    [data-id-render].is-in .ir-rise{opacity:1;transform:none;}
+    [data-id-render].is-in .ir-rise--2{transition-delay:0.12s;}
+    [data-id-render].is-in .ir-rise--3{transition-delay:0.24s;}
+    [data-id-render] .ir-block{margin-inline:calc(50% - 50vw + var(--ir-sb,0px) / 2);background:#3A2D25;}
+    [data-id-render] .ir-stage{position:relative;height:min(calc(100vh - 80px - var(--ir-band,104px)),55.84vw);height:min(calc(100svh - 80px - var(--ir-band,104px)),55.84vw);min-height:440px;overflow:hidden;background:#1F1F1F;}
+    [data-id-render] .ir-canvas{position:absolute;inset:0;width:100%;height:100%;display:block;}
+    [data-id-render] .ir-in{position:absolute;inset:0;width:min(1280px,calc(100% - 2 * clamp(24px,5vw,80px)));margin:0 auto;pointer-events:none;}
+    [data-id-render] .ir-chip{position:absolute;top:clamp(16px,2.2vw,32px);inset-inline-start:0;display:inline-flex;align-items:center;gap:12px;padding:11px 16px;background:rgba(31,31,31,0.72);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:#F5F2ED;font-family:'GE SS Two','Arial',sans-serif;font-size:12px;letter-spacing:normal;text-transform:uppercase;transition:background 0.6s cubic-bezier(0.25,0.46,0.45,0.94),color 0.6s cubic-bezier(0.25,0.46,0.45,0.94);}
+    [data-id-render] .ir-dot{width:7px;height:7px;flex:none;border-radius:50%;background:#D6C2A8;animation:irPulse 1.4s cubic-bezier(0.25,0.46,0.45,0.94) infinite;}
+    @keyframes irPulse{0%,100%{opacity:1;}50%{opacity:0.25;}}
+    [data-id-render] .ir-pct{font-family:'Lama Sans',sans-serif;letter-spacing:0.12em;color:#D6C2A8;}
+    [data-id-render] .ir-tick{display:none;}
+    [data-id-render] .ir-chip.is-drawn .ir-dot,[data-id-render] .ir-chip.is-drawn .ir-pct{display:none;}
+    [data-id-render] .ir-chip.is-done{background:#D6C2A8;color:#1F1F1F;}
+    [data-id-render] .ir-chip.is-done .ir-dot,[data-id-render] .ir-chip.is-done .ir-pct{display:none;}
+    [data-id-render] .ir-chip.is-done .ir-tick{display:block;}
+    [data-id-render] .ir-cap{position:absolute;bottom:clamp(14px,2vw,24px);inset-inline-end:0;margin:0;padding:7px 12px;background:rgba(31,31,31,0.62);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:rgba(245,242,237,0.85);font-family:'GE SS Two','Arial',sans-serif;font-size:12px;}
+    [data-id-render] .ir-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));width:min(1280px,calc(100% - 2 * clamp(24px,5vw,80px)));margin:0 auto;}
+    [data-id-render] .ir-tab{position:relative;display:flex;align-items:flex-start;gap:16px;padding:24px clamp(14px,1.8vw,26px) 26px;border:0;border-inline-start:1px solid rgba(245,242,237,0.12);background:transparent;color:rgba(245,242,237,0.5);text-align:start;cursor:pointer;transition:color 0.4s cubic-bezier(0.25,0.46,0.45,0.94),background 0.4s cubic-bezier(0.25,0.46,0.45,0.94);}
+    [data-id-render] .ir-tab:first-child{border-inline-start:0;}
+    [data-id-render] .ir-tab:hover{color:#F5F2ED;background:rgba(245,242,237,0.04);}
+    [data-id-render] .ir-tab:focus-visible{outline:1px solid #D6C2A8;outline-offset:-4px;}
+    [data-id-render] .ir-tab.is-on{color:#F5F2ED;}
+    [data-id-render] .ir-prog{position:absolute;top:0;left:0;right:0;height:2px;background:rgba(245,242,237,0.1);}
+    [data-id-render] .ir-prog::after{content:"";position:absolute;inset:0;background:#D6C2A8;transform:scaleX(var(--p,0));transform-origin:100% 50%;}
+    [data-id-render] .ir-n{flex:none;padding-top:2px;font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.2em;color:#D6C2A8;}
+    [data-id-render] .ir-tx{display:flex;flex-direction:column;gap:6px;}
+    [data-id-render] .ir-tx b{font-weight:500;font-family:'GE SS Two','Arial',sans-serif;font-size:13px;letter-spacing:normal;text-transform:uppercase;}
+    [data-id-render] .ir-tx span{font-family:'GE SS Two','Arial',sans-serif;font-size:14px;line-height:1.6;color:rgba(245,242,237,0.6);}
+    @media(min-width:901px) and (min-height:600px){
+      [data-id-render] .ir-block{position:sticky;top:80px;}
+      [data-id-render] .ir-spacer{height:220vh;}
+    }
+    @media(max-width:900px){
+      [data-id-render] .ir-head{grid-template-columns:1fr;}
+      [data-id-render] .ir-stage{height:auto;min-height:0;aspect-ratio:1920/1072;}
+      [data-id-render] .ir-in{width:auto;inset:0 12px;}
+      [data-id-render] .ir-chip{top:12px;padding:8px 12px;}
+      [data-id-render] .ir-cap{display:none;}
+      [data-id-render] .ir-tabs{width:100%;}
+      [data-id-render] .ir-tab{padding:18px 14px 20px;gap:10px;}
+      [data-id-render] .ir-tx span{display:none;}
+    }
+    @media(prefers-reduced-motion:reduce){
+      [data-id-render] .ir-rise{opacity:1;transform:none;transition:none;}
+      [data-id-render] .ir-dot{animation:none;}
+    }
+  </style>
+  <div class="ir-wrap">
+    <div class="ir-head">
+      <div class="ir-rise">
+        <div class="ir-eyebrow"><i></i>خدماتنا الهندسية</div>
+        <h2 class="ir-h2">الأساس المتين للبيئات عالية الأداء</h2>
+      </div>
+      <p class="ir-sub ir-rise ir-rise--2">كل نظام منسّق فوق السقف، فلا يظهر شيء تحته.</p>
+    </div>
+    <div class="ir-track">
+    <div class="ir-block ir-rise ir-rise--3">
+      <div class="ir-stage" data-ir-stage>
+        <canvas class="ir-canvas" role="img" aria-label="صالة تنفيذية في الرياض، أولاً بسقف مفتوح على مجاري الهواء وحوامل الكابلات وأنابيب الرشاشات، ثم مغلقاً بخشب الجوز ومُشطّباً" data-a="mep-reveal-executive-lounge-services-open-toned" data-aw="1280,1920,2400" data-b="mep-reveal-executive-lounge-finished" data-bw="1280,1920,2400" data-iw="2400" data-ih="1792"></canvas>
+        <div class="ir-in">
+          <p class="ir-chip" aria-live="polite" data-l0="الأنظمة مكشوفة" data-l1="جارٍ الإغلاق" data-l2="تم التشغيل"><i class="ir-dot" aria-hidden="true"></i><span class="ir-lbl">جارٍ الإغلاق</span><span class="ir-pct" dir="ltr">000%</span><svg class="ir-tick" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12.5 9.5 18 20 6"/></svg></p>
+          <p class="ir-cap">صالة تنفيذية · تصور تصميمي</p>
         </div>
-        <h2 data-reveal data-reveal-delay="0.1" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'GE SS Two','Arial',sans-serif;font-size:clamp(26px,3.2vw,44px);font-weight:500;color:#1F1F1F;line-height:1.15;letter-spacing:-0.015em;text-wrap:balance;">الأساس المتين للبيئات عالية الأداء</h2>
       </div>
-      <div style="flex:1;padding-top:clamp(0px,3.5vw,52px);">
-        <p data-reveal data-reveal-delay="0.15" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'GE SS Two','Arial',sans-serif;font-size:clamp(22px,2vw,28px);font-weight:500;line-height:1.4;letter-spacing:0;color:#3A2D25;text-wrap:balance;max-width:18em;margin:0;">الأنظمة التي لا تراها، مدمجة في التصميم منذ اليوم الأول.</p>
-      </div>
+      <div class="ir-band"><div class="ir-tabs" role="group" aria-label="مراحل التنفيذ الهندسي">
+        <button type="button" class="ir-tab" data-ir-tab="0"><i class="ir-prog" aria-hidden="true"></i><span class="ir-n" dir="ltr">01</span><span class="ir-tx"><b>مكشوف</b><span>مجاري الهواء وحوامل الكابلات وخطوط الرشاشات والأنابيب، منسّقة في فراغ السقف.</span></span></button>
+        <button type="button" class="ir-tab" data-ir-tab="1"><i class="ir-prog" aria-hidden="true"></i><span class="ir-n" dir="ltr">02</span><span class="ir-tx"><b>مُغلق</b><span>السقف وفتحات التكييف والإضاءة ورؤوس الرشاشات في خط واحد متناسق.</span></span></button>
+        <button type="button" class="ir-tab" data-ir-tab="2"><i class="ir-prog" aria-hidden="true"></i><span class="ir-n" dir="ltr">03</span><span class="ir-tx"><b>مُشغَّل</b><span>كل نظام يُختبر ويُوازن ويُعتمد قبل التسليم.</span></span></button>
+      </div></div>
+    </div>
+    <div class="ir-spacer" aria-hidden="true"></div>
     </div>
   </div>
 </section>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ ADVANTAGE ━━━━━━━ -->
-<section data-screen-label="Advantage" style="background:#FFFFFF;overflow:hidden;">
-
-  <!-- Section header -->
-  <div style="padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px) clamp(52px,6vw,80px);">
-    <div style="max-width:1280px;margin:0 auto;">
-      <div data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;align-items:center;gap:16px;margin-bottom:20px;">
-        <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
-        <span style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:#8B6B4A;">ميزة FurnishIQ الهندسية</span>
-      </div>
-      <h2 data-reveal data-reveal-delay="0.1" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'GE SS Two','Arial',sans-serif;font-size:clamp(26px,3.2vw,48px);font-weight:500;color:#1F1F1F;line-height:1.1;letter-spacing:-0.015em;">ثلاث ركائز<br>للتميز الهندسي</h2>
-    </div>
-  </div>
-
-  <!-- Pillar 01: image LEFT · text RIGHT -->
-  <div data-adv-row style="display:grid;grid-template-columns:1fr 1fr;margin-bottom:0;">
-    <div data-slide-from="left" style="position:relative;overflow:hidden;opacity:0;transform:translateX(-52px);transition:opacity 0.9s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);">
-      <img src="uploads/mep-ceiling-services-installation-riyadh-1200.webp" srcset="uploads/mep-ceiling-services-installation-riyadh-600.webp 600w, uploads/mep-ceiling-services-installation-riyadh-900.webp 900w, uploads/mep-ceiling-services-installation-riyadh-1200.webp 1200w" sizes="(max-width:768px) 100vw, 54vw" alt="أنظمة MEP متكاملة داخل مساحة" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;" loading="lazy" decoding="async">
-    </div>
-    <div data-slide-from="right" style="display:flex;flex-direction:column;justify-content:flex-start;padding:80px clamp(40px,10vw,152px) 80px clamp(48px,5vw,80px);background:#FFFFFF;opacity:0;transform:translateX(52px);transition:opacity 0.9s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);">
-      <div style="font-family:'GE SS Two','Arial',sans-serif;font-size:clamp(72px,8.5vw,108px);font-weight:500;color:rgba(139,107,74,0.22);line-height:1;letter-spacing:-0.03em;margin-bottom:4px;">01</div>
-      <div style="width:36px;height:2px;background:#8B6B4A;margin-bottom:28px;"></div>
-      <h3 style="font-family:'GE SS Two','Arial',sans-serif;font-size:clamp(18px,2vw,26px);font-weight:500;color:#1F1F1F;margin-bottom:18px;line-height:1.2;">تكامل سلس للمرافق</h3>
-      <p style="font-family:'GE SS Two','Arial',sans-serif;font-size:15px;line-height:1.85;color:#5B4636;">نزيل التعارضات الفنية التي كثيراً ما تعاني منها المشاريع متعددة المقاولين. من خلال دمج الأنظمة الميكانيكية والكهربائية والسباكة أثناء مرحلة التصميم، نضمن توافق التحكم في المناخ وتوزيع الطاقة والسباكة تماماً مع مخططك المكاني — ما يمنع التعديلات المكلفة في الموقع ويحافظ على تصميمك دون أي تنازلات.</p>
-    </div>
-  </div>
-
-  <!-- Pillar 02: text LEFT · image RIGHT -->
-  <div data-adv-row style="display:grid;grid-template-columns:1fr 1fr;margin-bottom:0;">
-    <div data-slide-from="left" style="display:flex;flex-direction:column;justify-content:flex-start;padding:80px clamp(48px,5vw,80px) 80px clamp(40px,10vw,152px);background:#FFFFFF;opacity:0;transform:translateX(-52px);transition:opacity 0.9s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);">
-      <div style="font-family:'GE SS Two','Arial',sans-serif;font-size:clamp(72px,8.5vw,108px);font-weight:500;color:rgba(139,107,74,0.22);line-height:1;letter-spacing:-0.03em;margin-bottom:4px;">02</div>
-      <div style="width:36px;height:2px;background:#8B6B4A;margin-bottom:28px;"></div>
-      <h3 style="font-family:'GE SS Two','Arial',sans-serif;font-size:clamp(18px,2vw,26px);font-weight:500;color:#1F1F1F;margin-bottom:18px;line-height:1.2;">السلامة الإنشائية والتشغيلية</h3>
-      <p style="font-family:'GE SS Two','Arial',sans-serif;font-size:15px;line-height:1.85;color:#5B4636;">يصمم فريقنا الهندسي بمنظور طويل الأمد، لتحسين أداء المبنى وكفاءة استهلاك الطاقة، مع ضمان توافق السلامة الإنشائية لبيئتك مع أعلى المعايير المهنية.</p>
-    </div>
-    <div data-slide-from="right" style="position:relative;overflow:hidden;opacity:0;transform:translateX(52px);transition:opacity 0.9s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);">
-      <img src="uploads/central-commons-central-atrium-1280.webp" srcset="uploads/central-commons-central-atrium-1280.webp 1280w, uploads/central-commons-central-atrium-2752.webp 2752w" sizes="(max-width:768px) 100vw, 54vw" alt="عمارة إنشائية" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;" loading="lazy" decoding="async">
-    </div>
-  </div>
-
-  <!-- Pillar 03: image LEFT · text RIGHT -->
-  <div data-adv-row style="display:grid;grid-template-columns:1fr 1fr;margin-bottom:0;">
-    <div data-slide-from="left" style="position:relative;overflow:hidden;opacity:0;transform:translateX(-52px);transition:opacity 0.9s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);">
-      <img src="uploads/pillar-project-management-riyadh-timeline-1536.webp" srcset="uploads/pillar-project-management-riyadh-timeline-900.webp 900w, uploads/pillar-project-management-riyadh-timeline-1536.webp 1536w" sizes="(max-width:768px) 100vw, 54vw" alt="إشراف ميداني على الجودة والسلامة" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;" loading="lazy" decoding="async">
-    </div>
-    <div data-slide-from="right" style="display:flex;flex-direction:column;justify-content:flex-start;padding:80px clamp(40px,10vw,152px) 80px clamp(48px,5vw,80px);background:#FFFFFF;opacity:0;transform:translateX(52px);transition:opacity 0.9s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);">
-      <div style="font-family:'GE SS Two','Arial',sans-serif;font-size:clamp(72px,8.5vw,108px);font-weight:500;color:rgba(139,107,74,0.22);line-height:1;letter-spacing:-0.03em;margin-bottom:4px;">03</div>
-      <div style="width:36px;height:2px;background:#8B6B4A;margin-bottom:28px;"></div>
-      <h3 style="font-family:'GE SS Two','Arial',sans-serif;font-size:clamp(18px,2vw,26px);font-weight:500;color:#1F1F1F;margin-bottom:18px;line-height:1.2;">سلامة وجودة دون أي تنازلات</h3>
-      <p style="font-family:'GE SS Two','Arial',sans-serif;font-size:15px;line-height:1.85;color:#5B4636;margin-bottom:32px;">يخضع كل تركيب لمعاييرنا المميزة، التي تجمع بين بروتوكولات صارمة ورقابة ميدانية مستمرة من البداية وحتى التسليم.</p>
-      <div style="display:flex;flex-direction:column;gap:20px;">
-        <div style="display:flex;align-items:flex-start;gap:16px;">
-          <span style="width:1px;min-height:44px;background:rgba(91,70,54,0.2);flex-shrink:0;margin-top:3px;"></span>
-          <div>
-            <div style="font-family:'GE SS Two','Arial',sans-serif;font-size:10px;letter-spacing:normal;text-transform:uppercase;color:#3A2D25;margin-bottom:7px;">ضمان الجودة الصارم (QA/QC)</div>
-            <p style="font-family:'GE SS Two','Arial',sans-serif;font-size:13px;line-height:1.75;color:rgba(91,70,54,0.6);">بروتوكولات صارمة لضمان الجودة ومراقبتها تكفل مطابقة كل مكون لمعايير القطاع.</p>
-          </div>
-        </div>
-        <div style="display:flex;align-items:flex-start;gap:16px;">
-          <span style="width:1px;min-height:44px;background:rgba(91,70,54,0.2);flex-shrink:0;margin-top:3px;"></span>
-          <div>
-            <div style="font-family:'GE SS Two','Arial',sans-serif;font-size:10px;letter-spacing:normal;text-transform:uppercase;color:#3A2D25;margin-bottom:7px;">مراقبة الصحة والسلامة والبيئة (HSE)</div>
-            <p style="font-family:'GE SS Two','Arial',sans-serif;font-size:13px;line-height:1.75;color:rgba(91,70,54,0.6);">المراقبة المستمرة للصحة والسلامة والبيئة إلزامية طوال مرحلة التركيب.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- CTA button -->
-  <div data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;justify-content:center;padding:clamp(56px,7vw,96px) clamp(24px,5vw,80px);">
-    <a href="/ar/projects" id="adv-cta-btn" style="font-family:'GE SS Two','Arial',sans-serif;font-size:10px;letter-spacing:normal;text-transform:uppercase;color:#FFFFFF;background:#3A2D25;padding:16px 44px;text-decoration:none;display:inline-block;border:1px solid #3A2D25;transition:background 0.3s cubic-bezier(0.25,0.46,0.45,0.94),color 0.3s;white-space:nowrap;">اكتشف مشاريعنا</a>
-  </div>
-
-</section>
-
-<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ DISCIPLINES ━━━━━━━ -->
-<section data-screen-label="Disciplines" style="position:relative;background:#F5F2ED;overflow:hidden;">
-  <!-- Section header -->
-  <div style="position:relative;z-index:1;padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px) clamp(40px,5vw,56px);">
-    <div style="max-width:1280px;margin:0 auto;">
-      <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;">
-        <div style="max-width:640px;">
-          <div data-reveal style="opacity:0;transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;align-items:center;gap:16px;margin-bottom:20px;">
-            <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
-            <span style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:#8B6B4A;">تخصصاتنا في الأنظمة الكهروميكانيكية</span>
-          </div>
-          <h2 data-reveal data-reveal-delay="0.1" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'GE SS Two','Arial',sans-serif;font-size:clamp(28px,3.5vw,52px);font-weight:500;color:#3A2D25;line-height:1.1;letter-spacing:-0.015em;margin-bottom:20px;">الاختبار<br>والتشغيل</h2>
-          <p data-reveal data-reveal-delay="0.16" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'GE SS Two','Arial',sans-serif;font-size:15px;line-height:1.85;color:#5B4636;">من أول خط في المخطط وحتى التشغيل النهائي، يدير فريقنا الهندسي كل نظام داخلياً — بما يضمن الدقة والمطابقة ونقطة مسؤولية واحدة طوال مراحل مشروعك.</p>
-        </div>
-        <div data-reveal data-reveal-delay="0.2" style="opacity:0;transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;gap:10px;flex-shrink:0;">
-          <button id="disc-scroll-prev" aria-label="التمرير إلى اليمين" style="width:44px;height:44px;border:1px solid rgba(58,45,37,0.16);background:#FFFFFF;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.3s,border-color 0.3s;">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3A2D25" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-          </button>
-          <button id="disc-scroll-next" aria-label="التمرير إلى اليسار" style="width:44px;height:44px;border:1px solid rgba(58,45,37,0.16);background:#FFFFFF;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.3s,border-color 0.3s;">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3A2D25" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 5 5 12 12 19"></polyline></svg>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Gallery row -->
+<section id="pillars" data-screen-label="Advantage" data-sp-pillars dir="rtl" style="scroll-margin-top:80px;background:#FFFFFF;color:#3A2D25;position:relative;padding:clamp(64px,8vw,100px) clamp(24px,5vw,80px);">
   <style>
-    #disc-scroll-row::-webkit-scrollbar{display:none;}
-    #disc-scroll-row{scrollbar-width:none;-ms-overflow-style:none;}
-    .disc-card{flex:none;width:140px;transition:width 0.7s cubic-bezier(0.22,1,0.36,1);}
-    .disc-card.is-active{width:var(--disc-active-w,600px);}
-    .disc-card img{transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);}
-    .disc-card:hover img{transform:scale(1.06);}
-    .disc-title{font-family:'GE SS Two','Arial',sans-serif;font-weight:500;color:#FFFFFF;transition:font-size 0.5s cubic-bezier(0.22,1,0.36,1),margin-bottom 0.5s cubic-bezier(0.22,1,0.36,1);}
-    .disc-card:not(.is-active) .disc-title{font-size:11px;line-height:1.3;}
-    .disc-card.is-active .disc-title{font-size:clamp(18px,1.8vw,22px);line-height:1.25;margin-bottom:10px;}
-    .disc-desc{font-family:'GE SS Two','Arial',sans-serif;font-size:13px;line-height:1.7;color:rgba(255,255,255,0.75);max-width:340px;margin:0;opacity:0;max-height:0;overflow:hidden;transition:opacity 0.3s ease,max-height 0.45s cubic-bezier(0.25,0.46,0.45,0.94);}
-    .disc-card.is-active .disc-desc{opacity:1;max-height:120px;transition:opacity 0.3s ease 0.15s,max-height 0.45s cubic-bezier(0.25,0.46,0.45,0.94);}
-    .disc-label{position:absolute;right:22px;left:22px;bottom:24px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;}
-    #disc-scroll-prev:hover,#disc-scroll-next:hover{background:#3A2D25;border-color:#3A2D25;}
-    #disc-scroll-prev:hover svg,#disc-scroll-next:hover svg{stroke:#FFFFFF;}
+    [data-sp-pillars] .pl-wrap{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:clamp(40px,6vw,104px);align-items:start;}
+    [data-sp-pillars] .pl-list{grid-column:1;grid-row:1;}
+    [data-sp-pillars] .pl-side{grid-column:2;grid-row:1;position:sticky;top:clamp(112px,16vh,148px);display:flex;flex-direction:column;}
+    [data-sp-pillars] .pl-eyebrow{display:flex;align-items:center;gap:16px;margin:0 0 24px;font-family:'GE SS Two','Arial',sans-serif;font-size:12px;letter-spacing:normal;text-transform:uppercase;color:#8B6B4A;}
+    [data-sp-pillars] .pl-eyebrow i{display:block;width:32px;height:1px;background:#8B6B4A;}
+    [data-sp-pillars] .pl-h2{margin:0;font-family:'GE SS Two','Arial',sans-serif;font-weight:500;font-size:clamp(30px,3vw,46px);line-height:1.08;letter-spacing:0;color:#1F1F1F;text-wrap:balance;max-width:none;}
+    /* the numeral of the pillar in view, rolling from one to the next */
+    [data-sp-pillars] .pl-big{position:relative;display:flex;align-items:flex-end;gap:14px;height:clamp(96px,10vw,148px);margin:clamp(32px,4vh,52px) 0 clamp(24px,3vh,36px);overflow:hidden;}
+    [data-sp-pillars] .pl-roll{position:relative;height:100%;overflow:hidden;}
+    [data-sp-pillars] .pl-roll span{display:block;height:100%;font-family:'Lama Sans',sans-serif;font-weight:500;font-size:clamp(96px,10vw,148px);line-height:1;letter-spacing:-0.04em;color:#D6C2A8;transform:translateY(calc(var(--i,0) * -100%));transition:transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);}
+    [data-sp-pillars] .pl-of{padding-bottom:clamp(14px,1.4vw,22px);font-family:'Lama Sans',sans-serif;font-size:12px;letter-spacing:0.2em;color:#8B6B4A;}
+    [data-sp-pillars] .pl-index{list-style:none;margin:0;padding:0;border-top:1px solid rgba(58,45,37,0.14);}
+    [data-sp-pillars] .pl-ix{position:relative;display:flex;align-items:baseline;gap:18px;padding:18px 0;border-bottom:1px solid rgba(58,45,37,0.14);color:rgba(58,45,37,0.5);text-decoration:none;transition:color 0.4s cubic-bezier(0.25,0.46,0.45,0.94);}
+    [data-sp-pillars] .pl-ix:hover,[data-sp-pillars] .pl-ix.is-on{color:#1F1F1F;}
+    [data-sp-pillars] .pl-ix:focus-visible{outline:1px solid #8B6B4A;outline-offset:4px;}
+    [data-sp-pillars] .pl-bar{position:absolute;inset-inline:0;bottom:-1px;height:1px;background:#8B6B4A;transform:scaleX(var(--p,0));transform-origin:100% 50%;}
+    [data-sp-pillars] .pl-ixn{font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.2em;color:#8B6B4A;}
+    [data-sp-pillars] .pl-ixt{font-family:'GE SS Two','Arial',sans-serif;font-size:17px;}
+    [data-sp-pillars] .pl-cta{align-self:flex-start;display:inline-flex;align-items:center;gap:12px;margin-top:clamp(28px,4vh,44px);padding:17px 30px;background:#3A2D25;color:#F5F2ED;border:1px solid #3A2D25;text-decoration:none;font-family:'GE SS Two','Arial',sans-serif;font-size:13px;letter-spacing:normal;text-transform:uppercase;transition:background 0.4s cubic-bezier(0.25,0.46,0.45,0.94),color 0.4s cubic-bezier(0.25,0.46,0.45,0.94);}
+    [data-sp-pillars] .pl-cta:hover,[data-sp-pillars] .pl-cta:focus-visible{background:transparent;color:#3A2D25;}
+    /* the cards */
+    [data-sp-pillars] .pl-card{scroll-margin-top:120px;}
+    [data-sp-pillars] .pl-card+.pl-card{margin-top:clamp(88px,11vw,168px);}
+    [data-sp-pillars] .pl-fig{position:relative;margin-inline-start:calc(var(--pl-bleed,0px) * -1);overflow:hidden;clip-path:inset(0 0 100% 0);transition:clip-path 1.3s cubic-bezier(0.77,0,0.18,1);}
+    [data-sp-pillars] .pl-card.is-in .pl-fig{clip-path:inset(0 0 0 0);}
+    [data-sp-pillars] .pl-img{aspect-ratio:4/3;overflow:hidden;background:#3A2D25;}
+    [data-sp-pillars] .pl-img img{display:block;width:100%;height:100%;object-fit:cover;transform:scale(1.12);transition:transform 2s cubic-bezier(0.25,0.46,0.45,0.94);}
+    [data-sp-pillars] .pl-card.is-in .pl-img img{transform:scale(1);}
+    /* the text sits on the photograph's lower edge, over a soft warm fade, aligned to the page grid */
+    [data-sp-pillars] .pl-over{position:absolute;inset:auto 0 0 0;padding:clamp(96px,12vw,180px) clamp(28px,3.4vw,56px) clamp(28px,3vw,44px);padding-inline-start:calc(var(--pl-bleed,0px) + 0px);background:linear-gradient(0deg,rgba(18,13,9,0.9) 0%,rgba(18,13,9,0.72) 38%,rgba(18,13,9,0.32) 70%,rgba(18,13,9,0) 100%);}
+    [data-sp-pillars] .pl-num,[data-sp-pillars] .pl-t,[data-sp-pillars] .pl-b,[data-sp-pillars] .pl-pts{opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94) 0.5s,transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94) 0.5s;}
+    [data-sp-pillars] .pl-card.is-in .pl-num,[data-sp-pillars] .pl-card.is-in .pl-t,[data-sp-pillars] .pl-card.is-in .pl-b,[data-sp-pillars] .pl-card.is-in .pl-pts{opacity:1;transform:none;}
+    [data-sp-pillars] .pl-over>*{position:relative;}
+    /* the numeral's baseline on the body's last baseline (0.046em: Lama Sans digits sit that far above the
+       bottom of a 0.8 line box; 7px: the body's descent and half-leading), its edge 32px before the text column,
+       falling back to the photograph's edge where the margin is too narrow to hold it */
+    [data-sp-pillars] .pl-over>.pl-num{position:absolute;bottom:calc(clamp(28px,3vw,44px) + 7px - 0.046em);left:min(calc(100% - var(--pl-bleed,0px) + 32px),calc(100% - 1.2em - 4px));font-family:'Lama Sans',sans-serif;font-weight:500;font-size:clamp(100px,10.5vw,196px);line-height:0.8;letter-spacing:-0.04em;color:rgba(245,242,237,0.14);pointer-events:none;user-select:none;}
+    [data-sp-pillars] .pl-t{margin:0 0 12px;max-width:560px;font-family:'GE SS Two','Arial',sans-serif;font-weight:500;font-size:clamp(22px,2vw,30px);line-height:1.2;color:#F5F2ED;text-wrap:balance;}
+    [data-sp-pillars] .pl-b{margin:0;max-width:640px;font-family:'GE SS Two','Arial',sans-serif;font-size:15px;line-height:1.7;color:rgba(245,242,237,0.84);}
+    [data-sp-pillars] .pl-pts{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,40px);max-width:640px;margin-top:18px;padding-top:16px;border-top:1px solid rgba(245,242,237,0.22);}
+    [data-sp-pillars] .pl-ptt{margin:0 0 6px;font-family:'GE SS Two','Arial',sans-serif;font-size:12px;letter-spacing:normal;text-transform:uppercase;color:#D6C2A8;}
+    [data-sp-pillars] .pl-ptx{margin:0;font-family:'GE SS Two','Arial',sans-serif;font-size:14px;line-height:1.6;color:rgba(245,242,237,0.76);}
+    @media(max-width:900px){
+      [data-sp-pillars] .pl-wrap{grid-template-columns:1fr;gap:44px;}
+      [data-sp-pillars] .pl-side,[data-sp-pillars] .pl-list{grid-column:1;grid-row:auto;}
+      [data-sp-pillars] .pl-side{position:static;}
+      [data-sp-pillars] .pl-fig{margin-inline:calc(clamp(24px,5vw,80px) * -1);}
+      [data-sp-pillars] .pl-big,[data-sp-pillars] .pl-index{display:none;}
+      [data-sp-pillars] .pl-cta{order:9;}
+      [data-sp-pillars] .pl-pts{grid-template-columns:1fr;border-top-color:rgba(58,45,37,0.14);}
+      [data-sp-pillars] .pl-over{position:static;background:none;padding:28px clamp(24px,5vw,80px) 0;}
+      [data-sp-pillars] .pl-ptt{color:#8B6B4A;}
+      /* on phones the text sits on white below the photograph: the numeral goes with it, faint bronze */
+      [data-sp-pillars] .pl-over>.pl-num{top:calc(75vw + 14px);bottom:auto;right:auto;left:clamp(18px,5vw,40px);font-size:88px;color:rgba(139,107,74,0.16);}
+      [data-sp-pillars] .pl-t{color:#1F1F1F;}
+      [data-sp-pillars] .pl-b,[data-sp-pillars] .pl-ptx{color:#5B4636;}
+    }
+    @media(prefers-reduced-motion:reduce){
+      [data-sp-pillars] *{transition:none!important;}
+      [data-sp-pillars] .pl-fig{clip-path:none;}
+      [data-sp-pillars] .pl-img img,[data-sp-pillars] .pl-num,[data-sp-pillars] .pl-t,[data-sp-pillars] .pl-b,[data-sp-pillars] .pl-pts{opacity:1;transform:none;}
+    }
   </style>
-  <div id="disc-scroll-row" style="position:relative;z-index:1;display:flex;gap:5px;overflow-x:hidden;scroll-behavior:smooth;box-sizing:border-box;padding:0 clamp(24px,5vw,80px) clamp(80px,10vw,128px) clamp(24px,5vw,80px);width:100%;">
-
-    <!-- 01 Electrical Systems -->
-    <div class="disc-card is-active" style="position:relative;height:clamp(420px,42vw,560px);overflow:hidden;">
-      <img src="uploads/executive-floors-walnut-ceiling-detail-1200.webp" srcset="uploads/executive-floors-walnut-ceiling-detail-1200.webp 1200w, uploads/executive-floors-walnut-ceiling-detail-2400.webp 2400w" sizes="(max-width:768px) 100vw, 54vw" alt="الأنظمة الكهربائية" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy" decoding="async">
-      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,16,12,0) 72%,rgba(20,16,12,0.5) 100%);pointer-events:none;"></div>
-      <div class="disc-label">
-        <h4 class="disc-title">الأنظمة<br>الكهربائية</h4>
-        <p class="disc-desc">توزيع الطاقة، والإضاءة، والطاقة الاحتياطية للطوارئ، وإدارة الكابلات، مصممة وفق الأكواد المعتمدة.</p>
-      </div>
+  <div class="pl-wrap">
+    <div class="pl-side">
+      <p class="pl-eyebrow"><i></i>ميزة FurnishIQ الهندسية</p>
+      <h2 class="pl-h2">ثلاث ركائز للتميز الهندسي</h2>
+      <div class="pl-big" aria-hidden="true"><span class="pl-roll"><span>01</span><span>02</span><span>03</span></span><span class="pl-of" dir="ltr">/ 03</span></div>
+      <nav aria-label="الركائز الثلاث"><ol class="pl-index">
+          <li><a class="pl-ix" href="#pl-0" data-pl-ix="0"><i class="pl-bar" aria-hidden="true"></i><span class="pl-ixn" dir="ltr">01</span><span class="pl-ixt">تكامل المرافق</span></a></li>
+          <li><a class="pl-ix" href="#pl-1" data-pl-ix="1"><i class="pl-bar" aria-hidden="true"></i><span class="pl-ixn" dir="ltr">02</span><span class="pl-ixt">السلامة التشغيلية</span></a></li>
+          <li><a class="pl-ix" href="#pl-2" data-pl-ix="2"><i class="pl-bar" aria-hidden="true"></i><span class="pl-ixn" dir="ltr">03</span><span class="pl-ixt">السلامة والجودة</span></a></li>
+      </ol></nav>
+      <a class="pl-cta" href="/ar/projects">اكتشف مشاريعنا<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 5 5 12 12 19"/></svg></a>
     </div>
-
-    <!-- 02 Plumbing Systems -->
-    <div class="disc-card" style="position:relative;height:clamp(420px,42vw,560px);overflow:hidden;">
-      <img src="uploads/penthouse-wadi-master-suite-spa-bath-1280.webp" srcset="uploads/penthouse-wadi-master-suite-spa-bath-1280.webp 1280w, uploads/penthouse-wadi-master-suite-spa-bath-2752.webp 2752w" sizes="(max-width:600px) 100vw, (max-width:1024px) 50vw, 33vw" alt="أنظمة السباكة" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy" decoding="async">
-      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,16,12,0) 72%,rgba(20,16,12,0.5) 100%);pointer-events:none;"></div>
-      <div class="disc-label">
-        <h4 class="disc-title">أنظمة<br>السباكة</h4>
-        <p class="disc-desc">إمدادات المياه، والصرف، والصرف الصحي، وتركيبات المضخات المصممة لضمان الموثوقية.</p>
-      </div>
+    <div class="pl-list">
+        <article class="pl-card" id="pl-0" data-pl-card="0">
+          <div class="pl-fig">
+            <div class="pl-img"><img src="uploads/mep-pillar-utility-integration-ceiling-detail-1920.webp" srcset="uploads/mep-pillar-utility-integration-ceiling-detail-1280.webp 1280w, uploads/mep-pillar-utility-integration-ceiling-detail-1920.webp 1920w, uploads/mep-pillar-utility-integration-ceiling-detail-2400.webp 2400w" sizes="(max-width:900px) 100vw, 72vw" alt="فتحة تكييف خطية وإضاءة مدمجة ورأس رشاش في خط واحد بين شرائح سقف من خشب الجوز" loading="lazy" decoding="async"></div>
+            <div class="pl-over">
+              <span class="pl-num" aria-hidden="true">01</span>
+              <h3 class="pl-t">تكامل سلس للمرافق</h3>
+              <p class="pl-b">نزيل التعارضات الفنية التي كثيراً ما تعاني منها المشاريع متعددة المقاولين. من خلال دمج الأنظمة الميكانيكية والكهربائية والسباكة أثناء مرحلة التصميم، نضمن توافق التحكم في المناخ وتوزيع الطاقة والسباكة تماماً مع مخططك المكاني — ما يمنع التعديلات المكلفة في الموقع ويحافظ على تصميمك دون أي تنازلات.</p>
+            </div>
+          </div>
+        </article>
+        <article class="pl-card" id="pl-1" data-pl-card="1">
+          <div class="pl-fig">
+            <div class="pl-img"><img src="uploads/mep-pillar-operational-integrity-plant-room-1920.webp" srcset="uploads/mep-pillar-operational-integrity-plant-room-1280.webp 1280w, uploads/mep-pillar-operational-integrity-plant-room-1920.webp 1920w, uploads/mep-pillar-operational-integrity-plant-room-2400.webp 2400w" sizes="(max-width:900px) 100vw, 72vw" alt="غرفة معدات منظمة: أنابيب معزولة ومضخات على قواعد خرسانية وحوامل كابلات في الأعلى" loading="lazy" decoding="async"></div>
+            <div class="pl-over">
+              <span class="pl-num" aria-hidden="true">02</span>
+              <h3 class="pl-t">السلامة الإنشائية والتشغيلية</h3>
+              <p class="pl-b">يصمم فريقنا الهندسي بمنظور طويل الأمد، لتحسين أداء المبنى وكفاءة استهلاك الطاقة، مع ضمان توافق السلامة الإنشائية لبيئتك مع أعلى المعايير المهنية.</p>
+            </div>
+          </div>
+        </article>
+        <article class="pl-card" id="pl-2" data-pl-card="2">
+          <div class="pl-fig">
+            <div class="pl-img"><img src="uploads/mep-pillar-safety-quality-pressure-test-1920.webp" srcset="uploads/mep-pillar-safety-quality-pressure-test-1280.webp 1280w, uploads/mep-pillar-safety-quality-pressure-test-1920.webp 1920w, uploads/mep-pillar-safety-quality-pressure-test-2400.webp 2400w" sizes="(max-width:900px) 100vw, 72vw" alt="مقياس ضغط نحاسي على أنبوب نحاسي قيد الاختبار، مع بطاقة فحص ويد بقفاز تحمل لوحة ملاحظات" loading="lazy" decoding="async"></div>
+            <div class="pl-over">
+              <span class="pl-num" aria-hidden="true">03</span>
+              <h3 class="pl-t">سلامة وجودة دون أي تنازلات</h3>
+              <p class="pl-b">يخضع كل تركيب لمعاييرنا المميزة، التي تجمع بين بروتوكولات صارمة ورقابة ميدانية مستمرة من البداية وحتى التسليم.</p>
+          <div class="pl-pts"><div class="pl-pt"><p class="pl-ptt">ضمان الجودة الصارم (QA/QC)</p><p class="pl-ptx">بروتوكولات صارمة لضمان الجودة ومراقبتها تكفل مطابقة كل مكون لمعايير القطاع.</p></div><div class="pl-pt"><p class="pl-ptt">مراقبة الصحة والسلامة والبيئة (HSE)</p><p class="pl-ptx">المراقبة المستمرة للصحة والسلامة والبيئة إلزامية طوال مرحلة التركيب.</p></div></div>
+            </div>
+          </div>
+        </article>
     </div>
-
-    <!-- 03 HVAC Systems -->
-    <div class="disc-card" style="position:relative;height:clamp(420px,42vw,560px);overflow:hidden;">
-      <img src="uploads/central-commons-covered-galleria-1280.webp" srcset="uploads/central-commons-covered-galleria-1280.webp 1280w, uploads/central-commons-covered-galleria-1920.webp 1920w, uploads/central-commons-covered-galleria-2752.webp 2752w" sizes="(max-width:600px) 100vw, (max-width:1024px) 50vw, 33vw" alt="أنظمة التكييف" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy" decoding="async">
-      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,16,12,0) 72%,rgba(20,16,12,0.5) 100%);pointer-events:none;"></div>
-      <div class="disc-label">
-        <h4 class="disc-title">أنظمة<br>التكييف</h4>
-        <p class="disc-desc">التكييف، والتهوية، ومجاري الهواء، والاختبار لضمان راحة ثابتة على مدار العام.</p>
-      </div>
-    </div>
-
-    <!-- 04 Fire Fighting Systems -->
-    <div class="disc-card" style="position:relative;height:clamp(420px,42vw,560px);overflow:hidden;">
-      <img src="uploads/roastery-house-roasting-hall-riyadh-1280.webp" srcset="uploads/roastery-house-roasting-hall-riyadh-1280.webp 1280w, uploads/roastery-house-roasting-hall-riyadh-1920.webp 1920w, uploads/roastery-house-roasting-hall-riyadh-2752.webp 2752w" sizes="(max-width:600px) 100vw, (max-width:1024px) 50vw, 33vw" alt="أنظمة مكافحة الحريق" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy" decoding="async">
-      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,16,12,0) 72%,rgba(20,16,12,0.5) 100%);pointer-events:none;"></div>
-      <div class="disc-label">
-        <h4 class="disc-title">أنظمة<br>مكافحة الحريق</h4>
-        <p class="disc-desc">أجهزة إنذار الحريق، وأنظمة الإخماد، وشبكات الرشاشات، والمطابقة الكاملة لمتطلبات الدفاع المدني.</p>
-      </div>
-    </div>
-
-    <!-- 05 Low Current Systems -->
-    <div class="disc-card" style="position:relative;height:clamp(420px,42vw,560px);overflow:hidden;">
-      <img src="uploads/central-commons-office-lobby-1280.webp" srcset="uploads/central-commons-office-lobby-1280.webp 1280w, uploads/central-commons-office-lobby-2752.webp 2752w" sizes="(max-width:600px) 100vw, (max-width:1024px) 50vw, 33vw" alt="الأنظمة منخفضة الجهد" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy" decoding="async">
-      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,16,12,0) 72%,rgba(20,16,12,0.5) 100%);pointer-events:none;"></div>
-      <div class="disc-label">
-        <h4 class="disc-title">الأنظمة<br>منخفضة الجهد</h4>
-        <p class="disc-desc">الكابلات المهيكلة، وكاميرات المراقبة، وأنظمة التحكم بالدخول، وتكامل المباني الذكية.</p>
-      </div>
-    </div>
-
-    <!-- 06 Testing &amp; Commissioning -->
-    <div class="disc-card" style="position:relative;height:clamp(420px,42vw,560px);overflow:hidden;">
-      <img src="uploads/pillar-quality-assurance-level-inspection-900.webp" srcset="uploads/pillar-quality-assurance-level-inspection-900.webp 900w, uploads/pillar-quality-assurance-level-inspection-1536.webp 1536w" sizes="(max-width:600px) 100vw, (max-width:1024px) 50vw, 33vw" alt="الاختبار والتشغيل" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy" decoding="async">
-      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,16,12,0) 72%,rgba(20,16,12,0.5) 100%);pointer-events:none;"></div>
-      <div class="disc-label">
-        <h4 class="disc-title">الاختبار<br>والتشغيل</h4>
-        <p class="disc-desc">الاختبار الوظيفي، والتحقق من الأداء، ووثائق التسليم المعتمدة.</p>
-      </div>
-    </div>
-
   </div>
 </section>
 
-<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ MARKETS WE SERVE ━ -->
-<section data-screen-label="Markets" style="background:#FFFFFF;padding:clamp(64px,8vw,100px) clamp(24px,5vw,80px);">
-  <div style="max-width:1280px;margin:0 auto;">
-    <div data-reveal style="opacity:0;transform:translateY(16px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);text-align:center;margin-bottom:clamp(44px,6vw,64px);">
-      <div style="display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:20px;">
-        <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
-        <span style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:#8B6B4A;">القطاعات التي نخدمها</span>
-        <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ SCOPE ━━━━━━━━━━━━━ -->
+<section id="disciplines" data-screen-label="Scope" data-sp-disc dir="rtl" style="scroll-margin-top:80px;background:#F5F2ED;color:#3A2D25;position:relative;padding:clamp(64px,8vw,100px) clamp(24px,5vw,80px) 0;overflow:clip;">
+  <style>
+    [data-sp-disc] .dk-wrap{max-width:1280px;margin:0 auto;}
+    [data-sp-disc] .dk-head{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:clamp(32px,5vw,88px);align-items:end;margin-bottom:clamp(40px,4.4vw,64px);}
+    [data-sp-disc] .dk-eyebrow{display:flex;align-items:center;gap:16px;margin:0 0 24px;font-family:'GE SS Two','Arial',sans-serif;font-size:12px;letter-spacing:normal;text-transform:uppercase;color:#8B6B4A;}
+    [data-sp-disc] .dk-eyebrow i{display:block;width:32px;height:1px;background:#8B6B4A;}
+    [data-sp-disc] .dk-h2{margin:0;font-family:'GE SS Two','Arial',sans-serif;font-weight:500;font-size:clamp(32px,3.8vw,54px);line-height:1.08;letter-spacing:0;color:#1F1F1F;text-wrap:balance;}
+    [data-sp-disc] .dk-sub{margin:0;max-width:18em;font-family:'GE SS Two','Arial',sans-serif;font-weight:500;font-size:clamp(22px,2vw,28px);line-height:1.4;letter-spacing:0;color:#3A2D25;text-wrap:balance;}
+    [data-sp-disc] .dk-rise{opacity:0;transform:translateY(24px);transition:opacity 0.9s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);}
+    [data-sp-disc].is-in .dk-rise{opacity:1;transform:none;}
+    [data-sp-disc].is-in .dk-rise--2{transition-delay:0.12s;}
+    [data-sp-disc].is-in .dk-rise--3{transition-delay:0.24s;}
+    /* the block: the whole desk at its own shape beside the index, on dark walnut */
+    [data-sp-disc] .dk-block{position:relative;margin-inline:calc(50% - 50vw + var(--dk-sb,0px) / 2);background:#2B211A;}
+    [data-sp-disc] .dk-stage{display:flex;align-items:center;gap:clamp(32px,4.4vw,88px);height:calc(100vh - 80px);height:calc(100svh - 80px);min-height:560px;padding:clamp(24px,4vh,48px) clamp(24px,5vw,80px);padding-inline-start:clamp(24px,3vw,56px);box-sizing:border-box;}
+    [data-sp-disc] .dk-photo{position:relative;flex:none;width:min(62%,calc((100svh - 80px - 2 * clamp(24px,4vh,48px)) * 2400 / 1792));aspect-ratio:2400/1792;overflow:hidden;box-shadow:0 24px 80px rgba(0,0,0,0.35);}
+    [data-sp-disc] .dk-photo img{position:absolute;inset:0;width:100%;height:100%;display:block;}
+    [data-sp-disc] .dk-spot{position:absolute;left:var(--sx,0%);top:var(--sy,0%);width:var(--sw,100%);height:var(--sh,100%);box-shadow:0 0 0 300vmax rgba(20,15,11,var(--dim,0));transition:left 0.9s cubic-bezier(0.25,0.46,0.45,0.94),top 0.9s cubic-bezier(0.25,0.46,0.45,0.94),width 0.9s cubic-bezier(0.25,0.46,0.45,0.94),height 0.9s cubic-bezier(0.25,0.46,0.45,0.94),box-shadow 0.8s cubic-bezier(0.25,0.46,0.45,0.94);pointer-events:none;}
+    [data-sp-disc] .dk-spot::before,[data-sp-disc] .dk-spot::after{content:"";position:absolute;width:18px;height:18px;border:0 solid #D6C2A8;opacity:var(--mk,0);transition:opacity 0.5s cubic-bezier(0.25,0.46,0.45,0.94);}
+    [data-sp-disc] .dk-spot::before{top:-5px;left:-5px;border-width:1.5px 0 0 1.5px;}
+    [data-sp-disc] .dk-spot::after{bottom:-5px;right:-5px;border-width:0 1.5px 1.5px 0;}
+    /* the index */
+    [data-sp-disc] .dk-side{flex:1;min-width:0;max-width:520px;display:flex;flex-direction:column;color:#F5F2ED;}
+    [data-sp-disc] .dk-count{margin:0 0 clamp(14px,2vh,22px);font-family:'Lama Sans',sans-serif;font-size:12px;letter-spacing:0.2em;color:rgba(245,242,237,0.5);}
+    [data-sp-disc] .dk-count b{display:inline-block;min-width:1.4em;font-weight:500;font-size:clamp(40px,3.6vw,60px);letter-spacing:-0.02em;color:#D6C2A8;margin-inline-end:6px;}
+    [data-sp-disc] .dk-panes{display:grid;min-height:clamp(120px,16vh,160px);}
+    /* the closing call, which fades up once the desk is lit again after the sixth */
+    [data-sp-disc] .dk-end{margin-top:clamp(16px,2.4vh,28px);opacity:0;visibility:hidden;transform:translateY(14px);transition:opacity 0.7s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94),visibility 0s linear 0.7s;}
+    [data-sp-disc].is-end .dk-end{opacity:1;visibility:visible;transform:none;transition-delay:0.2s,0.2s,0s;}
+    [data-sp-disc] .dk-cta{display:inline-flex;align-items:center;gap:14px;padding:17px 30px;background:#D6C2A8;color:#1F1F1F;border:1px solid #D6C2A8;text-decoration:none;font-family:'GE SS Two','Arial',sans-serif;font-size:13px;letter-spacing:normal;text-transform:uppercase;transition:background 0.4s cubic-bezier(0.25,0.46,0.45,0.94),color 0.4s cubic-bezier(0.25,0.46,0.45,0.94);}
+    [data-sp-disc] .dk-cta:hover,[data-sp-disc] .dk-cta:focus-visible{background:transparent;color:#D6C2A8;}
+    [data-sp-disc] .dk-pane{grid-area:1/1;opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity 0.5s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94),visibility 0s linear 0.5s;}
+    [data-sp-disc] .dk-pane.is-on{opacity:1;visibility:visible;transform:none;transition-delay:0.15s,0.15s,0s;}
+    [data-sp-disc] .dk-name{margin:0 0 12px;font-family:'GE SS Two','Arial',sans-serif;font-weight:500;font-size:clamp(26px,2.5vw,40px);line-height:1.15;color:#F5F2ED;text-wrap:balance;}
+    [data-sp-disc] .dk-desc{margin:0;font-family:'GE SS Two','Arial',sans-serif;font-size:16px;line-height:1.75;color:rgba(245,242,237,0.78);}
+    [data-sp-disc] .dk-list{list-style:none;margin:clamp(20px,3vh,36px) 0 0;padding:0;border-top:1px solid rgba(245,242,237,0.12);}
+    [data-sp-disc] .dk-tab{position:relative;display:flex;align-items:baseline;gap:16px;width:100%;padding:clamp(9px,1.3vh,14px) 0;border:0;border-bottom:1px solid rgba(245,242,237,0.12);background:none;color:rgba(245,242,237,0.45);text-align:start;cursor:pointer;transition:color 0.4s cubic-bezier(0.25,0.46,0.45,0.94);}
+    [data-sp-disc] .dk-tab:hover,[data-sp-disc] .dk-tab.is-on{color:#F5F2ED;}
+    [data-sp-disc] .dk-tab:focus-visible{outline:1px solid #D6C2A8;outline-offset:2px;}
+    [data-sp-disc] .dk-prog{position:absolute;inset-inline:0;bottom:-1px;height:1px;background:#D6C2A8;transform:scaleX(var(--p,0));transform-origin:100% 50%;}
+    [data-sp-disc] .dk-n{flex:none;font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.2em;color:#D6C2A8;}
+    [data-sp-disc] .dk-t{font-family:'GE SS Two','Arial',sans-serif;font-size:15px;line-height:1.4;}
+    @media(min-width:901px) and (min-height:600px){
+      [data-sp-disc] .dk-block{position:sticky;top:80px;}
+      [data-sp-disc] .dk-spacer{height:400vh;}
+    }
+    @media(max-width:900px){
+      [data-sp-disc] .dk-head{grid-template-columns:1fr;}
+      [data-sp-disc] .dk-stage{flex-direction:column;align-items:stretch;height:auto;min-height:0;padding:0 0 28px;gap:24px;}
+      [data-sp-disc] .dk-photo{width:100%;box-shadow:none;}
+      [data-sp-disc] .dk-side{max-width:none;padding:0 clamp(24px,5vw,80px);}
+      [data-sp-disc] .dk-panes{min-height:0;}
+      [data-sp-disc] .dk-end{display:none;}
+      [data-sp-disc] .dk-list{display:grid;grid-template-columns:repeat(6,1fr);border:0;}
+      [data-sp-disc] .dk-tab{justify-content:center;border-bottom:0;border-top:2px solid rgba(245,242,237,0.12);padding:12px 0 0;}
+      [data-sp-disc] .dk-prog{top:-2px;bottom:auto;height:2px;}
+      [data-sp-disc] .dk-t{display:none;}
+    }
+    @media(prefers-reduced-motion:reduce){
+      [data-sp-disc] *{transition:none!important;}
+      [data-sp-disc] .dk-rise{opacity:1;transform:none;}
+    }
+  </style>
+  <div class="dk-wrap">
+    <div class="dk-head">
+      <div class="dk-rise">
+        <p class="dk-eyebrow"><i></i>تخصصاتنا في الأنظمة الكهروميكانيكية</p>
+        <h2 class="dk-h2">كل نظام، داخلياً.</h2>
       </div>
-      <h2 style="font-family:'GE SS Two','Arial',sans-serif;font-size:clamp(28px,3.4vw,44px);font-weight:500;color:#3A2D25;line-height:1.15;letter-spacing:-0.01em;max-width:640px;margin:0 auto;">فريق متكامل واحد، ينفذ في كل قطاع.</h2>
+      <p class="dk-sub dk-rise dk-rise--2">ستة تخصصات هندسية على طاولة واحدة، وفريق واحد مسؤول من المخطط الأول حتى التشغيل النهائي.</p>
     </div>
-
-    <div class="fiq-markets-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,1.6vw,20px);">
-
-      <a href="/projects?category=Residential" class="fiq-market-card" data-reveal data-reveal-delay="0.06" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);position:relative;aspect-ratio:3/4;overflow:hidden;border-radius:0;display:block;text-decoration:none;">
-        <img class="fiq-market-img" src="uploads/courtyard-residence-grand-majlis-riyadh-1280.webp" srcset="uploads/courtyard-residence-grand-majlis-riyadh-1280.webp 1280w, uploads/courtyard-residence-grand-majlis-riyadh-1920.webp 1920w, uploads/courtyard-residence-grand-majlis-riyadh-2752.webp 2752w" sizes="(max-width:600px) 100vw, (max-width:1024px) 50vw, 33vw" alt="سكني" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async">
-        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(30,22,16,0.9) 0%,rgba(30,22,16,0) 55%);"></div>
-        <div style="position:absolute;bottom:0;left:0;right:0;padding:22px;">
-          <span style="font-family:'GE SS Two','Arial',sans-serif;font-size:14px;font-weight:500;color:#FFFFFF;">سكني</span>
+    <div class="dk-track">
+    <div class="dk-block dk-rise dk-rise--3">
+      <div class="dk-stage" data-dk-stage data-spots="6.5,11.4,28,37.8|42,19.6,19.8,13.4|68.8,8.4,28.2,39|10.2,62.7,20.2,16.6|38.8,55.7,24.4,28.6|72.2,52.2,19.6,38.9">
+        <div class="dk-photo">
+          <img src="uploads/mep-disciplines-engineering-desk-1920.webp" srcset="uploads/mep-disciplines-engineering-desk-1280.webp 1280w, uploads/mep-disciplines-engineering-desk-1920.webp 1920w, uploads/mep-disciplines-engineering-desk-2400.webp 2400w" sizes="(max-width:900px) 100vw, 62vw" alt="طاولة من خشب الجوز من الأعلى: كابل كهربائي مع لوحة مفتاح برونزية، وصمام كروي نحاسي على أنبوب نحاسي، وفتحة تكييف خطية سوداء على مجرى هواء مجلفن، ورأس رشاش وكاشف دخان، وكابل بيانات أزرق مع كاميرا مراقبة، ومقياس ضغط على ورقة اختبار" loading="lazy" decoding="async">
+          <span class="dk-spot" aria-hidden="true"></span>
         </div>
-      </a>
-
-      <a href="/projects?category=Hospitality" class="fiq-market-card" data-reveal data-reveal-delay="0.12" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);position:relative;aspect-ratio:3/4;overflow:hidden;border-radius:0;display:block;text-decoration:none;">
-        <img class="fiq-market-img" src="uploads/desert-stone-resort-lobby-lounge-alula-1280.webp" srcset="uploads/desert-stone-resort-lobby-lounge-alula-1280.webp 1280w, uploads/desert-stone-resort-lobby-lounge-alula-1920.webp 1920w, uploads/desert-stone-resort-lobby-lounge-alula-2752.webp 2752w" sizes="(max-width:600px) 100vw, (max-width:1024px) 50vw, 33vw" alt="ضيافة" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async">
-        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(30,22,16,0.9) 0%,rgba(30,22,16,0) 55%);"></div>
-        <div style="position:absolute;bottom:0;left:0;right:0;padding:22px;">
-          <span style="font-family:'GE SS Two','Arial',sans-serif;font-size:14px;font-weight:500;color:#FFFFFF;">ضيافة</span>
+        <div class="dk-side">
+          <p class="dk-count"><span dir="ltr"><b class="dk-cur">00</b> / 06</span></p>
+          <div class="dk-panes" aria-live="polite">
+          <div class="dk-pane" data-dk-pane="0">
+            <h3 class="dk-name">الأنظمة الكهربائية</h3>
+            <p class="dk-desc">توزيع الطاقة، والإضاءة، والطاقة الاحتياطية للطوارئ، وإدارة الكابلات، مصممة وفق الأكواد المعتمدة.</p>
+          </div>
+          <div class="dk-pane" data-dk-pane="1">
+            <h3 class="dk-name">أنظمة السباكة</h3>
+            <p class="dk-desc">إمدادات المياه، والصرف، والصرف الصحي، وتركيبات المضخات المصممة لضمان الموثوقية.</p>
+          </div>
+          <div class="dk-pane" data-dk-pane="2">
+            <h3 class="dk-name">أنظمة التكييف</h3>
+            <p class="dk-desc">التكييف، والتهوية، ومجاري الهواء، والاختبار لضمان راحة ثابتة على مدار العام.</p>
+          </div>
+          <div class="dk-pane" data-dk-pane="3">
+            <h3 class="dk-name">أنظمة مكافحة الحريق</h3>
+            <p class="dk-desc">أجهزة إنذار الحريق، وأنظمة الإخماد، وشبكات الرشاشات، والمطابقة الكاملة لمتطلبات الدفاع المدني.</p>
+          </div>
+          <div class="dk-pane" data-dk-pane="4">
+            <h3 class="dk-name">الأنظمة منخفضة الجهد</h3>
+            <p class="dk-desc">الكابلات المهيكلة، وكاميرات المراقبة، وأنظمة التحكم بالدخول، وتكامل المباني الذكية.</p>
+          </div>
+          <div class="dk-pane" data-dk-pane="5">
+            <h3 class="dk-name">الاختبار والتشغيل</h3>
+            <p class="dk-desc">الاختبار الوظيفي، والتحقق من الأداء، ووثائق التسليم المعتمدة.</p>
+          </div>
+          </div>
+          <div class="dk-end"><a class="dk-cta" href="#contact">اطلب عرض سعر هندسي<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 5 5 12 12 19"/></svg></a></div>
+          <ol class="dk-list" aria-label="التخصصات الكهروميكانيكية">
+          <li><button type="button" class="dk-tab" data-dk-tab="0"><i class="dk-prog" aria-hidden="true"></i><span class="dk-n" dir="ltr">01</span><span class="dk-t">الأنظمة الكهربائية</span></button></li>
+          <li><button type="button" class="dk-tab" data-dk-tab="1"><i class="dk-prog" aria-hidden="true"></i><span class="dk-n" dir="ltr">02</span><span class="dk-t">أنظمة السباكة</span></button></li>
+          <li><button type="button" class="dk-tab" data-dk-tab="2"><i class="dk-prog" aria-hidden="true"></i><span class="dk-n" dir="ltr">03</span><span class="dk-t">أنظمة التكييف</span></button></li>
+          <li><button type="button" class="dk-tab" data-dk-tab="3"><i class="dk-prog" aria-hidden="true"></i><span class="dk-n" dir="ltr">04</span><span class="dk-t">أنظمة مكافحة الحريق</span></button></li>
+          <li><button type="button" class="dk-tab" data-dk-tab="4"><i class="dk-prog" aria-hidden="true"></i><span class="dk-n" dir="ltr">05</span><span class="dk-t">الأنظمة منخفضة الجهد</span></button></li>
+          <li><button type="button" class="dk-tab" data-dk-tab="5"><i class="dk-prog" aria-hidden="true"></i><span class="dk-n" dir="ltr">06</span><span class="dk-t">الاختبار والتشغيل</span></button></li>
+          </ol>
         </div>
-      </a>
+      </div>
+    </div>
+    <div class="dk-spacer" aria-hidden="true"></div>
+    </div>
+  </div>
+</section>
 
-      <a href="/projects?category=Workplace" class="fiq-market-card" data-reveal data-reveal-delay="0.18" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);position:relative;aspect-ratio:3/4;overflow:hidden;border-radius:0;display:block;text-decoration:none;">
-        <img class="fiq-market-img" src="uploads/executive-floors-sky-lobby-reception-riyadh-1280.webp" srcset="uploads/executive-floors-sky-lobby-reception-riyadh-1280.webp 1280w, uploads/executive-floors-sky-lobby-reception-riyadh-1920.webp 1920w, uploads/executive-floors-sky-lobby-reception-riyadh-2752.webp 2752w" sizes="(max-width:600px) 100vw, (max-width:1024px) 50vw, 33vw" alt="أماكن العمل" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async">
-        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(30,22,16,0.9) 0%,rgba(30,22,16,0) 55%);"></div>
-        <div style="position:absolute;bottom:0;left:0;right:0;padding:22px;">
-          <span style="font-family:'GE SS Two','Arial',sans-serif;font-size:14px;font-weight:500;color:#FFFFFF;">أماكن العمل</span>
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5. MARKETS WE SERVE ━ -->
+<section id="markets" data-screen-label="Markets We Serve" data-svc-markets dir="rtl" style="--fiq-svc-offset:80px;scroll-margin-top:var(--fiq-svc-offset,132px);background:#FFFFFF;color:#3A2D25;position:relative;padding:clamp(64px,8vw,100px) clamp(24px,5vw,80px) 0;overflow:clip;">
+  <style>
+    [data-svc-markets] .mk-wrap{max-width:1280px;margin:0 auto;}
+    [data-svc-markets] .mk-headrow{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:clamp(32px,5vw,88px);align-items:end;margin-bottom:clamp(40px,4.4vw,64px);}
+    [data-svc-markets] .mk-eyebrow{display:flex;align-items:center;gap:16px;margin-bottom:24px;font-family:'GE SS Two','Arial',sans-serif;font-size:12px;letter-spacing:normal;text-transform:uppercase;color:#8B6B4A;}
+    [data-svc-markets] .mk-eyebrow i{display:block;width:32px;height:1px;background:#8B6B4A;}
+    [data-svc-markets] .mk-h2{font-family:'GE SS Two','Arial',sans-serif;font-weight:500;font-size:clamp(32px,3.8vw,54px);line-height:1.08;letter-spacing:0;color:#1F1F1F;margin:0;text-wrap:balance;}
+    [data-svc-markets] .mk-intro{font-family:'GE SS Two','Arial',sans-serif;font-weight:500;font-size:clamp(22px,2vw,28px);line-height:1.4;letter-spacing:0;text-wrap:balance;max-width:18em;color:#3A2D25;margin:0 0 28px;}
+    [data-svc-markets] .mk-cta{display:inline-flex;align-items:center;gap:12px;padding:17px 30px;background:#3A2D25;color:#F5F2ED;text-decoration:none;font-family:'GE SS Two','Arial',sans-serif;font-size:13px;letter-spacing:normal;text-transform:uppercase;border:1px solid #3A2D25;transition:background 0.4s cubic-bezier(0.25,0.46,0.45,0.94),color 0.4s cubic-bezier(0.25,0.46,0.45,0.94);}
+    [data-svc-markets] .mk-cta:hover,[data-svc-markets] .mk-cta:focus-visible{background:transparent;color:#3A2D25;}
+    [data-svc-markets] .mk-rise{opacity:0;transform:translateY(24px);transition:opacity 0.9s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);}
+    [data-svc-markets].is-in .mk-rise{opacity:1;transform:none;}
+    [data-svc-markets].is-in .mk-rise--2{transition-delay:0.12s;}
+    [data-svc-markets].is-in .mk-rise--3{transition-delay:0.24s;}
+    [data-svc-markets] .mk-row{display:flex;height:clamp(520px,calc(100svh - var(--fiq-svc-offset,132px)),860px);margin-inline:calc(50% - 50vw + var(--mk-sb,0px) / 2);background:#1F1F1F;}
+    [data-svc-markets] .mk-panel{position:relative;flex:1 1 0;min-width:0;overflow:hidden;border-inline-start:1px solid rgba(245,242,237,0.14);transition:flex-grow 0.9s cubic-bezier(0.25,0.46,0.45,0.94);}
+    [data-svc-markets] .mk-panel:first-child{border-inline-start:0;}
+    [data-svc-markets] .mk-panel.is-on{flex-grow:3.4;}
+    /* the photograph keeps the open panel's width at all times, so it never rescales as the panels move */
+    [data-svc-markets] .mk-img{position:absolute;top:0;left:50%;height:100%;width:max(100%,64vw);object-fit:cover;transform:translateX(-50%) scale(1.04);transition:transform 1.6s cubic-bezier(0.25,0.46,0.45,0.94);}
+    [data-svc-markets] .mk-panel.is-on .mk-img{transform:translateX(-50%) scale(1);}
+    [data-svc-markets] .mk-tint{position:absolute;inset:0;background:rgba(31,31,31,0.58);transition:background 0.9s cubic-bezier(0.25,0.46,0.45,0.94);}
+    [data-svc-markets] .mk-panel:hover .mk-tint{background:rgba(31,31,31,0.42);}
+    [data-svc-markets] .mk-panel.is-on .mk-tint{background:rgba(31,31,31,0.12);}
+    [data-svc-markets] .mk-head{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;align-items:flex-start;padding:clamp(24px,2.6vw,40px) clamp(20px,2vw,32px);border:0;background:none;color:#F5F2ED;text-align:start;cursor:pointer;}
+    [data-svc-markets] .mk-panel.is-on .mk-head{cursor:default;}
+    [data-svc-markets] .mk-head:focus-visible{outline:1px solid #D6C2A8;outline-offset:-8px;}
+    [data-svc-markets] .mk-n{font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.22em;color:#D6C2A8;}
+    [data-svc-markets] .mk-name{font-family:'GE SS Two','Arial',sans-serif;font-weight:500;font-size:clamp(20px,1.8vw,26px);line-height:1.15;transition:opacity 0.4s cubic-bezier(0.25,0.46,0.45,0.94);}
+    [data-svc-markets] .mk-panel.is-on .mk-name{opacity:0;}
+    [data-svc-markets] .mk-body{position:absolute;bottom:clamp(20px,2.4vw,36px);inset-inline-start:clamp(20px,2.4vw,36px);width:min(440px,calc(100% - 2 * clamp(20px,2.4vw,36px)));padding:clamp(24px,2.4vw,34px);background:rgba(31,31,31,0.78);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);color:#F5F2ED;opacity:0;visibility:hidden;transform:translateY(14px);transition:opacity 0.5s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94),visibility 0s linear 0.5s;}
+    [data-svc-markets] .mk-panel.is-on .mk-body{opacity:1;visibility:visible;transform:none;transition-delay:0.45s,0.45s,0s;}
+    [data-svc-markets] .mk-title{margin:0 0 12px;font-family:'GE SS Two','Arial',sans-serif;font-weight:500;font-size:clamp(28px,2.8vw,40px);line-height:1.1;color:#F5F2ED;}
+    [data-svc-markets] .mk-desc{margin:0 0 22px;font-family:'GE SS Two','Arial',sans-serif;font-size:14px;line-height:1.7;color:rgba(245,242,237,0.78);}
+    [data-svc-markets] .mk-label{margin:0 0 6px;font-family:'GE SS Two','Arial',sans-serif;font-size:12px;letter-spacing:normal;text-transform:uppercase;color:#C4A882;}
+    [data-svc-markets] .mk-list{list-style:none;margin:0 0 24px;padding:0;}
+    [data-svc-markets] .mk-list a{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:11px 0;border-bottom:1px solid rgba(245,242,237,0.14);color:#F5F2ED;text-decoration:none;transition:color 0.3s cubic-bezier(0.25,0.46,0.45,0.94),padding 0.4s cubic-bezier(0.25,0.46,0.45,0.94);}
+    [data-svc-markets] .mk-list a:hover,[data-svc-markets] .mk-list a:focus-visible{color:#D6C2A8;padding-inline-start:6px;}
+    [data-svc-markets] .mk-pn{font-family:'GE SS Two','Arial',sans-serif;font-size:15px;}
+    [data-svc-markets] .mk-pl{flex:none;font-family:'GE SS Two','Arial',sans-serif;font-size:12px;letter-spacing:normal;color:rgba(245,242,237,0.55);}
+    [data-svc-markets] .mk-go{display:inline-flex;align-items:center;gap:12px;padding:15px 24px;background:#F5F2ED;color:#1F1F1F;border:1px solid #F5F2ED;text-decoration:none;font-family:'GE SS Two','Arial',sans-serif;font-size:13px;letter-spacing:normal;text-transform:uppercase;transition:background 0.4s cubic-bezier(0.25,0.46,0.45,0.94),color 0.4s cubic-bezier(0.25,0.46,0.45,0.94);}
+    [data-svc-markets] .mk-go:hover,[data-svc-markets] .mk-go:focus-visible{background:transparent;color:#F5F2ED;}
+    @media(max-width:900px){
+      [data-svc-markets] .mk-headrow{grid-template-columns:1fr;}
+      [data-svc-markets] .mk-row{flex-direction:column;height:auto;}
+      [data-svc-markets] .mk-panel{flex:none;height:96px;border-inline-start:0;border-top:1px solid rgba(245,242,237,0.14);transition:height 0.8s cubic-bezier(0.25,0.46,0.45,0.94);}
+      [data-svc-markets] .mk-panel:first-child{border-top:0;}
+      [data-svc-markets] .mk-panel.is-on{height:min(640px,calc(100svh - 120px));}
+      [data-svc-markets] .mk-img{width:100%;}
+      [data-svc-markets] .mk-head{flex-direction:row;justify-content:flex-start;align-items:center;gap:16px;bottom:auto;height:96px;padding:0 24px;}
+      [data-svc-markets] .mk-panel.is-on .mk-name{opacity:1;}
+      [data-svc-markets] .mk-body{inset-inline:14px;bottom:14px;width:auto;}
+      [data-svc-markets] .mk-title{display:none;}
+    }
+    @media(max-width:600px){
+      [data-svc-markets] .mk-cta{width:100%;justify-content:center;box-sizing:border-box;}
+      [data-svc-markets] .mk-pl{display:none;}
+    }
+    @media(prefers-reduced-motion:reduce){
+      [data-svc-markets] *{transition:none!important;}
+      [data-svc-markets] .mk-rise{opacity:1;transform:none;}
+    }
+  </style>
+  <div class="mk-wrap">
+    <div class="mk-headrow">
+      <div class="mk-rise">
+        <div class="mk-eyebrow"><i></i>القطاعات التي نخدمها</div>
+        <h2 class="mk-h2">هندسة في أربعة قطاعات.</h2>
+      </div>
+      <div class="mk-rise mk-rise--2">
+        <p class="mk-intro">كل قطاع يُهندَس داخلياً ويُشغَّل قبل التسليم.</p>
+        <a class="mk-cta" href="/ar/projects">عرض جميع المشاريع<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 5 5 12 12 19"/></svg></a>
+      </div>
+    </div>
+    <div class="mk-row mk-rise mk-rise--3" aria-label="القطاعات">
+      <article class="mk-panel is-on" data-mk="0">
+        <img class="mk-img" src="uploads/penthouse-wadi-master-suite-spa-bath-1280.webp" srcset="uploads/penthouse-wadi-master-suite-spa-bath-1280.webp 1280w, uploads/penthouse-wadi-master-suite-spa-bath-2752.webp 2752w" sizes="(max-width:900px) 100vw, 64vw" alt="جناح رئيسي بحوض استحمام حجري قائم، بنتهاوس فوق الوادي" style="object-position:50% 50%;" loading="lazy" decoding="async">
+        <i class="mk-tint" aria-hidden="true"></i>
+        <button type="button" class="mk-head" id="mk-head-0" aria-expanded="true" aria-controls="mk-body-0"><span class="mk-n" dir="ltr">01</span><span class="mk-name">سكني</span></button>
+        <div class="mk-body" id="mk-body-0" role="region" aria-labelledby="mk-head-0">
+          <h3 class="mk-title">سكني</h3>
+          <p class="mk-desc">فلل وبنتهاوسات ومساكن عائلية، مخططة حول طريقة عيش الأسرة، من المجلس إلى الجناح الخاص.</p>
+          <p class="mk-label">تصورات تصميمية</p>
+          <ul class="mk-list"><li><a href="/ar/project-detail?project=the-courtyard-residence" tabindex="-1"><span class="mk-pn">مسكن الفناء</span><span class="mk-pl">تصور تصميمي · شمال الرياض</span></a></li><li><a href="/ar/project-detail?project=obhur-beach-estate" tabindex="-1"><span class="mk-pn">دارة شاطئ أبحر</span><span class="mk-pl">تصور تصميمي · شمال جدة</span></a></li><li><a href="/ar/project-detail?project=penthouse-above-the-wadi" tabindex="-1"><span class="mk-pn">بنتهاوس فوق الوادي</span><span class="mk-pl">تصور تصميمي · غرب الرياض</span></a></li></ul>
+          <a class="mk-go" href="/ar/projects?category=Residential" tabindex="-1">عرض مشاريع سكني<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 5 5 12 12 19"/></svg></a>
         </div>
-      </a>
-
-      <a href="/projects?category=Retail" class="fiq-market-card" data-reveal data-reveal-delay="0.24" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);position:relative;aspect-ratio:3/4;overflow:hidden;border-radius:0;display:block;text-decoration:none;">
-        <img class="fiq-market-img" src="uploads/maison-joaillerie-main-salon-jeddah-1280.webp" srcset="uploads/maison-joaillerie-main-salon-jeddah-1280.webp 1280w, uploads/maison-joaillerie-main-salon-jeddah-1920.webp 1920w, uploads/maison-joaillerie-main-salon-jeddah-2752.webp 2752w" sizes="(max-width:600px) 100vw, (max-width:1024px) 50vw, 33vw" alt="التجزئة" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async">
-        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(30,22,16,0.9) 0%,rgba(30,22,16,0) 55%);"></div>
-        <div style="position:absolute;bottom:0;left:0;right:0;padding:22px;">
-          <span style="font-family:'GE SS Two','Arial',sans-serif;font-size:14px;font-weight:500;color:#FFFFFF;">التجزئة</span>
+      </article>
+      <article class="mk-panel" data-mk="1">
+        <img class="mk-img" src="uploads/roastery-house-roasting-hall-riyadh-1280.webp" srcset="uploads/roastery-house-roasting-hall-riyadh-1280.webp 1280w, uploads/roastery-house-roasting-hall-riyadh-1920.webp 1920w, uploads/roastery-house-roasting-hall-riyadh-2752.webp 2752w" sizes="(max-width:900px) 100vw, 64vw" alt="قاعة التحميص بمحمصتها وبارها المكسو بالنحاس، بيت المحمصة" style="object-position:50% 50%;" loading="lazy" decoding="async">
+        <i class="mk-tint" aria-hidden="true"></i>
+        <button type="button" class="mk-head" id="mk-head-1" aria-expanded="false" aria-controls="mk-body-1"><span class="mk-n" dir="ltr">02</span><span class="mk-name">ضيافة</span></button>
+        <div class="mk-body" id="mk-body-1" role="region" aria-labelledby="mk-head-1" aria-hidden="true">
+          <h3 class="mk-title">ضيافة</h3>
+          <p class="mk-desc">منتجعات ومقاهٍ ومطاعم تكون الأجواء فيها جزءاً من التجربة، ومُنفّذة لتؤدي في كل خدمة.</p>
+          <p class="mk-label">تصورات تصميمية</p>
+          <ul class="mk-list"><li><a href="/ar/project-detail?project=desert-stone-resort" tabindex="-1"><span class="mk-pn">منتجع الحجر الصحراوي</span><span class="mk-pl">تصور تصميمي · العُلا</span></a></li><li><a href="/ar/project-detail?project=roastery-house-flagship" tabindex="-1"><span class="mk-pn">بيت المحمصة — الفرع الرئيسي</span><span class="mk-pl">تصور تصميمي · شمال الرياض</span></a></li></ul>
+          <a class="mk-go" href="/ar/projects?category=Hospitality" tabindex="-1">عرض مشاريع ضيافة<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 5 5 12 12 19"/></svg></a>
         </div>
-      </a>
-
+      </article>
+      <article class="mk-panel" data-mk="2">
+        <img class="mk-img" src="uploads/executive-floors-chairman-office-1280.webp" srcset="uploads/executive-floors-chairman-office-1280.webp 1280w, uploads/executive-floors-chairman-office-2752.webp 2752w" sizes="(max-width:900px) 100vw, 64vw" alt="مكتب رئيس مجلس الإدارة فوق أفق الرياض، الطوابق التنفيذية" style="object-position:50% 50%;" loading="lazy" decoding="async">
+        <i class="mk-tint" aria-hidden="true"></i>
+        <button type="button" class="mk-head" id="mk-head-2" aria-expanded="false" aria-controls="mk-body-2"><span class="mk-n" dir="ltr">03</span><span class="mk-name">أماكن العمل</span></button>
+        <div class="mk-body" id="mk-body-2" role="region" aria-labelledby="mk-head-2" aria-hidden="true">
+          <h3 class="mk-title">أماكن العمل</h3>
+          <p class="mk-desc">مقرات رئيسية وطوابق تنفيذية تحمل هوية العلامة وتدعم يوم العمل.</p>
+          <p class="mk-label">تصورات تصميمية</p>
+          <ul class="mk-list"><li><a href="/ar/project-detail?project=the-executive-floors" tabindex="-1"><span class="mk-pn">الطوابق التنفيذية</span><span class="mk-pl">تصور تصميمي · شمال الرياض</span></a></li><li><a href="/ar/project-detail?project=family-office-hq" tabindex="-1"><span class="mk-pn">مقر المكتب العائلي</span><span class="mk-pl">تصور تصميمي · غرب الرياض</span></a></li></ul>
+          <a class="mk-go" href="/ar/projects?category=Workplace" tabindex="-1">عرض مشاريع أماكن العمل<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 5 5 12 12 19"/></svg></a>
+        </div>
+      </article>
+      <article class="mk-panel" data-mk="3">
+        <img class="mk-img" src="uploads/central-commons-covered-galleria-1280.webp" srcset="uploads/central-commons-covered-galleria-1280.webp 1280w, uploads/central-commons-covered-galleria-1920.webp 1920w, uploads/central-commons-covered-galleria-2752.webp 2752w" sizes="(max-width:900px) 100vw, 64vw" alt="رواق مغطى تحت سقف زجاجي طويل، سنترال كومنز" style="object-position:50% 50%;" loading="lazy" decoding="async">
+        <i class="mk-tint" aria-hidden="true"></i>
+        <button type="button" class="mk-head" id="mk-head-3" aria-expanded="false" aria-controls="mk-body-3"><span class="mk-n" dir="ltr">04</span><span class="mk-name">تجزئة</span></button>
+        <div class="mk-body" id="mk-body-3" role="region" aria-labelledby="mk-head-3" aria-hidden="true">
+          <h3 class="mk-title">تجزئة</h3>
+          <p class="mk-desc">متاجر ومعارض ووجهات تقدم فيها المساحةُ المنتجَ والعلامة التجارية.</p>
+          <p class="mk-label">تصورات تصميمية</p>
+          <ul class="mk-list"><li><a href="/ar/project-detail?project=maison-de-joaillerie" tabindex="-1"><span class="mk-pn">دار المجوهرات</span><span class="mk-pl">تصور تصميمي · جدة</span></a></li><li><a href="/ar/project-detail?project=central-commons" tabindex="-1"><span class="mk-pn">الساحة المركزية</span><span class="mk-pl">تصور تصميمي · العليا، الرياض</span></a></li><li><a href="/ar/project-detail?project=the-furniture-gallery" tabindex="-1"><span class="mk-pn">معرض الأثاث</span><span class="mk-pl">تصور تصميمي · شمال الرياض</span></a></li></ul>
+          <a class="mk-go" href="/ar/projects?category=Retail" tabindex="-1">عرض مشاريع تجزئة<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 5 5 12 12 19"/></svg></a>
+        </div>
+      </article>
     </div>
   </div>
 </section>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ CTA ━━━━━━━━━━━━━ -->
-<section id="contact" data-screen-label="CTA" style="position:relative;overflow:hidden;padding:clamp(64px,8vw,100px) clamp(24px,5vw,80px);">
-  <!-- Dark base -->
-  <div style="position:absolute;inset:0;background:#1E1610;"></div>
-  <!-- Construction site background -->
-  <div style="position:absolute;inset:0;background-image:url('uploads/penthouse-wadi-oak-bronze-staircase-detail-2400.webp');background-size:cover;background-position:center 40%;opacity:0.28;pointer-events:none;"></div>
-  <!-- Gradient veil for depth & legibility -->
-  <div style="position:absolute;inset:0;background:linear-gradient(110deg,rgba(18,12,6,0.92) 0%,rgba(18,12,6,0.78) 55%,rgba(18,12,6,0.88) 100%);pointer-events:none;"></div>
-  <!-- Decorative rings -->
-  <div style="position:absolute;top:-100px;left:-80px;width:420px;height:420px;border:1px solid rgba(214,194,168,0.05);border-radius:50%;pointer-events:none;"></div>
-  <div style="position:absolute;bottom:-60px;right:-40px;width:300px;height:300px;border:1px solid rgba(214,194,168,0.04);border-radius:50%;pointer-events:none;"></div>
-  <div style="position:relative;z-index:1;max-width:1280px;margin:0 auto;">
-    <div class="fiq-cta-row" style="display:flex;justify-content:space-between;align-items:flex-start;gap:clamp(48px,8vw,100px);flex-wrap:wrap;">
-
-      <!-- RIGHT (start): headline -->
-      <div data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);flex:2;">
-        <div style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:rgba(214,194,168,0.5);margin-bottom:16px;">على استعداد للبدء</div>
-        <h2 style="font-family:'GE SS Two','Arial',sans-serif;font-size:clamp(26px,4vw,52px);font-weight:500;color:#FFFFFF;line-height:1.05;letter-spacing:-0.02em;margin-bottom:18px;">ابنِ بثقة —<br>من الداخل إلى الخارج.</h2>
-        <p style="font-family:'GE SS Two','Arial',sans-serif;font-size:14px;line-height:1.75;color:rgba(214,194,168,0.65);margin-bottom:36px;">أفكار واضحة. تنفيذ نظيف. تسليم خالٍ من العيوب.</p>
-        <div style="display:flex;align-items:flex-start;gap:14px;">
-          <span style="width:1px;min-height:52px;background:rgba(214,194,168,0.3);flex-shrink:0;margin-top:3px;"></span>
-          <p style="font-family:'GE SS Two','Arial',sans-serif;font-size:12px;line-height:1.85;color:rgba(214,194,168,0.48);">حمّل كتيبنا الشامل لخدمات الأنظمة الكهروميكانيكية واكتشف كيف تُصمم FurnishIQ العمود الفقري غير المرئي للمساحات العالمية المستوى في جميع أنحاء المملكة العربية السعودية.</p>
+<section id="contact" data-screen-label="CTA" data-sp-bx dir="rtl" style="scroll-margin-top:80px;background:#3A2D25;color:#F5F2ED;position:relative;padding:clamp(64px,8vw,128px) clamp(24px,5vw,80px);overflow:clip;">
+  <style>
+    [data-sp-bx] .bx-wrap{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:minmax(0,8fr) minmax(0,5fr);gap:clamp(40px,5vw,96px);align-items:center;}
+    /* the book: two pages wide; closed, it sits centred, the cover over the second page */
+    /* the book reaches into the page margin on its side, up to 200px, so it can grow without narrowing the form */
+    [data-sp-bx] .bx-stage{perspective:2600px;display:flex;justify-content:center;margin-inline-start:calc(-1 * clamp(0px,(100vw - 1280px) / 2 - 32px,200px));}
+    [data-sp-bx] .bx-book{position:relative;width:min(100%,900px);aspect-ratio:3/2;transform:translateX(25%) rotateX(8deg);transform-style:preserve-3d;transition:transform 1.6s cubic-bezier(0.25,0.46,0.45,0.94) 0.2s;}
+    [data-sp-bx].is-open .bx-book{transform:none;}
+    [data-sp-bx] .bx-page{position:absolute;top:0;width:50%;height:100%;overflow:hidden;background:#F5F2ED;box-shadow:0 30px 70px rgba(0,0,0,0.45);}
+    [data-sp-bx] .bx-r{left:0;}
+    [data-sp-bx] .bx-cover{position:absolute;top:0;left:0;width:50%;height:100%;transform-origin:right center;transform-style:preserve-3d;transition:transform 1.7s cubic-bezier(0.65,0,0.25,1) 0.5s;}
+    [data-sp-bx].is-open .bx-cover{transform:rotateY(180deg);}
+    [data-sp-bx] .bx-face{position:absolute;inset:0;overflow:hidden;backface-visibility:hidden;-webkit-backface-visibility:hidden;}
+    /* no shadow on the cover: a box-shadow widens the face's 3D layer past the spine, and as it swings the browser
+       sorts the contents page over the cover's spine-side strip. The page beneath casts the closed book's shadow. */
+    [data-sp-bx] .bx-front{background:#1F1F1F;}
+    [data-sp-bx] .bx-back{transform:rotateY(180deg);background:#3A2D25;}
+    [data-sp-bx] .bx-face img,[data-sp-bx] .bx-r>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+    /* the cover: the logo on its charcoal band, the title over the photograph */
+    [data-sp-bx] .bx-band{position:absolute;inset:0 0 auto 0;z-index:1;display:flex;align-items:center;justify-content:center;height:16%;background:#1F1F1F;}
+    [data-sp-bx] .bx-band img{position:static;width:auto;height:42%;object-fit:contain;}
+    [data-sp-bx] .bx-front .bx-photo{position:absolute;inset:16% 0 0 0;}
+    [data-sp-bx] .bx-front .bx-photo::after{content:"";position:absolute;inset:0;background:rgba(20,15,11,0.38);}
+    [data-sp-bx] .bx-ctitle{position:absolute;inset:auto 9% 9% 9%;z-index:1;color:#F5F2ED;}
+    [data-sp-bx] .bx-ctitle b{display:block;font-family:'GE SS Two','Arial',sans-serif;font-weight:500;font-size:clamp(20px,2.4vw,42px);line-height:1.05;letter-spacing:0;}
+    [data-sp-bx] .bx-ctitle span{display:block;margin-top:10px;font-family:'GE SS Two','Arial',sans-serif;font-size:11px;letter-spacing:normal;text-transform:uppercase;color:#D6C2A8;}
+    [data-sp-bx] .bx-spine{position:absolute;top:0;bottom:0;right:0;width:5px;background:rgba(0,0,0,0.35);z-index:2;}
+    /* the contents page */
+    [data-sp-bx] .bx-text{position:absolute;inset:0;padding:11% 10%;display:flex;flex-direction:column;color:#3A2D25;}
+    [data-sp-bx] .bx-text h3{margin:0 0 7%;font-family:'GE SS Two','Arial',sans-serif;font-weight:500;font-size:11px;letter-spacing:normal;text-transform:uppercase;color:#8B6B4A;}
+    [data-sp-bx] .bx-text ol{list-style:none;margin:0;padding:0;}
+    [data-sp-bx] .bx-text li{display:flex;gap:10px;padding:4.5% 0;border-bottom:1px solid rgba(58,45,37,0.14);font-family:'GE SS Two','Arial',sans-serif;font-size:clamp(9px,0.9vw,15px);line-height:1.35;color:#1F1F1F;}
+    [data-sp-bx] .bx-text li span{flex:none;font-family:'Lama Sans',sans-serif;font-size:0.8em;letter-spacing:0.12em;color:#8B6B4A;padding-top:0.15em;}
+    [data-sp-bx] .bx-thumb{position:relative;margin-top:auto;aspect-ratio:3/2;overflow:hidden;}
+    [data-sp-bx] .bx-thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+    [data-sp-bx] .bx-shadow{position:absolute;inset:auto 6% -10% 6%;height:10%;background:rgba(0,0,0,0.5);filter:blur(24px);transform:translateZ(-1px);}
+    /* the form */
+    [data-sp-bx] .bx-eyebrow{display:flex;align-items:center;gap:16px;margin:0 0 22px;font-family:'GE SS Two','Arial',sans-serif;font-size:12px;letter-spacing:normal;text-transform:uppercase;color:#D6C2A8;}
+    [data-sp-bx] .bx-eyebrow i{display:block;width:32px;height:1px;background:#D6C2A8;}
+    [data-sp-bx] .bx-h2{margin:0 0 14px;font-family:'GE SS Two','Arial',sans-serif;font-weight:500;font-size:clamp(34px,3.8vw,56px);line-height:1.06;letter-spacing:0;color:#F5F2ED;}
+    [data-sp-bx] .bx-sub{margin:0 0 clamp(28px,3vw,40px);max-width:18em;font-family:'GE SS Two','Arial',sans-serif;font-weight:500;font-size:clamp(19px,1.6vw,22px);line-height:1.45;color:rgba(245,242,237,0.8);text-wrap:balance;}
+    [data-sp-bx] .bx-want{display:grid;grid-template-columns:1fr 1fr;margin:0 0 28px;padding:0;border:1px solid rgba(214,194,168,0.3);}
+    [data-sp-bx] .bx-want legend{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);}
+    [data-sp-bx] .bx-want label{position:relative;cursor:pointer;}
+    [data-sp-bx] .bx-want input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer;}
+    [data-sp-bx] .bx-want span{display:block;padding:14px 12px;text-align:center;font-family:'GE SS Two','Arial',sans-serif;font-size:13px;letter-spacing:normal;text-transform:uppercase;color:rgba(245,242,237,0.6);transition:background 0.4s cubic-bezier(0.25,0.46,0.45,0.94),color 0.4s cubic-bezier(0.25,0.46,0.45,0.94);}
+    [data-sp-bx] .bx-want input:checked+span{background:#D6C2A8;color:#1F1F1F;}
+    [data-sp-bx] .bx-want input:focus-visible+span{outline:1px solid #D6C2A8;outline-offset:3px;}
+    [data-sp-bx] .bx-names{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+    [data-sp-bx] .bx-field{display:block;margin-bottom:24px;}
+    [data-sp-bx] .bx-field>span{display:block;margin-bottom:6px;font-family:'GE SS Two','Arial',sans-serif;font-size:12px;letter-spacing:normal;text-transform:uppercase;color:rgba(214,194,168,0.75);}
+    [data-sp-bx] .bx-field input,[data-sp-bx] .bx-tel{width:100%;box-sizing:border-box;padding:10px 0;border:0;border-bottom:1px solid rgba(214,194,168,0.3);background:transparent;color:#F5F2ED;font-family:'Lama Sans',sans-serif;font-size:15px;outline:none;border-radius:0;transition:border-color 0.3s cubic-bezier(0.25,0.46,0.45,0.94);}
+    [data-sp-bx] .bx-field input::placeholder{color:rgba(245,242,237,0.3);}
+    [data-sp-bx] .bx-field input:focus{border-bottom-color:#D6C2A8;}
+    [data-sp-bx] .bx-tel{display:flex;align-items:center;gap:10px;padding:0;direction:ltr;}
+    [data-sp-bx] .bx-tel:focus-within{border-bottom-color:#D6C2A8;}
+    [data-sp-bx] .bx-tel i{width:1px;height:16px;background:rgba(214,194,168,0.3);}
+    [data-sp-bx] .bx-tel input{border:0;padding:10px 0;}
+    [data-sp-bx] .bx-btn{display:flex;align-items:center;justify-content:center;gap:14px;width:100%;margin-top:8px;padding:20px 28px;background:#D6C2A8;color:#1F1F1F;border:1px solid #D6C2A8;cursor:pointer;font-family:'GE SS Two','Arial',sans-serif;font-size:13px;letter-spacing:normal;text-transform:uppercase;transition:background 0.4s cubic-bezier(0.25,0.46,0.45,0.94),color 0.4s cubic-bezier(0.25,0.46,0.45,0.94);}
+    [data-sp-bx] .bx-btn:hover,[data-sp-bx] .bx-btn:focus-visible{background:transparent;color:#D6C2A8;}
+    [data-sp-bx] .bx-btn:disabled{opacity:0.6;cursor:wait;}
+    [data-sp-bx] .bx-note{margin:16px 0 0;font-family:'GE SS Two','Arial',sans-serif;font-size:13px;line-height:1.6;color:rgba(245,242,237,0.5);}
+    [data-sp-bx] .bx-thanks{margin:16px 0 0;padding:14px 16px;border:1px solid rgba(214,194,168,0.3);font-family:'GE SS Two','Arial',sans-serif;font-size:14px;line-height:1.6;color:#D6C2A8;}
+    [data-sp-bx] .bx-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;}
+    [data-sp-bx] .bx-rise{opacity:0;transform:translateY(24px);transition:opacity 0.9s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);}
+    [data-sp-bx].is-in .bx-rise{opacity:1;transform:none;}
+    [data-sp-bx].is-in .bx-rise--2{transition-delay:0.15s;}
+    @media(max-width:900px){
+      [data-sp-bx] .bx-wrap{grid-template-columns:1fr;gap:56px;}
+      [data-sp-bx] .bx-book{width:100%;}
+      [data-sp-bx] .bx-stage{margin-inline-start:0;}
+      [data-sp-bx] .bx-names{grid-template-columns:1fr;gap:0;}
+    }
+    @media(prefers-reduced-motion:reduce){
+      [data-sp-bx] *{transition:none!important;}
+      [data-sp-bx] .bx-rise{opacity:1;transform:none;}
+    }
+  </style>
+  <div class="bx-wrap">
+    <div class="bx-stage bx-rise" role="img" aria-label="كتيّب الهندسة والأنظمة الكهروميكانيكية، مفتوحاً على صفحته الأولى">
+      <div class="bx-book">
+        <span class="bx-shadow" aria-hidden="true"></span>
+        <div class="bx-page bx-r">
+          <div class="bx-text">
+            <h3>المحتويات</h3>
+            <ol><li><span dir="ltr">01</span>ثلاث ركائز للتميز الهندسي</li><li><span dir="ltr">02</span>ستة تخصصات كهروميكانيكية</li><li><span dir="ltr">03</span>تصورات تصميمية في أربعة قطاعات</li><li><span dir="ltr">04</span>من المخطط الأول حتى التشغيل</li></ol>
+            <div class="bx-thumb"><img src="uploads/mep-pillar-operational-integrity-plant-room-1200.webp" alt="" loading="lazy" decoding="async"></div>
+          </div>
+        </div>
+        <div class="bx-cover">
+          <div class="bx-face bx-front">
+            <div class="bx-band"><img src="assets/logo-default.png" alt="FurnishIQ" width="264" height="90"></div>
+            <div class="bx-photo"><img src="uploads/mep-pillar-utility-integration-ceiling-detail-1200.webp" alt="" loading="lazy" decoding="async"></div>
+            <p class="bx-ctitle"><b>الهندسة والأنظمة الكهروميكانيكية</b><span>إصدار الاستوديو</span></p>
+            <i class="bx-spine" aria-hidden="true"></i>
+          </div>
+          <div class="bx-face bx-back"><img src="uploads/mep-ceiling-services-installation-riyadh-1200.webp" alt="" loading="lazy" decoding="async"></div>
         </div>
       </div>
-
-      <!-- LEFT (end): contact form -->
-      <div data-reveal data-reveal-delay="0.15" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);flex:1;min-width:280px;max-width:500px;">
-        <form id="mep-brochure-form" onSubmit="{{ onBrochureSubmit }}" style="display:flex;flex-direction:column;gap:0;">
-
-          <!-- Honeypot: hidden from real users, catches basic bots that auto-fill every field -->
-          <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">
-            <label for="mep-hp-field">اترك هذا الحقل فارغاً</label>
-            <input id="mep-hp-field" type="text" tabindex="-1" autocomplete="off" value="{{ formHoneypot }}" onChange="{{ onHoneypotChange }}">
-          </div>
-
-          <!-- Name row -->
-          <div class="fiq-form-names" style="display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:28px;">
-            <div style="display:flex;flex-direction:column;gap:7px;">
-              <label style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:rgba(214,194,168,0.55);">الاسم الأول *</label>
-              <input type="text" required placeholder="سارة" value="{{ formFirstName }}" onChange="{{ onFirstNameChange }}" style="background:transparent;border:none;border-bottom:1px solid rgba(214,194,168,0.22);padding:10px 0;font-family:'GE SS Two','Arial',sans-serif;font-size:14px;color:#FFFFFF;outline:none;width:100%;transition:border-color 0.25s;" style-focus="border-bottom-color:rgba(214,194,168,0.7);">
-            </div>
-            <div style="display:flex;flex-direction:column;gap:7px;">
-              <label style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:rgba(214,194,168,0.55);">اسم العائلة *</label>
-              <input type="text" required placeholder="الراشد" value="{{ formLastName }}" onChange="{{ onLastNameChange }}" style="background:transparent;border:none;border-bottom:1px solid rgba(214,194,168,0.22);padding:10px 0;font-family:'GE SS Two','Arial',sans-serif;font-size:14px;color:#FFFFFF;outline:none;width:100%;transition:border-color 0.25s;" style-focus="border-bottom-color:rgba(214,194,168,0.7);">
-            </div>
-          </div>
-
-          <!-- Email -->
-          <div style="display:flex;flex-direction:column;gap:7px;margin-bottom:28px;">
-            <label style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:rgba(214,194,168,0.55);">البريد الإلكتروني *</label>
-            <input type="email" required placeholder="sarah@company.com" value="{{ formEmail }}" onChange="{{ onEmailChange }}" style="background:transparent;border:none;border-bottom:1px solid rgba(214,194,168,0.22);padding:10px 0;font-family:'GE SS Two','Arial',sans-serif;font-size:14px;color:#FFFFFF;outline:none;width:100%;transition:border-color 0.25s;" style-focus="border-bottom-color:rgba(214,194,168,0.7);">
-          </div>
-
-          <!-- Phone with country code -->
-          <div style="display:flex;flex-direction:column;gap:7px;margin-bottom:40px;">
-            <label style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:rgba(214,194,168,0.55);">رقم الهاتف *</label>
-            <div id="mep-phone-wrapper" style="display:flex;align-items:center;border-bottom:1px solid rgba(214,194,168,0.22);transition:border-color 0.25s;">
-              {{ phoneSelect }}
-              <svg width="8" height="5" viewBox="0 0 8 5" fill="none" style="flex-shrink:0;pointer-events:none;margin:0 3px 0 10px;"><path d="M1 1l3 3 3-3" stroke="rgba(214,194,168,0.6)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-              <span style="width:1px;height:16px;background:rgba(214,194,168,0.2);flex-shrink:0;margin-left:14px;"></span>
-              <input type="tel" required placeholder="58 033 0627" value="{{ formPhone }}" onChange="{{ onPhoneChange }}" id="mep-phone-input" style="flex:1;background:transparent;border:none;padding:10px 0;font-family:'GE SS Two','Arial',sans-serif;font-size:14px;color:#FFFFFF;outline:none;min-width:0;">
-            </div>
-          </div>
-
-          <!-- CTA button -->
-          <button type="submit" id="mep-download-btn" style="font-family:'GE SS Two','Arial',sans-serif;font-size:10px;letter-spacing:normal;text-transform:uppercase;color:#1E1610;background:#D6C2A8;padding:18px 36px;border:1px solid #D6C2A8;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:12px;width:100%;transition:all 0.3s cubic-bezier(0.25,0.46,0.45,0.94);">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-            <span id="mep-download-btn-label">تحميل الكتيب</span>
-          </button>
-
-          <sc-if value="{{ brochureSuccess }}" hint-placeholder-val="{{ null }}">
-            <p style="font-family:'GE SS Two','Arial',sans-serif;font-size:12px;color:rgba(214,194,168,0.7);margin-top:16px;text-align:center;letter-spacing:normal;line-height:1.65;">شكراً لك — تم استلام طلبك. سنتواصل معك قريباً.</p>
-          </sc-if>
-
-        </form>
-      </div>
-
+    </div>
+    <div class="bx-rise bx-rise--2">
+      <p class="bx-eyebrow"><i></i>كتيّب الهندسة</p>
+      <h2 class="bx-h2">شاهد ما خلف السقف.</h2>
+      <p class="bx-sub">كيف نصمم كل نظام ونركّبه ونشغّله، في كتيّب واحد.</p>
+      <form id="id-brochure-form" onSubmit="{{ onBrochureSubmit }}" novalidate>
+        <div class="bx-hp" aria-hidden="true"><label for="id-hp-field">اترك هذا الحقل فارغاً</label><input id="id-hp-field" type="text" tabindex="-1" autocomplete="off" value="{{ formHoneypot }}" onChange="{{ onHoneypotChange }}"></div>
+        <fieldset class="bx-want"><legend>ماذا تفضّل؟</legend>
+          <label><input type="radio" name="bx-want" value="كتيّب الهندسة والأنظمة الكهروميكانيكية" data-bx-want="0" data-label="اطلب الكتيّب"><span>أرسلوا لي الكتيّب</span></label>
+          <label><input type="radio" name="bx-want" value="عرض سعر هندسي" data-bx-want="1" data-label="اطلب عرض سعر هندسي"><span>اطلب عرض سعر</span></label>
+        </fieldset>
+        <div class="bx-names">
+          <label class="bx-field"><span>الاسم الأول *</span><input type="text" required autocomplete="given-name" placeholder="الاسم الأول" value="{{ formFirstName }}" onChange="{{ onFirstNameChange }}"></label>
+          <label class="bx-field"><span>اسم العائلة *</span><input type="text" required autocomplete="family-name" placeholder="اسم العائلة" value="{{ formLastName }}" onChange="{{ onLastNameChange }}"></label>
+        </div>
+        <label class="bx-field"><span>البريد الإلكتروني *</span><input type="email" required autocomplete="email" dir="ltr" placeholder="you@company.com" value="{{ formEmail }}" onChange="{{ onEmailChange }}"></label>
+        <div class="bx-field"><span>رقم الهاتف *</span>
+          <div class="bx-tel" id="id-phone-wrapper">{{ phoneSelect }}<i aria-hidden="true"></i><input type="tel" required autocomplete="tel-national" placeholder="58 033 0627" value="{{ formPhone }}" onChange="{{ onPhoneChange }}" id="id-phone-input" aria-label="رقم الهاتف"></div>
+        </div>
+        <button type="submit" class="bx-btn" id="id-download-btn"><span id="id-download-btn-label" data-idle="اطلب الكتيّب">اطلب الكتيّب</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 5 5 12 12 19"/></svg></button>
+        <p class="bx-note">يرسل الاستوديو الكتيّب عبر البريد الإلكتروني، ويرد شخصياً على طلبات عروض الأسعار.</p>
+        <sc-if value="{{ brochureSuccess }}" hint-placeholder-val="{{ null }}">
+          <p class="bx-thanks" role="status">شكراً لك، تم استلام طلبك. سيتواصل معك الاستوديو قريباً.</p>
+        </sc-if>
+      </form>
     </div>
   </div>
 </section>
@@ -1155,24 +1507,24 @@ class Component extends DCLogic {
         const s = self.state;
         if (s.formHoneypot) return; // bot filled the hidden field — silently drop
         const missing = [];
-        if (!s.formFirstName.trim()) missing.push('First Name');
-        if (!s.formLastName.trim()) missing.push('Last Name');
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s.formEmail.trim())) missing.push('a valid Email Address');
-        if (!s.formPhone.trim()) missing.push('Phone Number');
+        if (!s.formFirstName.trim()) missing.push('الاسم الأول');
+        if (!s.formLastName.trim()) missing.push('اسم العائلة');
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s.formEmail.trim())) missing.push('بريد إلكتروني صحيح');
+        if (!s.formPhone.trim()) missing.push('رقم الهاتف');
         if (missing.length) {
-          alert('Please complete the following before submitting:\n\n' + missing.join('\n'));
+          alert('يرجى إكمال ما يلي قبل الإرسال:\n\n' + missing.join('\n'));
           return;
         }
-        const btn = document.getElementById('mep-download-btn');
-        const btnLabel = document.getElementById('mep-download-btn-label');
+        const btn = document.getElementById('id-download-btn');
+        const btnLabel = document.getElementById('id-download-btn-label');
         if (btn) btn.disabled = true;
-        if (btnLabel) btnLabel.textContent = 'Sending…';
+        if (btnLabel) btnLabel.textContent = 'جارٍ الإرسال…';
         const payload = {
           formType: 'brochure',
           name: (s.formFirstName + ' ' + s.formLastName).trim(),
           email: s.formEmail,
           phone: `${s.formCountryCode} ${s.formPhone}`,
-          request: 'MEP services brochure',
+          request: (document.querySelector('[data-bx-want]:checked') || {}).value || 'كتيّب الهندسة والأنظمة الكهروميكانيكية',
           sourcePage: '/ar/services-mep',
           honeypot: s.formHoneypot,
         };
@@ -1193,11 +1545,11 @@ class Component extends DCLogic {
             setTimeout(() => self.setState({ brochureSuccess: false }), 6000);
           })
           .catch(() => {
-            alert('Something went wrong — please try again or email us directly at info@furnishiq.net');
+            alert('حدث خطأ ما. يرجى المحاولة مرة أخرى، أو مراسلتنا على info@furnishiq.net');
           })
           .finally(() => {
             if (btn) btn.disabled = false;
-            if (btnLabel) btnLabel.textContent = 'Download Brochure';
+            if (btnLabel) btnLabel.textContent = btnLabel.dataset.idle;
           });
       },
     };
@@ -1250,6 +1602,409 @@ class Component extends DCLogic {
         navCta.style.color = '#D6C2A8';
       });
       navCta.addEventListener('mouseleave', () => { navCta.style.background = 'transparent'; syncNav(); });
+    }
+
+    // ── SERVICES, MARKETS: FOUR SECTORS, ONE TEAM ───────────────────────────
+    {
+      const sec = document.querySelector('[data-svc-markets]');
+      if (sec) {
+        const panels = Array.from(sec.querySelectorAll('.mk-panel')), heads = panels.map((p) => p.querySelector('.mk-head'));
+        const rtl = sec.getAttribute('dir') === 'rtl';
+        let idx = 0, settle = 0;
+        const open = (i) => {
+          if (i === idx) return;
+          idx = i;
+          panels.forEach((p, k) => {
+            const on = k === i, body = p.querySelector('.mk-body');
+            p.classList.toggle('is-on', on);
+            heads[k].setAttribute('aria-expanded', on ? 'true' : 'false');
+            body.setAttribute('aria-hidden', on ? 'false' : 'true');
+            body.querySelectorAll('a').forEach((a) => { a.tabIndex = on ? 0 : -1; });
+          });
+        };
+        open(-1); open(0);
+        panels.forEach((p, k) => {
+          // a mouse resting on a panel opens it after a beat, so sweeping across does not flicker through them all
+          p.addEventListener('pointerenter', (e) => { if (e.pointerType !== 'mouse') return; clearTimeout(settle); settle = setTimeout(() => open(k), 140); });
+          p.addEventListener('pointerleave', () => clearTimeout(settle));
+          heads[k].addEventListener('click', () => open(k));
+          heads[k].addEventListener('keydown', (e) => {
+            const d = e.key === 'ArrowRight' || e.key === 'ArrowDown' ? 1 : e.key === 'ArrowLeft' || e.key === 'ArrowUp' ? -1 : 0;
+            if (!d) return;
+            e.preventDefault();
+            const n = (k + ((rtl && (e.key === 'ArrowRight' || e.key === 'ArrowLeft')) ? -d : d) + panels.length) % panels.length;
+            open(n); heads[n].focus();
+          });
+        });
+        // 100vw counts the scrollbar; take it back out so the row meets both edges exactly
+        const fit = () => sec.style.setProperty('--mk-sb', (window.innerWidth - document.documentElement.clientWidth) + 'px');
+        fit();
+        window.addEventListener('resize', fit);
+        new IntersectionObserver((es, o) => { es.forEach((e) => { if (e.isIntersecting) { sec.classList.add('is-in'); o.disconnect(); } }); }, { rootMargin: '0px 0px -15% 0px' }).observe(sec);
+      }
+    }
+
+    // ── STEP SNAP: ONE WHEEL NOTCH, ONE STEP ──────────────────────────────
+    // Sections pinned and played in steps register in window.fiqSnap as { on, geo }: on() says whether the
+    // section is pinned now, geo() gives a..b, the scroll range it holds, and stops, the scroll position of
+    // each step. Inside one, a wheel notch or an arrow, page or space key glides to the next step, then waits
+    // for the wheel to settle, so a fast notch or a trackpad's run-on never skips a step. Past the first or the
+    // last step the page scrolls on. A scroll that ends between two steps settles on the nearer.
+    {
+      const reg = window.fiqSnap = window.fiqSnap || [];
+      let gliding = false, held = false, lastWheel = 0;
+      const glide = window.fiqGlide = (to) => {
+        held = true;
+        if (reduced) { window.scrollTo({ top: to, behavior: 'instant' }); return; }
+        gliding = true;
+        const from = window.scrollY, d = to - from, t0 = performance.now(), T = 650;
+        const frame = (now) => {
+          const t = Math.min(1, (now - t0) / T);
+          window.scrollTo({ top: from + d * t * (2 - t), behavior: 'instant' });
+          if (t < 1) requestAnimationFrame(frame); else gliding = false;
+        };
+        requestAnimationFrame(frame);
+      };
+      // the registered section holding the page now
+      const here = () => {
+        const y = window.scrollY;
+        for (const s of reg) { if (!s.on()) continue; const g = s.geo(); if (y >= g.a - 1 && y <= g.b + 1) return g; }
+        return null;
+      };
+      const next = (g, dir) => {
+        const y = window.scrollY;
+        if (dir > 0) { for (const v of g.stops) if (v > y + 4) return v; }
+        else { for (let j = g.stops.length - 1; j >= 0; j--) if (g.stops[j] < y - 4) return g.stops[j]; }
+        return null;
+      };
+      window.addEventListener('wheel', (e) => {
+        if (e.ctrlKey || Math.abs(e.deltaY) < Math.abs(e.deltaX)) return;
+        // the gap between notches as the hand made them, not as a busy page got round to them
+        const now = e.timeStamp || performance.now(), quiet = now - lastWheel > 200;
+        lastWheel = now;
+        const g = here();
+        if (gliding || (held && !quiet)) { if (g) e.preventDefault(); return; }
+        held = false;
+        if (!g) return;
+        const to = next(g, Math.sign(e.deltaY));
+        if (to === null) return;
+        e.preventDefault(); glide(to);
+      }, { passive: false });
+      window.addEventListener('keydown', (e) => {
+        if (e.altKey || e.ctrlKey || e.metaKey) return;
+        const el = document.activeElement;
+        if (el && (el.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(el.tagName) || (e.key === ' ' && /^(BUTTON|A)$/.test(el.tagName)))) return;
+        const dir = { ArrowDown: 1, PageDown: 1, ArrowUp: -1, PageUp: -1, ' ': e.shiftKey ? -1 : 1 }[e.key];
+        if (!dir) return;
+        const g = here();
+        if (!g) return;
+        if (gliding) { e.preventDefault(); return; }
+        const to = next(g, dir);
+        if (to === null) return;
+        e.preventDefault(); glide(to);
+      });
+      window.addEventListener('scrollend', () => {
+        if (gliding) return;
+        const g = here();
+        if (!g) return;
+        const y = window.scrollY, n = g.stops.length;
+        if (y <= g.stops[0] + 1 || y >= g.stops[n - 1] - 1) return;
+        const to = g.stops.reduce((m, v) => (Math.abs(v - y) < Math.abs(m - y) ? v : m));
+        if (Math.abs(to - y) > 2) glide(to);
+      });
+    }
+
+    // ── SERVICE PAGES, HERO: ONE SHEET OF THE DRAWING SET ───────────────────
+    {
+      const hero = document.querySelector('[data-sp-hero]');
+      if (hero) {
+        requestAnimationFrame(() => requestAnimationFrame(() => hero.classList.add('is-ready')));
+        // the title may bite onto the photograph's edge, by 4% of its width at most: its lines break between words
+        // within that reach, and only a single word too long for it (Engineering) sets the title smaller
+        const h1 = hero.querySelector('.hs-h1'), words = h1.querySelector('.hs-line>span'), plot = hero.querySelector('.hs-plot'), wide = matchMedia('(min-width:901px)');
+        const rtl = hero.getAttribute('dir') === 'rtl';
+        const widest = () => {
+          const r = document.createRange(); r.selectNodeContents(words);
+          const p = plot.getBoundingClientRect();
+          return [...r.getClientRects()].reduce((m, b) => { const o = rtl ? p.right - b.left : b.right - p.left; return o > m.o ? { o, w: b.width } : m; }, { o: -Infinity, w: 0 });
+        };
+        const fit = () => {
+          h1.style.fontSize = ''; h1.style.marginInlineEnd = '';
+          if (!wide.matches) return;
+          const allow = plot.getBoundingClientRect().width * 0.04;
+          h1.style.marginInlineEnd = (-allow).toFixed(1) + 'px';
+          for (let k = 0; k < 4; k++) {   // a smaller size can rewrap the lines, so measure again
+            const m = widest();
+            if (m.o <= allow || !m.w) break;
+            h1.style.fontSize = (parseFloat(getComputedStyle(h1).fontSize) * (m.w - (m.o - allow)) / m.w).toFixed(1) + 'px';
+          }
+        };
+        fit();
+        if (document.fonts) document.fonts.ready.then(fit);
+        window.addEventListener('resize', fit);
+        // the in-page links land the section's top just under the fixed 80px header
+        hero.querySelectorAll('a[href^="#"]').forEach((a) => a.addEventListener('click', (e) => {
+          const el = document.getElementById(a.getAttribute('href').slice(1));
+          if (!el) return;
+          e.preventDefault();
+          window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: reduced ? 'instant' : 'smooth' });
+          history.replaceState(null, '', a.getAttribute('href'));
+        }));
+      }
+    }
+
+    // ── SERVICE PAGES, PILLARS: STICKY INDEX AND THREE CARDS ────────────────
+    {
+      const sec = document.querySelector('[data-sp-pillars]');
+      if (sec) {
+        const cards = Array.from(sec.querySelectorAll('[data-pl-card]')), ix = Array.from(sec.querySelectorAll('[data-pl-ix]'));
+        const rolls = Array.from(sec.querySelectorAll('.pl-roll span'));
+        const wrap = sec.querySelector('.pl-wrap'), rtl = sec.getAttribute('dir') === 'rtl';
+        const bleed = () => { const r = wrap.getBoundingClientRect(); sec.style.setProperty('--pl-bleed', Math.max(0, rtl ? document.documentElement.clientWidth - r.right : r.left) + 'px'); };
+        let ticking = false;
+        const update = () => {
+          ticking = false;
+          const line = window.innerHeight * 0.55;
+          let on = 0;
+          cards.forEach((c, k) => {
+            const r = c.getBoundingClientRect();
+            if (r.top < line) on = k;
+            // the index line fills as the card's reading line passes through it
+            ix[k].style.setProperty('--p', Math.min(1, Math.max(0, (line - r.top) / r.height)).toFixed(4));
+          });
+          ix.forEach((a, k) => a.classList.toggle('is-on', k === on));
+          rolls.forEach((s) => s.style.setProperty('--i', on));
+        };
+        window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+        window.addEventListener('resize', () => { bleed(); update(); });
+        bleed();
+        ix.forEach((a, k) => a.addEventListener('click', (e) => {
+          e.preventDefault();
+          window.scrollTo({ top: cards[k].getBoundingClientRect().top + window.scrollY - 120, behavior: reduced ? 'instant' : 'smooth' });
+        }));
+        const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -12% 0px' });
+        cards.forEach((c) => io.observe(c));
+        update();
+      }
+    }
+
+    // ── SERVICE PAGES, DISCIPLINES: THE DESIGNER'S DESK ─────────────────────
+    {
+      const sec = document.querySelector('[data-sp-disc]');
+      if (sec) {
+        const stage = sec.querySelector('[data-dk-stage]'), block = sec.querySelector('.dk-block'), track = sec.querySelector('.dk-track');
+        const photo = sec.querySelector('.dk-photo'), cur = sec.querySelector('.dk-cur');
+        const panes = Array.from(sec.querySelectorAll('[data-dk-pane]')), tabs = Array.from(sec.querySelectorAll('[data-dk-tab]'));
+        const spots = stage.dataset.spots.split('|').map((s) => s.split(',').map(Number));
+        const N = spots.length, PAD = 1.6;   // the spotlight's margin round each object, in % of the photograph
+        const pinMQ = matchMedia('(min-width:901px) and (min-height:600px)');
+        let pinned = pinMQ.matches, idx = -2, ticking = false, jump = null, auto = !reduced, visible = false, then = 0, acc = 0, raf = 0;
+        const HOLD = 4200;
+        // i = -1: the whole desk, lit, before the first; 0..N-1: one object in the spotlight; -2: the desk lit again
+        // after the sixth, which keeps the sixth's words and offers the closing call
+        const show = (i) => {
+          if (i === idx) return;
+          idx = i;
+          const v = (k, val) => photo.style.setProperty(k, val);
+          if (i < 0) { v('--sx', '0%'); v('--sy', '0%'); v('--sw', '100%'); v('--sh', '100%'); v('--dim', 0); v('--mk', 0); }
+          else {
+            const [x, y, w, h] = spots[i];
+            v('--sx', (x - PAD) + '%'); v('--sy', (y - PAD) + '%'); v('--sw', (w + 2 * PAD) + '%'); v('--sh', (h + 2 * PAD) + '%');
+            v('--dim', 0.7); v('--mk', 1);
+          }
+          const end = i === -2, k = end ? N - 1 : Math.max(0, i);
+          sec.classList.toggle('is-end', end);
+          cur.textContent = '0' + (k + 1);
+          panes.forEach((p, j) => p.classList.toggle('is-on', j === k));
+          tabs.forEach((t, j) => { t.classList.toggle('is-on', j === i); t.setAttribute('aria-pressed', j === i ? 'true' : 'false'); });
+        };
+        const geo = () => { const top = parseFloat(getComputedStyle(block).top) || 0; return { start: track.getBoundingClientRect().top + window.scrollY - top, dist: Math.max(1, track.offsetHeight - block.offsetHeight) }; };
+        // N + 2 equal steps: the lit desk, the six objects, the lit desk again
+        const onScroll = () => {
+          ticking = false;
+          if (!pinned) return;
+          const g = geo(), x = Math.min(N + 1.9999, Math.max(0, (window.scrollY - g.start) / g.dist) * (N + 2)), s = Math.floor(x) - 1;
+          const i = s >= N ? -2 : s;
+          if (jump !== null) { if (i === jump) jump = null; else return; }
+          show(i);
+          tabs.forEach((t, k) => t.style.setProperty('--p', k < s ? 1 : k === s ? (x - Math.floor(x)).toFixed(4) : 0));
+        };
+        window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+        // one wheel notch, one object: the page's step snap (STEP SNAP) holds the desk to its eight steps
+        const stop = (j, g) => g.start + g.dist * (j + 0.5) / (N + 2);
+        (window.fiqSnap = window.fiqSnap || []).push({ on: () => pinned, geo: () => { const g = geo(); return { a: g.start, b: g.start + g.dist, stops: Array.from({ length: N + 2 }, (_, j) => stop(j, g)) }; } });
+        tabs.forEach((t, k) => t.addEventListener('click', () => {
+          auto = false;
+          if (pinned) { const g = geo(), to = stop(k + 1, g); jump = k; show(k); if (window.fiqGlide) window.fiqGlide(to); else window.scrollTo({ top: to, behavior: reduced ? 'instant' : 'smooth' }); }
+          else { acc = 0; show(k); tabs.forEach((tb, j) => tb.style.setProperty('--p', j === k ? 1 : 0)); }
+        }));
+        const fit = () => sec.style.setProperty('--dk-sb', (window.innerWidth - document.documentElement.clientWidth) + 'px');
+        fit();
+        window.addEventListener('resize', () => { fit(); onScroll(); });
+        pinMQ.addEventListener('change', () => { pinned = pinMQ.matches; jump = null; idx = -2; if (pinned) onScroll(); else show(0); });
+        // phones: the six take their turn while the desk is in view
+        document.addEventListener('visibilitychange', () => { then = 0; });
+        const loop = (now) => {
+          // real time between frames, so a throttled frame rate does not slow the turn
+          const dt = then ? now - then : 0; then = now;
+          if (!pinned && auto && !document.hidden) {
+            acc += dt;
+            if (idx >= 0) tabs[idx].style.setProperty('--p', Math.min(1, acc / HOLD).toFixed(4));
+            if (acc >= HOLD) { acc = 0; tabs.forEach((t) => t.style.setProperty('--p', 0)); show((Math.max(0, idx) + 1) % N); }
+          }
+          raf = visible ? requestAnimationFrame(loop) : 0;
+        };
+        new IntersectionObserver((es, o) => { es.forEach((e) => { if (e.isIntersecting) { sec.classList.add('is-in'); o.disconnect(); } }); }, { rootMargin: '0px 0px -15% 0px' }).observe(sec);
+        new IntersectionObserver((es) => { es.forEach((e) => { visible = e.isIntersecting; if (visible && !raf) { then = 0; raf = requestAnimationFrame(loop); } }); }, { threshold: 0.3 }).observe(stage);
+        if (pinned) { show(-1); onScroll(); } else show(0);
+      }
+    }
+
+    // ── SERVICE PAGES, CLOSING FORM: THE STUDIO EDITION ─────────────────────
+    {
+      const sec = document.querySelector('[data-sp-bx]');
+      if (sec) {
+        const wants = Array.from(sec.querySelectorAll('[data-bx-want]')), lbl = sec.querySelector('#id-download-btn-label');
+        const pick = (k) => { wants[k].checked = true; lbl.dataset.idle = wants[k].dataset.label; lbl.textContent = wants[k].dataset.label; };
+        wants.forEach((w, k) => w.addEventListener('change', () => pick(k)));
+        pick(0);
+        // the page's "book a consultation" links arrive with the consultation chosen
+        document.querySelectorAll('a[href="#contact"]').forEach((a) => { if (!sec.contains(a)) a.addEventListener('click', () => pick(1)); });
+        if (location.hash === '#contact') pick(1);
+        new IntersectionObserver((es, o) => { es.forEach((e) => { if (e.isIntersecting) { sec.classList.add('is-in'); setTimeout(() => sec.classList.add('is-open'), reduced ? 0 : 300); o.disconnect(); } }); }, { threshold: 0.3 }).observe(sec);
+      }
+    }
+
+    // ── SERVICE PAGES, INTRO: THE REVEAL ────────────────────────────────────
+    {
+      const sec = document.querySelector('[data-id-render]');
+      if (sec) {
+        const stage = sec.querySelector('[data-ir-stage]'), canvas = sec.querySelector('.ir-canvas'), ctx = canvas.getContext('2d');
+        const block = sec.querySelector('.ir-block'), track = sec.querySelector('.ir-track');
+        const chip = sec.querySelector('.ir-chip'), lbl = chip.querySelector('.ir-lbl'), pctEl = chip.querySelector('.ir-pct');
+        const tabs = Array.from(sec.querySelectorAll('[data-ir-tab]'));
+        const pinMQ = matchMedia('(min-width:901px) and (min-height:600px)');
+        const COLS = 16, ROWS = 9, N = COLS * ROWS;
+        const A = 0.1, B = 0.86;   // the line drawing holds until A; the tiles resolve until B; approved after
+        // buckets in a square spiral out from the centre, the order a render engine fills them
+        const order = [];
+        {
+          let c = Math.floor(COLS / 2) - 1, r = Math.floor(ROWS / 2), dc = 1, dr = 0, run = 1;
+          const seen = new Set();
+          while (order.length < N) {
+            for (let twice = 0; twice < 2; twice++) {
+              for (let s = 0; s < run; s++) {
+                if (c >= 0 && c < COLS && r >= 0 && r < ROWS && !seen.has(r * COLS + c)) { seen.add(r * COLS + c); order.push([c, r]); }
+                c += dc; r += dr;
+              }
+              [dc, dr] = [-dr, dc];
+            }
+            run++;
+          }
+        }
+        const line = new Image(), ren = new Image();
+        let p = 0, pinned = pinMQ.matches, ticking = false, auto = !reduced, visible = false, then = 0, t = 0, raf = 0;
+        const pick = (base, ws) => { const want = stage.clientWidth * Math.min(2, devicePixelRatio || 1); return 'uploads/' + base + '-' + (ws.find((w) => w >= want) || ws[ws.length - 1]) + '.webp'; };
+        const load = () => {
+          if (line.src) return;
+          line.onload = ren.onload = () => draw();
+          const d = canvas.dataset, ws = (v) => v.split(',').map(Number);
+          line.src = pick(d.a, ws(d.aw));
+          ren.src = pick(d.b, ws(d.bw));
+        };
+        const size = () => {
+          const d = Math.min(2, devicePixelRatio || 1);
+          canvas.width = Math.round(stage.clientWidth * d); canvas.height = Math.round(stage.clientHeight * d);
+          sec.style.setProperty('--ir-sb', (window.innerWidth - document.documentElement.clientWidth) + 'px');
+          sec.style.setProperty('--ir-band', sec.querySelector('.ir-band').offsetHeight + 'px');
+          draw();
+        };
+        const clamp = (v) => Math.min(1, Math.max(0, v));
+        function draw() {
+          const W = canvas.width, H = canvas.height;
+          ctx.fillStyle = '#1F1F1F'; ctx.fillRect(0, 0, W, H);
+          const iw = +canvas.dataset.iw, ih = +canvas.dataset.ih, s = Math.max(W / iw, H / ih), ox = (W - iw * s) / 2, oy = (H - ih * s) / 2;
+          const r = clamp((p - A) / (B - A)), k = r * N;
+          if (line.complete && line.naturalWidth) ctx.drawImage(line, ox, oy, iw * s, ih * s);
+          if (ren.complete && ren.naturalWidth) {
+            const sx = ren.naturalWidth / iw;
+            if (r >= 1) ctx.drawImage(ren, ox, oy, iw * s, ih * s);
+            else {
+              const cw = iw / COLS, ch = ih / ROWS;
+              for (let i = 0; i < Math.min(N, Math.ceil(k)); i++) {
+                const [c, rr] = order[i], a = clamp((k - i) / 3);
+                // shared, rounded edges so neighbouring tiles meet without seams
+                const x0 = Math.round(ox + c * cw * s), x1 = Math.round(ox + (c + 1) * cw * s), y0 = Math.round(oy + rr * ch * s), y1 = Math.round(oy + (rr + 1) * ch * s);
+                const u0 = (x0 - ox) / s, u1 = (x1 - ox) / s, v0 = (y0 - oy) / s, v1 = (y1 - oy) / s;
+                ctx.globalAlpha = a;
+                ctx.drawImage(ren, u0 * sx, v0 * sx, (u1 - u0) * sx, (v1 - v0) * sx, x0, y0, x1 - x0, y1 - y0);
+              }
+              ctx.globalAlpha = 1;
+              // corner brackets on the buckets in progress
+              if (r > 0) {
+                ctx.strokeStyle = '#D6C2A8'; ctx.lineWidth = Math.max(1.5, W / 900);
+                for (let i = Math.floor(k); i < Math.min(N, Math.floor(k) + 4); i++) {
+                  const [c, rr] = order[i], x = ox + c * cw * s, y = oy + rr * ch * s, w = cw * s, h = ch * s, L = Math.min(w, h) * 0.24, g = ctx.lineWidth;
+                  ctx.beginPath();
+                  ctx.moveTo(x + g, y + L); ctx.lineTo(x + g, y + g); ctx.lineTo(x + L, y + g);
+                  ctx.moveTo(x + w - L, y + g); ctx.lineTo(x + w - g, y + g); ctx.lineTo(x + w - g, y + L);
+                  ctx.moveTo(x + w - g, y + h - L); ctx.lineTo(x + w - g, y + h - g); ctx.lineTo(x + w - L, y + h - g);
+                  ctx.moveTo(x + L, y + h - g); ctx.lineTo(x + g, y + h - g); ctx.lineTo(x + g, y + h - L);
+                  ctx.stroke();
+                }
+              }
+            }
+          }
+          // readout and band
+          const st = p < A ? 0 : p < B ? 1 : 2;
+          chip.classList.toggle('is-drawn', st === 0); chip.classList.toggle('is-done', st === 2);
+          lbl.textContent = chip.dataset['l' + st];
+          pctEl.textContent = String(Math.round(r * 100)).padStart(3, '0') + '%';
+          tabs.forEach((tb, i) => {
+            tb.classList.toggle('is-on', i === st);
+            tb.style.setProperty('--p', (i === 0 ? clamp(p / A) : i === 1 ? r : clamp((p - B) / (1 - B) * 1.6)).toFixed(4));
+          });
+        }
+        const geo = () => ({ start: track.getBoundingClientRect().top + window.scrollY - 80, dist: Math.max(1, track.offsetHeight - block.offsetHeight) });
+        const onScroll = () => {
+          ticking = false;
+          if (!pinned) return;
+          const g = geo();
+          p = clamp((window.scrollY - g.start) / g.dist);
+          draw();
+        };
+        window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+        const TARGET = [A * 0.5, (A + B) / 2, 1];
+        // one wheel notch, one stage: drawn, rendering, approved (STEP SNAP)
+        (window.fiqSnap = window.fiqSnap || []).push({ on: () => pinned, geo: () => { const g = geo(); return { a: g.start, b: g.start + g.dist, stops: TARGET.map((t) => g.start + g.dist * t) }; } });
+        tabs.forEach((tb, i) => tb.addEventListener('click', () => {
+          auto = false;
+          if (pinned) { const g = geo(); window.scrollTo({ top: g.start + g.dist * Math.min(0.999, TARGET[i]), behavior: reduced ? 'auto' : 'smooth' }); }
+          else { p = TARGET[i]; draw(); }
+        }));
+        // phones: the render plays through, holds on the approved room, and starts again
+        const PLAY = 7000, HOLD = 3200;
+        document.addEventListener('visibilitychange', () => { then = 0; });
+        const loop = (now) => {
+          // real time between frames, so a throttled frame rate does not slow the cycle
+          const dt = then ? now - then : 0; then = now;
+          if (!pinned && auto && !document.hidden) {
+            t = (t + dt) % (PLAY + HOLD);
+            p = clamp(t / PLAY);
+            draw();
+          }
+          raf = visible ? requestAnimationFrame(loop) : 0;
+        };
+        new IntersectionObserver((es, o) => { es.forEach((e) => { if (e.isIntersecting) { sec.classList.add('is-in'); load(); o.disconnect(); } }); }, { rootMargin: '0px 0px 25% 0px' }).observe(sec);
+        new IntersectionObserver((es) => {
+          es.forEach((e) => { visible = e.isIntersecting; if (visible && !raf) { then = 0; raf = requestAnimationFrame(loop); } });
+        }, { threshold: 0.3 }).observe(stage);
+        pinMQ.addEventListener('change', () => { pinned = pinMQ.matches; if (pinned) onScroll(); });
+        if (reduced && !pinned) p = 1;
+        window.addEventListener('resize', size);
+        if (document.fonts) document.fonts.ready.then(size);
+        size(); onScroll();
+      }
     }
 
     // ── SCROLL REVEAL ──────────────────────────────────────────────────────
@@ -1457,21 +2212,6 @@ class Component extends DCLogic {
       heroCta.addEventListener('mouseenter', () => { heroCta.style.background = '#FFFFFF'; heroCta.style.color = '#3A2D25'; heroCta.style.borderColor = '#FFFFFF'; });
       heroCta.addEventListener('mouseleave', () => { heroCta.style.background = '#D6C2A8'; heroCta.style.color = '#3A2D25'; heroCta.style.borderColor = '#D6C2A8'; });
     }
-    // ── DOWNLOAD BUTTON HOVER ────────────────────────────────────────────────
-    const dlBtn = document.getElementById('mep-download-btn');
-    if (dlBtn) {
-      dlBtn.addEventListener('mouseenter', () => { dlBtn.style.background = '#FFFFFF'; dlBtn.style.borderColor = '#FFFFFF'; });
-      dlBtn.addEventListener('mouseleave', () => { dlBtn.style.background = '#D6C2A8'; dlBtn.style.borderColor = '#D6C2A8'; });
-    }
-
-    // ── PHONE WRAPPER FOCUS ──────────────────────────────────────────────────
-    const phoneWrapper = document.getElementById('mep-phone-wrapper');
-    const phoneInput = document.getElementById('mep-phone-input');
-    if (phoneWrapper && phoneInput) {
-      phoneInput.addEventListener('focus', () => { phoneWrapper.style.borderBottomColor = 'rgba(214,194,168,0.7)'; });
-      phoneInput.addEventListener('blur', () => { phoneWrapper.style.borderBottomColor = 'rgba(214,194,168,0.22)'; });
-    }
-
     // ── COUNTRY CODE AUTO-DETECT ─────────────────────────────────────────────
     fetch('https://ipapi.co/json/')
       .then(r => r.json())

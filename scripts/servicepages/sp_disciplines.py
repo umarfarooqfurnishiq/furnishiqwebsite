@@ -79,6 +79,68 @@ PAGE = {
     ),
 }
 
+PAGE["services-mep"] = dict(
+    img="mep-disciplines-engineering-desk", widths=(1280, 1920, 2400), size=(2400, 1792),
+    spots=[(6.5, 11.4, 28, 37.8), (42, 19.6, 19.8, 13.4), (68.8, 8.4, 28.2, 39),
+           (10.2, 62.7, 20.2, 16.6), (38.8, 55.7, 24.4, 28.6), (72.2, 52.2, 19.6, 38.9)],
+    en=dict(
+        eyebrow="Our MEP Disciplines", h2="Every System, In-House.",
+        sub="Six engineering disciplines on one desk, one team accountable from first drawing to final commissioning.",
+        names=["Electrical Systems", "Plumbing Systems", "HVAC Systems",
+               "Fire Fighting Systems", "Low Current Systems", "Testing & Commissioning"],
+        descs=["Power distribution, lighting, emergency power, and cable management, engineered to code.",
+               "Water supply, drainage, sewage, and pump installations engineered for reliability.",
+               "Air conditioning, ventilation, ductwork, and testing for consistent year-round comfort.",
+               "Fire alarms, suppression, sprinkler networks, and full Civil Defense compliance.",
+               "Structured cabling, CCTV, access control, and smart building integration.",
+               "Functional testing, performance validation, and certified handover documentation."],
+        alt="A walnut desk from above: electrical cable with a bronze switch plate, a brass ball valve on copper pipe, a black linear diffuser on galvanised duct, a sprinkler head and a smoke detector, blue data cable with a dome camera, and a pressure gauge on a test sheet",
+        tabs="MEP disciplines", cta="Request an Engineering Quote", cta_href="#contact"),
+    ar=dict(
+        eyebrow="تخصصاتنا في الأنظمة الكهروميكانيكية", h2="كل نظام، داخلياً.",
+        sub="ستة تخصصات هندسية على طاولة واحدة، وفريق واحد مسؤول من المخطط الأول حتى التشغيل النهائي.",
+        names=["الأنظمة الكهربائية", "أنظمة السباكة", "أنظمة التكييف",
+               "أنظمة مكافحة الحريق", "الأنظمة منخفضة الجهد", "الاختبار والتشغيل"],
+        descs=["توزيع الطاقة، والإضاءة، والطاقة الاحتياطية للطوارئ، وإدارة الكابلات، مصممة وفق الأكواد المعتمدة.",
+               "إمدادات المياه، والصرف، والصرف الصحي، وتركيبات المضخات المصممة لضمان الموثوقية.",
+               "التكييف، والتهوية، ومجاري الهواء، والاختبار لضمان راحة ثابتة على مدار العام.",
+               "أجهزة إنذار الحريق، وأنظمة الإخماد، وشبكات الرشاشات، والمطابقة الكاملة لمتطلبات الدفاع المدني.",
+               "الكابلات المهيكلة، وكاميرات المراقبة، وأنظمة التحكم بالدخول، وتكامل المباني الذكية.",
+               "الاختبار الوظيفي، والتحقق من الأداء، ووثائق التسليم المعتمدة."],
+        alt="طاولة من خشب الجوز من الأعلى: كابل كهربائي مع لوحة مفتاح برونزية، وصمام كروي نحاسي على أنبوب نحاسي، وفتحة تكييف خطية سوداء على مجرى هواء مجلفن، ورأس رشاش وكاشف دخان، وكابل بيانات أزرق مع كاميرا مراقبة، ومقياس ضغط على ورقة اختبار",
+        tabs="التخصصات الكهروميكانيكية", cta="اطلب عرض سعر هندسي", cta_href="#contact"),
+)
+PAGE["services-furniture"] = dict(
+    img="furniture-disciplines-category-desk", widths=(1280, 1920, 2400), size=(2400, 1792),
+    spots=[(8.5, 17.2, 23.3, 25.8), (39.3, 15.1, 22, 29.7), (70.4, 17.2, 20.3, 26.8),
+           (8.1, 57.6, 22, 27.8), (38.6, 54.2, 24.8, 33.6), (70.2, 53.4, 21.8, 35.8)],
+    en=dict(
+        eyebrow="Our Furniture Categories", h2="Every Piece, In Place.",
+        sub="Six furniture categories on one desk, one team accountable from first specification to final placement.",
+        names=["Workstations & Office Furniture", "Lounge & Reception Seating", "Bespoke & Artisanal Pieces",
+               "Outdoor & Hospitality Furniture", "Soft Furnishings & Textiles", "Styling & Placement"],
+        descs=["Ergonomic desks, task seating, and storage systems built for productive teams.",
+               "Statement sofas, reception counters, and breakout seating that set the tone on arrival.",
+               "Custom-made furniture, handcrafted details, and statement lighting for standout spaces.",
+               "Weather-resistant sets, poolside furniture, and durable hospitality-grade pieces.",
+               "Curtains, rugs, cushions, and upholstery selected to complete every room.",
+               "Professional installation, final arrangement, and dedicated aftercare through handover."],
+        alt="A walnut desk from above: a model task chair beside a walnut desktop sample with a brass grommet, a bouclé swatch with a model sofa, a walnut dovetail joint with a chisel, teak slats with outdoor rope, linen, a rug corner and a tassel, and a layout plan with a vase, books and a tape measure",
+        tabs="Furniture categories", cta="Request a Furniture Quote", cta_href="#contact"),
+    ar=dict(
+        eyebrow="فئات الأثاث لدينا", h2="كل قطعة، في مكانها.",
+        sub="ست فئات أثاث على طاولة واحدة، وفريق واحد مسؤول من التحديد الأولي حتى التموضع النهائي.",
+        names=["محطات العمل وأثاث المكاتب", "مقاعد الصالات والاستقبال", "قطع مخصصة وحرفية",
+               "أثاث خارجي وضيافة", "المفروشات والأقمشة", "التنسيق والتموضع"],
+        descs=["مكاتب مريحة، ومقاعد عمل، وأنظمة تخزين مصممة لفرق العمل المنتجة.",
+               "أرائك مميزة، وطاولات استقبال، ومقاعد استراحة تمنح الانطباع الأول المناسب.",
+               "أثاث مصنوع حسب الطلب، وتفاصيل حرفية، وإضاءة مميزة للمساحات الاستثنائية.",
+               "مجموعات مقاومة للعوامل الجوية، وأثاث لحمامات السباحة، وقطع متينة بمعايير الضيافة.",
+               "ستائر، وسجاد، ووسائد، وأقمشة تنجيد مختارة لإكمال كل غرفة.",
+               "تركيب احترافي، وترتيب نهائي، ورعاية مخصصة حتى التسليم."],
+        alt="طاولة من خشب الجوز من الأعلى: نموذج كرسي مكتب بجانب عينة سطح مكتب من الجوز بفتحة كابلات نحاسية، وعينة بوكليه عليها نموذج أريكة، ووصلة تعشيق من الجوز مع إزميل، وشرائح ساج مع حبل خارجي، وكتان وزاوية سجادة وشرّابة، ومخطط توزيع عليه مزهرية وكتب وشريط قياس",
+        tabs="فئات الأثاث", cta="اطلب عرض سعر للأثاث", cta_href="#contact"),
+)
 ARROW = {
     "en": '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>',
     "ar": '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 5 5 12 12 19"/></svg>',
@@ -103,7 +165,7 @@ def build(page, lang):
           </div>''' for k in range(n))
     items = "\n".join(f'''          <li><button type="button" class="dk-tab" data-dk-tab="{k}"><i class="dk-prog" aria-hidden="true"></i><span class="dk-n" dir="ltr">0{k + 1}</span><span class="dk-t">{c['names'][k]}</span></button></li>''' for k in range(n))
     return f"""<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ SCOPE ━━━━━━━━━━━━━ -->
-<section id="disciplines" data-screen-label="Scope" data-sp-disc{' dir="rtl"' if ar else ''} style="scroll-margin-top:80px;background:#F5F2ED;color:#3A2D25;position:relative;padding:clamp(80px,10vw,128px) {PAD} 0;overflow:clip;">
+<section id="disciplines" data-screen-label="Scope" data-sp-disc{' dir="rtl"' if ar else ''} style="scroll-margin-top:80px;background:#F5F2ED;color:#3A2D25;position:relative;padding:clamp(64px,8vw,100px) {PAD} 0;overflow:clip;">
   <style>
     [data-sp-disc] .dk-wrap{{max-width:1280px;margin:0 auto;}}
     [data-sp-disc] .dk-head{{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:clamp(32px,5vw,88px);align-items:end;margin-bottom:clamp(40px,4.4vw,64px);}}
@@ -279,7 +341,7 @@ pages = sys.argv[1:] or list(PAGE)
 for page in pages:
     for name, lang in [(f"{page}.dc.html", "en"), (f"{page}.ar.dc.html", "ar")]:
         s = open(name, encoding="utf-8").read()
-        s, k = re.subn(r"<!-- ━+ SCOPE ━+ -->\n<section [^>]*data-screen-label=\"Scope\".*?\n</section>\n", lambda m: build(page, lang), s, count=1, flags=re.S)
+        s, k = re.subn(r"<!-- ━+ (?:SCOPE|DISCIPLINES) ━+ -->\n<section [^>]*data-screen-label=\"(?:Scope|Disciplines)\".*?\n</section>\n", lambda m: build(page, lang), s, count=1, flags=re.S)
         assert k == 1, name
         old = "    // ── SERVICE PAGES, DISCIPLINES:"
         if old in s:

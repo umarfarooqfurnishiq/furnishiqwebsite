@@ -72,6 +72,60 @@ PAGE = {
             cta="اكتشف مشاريعنا", href="/ar/projects", index="الركائز الثلاث"),
     ),
 }
+PAGE["services-mep"] = dict(
+    imgs=[("mep-pillar-utility-integration-ceiling-detail", (1280, 1920, 2400)),
+          ("mep-pillar-operational-integrity-plant-room", (1280, 1920, 2400)),
+          ("mep-pillar-safety-quality-pressure-test", (1280, 1920, 2400))],
+    en=dict(
+        eyebrow="The FurnishIQ Engineering Advantage", h2="Three Pillars of Engineering Excellence",
+        short=["Utility integration", "Operational integrity", "Safety & quality"],
+        titles=["Seamless Utility Integration", "Structural & Operational Integrity", "Uncompromising Safety & Quality"],
+        bodies=["We eliminate the technical conflicts that often plague multi-vendor projects. By integrating Mechanical, Electrical, and Plumbing systems during the design phase, we ensure climate control, power distribution, and plumbing are perfectly aligned with your spatial layout — preventing costly on-site adjustments and keeping your design uncompromised.",
+                "Our engineering team designs for the long term, enhancing building performance and energy efficiency while ensuring the structural integrity of your environment meets the highest professional standards.",
+                "Every installation is governed by our signature standards, combining rigorous protocols with continuous on-site oversight from start to handover."],
+        points=[("Strict QA/QC", "Rigorous Quality Assurance and Quality Control protocols ensure every component meets industry benchmarks."),
+                ("HSE Monitoring", "Continuous Health, Safety, and Environment monitoring is mandatory throughout the installation phase.")],
+        alts=["A linear diffuser, a downlight and a sprinkler head set in one line between walnut ceiling slats", "An orderly plant room: insulated pipework, pumps on concrete plinths and cable trays above", "A brass pressure gauge on a copper pipe under test, with an inspection tag and a gloved hand holding a clipboard"],
+        cta="Discover Projects", href="/projects", index="The three pillars"),
+    ar=dict(
+        eyebrow="ميزة FurnishIQ الهندسية", h2="ثلاث ركائز للتميز الهندسي",
+        short=["تكامل المرافق", "السلامة التشغيلية", "السلامة والجودة"],
+        titles=["تكامل سلس للمرافق", "السلامة الإنشائية والتشغيلية", "سلامة وجودة دون أي تنازلات"],
+        bodies=["نزيل التعارضات الفنية التي كثيراً ما تعاني منها المشاريع متعددة المقاولين. من خلال دمج الأنظمة الميكانيكية والكهربائية والسباكة أثناء مرحلة التصميم، نضمن توافق التحكم في المناخ وتوزيع الطاقة والسباكة تماماً مع مخططك المكاني — ما يمنع التعديلات المكلفة في الموقع ويحافظ على تصميمك دون أي تنازلات.",
+                "يصمم فريقنا الهندسي بمنظور طويل الأمد، لتحسين أداء المبنى وكفاءة استهلاك الطاقة، مع ضمان توافق السلامة الإنشائية لبيئتك مع أعلى المعايير المهنية.",
+                "يخضع كل تركيب لمعاييرنا المميزة، التي تجمع بين بروتوكولات صارمة ورقابة ميدانية مستمرة من البداية وحتى التسليم."],
+        points=[("ضمان الجودة الصارم (QA/QC)", "بروتوكولات صارمة لضمان الجودة ومراقبتها تكفل مطابقة كل مكون لمعايير القطاع."),
+                ("مراقبة الصحة والسلامة والبيئة (HSE)", "المراقبة المستمرة للصحة والسلامة والبيئة إلزامية طوال مرحلة التركيب.")],
+        alts=["فتحة تكييف خطية وإضاءة مدمجة ورأس رشاش في خط واحد بين شرائح سقف من خشب الجوز", "غرفة معدات منظمة: أنابيب معزولة ومضخات على قواعد خرسانية وحوامل كابلات في الأعلى", "مقياس ضغط نحاسي على أنبوب نحاسي قيد الاختبار، مع بطاقة فحص ويد بقفاز تحمل لوحة ملاحظات"],
+        cta="اكتشف مشاريعنا", href="/ar/projects", index="الركائز الثلاث"),
+)
+PAGE["services-furniture"] = dict(
+    imgs=[("furniture-pillar-visual-certainty-render-and-chair", (1280, 1920, 2400)),
+          ("furniture-pillar-global-access-craftsman-walnut-table", (1280, 1920, 2400)),
+          ("furniture-pillar-brand-led-workplace", (1280, 1920, 2400))],
+    en=dict(
+        eyebrow="The FurnishIQ Advantage: Curation with Purpose", h2="Three Pillars of Furniture Excellence",
+        short=["Visual certainty", "Global access", "Brand-led selection"],
+        titles=["Bespoke Procurement & Visual Certainty", "Global Access, Local Expertise", "Strategic Brand-Led Selection"],
+        bodies=["We eliminate the risk of mismatched items. Our team strategically sources and plans furniture that aligns perfectly with the materials, lighting, and scale established in your approved Photoreal 3D renders. This ensures that every piece — from a statement sofa to an ergonomic workstation — fits your environment with absolute precision before it ever arrives.",
+                "Leveraging our deep industry connections, we provide access to high-quality pieces that meet your specific aesthetic, budget, and operational needs. Whether sourcing bespoke artisanal items for a luxury villa or durable assets for an industrial facility, we ensure a cohesive look from floor to ceiling.",
+                "For our corporate and commercial clients, furniture is a tool for productivity and brand expression. We practice Brand-Led Planning, selecting furniture that reflects your corporate culture and is strategically engineered to optimize your daily operations."],
+        points=[("Brand Alignment", "Furniture is selected to reflect your corporate culture and reinforce your brand identity."),
+                ("Operational Efficiency", "Every selection is strategically engineered to optimize your daily operations and productivity.")],
+        alts=["A walnut and bouclé lounge chair in front of its pinned render, matching it piece for piece", "A craftsman's hands finishing the edge of a solid walnut table in a sunlit workshop", "A workplace of walnut workstations and leather lounge seating above the Riyadh skyline"],
+        cta="Discover Projects", href="/projects", index="The three pillars"),
+    ar=dict(
+        eyebrow="ميزة FurnishIQ: تنسيق بهدف", h2="ثلاث ركائز للتميز في الأثاث",
+        short=["يقين بصري", "وصول عالمي", "اختيار قائم على الهوية"],
+        titles=["توريد مخصص ويقين بصري", "وصول عالمي، خبرة محلية", "اختيار استراتيجي قائم على الهوية"],
+        bodies=["نُزيل مخاطر عدم التناسق بين القطع. يقوم فريقنا باختيار وتخطيط الأثاث بشكل استراتيجي بما ينسجم تماماً مع الخامات والإضاءة والمقاييس المعتمدة في تصوراتك ثلاثية الأبعاد الواقعية. هذا يضمن أن كل قطعة — من أريكة مميزة إلى محطة عمل مريحة — تتناسب مع بيئتك بدقة مطلقة قبل وصولها.",
+                "بالاستفادة من شبكة علاقاتنا العميقة في القطاع، نوفر إمكانية الوصول إلى قطع عالية الجودة تلبي هويتك الجمالية وميزانيتك واحتياجاتك التشغيلية. سواء كنا نُوَرِّد قطعاً حرفية مخصصة لفيلا فاخرة أو أصولاً متينة لمنشأة صناعية، فإننا نضمن مظهراً متناسقاً من الأرض إلى السقف.",
+                "بالنسبة لعملائنا من المؤسسات والقطاع التجاري، يُعد الأثاث أداة للإنتاجية والتعبير عن الهوية. نتّبع أسلوب التخطيط القائم على الهوية، فنختار الأثاث الذي يعكس ثقافتكم المؤسسية ويُصمَّم استراتيجياً لتحسين عملياتكم اليومية."],
+        points=[("الانسجام مع الهوية", "يُختار الأثاث بما يعكس ثقافتكم المؤسسية ويعزز هويتكم التجارية."),
+                ("الكفاءة التشغيلية", "كل اختيار مُصمَّم استراتيجياً لتحسين عملياتكم اليومية وإنتاجيتكم.")],
+        alts=["كرسي استرخاء من الجوز والبوكليه أمام تصوره المثبّت، مطابق له قطعةً بقطعة", "يدا حرفي تشطّبان حافة طاولة من خشب الجوز الصلب في ورشة مشمسة", "مكان عمل بمحطات من خشب الجوز ومقاعد استرخاء جلدية فوق أفق الرياض"],
+        cta="اكتشف المشاريع", href="/ar/projects", index="الركائز الثلاث"),
+)
 ARROW = {
     "en": '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>',
     "ar": '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 5 5 12 12 19"/></svg>',
@@ -110,7 +164,7 @@ def build(page, lang):
         </article>''')
     cards = "\n".join(cards)
     return f"""<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ ADVANTAGE ━━━━━━━ -->
-<section id="pillars" data-screen-label="Advantage" data-sp-pillars{' dir="rtl"' if ar else ''} style="scroll-margin-top:80px;background:#FFFFFF;color:#3A2D25;position:relative;padding:clamp(80px,10vw,136px) {PAD};">
+<section id="pillars" data-screen-label="Advantage" data-sp-pillars{' dir="rtl"' if ar else ''} style="scroll-margin-top:80px;background:#FFFFFF;color:#3A2D25;position:relative;padding:clamp(64px,8vw,100px) {PAD};">
   <style>
     [data-sp-pillars] .pl-wrap{{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:clamp(40px,6vw,104px);align-items:start;}}
     [data-sp-pillars] .pl-list{{grid-column:1;grid-row:1;}}

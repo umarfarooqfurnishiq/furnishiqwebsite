@@ -768,7 +768,7 @@ input:focus, select:focus, textarea:focus {
     <div class="ir-track">
     <div class="ir-block ir-rise ir-rise--3">
       <div class="ir-stage" data-ir-stage>
-        <canvas class="ir-canvas" role="img" aria-label="ردهة فندق بارتفاع مزدوج، أولاً هيكلاً خرسانياً خاماً، ثم مُشطّبة بخشب الجوز والترافرتين والبرونز" data-a="fitout-reveal-hotel-lobby-shell" data-aw="1280,1920,2400" data-b="fitout-reveal-hotel-lobby-finished" data-bw="1280,1920,2400" data-iw="2400" data-ih="1792"></canvas>
+        <canvas class="ir-canvas" role="img" aria-label="ردهة فندق بارتفاع مزدوج، أولاً هيكلاً خرسانياً خاماً، ثم مُشطّبة بخشب الجوز والترافرتين والبرونز" data-a="fitout-reveal-hotel-lobby-shell-toned" data-aw="1280,1920,2400" data-b="fitout-reveal-hotel-lobby-finished" data-bw="1280,1920,2400" data-iw="2400" data-ih="1792"></canvas>
         <div class="ir-in">
           <p class="ir-chip" aria-live="polite" data-l0="هيكل خام" data-l1="جارٍ التنفيذ" data-l2="تم التسليم"><i class="ir-dot" aria-hidden="true"></i><span class="ir-lbl">جارٍ التنفيذ</span><span class="ir-pct" dir="ltr">000%</span><svg class="ir-tick" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12.5 9.5 18 20 6"/></svg></p>
           <p class="ir-cap">تشطيب ردهة فندق · تصور تصميمي</p>
@@ -786,7 +786,7 @@ input:focus, select:focus, textarea:focus {
 </section>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ ADVANTAGE ━━━━━━━ -->
-<section id="pillars" data-screen-label="Advantage" data-sp-pillars dir="rtl" style="scroll-margin-top:80px;background:#FFFFFF;color:#3A2D25;position:relative;padding:clamp(80px,10vw,136px) clamp(24px,5vw,80px);">
+<section id="pillars" data-screen-label="Advantage" data-sp-pillars dir="rtl" style="scroll-margin-top:80px;background:#FFFFFF;color:#3A2D25;position:relative;padding:clamp(64px,8vw,100px) clamp(24px,5vw,80px);">
   <style>
     [data-sp-pillars] .pl-wrap{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:clamp(40px,6vw,104px);align-items:start;}
     [data-sp-pillars] .pl-list{grid-column:1;grid-row:1;}
@@ -900,7 +900,7 @@ input:focus, select:focus, textarea:focus {
 </section>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ SCOPE ━━━━━━━━━━━━━ -->
-<section id="disciplines" data-screen-label="Scope" data-sp-disc dir="rtl" style="scroll-margin-top:80px;background:#F5F2ED;color:#3A2D25;position:relative;padding:clamp(80px,10vw,128px) clamp(24px,5vw,80px) 0;overflow:clip;">
+<section id="disciplines" data-screen-label="Scope" data-sp-disc dir="rtl" style="scroll-margin-top:80px;background:#F5F2ED;color:#3A2D25;position:relative;padding:clamp(64px,8vw,100px) clamp(24px,5vw,80px) 0;overflow:clip;">
   <style>
     [data-sp-disc] .dk-wrap{max-width:1280px;margin:0 auto;}
     [data-sp-disc] .dk-head{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:clamp(32px,5vw,88px);align-items:end;margin-bottom:clamp(40px,4.4vw,64px);}
@@ -1152,7 +1152,7 @@ input:focus, select:focus, textarea:focus {
 </section>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ CTA ━━━━━━━━━━━━━ -->
-<section id="contact" data-screen-label="CTA" data-sp-bx dir="rtl" style="scroll-margin-top:80px;background:#3A2D25;color:#F5F2ED;position:relative;padding:clamp(88px,11vw,144px) clamp(24px,5vw,80px);overflow:clip;">
+<section id="contact" data-screen-label="CTA" data-sp-bx dir="rtl" style="scroll-margin-top:80px;background:#3A2D25;color:#F5F2ED;position:relative;padding:clamp(64px,8vw,128px) clamp(24px,5vw,80px);overflow:clip;">
   <style>
     [data-sp-bx] .bx-wrap{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:minmax(0,8fr) minmax(0,5fr);gap:clamp(40px,5vw,96px);align-items:center;}
     /* the book: two pages wide; closed, it sits centred, the cover over the second page */
@@ -1510,8 +1510,8 @@ class Component extends DCLogic {
           alert('يرجى إكمال ما يلي قبل الإرسال:\n\n' + missing.join('\n'));
           return;
         }
-        const btn = document.getElementById('fit-download-btn');
-        const btnLabel = document.getElementById('fit-download-btn-label');
+        const btn = document.getElementById('id-download-btn');
+        const btnLabel = document.getElementById('id-download-btn-label');
         if (btn) btn.disabled = true;
         if (btnLabel) btnLabel.textContent = 'جارٍ الإرسال…';
         const payload = {
@@ -1599,22 +1599,6 @@ class Component extends DCLogic {
       navCta.addEventListener('mouseleave', () => { navCta.style.background = 'transparent'; syncNav(); });
     }
 
-    // ── SERVICE PAGES, HERO: ONE SHEET OF THE DRAWING SET ───────────────────
-    {
-      const hero = document.querySelector('[data-sp-hero]');
-      if (hero) {
-        requestAnimationFrame(() => requestAnimationFrame(() => hero.classList.add('is-ready')));
-        // the in-page links land the section's top just under the fixed 80px header
-        hero.querySelectorAll('a[href^="#"]').forEach((a) => a.addEventListener('click', (e) => {
-          const el = document.getElementById(a.getAttribute('href').slice(1));
-          if (!el) return;
-          e.preventDefault();
-          window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: reduced ? 'instant' : 'smooth' });
-          history.replaceState(null, '', a.getAttribute('href'));
-        }));
-      }
-    }
-
     // ── SERVICES, MARKETS: FOUR SECTORS, ONE TEAM ───────────────────────────
     {
       const sec = document.querySelector('[data-svc-markets]');
@@ -1652,6 +1636,237 @@ class Component extends DCLogic {
         fit();
         window.addEventListener('resize', fit);
         new IntersectionObserver((es, o) => { es.forEach((e) => { if (e.isIntersecting) { sec.classList.add('is-in'); o.disconnect(); } }); }, { rootMargin: '0px 0px -15% 0px' }).observe(sec);
+      }
+    }
+
+    // ── STEP SNAP: ONE WHEEL NOTCH, ONE STEP ──────────────────────────────
+    // Sections pinned and played in steps register in window.fiqSnap as { on, geo }: on() says whether the
+    // section is pinned now, geo() gives a..b, the scroll range it holds, and stops, the scroll position of
+    // each step. Inside one, a wheel notch or an arrow, page or space key glides to the next step, then waits
+    // for the wheel to settle, so a fast notch or a trackpad's run-on never skips a step. Past the first or the
+    // last step the page scrolls on. A scroll that ends between two steps settles on the nearer.
+    {
+      const reg = window.fiqSnap = window.fiqSnap || [];
+      let gliding = false, held = false, lastWheel = 0;
+      const glide = window.fiqGlide = (to) => {
+        held = true;
+        if (reduced) { window.scrollTo({ top: to, behavior: 'instant' }); return; }
+        gliding = true;
+        const from = window.scrollY, d = to - from, t0 = performance.now(), T = 650;
+        const frame = (now) => {
+          const t = Math.min(1, (now - t0) / T);
+          window.scrollTo({ top: from + d * t * (2 - t), behavior: 'instant' });
+          if (t < 1) requestAnimationFrame(frame); else gliding = false;
+        };
+        requestAnimationFrame(frame);
+      };
+      // the registered section holding the page now
+      const here = () => {
+        const y = window.scrollY;
+        for (const s of reg) { if (!s.on()) continue; const g = s.geo(); if (y >= g.a - 1 && y <= g.b + 1) return g; }
+        return null;
+      };
+      const next = (g, dir) => {
+        const y = window.scrollY;
+        if (dir > 0) { for (const v of g.stops) if (v > y + 4) return v; }
+        else { for (let j = g.stops.length - 1; j >= 0; j--) if (g.stops[j] < y - 4) return g.stops[j]; }
+        return null;
+      };
+      window.addEventListener('wheel', (e) => {
+        if (e.ctrlKey || Math.abs(e.deltaY) < Math.abs(e.deltaX)) return;
+        // the gap between notches as the hand made them, not as a busy page got round to them
+        const now = e.timeStamp || performance.now(), quiet = now - lastWheel > 200;
+        lastWheel = now;
+        const g = here();
+        if (gliding || (held && !quiet)) { if (g) e.preventDefault(); return; }
+        held = false;
+        if (!g) return;
+        const to = next(g, Math.sign(e.deltaY));
+        if (to === null) return;
+        e.preventDefault(); glide(to);
+      }, { passive: false });
+      window.addEventListener('keydown', (e) => {
+        if (e.altKey || e.ctrlKey || e.metaKey) return;
+        const el = document.activeElement;
+        if (el && (el.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(el.tagName) || (e.key === ' ' && /^(BUTTON|A)$/.test(el.tagName)))) return;
+        const dir = { ArrowDown: 1, PageDown: 1, ArrowUp: -1, PageUp: -1, ' ': e.shiftKey ? -1 : 1 }[e.key];
+        if (!dir) return;
+        const g = here();
+        if (!g) return;
+        if (gliding) { e.preventDefault(); return; }
+        const to = next(g, dir);
+        if (to === null) return;
+        e.preventDefault(); glide(to);
+      });
+      window.addEventListener('scrollend', () => {
+        if (gliding) return;
+        const g = here();
+        if (!g) return;
+        const y = window.scrollY, n = g.stops.length;
+        if (y <= g.stops[0] + 1 || y >= g.stops[n - 1] - 1) return;
+        const to = g.stops.reduce((m, v) => (Math.abs(v - y) < Math.abs(m - y) ? v : m));
+        if (Math.abs(to - y) > 2) glide(to);
+      });
+    }
+
+    // ── SERVICE PAGES, HERO: ONE SHEET OF THE DRAWING SET ───────────────────
+    {
+      const hero = document.querySelector('[data-sp-hero]');
+      if (hero) {
+        requestAnimationFrame(() => requestAnimationFrame(() => hero.classList.add('is-ready')));
+        // the title may bite onto the photograph's edge, by 4% of its width at most: its lines break between words
+        // within that reach, and only a single word too long for it (Engineering) sets the title smaller
+        const h1 = hero.querySelector('.hs-h1'), words = h1.querySelector('.hs-line>span'), plot = hero.querySelector('.hs-plot'), wide = matchMedia('(min-width:901px)');
+        const rtl = hero.getAttribute('dir') === 'rtl';
+        const widest = () => {
+          const r = document.createRange(); r.selectNodeContents(words);
+          const p = plot.getBoundingClientRect();
+          return [...r.getClientRects()].reduce((m, b) => { const o = rtl ? p.right - b.left : b.right - p.left; return o > m.o ? { o, w: b.width } : m; }, { o: -Infinity, w: 0 });
+        };
+        const fit = () => {
+          h1.style.fontSize = ''; h1.style.marginInlineEnd = '';
+          if (!wide.matches) return;
+          const allow = plot.getBoundingClientRect().width * 0.04;
+          h1.style.marginInlineEnd = (-allow).toFixed(1) + 'px';
+          for (let k = 0; k < 4; k++) {   // a smaller size can rewrap the lines, so measure again
+            const m = widest();
+            if (m.o <= allow || !m.w) break;
+            h1.style.fontSize = (parseFloat(getComputedStyle(h1).fontSize) * (m.w - (m.o - allow)) / m.w).toFixed(1) + 'px';
+          }
+        };
+        fit();
+        if (document.fonts) document.fonts.ready.then(fit);
+        window.addEventListener('resize', fit);
+        // the in-page links land the section's top just under the fixed 80px header
+        hero.querySelectorAll('a[href^="#"]').forEach((a) => a.addEventListener('click', (e) => {
+          const el = document.getElementById(a.getAttribute('href').slice(1));
+          if (!el) return;
+          e.preventDefault();
+          window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: reduced ? 'instant' : 'smooth' });
+          history.replaceState(null, '', a.getAttribute('href'));
+        }));
+      }
+    }
+
+    // ── SERVICE PAGES, PILLARS: STICKY INDEX AND THREE CARDS ────────────────
+    {
+      const sec = document.querySelector('[data-sp-pillars]');
+      if (sec) {
+        const cards = Array.from(sec.querySelectorAll('[data-pl-card]')), ix = Array.from(sec.querySelectorAll('[data-pl-ix]'));
+        const rolls = Array.from(sec.querySelectorAll('.pl-roll span'));
+        const wrap = sec.querySelector('.pl-wrap'), rtl = sec.getAttribute('dir') === 'rtl';
+        const bleed = () => { const r = wrap.getBoundingClientRect(); sec.style.setProperty('--pl-bleed', Math.max(0, rtl ? document.documentElement.clientWidth - r.right : r.left) + 'px'); };
+        let ticking = false;
+        const update = () => {
+          ticking = false;
+          const line = window.innerHeight * 0.55;
+          let on = 0;
+          cards.forEach((c, k) => {
+            const r = c.getBoundingClientRect();
+            if (r.top < line) on = k;
+            // the index line fills as the card's reading line passes through it
+            ix[k].style.setProperty('--p', Math.min(1, Math.max(0, (line - r.top) / r.height)).toFixed(4));
+          });
+          ix.forEach((a, k) => a.classList.toggle('is-on', k === on));
+          rolls.forEach((s) => s.style.setProperty('--i', on));
+        };
+        window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+        window.addEventListener('resize', () => { bleed(); update(); });
+        bleed();
+        ix.forEach((a, k) => a.addEventListener('click', (e) => {
+          e.preventDefault();
+          window.scrollTo({ top: cards[k].getBoundingClientRect().top + window.scrollY - 120, behavior: reduced ? 'instant' : 'smooth' });
+        }));
+        const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -12% 0px' });
+        cards.forEach((c) => io.observe(c));
+        update();
+      }
+    }
+
+    // ── SERVICE PAGES, DISCIPLINES: THE DESIGNER'S DESK ─────────────────────
+    {
+      const sec = document.querySelector('[data-sp-disc]');
+      if (sec) {
+        const stage = sec.querySelector('[data-dk-stage]'), block = sec.querySelector('.dk-block'), track = sec.querySelector('.dk-track');
+        const photo = sec.querySelector('.dk-photo'), cur = sec.querySelector('.dk-cur');
+        const panes = Array.from(sec.querySelectorAll('[data-dk-pane]')), tabs = Array.from(sec.querySelectorAll('[data-dk-tab]'));
+        const spots = stage.dataset.spots.split('|').map((s) => s.split(',').map(Number));
+        const N = spots.length, PAD = 1.6;   // the spotlight's margin round each object, in % of the photograph
+        const pinMQ = matchMedia('(min-width:901px) and (min-height:600px)');
+        let pinned = pinMQ.matches, idx = -2, ticking = false, jump = null, auto = !reduced, visible = false, then = 0, acc = 0, raf = 0;
+        const HOLD = 4200;
+        // i = -1: the whole desk, lit, before the first; 0..N-1: one object in the spotlight; -2: the desk lit again
+        // after the sixth, which keeps the sixth's words and offers the closing call
+        const show = (i) => {
+          if (i === idx) return;
+          idx = i;
+          const v = (k, val) => photo.style.setProperty(k, val);
+          if (i < 0) { v('--sx', '0%'); v('--sy', '0%'); v('--sw', '100%'); v('--sh', '100%'); v('--dim', 0); v('--mk', 0); }
+          else {
+            const [x, y, w, h] = spots[i];
+            v('--sx', (x - PAD) + '%'); v('--sy', (y - PAD) + '%'); v('--sw', (w + 2 * PAD) + '%'); v('--sh', (h + 2 * PAD) + '%');
+            v('--dim', 0.7); v('--mk', 1);
+          }
+          const end = i === -2, k = end ? N - 1 : Math.max(0, i);
+          sec.classList.toggle('is-end', end);
+          cur.textContent = '0' + (k + 1);
+          panes.forEach((p, j) => p.classList.toggle('is-on', j === k));
+          tabs.forEach((t, j) => { t.classList.toggle('is-on', j === i); t.setAttribute('aria-pressed', j === i ? 'true' : 'false'); });
+        };
+        const geo = () => { const top = parseFloat(getComputedStyle(block).top) || 0; return { start: track.getBoundingClientRect().top + window.scrollY - top, dist: Math.max(1, track.offsetHeight - block.offsetHeight) }; };
+        // N + 2 equal steps: the lit desk, the six objects, the lit desk again
+        const onScroll = () => {
+          ticking = false;
+          if (!pinned) return;
+          const g = geo(), x = Math.min(N + 1.9999, Math.max(0, (window.scrollY - g.start) / g.dist) * (N + 2)), s = Math.floor(x) - 1;
+          const i = s >= N ? -2 : s;
+          if (jump !== null) { if (i === jump) jump = null; else return; }
+          show(i);
+          tabs.forEach((t, k) => t.style.setProperty('--p', k < s ? 1 : k === s ? (x - Math.floor(x)).toFixed(4) : 0));
+        };
+        window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+        // one wheel notch, one object: the page's step snap (STEP SNAP) holds the desk to its eight steps
+        const stop = (j, g) => g.start + g.dist * (j + 0.5) / (N + 2);
+        (window.fiqSnap = window.fiqSnap || []).push({ on: () => pinned, geo: () => { const g = geo(); return { a: g.start, b: g.start + g.dist, stops: Array.from({ length: N + 2 }, (_, j) => stop(j, g)) }; } });
+        tabs.forEach((t, k) => t.addEventListener('click', () => {
+          auto = false;
+          if (pinned) { const g = geo(), to = stop(k + 1, g); jump = k; show(k); if (window.fiqGlide) window.fiqGlide(to); else window.scrollTo({ top: to, behavior: reduced ? 'instant' : 'smooth' }); }
+          else { acc = 0; show(k); tabs.forEach((tb, j) => tb.style.setProperty('--p', j === k ? 1 : 0)); }
+        }));
+        const fit = () => sec.style.setProperty('--dk-sb', (window.innerWidth - document.documentElement.clientWidth) + 'px');
+        fit();
+        window.addEventListener('resize', () => { fit(); onScroll(); });
+        pinMQ.addEventListener('change', () => { pinned = pinMQ.matches; jump = null; idx = -2; if (pinned) onScroll(); else show(0); });
+        // phones: the six take their turn while the desk is in view
+        document.addEventListener('visibilitychange', () => { then = 0; });
+        const loop = (now) => {
+          // real time between frames, so a throttled frame rate does not slow the turn
+          const dt = then ? now - then : 0; then = now;
+          if (!pinned && auto && !document.hidden) {
+            acc += dt;
+            if (idx >= 0) tabs[idx].style.setProperty('--p', Math.min(1, acc / HOLD).toFixed(4));
+            if (acc >= HOLD) { acc = 0; tabs.forEach((t) => t.style.setProperty('--p', 0)); show((Math.max(0, idx) + 1) % N); }
+          }
+          raf = visible ? requestAnimationFrame(loop) : 0;
+        };
+        new IntersectionObserver((es, o) => { es.forEach((e) => { if (e.isIntersecting) { sec.classList.add('is-in'); o.disconnect(); } }); }, { rootMargin: '0px 0px -15% 0px' }).observe(sec);
+        new IntersectionObserver((es) => { es.forEach((e) => { visible = e.isIntersecting; if (visible && !raf) { then = 0; raf = requestAnimationFrame(loop); } }); }, { threshold: 0.3 }).observe(stage);
+        if (pinned) { show(-1); onScroll(); } else show(0);
+      }
+    }
+
+    // ── SERVICE PAGES, CLOSING FORM: THE STUDIO EDITION ─────────────────────
+    {
+      const sec = document.querySelector('[data-sp-bx]');
+      if (sec) {
+        const wants = Array.from(sec.querySelectorAll('[data-bx-want]')), lbl = sec.querySelector('#id-download-btn-label');
+        const pick = (k) => { wants[k].checked = true; lbl.dataset.idle = wants[k].dataset.label; lbl.textContent = wants[k].dataset.label; };
+        wants.forEach((w, k) => w.addEventListener('change', () => pick(k)));
+        pick(0);
+        // the page's "book a consultation" links arrive with the consultation chosen
+        document.querySelectorAll('a[href="#contact"]').forEach((a) => { if (!sec.contains(a)) a.addEventListener('click', () => pick(1)); });
+        if (location.hash === '#contact') pick(1);
+        new IntersectionObserver((es, o) => { es.forEach((e) => { if (e.isIntersecting) { sec.classList.add('is-in'); setTimeout(() => sec.classList.add('is-open'), reduced ? 0 : 300); o.disconnect(); } }); }, { threshold: 0.3 }).observe(sec);
       }
     }
 
@@ -1784,198 +1999,6 @@ class Component extends DCLogic {
         window.addEventListener('resize', size);
         if (document.fonts) document.fonts.ready.then(size);
         size(); onScroll();
-      }
-    }
-
-    // ── SERVICE PAGES, PILLARS: STICKY INDEX AND THREE CARDS ────────────────
-    {
-      const sec = document.querySelector('[data-sp-pillars]');
-      if (sec) {
-        const cards = Array.from(sec.querySelectorAll('[data-pl-card]')), ix = Array.from(sec.querySelectorAll('[data-pl-ix]'));
-        const rolls = Array.from(sec.querySelectorAll('.pl-roll span'));
-        const wrap = sec.querySelector('.pl-wrap'), rtl = sec.getAttribute('dir') === 'rtl';
-        const bleed = () => { const r = wrap.getBoundingClientRect(); sec.style.setProperty('--pl-bleed', Math.max(0, rtl ? document.documentElement.clientWidth - r.right : r.left) + 'px'); };
-        let ticking = false;
-        const update = () => {
-          ticking = false;
-          const line = window.innerHeight * 0.55;
-          let on = 0;
-          cards.forEach((c, k) => {
-            const r = c.getBoundingClientRect();
-            if (r.top < line) on = k;
-            // the index line fills as the card's reading line passes through it
-            ix[k].style.setProperty('--p', Math.min(1, Math.max(0, (line - r.top) / r.height)).toFixed(4));
-          });
-          ix.forEach((a, k) => a.classList.toggle('is-on', k === on));
-          rolls.forEach((s) => s.style.setProperty('--i', on));
-        };
-        window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
-        window.addEventListener('resize', () => { bleed(); update(); });
-        bleed();
-        ix.forEach((a, k) => a.addEventListener('click', (e) => {
-          e.preventDefault();
-          window.scrollTo({ top: cards[k].getBoundingClientRect().top + window.scrollY - 120, behavior: reduced ? 'instant' : 'smooth' });
-        }));
-        const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -12% 0px' });
-        cards.forEach((c) => io.observe(c));
-        update();
-      }
-    }
-
-    // ── SERVICE PAGES, DISCIPLINES: THE DESIGNER'S DESK ─────────────────────
-    {
-      const sec = document.querySelector('[data-sp-disc]');
-      if (sec) {
-        const stage = sec.querySelector('[data-dk-stage]'), block = sec.querySelector('.dk-block'), track = sec.querySelector('.dk-track');
-        const photo = sec.querySelector('.dk-photo'), cur = sec.querySelector('.dk-cur');
-        const panes = Array.from(sec.querySelectorAll('[data-dk-pane]')), tabs = Array.from(sec.querySelectorAll('[data-dk-tab]'));
-        const spots = stage.dataset.spots.split('|').map((s) => s.split(',').map(Number));
-        const N = spots.length, PAD = 1.6;   // the spotlight's margin round each object, in % of the photograph
-        const pinMQ = matchMedia('(min-width:901px) and (min-height:600px)');
-        let pinned = pinMQ.matches, idx = -2, ticking = false, jump = null, auto = !reduced, visible = false, then = 0, acc = 0, raf = 0;
-        const HOLD = 4200;
-        // i = -1: the whole desk, lit, before the first; 0..N-1: one object in the spotlight; -2: the desk lit again
-        // after the sixth, which keeps the sixth's words and offers the closing call
-        const show = (i) => {
-          if (i === idx) return;
-          idx = i;
-          const v = (k, val) => photo.style.setProperty(k, val);
-          if (i < 0) { v('--sx', '0%'); v('--sy', '0%'); v('--sw', '100%'); v('--sh', '100%'); v('--dim', 0); v('--mk', 0); }
-          else {
-            const [x, y, w, h] = spots[i];
-            v('--sx', (x - PAD) + '%'); v('--sy', (y - PAD) + '%'); v('--sw', (w + 2 * PAD) + '%'); v('--sh', (h + 2 * PAD) + '%');
-            v('--dim', 0.7); v('--mk', 1);
-          }
-          const end = i === -2, k = end ? N - 1 : Math.max(0, i);
-          sec.classList.toggle('is-end', end);
-          cur.textContent = '0' + (k + 1);
-          panes.forEach((p, j) => p.classList.toggle('is-on', j === k));
-          tabs.forEach((t, j) => { t.classList.toggle('is-on', j === i); t.setAttribute('aria-pressed', j === i ? 'true' : 'false'); });
-        };
-        const geo = () => { const top = parseFloat(getComputedStyle(block).top) || 0; return { start: track.getBoundingClientRect().top + window.scrollY - top, dist: Math.max(1, track.offsetHeight - block.offsetHeight) }; };
-        // N + 2 equal steps: the lit desk, the six objects, the lit desk again
-        const onScroll = () => {
-          ticking = false;
-          if (!pinned) return;
-          const g = geo(), x = Math.min(N + 1.9999, Math.max(0, (window.scrollY - g.start) / g.dist) * (N + 2)), s = Math.floor(x) - 1;
-          const i = s >= N ? -2 : s;
-          if (jump !== null) { if (i === jump) jump = null; else return; }
-          show(i);
-          tabs.forEach((t, k) => t.style.setProperty('--p', k < s ? 1 : k === s ? (x - Math.floor(x)).toFixed(4) : 0));
-        };
-        window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
-        // one wheel notch, one object: the page's step snap (STEP SNAP) holds the desk to its eight steps
-        const stop = (j, g) => g.start + g.dist * (j + 0.5) / (N + 2);
-        (window.fiqSnap = window.fiqSnap || []).push({ on: () => pinned, geo: () => { const g = geo(); return { a: g.start, b: g.start + g.dist, stops: Array.from({ length: N + 2 }, (_, j) => stop(j, g)) }; } });
-        tabs.forEach((t, k) => t.addEventListener('click', () => {
-          auto = false;
-          if (pinned) { const g = geo(), to = stop(k + 1, g); jump = k; show(k); if (window.fiqGlide) window.fiqGlide(to); else window.scrollTo({ top: to, behavior: reduced ? 'instant' : 'smooth' }); }
-          else { acc = 0; show(k); tabs.forEach((tb, j) => tb.style.setProperty('--p', j === k ? 1 : 0)); }
-        }));
-        const fit = () => sec.style.setProperty('--dk-sb', (window.innerWidth - document.documentElement.clientWidth) + 'px');
-        fit();
-        window.addEventListener('resize', () => { fit(); onScroll(); });
-        pinMQ.addEventListener('change', () => { pinned = pinMQ.matches; jump = null; idx = -2; if (pinned) onScroll(); else show(0); });
-        // phones: the six take their turn while the desk is in view
-        document.addEventListener('visibilitychange', () => { then = 0; });
-        const loop = (now) => {
-          // real time between frames, so a throttled frame rate does not slow the turn
-          const dt = then ? now - then : 0; then = now;
-          if (!pinned && auto && !document.hidden) {
-            acc += dt;
-            if (idx >= 0) tabs[idx].style.setProperty('--p', Math.min(1, acc / HOLD).toFixed(4));
-            if (acc >= HOLD) { acc = 0; tabs.forEach((t) => t.style.setProperty('--p', 0)); show((Math.max(0, idx) + 1) % N); }
-          }
-          raf = visible ? requestAnimationFrame(loop) : 0;
-        };
-        new IntersectionObserver((es, o) => { es.forEach((e) => { if (e.isIntersecting) { sec.classList.add('is-in'); o.disconnect(); } }); }, { rootMargin: '0px 0px -15% 0px' }).observe(sec);
-        new IntersectionObserver((es) => { es.forEach((e) => { visible = e.isIntersecting; if (visible && !raf) { then = 0; raf = requestAnimationFrame(loop); } }); }, { threshold: 0.3 }).observe(stage);
-        if (pinned) { show(-1); onScroll(); } else show(0);
-      }
-    }
-
-    // ── STEP SNAP: ONE WHEEL NOTCH, ONE STEP ──────────────────────────────
-    // Sections pinned and played in steps register in window.fiqSnap as { on, geo }: on() says whether the
-    // section is pinned now, geo() gives a..b, the scroll range it holds, and stops, the scroll position of
-    // each step. Inside one, a wheel notch or an arrow, page or space key glides to the next step, then waits
-    // for the wheel to settle, so a fast notch or a trackpad's run-on never skips a step. Past the first or the
-    // last step the page scrolls on. A scroll that ends between two steps settles on the nearer.
-    {
-      const reg = window.fiqSnap = window.fiqSnap || [];
-      let gliding = false, held = false, lastWheel = 0;
-      const glide = window.fiqGlide = (to) => {
-        held = true;
-        if (reduced) { window.scrollTo({ top: to, behavior: 'instant' }); return; }
-        gliding = true;
-        const from = window.scrollY, d = to - from, t0 = performance.now(), T = 650;
-        const frame = (now) => {
-          const t = Math.min(1, (now - t0) / T);
-          window.scrollTo({ top: from + d * t * (2 - t), behavior: 'instant' });
-          if (t < 1) requestAnimationFrame(frame); else gliding = false;
-        };
-        requestAnimationFrame(frame);
-      };
-      // the registered section holding the page now
-      const here = () => {
-        const y = window.scrollY;
-        for (const s of reg) { if (!s.on()) continue; const g = s.geo(); if (y >= g.a - 1 && y <= g.b + 1) return g; }
-        return null;
-      };
-      const next = (g, dir) => {
-        const y = window.scrollY;
-        if (dir > 0) { for (const v of g.stops) if (v > y + 4) return v; }
-        else { for (let j = g.stops.length - 1; j >= 0; j--) if (g.stops[j] < y - 4) return g.stops[j]; }
-        return null;
-      };
-      window.addEventListener('wheel', (e) => {
-        if (e.ctrlKey || Math.abs(e.deltaY) < Math.abs(e.deltaX)) return;
-        // the gap between notches as the hand made them, not as a busy page got round to them
-        const now = e.timeStamp || performance.now(), quiet = now - lastWheel > 200;
-        lastWheel = now;
-        const g = here();
-        if (gliding || (held && !quiet)) { if (g) e.preventDefault(); return; }
-        held = false;
-        if (!g) return;
-        const to = next(g, Math.sign(e.deltaY));
-        if (to === null) return;
-        e.preventDefault(); glide(to);
-      }, { passive: false });
-      window.addEventListener('keydown', (e) => {
-        if (e.altKey || e.ctrlKey || e.metaKey) return;
-        const el = document.activeElement;
-        if (el && (el.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(el.tagName) || (e.key === ' ' && /^(BUTTON|A)$/.test(el.tagName)))) return;
-        const dir = { ArrowDown: 1, PageDown: 1, ArrowUp: -1, PageUp: -1, ' ': e.shiftKey ? -1 : 1 }[e.key];
-        if (!dir) return;
-        const g = here();
-        if (!g) return;
-        if (gliding) { e.preventDefault(); return; }
-        const to = next(g, dir);
-        if (to === null) return;
-        e.preventDefault(); glide(to);
-      });
-      window.addEventListener('scrollend', () => {
-        if (gliding) return;
-        const g = here();
-        if (!g) return;
-        const y = window.scrollY, n = g.stops.length;
-        if (y <= g.stops[0] + 1 || y >= g.stops[n - 1] - 1) return;
-        const to = g.stops.reduce((m, v) => (Math.abs(v - y) < Math.abs(m - y) ? v : m));
-        if (Math.abs(to - y) > 2) glide(to);
-      });
-    }
-
-    // ── SERVICE PAGES, CLOSING FORM: THE STUDIO EDITION ─────────────────────
-    {
-      const sec = document.querySelector('[data-sp-bx]');
-      if (sec) {
-        const wants = Array.from(sec.querySelectorAll('[data-bx-want]')), lbl = sec.querySelector('#id-download-btn-label');
-        const pick = (k) => { wants[k].checked = true; lbl.dataset.idle = wants[k].dataset.label; lbl.textContent = wants[k].dataset.label; };
-        wants.forEach((w, k) => w.addEventListener('change', () => pick(k)));
-        pick(0);
-        // the page's "book a consultation" links arrive with the consultation chosen
-        document.querySelectorAll('a[href="#contact"]').forEach((a) => { if (!sec.contains(a)) a.addEventListener('click', () => pick(1)); });
-        if (location.hash === '#contact') pick(1);
-        new IntersectionObserver((es, o) => { es.forEach((e) => { if (e.isIntersecting) { sec.classList.add('is-in'); setTimeout(() => sec.classList.add('is-open'), reduced ? 0 : 300); o.disconnect(); } }); }, { threshold: 0.3 }).observe(sec);
       }
     }
 

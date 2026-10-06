@@ -35,6 +35,20 @@ PAGE = {
         alt=("A travertine espresso bar with walnut joinery and brass detailing, fitted out and finished",
              "بار إسبريسو من الترافرتين بأعمال نجارة من الجوز وتفاصيل نحاسية، بعد التشطيب")),
 }
+PAGE["services-mep"] = dict(
+    img="executive-floors-walnut-ceiling-detail", widths=(1200, 2400), pos="50% 50%",
+    project=("The Executive Floors · Concept visualisation", "الطوابق التنفيذية · تصور تصميمي"),
+    slogan=("Power, climate, water and safety, engineered in from the first drawing.", "الطاقة والتكييف والمياه والسلامة، مدمجة هندسياً منذ المخطط الأول."),
+    more=("See behind the ceiling", "شاهد ما خلف السقف"), anchor="#id-render",
+    alt=("A walnut slatted ceiling with linear lights running the length of an executive corridor",
+         "سقف من شرائح خشب الجوز بإضاءة خطية على امتداد ممر تنفيذي"))
+PAGE["services-furniture"] = dict(
+    img="furniture-gallery-dining-room-set", widths=(1280, 2752), pos="50% 50%",
+    project=("The Furniture Gallery · Concept visualisation", "معرض الأثاث · تصور تصميمي"),
+    slogan=("The final layer, sourced and placed exactly as rendered.", "اللمسة الأخيرة، تُورَّد وتوضع تماماً كما في التصور."),
+    more=("See the room come together", "شاهد اكتمال الغرفة"), anchor="#id-render",
+    alt=("A dining room with an oak table, cream upholstered chairs and a sculpted brass pendant",
+         "غرفة طعام بطاولة من البلوط وكراسٍ منجّدة بلون كريمي وثريا نحاسية منحوتة"))
 T = {
     "en": dict(sheet="Sheet", services="Services", cta="Book Free Consultation", set_a="Drawing set", set_b="FurnishIQ Services", index="Service pages"),
     "ar": dict(sheet="اللوحة", services="الخدمات", cta="احجز استشارة مجانية", set_a="مجموعة اللوحات", set_b="خدمات FurnishIQ", index="صفحات الخدمات"),
@@ -195,6 +209,29 @@ JS = """    // ── SERVICE PAGES, HERO: ONE SHEET OF THE DRAWING SET ──�
       const hero = document.querySelector('[data-sp-hero]');
       if (hero) {
         requestAnimationFrame(() => requestAnimationFrame(() => hero.classList.add('is-ready')));
+        // the title may bite onto the photograph's edge, by 4% of its width at most: its lines break between words
+        // within that reach, and only a single word too long for it (Engineering) sets the title smaller
+        const h1 = hero.querySelector('.hs-h1'), words = h1.querySelector('.hs-line>span'), plot = hero.querySelector('.hs-plot'), wide = matchMedia('(min-width:901px)');
+        const rtl = hero.getAttribute('dir') === 'rtl';
+        const widest = () => {
+          const r = document.createRange(); r.selectNodeContents(words);
+          const p = plot.getBoundingClientRect();
+          return [...r.getClientRects()].reduce((m, b) => { const o = rtl ? p.right - b.left : b.right - p.left; return o > m.o ? { o, w: b.width } : m; }, { o: -Infinity, w: 0 });
+        };
+        const fit = () => {
+          h1.style.fontSize = ''; h1.style.marginInlineEnd = '';
+          if (!wide.matches) return;
+          const allow = plot.getBoundingClientRect().width * 0.04;
+          h1.style.marginInlineEnd = (-allow).toFixed(1) + 'px';
+          for (let k = 0; k < 4; k++) {   // a smaller size can rewrap the lines, so measure again
+            const m = widest();
+            if (m.o <= allow || !m.w) break;
+            h1.style.fontSize = (parseFloat(getComputedStyle(h1).fontSize) * (m.w - (m.o - allow)) / m.w).toFixed(1) + 'px';
+          }
+        };
+        fit();
+        if (document.fonts) document.fonts.ready.then(fit);
+        window.addEventListener('resize', fit);
         // the in-page links land the section's top just under the fixed 80px header
         hero.querySelectorAll('a[href^="#"]').forEach((a) => a.addEventListener('click', (e) => {
           const el = document.getElementById(a.getAttribute('href').slice(1));

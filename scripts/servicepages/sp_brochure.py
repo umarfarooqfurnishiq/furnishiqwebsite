@@ -71,6 +71,44 @@ PAGE["services-fitout"] = dict(
             note="يرسل الاستوديو الكتيّب عبر البريد الإلكتروني، ويرد شخصياً على طلبات عروض الأسعار.",
             alt="كتيّب التشطيبات، مفتوحاً على صفحته الأولى"),
 )
+PAGE["services-mep"] = dict(
+    cover="mep-pillar-utility-integration-ceiling-detail", left="mep-ceiling-services-installation-riyadh", small="mep-pillar-operational-integrity-plant-room",
+    en=dict(_ID["en"], eyebrow="The Engineering Brochure", h2="See what sits behind the ceiling.",
+            sub="How we design, install and commission every system, in one brochure.",
+            title="Engineering &amp; MEP",
+            items=["Three pillars of engineering excellence", "Six MEP disciplines", "Concept projects in four sectors", "From first drawing to commissioning"],
+            want=("Send me the brochure", "Request a quote"), label=("Request the Brochure", "Request an Engineering Quote"),
+            req=("Engineering & MEP brochure", "Engineering quote"),
+            note="The studio emails the brochure, and replies to quote requests personally.",
+            alt="The Engineering & MEP brochure, open on its first spread"),
+    ar=dict(_ID["ar"], eyebrow="كتيّب الهندسة", h2="شاهد ما خلف السقف.",
+            sub="كيف نصمم كل نظام ونركّبه ونشغّله، في كتيّب واحد.",
+            title="الهندسة والأنظمة الكهروميكانيكية",
+            items=["ثلاث ركائز للتميز الهندسي", "ستة تخصصات كهروميكانيكية", "تصورات تصميمية في أربعة قطاعات", "من المخطط الأول حتى التشغيل"],
+            want=("أرسلوا لي الكتيّب", "اطلب عرض سعر"), label=("اطلب الكتيّب", "اطلب عرض سعر هندسي"),
+            req=("كتيّب الهندسة والأنظمة الكهروميكانيكية", "عرض سعر هندسي"),
+            note="يرسل الاستوديو الكتيّب عبر البريد الإلكتروني، ويرد شخصياً على طلبات عروض الأسعار.",
+            alt="كتيّب الهندسة والأنظمة الكهروميكانيكية، مفتوحاً على صفحته الأولى"),
+)
+PAGE["services-furniture"] = dict(
+    cover="bespoke-furniture-leather-lounge-chair-riyadh", left="furniture-gallery-oak-brass-detail", small="courtyard-residence-majlis-seating-detail",
+    en=dict(_ID["en"], eyebrow="The Furniture Brochure", h2="See the room, finished.",
+            sub="How we source, place and style every piece, in one brochure.",
+            title="Furniture",
+            items=["Three pillars of furniture excellence", "Six furniture categories", "Concept projects in four sectors", "From first render to final placement"],
+            want=("Send me the brochure", "Request a quote"), label=("Request the Brochure", "Request a Furniture Quote"),
+            req=("Furniture brochure", "Furniture quote"),
+            note="The studio emails the brochure, and replies to quote requests personally.",
+            alt="The Furniture brochure, open on its first spread"),
+    ar=dict(_ID["ar"], eyebrow="كتيّب الأثاث", h2="شاهد الغرفة مكتملة.",
+            sub="كيف نورّد كل قطعة ونضعها وننسّقها، في كتيّب واحد.",
+            title="الأثاث",
+            items=["ثلاث ركائز للتميز في الأثاث", "ست فئات للأثاث", "تصورات تصميمية في أربعة قطاعات", "من التصور الأول حتى التموضع النهائي"],
+            want=("أرسلوا لي الكتيّب", "اطلب عرض سعر"), label=("اطلب الكتيّب", "اطلب عرض سعر للأثاث"),
+            req=("كتيّب الأثاث", "عرض سعر للأثاث"),
+            note="يرسل الاستوديو الكتيّب عبر البريد الإلكتروني، ويرد شخصياً على طلبات عروض الأسعار.",
+            alt="كتيّب الأثاث، مفتوحاً على صفحته الأولى"),
+)
 ARROW = {
     "en": '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>',
     "ar": '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 5 5 12 12 19"/></svg>',
@@ -89,7 +127,7 @@ def build(page, lang):
     side = "right" if ar else "left"         # the spine: the cover swings towards the reading start
     items = "".join(f'<li><span dir="ltr">0{k + 1}</span>{t}</li>' for k, t in enumerate(c["items"]))
     return f"""<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ CTA ━━━━━━━━━━━━━ -->
-<section id="contact" data-screen-label="CTA" data-sp-bx{' dir="rtl"' if ar else ''} style="scroll-margin-top:80px;background:#3A2D25;color:#F5F2ED;position:relative;padding:clamp(88px,11vw,144px) {PAD};overflow:clip;">
+<section id="contact" data-screen-label="CTA" data-sp-bx{' dir="rtl"' if ar else ''} style="scroll-margin-top:80px;background:#3A2D25;color:#F5F2ED;position:relative;padding:clamp(64px,8vw,128px) {PAD};overflow:clip;">
   <style>
     [data-sp-bx] .bx-wrap{{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:minmax(0,8fr) minmax(0,5fr);gap:clamp(40px,5vw,96px);align-items:center;}}
     /* the book: two pages wide; closed, it sits centred, the cover over the second page */
@@ -243,11 +281,14 @@ def patch_logic(s, c, page):
     messages follow the page's language."""
     reps = [
         (re.compile(r"request: '[^']*',"), "request: (document.querySelector('[data-bx-want]:checked') || {}).value || " + repr(c['req'][0]) + ","),
-        (re.compile(r"if \(btnLabel\) btnLabel\.textContent = '(?:Book a Design Consultation|احجز استشارة تصميم|Request a Fit-Out Quote|اطلب عرض سعر للتشطيب|Request the Brochure|اطلب الكتيّب)';"), "if (btnLabel) btnLabel.textContent = btnLabel.dataset.idle;"),
+        # the old button's idle words, whatever they were (the sending line is matched next)
+        (re.compile(r"if \(btnLabel\) btnLabel\.textContent = '(?!Sending…|جارٍ الإرسال…)[^']*';"), "if (btnLabel) btnLabel.textContent = btnLabel.dataset.idle;"),
         (re.compile(r"if \(btnLabel\) btnLabel\.textContent = '(?:Sending…|جارٍ الإرسال…)';"), f"if (btnLabel) btnLabel.textContent = {c['sending']!r};"),
         (re.compile(r"alert\('(?:Please complete the following before submitting:|يرجى إكمال ما يلي قبل الإرسال:)\\n\\n'"), f"alert({(c['missing'] + chr(10) + chr(10))!r}"),
         (re.compile(r"alert\('(?:Something went wrong[^']*|حدث خطأ ما[^']*)'\)"), f"alert({c['fail']!r})"),
     ]
+    # the submit code looks the button up by the old form's ids (fit-, mep-, ...); the new form's are id-download-btn
+    s = re.sub(r"getElementById\('[a-z]+-download-btn(-label)?'\)", lambda m: "getElementById('id-download-btn" + (m.group(1) or "") + "')", s)
     for rx, new in reps:
         if new in s:
             continue   # patched by an earlier run

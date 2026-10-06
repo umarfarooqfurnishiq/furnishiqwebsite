@@ -95,7 +95,7 @@ HELPER = HEAD + """ ────────────────────
 
 # (block header, line in that block to register after, the registration, generator, pages)
 SVC = ["services.dc.html", "services.ar.dc.html"]
-SP = ["services-interior-design.dc.html", "services-interior-design.ar.dc.html", "services-fitout.dc.html", "services-fitout.ar.dc.html"]
+SP = [f"{p}{l}.dc.html" for p in ("services-interior-design", "services-fitout", "services-mep", "services-furniture") for l in ("", ".ar")]
 ABOUT = ["about-us.dc.html", "about-us.ar.dc.html"]
 STEPPED = "(window.fiqSnap = window.fiqSnap || []).push({ on: () => pinned, geo: () => { const g = geo(); return { a: g.start, b: g.start + g.dist, stops: Array.from({ length: STEPS }, (_, j) => g.start + g.dist * (j + 0.5) / STEPS) }; } });"
 SCROLL = "        window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });\n"

@@ -13,6 +13,9 @@ Run from Furnishiq.net: PYTHONIOENCODING=utf-8 python ../scripts/servicepages/sp
 import re, sys
 
 EASE = "cubic-bezier(0.25,0.46,0.45,0.94)"
+# the "before" of every reveal is monochrome and turns to full colour as the work completes: the design drawing is
+# already cream on walnut, and the other pages' before images are toned to the same warm walnut-to-cream duotone
+# (baked into the -toned files, so every browser shows the same picture)
 PAGE = {
   "services-interior-design": dict(
     a="grand-majlis-line-drawing", aw=[1920, 2752], b="courtyard-residence-grand-majlis-riyadh", bw=[1280, 1920, 2752], size=(1920, 1072),
@@ -41,7 +44,7 @@ PAGE = {
     ),
   }),
   "services-fitout": dict(
-    a="fitout-reveal-hotel-lobby-shell", aw=[1280, 1920, 2400], b="fitout-reveal-hotel-lobby-finished", bw=[1280, 1920, 2400], size=(2400, 1792),
+    a="fitout-reveal-hotel-lobby-shell-toned", aw=[1280, 1920, 2400], b="fitout-reveal-hotel-lobby-finished", bw=[1280, 1920, 2400], size=(2400, 1792),
     C={
     "en": dict(
         eyebrow="Our Fit-Out Services", h2="Total Spatial Transformation",
@@ -67,6 +70,58 @@ PAGE = {
     ),
   }),
 }
+PAGE["services-mep"] = dict(
+    a="mep-reveal-executive-lounge-services-open-toned", aw=[1280, 1920, 2400], b="mep-reveal-executive-lounge-finished", bw=[1280, 1920, 2400], size=(2400, 1792),
+    C={
+    "en": dict(
+        eyebrow="Our Engineering Services", h2="The Foundation of High-Performance Environments",
+        sub="Every system coordinated above the ceiling, so nothing shows below it.",
+        drawing="Services open", rendering="Closing up", approved="Commissioned",
+        names=["Open", "Closed", "Commissioned"],
+        descs=["Ducts, cable trays, sprinkler mains and pipework, coordinated in the ceiling void.",
+               "Ceiling, diffusers, lights and sprinkler heads set in one aligned line.",
+               "Every system tested, balanced and certified before handover."],
+        cap="Executive lounge · Concept visualisation", tabs="Engineering stages",
+        alt="An executive lounge in Riyadh, first with its ceiling open on ducts, cable trays and sprinkler pipes, then closed in walnut and finished",
+    ),
+    "ar": dict(
+        eyebrow="خدماتنا الهندسية", h2="الأساس المتين للبيئات عالية الأداء",
+        sub="كل نظام منسّق فوق السقف، فلا يظهر شيء تحته.",
+        drawing="الأنظمة مكشوفة", rendering="جارٍ الإغلاق", approved="تم التشغيل",
+        names=["مكشوف", "مُغلق", "مُشغَّل"],
+        descs=["مجاري الهواء وحوامل الكابلات وخطوط الرشاشات والأنابيب، منسّقة في فراغ السقف.",
+               "السقف وفتحات التكييف والإضاءة ورؤوس الرشاشات في خط واحد متناسق.",
+               "كل نظام يُختبر ويُوازن ويُعتمد قبل التسليم."],
+        cap="صالة تنفيذية · تصور تصميمي", tabs="مراحل التنفيذ الهندسي",
+        alt="صالة تنفيذية في الرياض، أولاً بسقف مفتوح على مجاري الهواء وحوامل الكابلات وأنابيب الرشاشات، ثم مغلقاً بخشب الجوز ومُشطّباً",
+    ),
+  })
+PAGE["services-furniture"] = dict(
+    a="furniture-reveal-villa-lounge-empty-toned", aw=[1280, 1920, 2400], b="furniture-reveal-villa-lounge-furnished", bw=[1280, 1920, 2400], size=(2400, 1792),
+    C={
+    "en": dict(
+        eyebrow="Our Furniture Solutions", h2="The Final Layer of Spatial Perfection",
+        sub="Every piece sourced and placed to match the approved render.",
+        drawing="Empty room", rendering="Placing", approved="Styled",
+        names=["Empty", "Placed", "Styled"],
+        descs=["The finished room, measured and ready for its furniture.",
+               "Every piece delivered, assembled and set where the render placed it.",
+               "Textiles, lighting and objects layered in, and the room handed over."],
+        cap="Villa family lounge · Concept visualisation", tabs="Furniture stages",
+        alt="A villa family lounge under timber beams, first empty on its travertine floor, then furnished with a bouclé sofa, leather lounge chairs, a travertine table and linen curtains",
+    ),
+    "ar": dict(
+        eyebrow="حلول الأثاث لدينا", h2="الطبقة الأخيرة من الكمال المكاني",
+        sub="كل قطعة تُورَّد وتوضع مطابقة للتصور المعتمد.",
+        drawing="غرفة فارغة", rendering="جارٍ التوزيع", approved="مُنسَّقة",
+        names=["فارغة", "مؤثثة", "مُنسَّقة"],
+        descs=["الغرفة المنجزة، مقاسة وجاهزة لأثاثها.",
+               "كل قطعة تُسلَّم وتُركَّب وتوضع حيث حددها التصور.",
+               "الأقمشة والإضاءة والقطع الفنية تكتمل، وتُسلَّم الغرفة."],
+        cap="صالة عائلية في فيلا · تصور تصميمي", tabs="مراحل الأثاث",
+        alt="صالة عائلية في فيلا تحت عوارض خشبية، أولاً فارغة على أرضيتها من الترافرتين، ثم مؤثثة بأريكة بوكليه وكراسٍ جلدية وطاولة ترافرتين وستائر كتان",
+    ),
+  })
 TICK = '<svg class="ir-tick" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12.5 9.5 18 20 6"/></svg>'
 
 
