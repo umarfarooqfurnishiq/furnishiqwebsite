@@ -1,13 +1,13 @@
 """Site: step snap. One wheel notch, one step, in every section that pins and plays in steps.
 
-A pinned section played in steps (the services page's MEP, furniture and process; the service pages' reveal
-and designer's desk; the about page's compass and journey) registers its scroll range and the scroll position
+A pinned section played in steps (the services page's MEP, furniture and process; the service pages' designer's
+desk; the about page's compass and journey) registers its scroll range and the scroll position
 of each step with one shared block on the page. Inside a registered section a wheel notch, or an arrow, page or
 space key, glides to the next step and then waits for the wheel to settle, so a fast notch or a trackpad's
 run-on never skips a step. Past the first or the last step the page scrolls on as usual. A scroll that ends
 between two steps, from the scrollbar or anything else, settles on the nearer.
-Sections that scrub continuously (the about page's pillars, threshold and chairman's quote, the home page's
-stacked floors) keep plain scrolling.
+Sections that scrub continuously (the service pages' reveal, whose render resolves tile by tile; the about page's
+pillars, threshold and chairman's quote; the home page's stacked floors) keep plain scrolling.
 
 This script adds the shared block to each page, and adds each section's registration to its page and to the
 generator that builds it, so a later run of that generator keeps it.
@@ -111,10 +111,6 @@ PATCHES = [
      "        // one wheel notch, one stage, resting where it has finished drawing (STEP SNAP)\n"
      "        (window.fiqSnap = window.fiqSnap || []).push({ on: () => pinned, geo: () => { const g = geo(); return { a: g.start, b: g.start + g.dist, stops: Array.from({ length: N }, (_, j) => g.start + g.dist * (j + 0.8) / N) }; } });\n",
      "services/svc_process.py", SVC),
-    ("    // ── SERVICE PAGES, INTRO: THE REVEAL", "        const TARGET = [A * 0.5, (A + B) / 2, 1];\n",
-     "        // one wheel notch, one stage: drawn, rendering, approved (STEP SNAP)\n"
-     "        (window.fiqSnap = window.fiqSnap || []).push({ on: () => pinned, geo: () => { const g = geo(); return { a: g.start, b: g.start + g.dist, stops: TARGET.map((t) => g.start + g.dist * t) }; } });\n",
-     "servicepages/sp_reveal.py", SP),
     ("    // ── WHO WE ARE: COMPASS", "        pick(0); update();\n",
      "        // one wheel notch, one statement (STEP SNAP)\n"
      "        (window.fiqSnap = window.fiqSnap || []).push({ on: () => " + WIDE + ", geo: () => { const a = cp.getBoundingClientRect().top + window.scrollY, total = cp.offsetHeight - window.innerHeight; return { a, b: a + total, stops: rows.map((_, i) => a + total * (i + 0.5) / rows.length) }; } });\n",

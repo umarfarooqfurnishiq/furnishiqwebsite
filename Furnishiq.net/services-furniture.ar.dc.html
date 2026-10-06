@@ -675,7 +675,7 @@ input:focus, select:focus, textarea:focus {
   <div class="hs-sheet">
     <div class="hs-main">
       <div class="hs-text">
-        <p class="hs-eyebrow hs-fade"><i></i><a href="/ar/services">الخدمات</a><span>·</span>اللوحة <span dir="ltr">FF-04</span></p>
+        <p class="hs-eyebrow hs-fade"><i></i><a href="/ar/services">الخدمات</a><span>·</span><span dir="ltr">04 / 04</span></p>
         <h1 class="hs-h1"><span class="hs-line"><span>حلول الأثاث</span></span></h1>
         <p class="hs-slogan hs-fade">اللمسة الأخيرة، تُورَّد وتوضع تماماً كما في التصور.</p>
         <div class="hs-ctas hs-fade">
@@ -740,7 +740,7 @@ input:focus, select:focus, textarea:focus {
     [data-id-render] .ir-tx span{font-family:'GE SS Two','Arial',sans-serif;font-size:14px;line-height:1.6;color:rgba(245,242,237,0.6);}
     @media(min-width:901px) and (min-height:600px){
       [data-id-render] .ir-block{position:sticky;top:80px;}
-      [data-id-render] .ir-spacer{height:220vh;}
+      [data-id-render] .ir-spacer{height:160vh;}
     }
     @media(max-width:900px){
       [data-id-render] .ir-head{grid-template-columns:1fr;}
@@ -1709,45 +1709,6 @@ class Component extends DCLogic {
       });
     }
 
-    // ── SERVICE PAGES, HERO: ONE SHEET OF THE DRAWING SET ───────────────────
-    {
-      const hero = document.querySelector('[data-sp-hero]');
-      if (hero) {
-        requestAnimationFrame(() => requestAnimationFrame(() => hero.classList.add('is-ready')));
-        // the title may bite onto the photograph's edge, by 4% of its width at most: its lines break between words
-        // within that reach, and only a single word too long for it (Engineering) sets the title smaller
-        const h1 = hero.querySelector('.hs-h1'), words = h1.querySelector('.hs-line>span'), plot = hero.querySelector('.hs-plot'), wide = matchMedia('(min-width:901px)');
-        const rtl = hero.getAttribute('dir') === 'rtl';
-        const widest = () => {
-          const r = document.createRange(); r.selectNodeContents(words);
-          const p = plot.getBoundingClientRect();
-          return [...r.getClientRects()].reduce((m, b) => { const o = rtl ? p.right - b.left : b.right - p.left; return o > m.o ? { o, w: b.width } : m; }, { o: -Infinity, w: 0 });
-        };
-        const fit = () => {
-          h1.style.fontSize = ''; h1.style.marginInlineEnd = '';
-          if (!wide.matches) return;
-          const allow = plot.getBoundingClientRect().width * 0.04;
-          h1.style.marginInlineEnd = (-allow).toFixed(1) + 'px';
-          for (let k = 0; k < 4; k++) {   // a smaller size can rewrap the lines, so measure again
-            const m = widest();
-            if (m.o <= allow || !m.w) break;
-            h1.style.fontSize = (parseFloat(getComputedStyle(h1).fontSize) * (m.w - (m.o - allow)) / m.w).toFixed(1) + 'px';
-          }
-        };
-        fit();
-        if (document.fonts) document.fonts.ready.then(fit);
-        window.addEventListener('resize', fit);
-        // the in-page links land the section's top just under the fixed 80px header
-        hero.querySelectorAll('a[href^="#"]').forEach((a) => a.addEventListener('click', (e) => {
-          const el = document.getElementById(a.getAttribute('href').slice(1));
-          if (!el) return;
-          e.preventDefault();
-          window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: reduced ? 'instant' : 'smooth' });
-          history.replaceState(null, '', a.getAttribute('href'));
-        }));
-      }
-    }
-
     // ── SERVICE PAGES, PILLARS: STICKY INDEX AND THREE CARDS ────────────────
     {
       const sec = document.querySelector('[data-sp-pillars]');
@@ -1880,7 +1841,9 @@ class Component extends DCLogic {
         const tabs = Array.from(sec.querySelectorAll('[data-ir-tab]'));
         const pinMQ = matchMedia('(min-width:901px) and (min-height:600px)');
         const COLS = 16, ROWS = 9, N = COLS * ROWS;
-        const A = 0.1, B = 0.86;   // the line drawing holds until A; the tiles resolve until B; approved after
+        // the before holds until A; the tiles resolve until B; approved after. With the 160vh run, a wheel notch
+        // resolves about 9% of the render: steady, never a jump
+        const A = 0.08, B = 0.88;
         // buckets in a square spiral out from the centre, the order a render engine fills them
         const order = [];
         {
@@ -1970,8 +1933,6 @@ class Component extends DCLogic {
         };
         window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
         const TARGET = [A * 0.5, (A + B) / 2, 1];
-        // one wheel notch, one stage: drawn, rendering, approved (STEP SNAP)
-        (window.fiqSnap = window.fiqSnap || []).push({ on: () => pinned, geo: () => { const g = geo(); return { a: g.start, b: g.start + g.dist, stops: TARGET.map((t) => g.start + g.dist * t) }; } });
         tabs.forEach((tb, i) => tb.addEventListener('click', () => {
           auto = false;
           if (pinned) { const g = geo(); window.scrollTo({ top: g.start + g.dist * Math.min(0.999, TARGET[i]), behavior: reduced ? 'auto' : 'smooth' }); }
@@ -1999,6 +1960,45 @@ class Component extends DCLogic {
         window.addEventListener('resize', size);
         if (document.fonts) document.fonts.ready.then(size);
         size(); onScroll();
+      }
+    }
+
+    // ── SERVICE PAGES, HERO: ONE SHEET OF THE DRAWING SET ───────────────────
+    {
+      const hero = document.querySelector('[data-sp-hero]');
+      if (hero) {
+        requestAnimationFrame(() => requestAnimationFrame(() => hero.classList.add('is-ready')));
+        // the title may bite onto the photograph's edge, by 4% of its width at most: its lines break between words
+        // within that reach, and only a single word too long for it (Engineering) sets the title smaller
+        const h1 = hero.querySelector('.hs-h1'), words = h1.querySelector('.hs-line>span'), plot = hero.querySelector('.hs-plot'), wide = matchMedia('(min-width:901px)');
+        const rtl = hero.getAttribute('dir') === 'rtl';
+        const widest = () => {
+          const r = document.createRange(); r.selectNodeContents(words);
+          const p = plot.getBoundingClientRect();
+          return [...r.getClientRects()].reduce((m, b) => { const o = rtl ? p.right - b.left : b.right - p.left; return o > m.o ? { o, w: b.width } : m; }, { o: -Infinity, w: 0 });
+        };
+        const fit = () => {
+          h1.style.fontSize = ''; h1.style.marginInlineEnd = '';
+          if (!wide.matches) return;
+          const allow = plot.getBoundingClientRect().width * 0.04;
+          h1.style.marginInlineEnd = (-allow).toFixed(1) + 'px';
+          for (let k = 0; k < 4; k++) {   // a smaller size can rewrap the lines, so measure again
+            const m = widest();
+            if (m.o <= allow || !m.w) break;
+            h1.style.fontSize = (parseFloat(getComputedStyle(h1).fontSize) * (m.w - (m.o - allow)) / m.w).toFixed(1) + 'px';
+          }
+        };
+        fit();
+        if (document.fonts) document.fonts.ready.then(fit);
+        window.addEventListener('resize', fit);
+        // the in-page links land the section's top just under the fixed 80px header
+        hero.querySelectorAll('a[href^="#"]').forEach((a) => a.addEventListener('click', (e) => {
+          const el = document.getElementById(a.getAttribute('href').slice(1));
+          if (!el) return;
+          e.preventDefault();
+          window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: reduced ? 'instant' : 'smooth' });
+          history.replaceState(null, '', a.getAttribute('href'));
+        }));
       }
     }
 

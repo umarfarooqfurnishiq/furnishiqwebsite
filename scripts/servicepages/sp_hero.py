@@ -181,7 +181,7 @@ def build(page, lang):
   <div class="hs-sheet">
     <div class="hs-main">
       <div class="hs-text">
-        <p class="hs-eyebrow hs-fade"><i></i><a href="{base}/services">{t['services']}</a><span>·</span>{t['sheet']} <span dir="ltr">{code}</span></p>
+        <p class="hs-eyebrow hs-fade"><i></i><a href="{base}/services">{t['services']}</a><span>·</span><span dir="ltr">{me + 1:02d} / {len(SET):02d}</span></p>
         <h1 class="hs-h1"><span class="hs-line"><span>{name}</span></span></h1>
         <p class="hs-slogan hs-fade">{p['slogan'][L]}</p>
         <div class="hs-ctas hs-fade">
