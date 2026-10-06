@@ -55,7 +55,7 @@ FurnishIQ specifies and sources the furniture as part of the same design: low ma
 - Applied to site: homepage card 1, projects listing, project detail (EN + AR). Slug: `the-courtyard-residence`, AR title «مسكن الفناء».
 - Master retouched: rooftop ornament seen through the right arch removed (read as a cross at small size); fake text on the coffee-table book removed.
 - Missing: Detail 2 (travertine + bronze inlay). Seating detail is reserved for the Detail Lens.
-- Video exported as `courtyard-residence-film-1080.mp4` / `-720.mp4` + `-poster.webp` (audio stripped). Not placed yet — goes into the project page redesign.
+- Video exported as `courtyard-residence-film-1080.mp4` / `-720.mp4` + `-poster.webp`. Retired 2026-10-06: project heroes now drift the still with CSS (the films juddered); the files were removed from uploads and remain in git history.
 
 ## Image set
 | File (SEO name) | Content |
