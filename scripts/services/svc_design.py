@@ -20,7 +20,7 @@ MATS = [
 C = {
     "en": dict(
         eyebrow="Our Interior Design Services", h2="Where Inspiration Becomes Your Reality",
-        body="At FurnishIQ, we redefine the interior design experience by bridging the gap between high-level architectural vision and livable, bespoke artistry. We believe a space should be more than just aesthetic; it must be a personalized solution that optimizes your daily life or business operations, with every detail — from the flow of a room to the texture of a material — crafted with purpose.",
+        body="Architectural vision, tailored to the way you live and work.",
         key="Every surface, specified", cta="Explore Interior Design", href="/services-interior-design",
         cats=["Stone", "Timber", "Screens", "Textile", "Light"],
         names=["Travertine wall cladding with brass inlay", "Fluted walnut panelling and joinery",
@@ -30,7 +30,7 @@ C = {
     ),
     "ar": dict(
         eyebrow="خدمات التصميم الداخلي لدينا", h2="حيث يتحول الإلهام إلى واقعك",
-        body="في FurnishIQ، نعيد تعريف تجربة التصميم الداخلي بردم الفجوة بين الرؤية المعمارية رفيعة المستوى والحرفية المخصصة القابلة للعيش. نؤمن بأن المساحة يجب أن تكون أكثر من مجرد جمالية؛ يجب أن تكون حلاً شخصياً يُحسّن حياتك اليومية أو عملياتك التجارية، مع صياغة كل تفصيلة — من تدفق الغرفة إلى ملمس المادة — بهدف واضح.",
+        body="رؤية معمارية مصممة على طريقة عيشك وعملك.",
         key="كل سطح، محدد بعناية", cta="استكشف التصميم الداخلي", href="/ar/services-interior-design",
         cats=["الحجر", "الخشب", "المشربيات", "الأقمشة", "الإضاءة"],
         names=["تكسية جدارية من الترافرتين بتطعيمات نحاسية", "ألواح وأعمال نجارة مضلعة من خشب الجوز",
@@ -68,7 +68,7 @@ def build(lang):
     [data-svc-design] .sd-eyebrow{{display:flex;align-items:center;gap:16px;margin-bottom:24px;font-family:{font};font-size:{small};letter-spacing:{track};text-transform:uppercase;color:#8B6B4A;}}
     [data-svc-design] .sd-eyebrow i{{display:block;width:32px;height:1px;background:#8B6B4A;}}
     [data-svc-design] .sd-h2{{font-family:{font};font-weight:500;font-size:clamp(32px,3.8vw,54px);line-height:1.08;letter-spacing:{'0' if ar else '-0.015em'};color:#1F1F1F;margin:0;text-wrap:balance;}}
-    [data-svc-design] .sd-body{{font-family:{font};font-size:{'16px' if ar else '15px'};line-height:1.85;color:#5B4636;margin:0;}}
+    [data-svc-design] .sd-body{{font-family:{font};font-weight:500;font-size:{'clamp(22px,2vw,28px)' if ar else 'clamp(20px,1.9vw,26px)'};line-height:1.4;letter-spacing:{'0' if ar else '-0.005em'};text-wrap:balance;max-width:30ch;color:#3A2D25;margin:0;}}
     [data-svc-design] .sd-main{{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:clamp(28px,3.4vw,48px);align-items:stretch;}}
     [data-svc-design] .sd-fig{{margin:0;margin-inline-start:calc(var(--sd-bleed,0px) * -1);}}
     [data-svc-design] .sd-photo{{position:relative;aspect-ratio:1920/1072;overflow:hidden;background:#3A2D25;}}

@@ -91,3 +91,25 @@ The looping carousels (`[clones][originals][clones]`) only wrap if one set of ca
 - Cause: the crossfade fix gave the slides `z-index:1`/`2`. The dark veil and the bottom fade sat after them in the markup with no z-index, so the slides now painted above both.
 - Fix: give every layer in the stack an explicit place (slides 1–2, veil and fade 3, copy 4, opening doors 6), noted in a comment next to the rules.
 - Rule: when adding z-index to an element, check every positioned sibling in the same container, and confirm the result with `document.elementsFromPoint` rather than by eye.
+
+## A sed that appends a comment can swallow the rest of the line (2026-10-06)
+- Symptom: on phones the Services autoplay (MEP, Furniture, Process) stopped advancing; the first stage drew in and nothing followed.
+- Cause: the loop line held two statements, `const dt = ...; then = now;`. A sed replacement put a `//` comment after the first statement, which commented out `then = now`, so `then` stayed 0 and `dt` was always 0. It was introduced while chasing a different stall: the test browser was rendering at about 1 frame per second, which the old 100 ms cap per frame made look like a broken cycle.
+- Fix: one statement per line, the comment on its own line above; time the cycle from the real gap between frames and reset it on `visibilitychange` rather than capping each frame.
+- Rule: never append a comment with sed to a line that may hold more than one statement; re-read the generated line after any sed edit. When a timed loop stalls in Playwright, measure the frame rate (`requestAnimationFrame` count over 2 s) before changing the code.
+
+## A stretched SVG line with pathLength dashes stops short (2026-10-06)
+On the Services finale, a dimension line drawn as `<svg preserveAspectRatio="none">` with `pathLength="1"`,
+`stroke-dasharray:1 1` and `vector-effect:non-scaling-stroke` finished its draw-in about 280px short of the
+end tick at 1440px. With a non-scaling stroke, Chrome measures the dash in screen space while `pathLength`
+normalises in user space, so a non-uniformly stretched path never fully dashes in. For a straight line that
+must span a fluid width, use a CSS element animated with `transform:scaleX(0 → 1)` instead; keep the SVG
+dash technique for paths drawn at a uniform scale (`meet`/`slice`).
+
+## `@property` registrations are global: namespace them (2026-10-06)
+The Services Process section registered `@property --h { syntax:'<number>' }` to animate its handover. The
+registration applies to the whole document, so the Interior Design section's viewfinder, which sets
+`--h: 80%` for its height, became invalid at computed-value time and fell back to the initial `0`: the frame
+collapsed to a 2px line and its dimming shadow darkened the whole photo. Generic one-letter custom
+properties are fine while unregistered, but any property passed to `@property` must carry a section prefix
+(`--pr-h`, `--pr-t`). Before registering one, grep the page for other uses of the name.

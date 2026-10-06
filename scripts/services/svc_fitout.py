@@ -14,7 +14,7 @@ AFTER = "luxury-office-fit-out-riyadh"
 C = {
     "en": dict(
         eyebrow="Our Fit-Out Services", h2="Total Spatial Transformation",
-        body="At FurnishIQ, our Fit-Out service is our most highlighted offering and the heartbeat of our operational excellence. We specialize in the complete transformation of raw, structural shells into fully functional, finished, and turnkey environments that are ready for immediate occupation — on schedule, and without compromise.",
+        body="From raw shell to turnkey space, on schedule and without compromise.",
         cta="Explore Fit-Out", href="/services-fitout",
         before="Shell &amp; core", after="Turnkey handover", drag="Drag through the fit-out",
         phases=["Shell &amp; core", "Partitions &amp; ceilings", "Services rough-in", "Finishes &amp; joinery", "Furniture &amp; handover"],
@@ -24,7 +24,7 @@ C = {
     ),
     "ar": dict(
         eyebrow="خدمات التشطيبات لدينا", h2="تحول مكاني كامل",
-        body="في FurnishIQ، تُعد خدمة التشطيبات أبرز خدماتنا ونبض تميزنا التشغيلي. نتخصص في التحويل الكامل للهياكل الإنشائية الخام إلى بيئات جاهزة وعملية بالكامل وقابلة للتسليم الفوري — في الموعد المحدد، ودون أي تنازل.",
+        body="من الهيكل الخام إلى مساحة جاهزة للتسليم، في الموعد ودون تنازل.",
         cta="استكشف التشطيبات", href="/ar/services-fitout",
         before="الهيكل الخام", after="تسليم جاهز", drag="اسحب عبر مراحل التشطيب",
         phases=["الهيكل الخام", "القواطع والأسقف", "تمديدات الأنظمة", "التشطيبات والنجارة", "الأثاث والتسليم"],
@@ -65,7 +65,7 @@ def build(lang):
     [data-svc-fitout] .sf-eyebrow{{display:flex;align-items:center;gap:16px;margin-bottom:24px;font-family:{font};font-size:{small};letter-spacing:{track};text-transform:uppercase;color:#D6C2A8;}}
     [data-svc-fitout] .sf-eyebrow i{{display:block;width:32px;height:1px;background:#D6C2A8;}}
     [data-svc-fitout] .sf-h2{{font-family:{font};font-weight:500;font-size:clamp(34px,4.4vw,64px);line-height:1.04;letter-spacing:{'0' if ar else '-0.02em'};color:#F5F2ED;margin:0;}}
-    [data-svc-fitout] .sf-body{{font-family:{font};font-size:{'16px' if ar else '15px'};line-height:1.85;color:rgba(245,242,237,0.86);margin:0 0 28px;}}
+    [data-svc-fitout] .sf-body{{font-family:{font};font-weight:500;font-size:{'clamp(22px,2vw,28px)' if ar else 'clamp(20px,1.9vw,26px)'};line-height:1.4;letter-spacing:{'0' if ar else '-0.005em'};text-wrap:balance;max-width:30ch;color:#F5F2ED;margin:0 0 28px;}}
     [data-svc-fitout] .sf-cta{{display:inline-flex;align-items:center;gap:12px;padding:17px 30px;background:#D6C2A8;color:#1E1610;text-decoration:none;font-family:{font};font-size:{'13px' if ar else '10px'};letter-spacing:{'normal' if ar else '0.2em'};text-transform:uppercase;border:1px solid #D6C2A8;transition:background 0.4s {EASE},color 0.4s {EASE};}}
     [data-svc-fitout] .sf-cta:hover,[data-svc-fitout] .sf-cta:focus-visible{{background:transparent;color:#D6C2A8;}}
     [data-svc-fitout] .sf-stage{{position:relative;margin-inline:calc(50% - 50vw);width:100vw;height:max(640px,calc(100vh - var(--fiq-svc-offset,132px)));overflow:hidden;background:#120D09;}}
