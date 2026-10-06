@@ -536,6 +536,11 @@ input:focus, select:focus, textarea:focus {
       .fiq-footer-grid{grid-template-columns:1fr!important;}
     }
     @keyframes fiqHeroIn{from{opacity:0;transform:translateY(50px);}to{opacity:1;transform:translateY(0);}}
+
+    /* project hero: the still drifts slowly, in sub-pixel steps */
+    @keyframes fiqPdDrift { from { transform: scale(1.02) translate3d(0,0,0); } to { transform: scale(1.1) translate3d(-1.6%,-1%,0); } }
+    .fiq-pd-drift { animation: fiqPdDrift 24s cubic-bezier(0.45,0,0.55,1) infinite alternate; will-change: transform; backface-visibility: hidden; }
+    .fiq-pd-drift.is-paused { animation-play-state: paused; }
   </style>
 </helmet>
 
@@ -558,13 +563,7 @@ input:focus, select:focus, textarea:focus {
 </nav>
 
 <section data-screen-label="Hero" style="position:relative;height:82vh;min-height:520px;background:#1E1610;overflow:hidden;">
-  <img src="{{ heroImage }}" alt="{{ title }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-  <sc-if value="{{ hasFilm }}" hint-placeholder-val="{{ false }}">
-  <video data-pd-film muted loop playsinline preload="none" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-    <source data-src="{{ filmSd }}" type="video/mp4" media="(max-width: 768px)">
-    <source data-src="{{ filmHd }}" type="video/mp4">
-  </video>
-  </sc-if>
+  <img class="fiq-pd-drift" src="{{ heroImage }}" alt="{{ title }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
   <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,15,10,0.55) 0%,rgba(20,15,10,0.15) 35%,rgba(15,11,8,0.92) 100%);"></div>
 
   <a href="/ar/projects" style="position:absolute;top:104px;right:clamp(24px,5vw,80px);z-index:2;display:inline-flex;align-items:center;gap:10px;font-family:'GE SS Two','Arial',sans-serif;font-size:10px;letter-spacing:normal;text-transform:uppercase;color:rgba(255,255,255,0.85);text-decoration:none;">
@@ -580,7 +579,7 @@ input:focus, select:focus, textarea:focus {
     <h1 style="font-family:'GE SS Two','Arial',sans-serif;font-size:clamp(30px,4.4vw,58px);font-weight:600;line-height:1.08;letter-spacing:-0.01em;color:#FFFFFF;margin:0;max-width:900px;text-wrap:balance;">{{ title }}</h1>
   </div>
   <sc-if value="{{ hasFilm }}" hint-placeholder-val="{{ false }}">
-  <button type="button" data-pd-film-toggle data-label-pause="إيقاف الفيلم مؤقتًا" data-label-play="تشغيل الفيلم" aria-label="إيقاف الفيلم مؤقتًا" style="position:absolute;bottom:clamp(48px,6vw,72px);inset-inline-end:clamp(24px,5vw,80px);z-index:3;width:44px;height:44px;border-radius:50%;background:rgba(15,11,8,0.35);border:1px solid rgba(214,194,168,0.6);color:#D6C2A8;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background 0.3s cubic-bezier(0.25,0.46,0.45,0.94);"><svg data-icon-pause width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="9" y1="5" x2="9" y2="19"></line><line x1="15" y1="5" x2="15" y2="19"></line></svg><svg data-icon-play width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><polygon points="7 5 19 12 7 19 7 5"></polygon></svg></button>
+  <button type="button" data-pd-drift-toggle data-label-pause="إيقاف الحركة مؤقتًا" data-label-play="تشغيل الحركة" aria-label="إيقاف الحركة مؤقتًا" style="position:absolute;bottom:clamp(48px,6vw,72px);inset-inline-end:clamp(24px,5vw,80px);z-index:3;width:44px;height:44px;border-radius:50%;background:rgba(15,11,8,0.35);border:1px solid rgba(214,194,168,0.6);color:#D6C2A8;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background 0.3s cubic-bezier(0.25,0.46,0.45,0.94);"><svg data-icon-pause width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="9" y1="5" x2="9" y2="19"></line><line x1="15" y1="5" x2="15" y2="19"></line></svg><svg data-icon-play width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><polygon points="7 5 19 12 7 19 7 5"></polygon></svg></button>
   </sc-if>
 </section>
 
@@ -1082,45 +1081,23 @@ class Component extends DCLogic {
   }
 
   componentDidMount() {
-    // Project film in the hero: always autoplays in a loop (owner's decision, overrides reduced motion);
-    // visible pause button for anyone who wants it still; pauses off-screen to save battery
+    // Project hero: the still drifts in a slow loop (owner's decision: the hero always moves); the
+    // visible button holds it still for anyone who wants it so
     (() => {
       let tries = 0;
       const setup = () => {
-        const v = document.querySelector('[data-pd-film]');
-        const btn = document.querySelector('[data-pd-film-toggle]');
-        if (!v || !btn) { if (tries++ < 40) setTimeout(setup, 100); return; }
-        if (v.dataset.ready) return;
-        v.dataset.ready = '1';
-        // The template renderer drops boolean attributes (muted, loop); browsers only autoplay muted video
-        v.muted = true; v.defaultMuted = true; v.setAttribute('muted', '');
-        v.loop = true;
-        let userPaused = false;
-        const load = () => {
-          if (v.dataset.loaded) return;
-          v.querySelectorAll('source[data-src]').forEach((s) => { s.src = s.dataset.src; });
-          v.load();
-          v.dataset.loaded = '1';
-        };
+        const img = document.querySelector('.fiq-pd-drift');
+        const btn = document.querySelector('[data-pd-drift-toggle]');
+        if (!img || !btn) { if (tries++ < 40) setTimeout(setup, 100); return; }
+        if (btn.dataset.ready) return;
+        btn.dataset.ready = '1';
         const sync = () => {
-          const playing = !v.paused;
-          btn.querySelector('[data-icon-pause]').style.display = playing ? '' : 'none';
-          btn.querySelector('[data-icon-play]').style.display = playing ? 'none' : '';
-          btn.setAttribute('aria-label', playing ? btn.dataset.labelPause : btn.dataset.labelPlay);
+          const moving = !img.classList.contains('is-paused');
+          btn.querySelector('[data-icon-pause]').style.display = moving ? '' : 'none';
+          btn.querySelector('[data-icon-play]').style.display = moving ? 'none' : '';
+          btn.setAttribute('aria-label', moving ? btn.dataset.labelPause : btn.dataset.labelPlay);
         };
-        const play = () => { load(); const p = v.play(); if (p && p.catch) p.catch(() => sync()); };
-        v.addEventListener('play', sync);
-        v.addEventListener('pause', sync);
-        btn.addEventListener('click', () => {
-          if (v.paused) { userPaused = false; play(); } else { userPaused = true; v.pause(); }
-        });
-        if ('IntersectionObserver' in window) {
-          new IntersectionObserver((entries) => {
-            entries.forEach((e) => {
-              if (e.isIntersecting) { if (!userPaused) play(); } else if (!v.paused) { v.pause(); }
-            });
-          }, { threshold: 0.2 }).observe(v);
-        } else if (!userPaused) { play(); }
+        btn.addEventListener('click', () => { img.classList.toggle('is-paused'); sync(); });
         sync();
       };
       setup();
