@@ -113,3 +113,26 @@ registration applies to the whole document, so the Interior Design section's vie
 collapsed to a 2px line and its dimming shadow darkened the whole photo. Generic one-letter custom
 properties are fine while unregistered, but any property passed to `@property` must carry a section prefix
 (`--pr-h`, `--pr-t`). Before registering one, grep the page for other uses of the name.
+
+## `ch` widths collapse in Arabic: GE SS Two's "0" is narrow (2026-10-06)
+`max-width:30ch` was used for subtitles across the site in both languages. A `ch` is the width of the "0"
+glyph, and in GE SS Two that is about 0.28em, so 30ch came to roughly 126–185px in Arabic: subtitles
+wrapped two or three words to a line, and a 64ch text block over a pillar photo was 269px wide. Arabic
+measures must be set in `em` or `px` (subtitles now `18em`, the Selected Work finale `11em`), with `ch`
+kept for Latin text only. The generators emit `{'18em' if ar else '30ch'}`; check any new `ch` width
+on an Arabic page before shipping.
+
+## Step snap: time wheel notches by `e.timeStamp`, and do not trust tool-driven wheel bursts
+`scripts/site/step_snap.py` holds a pinned section to one step per wheel gesture, treating a notch as new only after a
+200ms pause. Measured with `performance.now()` inside the handler, a busy page (the services page while a glide repaints)
+handles queued notches late and far apart, so one fast spin read as several and skipped steps. `e.timeStamp` is when
+the notch happened, so the gap is the hand's, not the page's. Playwright's `mouse.wheel` waits on the page between
+events, so a "burst" of them arrives ~250ms apart on a heavy page: test bursts with `WheelEvent`s dispatched in the page.
+
+## 3D book: no box-shadow on a face that swings over another plane
+The brochure's cover (`sp_brochure.py`) swings open on its spine over the contents page, in one `preserve-3d` context.
+Mid-swing, a strip of the contents page showed through the cover beside the spine, under the logo band and title. It
+was not z-fighting (lifting the cover 3px changed nothing): the cover face's `box-shadow` widens its 3D layer past
+its edges, and Chrome then sorts the page over the cover where the enlarged layers overlap. Removing that one shadow
+fixed it; the page beneath still casts the closed book's shadow. Freezing the transition at a mid angle with a
+`!important` style and toggling one property at a time found it in one pass.

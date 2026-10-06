@@ -125,7 +125,7 @@ def build(lang):
     #threshold .th-tag{{position:absolute;top:-14px;right:18px;white-space:nowrap;padding:7px 10px;background:#1E1610;font-family:{font};font-size:{'12px' if ar else '9px'};letter-spacing:{track};text-transform:uppercase;color:#D6C2A8;}}
     #threshold .th-osm{{position:absolute;bottom:10px;inset-inline-end:14px;z-index:1;font-family:{font};font-size:{'10px' if ar else '9px'};color:rgba(214,194,168,0.4);}}
     #threshold .th-cell--map::before{{display:none;}}
-    #threshold .th-cell--map .th-s{{max-width:30ch;}}
+    #threshold .th-cell--map .th-s{{max-width:{'18em' if ar else '30ch'};}}
     #threshold .th-ico{{position:absolute;inset:0;overflow:hidden;pointer-events:none;}}
     #threshold .th-ico svg{{position:absolute;bottom:-16%;inset-inline-end:-9%;width:clamp(150px,15vw,232px);height:auto;color:#D6C2A8;opacity:0.07;transform:rotate({'8deg' if ar else '-8deg'});transition:opacity 0.8s {EASE},transform 1.1s {EASE};}}
     #threshold a.th-cell:hover .th-ico svg,#threshold a.th-cell:focus-visible .th-ico svg{{opacity:0.13;transform:rotate(0deg) translateY(-8px);}}

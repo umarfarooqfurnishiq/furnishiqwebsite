@@ -190,6 +190,8 @@ JS = """    // ── JOURNEY: ONE ROOM, FOUR STATES (scroll scrubs survey → d
           }
         };
         update();
+        // one wheel notch, one state: survey, drawing, build, handover, then the call (STEP SNAP)
+        (window.fiqSnap = window.fiqSnap || []).push({ on: () => matchMedia('(min-width:901px) and (min-height:600px)').matches, geo: () => { const a = jr.getBoundingClientRect().top + window.scrollY, total = jr.offsetHeight - window.innerHeight; return { a, b: a + total, stops: [0.16, 0.352, 0.592, 0.8, 1].map((t) => a + total * t) }; } });
         window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
         window.addEventListener('resize', update);
       }

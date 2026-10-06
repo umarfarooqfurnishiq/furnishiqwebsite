@@ -14,7 +14,7 @@ def sub(ar, color="#3A2D25", extra=""):
     size = "clamp(22px,2vw,28px)" if ar else "clamp(20px,1.9vw,26px)"
     font = "'GE SS Two','Arial',sans-serif" if ar else "'Lama Sans',sans-serif"
     return (f"font-family:{font};font-size:{size};font-weight:500;line-height:1.4;"
-            f"letter-spacing:{'0' if ar else '-0.005em'};color:{color};text-wrap:balance;max-width:30ch;margin:0;{extra}")
+            f"letter-spacing:{'0' if ar else '-0.005em'};color:{color};text-wrap:balance;max-width:{'18em' if ar else '30ch'};margin:0;{extra}")
 
 
 def edit(name, fn):
@@ -76,10 +76,10 @@ def about(s, ar):
     size = "clamp(22px,2vw,28px)" if ar else "clamp(20px,1.9vw,26px)"
     ls = "0" if ar else "-0.005em"
     s, n = re.subn(r"    #edge-gates \.gt-intro\{[^}]*\}",
-                   f"    #edge-gates .gt-intro{{font-family:{font};font-size:{size};font-weight:500;line-height:1.4;letter-spacing:{ls};color:#F5F2ED;text-wrap:balance;margin:0;max-width:30ch;}}", s, count=1)
+                   f"    #edge-gates .gt-intro{{font-family:{font};font-size:{size};font-weight:500;line-height:1.4;letter-spacing:{ls};color:#F5F2ED;text-wrap:balance;margin:0;max-width:{'18em' if ar else '30ch'};}}", s, count=1)
     assert n == 1
     s, n = re.subn(r"    #disciplines \.sv-intro\{[^}]*\}",
-                   f"    #disciplines .sv-intro{{font-family:{font};font-size:{size};font-weight:500;line-height:1.4;letter-spacing:{ls};color:#3A2D25;text-wrap:balance;margin:0;max-width:30ch;}}", s, count=1)
+                   f"    #disciplines .sv-intro{{font-family:{font};font-size:{size};font-weight:500;line-height:1.4;letter-spacing:{ls};color:#3A2D25;text-wrap:balance;margin:0;max-width:{'18em' if ar else '30ch'};}}", s, count=1)
     assert n == 1
     gates = ("ثلاث نقاط تحقق، في اللحظات التي يصعب فيها التراجع عن القرار." if ar
              else "Three checkpoints, placed where decisions become hardest to reverse.")

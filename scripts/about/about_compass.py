@@ -163,6 +163,8 @@ JS = """    // ── WHO WE ARE: COMPASS (pinned stage, statements swap in plac
           window.scrollTo({ top: cp.offsetTop + total * (i + 0.5) / rows.length, behavior: reduced ? 'auto' : 'smooth' });
         }));
         pick(0); update();
+        // one wheel notch, one statement (STEP SNAP)
+        (window.fiqSnap = window.fiqSnap || []).push({ on: () => matchMedia('(min-width:901px) and (min-height:600px)').matches, geo: () => { const a = cp.getBoundingClientRect().top + window.scrollY, total = cp.offsetHeight - window.innerHeight; return { a, b: a + total, stops: rows.map((_, i) => a + total * (i + 0.5) / rows.length) }; } });
         window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
         window.addEventListener('resize', update);
       }

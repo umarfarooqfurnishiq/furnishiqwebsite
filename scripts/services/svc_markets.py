@@ -7,7 +7,7 @@ their name. A mouse resting on a panel opens it, as do a click, a tap and the ar
 panels stack and open in height. The project list mirrors the portfolio, every entry labelled Concept.
 Run from Furnishiq.net: PYTHONIOENCODING=utf-8 python ../scripts/services/svc_markets.py
 """
-import re
+import os, re
 
 EASE = "cubic-bezier(0.25,0.46,0.45,0.94)"
 SECTORS = [  # filter key, image base, object-position, projects (slug)
@@ -64,21 +64,32 @@ ARROW_EN = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="
 ARROW_AR = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 5 5 12 12 19"/></svg>'
 
 
-def build(lang):
+def srcset(base):
+    # every local width of a photograph, so a caller can pass any project image
+    up = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "Furnishiq.net", "uploads")
+    ws = sorted(int(m.group(1)) for f in os.listdir(up) if (m := re.fullmatch(re.escape(base) + r"-(\d{3,4})\.webp", f)))
+    assert ws, base
+    return ", ".join(f"uploads/{base}-{w}.webp {w}w" for w in ws), f"uploads/{base}-{ws[0]}.webp"
+
+
+def build(lang, sectors=SECTORS, over=None, offset=None):
+    """The section. A service page passes its own sector photographs, any wording to override, and the height
+    of its fixed header (the services page sets its own, header and section bar together)."""
     ar = lang == "ar"
-    c = C[lang]
+    c = dict(C[lang], **((over or {}).get(lang, {})))
     font = "'GE SS Two','Arial',sans-serif" if ar else "'Lama Sans',sans-serif"
     track = "normal" if ar else "0.3em"
     caps = "normal" if ar else "0.22em"
     small = "12px" if ar else "9px"
     arrow = ARROW_AR if ar else ARROW_EN
     panels = []
-    for i, (key, img, pos, slugs) in enumerate(SECTORS):
+    for i, (key, img, pos, slugs) in enumerate(sectors):
+        ss, src = srcset(img)
         items = "".join(
             f'<li><a href="{c["base"]}/project-detail?project={s}" tabindex="-1"><span class="mk-pn">{c["projects"][s][0]}</span><span class="mk-pl">{c["concept"]} · {c["projects"][s][1]}</span></a></li>'
             for s in slugs)
         panels.append(f'''      <article class="mk-panel{' is-on' if i == 0 else ''}" data-mk="{i}">
-        <img class="mk-img" src="uploads/{img}-1280.webp" srcset="uploads/{img}-1280.webp 1280w, uploads/{img}-1920.webp 1920w, uploads/{img}-2752.webp 2752w" sizes="(max-width:900px) 100vw, 64vw" alt="{c['alts'][i]}" style="object-position:{pos};" loading="lazy" decoding="async">
+        <img class="mk-img" src="{src}" srcset="{ss}" sizes="(max-width:900px) 100vw, 64vw" alt="{c['alts'][i]}" style="object-position:{pos};" loading="lazy" decoding="async">
         <i class="mk-tint" aria-hidden="true"></i>
         <button type="button" class="mk-head" id="mk-head-{i}" aria-expanded="{'true' if i == 0 else 'false'}" aria-controls="mk-body-{i}"><span class="mk-n" dir="ltr">0{i + 1}</span><span class="mk-name">{c['names'][i]}</span></button>
         <div class="mk-body" id="mk-body-{i}" role="region" aria-labelledby="mk-head-{i}"{'' if i == 0 else ' aria-hidden="true"'}>
@@ -92,14 +103,14 @@ def build(lang):
     panels = "\n".join(panels)
     PAD = "clamp(24px,5vw,80px)"
     return f"""<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5. MARKETS WE SERVE ━ -->
-<section id="markets" data-screen-label="Markets We Serve" data-svc-markets{' dir="rtl"' if ar else ''} style="scroll-margin-top:var(--fiq-svc-offset,132px);background:#FFFFFF;color:#3A2D25;position:relative;padding:clamp(64px,8vw,100px) {PAD} 0;overflow:clip;">
+<section id="markets" data-screen-label="Markets We Serve" data-svc-markets{' dir="rtl"' if ar else ''} style="{f'--fiq-svc-offset:{offset};' if offset else ''}scroll-margin-top:var(--fiq-svc-offset,132px);background:#FFFFFF;color:#3A2D25;position:relative;padding:clamp(64px,8vw,100px) {PAD} 0;overflow:clip;">
   <style>
     [data-svc-markets] .mk-wrap{{max-width:1280px;margin:0 auto;}}
     [data-svc-markets] .mk-headrow{{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:clamp(32px,5vw,88px);align-items:end;margin-bottom:clamp(40px,4.4vw,64px);}}
     [data-svc-markets] .mk-eyebrow{{display:flex;align-items:center;gap:16px;margin-bottom:24px;font-family:{font};font-size:{small};letter-spacing:{track};text-transform:uppercase;color:#8B6B4A;}}
     [data-svc-markets] .mk-eyebrow i{{display:block;width:32px;height:1px;background:#8B6B4A;}}
     [data-svc-markets] .mk-h2{{font-family:{font};font-weight:500;font-size:clamp(32px,3.8vw,54px);line-height:1.08;letter-spacing:{'0' if ar else '-0.015em'};color:#1F1F1F;margin:0;text-wrap:balance;}}
-    [data-svc-markets] .mk-intro{{font-family:{font};font-weight:500;font-size:{'clamp(22px,2vw,28px)' if ar else 'clamp(20px,1.9vw,26px)'};line-height:1.4;letter-spacing:{'0' if ar else '-0.005em'};text-wrap:balance;max-width:30ch;color:#3A2D25;margin:0 0 28px;}}
+    [data-svc-markets] .mk-intro{{font-family:{font};font-weight:500;font-size:{'clamp(22px,2vw,28px)' if ar else 'clamp(20px,1.9vw,26px)'};line-height:1.4;letter-spacing:{'0' if ar else '-0.005em'};text-wrap:balance;max-width:{'18em' if ar else '30ch'};color:#3A2D25;margin:0 0 28px;}}
     [data-svc-markets] .mk-cta{{display:inline-flex;align-items:center;gap:12px;padding:17px 30px;background:#3A2D25;color:#F5F2ED;text-decoration:none;font-family:{font};font-size:{'13px' if ar else '10px'};letter-spacing:{'normal' if ar else '0.2em'};text-transform:uppercase;border:1px solid #3A2D25;transition:background 0.4s {EASE},color 0.4s {EASE};}}
     [data-svc-markets] .mk-cta:hover,[data-svc-markets] .mk-cta:focus-visible{{background:transparent;color:#3A2D25;}}
     [data-svc-markets] .mk-rise{{opacity:0;transform:translateY(24px);transition:opacity 0.9s {EASE},transform 0.9s {EASE};}}
@@ -217,15 +228,20 @@ JS = """    // ── SERVICES, MARKETS: FOUR SECTORS, ONE TEAM ─────�
 """
 MARK = "    // ── SCROLL REVEAL"
 
-for path, lang in [("services.dc.html", "en"), ("services.ar.dc.html", "ar")]:
-    s = open(path, encoding="utf-8").read()
-    s, n = re.subn(r"<!-- ━+ 5\. MARKETS WE SERVE ━ -->\n<section.*?\n</section>\n", lambda m: build(lang), s, count=1, flags=re.S)
-    assert n == 1, path
+def inject_js(s, path):
     old = "    // ── SERVICES, MARKETS:"
     if old in s:
         a = s.index(old); b = s.index(chr(10) + "    // ── ", a + 1) + 1
         s = s[:a] + s[b:]
     assert s.count(MARK) == 1, path
-    s = s.replace(MARK, JS + MARK)
-    open(path, "w", encoding="utf-8", newline="").write(s)
-    print(path, "ok")
+    return s.replace(MARK, JS + MARK)
+
+
+if __name__ == "__main__":
+    for path, lang in [("services.dc.html", "en"), ("services.ar.dc.html", "ar")]:
+        s = open(path, encoding="utf-8").read()
+        s, n = re.subn(r"<!-- ━+ 5\. MARKETS WE SERVE ━ -->\n<section.*?\n</section>\n", lambda m: build(lang), s, count=1, flags=re.S)
+        assert n == 1, path
+        s = inject_js(s, path)
+        open(path, "w", encoding="utf-8", newline="").write(s)
+        print(path, "ok")

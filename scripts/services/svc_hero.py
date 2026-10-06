@@ -88,7 +88,7 @@ def build(lang):
     [data-svc-hero] .sh-p.is-on .sh-more{{grid-template-rows:1fr;}}
     [data-svc-hero] .sh-more-in{{overflow:hidden;display:flex;flex-direction:column;gap:18px;opacity:0;transform:translateY(12px);transition:opacity 0.6s {EASE},transform 0.6s {EASE};}}
     [data-svc-hero] .sh-p.is-on .sh-more-in{{opacity:1;transform:none;transition-delay:0.25s;}}
-    [data-svc-hero] .sh-tag{{font-family:{font};font-size:{'16px' if ar else '15px'};line-height:1.6;color:rgba(245,242,237,0.82);max-width:30ch;}}
+    [data-svc-hero] .sh-tag{{font-family:{font};font-size:{'16px' if ar else '15px'};line-height:1.6;color:rgba(245,242,237,0.82);max-width:{'18em' if ar else '30ch'};}}
     [data-svc-hero] .sh-go{{display:inline-flex;align-items:center;gap:12px;font-family:{font};font-size:{'13px' if ar else '10px'};letter-spacing:{'normal' if ar else '0.2em'};text-transform:uppercase;color:#D6C2A8;}}
     [data-svc-hero] .sh-arrow{{display:inline-flex;transform:{'scaleX(-1)' if ar else 'none'};}}
     [data-svc-hero] .sh-p:focus-visible{{outline:1px solid #D6C2A8;outline-offset:-8px;}}

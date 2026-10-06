@@ -135,7 +135,7 @@ def build(lang):
     [data-svc-furn] .fu-eyebrow{{display:flex;align-items:center;gap:16px;margin-bottom:24px;font-family:{font};font-size:{small};letter-spacing:{track};text-transform:uppercase;color:#8B6B4A;}}
     [data-svc-furn] .fu-eyebrow i{{display:block;width:32px;height:1px;background:#8B6B4A;}}
     [data-svc-furn] .fu-h2{{font-family:{font};font-weight:500;font-size:clamp(32px,3.8vw,54px);line-height:1.08;letter-spacing:{'0' if ar else '-0.015em'};color:#1F1F1F;margin:0;text-wrap:balance;}}
-    [data-svc-furn] .fu-body{{font-family:{font};font-weight:500;font-size:{'clamp(22px,2vw,28px)' if ar else 'clamp(20px,1.9vw,26px)'};line-height:1.4;letter-spacing:{'0' if ar else '-0.005em'};text-wrap:balance;max-width:30ch;color:#3A2D25;margin:0 0 28px;}}
+    [data-svc-furn] .fu-body{{font-family:{font};font-weight:500;font-size:{'clamp(22px,2vw,28px)' if ar else 'clamp(20px,1.9vw,26px)'};line-height:1.4;letter-spacing:{'0' if ar else '-0.005em'};text-wrap:balance;max-width:{'18em' if ar else '30ch'};color:#3A2D25;margin:0 0 28px;}}
     [data-svc-furn] .fu-cta{{display:inline-flex;align-items:center;gap:12px;padding:17px 30px;background:#3A2D25;color:#F5F2ED;text-decoration:none;font-family:{font};font-size:{'13px' if ar else '10px'};letter-spacing:{'normal' if ar else '0.2em'};text-transform:uppercase;border:1px solid #3A2D25;transition:background 0.4s {EASE},color 0.4s {EASE};}}
     [data-svc-furn] .fu-cta:hover,[data-svc-furn] .fu-cta:focus-visible{{background:transparent;color:#3A2D25;}}
     [data-svc-furn] .fu-rise{{opacity:0;transform:translateY(24px);transition:opacity 0.9s {EASE},transform 0.9s {EASE};}}
@@ -298,6 +298,8 @@ JS = """    // ── SERVICES, FURNITURE: FROM RENDER TO ROOM ─────�
           return { i: seg === 0 ? -1 : seg === STEPS - 1 ? -2 : seg - 1, f: x - seg };
         };
         const goTo = (i) => { const g = geo(); window.scrollTo({ top: g.start + g.dist * (i + 1.5) / STEPS, behavior: reduced ? 'auto' : 'smooth' }); };
+        // one wheel notch, one state (STEP SNAP)
+        (window.fiqSnap = window.fiqSnap || []).push({ on: () => pinned, geo: () => { const g = geo(); return { a: g.start, b: g.start + g.dist, stops: Array.from({ length: STEPS }, (_, j) => g.start + g.dist * (j + 0.5) / STEPS) }; } });
         const onScroll = () => {
           ticking = false;
           if (!pinned) return;

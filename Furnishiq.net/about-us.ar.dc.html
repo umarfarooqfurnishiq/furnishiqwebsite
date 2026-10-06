@@ -1178,7 +1178,7 @@ input:focus, select:focus, textarea:focus {
     #edge-gates .gt-label{display:flex;align-items:center;gap:16px;margin-bottom:20px;font-family:'GE SS Two','Arial',sans-serif;font-size:12px;letter-spacing:normal;text-transform:uppercase;color:#D6C2A8;}
     #edge-gates .gt-label i{display:block;width:32px;height:1px;background:#D6C2A8;}
     #edge-gates .gt-h2{font-family:'GE SS Two','Arial',sans-serif;font-size:clamp(30px,3.6vw,56px);font-weight:500;line-height:1.1;letter-spacing:normal;color:#FFFFFF;margin:0;}
-    #edge-gates .gt-intro{font-family:'GE SS Two','Arial',sans-serif;font-size:clamp(22px,2vw,28px);font-weight:500;line-height:1.4;letter-spacing:0;color:#F5F2ED;text-wrap:balance;margin:0;max-width:30ch;}
+    #edge-gates .gt-intro{font-family:'GE SS Two','Arial',sans-serif;font-size:clamp(22px,2vw,28px);font-weight:500;line-height:1.4;letter-spacing:0;color:#F5F2ED;text-wrap:balance;margin:0;max-width:18em;}
     #edge-gates .gt-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,2.4vw,40px);}
     #edge-gates .gt-card{position:relative;display:flex;flex-direction:column;padding:clamp(24px,2.4vw,36px) clamp(20px,2vw,32px) clamp(28px,2.8vw,40px);border:1px solid rgba(214,194,168,0.2);background:rgba(30,22,16,0.5);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);opacity:0;transform:translateY(24px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94) calc(0.6s + var(--i) * 0.8s),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94) calc(0.6s + var(--i) * 0.8s),border-color 0.4s cubic-bezier(0.25,0.46,0.45,0.94),background 0.4s cubic-bezier(0.25,0.46,0.45,0.94);}
     #edge-gates .gt-card:hover{border-color:rgba(214,194,168,0.5);background:rgba(30,22,16,0.68);}
@@ -1264,7 +1264,7 @@ input:focus, select:focus, textarea:focus {
     #disciplines .sv-label{display:flex;align-items:center;gap:16px;margin-bottom:20px;font-family:'GE SS Two','Arial',sans-serif;font-size:12px;letter-spacing:normal;text-transform:uppercase;color:#8B6B4A;}
     #disciplines .sv-label i{display:block;width:32px;height:1px;background:#8B6B4A;}
     #disciplines .sv-h2{font-family:'GE SS Two','Arial',sans-serif;font-size:clamp(30px,2.9vw,46px);font-weight:500;line-height:1.35;letter-spacing:normal;color:#3A2D25;margin:0;}
-    #disciplines .sv-intro{font-family:'GE SS Two','Arial',sans-serif;font-size:clamp(22px,2vw,28px);font-weight:500;line-height:1.4;letter-spacing:0;color:#3A2D25;text-wrap:balance;margin:0;max-width:30ch;}
+    #disciplines .sv-intro{font-family:'GE SS Two','Arial',sans-serif;font-size:clamp(22px,2vw,28px);font-weight:500;line-height:1.4;letter-spacing:0;color:#3A2D25;text-wrap:balance;margin:0;max-width:18em;}
     #disciplines .sv-grid{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,7fr);gap:clamp(40px,5vw,88px);align-items:stretch;}
     #disciplines .sv-list{border-top:1px solid rgba(58,45,37,0.16);}
     #disciplines .sv-item{position:relative;border-bottom:1px solid rgba(58,45,37,0.16);}
@@ -1679,7 +1679,7 @@ input:focus, select:focus, textarea:focus {
     #threshold .th-tag{position:absolute;top:-14px;right:18px;white-space:nowrap;padding:7px 10px;background:#1E1610;font-family:'GE SS Two','Arial',sans-serif;font-size:12px;letter-spacing:normal;text-transform:uppercase;color:#D6C2A8;}
     #threshold .th-osm{position:absolute;bottom:10px;inset-inline-end:14px;z-index:1;font-family:'GE SS Two','Arial',sans-serif;font-size:10px;color:rgba(214,194,168,0.4);}
     #threshold .th-cell--map::before{display:none;}
-    #threshold .th-cell--map .th-s{max-width:30ch;}
+    #threshold .th-cell--map .th-s{max-width:18em;}
     #threshold .th-ico{position:absolute;inset:0;overflow:hidden;pointer-events:none;}
     #threshold .th-ico svg{position:absolute;bottom:-16%;inset-inline-end:-9%;width:clamp(150px,15vw,232px);height:auto;color:#D6C2A8;opacity:0.07;transform:rotate(8deg);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 1.1s cubic-bezier(0.25,0.46,0.45,0.94);}
     #threshold a.th-cell:hover .th-ico svg,#threshold a.th-cell:focus-visible .th-ico svg{opacity:0.13;transform:rotate(0deg) translateY(-8px);}
@@ -2080,6 +2080,8 @@ class Component extends DCLogic {
           window.scrollTo({ top: cp.offsetTop + total * (i + 0.5) / rows.length, behavior: reduced ? 'auto' : 'smooth' });
         }));
         pick(0); update();
+        // one wheel notch, one statement (STEP SNAP)
+        (window.fiqSnap = window.fiqSnap || []).push({ on: () => matchMedia('(min-width:901px) and (min-height:600px)').matches, geo: () => { const a = cp.getBoundingClientRect().top + window.scrollY, total = cp.offsetHeight - window.innerHeight; return { a, b: a + total, stops: rows.map((_, i) => a + total * (i + 0.5) / rows.length) }; } });
         window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
         window.addEventListener('resize', update);
       }
@@ -2302,6 +2304,8 @@ class Component extends DCLogic {
           }
         };
         update();
+        // one wheel notch, one state: survey, drawing, build, handover, then the call (STEP SNAP)
+        (window.fiqSnap = window.fiqSnap || []).push({ on: () => matchMedia('(min-width:901px) and (min-height:600px)').matches, geo: () => { const a = jr.getBoundingClientRect().top + window.scrollY, total = jr.offsetHeight - window.innerHeight; return { a, b: a + total, stops: [0.16, 0.352, 0.592, 0.8, 1].map((t) => a + total * t) }; } });
         window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
         window.addEventListener('resize', update);
       }
@@ -2416,6 +2420,76 @@ class Component extends DCLogic {
         img.addEventListener('load', () => { img.style.opacity = '1'; });
       }
     });
+
+    // ── STEP SNAP: ONE WHEEL NOTCH, ONE STEP ──────────────────────────────
+    // Sections pinned and played in steps register in window.fiqSnap as { on, geo }: on() says whether the
+    // section is pinned now, geo() gives a..b, the scroll range it holds, and stops, the scroll position of
+    // each step. Inside one, a wheel notch or an arrow, page or space key glides to the next step, then waits
+    // for the wheel to settle, so a fast notch or a trackpad's run-on never skips a step. Past the first or the
+    // last step the page scrolls on. A scroll that ends between two steps settles on the nearer.
+    {
+      const reg = window.fiqSnap = window.fiqSnap || [];
+      let gliding = false, held = false, lastWheel = 0;
+      const glide = window.fiqGlide = (to) => {
+        held = true;
+        if (reduced) { window.scrollTo({ top: to, behavior: 'instant' }); return; }
+        gliding = true;
+        const from = window.scrollY, d = to - from, t0 = performance.now(), T = 650;
+        const frame = (now) => {
+          const t = Math.min(1, (now - t0) / T);
+          window.scrollTo({ top: from + d * t * (2 - t), behavior: 'instant' });
+          if (t < 1) requestAnimationFrame(frame); else gliding = false;
+        };
+        requestAnimationFrame(frame);
+      };
+      // the registered section holding the page now
+      const here = () => {
+        const y = window.scrollY;
+        for (const s of reg) { if (!s.on()) continue; const g = s.geo(); if (y >= g.a - 1 && y <= g.b + 1) return g; }
+        return null;
+      };
+      const next = (g, dir) => {
+        const y = window.scrollY;
+        if (dir > 0) { for (const v of g.stops) if (v > y + 4) return v; }
+        else { for (let j = g.stops.length - 1; j >= 0; j--) if (g.stops[j] < y - 4) return g.stops[j]; }
+        return null;
+      };
+      window.addEventListener('wheel', (e) => {
+        if (e.ctrlKey || Math.abs(e.deltaY) < Math.abs(e.deltaX)) return;
+        // the gap between notches as the hand made them, not as a busy page got round to them
+        const now = e.timeStamp || performance.now(), quiet = now - lastWheel > 200;
+        lastWheel = now;
+        const g = here();
+        if (gliding || (held && !quiet)) { if (g) e.preventDefault(); return; }
+        held = false;
+        if (!g) return;
+        const to = next(g, Math.sign(e.deltaY));
+        if (to === null) return;
+        e.preventDefault(); glide(to);
+      }, { passive: false });
+      window.addEventListener('keydown', (e) => {
+        if (e.altKey || e.ctrlKey || e.metaKey) return;
+        const el = document.activeElement;
+        if (el && (el.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(el.tagName) || (e.key === ' ' && /^(BUTTON|A)$/.test(el.tagName)))) return;
+        const dir = { ArrowDown: 1, PageDown: 1, ArrowUp: -1, PageUp: -1, ' ': e.shiftKey ? -1 : 1 }[e.key];
+        if (!dir) return;
+        const g = here();
+        if (!g) return;
+        if (gliding) { e.preventDefault(); return; }
+        const to = next(g, dir);
+        if (to === null) return;
+        e.preventDefault(); glide(to);
+      });
+      window.addEventListener('scrollend', () => {
+        if (gliding) return;
+        const g = here();
+        if (!g) return;
+        const y = window.scrollY, n = g.stops.length;
+        if (y <= g.stops[0] + 1 || y >= g.stops[n - 1] - 1) return;
+        const to = g.stops.reduce((m, v) => (Math.abs(v - y) < Math.abs(m - y) ? v : m));
+        if (Math.abs(to - y) > 2) glide(to);
+      });
+    }
 
     // ── SCROLL REVEAL ───────────────────────────────────────────────────────
     if (reduced) {

@@ -169,7 +169,7 @@ def build(lang):
     [data-svc-process] .pr-eyebrow{{display:flex;align-items:center;gap:16px;margin-bottom:24px;font-family:{font};font-size:{small};letter-spacing:{track};text-transform:uppercase;color:#8B6B4A;}}
     [data-svc-process] .pr-eyebrow i{{display:block;width:32px;height:1px;background:#8B6B4A;}}
     [data-svc-process] .pr-h2{{font-family:{font};font-weight:500;font-size:clamp(32px,3.8vw,54px);line-height:1.08;letter-spacing:{'0' if ar else '-0.015em'};color:#1F1F1F;margin:0;text-wrap:balance;}}
-    [data-svc-process] .pr-sub{{font-family:{font};font-weight:500;font-size:{'clamp(22px,2vw,28px)' if ar else 'clamp(20px,1.9vw,26px)'};line-height:1.4;letter-spacing:{'0' if ar else '-0.005em'};text-wrap:balance;max-width:30ch;color:#3A2D25;margin:0;}}
+    [data-svc-process] .pr-sub{{font-family:{font};font-weight:500;font-size:{'clamp(22px,2vw,28px)' if ar else 'clamp(20px,1.9vw,26px)'};line-height:1.4;letter-spacing:{'0' if ar else '-0.005em'};text-wrap:balance;max-width:{'18em' if ar else '30ch'};color:#3A2D25;margin:0;}}
     [data-svc-process] .pr-rise{{opacity:0;transform:translateY(24px);transition:opacity 0.9s {EASE},transform 0.9s {EASE};}}
     [data-svc-process].is-in .pr-rise{{opacity:1;transform:none;}}
     [data-svc-process].is-in .pr-rise--2{{transition-delay:0.12s;}}
@@ -330,6 +330,8 @@ JS = """    // ── SERVICES, PROCESS: FROM A LINE ON PAPER TO A ROOM ──�
           paint(i, Math.min(1, (x - i) / 0.75));   // each stage finishes drawing with a quarter of its scroll to spare
         };
         window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+        // one wheel notch, one stage, resting where it has finished drawing (STEP SNAP)
+        (window.fiqSnap = window.fiqSnap || []).push({ on: () => pinned, geo: () => { const g = geo(); return { a: g.start, b: g.start + g.dist, stops: Array.from({ length: N }, (_, j) => g.start + g.dist * (j + 0.8) / N) }; } });
         // a click, a tab or a phone's cycle draws the stage in over a moment instead of with the scroll
         const play = (i) => {
           groups.forEach((g) => g.classList.add('is-anim'));

@@ -2077,6 +2077,8 @@ class Component extends DCLogic {
           window.scrollTo({ top: cp.offsetTop + total * (i + 0.5) / rows.length, behavior: reduced ? 'auto' : 'smooth' });
         }));
         pick(0); update();
+        // one wheel notch, one statement (STEP SNAP)
+        (window.fiqSnap = window.fiqSnap || []).push({ on: () => matchMedia('(min-width:901px) and (min-height:600px)').matches, geo: () => { const a = cp.getBoundingClientRect().top + window.scrollY, total = cp.offsetHeight - window.innerHeight; return { a, b: a + total, stops: rows.map((_, i) => a + total * (i + 0.5) / rows.length) }; } });
         window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
         window.addEventListener('resize', update);
       }
@@ -2299,6 +2301,8 @@ class Component extends DCLogic {
           }
         };
         update();
+        // one wheel notch, one state: survey, drawing, build, handover, then the call (STEP SNAP)
+        (window.fiqSnap = window.fiqSnap || []).push({ on: () => matchMedia('(min-width:901px) and (min-height:600px)').matches, geo: () => { const a = jr.getBoundingClientRect().top + window.scrollY, total = jr.offsetHeight - window.innerHeight; return { a, b: a + total, stops: [0.16, 0.352, 0.592, 0.8, 1].map((t) => a + total * t) }; } });
         window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
         window.addEventListener('resize', update);
       }
@@ -2413,6 +2417,76 @@ class Component extends DCLogic {
         img.addEventListener('load', () => { img.style.opacity = '1'; });
       }
     });
+
+    // ── STEP SNAP: ONE WHEEL NOTCH, ONE STEP ──────────────────────────────
+    // Sections pinned and played in steps register in window.fiqSnap as { on, geo }: on() says whether the
+    // section is pinned now, geo() gives a..b, the scroll range it holds, and stops, the scroll position of
+    // each step. Inside one, a wheel notch or an arrow, page or space key glides to the next step, then waits
+    // for the wheel to settle, so a fast notch or a trackpad's run-on never skips a step. Past the first or the
+    // last step the page scrolls on. A scroll that ends between two steps settles on the nearer.
+    {
+      const reg = window.fiqSnap = window.fiqSnap || [];
+      let gliding = false, held = false, lastWheel = 0;
+      const glide = window.fiqGlide = (to) => {
+        held = true;
+        if (reduced) { window.scrollTo({ top: to, behavior: 'instant' }); return; }
+        gliding = true;
+        const from = window.scrollY, d = to - from, t0 = performance.now(), T = 650;
+        const frame = (now) => {
+          const t = Math.min(1, (now - t0) / T);
+          window.scrollTo({ top: from + d * t * (2 - t), behavior: 'instant' });
+          if (t < 1) requestAnimationFrame(frame); else gliding = false;
+        };
+        requestAnimationFrame(frame);
+      };
+      // the registered section holding the page now
+      const here = () => {
+        const y = window.scrollY;
+        for (const s of reg) { if (!s.on()) continue; const g = s.geo(); if (y >= g.a - 1 && y <= g.b + 1) return g; }
+        return null;
+      };
+      const next = (g, dir) => {
+        const y = window.scrollY;
+        if (dir > 0) { for (const v of g.stops) if (v > y + 4) return v; }
+        else { for (let j = g.stops.length - 1; j >= 0; j--) if (g.stops[j] < y - 4) return g.stops[j]; }
+        return null;
+      };
+      window.addEventListener('wheel', (e) => {
+        if (e.ctrlKey || Math.abs(e.deltaY) < Math.abs(e.deltaX)) return;
+        // the gap between notches as the hand made them, not as a busy page got round to them
+        const now = e.timeStamp || performance.now(), quiet = now - lastWheel > 200;
+        lastWheel = now;
+        const g = here();
+        if (gliding || (held && !quiet)) { if (g) e.preventDefault(); return; }
+        held = false;
+        if (!g) return;
+        const to = next(g, Math.sign(e.deltaY));
+        if (to === null) return;
+        e.preventDefault(); glide(to);
+      }, { passive: false });
+      window.addEventListener('keydown', (e) => {
+        if (e.altKey || e.ctrlKey || e.metaKey) return;
+        const el = document.activeElement;
+        if (el && (el.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(el.tagName) || (e.key === ' ' && /^(BUTTON|A)$/.test(el.tagName)))) return;
+        const dir = { ArrowDown: 1, PageDown: 1, ArrowUp: -1, PageUp: -1, ' ': e.shiftKey ? -1 : 1 }[e.key];
+        if (!dir) return;
+        const g = here();
+        if (!g) return;
+        if (gliding) { e.preventDefault(); return; }
+        const to = next(g, dir);
+        if (to === null) return;
+        e.preventDefault(); glide(to);
+      });
+      window.addEventListener('scrollend', () => {
+        if (gliding) return;
+        const g = here();
+        if (!g) return;
+        const y = window.scrollY, n = g.stops.length;
+        if (y <= g.stops[0] + 1 || y >= g.stops[n - 1] - 1) return;
+        const to = g.stops.reduce((m, v) => (Math.abs(v - y) < Math.abs(m - y) ? v : m));
+        if (Math.abs(to - y) > 2) glide(to);
+      });
+    }
 
     // ── SCROLL REVEAL ───────────────────────────────────────────────────────
     if (reduced) {
