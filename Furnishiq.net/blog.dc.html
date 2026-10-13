@@ -32,13 +32,13 @@ fbq('track', 'PageView');
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <title>FurnishIQ Journal | Interior Design Insights &amp; Ideas</title>
 <meta name="description" content="Notes from the FurnishIQ studio on interior design, fit-out, engineering, and the details that separate good spaces from great ones.">
-<link rel="canonical" href="https://www.furnishiq.net/blog">
-<link rel="alternate" hreflang="en" href="https://www.furnishiq.net/blog">
-<link rel="alternate" hreflang="ar" href="https://www.furnishiq.net/ar/blog">
-<link rel="alternate" hreflang="x-default" href="https://www.furnishiq.net/blog">
+<link rel="canonical" href="https://www.furnishiq.net/insights">
+<link rel="alternate" hreflang="en" href="https://www.furnishiq.net/insights">
+<link rel="alternate" hreflang="ar" href="https://www.furnishiq.net/ar/insights">
+<link rel="alternate" hreflang="x-default" href="https://www.furnishiq.net/insights">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="FurnishIQ">
-<meta property="og:url" content="https://www.furnishiq.net/blog">
+<meta property="og:url" content="https://www.furnishiq.net/insights">
 <meta property="og:title" content="FurnishIQ Journal | Interior Design Insights &amp; Ideas">
 <meta property="og:description" content="Notes from the FurnishIQ studio on interior design, fit-out, engineering, and the details that separate good spaces from great ones.">
 <meta property="og:image" content="https://www.furnishiq.net/uploads/furniture-gallery-design-studio-material-library-1280.webp">
@@ -529,13 +529,6 @@ input:focus, select:focus, textarea:focus {
     @media(max-width:960px){
       .fiq-nav-links{display:none!important;}
       .fiq-nav-cta-btn{display:none!important;}
-      .fiq-blog-hero-grid{grid-template-columns:1fr!important;}
-      .fiq-blog-hero-side{border-left:none!important;border-top:1px solid rgba(214,194,168,0.14)!important;padding-left:0!important;padding-top:36px!important;margin-top:44px!important;}
-      .fiq-feat-hero{grid-template-columns:1fr!important;}
-      .fiq-feat-img{grid-column:1!important;grid-row:1!important;}
-      .fiq-feat-panel{grid-column:1!important;grid-row:2!important;margin:-56px 16px 0!important;}
-      .fiq-featured-duo{grid-template-columns:1fr!important;gap:44px!important;}
-      .fiq-feat-stagger{margin-top:0!important;}
       .fiq-post-row{grid-template-columns:1fr!important;gap:20px!important;}
       .fiq-post-row-img{width:100%!important;height:220px!important;order:-1;}
       .fiq-post-row-meta{flex-direction:row!important;gap:16px!important;}
@@ -549,7 +542,7 @@ input:focus, select:focus, textarea:focus {
 </helmet>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ NAV ━━ -->
-<nav id="id-nav" style="position:fixed;top:0;left:0;right:0;height:80px;z-index:200;display:flex;align-items:center;background:transparent;border-bottom:1px solid transparent;transition:background 0.55s cubic-bezier(0.25,0.46,0.45,0.94),border-color 0.55s,box-shadow 0.55s;">
+<nav id="id-nav" data-nav-dark style="position:fixed;top:0;left:0;right:0;height:80px;z-index:200;display:flex;align-items:center;background:transparent;border-bottom:1px solid transparent;transition:background 0.55s cubic-bezier(0.25,0.46,0.45,0.94),border-color 0.55s,box-shadow 0.55s;">
   <div style="max-width:1280px;margin:0 auto;width:100%;padding:0;display:flex;align-items:center;justify-content:space-between;gap:24px;">
     <a href="/" style="flex-shrink:0;position:relative;height:36px;width:172px;display:block;text-decoration:none;">
       <img id="id-logo-w" src="assets/logo-default.png" width="264" height="90" alt="FurnishIQ" fetchpriority="high" style="position:absolute;inset:0;height:36px;width:auto;max-width:172px;object-fit:contain;object-position:left center;transition:opacity 0.4s cubic-bezier(0.25,0.46,0.45,0.94);">
@@ -560,144 +553,123 @@ input:focus, select:focus, textarea:focus {
       <a href="/about-us" data-nav-link style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;transition:color 0.25s,opacity 0.25s;opacity:0.8;">About Us</a>
       <a href="/services" data-nav-link style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;transition:color 0.25s,opacity 0.25s;opacity:0.8;">Services</a>
       <a href="/projects" data-nav-link style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;transition:color 0.25s,opacity 0.25s;opacity:0.8;">Projects</a>
-      <a href="/blog" data-nav-link style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;transition:color 0.25s,opacity 0.25s;opacity:0.8;">Insights</a>
-      <a href="/ar/blog" data-nav-link data-lang-switch style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;transition:color 0.25s,opacity 0.25s;opacity:0.8;">عربي</a>
+      <a href="/insights" data-nav-link style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;transition:color 0.25s,opacity 0.25s;opacity:0.8;">Insights</a>
+      <a href="/ar/insights" data-nav-link data-lang-switch style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;transition:color 0.25s,opacity 0.25s;opacity:0.8;">عربي</a>
     </div>
     <a href="/contact" class="fiq-nav-cta-btn" id="id-nav-cta" style="font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#FFFFFF;text-decoration:none;border:1px solid rgba(214,194,168,0.5);padding:12px 28px;flex-shrink:0;transition:all 0.3s cubic-bezier(0.25,0.46,0.45,0.94);white-space:nowrap;background:transparent;">Book Free Consultation</a>
   </div>
 </nav>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ HERO ━━ -->
-<section data-screen-label="Hero" data-blog-hero style="position:relative;background:#1E1610;overflow:hidden;min-height:clamp(620px,66vh,760px);display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(100px,14vh,150px) clamp(24px,5vw,80px) clamp(56px,7vw,88px);">
-  <!-- Photographic texture -->
-  <div style="position:absolute;inset:0;background-image:url('uploads/furniture-gallery-design-studio-material-library-2752.webp');background-size:cover;background-position:center 55%;opacity:0.16;pointer-events:none;"></div>
-  <div style="position:absolute;inset:0;background:linear-gradient(115deg,rgba(30,22,16,0.96) 0%,rgba(30,22,16,0.72) 55%,rgba(30,22,16,0.94) 100%);pointer-events:none;"></div>
-  <div style="position:absolute;top:-140px;right:-100px;width:480px;height:480px;border:1px solid rgba(214,194,168,0.06);border-radius:50%;pointer-events:none;"></div>
-  <div style="position:absolute;top:-60px;right:20px;width:280px;height:280px;border:1px solid rgba(214,194,168,0.045);border-radius:50%;pointer-events:none;"></div>
+<!-- The gallery wall: one word, and the three articles hung on a shared baseline, largest first, each with its caption -->
+<section data-screen-label="Hero" data-blog-hero style="position:relative;background:#FFFFFF;border-bottom:1px solid #E8DFD8;">
+  <style>
+    [data-blog-hero]{--ease:cubic-bezier(0.25,0.46,0.45,0.94);--h:clamp(250px,41vh,420px);}
+    [data-blog-hero] .gw-wrap{max-width:1280px;margin:0 auto;padding:clamp(120px,15vh,150px) 0 clamp(48px,7vh,72px);box-sizing:border-box;}
+    /* masthead */
+    [data-blog-hero] .gw-head{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:32px;align-items:end;}
+    [data-blog-hero] .gw-title{grid-column:1/8;}
+    [data-blog-hero] .gw-label{display:flex;align-items:center;gap:16px;margin-bottom:clamp(14px,2.2vh,24px);font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:#8B6B4A;}
+    [data-blog-hero] .gw-label i{display:block;width:32px;height:1px;background:#8B6B4A;}
+    [data-blog-hero] .gw-h1{margin:0;display:flex;align-items:flex-start;gap:0.05em;font-family:'Lama Sans',sans-serif;font-weight:500;font-size:min(11vw,15vh,168px);line-height:0.86;letter-spacing:-0.05em;color:#1F1F1F;}
+    [data-blog-hero] .gw-h1 sup{font-size:max(11px,0.09em);letter-spacing:0.12em;line-height:1;color:#8B6B4A;margin-top:0.5em;}
+    [data-blog-hero] .gw-intro{grid-column:9/13;padding-bottom:0.4em;}
+    [data-blog-hero] .gw-intro p{margin:0;font-family:'Lama Sans',sans-serif;font-size:15px;line-height:1.75;color:#5B4636;}
+    [data-blog-hero] .gw-topics{display:flex;flex-wrap:wrap;gap:6px 22px;margin-top:18px;}
+    [data-blog-hero] .gw-topics a{position:relative;padding-bottom:5px;font-family:'Lama Sans',sans-serif;font-size:9.5px;letter-spacing:0.2em;text-transform:uppercase;color:#1F1F1F;text-decoration:none;}
+    [data-blog-hero] .gw-topics a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:#8B6B4A;transform:scaleX(0.25);transform-origin:left;transition:transform 0.5s var(--ease);}
+    [data-blog-hero] .gw-topics a:hover::after,[data-blog-hero] .gw-topics a:focus-visible::after{transform:scaleX(1);}
+    /* the wall */
+    [data-blog-hero] .gw-wall{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:32px;align-items:end;margin-top:clamp(36px,6vh,64px);}
+    [data-blog-hero] .gw-card{display:block;text-decoration:none;color:inherit;transition:opacity 0.6s var(--ease);}
+    [data-blog-hero] .gw-card:nth-child(1){grid-column:1/7;}
+    [data-blog-hero] .gw-card:nth-child(2){grid-column:7/11;}
+    [data-blog-hero] .gw-card:nth-child(3){grid-column:11/13;}
+    [data-blog-hero] .gw-frame{position:relative;overflow:hidden;background:#F5F2ED;height:var(--h);}
+    [data-blog-hero] .gw-card:nth-child(2) .gw-frame{height:calc(var(--h) * 0.72);}
+    [data-blog-hero] .gw-card:nth-child(3) .gw-frame{height:calc(var(--h) * 0.5);}
+    [data-blog-hero] .gw-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.08);transition:transform 1.6s var(--ease);}
+    [data-blog-hero].is-ready .gw-frame img{transform:scale(1);}
+    [data-blog-hero].is-ready .gw-card:hover .gw-frame img,[data-blog-hero].is-ready .gw-card:focus-visible .gw-frame img{transform:scale(1.035);transition-duration:1.2s;}
+    [data-blog-hero] .gw-wall:hover .gw-card:not(:hover){opacity:0.45;}
+    [data-blog-hero] .gw-card:focus-visible{outline:1px solid #8B6B4A;outline-offset:8px;}
+    /* museum caption */
+    [data-blog-hero] .gw-cap{position:relative;padding-top:16px;margin-top:16px;}
+    [data-blog-hero] .gw-cap::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:#E8DFD8;}
+    [data-blog-hero] .gw-cap::after{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:#1F1F1F;transform:scaleX(0);transform-origin:left;transition:transform 0.8s var(--ease);}
+    [data-blog-hero] .gw-card:hover .gw-cap::after,[data-blog-hero] .gw-card:focus-visible .gw-cap::after{transform:scaleX(1);}
+    [data-blog-hero] .gw-meta{display:flex;flex-wrap:wrap;gap:4px 12px;font-family:'Lama Sans',sans-serif;font-size:9.5px;letter-spacing:0.2em;text-transform:uppercase;color:#8B6B4A;}
+    [data-blog-hero] .gw-meta span+span{color:#B8A08C;}
+    [data-blog-hero] .gw-name{display:block;margin-top:10px;font-family:'Lama Sans',sans-serif;font-weight:500;font-size:16px;line-height:1.35;letter-spacing:-0.005em;color:#1F1F1F;text-wrap:balance;}
+    [data-blog-hero] .gw-card:nth-child(1) .gw-name{font-size:clamp(19px,1.5vw,23px);}
+    [data-blog-hero] .gw-sub{display:block;margin-top:6px;font-family:'Lama Sans',sans-serif;font-size:14px;line-height:1.6;color:#8B6B4A;}
+    /* entrance: fade and rise, in order */
+    [data-blog-hero] .gw-in{opacity:0;transform:translateY(18px);transition:opacity 0.9s var(--ease) var(--d,0s),transform 0.9s var(--ease) var(--d,0s);}
+    [data-blog-hero].is-ready .gw-in{opacity:1;transform:none;}
+    [data-blog-hero].is-ready .gw-card.gw-in{transition:opacity 0.9s var(--ease) var(--d,0s),transform 0.9s var(--ease) var(--d,0s);}
+    [data-blog-hero].is-ready .gw-wall:hover .gw-card.gw-in{transition:opacity 0.6s var(--ease);}
+    @media(max-width:1360px){[data-blog-hero] .gw-wrap{max-width:none;padding-left:clamp(24px,5vw,80px);padding-right:clamp(24px,5vw,80px);}}
+    @media(max-width:960px){
+      [data-blog-hero] .gw-head,[data-blog-hero] .gw-wall{grid-template-columns:1fr 1fr;gap:28px 20px;}
+      [data-blog-hero] .gw-title,[data-blog-hero] .gw-intro{grid-column:1/-1;}
+      [data-blog-hero] .gw-h1{font-size:clamp(72px,24vw,140px);}
+      [data-blog-hero] .gw-card:nth-child(1){grid-column:1/-1;}
+      [data-blog-hero] .gw-card:nth-child(2),[data-blog-hero] .gw-card:nth-child(3){grid-column:auto;align-self:start;}
+      [data-blog-hero] .gw-frame,[data-blog-hero] .gw-card:nth-child(2) .gw-frame,[data-blog-hero] .gw-card:nth-child(3) .gw-frame{height:auto;aspect-ratio:4/3;}
+      [data-blog-hero] .gw-card:nth-child(n+2) .gw-frame{aspect-ratio:1/1;}
+      [data-blog-hero] .gw-wall:hover .gw-card:not(:hover){opacity:1;}
+    }
+    @media(prefers-reduced-motion:reduce){
+      [data-blog-hero] .gw-in{opacity:1;transform:none;transition:none;}
+      [data-blog-hero] .gw-frame img,[data-blog-hero].is-ready .gw-card:hover .gw-frame img{transform:none;transition:none;}
+    }
+  </style>
 
-  <div style="position:relative;z-index:1;max-width:1280px;margin:0 auto;">
-    <div class="fiq-blog-hero-grid" style="display:grid;grid-template-columns:1.6fr 1fr;gap:clamp(48px,7vw,110px);align-items:end;">
-
-      <div>
-        <div data-hero-eyebrow style="opacity:0;transition:opacity 0.6s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;align-items:center;gap:16px;margin-bottom:28px;">
-          <span data-hero-eyebrow-line style="display:block;width:0px;height:1px;background:#D6C2A8;flex-shrink:0;transition:width 0.7s cubic-bezier(0.25,0.46,0.45,0.94);"></span>
-          <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:rgba(214,194,168,0.75);">The FurnishIQ Journal</span>
-        </div>
-        <h1 style="font-family:'Lama Sans',sans-serif;font-size:clamp(36px,4.6vw,64px);font-weight:600;line-height:1.05;letter-spacing:-0.01em;color:#FFFFFF;margin:0;text-wrap:balance;">
-          <span style="display:block;overflow:hidden;padding-bottom:0.22em;margin-bottom:-0.22em;"><span data-hero-word style="display:block;transform:translateY(112%);transition:transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);">Ideas, insights &amp;</span></span>
-          <span style="display:block;overflow:hidden;padding-bottom:0.22em;margin-bottom:-0.22em;"><span data-hero-word style="display:block;transform:translateY(112%);transition:transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);">the craft of</span></span>
-          <span style="display:block;overflow:hidden;padding-bottom:0.22em;margin-bottom:-0.22em;"><span data-hero-word style="display:block;transform:translateY(112%);transition:transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);color:#D6C2A8;">building well.</span></span>
-        </h1>
+  <div class="gw-wrap">
+    <div class="gw-head">
+      <div class="gw-title gw-in" style="--d:0.05s;">
+        <div class="gw-label"><i></i>The FurnishIQ Journal</div>
+        <h1 class="gw-h1">Insights<sup>03</sup></h1>
       </div>
-
-      <div class="fiq-blog-hero-side" data-reveal data-reveal-delay="0.5" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);border-left:1px solid rgba(214,194,168,0.18);padding-left:clamp(24px,2.5vw,40px);">
-        <p style="font-family:'Lama Sans',sans-serif;font-size:13.5px;line-height:1.85;color:rgba(214,194,168,0.55);margin-bottom:24px;">Notes from our studio on interior design, fit-out, engineering, and the details that separate good spaces from great ones.</p>
-        <div style="display:flex;align-items:center;gap:12px;">
-          <a href="/" style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.26em;text-transform:uppercase;color:rgba(214,194,168,0.5);text-decoration:none;transition:color 0.25s;">Home</a>
-          <span style="font-family:'Lama Sans',sans-serif;font-size:9px;color:rgba(214,194,168,0.3);">/</span>
-          <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.26em;text-transform:uppercase;color:rgba(214,194,168,0.85);">Blog</span>
+      <div class="gw-intro gw-in" style="--d:0.2s;">
+        <p>Notes from the studio on interior design, fit-out and engineering, and the details that separate good spaces from great ones.</p>
+        <div class="gw-topics">
+          <a href="#archive" data-topic="Interior Design">Interior Design</a>
+          <a href="#archive" data-topic="Fit-Out">Fit-Out</a>
+          <a href="#archive" data-topic="Engineering &amp; MEP">Engineering &amp; MEP</a>
         </div>
       </div>
-
     </div>
-  </div>
-</section>
 
-<!-- ━━━━━━━━━━━━━━━━━━━━━━━━ FEATURED ━━━━━━━━━━━━━━━━ -->
-<section data-screen-label="Featured" style="background:#F5F2ED;padding:clamp(64px,8vw,100px) clamp(24px,5vw,80px);">
-  <div style="max-width:1280px;margin:0 auto;">
-
-    <div data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;align-items:center;gap:16px;margin-bottom:20px;">
-      <span style="display:block;width:32px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
-      <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:#8B6B4A;">Featured Stories</span>
-    </div>
-    <h2 data-reveal data-reveal-delay="0.08" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Lama Sans',sans-serif;font-size:clamp(26px,3.2vw,44px);font-weight:500;color:#1F1F1F;line-height:1.15;letter-spacing:-0.015em;margin-bottom:clamp(44px,5vw,64px);">Worth your time this month.</h2>
-
-    <!-- 01 — Editorial overlap feature -->
-    <a href="/blog/material-honesty" data-feature-card class="fiq-feat-hero" data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:grid;grid-template-columns:repeat(12,1fr);align-items:center;text-decoration:none;margin-bottom:clamp(64px,7vw,104px);">
-      <div class="fiq-feat-img" style="grid-column:1/9;grid-row:1;position:relative;overflow:hidden;aspect-ratio:16/10;">
-        <img data-feature-img src="uploads/penthouse-wadi-oak-bronze-staircase-detail-2400.webp" srcset="uploads/penthouse-wadi-oak-bronze-staircase-detail-1200.webp 700w, uploads/penthouse-wadi-oak-bronze-staircase-detail-1200.webp 1050w, uploads/penthouse-wadi-oak-bronze-staircase-detail-2400.webp 1320w, uploads/penthouse-wadi-oak-bronze-staircase-detail-2400.webp 1600w" sizes="(max-width:768px) 100vw, 54vw" alt="Warm modern living space with layered materials" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.1s cubic-bezier(0.25,0.46,0.45,0.94);" loading="lazy" decoding="async">
-        <div style="position:absolute;left:clamp(20px,2vw,32px);top:clamp(20px,2vw,32px);background:rgba(30,22,16,0.8);backdrop-filter:blur(10px);padding:9px 16px;">
-          <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.24em;text-transform:uppercase;color:#D6C2A8;">Interior Design</span>
-        </div>
-      </div>
-      <div class="fiq-feat-panel" style="grid-column:8/13;grid-row:1;position:relative;z-index:2;background:#FFFFFF;padding:clamp(32px,3.6vw,56px);box-shadow:0 28px 70px rgba(58,45,37,0.14);">
-        <span style="position:absolute;top:18px;right:24px;font-family:'Lama Sans',sans-serif;font-size:clamp(52px,4.5vw,72px);font-weight:600;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(139,107,74,0.28);pointer-events:none;">01</span>
-        <div style="display:flex;align-items:center;gap:16px;margin-bottom:22px;">
-          <span style="display:block;width:28px;height:1px;background:#8B6B4A;flex-shrink:0;"></span>
-          <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.26em;text-transform:uppercase;color:#8B6B4A;">Lead Story</span>
-        </div>
-        <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;">
-          <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:#8B6B4A;">June 22, 2026</span>
-          <span style="width:3px;height:3px;border-radius:50%;background:#B8A08C;"></span>
-          <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:#B8A08C;">8 min read</span>
-        </div>
-        <h3 style="font-family:'Lama Sans',sans-serif;font-size:clamp(22px,2.3vw,31px);font-weight:500;color:#1F1F1F;line-height:1.2;letter-spacing:-0.01em;margin-bottom:16px;text-wrap:balance;">Material honesty: why the finishes you touch matter more than the ones you see</h3>
-        <p style="font-family:'Lama Sans',sans-serif;font-size:14px;line-height:1.85;color:#5B4636;margin-bottom:26px;">From hand-finished walnut to honed stone, the surfaces people interact with daily shape how a space is remembered.</p>
-        <span data-feature-cta style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#5B4636;display:inline-flex;align-items:center;gap:12px;transition:gap 0.3s cubic-bezier(0.25,0.46,0.45,0.94);">
-          Read the story
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-        </span>
-      </div>
-    </a>
-
-    <!-- 02 / 03 — staggered pair -->
-    <div class="fiq-featured-duo" style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,4.5vw,64px);align-items:start;">
-
-      <a href="/blog/the-90-day-office" data-feature-card data-reveal data-reveal-delay="0.1" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:block;text-decoration:none;">
-        <div style="position:relative;overflow:hidden;aspect-ratio:16/10;margin-bottom:26px;">
-          <img data-feature-img src="uploads/executive-floors-boardroom-walnut-table-1920.webp" srcset="uploads/executive-floors-boardroom-walnut-table-1280.webp 700w, uploads/executive-floors-boardroom-walnut-table-1280.webp 1050w, uploads/executive-floors-boardroom-walnut-table-1280.webp 1120w, uploads/executive-floors-boardroom-walnut-table-1920.webp 1200w" sizes="(max-width:768px) 100vw, 54vw" alt="Modern office fit-out in progress" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.1s cubic-bezier(0.25,0.46,0.45,0.94);" loading="lazy" decoding="async">
-          <div style="position:absolute;left:20px;top:20px;background:rgba(30,22,16,0.8);backdrop-filter:blur(10px);padding:8px 14px;">
-            <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.24em;text-transform:uppercase;color:#D6C2A8;">Fit-Out</span>
-          </div>
-        </div>
-        <div style="display:grid;grid-template-columns:auto 1fr;gap:clamp(20px,2vw,28px);border-top:1px solid #D9CDBF;padding-top:22px;">
-          <span style="font-family:'Lama Sans',sans-serif;font-size:clamp(34px,3vw,46px);font-weight:600;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(139,107,74,0.4);">02</span>
-          <div>
-            <div style="display:flex;align-items:center;gap:14px;margin-bottom:12px;">
-              <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:#8B6B4A;">June 10, 2026</span>
-              <span style="width:3px;height:3px;border-radius:50%;background:#B8A08C;"></span>
-              <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:#B8A08C;">6 min read</span>
-            </div>
-            <h3 style="font-family:'Lama Sans',sans-serif;font-size:clamp(18px,1.7vw,23px);font-weight:500;color:#1F1F1F;line-height:1.3;letter-spacing:-0.01em;margin-bottom:14px;text-wrap:balance;">The 90-day office: how we compress commercial fit-out timelines without cutting corners</h3>
-            <span data-feature-cta style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#5B4636;display:inline-flex;align-items:center;gap:12px;transition:gap 0.3s cubic-bezier(0.25,0.46,0.45,0.94);">
-              Read the story
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            </span>
-          </div>
+    <div class="gw-wall">
+      <a href="/insights/material-honesty" class="gw-card gw-in" style="--d:0.3s;">
+        <div class="gw-frame"><img src="uploads/penthouse-wadi-oak-bronze-staircase-detail-1200.webp" srcset="uploads/penthouse-wadi-oak-bronze-staircase-detail-1200.webp 1200w, uploads/penthouse-wadi-oak-bronze-staircase-detail-2400.webp 2400w" sizes="(max-width:960px) 100vw, 640px" alt="Oak and bronze staircase detail" fetchpriority="high" decoding="async"></div>
+        <div class="gw-cap">
+          <div class="gw-meta"><span>01 · Interior Design</span><span>3 min read</span></div>
+          <span class="gw-name">Material honesty</span>
+          <span class="gw-sub">Why the finishes you touch matter more than the ones you see</span>
         </div>
       </a>
-
-      <a href="/blog/invisible-infrastructure" data-feature-card class="fiq-feat-stagger" data-reveal data-reveal-delay="0.18" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:block;text-decoration:none;margin-top:clamp(48px,6vw,96px);">
-        <div style="position:relative;overflow:hidden;aspect-ratio:16/10;margin-bottom:26px;">
-          <img data-feature-img src="uploads/executive-floors-walnut-ceiling-detail-2400.webp" srcset="uploads/executive-floors-walnut-ceiling-detail-1200.webp 700w, uploads/executive-floors-walnut-ceiling-detail-1200.webp 1050w, uploads/executive-floors-walnut-ceiling-detail-1200.webp 1120w, uploads/executive-floors-walnut-ceiling-detail-2400.webp 1200w" sizes="(max-width:768px) 100vw, 54vw" alt="Engineer reviewing MEP drawings on site" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.1s cubic-bezier(0.25,0.46,0.45,0.94);" loading="lazy" decoding="async">
-          <div style="position:absolute;left:20px;top:20px;background:rgba(30,22,16,0.8);backdrop-filter:blur(10px);padding:8px 14px;">
-            <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.24em;text-transform:uppercase;color:#D6C2A8;">Engineering &amp; MEP</span>
-          </div>
-        </div>
-        <div style="display:grid;grid-template-columns:auto 1fr;gap:clamp(20px,2vw,28px);border-top:1px solid #D9CDBF;padding-top:22px;">
-          <span style="font-family:'Lama Sans',sans-serif;font-size:clamp(34px,3vw,46px);font-weight:600;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(139,107,74,0.4);">03</span>
-          <div>
-            <div style="display:flex;align-items:center;gap:14px;margin-bottom:12px;">
-              <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:#8B6B4A;">May 28, 2026</span>
-              <span style="width:3px;height:3px;border-radius:50%;background:#B8A08C;"></span>
-              <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:#B8A08C;">7 min read</span>
-            </div>
-            <h3 style="font-family:'Lama Sans',sans-serif;font-size:clamp(18px,1.7vw,23px);font-weight:500;color:#1F1F1F;line-height:1.3;letter-spacing:-0.01em;margin-bottom:14px;text-wrap:balance;">Invisible infrastructure: designing MEP systems you'll never notice — by design</h3>
-            <span data-feature-cta style="font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#5B4636;display:inline-flex;align-items:center;gap:12px;transition:gap 0.3s cubic-bezier(0.25,0.46,0.45,0.94);">
-              Read the story
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            </span>
-          </div>
+      <a href="/insights/the-90-day-office" class="gw-card gw-in" style="--d:0.42s;">
+        <div class="gw-frame"><img src="uploads/executive-floors-boardroom-walnut-table-1280.webp" alt="Walnut boardroom table in an executive office" decoding="async"></div>
+        <div class="gw-cap">
+          <div class="gw-meta"><span>02 · Fit-Out</span><span>3 min read</span></div>
+          <span class="gw-name">The 90-day office</span>
         </div>
       </a>
-
+      <a href="/insights/invisible-infrastructure" class="gw-card gw-in" style="--d:0.54s;">
+        <div class="gw-frame"><img src="uploads/executive-floors-walnut-ceiling-detail-1200.webp" alt="Walnut slatted ceiling concealing building services" decoding="async"></div>
+        <div class="gw-cap">
+          <div class="gw-meta"><span>03 · MEP</span><span>3 min read</span></div>
+          <span class="gw-name">Invisible infrastructure</span>
+        </div>
+      </a>
     </div>
   </div>
 </section>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━ ALL POSTS ━━━━━━━━━━━━━━━ -->
-<section data-screen-label="All Posts" style="background:#FFFFFF;padding:clamp(64px,8vw,100px) clamp(24px,5vw,80px);">
+<section data-screen-label="All Posts" id="archive" style="scroll-margin-top:80px;background:#FFFFFF;padding:clamp(64px,8vw,100px) clamp(24px,5vw,80px);">
   <div style="max-width:1280px;margin:0 auto;">
 
     <div data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:clamp(36px,4vw,52px);">
@@ -747,23 +719,115 @@ input:focus, select:focus, textarea:focus {
 </section>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━ NEWSLETTER BAND ━━━━━━━━━━━━ -->
-<section data-screen-label="Newsletter" style="background:#3A2D25;border-top:1px solid rgba(214,194,168,0.12);padding:clamp(64px,8vw,100px) clamp(24px,5vw,80px);">
-  <div style="max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:clamp(32px,5vw,80px);flex-wrap:wrap;">
-    <div style="flex:1;min-width:280px;">
-      <div data-reveal style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);display:flex;align-items:center;gap:16px;margin-bottom:20px;">
-        <span style="display:block;width:32px;height:1px;background:#D6C2A8;flex-shrink:0;"></span>
-        <span style="font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:rgba(214,194,168,0.7);">Join the IQ</span>
-      </div>
-      <h2 data-reveal data-reveal-delay="0.08" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);font-family:'Lama Sans',sans-serif;font-size:clamp(24px,2.8vw,38px);font-weight:500;color:#FFFFFF;line-height:1.15;letter-spacing:-0.015em;">One thoughtful email a month.<br><span style="color:rgba(214,194,168,0.6);">No noise, ever.</span></h2>
-    </div>
-    <div data-reveal data-reveal-delay="0.15" style="opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);flex:1;min-width:300px;max-width:460px;">
-      <div style="display:flex;border:1px solid rgba(214,194,168,0.25);">
-        <input type="email" placeholder="Your email address" value="{{ newsletterEmail }}" onChange="{{ onNewsletterChange }}" style="flex:1;background:transparent;border:none;padding:17px 20px;font-family:'Lama Sans',sans-serif;font-size:14px;color:#FFFFFF;outline:none;min-width:0;">
-        <button onClick="{{ onNewsletterSubmit }}" style="background:#D6C2A8;border:none;padding:17px 28px;cursor:pointer;font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#1E1610;flex-shrink:0;transition:background 0.3s;" style-hover="background:#FFFFFF;">Subscribe</button>
+<section data-screen-label="Newsletter" data-pj-cta style="background:#3A2D25;color:#F5F2ED;border-top:1px solid rgba(214,194,168,0.12);padding:clamp(64px,8vw,128px) clamp(24px,5vw,80px);overflow:hidden;">
+  <style>
+    [data-pj-cta] .pc-wrap{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(40px,6vw,104px);align-items:center;}
+    [data-pj-cta] .pc-eyebrow{display:flex;align-items:center;gap:16px;margin:0 0 26px;font-family:'Lama Sans',sans-serif;font-size:9.5px;letter-spacing:0.3em;text-transform:uppercase;color:rgba(214,194,168,0.75);}
+    [data-pj-cta] .pc-eyebrow i{display:block;width:32px;height:1px;background:#D6C2A8;}
+    [data-pj-cta] .pc-h2{margin:0;font-family:'Lama Sans',sans-serif;font-weight:500;font-size:clamp(34px,3.8vw,58px);line-height:1.06;letter-spacing:-0.02em;color:#F5F2ED;text-wrap:balance;}
+    [data-pj-cta] .pc-h2 span{display:block;color:#D6C2A8;}
+    [data-pj-cta] .pc-sub{margin:clamp(20px,2.4vw,28px) 0 0;max-width:30ch;font-family:'Lama Sans',sans-serif;font-size:clamp(16px,1.3vw,19px);line-height:1.6;color:rgba(245,242,237,0.66);}
+    [data-pj-cta] .pc-ctas{display:flex;align-items:center;flex-wrap:wrap;gap:16px 28px;margin-top:clamp(30px,3.4vw,44px);}
+    [data-pj-cta] .pc-cta{display:inline-flex;align-items:center;gap:14px;padding:19px 34px;background:#D6C2A8;color:#1F1F1F;border:1px solid #D6C2A8;text-decoration:none;font-family:'Lama Sans',sans-serif;font-size:10.5px;letter-spacing:0.2em;text-transform:uppercase;transition:background 0.4s cubic-bezier(0.25,0.46,0.45,0.94),color 0.4s cubic-bezier(0.25,0.46,0.45,0.94);}
+    [data-pj-cta] .pc-cta:hover,[data-pj-cta] .pc-cta:focus-visible{background:transparent;color:#D6C2A8;}
+    [data-pj-cta] .pc-wa{display:inline-flex;align-items:center;gap:12px;padding-bottom:6px;border-bottom:1px solid rgba(214,194,168,0.45);color:#F5F2ED;text-decoration:none;font-family:'Lama Sans',sans-serif;font-size:10.5px;letter-spacing:0.2em;text-transform:uppercase;transition:color 0.4s cubic-bezier(0.25,0.46,0.45,0.94),border-color 0.4s cubic-bezier(0.25,0.46,0.45,0.94);}
+    [data-pj-cta] .pc-wa:hover,[data-pj-cta] .pc-wa:focus-visible{color:#D6C2A8;border-color:#D6C2A8;}
+    /* a sign-up form in the text column */
+    [data-pj-cta] .pc-form{display:flex;margin-top:clamp(30px,3.4vw,44px);max-width:480px;border:1px solid rgba(214,194,168,0.3);transition:border-color 0.4s cubic-bezier(0.25,0.46,0.45,0.94);}
+    [data-pj-cta] .pc-form:focus-within{border-color:#D6C2A8;}
+    [data-pj-cta] .pc-form input{flex:1;min-width:0;background:transparent;border:0;outline:none;padding:18px 20px;font-family:'Lama Sans',sans-serif;font-size:15px;color:#F5F2ED;}
+    [data-pj-cta] .pc-form input::placeholder{color:rgba(245,242,237,0.45);}
+    [data-pj-cta] .pc-form button{flex:none;display:inline-flex;align-items:center;gap:12px;padding:0 28px;background:#D6C2A8;border:0;cursor:pointer;font-family:'Lama Sans',sans-serif;font-size:10.5px;letter-spacing:0.2em;text-transform:uppercase;color:#1F1F1F;transition:background 0.4s cubic-bezier(0.25,0.46,0.45,0.94);}
+    [data-pj-cta] .pc-form button:hover,[data-pj-cta] .pc-form button:focus-visible{background:#F5F2ED;}
+    [data-pj-cta] .pc-ok{margin:14px 0 0;font-family:'Lama Sans',sans-serif;font-size:13px;color:rgba(214,194,168,0.75);}
+    /* the drafting frame */
+    [data-pj-cta] .pc-stage{position:relative;padding-top:26px;}
+    [data-pj-cta] .pc-dim{position:absolute;top:0;left:0;right:0;height:9px;}
+    [data-pj-cta] .pc-dim::before,[data-pj-cta] .pc-dim::after{content:"";position:absolute;top:0;width:1px;height:9px;background:rgba(214,194,168,0.5);}
+    [data-pj-cta] .pc-dim::before{left:0;}
+    [data-pj-cta] .pc-dim::after{right:0;}
+    [data-pj-cta] .pc-dim i{position:absolute;top:4px;left:0;right:0;height:1px;background:rgba(214,194,168,0.5);}
+    [data-pj-cta] .pc-cap{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);padding:0 14px;background:#3A2D25;white-space:nowrap;font-family:'Lama Sans',sans-serif;font-size:9.5px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(214,194,168,0.9);}
+    [data-pj-cta] .pc-frame{position:relative;display:block;margin:0;aspect-ratio:4/3;cursor:pointer;outline:none;}
+    [data-pj-cta] .pc-frame:focus-visible{outline:1px solid #D6C2A8;outline-offset:14px;}
+    [data-pj-cta] .pc-view{position:absolute;inset:0;overflow:hidden;background:#1F1712;box-shadow:0 24px 80px rgba(0,0,0,0.35);}
+    [data-pj-cta] .pc-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;}
+    [data-pj-cta] .pc-img.is-on{opacity:1;}
+    [data-pj-cta] .pc-sheet{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(10px,1.4vw,18px);opacity:0;}
+    [data-pj-cta] .pc-sheet svg.pc-grid{position:absolute;inset:0;width:100%;height:100%;color:rgba(214,194,168,0.07);}
+    /* the sheet fades in as the draw lands on it, and is gone at once when a draw begins */
+    [data-pj-cta] .is-yours .pc-sheet{opacity:1;transition:opacity 0.9s cubic-bezier(0.25,0.46,0.45,0.94);}
+    [data-pj-cta] .pc-eleven{position:relative;font-family:'Lama Sans',sans-serif;font-weight:500;font-size:clamp(96px,11vw,176px);line-height:0.9;letter-spacing:-0.04em;color:#D6C2A8;transform:translateY(14px);opacity:0;transition:opacity 0.9s cubic-bezier(0.25,0.46,0.45,0.94) 0.15s,transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94) 0.15s;}
+    [data-pj-cta] .pc-you{position:relative;font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:#F5F2ED;opacity:0;transition:opacity 0.9s cubic-bezier(0.25,0.46,0.45,0.94) 0.35s;}
+    [data-pj-cta] .pc-svc{position:relative;font-family:'Lama Sans',sans-serif;font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(214,194,168,0.6);opacity:0;transition:opacity 0.9s cubic-bezier(0.25,0.46,0.45,0.94) 0.5s;text-align:center;padding:0 16px;}
+    [data-pj-cta] .is-yours .pc-eleven{opacity:1;transform:none;}
+    [data-pj-cta] .is-yours .pc-you,[data-pj-cta] .is-yours .pc-svc{opacity:1;}
+    [data-pj-cta] .pc-num{position:absolute;bottom:14px;inset-inline-end:16px;z-index:2;padding:6px 10px;background:rgba(31,31,31,0.62);font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.2em;color:#F5F2ED;transition:opacity 0.5s cubic-bezier(0.25,0.46,0.45,0.94);}
+    [data-pj-cta] .is-yours .pc-num{opacity:0;}
+    [data-pj-cta] .pc-mark{position:absolute;width:18px;height:18px;border:0 solid #D6C2A8;}
+    [data-pj-cta] .pc-mark--tl{top:-10px;left:-10px;border-width:1px 0 0 1px;}
+    [data-pj-cta] .pc-mark--tr{top:-10px;right:-10px;border-width:1px 1px 0 0;}
+    [data-pj-cta] .pc-mark--bl{bottom:-10px;left:-10px;border-width:0 0 1px 1px;}
+    [data-pj-cta] .pc-mark--br{bottom:-10px;right:-10px;border-width:0 1px 1px 0;}
+    /* one tick per item, and a longer last one for the sheet the draw lands on */
+    [data-pj-cta] .pc-foot{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-top:26px;}
+    [data-pj-cta] .pc-ticks{display:flex;flex:1;gap:4px;margin:0;padding:0;list-style:none;}
+    [data-pj-cta] .pc-ticks li{flex:1;padding-top:10px;border-top:1px solid rgba(214,194,168,0.22);font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.12em;color:rgba(214,194,168,0.38);text-align:center;transition:color 0.2s,border-color 0.2s;}
+    [data-pj-cta] .pc-ticks li.is-on{color:#F5F2ED;border-color:#F5F2ED;}
+    [data-pj-cta] .pc-ticks li:last-child{flex:1.6;}
+    [data-pj-cta] .is-yours .pc-ticks li:last-child{color:#D6C2A8;border-color:#D6C2A8;}
+    [data-pj-cta] .pc-again{flex:none;display:inline-flex;align-items:center;gap:8px;padding:0;background:none;border:0;cursor:pointer;font-family:'Lama Sans',sans-serif;font-size:9.5px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(214,194,168,0.7);transition:color 0.3s;}
+    [data-pj-cta] .pc-again:hover,[data-pj-cta] .pc-again:focus-visible{color:#F5F2ED;}
+    [data-pj-cta] .pc-again:disabled{opacity:0.35;cursor:default;}
+    @media(max-width:900px){
+      [data-pj-cta] .pc-wrap{grid-template-columns:1fr;}
+      [data-pj-cta] .pc-cta{width:100%;justify-content:center;box-sizing:border-box;}
+      [data-pj-cta] .pc-ticks li{font-size:0;padding-top:8px;}
+      [data-pj-cta] .pc-cap{max-width:calc(100% - 40px);overflow:hidden;text-overflow:ellipsis;}
+    }
+    @media(prefers-reduced-motion:reduce){
+      [data-pj-cta] *{transition:none!important;}
+    }
+  </style>
+  <div class="pc-wrap">
+    <div class="pc-text">
+      <p class="pc-eyebrow"><i></i>Join the IQ</p>
+      <h2 class="pc-h2">Three insights above.<span>The fourth arrives by email.</span></h2>
+      <p class="pc-sub">One thoughtful email a month. No noise, ever.</p>
+      <div class="pc-form">
+        <input type="email" placeholder="Your email address" aria-label="Your email address" autocomplete="email" dir="ltr" value="{{ newsletterEmail }}" onChange="{{ onNewsletterChange }}">
+        <button type="button" onClick="{{ onNewsletterSubmit }}">Subscribe<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
       </div>
       <sc-if value="{{ newsletterStatus }}" hint-placeholder-val="{{ null }}">
-        <p style="font-family:'Lama Sans',sans-serif;font-size:12px;color:rgba(214,194,168,0.65);margin-top:12px;">Thank you — monthly insights, strictly no spam.</p>
+        <p class="pc-ok" role="status">Thank you — monthly insights, strictly no spam.</p>
       </sc-if>
+    </div>
+    <div class="pc-stage" data-pc-stage data-rounds="2">
+      <div class="pc-dim" aria-hidden="true"><i></i><span class="pc-cap" data-pc-cap>Insight 04 · In your inbox</span></div>
+      <figure class="pc-frame" data-pc-frame role="button" tabindex="0" aria-label="The next insight arrives by email. Select to draw again." data-final="Insight 04 · In your inbox">
+        <div class="pc-view">
+          <img class="pc-img" data-src="uploads/penthouse-wadi-oak-bronze-staircase-detail-1200.webp" data-cap="Interior Design · Material honesty" alt="" decoding="async">
+          <img class="pc-img" data-src="uploads/executive-floors-boardroom-walnut-table-1280.webp" data-cap="Fit-Out · The 90-day office" alt="" decoding="async">
+          <img class="pc-img" data-src="uploads/executive-floors-walnut-ceiling-detail-1200.webp" data-cap="Engineering & MEP · Invisible infrastructure" alt="" decoding="async">
+          <div class="pc-sheet" aria-hidden="true">
+            <svg class="pc-grid"><defs><pattern id="pc-grid-en" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32,0V32M0,32H32" fill="none" stroke="currentColor" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(#pc-grid-en)"/></svg>
+            <span class="pc-eleven" dir="ltr">04</span>
+            <span class="pc-you">The next insight</span>
+            <span class="pc-svc">In your inbox, once a month</span>
+          </div>
+          <span class="pc-num" data-pc-num dir="ltr" aria-hidden="true">01</span>
+        </div>
+        <i class="pc-mark pc-mark--tl" aria-hidden="true"></i><i class="pc-mark pc-mark--tr" aria-hidden="true"></i><i class="pc-mark pc-mark--bl" aria-hidden="true"></i><i class="pc-mark pc-mark--br" aria-hidden="true"></i>
+      </figure>
+      <div class="pc-foot">
+        <ol class="pc-ticks" aria-hidden="true">
+        <li><span dir="ltr">01</span></li>
+        <li><span dir="ltr">02</span></li>
+        <li><span dir="ltr">03</span></li>
+        <li><span dir="ltr">04</span></li>
+        </ol>
+        <button type="button" class="pc-again" data-pc-again><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>Draw again</button>
+      </div>
     </div>
   </div>
 </section>
@@ -858,7 +922,7 @@ input:focus, select:focus, textarea:focus {
             <a class="fiq-ft-link" href="/about-us">About Us</a>
             <a class="fiq-ft-link" href="/services">Services</a>
             <a class="fiq-ft-link" href="/projects">Portfolio</a>
-            <a class="fiq-ft-link" href="/blog">Insights</a>
+            <a class="fiq-ft-link" href="/insights">Insights</a>
             <a class="fiq-ft-link" href="/contact">Contact Us</a>
             <a class="fiq-ft-link" href="#">Terms &amp; Conditions</a>
         </nav>
@@ -879,7 +943,7 @@ input:focus, select:focus, textarea:focus {
         <p class="fiq-ft-fine">Basic Step for Contracting Company &middot; C.R. 2050155201</p>
       </div>
       <p class="fiq-ft-fine">Crafted with precision in Saudi Arabia.</p>
-      <a class="fiq-ft-lang" href="/ar/blog" lang="ar" dir="rtl">عربي</a>
+      <a class="fiq-ft-lang" href="/ar/insights" lang="ar" dir="rtl">عربي</a>
     </div>
   </div>
 </footer>
@@ -900,21 +964,21 @@ class Component extends DCLogic {
       title: 'Material honesty: why the finishes you touch matter more than the ones you see',
       excerpt: 'From hand-finished walnut to honed stone — a look inside our material selection process.',
       image: 'uploads/penthouse-wadi-oak-bronze-staircase-detail-1200.webp',
-      href: '/blog/material-honesty',
+      href: '/insights/material-honesty',
     },
     {
       category: 'Fit-Out', date: 'June 10, 2026',
       title: 'The 90-day office: compressing commercial fit-out timelines without cutting corners',
       excerpt: 'Parallel workstreams, early procurement, and the schedule discipline that makes it possible.',
       image: 'uploads/executive-floors-boardroom-walnut-table-1280.webp',
-      href: '/blog/the-90-day-office',
+      href: '/insights/the-90-day-office',
     },
     {
       category: 'Engineering & MEP', date: 'May 28, 2026',
       title: 'Invisible infrastructure: designing MEP systems you\u2019ll never notice — by design',
       excerpt: 'Great engineering disappears. How we route, size, and conceal the systems that keep a building alive.',
       image: 'uploads/executive-floors-walnut-ceiling-detail-1200.webp',
-      href: '/blog/invisible-infrastructure',
+      href: '/insights/invisible-infrastructure',
     },
   ];
 
@@ -964,22 +1028,23 @@ class Component extends DCLogic {
     const syncNav = () => {
       const s = window.scrollY > 60;
       if (!nav) return;
+      const dark = s || nav.hasAttribute('data-nav-dark');   // white hero: dark text from the top
       nav.style.background = s ? 'rgba(255,255,255,0.96)' : 'transparent';
       nav.style.borderBottomColor = s ? '#D6C2A8' : 'transparent';
       nav.style.backdropFilter = s ? 'blur(16px)' : 'none';
       nav.style.boxShadow = s ? '0 2px 16px rgba(58,45,37,0.06)' : 'none';
-      if (logoW) logoW.style.opacity = s ? '0' : '1';
-      if (logoD) logoD.style.opacity = s ? '1' : '0';
+      if (logoW) logoW.style.opacity = dark ? '0' : '1';
+      if (logoD) logoD.style.opacity = dark ? '1' : '0';
       navLinks.forEach(l => {
-        l.style.color = s ? '#1F1F1F' : '#FFFFFF';
-        if (l !== navBlogLink) l.style.opacity = s ? '1' : '0.8';
+        l.style.color = dark ? '#1F1F1F' : '#FFFFFF';
+        if (l !== navBlogLink) l.style.opacity = dark ? '1' : '0.8';
       });
       if (navBlogLink) {
         navBlogLink.style.borderBottomColor = s ? 'rgba(91,70,54,0.45)' : 'rgba(214,194,168,0.55)';
       }
       if (navCta) {
-        navCta.style.color = s ? '#1F1F1F' : '#FFFFFF';
-        navCta.style.borderColor = s ? 'rgba(91,70,54,0.35)' : 'rgba(214,194,168,0.5)';
+        navCta.style.color = dark ? '#1F1F1F' : '#FFFFFF';
+        navCta.style.borderColor = dark ? 'rgba(91,70,54,0.35)' : 'rgba(214,194,168,0.5)';
       }
     };
     window.addEventListener('scroll', syncNav, { passive: true });
@@ -988,32 +1053,79 @@ class Component extends DCLogic {
     navLinks.forEach(l => {
       if (l === navBlogLink) return;
       l.addEventListener('mouseenter', () => { l.style.opacity = '1'; });
-      l.addEventListener('mouseleave', () => { l.style.opacity = window.scrollY > 60 ? '1' : '0.8'; });
+      l.addEventListener('mouseleave', () => { l.style.opacity = (window.scrollY > 60 || nav.hasAttribute('data-nav-dark')) ? '1' : '0.8'; });
     });
     if (navCta) {
       navCta.addEventListener('mouseenter', () => {
-        navCta.style.background = window.scrollY > 60 ? '#3A2D25' : 'rgba(255,255,255,0.1)';
+        navCta.style.background = (window.scrollY > 60 || nav.hasAttribute('data-nav-dark')) ? '#3A2D25' : 'rgba(255,255,255,0.1)';
         navCta.style.color = '#D6C2A8';
       });
       navCta.addEventListener('mouseleave', () => { navCta.style.background = 'transparent'; syncNav(); });
     }
 
-    // ── HERO ENTRANCE ──────────────────────────────────────
+    // ── HERO ENTRANCE + TOPIC LINKS ────────────────────────
     const hero = document.querySelector('[data-blog-hero]');
     if (hero) {
-      const eyebrow = hero.querySelector('[data-hero-eyebrow]');
-      const eyebrowLine = hero.querySelector('[data-hero-eyebrow-line]');
-      const words = hero.querySelectorAll('[data-hero-word]');
-      if (reduced) {
-        if (eyebrow) eyebrow.style.opacity = '1';
-        if (eyebrowLine) eyebrowLine.style.width = '32px';
-        words.forEach(w => { w.style.transform = 'translateY(0)'; });
-      } else {
-        setTimeout(() => { if (eyebrow) eyebrow.style.opacity = '1'; }, 100);
-        setTimeout(() => { if (eyebrowLine) eyebrowLine.style.width = '32px'; }, 180);
-        words.forEach((w, i) => {
-          setTimeout(() => { w.style.transform = 'translateY(0)'; }, 320 + i * 160);
-        });
+      requestAnimationFrame(() => requestAnimationFrame(() => hero.classList.add('is-ready')));
+      // a topic filters the archive below and scrolls to it
+      hero.querySelectorAll('[data-topic]').forEach(a => a.addEventListener('click', (e) => {
+        e.preventDefault();
+        this.setState({ activeCategory: a.dataset.topic });
+        const archive = document.getElementById('archive');
+        if (archive) archive.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' });
+      }));
+    }
+
+    // ── CLOSING DRAW: THE NEXT ONE IS YOURS ───────────────────────────────
+    {
+      const sec = document.querySelector('[data-pj-cta]');
+      if (sec) {
+        const stage = sec.querySelector('[data-pc-stage]'), frame = sec.querySelector('[data-pc-frame]'), again = sec.querySelector('[data-pc-again]');
+        const imgs = Array.from(sec.querySelectorAll('.pc-img')), ticks = Array.from(sec.querySelectorAll('.pc-ticks li'));
+        const cap = sec.querySelector('[data-pc-cap]'), num = sec.querySelector('[data-pc-num]'), N = imgs.length;
+        const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+        let timer = 0, running = false, ready = null;
+        // the covers are fetched as the section nears, and the draw waits for them (2.5s at most), so it never shuffles blanks
+        const load = () => {
+          if (!ready) {
+            imgs.forEach((im) => { im.src = im.dataset.src; });
+            ready = Promise.race([Promise.all(imgs.map((im) => im.decode().catch(() => {}))), new Promise((r) => setTimeout(r, 2500))]);
+          }
+          return ready;
+        };
+        const R = Math.max(1, +stage.dataset.rounds || 1), S = N * R;   // the items, run through R times
+        const step = (k) => {   // k < S: item k % N on the sheet; k = S: the sheet the draw lands on
+          k = k < S ? k % N : N;
+          imgs.forEach((im, j) => im.classList.toggle('is-on', j === k));
+          ticks.forEach((t, j) => t.classList.toggle('is-on', j <= k));
+          stage.classList.toggle('is-yours', k === N);
+          cap.textContent = k === N ? frame.dataset.final : imgs[k].dataset.cap;
+          num.textContent = String(k + 1).padStart(2, '0');
+        };
+        const settle = () => { clearTimeout(timer); running = false; again.disabled = false; step(S); };
+        // the draw: through the items, quick at first and slowing, and it always comes to rest on the last sheet
+        const draw = async () => {
+          if (running) return;
+          if (still) { load(); settle(); return; }
+          running = true; again.disabled = true;
+          await load();
+          let k = 0, wait = 80;
+          const grow = Math.pow(7, 1 / S);   // the last wait is about seven times the first, however many steps
+          const next = () => {
+            step(k);
+            if (k === S) { running = false; again.disabled = false; return; }
+            k += 1; wait *= grow;
+            timer = setTimeout(next, wait);
+          };
+          next();
+        };
+        step(S);   // until the section is reached, and without script, the last sheet shows
+        new IntersectionObserver((es, o) => { es.forEach((e) => { if (e.isIntersecting) { load(); o.disconnect(); } }); }, { rootMargin: '0px 0px 60% 0px' }).observe(sec);
+        new IntersectionObserver((es, o) => { es.forEach((e) => { if (e.isIntersecting) { draw(); o.disconnect(); } }); }, { threshold: 0.45 }).observe(stage);
+        frame.addEventListener('click', draw);
+        frame.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); draw(); } });
+        again.addEventListener('click', draw);
+        document.addEventListener('visibilitychange', () => { if (document.hidden && running) settle(); });
       }
     }
 
@@ -1032,20 +1144,6 @@ class Component extends DCLogic {
       }, { threshold: 0.08, rootMargin: '0px 0px -24px 0px' });
       document.querySelectorAll('[data-reveal]').forEach(el => obs.observe(el));
     }
-
-    // ── FEATURE CARD HOVERS ────────────────────────────────
-    document.querySelectorAll('[data-feature-card]').forEach(card => {
-      const img = card.querySelector('[data-feature-img]');
-      const cta = card.querySelector('[data-feature-cta]');
-      card.addEventListener('mouseenter', () => {
-        if (img) img.style.transform = 'scale(1.045)';
-        if (cta) cta.style.gap = '18px';
-      });
-      card.addEventListener('mouseleave', () => {
-        if (img) img.style.transform = 'scale(1)';
-        if (cta) cta.style.gap = '12px';
-      });
-    });
 
     // ── POST ROW HOVERS (delegated — rows re-render on filter) ──
     document.addEventListener('mouseover', (e) => {

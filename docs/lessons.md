@@ -136,3 +136,27 @@ was not z-fighting (lifting the cover 3px changed nothing): the cover face's `bo
 its edges, and Chrome then sorts the page over the cover where the enlarged layers overlap. Removing that one shadow
 fixed it; the page beneath still casts the closed book's shadow. Freezing the transition at a mid angle with a
 `!important` style and toggling one property at a time found it in one pass.
+
+## classList.toggle with an undefined second argument flips the class (2026-10-07)
+
+On the contact page's brief (brief.js), progress segments for unanswered steps showed as done. The helper returned
+`value !== null || step.optional`, which is `undefined` when the step is not optional, and
+`classList.toggle(name, undefined)` behaves like a plain toggle (it flips the class) instead of removing it. Coerce
+the force argument to a real boolean (`!!`) whenever it comes from an expression that can be `undefined`.
+
+## A deferred helper can load after the page has rendered (2026-10-07)
+
+The contact page's brief sometimes stayed empty. support.js boots the page runtime inside a promise, as soon as React
+has loaded and the document is no longer "loading", which can be before later `defer` scripts have run. The page's
+`componentDidMount` then found `window.FIQBrief` undefined and skipped it. Reproduced by delaying brief.js with a
+Playwright route. Fix: a handshake. The page calls `FIQBrief()` if it exists and otherwise sets
+`window.FIQBriefPending`; brief.js starts itself on that flag when it loads. Any shared helper the page calls from
+`componentDidMount` (FIQMobileNav included) is exposed to the same race.
+
+## An srcset can name a size that was never exported (2026-10-08)
+
+The 90-day article's masthead listed `executive-floors-boardroom-walnut-table-1200.webp 1200w`, but that photo only exists at 1280, 1920 and 2752. A phone picks the 1200w candidate, so the plate showed its alt text on narrow screens while desktop looked fine. Before shipping a generated srcset, check every candidate file exists (`ls uploads | grep <stem>`); the generators now write what the page already used, so verify when adding a new article.
+
+## Arabic pages: take the English CSS, do not hand-copy it (2026-10-08)
+
+`scripts/blog/ar_common.py` turns the English page CSS into Arabic CSS: GE SS Two for Lama Sans, letter-spacing removed, small labels raised to 12px, `transform-origin:left` turned to `right`, and per-rule line-height overrides. The Arabic Insights and article generators use it, so a design change made on the English page reaches Arabic by rerunning the generator. Digits in GE SS Two render as Arabic-Indic numerals; that is the font, not a bug.

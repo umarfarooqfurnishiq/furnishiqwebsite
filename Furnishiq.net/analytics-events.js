@@ -11,8 +11,8 @@
     if (p.includes('concept-to-turnkey') || p.includes('landing-turnkey')) return 'landing';
     if (p.includes('contact')) return 'contact';
     if (p.includes('about-us')) return 'about';
-    if (p.includes('single-post')) return 'blog_post';
-    if (p.includes('blog')) return 'blog';
+    if (p.includes('single-post') || /\/(blog|insights)[\/-]./.test(p)) return 'blog_post';   // /insights/<slug>, /ar/insights/<slug>, the old /blog/<slug>, blog-<slug>.dc.html
+    if (p.includes('blog') || p.includes('insights')) return 'blog';
     if (p.includes('project-detail')) return 'portfolio_detail';
     if (p.includes('portfolio')) return 'portfolio';
     if (p.includes('services-')) return 'services';
@@ -31,7 +31,7 @@
   document.addEventListener('click', function (e) {
     // Landing pages add their own consultation CTAs: hero, package, video, mobile menu, and the
     // project / service pop-ups (built by script, so matched by their data attributes).
-    const el = e.target.closest('.fiq-nav-cta, .fiq-nav-cta-btn, #id-cta-btn, .fiq-nav-overlay-cta, .fiq-hero-cta-primary, .fiq-svc-cta, .fiq-vid-btn-primary, [data-pm-cta], [data-sm-cta]');
+    const el = e.target.closest('.fiq-nav-cta, .fiq-nav-cta-btn, #id-cta-btn, .fiq-nav-overlay-cta, .fiq-hero-cta-primary, .fiq-svc-cta, .fiq-vid-btn-primary, [data-pm-cta], [data-sm-cta], [data-blog-cta="consultation"]');
     if (!el) return;
     const section = el.closest('section');
     window.dataLayer.push({
@@ -42,6 +42,19 @@
         : el.closest('.fiq-nav-overlay') ? 'mobile_menu'
         : el.closest('nav') ? 'nav'
         : section ? section.id || 'section' : 'other',
+      page_path: window.location.pathname,
+    });
+  }, true);
+
+  // Article calls to action — the closing panel and the contents-rail note on each article page:
+  // which call (consultation, service, whatsapp), where it sits (end, rail), and on which article.
+  document.addEventListener('click', function (e) {
+    const el = e.target.closest('[data-blog-cta]');
+    if (!el) return;
+    window.dataLayer.push({
+      event: 'blog_cta_click',
+      cta_type: el.getAttribute('data-blog-cta'),
+      cta_location: el.getAttribute('data-cta-place') || null,
       page_path: window.location.pathname,
     });
   }, true);
