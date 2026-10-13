@@ -86,7 +86,7 @@
     document.body.appendChild(overlay);
 
     function setScrolledState() {
-      toggle.classList.toggle('fiq-nav-toggle--scrolled', window.scrollY > 60);
+      toggle.classList.toggle('fiq-nav-toggle--scrolled', window.scrollY > 60 || nav.hasAttribute('data-nav-dark'));   // data-nav-dark: a page whose hero is light
     }
     requestAnimationFrame(setScrolledState);
     window.addEventListener('scroll', setScrolledState, { passive: true });
