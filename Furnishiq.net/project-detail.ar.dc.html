@@ -525,10 +525,6 @@ input:focus, select:focus, textarea:focus {
     @media(max-width:960px){
       .fiq-nav-links{display:none!important;}
       .fiq-nav-cta-btn{display:none!important;}
-      .fiq-pd-body{grid-template-columns:1fr!important;}
-      .fiq-pd-sidebar{position:static!important;top:auto!important;}
-      .fiq-pd-meta{flex-wrap:wrap!important;gap:20px 32px!important;}
-      .fiq-pd-related{grid-template-columns:1fr!important;}
       .fiq-footer-grid{grid-template-columns:1fr 1fr!important;gap:48px!important;}
       .fiq-footer-brand{grid-column:1/-1!important;}
     }
@@ -562,16 +558,16 @@ input:focus, select:focus, textarea:focus {
   </div>
 </nav>
 
-<section data-screen-label="Hero" style="position:relative;height:82vh;min-height:520px;background:#1E1610;overflow:hidden;">
+<section data-screen-label="Hero" class="fiq-pd-hero" style="position:relative;height:82vh;min-height:520px;background:#1E1610;overflow:hidden;">
   <img class="fiq-pd-drift" src="{{ heroImage }}" alt="{{ title }}" loading="lazy" fetchpriority="high" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
   <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,15,10,0.55) 0%,rgba(20,15,10,0.15) 35%,rgba(15,11,8,0.92) 100%);"></div>
 
-  <a href="/ar/projects" style="position:absolute;top:104px;right:clamp(24px,5vw,80px);z-index:2;display:inline-flex;align-items:center;gap:10px;font-family:'GE SS Two','Arial',sans-serif;font-size:10px;letter-spacing:normal;text-transform:uppercase;color:rgba(255,255,255,0.85);text-decoration:none;">
+  <a href="/ar/projects" style="position:absolute;top:104px;right:max(clamp(24px,5vw,80px),calc((100% - 1280px) / 2));z-index:2;display:inline-flex;align-items:center;gap:10px;font-family:'GE SS Two','Arial',sans-serif;font-size:10px;letter-spacing:normal;text-transform:uppercase;color:rgba(255,255,255,0.85);text-decoration:none;">
     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="transform:scaleX(-1);"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
     العودة إلى الأعمال
   </a>
 
-  <div style="position:absolute;left:0;right:0;bottom:0;z-index:1;max-width:1280px;margin:0 auto;width:100%;padding:0 clamp(24px,5vw,80px) clamp(48px,6vw,72px);animation:fiqHeroIn 0.8s cubic-bezier(0.16,1,0.3,1) both;">
+  <div class="fiq-pd-hero-text" style="position:absolute;left:0;right:0;bottom:0;z-index:1;max-width:1280px;box-sizing:content-box;margin:0 auto;padding:0 clamp(24px,5vw,80px) clamp(48px,6vw,72px);animation:fiqHeroIn 0.8s cubic-bezier(0.16,1,0.3,1) both;">
     <div style="display:flex;align-items:center;gap:16px;margin-bottom:22px;">
       <span style="display:block;width:32px;height:1px;background:#D6C2A8;flex-shrink:0;"></span>
       <span style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:rgba(214,194,168,0.85);">{{ category }} &middot; {{ location }}</span>
@@ -583,64 +579,184 @@ input:focus, select:focus, textarea:focus {
   </sc-if>
 </section>
 
-<section data-screen-label="Meta Strip" style="background:#1F1F1F;border-bottom:1px solid rgba(214,194,168,0.12);">
-  <div class="fiq-pd-meta" style="max-width:1280px;margin:0 auto;padding:clamp(28px,3vw,40px) clamp(24px,5vw,80px);display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap;">
-    <div style="display:flex;gap:clamp(28px,4vw,56px);flex-wrap:wrap;">
-      <div>
-        <div style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:rgba(214,194,168,0.4);margin-bottom:6px;">المساحة</div>
-        <div style="font-family:'GE SS Two','Arial',sans-serif;font-size:15px;color:#FFFFFF;">{{ area }}</div>
-      </div>
-      <div>
-        <div style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:rgba(214,194,168,0.4);margin-bottom:6px;">الحالة</div>
-        <div style="font-family:'GE SS Two','Arial',sans-serif;font-size:15px;color:#FFFFFF;">{{ date }}</div>
-      </div>
-      <div>
-        <div style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:rgba(214,194,168,0.4);margin-bottom:6px;">الموقع</div>
-        <div style="font-family:'GE SS Two','Arial',sans-serif;font-size:15px;color:#FFFFFF;">{{ location }}</div>
-      </div>
-      <div>
-        <div style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:rgba(214,194,168,0.4);margin-bottom:6px;">التصنيف</div>
-        <div style="font-family:'GE SS Two','Arial',sans-serif;font-size:15px;color:#FFFFFF;">{{ category }}</div>
-      </div>
-    </div>
-    <a href="https://wa.me/966580330627" target="_blank" data-pd-wa style="font-family:'GE SS Two','Arial',sans-serif;font-size:10px;letter-spacing:normal;text-transform:uppercase;color:#1E1610;text-decoration:none;background:#D6C2A8;padding:16px 28px;display:inline-flex;align-items:center;gap:10px;transition:background 0.3s;flex-shrink:0;">ابدأ مشروعك</a>
+<!-- The title block: the project's facts as a museum label that completes the first screen -->
+<section data-screen-label="Meta Strip" data-pd-tb>
+  <style>
+    /* the first screen: photograph and label together fill the window on desktop */
+    @media(min-width:1261px){
+      .fiq-pd-hero{height:100vh!important;height:100svh!important;min-height:640px!important;}
+      .fiq-pd-hero .fiq-pd-hero-text{padding-bottom:calc(clamp(48px,6vw,72px) + 144px)!important;}
+      .fiq-pd-hero [data-pd-drift-toggle]{bottom:calc(clamp(48px,6vw,72px) + 144px)!important;}
+      [data-pd-tb]{margin-top:-144px;z-index:2;background:linear-gradient(to top,#1F1F1F 0%,#1F1F1F 38%,rgba(31,31,31,0.82) 68%,rgba(31,31,31,0) 100%)!important;}
+    }
+    [data-pd-tb]{--e:cubic-bezier(0.25,0.46,0.45,0.94);position:relative;background:#1F1F1F;color:#F5F2ED;padding:0 clamp(24px,5vw,80px);}
+    [data-pd-tb] .ptb{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;min-height:144px;box-sizing:border-box;}
+    [data-pd-tb] .ptb-f{position:relative;display:flex;align-items:center;gap:16px;flex:none;padding:0 clamp(18px,2vw,28px);}
+    [data-pd-tb] .ptb-f:last-child{padding-inline-end:0;}
+    [data-pd-tb] .ptb-f:first-child{padding-inline-start:0;}
+    [data-pd-tb] .ptb-f+.ptb-f::before{content:"";position:absolute;inset-inline-start:0;top:50%;width:1px;height:56px;margin-top:-28px;background:rgba(214,194,168,0.28);transform:scaleY(0);transition:transform 0.8s var(--e) calc(var(--d,0s) + 0.3s);}
+    [data-pd-tb].is-in .ptb-f+.ptb-f::before{transform:scaleY(1);}
+    [data-pd-tb] .ptb-i{display:flex;align-items:center;justify-content:center;flex:none;width:56px;height:56px;border:1px solid rgba(214,194,168,0.45);color:#D6C2A8;background:rgba(31,31,31,0.35);}
+    [data-pd-tb] .ptb-t{display:flex;flex-direction:column;gap:8px;min-width:0;}
+    [data-pd-tb] .ptb-k{font-family:'GE SS Two','Arial',sans-serif;font-size:13px;text-transform:uppercase;color:rgba(214,194,168,0.8);white-space:nowrap;}
+    [data-pd-tb] .ptb-v{font-family:'GE SS Two','Arial',sans-serif;font-weight:500;font-size:clamp(17px,1.5vw,21px);line-height:1.2;color:#F5F2ED;white-space:nowrap;}
+    [data-pd-tb] .ptb-go{display:inline-flex;align-items:center;gap:14px;flex:none;margin-inline-start:auto;padding:17px 22px;background:#D6C2A8;border:1px solid #D6C2A8;color:#1F1F1F;font-family:'GE SS Two','Arial',sans-serif;font-size:12.5px;text-transform:uppercase;text-decoration:none;white-space:nowrap;transition:background 0.4s var(--e),color 0.4s var(--e),gap 0.4s var(--e);}
+    [data-pd-tb] .ptb-go:hover,[data-pd-tb] .ptb-go:focus-visible{background:transparent;color:#D6C2A8;gap:20px;}
+    /* entrance: the facts in order, the dividers drawn between them */
+    [data-pd-tb] .ptb-in{opacity:0;transform:translateY(8px);transition:opacity 0.8s var(--e) var(--d,0s),transform 0.8s var(--e) var(--d,0s);}
+    [data-pd-tb].is-in .ptb-in{opacity:1;transform:none;}
+    @media(max-width:1366px) and (min-width:1261px){
+      [data-pd-tb] .ptb-i{width:48px;height:48px;}
+      [data-pd-tb] .ptb-f{gap:13px;padding:0 20px;}
+    }
+    @media(max-width:1260px){
+      [data-pd-tb] .ptb{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 20px;padding:clamp(28px,4vw,40px) 0;min-height:0;}
+      [data-pd-tb] .ptb-f{padding:0;}
+      [data-pd-tb] .ptb-v{white-space:normal;}
+      [data-pd-tb] .ptb-f+.ptb-f::before{display:none;}
+      [data-pd-tb] .ptb-go{grid-column:1/-1;justify-self:start;margin:4px 0 0;}
+    }
+    @media(max-width:600px){
+      [data-pd-tb] .ptb{grid-template-columns:1fr 1fr;}
+      [data-pd-tb] .ptb-i{width:38px;height:38px;}
+      [data-pd-tb] .ptb-v{white-space:normal;}
+      [data-pd-tb] .ptb-f:nth-child(4){grid-column:1/-1;}
+      [data-pd-tb] .ptb-f:nth-child(4) .ptb-v{white-space:normal;}
+      [data-pd-tb] .ptb-go{justify-self:stretch;justify-content:center;}
+    }
+    @media(prefers-reduced-motion:reduce){
+      [data-pd-tb] .ptb-in{opacity:1;transform:none;transition:none;}
+      [data-pd-tb] .ptb-f+.ptb-f::before{transform:none;transition:none;}
+    }
+  </style>
+  <div class="ptb">
+    <div class="ptb-f ptb-in" style="--d:0.1s;"><span class="ptb-i"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg></span><span class="ptb-t"><span class="ptb-k">الموقع</span><span class="ptb-v">{{ location }}</span></span></div>
+    <div class="ptb-f ptb-in" style="--d:0.15s;"><span class="ptb-i"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.41 2.41 0 0 1 0-3.4l2.6-2.6a2.41 2.41 0 0 1 3.4 0Z"/><path d="m14.5 12.5 2-2"/><path d="m11.5 9.5 2-2"/><path d="m8.5 6.5 2-2"/><path d="m17.5 15.5 2-2"/></svg></span><span class="ptb-t"><span class="ptb-k">المساحة المبنية</span><span class="ptb-v">{{ area }}</span></span></div>
+    <div class="ptb-f ptb-in" style="--d:0.2s;"><span class="ptb-i"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15.707 21.293a1 1 0 0 1-1.414 0l-1.586-1.586a1 1 0 0 1 0-1.414l5.586-5.586a1 1 0 0 1 1.414 0l1.586 1.586a1 1 0 0 1 0 1.414z"/><path d="m18 13-1.375-6.874a1 1 0 0 0-.746-.776L3.235 2.028a1 1 0 0 0-1.207 1.207L5.35 15.879a1 1 0 0 0 .776.746L13 18"/><path d="m2.3 2.3 7.286 7.286"/><circle cx="11" cy="11" r="2"/></svg></span><span class="ptb-t"><span class="ptb-k">الحالة</span><span class="ptb-v">{{ date }}</span></span></div>
+    <div class="ptb-f ptb-in" style="--d:0.25s;"><span class="ptb-i"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg></span><span class="ptb-t"><span class="ptb-k">النطاق</span><span class="ptb-v">{{ scopeShort }}</span></span></div>
   </div>
 </section>
 
-<section data-screen-label="Project Body" style="background:#1F1F1F;padding:clamp(64px,8vw,100px) clamp(24px,5vw,80px);">
-  <div class="fiq-pd-body" style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr;gap:clamp(48px,6vw,96px);align-items:start;">
-    <div>
-      <div style="display:flex;flex-direction:column;gap:24px;margin-bottom:52px;">
-        <sc-for list="{{ paras }}" as="para" hint-placeholder-count="3">
-          <p style="font-family:'GE SS Two','Arial',sans-serif;font-size:16px;line-height:2;color:rgba(232,223,216,0.75);margin:0;">{{ para.text }}</p>
-        </sc-for>
-      </div>
+<!-- The story: six numbered parts, and a viewfinder that shows the room each part describes -->
+<section data-screen-label="Project Story" data-pd-story>
+  <style>
+    [data-pd-story]{--e:cubic-bezier(0.25,0.46,0.45,0.94);background:#1F1F1F;padding:clamp(72px,9vw,128px) clamp(24px,5vw,80px);}
+    [data-pd-story] .pds-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:0 32px;align-items:start;}
+    [data-pd-story] .pds-text{grid-column:1/8;min-width:0;}
+    [data-pd-story] .pds-side{grid-column:9/13;position:sticky;top:112px;min-width:0;}
+    [data-pd-story] .pds-label{display:flex;align-items:center;gap:16px;margin:0 0 clamp(20px,2.4vw,32px);font-family:'GE SS Two','Arial',sans-serif;font-size:12.5px;text-transform:uppercase;color:rgba(214,194,168,0.7);}
+    [data-pd-story] .pds-label i{display:block;width:32px;height:1px;background:#D6C2A8;flex:none;}
+    /* the parts */
+    [data-pd-story] .pds-ch{position:relative;padding:clamp(26px,3vw,34px) 0 clamp(40px,4.4vw,56px);}
+    [data-pd-story] .pds-ch::before,[data-pd-story] .pds-ch::after{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:rgba(214,194,168,0.14);}
+    [data-pd-story] .pds-ch::after{background:#D6C2A8;transform:scaleX(0);transform-origin:right;transition:transform 0.9s var(--e);}
+    [data-pd-story] .pds-ch.is-on::after{transform:scaleX(1);}
+    [data-pd-story] .pds-h{display:grid;grid-template-columns:56px 1fr;align-items:baseline;margin:0 0 18px;font-family:'GE SS Two','Arial',sans-serif;font-weight:500;font-size:clamp(22px,2vw,28px);line-height:1.5;color:rgba(245,242,237,0.5);text-wrap:balance;transition:color 0.6s var(--e);}
+    [data-pd-story] .pds-h .pds-n{font-size:13.5px;color:rgba(214,194,168,0.45);transition:color 0.6s var(--e);}
+    [data-pd-story] .pds-ch.is-on .pds-h{color:#F5F2ED;}
+    [data-pd-story] .pds-ch.is-on .pds-h .pds-n{color:#D6C2A8;}
+    [data-pd-story] .pds-ch p{margin:0 56px 0 0;max-width:38rem;font-family:'GE SS Two','Arial',sans-serif;font-size:17.5px;line-height:1.95;color:rgba(232,223,216,0.72);}
+    [data-pd-story] .pds-ch:first-of-type p{font-size:clamp(18px,1.5vw,21px);line-height:1.75;color:rgba(245,242,237,0.88);}
+    [data-pd-story] .pds-inline{display:none;}
+    /* the viewfinder */
+    [data-pd-story] .pds-top{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:16px;}
+    [data-pd-story] .pds-top .pds-label{margin:0;}
+    [data-pd-story] .pds-count{font-family:'GE SS Two','Arial',sans-serif;font-size:13.5px;color:#F5F2ED;}
+    [data-pd-story] .pds-frame{position:relative;display:block;aspect-ratio:4/3;max-height:max(200px,calc(100vh - 520px));background:#26201A;cursor:zoom-in;outline:none;}
+    [data-pd-story] .pds-frame:focus-visible{outline:1px solid #D6C2A8;outline-offset:12px;}
+    [data-pd-story] .pds-view{position:absolute;inset:0;overflow:hidden;}
+    [data-pd-story] .pds-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.04);transition:opacity 0.8s var(--e),transform 1.6s var(--e);}
+    [data-pd-story] .pds-img.is-on{opacity:1;transform:none;}
+    [data-pd-story] .pds-frame:hover .pds-img.is-on{transform:scale(1.02);}
+    [data-pd-story] .pds-mark{position:absolute;width:14px;height:14px;border:0 solid #D6C2A8;pointer-events:none;}
+    [data-pd-story] .pds-mark--tl{top:-8px;left:-8px;border-width:1px 0 0 1px;}
+    [data-pd-story] .pds-mark--tr{top:-8px;right:-8px;border-width:1px 1px 0 0;}
+    [data-pd-story] .pds-mark--bl{bottom:-8px;left:-8px;border-width:0 0 1px 1px;}
+    [data-pd-story] .pds-mark--br{bottom:-8px;right:-8px;border-width:0 1px 1px 0;}
+    [data-pd-story] .pds-cap{display:flex;align-items:center;gap:12px;min-height:18px;margin:20px 0 0;font-family:'GE SS Two','Arial',sans-serif;font-size:14.5px;color:rgba(214,194,168,0.8);}
+    [data-pd-story] .pds-cap::before{content:"";display:block;width:20px;height:1px;flex:none;background:rgba(214,194,168,0.6);}
+    [data-pd-story] .pds-ticks{display:flex;gap:4px;margin:22px 0 0;padding:0;list-style:none;}
+    [data-pd-story] .pds-ticks li{flex:1;}
+    [data-pd-story] .pds-ticks button{display:block;width:100%;padding:10px 0 0;background:none;border:0;border-top:1px solid rgba(214,194,168,0.22);cursor:pointer;font-family:'GE SS Two','Arial',sans-serif;font-size:12px;color:rgba(214,194,168,0.4);transition:color 0.3s var(--e),border-color 0.3s var(--e);}
+    [data-pd-story] .pds-ticks button.is-past{border-color:rgba(214,194,168,0.55);}
+    [data-pd-story] .pds-ticks button.is-on{color:#F5F2ED;border-color:#F5F2ED;}
+    [data-pd-story] .pds-ticks button:hover,[data-pd-story] .pds-ticks button:focus-visible{color:#F5F2ED;}
+    /* the scope */
+    [data-pd-story] .pds-scope{margin-top:32px;}
+    [data-pd-story] .pds-scope-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding-bottom:12px;border-bottom:1px solid rgba(214,194,168,0.14);}
+    [data-pd-story] .pds-scope-head .pds-label{margin:0;}
+    [data-pd-story] .pds-scope-head small{font-family:'GE SS Two','Arial',sans-serif;font-size:13.5px;color:rgba(214,194,168,0.45);}
+    [data-pd-story] .pds-scope ul{margin:0;padding:0;list-style:none;}
+    [data-pd-story] .pds-scope li{display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid rgba(214,194,168,0.1);font-family:'GE SS Two','Arial',sans-serif;font-size:15.5px;color:rgba(245,242,237,0.38);transition:color 0.5s var(--e);}
+    [data-pd-story] .pds-scope li::before{content:"";display:block;width:7px;height:7px;flex:none;border:1px solid rgba(214,194,168,0.4);transition:background 0.5s var(--e),border-color 0.5s var(--e);}
+    [data-pd-story] .pds-scope li.is-on{color:#F5F2ED;}
+    [data-pd-story] .pds-scope li.is-on::before{background:#D6C2A8;border-color:#D6C2A8;}
+    [data-pd-story] .pds-cta{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:28px;padding:17px 20px;background:#D6C2A8;border:1px solid #D6C2A8;color:#1F1F1F;text-decoration:none;font-family:'GE SS Two','Arial',sans-serif;font-size:13px;text-transform:uppercase;transition:background 0.4s var(--e),color 0.4s var(--e),gap 0.4s var(--e);}
+    [data-pd-story] .pds-cta:hover,[data-pd-story] .pds-cta:focus-visible{background:transparent;color:#D6C2A8;gap:18px;}
+    /* short laptop screens: the whole sidebar stays in view */
+    @media(min-width:961px) and (max-height:860px){
+      [data-pd-story] .pds-side{top:100px;}
+      [data-pd-story] .pds-cap{margin-top:12px;}
+      [data-pd-story] .pds-ticks{margin-top:14px;}
+      [data-pd-story] .pds-scope{margin-top:20px;}
+      [data-pd-story] .pds-scope li{padding:7px 0;}
+      [data-pd-story] .pds-cta{margin-top:18px;padding:13px 20px;}
+    }
+    @media(max-width:960px){
+      [data-pd-story] .pds-grid{display:block;}
+      [data-pd-story] .pds-side{position:static;margin-top:16px;}
+      [data-pd-story] .pds-top,[data-pd-story] .pds-frame,[data-pd-story] .pds-cap,[data-pd-story] .pds-ticks{display:none;}
+      [data-pd-story] .pds-scope{margin-top:0;}
+      [data-pd-story] .pds-h{grid-template-columns:40px 1fr;}
+      [data-pd-story] .pds-ch p{margin-right:0;}
+      [data-pd-story] .pds-inline{display:block;width:100%;aspect-ratio:3/2;object-fit:cover;margin:0 0 20px;background:#26201A;}
+      [data-pd-story] .pds-h,[data-pd-story] .pds-h .pds-n{color:#F5F2ED;}
+      [data-pd-story] .pds-h .pds-n{color:#D6C2A8;}
+    }
+    @media(prefers-reduced-motion:reduce){
+      [data-pd-story] .pds-img,[data-pd-story] .pds-ch::after,[data-pd-story] .pds-h{transition:none;}
+      [data-pd-story] .pds-img,[data-pd-story] .pds-frame:hover .pds-img.is-on{transform:none;}
+    }
+  </style>
+
+  <div class="pds-grid">
+    <div class="pds-text">
+      <div class="pds-label"><i></i>التصور في ستة أجزاء</div>
+      <sc-for list="{{ chapters }}" as="ch" hint-placeholder-count="6">
+        <article class="pds-ch" id="{{ ch.anchor }}" data-pds-ch data-shot="{{ ch.shot }}" data-disc="{{ ch.disc }}">
+          <h2 class="pds-h"><span class="pds-n">{{ ch.num }}</span>{{ ch.title }}</h2>
+          <img class="pds-inline" src="{{ ch.image }}" alt="{{ ch.caption }}" data-pos="{{ ch.pos }}" loading="lazy" decoding="async">
+          <p>{{ ch.text }}</p>
+        </article>
+      </sc-for>
     </div>
 
-    <aside id="pd-details-anchor" class="fiq-pd-sidebar" style="position:sticky;top:110px;background:#26201A;border:1px solid rgba(214,194,168,0.14);padding:clamp(28px,3vw,40px);">
-      <div style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:rgba(214,194,168,0.45);margin-bottom:24px;">تفاصيل المشروع</div>
-      <div style="display:flex;flex-direction:column;gap:18px;margin-bottom:32px;">
-        <div style="display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid rgba(214,194,168,0.1);padding-bottom:14px;">
-          <span style="font-family:'GE SS Two','Arial',sans-serif;font-size:12px;color:rgba(214,194,168,0.55);">التصنيف</span>
-          <span style="font-family:'GE SS Two','Arial',sans-serif;font-size:12px;color:#FFFFFF;">{{ category }}</span>
+    <aside id="pd-details-anchor" class="pds-side" aria-label="في الإطار">
+      <div class="pds-top"><div class="pds-label"><i></i>في الإطار</div><span class="pds-count" data-pds-count dir="ltr">01 / 06</span></div>
+      <div class="pds-frame" data-pds-frame role="button" tabindex="0" aria-label="افتح هذه اللقطة بملء الشاشة">
+        <div class="pds-view">
+          <sc-for list="{{ chapters }}" as="ch" hint-placeholder-count="6">
+            <img class="pds-img" src="{{ ch.image }}" alt="{{ ch.caption }}" data-cap="{{ ch.caption }}" data-pos="{{ ch.pos }}" loading="lazy" decoding="async">
+          </sc-for>
         </div>
-        <div style="display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid rgba(214,194,168,0.1);padding-bottom:14px;">
-          <span style="font-family:'GE SS Two','Arial',sans-serif;font-size:12px;color:rgba(214,194,168,0.55);">الموقع</span>
-          <span style="font-family:'GE SS Two','Arial',sans-serif;font-size:12px;color:#FFFFFF;">{{ location }}</span>
-        </div>
-        <div style="display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid rgba(214,194,168,0.1);padding-bottom:14px;">
-          <span style="font-family:'GE SS Two','Arial',sans-serif;font-size:12px;color:rgba(214,194,168,0.55);">المساحة المبنية</span>
-          <span style="font-family:'GE SS Two','Arial',sans-serif;font-size:12px;color:#FFFFFF;">{{ area }}</span>
-        </div>
-        <div style="display:flex;justify-content:space-between;gap:12px;">
-          <span style="font-family:'GE SS Two','Arial',sans-serif;font-size:12px;color:rgba(214,194,168,0.55);">الحالة</span>
-          <span style="font-family:'GE SS Two','Arial',sans-serif;font-size:12px;color:#FFFFFF;">{{ date }}</span>
-        </div>
+        <i class="pds-mark pds-mark--tl"></i><i class="pds-mark pds-mark--tr"></i><i class="pds-mark pds-mark--bl"></i><i class="pds-mark pds-mark--br"></i>
       </div>
-      <a href="/ar/contact" data-pd-contact style="font-family:'GE SS Two','Arial',sans-serif;font-size:10px;letter-spacing:normal;text-transform:uppercase;color:#D6C2A8;text-decoration:none;border:1px solid rgba(214,194,168,0.4);padding:15px 0;display:flex;align-items:center;justify-content:center;gap:10px;transition:all 0.3s;width:100%;">
-        ناقش مشروعاً مشابهاً
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="transform:scaleX(-1);"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-      </a>
+      <p class="pds-cap" data-pds-cap aria-live="polite">{{ firstCaption }}، تصور تصميمي</p>
+      <ol class="pds-ticks" aria-label="الأجزاء">
+        <sc-for list="{{ chapters }}" as="ch" hint-placeholder-count="6">
+          <li><button type="button" data-pds-tick aria-label="الجزء {{ ch.num }}: {{ ch.title }}">{{ ch.num }}</button></li>
+        </sc-for>
+      </ol>
+      <div class="pds-scope">
+        <div class="pds-scope-head"><div class="pds-label"><i></i>نطاق عمل FurnishIQ</div><small>المضاء: حاضر في هذا الجزء</small></div>
+        <ul>
+          <li data-pds-d="d">التصميم الداخلي</li>
+          <li data-pds-d="f">التشطيبات</li>
+          <li data-pds-d="m">الهندسة الكهروميكانيكية</li>
+          <li data-pds-d="u">الأثاث المخصص</li>
+        </ul>
+      </div>
+      <a href="/ar/contact" class="pds-cta" data-pd-similar>ناقش مشروعاً مشابهاً <svg style="transform:scaleX(-1);" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
     </aside>
   </div>
 </section>
@@ -682,78 +798,208 @@ input:focus, select:focus, textarea:focus {
   </div>
 </section>
 
-<sc-if value="{{ hasRelated }}" hint-placeholder-val="{{ true }}">
-<section data-screen-label="Related Projects" style="background:#26201A;padding:clamp(64px,8vw,100px) clamp(24px,5vw,80px);border-top:1px solid rgba(214,194,168,0.12);">
-  <div style="max-width:1280px;margin:0 auto;">
-    <div style="display:flex;align-items:center;gap:16px;margin-bottom:40px;">
-      <span style="display:block;width:32px;height:1px;background:#D6C2A8;flex-shrink:0;"></span>
-      <span style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:rgba(214,194,168,0.7);">المزيد من مشاريع {{ category }}</span>
+<!-- The way on: the portfolio as ten doors, the next one open -->
+<section data-screen-label="Next Project" data-pd-next>
+  <style>
+    [data-pd-next]{--e:cubic-bezier(0.25,0.46,0.45,0.94);--open:8;background:#1F1F1F;border-top:1px solid rgba(214,194,168,0.12);padding:clamp(72px,9vw,120px) 0 clamp(64px,8vw,104px);}
+    [data-pd-next] .pn-grid{max-width:1280px;margin:0 auto;padding:0 clamp(24px,5vw,80px);box-sizing:content-box;}
+    [data-pd-next] .pn-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:clamp(28px,3.4vw,44px);}
+    [data-pd-next] .pn-label{display:flex;align-items:center;gap:16px;margin-bottom:16px;font-family:'GE SS Two','Arial',sans-serif;font-size:12.5px;text-transform:uppercase;color:rgba(214,194,168,0.7);}
+    [data-pd-next] .pn-label i{display:block;width:32px;height:1px;background:#D6C2A8;flex:none;}
+    [data-pd-next] .pn-h2{margin:0;font-family:'GE SS Two','Arial',sans-serif;font-weight:500;font-size:clamp(30px,3.4vw,50px);line-height:1.3;color:#F5F2ED;}
+    [data-pd-next] .pn-h2 span{color:#D6C2A8;}
+    [data-pd-next] .pn-all{position:relative;display:inline-flex;align-items:center;gap:12px;padding-bottom:6px;font-family:'GE SS Two','Arial',sans-serif;font-size:12.5px;text-transform:uppercase;color:#F5F2ED;text-decoration:none;transition:gap 0.4s var(--e),color 0.3s var(--e);}
+    [data-pd-next] .pn-all::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:rgba(214,194,168,0.5);}
+    [data-pd-next] .pn-all:hover,[data-pd-next] .pn-all:focus-visible{gap:18px;color:#D6C2A8;}
+    /* the corridor: ten slices edge to edge, one open */
+    [data-pd-next] .pn-strip{display:flex;gap:2px;height:min(76vh,760px);min-height:460px;background:#1F1F1F;}
+    [data-pd-next] .pn-s{position:relative;flex:1 1 0;min-width:0;overflow:hidden;color:#F5F2ED;text-decoration:none;outline:none;background:#26201A;transition:flex-grow 0.9s var(--e);}
+    [data-pd-next] .pn-s img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(0.42) saturate(0.75);transform:scale(1.04);transition:filter 0.9s var(--e),transform 1.6s var(--e);}
+    [data-pd-next] .pn-n{position:absolute;top:22px;left:0;right:0;text-align:center;font-family:'GE SS Two','Arial',sans-serif;font-size:13.5px;color:rgba(245,242,237,0.75);transition:opacity 0.5s var(--e);}
+    [data-pd-next] .pn-v{position:absolute;bottom:26px;left:50%;writing-mode:vertical-rl;transform:translateX(-50%) rotate(180deg);white-space:nowrap;max-height:calc(100% - 96px);overflow:hidden;font-family:'GE SS Two','Arial',sans-serif;font-weight:500;font-size:16.5px;color:#F5F2ED;transition:opacity 0.5s var(--e);}
+    [data-pd-next] .pn-tag{position:absolute;top:20px;inset-inline-start:24px;padding:7px 11px;background:#D6C2A8;font-family:'GE SS Two','Arial',sans-serif;font-size:12.5px;text-transform:uppercase;color:#1F1F1F;opacity:0;transition:opacity 0.5s var(--e);}
+    [data-pd-next] .pn-s[data-state="other"] .pn-tag{display:none;}
+    [data-pd-next] .pn-c{position:absolute;right:clamp(20px,2.4vw,36px);bottom:clamp(20px,2.4vw,36px);width:min(560px,calc(100% - 2 * clamp(20px,2.4vw,36px)));box-sizing:border-box;padding:clamp(20px,2vw,28px) clamp(22px,2.4vw,32px);background:rgba(31,31,31,0.84);opacity:0;transform:translateY(12px);transition:opacity 0.4s var(--e),transform 0.4s var(--e);pointer-events:none;}
+    [data-pd-next] .pn-meta{display:block;font-family:'GE SS Two','Arial',sans-serif;font-size:12.5px;text-transform:uppercase;color:rgba(214,194,168,0.8);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+    [data-pd-next] .pn-title{display:block;margin-top:10px;font-family:'GE SS Two','Arial',sans-serif;font-weight:500;font-size:clamp(26px,2.6vw,40px);line-height:1.35;color:#F5F2ED;}
+    [data-pd-next] .pn-go{display:inline-flex;align-items:center;gap:14px;margin-top:18px;font-family:'GE SS Two','Arial',sans-serif;font-size:13px;text-transform:uppercase;color:#D6C2A8;}
+    /* which slice is open: the next one, until another is pointed at or focused */
+    [data-pd-next] .pn-s[data-state="next"],
+    [data-pd-next] .pn-strip:hover .pn-s:hover,
+    [data-pd-next] .pn-strip:focus-within .pn-s:focus-visible{flex-grow:var(--open);}
+    [data-pd-next] .pn-strip:hover .pn-s[data-state="next"]:not(:hover),
+    [data-pd-next] .pn-strip:focus-within .pn-s[data-state="next"]:not(:focus-visible){flex-grow:1;}
+    [data-pd-next] .pn-s[data-state="next"] img,[data-pd-next] .pn-strip:hover .pn-s:hover img,[data-pd-next] .pn-strip:focus-within .pn-s:focus-visible img{filter:none;transform:none;}
+    [data-pd-next] .pn-strip:hover .pn-s[data-state="next"]:not(:hover) img,[data-pd-next] .pn-strip:focus-within .pn-s[data-state="next"]:not(:focus-visible) img{filter:brightness(0.42) saturate(0.75);transform:scale(1.04);}
+    [data-pd-next] .pn-s[data-state="next"] .pn-c,[data-pd-next] .pn-strip:hover .pn-s:hover .pn-c,[data-pd-next] .pn-strip:focus-within .pn-s:focus-visible .pn-c{opacity:1;transform:none;transition-delay:0.35s;}
+    [data-pd-next] .pn-strip:hover .pn-s[data-state="next"]:not(:hover) .pn-c,[data-pd-next] .pn-strip:focus-within .pn-s[data-state="next"]:not(:focus-visible) .pn-c{opacity:0;transform:translateY(12px);transition-delay:0s;}
+    [data-pd-next] .pn-s[data-state="next"] .pn-v,[data-pd-next] .pn-strip:hover .pn-s:hover .pn-v,[data-pd-next] .pn-strip:focus-within .pn-s:focus-visible .pn-v,
+    [data-pd-next] .pn-s[data-state="next"] .pn-n,[data-pd-next] .pn-strip:hover .pn-s:hover .pn-n,[data-pd-next] .pn-strip:focus-within .pn-s:focus-visible .pn-n{opacity:0;}
+    [data-pd-next] .pn-strip:hover .pn-s[data-state="next"]:not(:hover) .pn-v,[data-pd-next] .pn-strip:hover .pn-s[data-state="next"]:not(:hover) .pn-n,
+    [data-pd-next] .pn-strip:focus-within .pn-s[data-state="next"]:not(:focus-visible) .pn-v,[data-pd-next] .pn-strip:focus-within .pn-s[data-state="next"]:not(:focus-visible) .pn-n{opacity:1;}
+    [data-pd-next] .pn-s[data-state="next"] .pn-tag,[data-pd-next] .pn-strip:hover .pn-s:hover .pn-tag,[data-pd-next] .pn-strip:focus-within .pn-s:focus-visible .pn-tag{opacity:1;transition-delay:0.35s;}
+    [data-pd-next] .pn-strip:hover .pn-s[data-state="next"]:not(:hover) .pn-tag{opacity:0;transition-delay:0s;}
+    /* the one being read: marked, darker, and not a way on */
+    [data-pd-next] .pn-s[data-state="here"]{background:#1F1F1F;}
+    [data-pd-next] .pn-s[data-state="here"] img{filter:brightness(0.22) saturate(0.4);}
+    [data-pd-next] .pn-s[data-state="here"]::after{content:"";position:absolute;inset:0;border:1px solid rgba(214,194,168,0.45);pointer-events:none;}
+    [data-pd-next] .pn-s[data-state="here"] .pn-n{color:#D6C2A8;}
+    /* its marker shows whether it is open or not */
+    [data-pd-next] .pn-s[data-state="here"] .pn-tag{opacity:1;top:50px;inset-inline-start:50%;transform:translateX(50%);padding:5px 7px;font-size:12px;background:transparent;border:1px solid rgba(214,194,168,0.6);color:#D6C2A8;}
+    [data-pd-next] .pn-strip:hover .pn-s[data-state="here"]:hover .pn-tag{inset-inline-start:24px;transform:none;}
+    [data-pd-next] .pn-foot{display:flex;justify-content:space-between;gap:24px;margin-top:18px;font-family:'GE SS Two','Arial',sans-serif;font-size:13.5px;color:rgba(214,194,168,0.55);}
+    @media(max-width:768px){
+      [data-pd-next] .pn-strip{flex-direction:column;height:auto;min-height:0;gap:2px;}
+      [data-pd-next] .pn-s{flex:none;height:64px;transition:height 0.6s var(--e);}
+      [data-pd-next] .pn-s[data-state="next"]{height:min(110vw,440px);}
+      [data-pd-next] .pn-strip:hover .pn-s[data-state="next"]:not(:hover){flex-grow:0;}
+      [data-pd-next] .pn-n{top:50%;right:20px;left:auto;transform:translateY(-50%);}
+      [data-pd-next] .pn-v{writing-mode:horizontal-tb;transform:translateY(50%);bottom:50%;left:auto;right:64px;max-height:none;max-width:calc(100% - 84px);text-overflow:ellipsis;}
+      [data-pd-next] .pn-tag{inset-inline-start:20px;}
+      [data-pd-next] .pn-s[data-state="here"] .pn-tag{top:50%;inset-inline-start:auto;left:16px;transform:translateY(-50%);}
+      [data-pd-next] .pn-c{right:12px;bottom:12px;width:calc(100% - 24px);}
+      [data-pd-next] .pn-foot span:first-child{display:none;}
+    }
+    @media(prefers-reduced-motion:reduce){
+      [data-pd-next] .pn-s,[data-pd-next] .pn-s img,[data-pd-next] .pn-c,[data-pd-next] .pn-v,[data-pd-next] .pn-n,[data-pd-next] .pn-tag{transition:none!important;}
+    }
+  </style>
+  <div class="pn-grid">
+    <div class="pn-head">
+      <div><div class="pn-label"><i></i>الأعمال</div><h2 class="pn-h2">عشرة تصورات. <span>التالي: {{ next.num }}.</span></h2></div>
+      <a class="pn-all" href="/ar/projects">كل المشاريع <svg style="transform:scaleX(-1);" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
     </div>
-    <div class="fiq-pd-related" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
-      <sc-for list="{{ related }}" as="rp" hint-placeholder-count="3">
-        <a href="{{ rp.href }}" style="text-decoration:none;display:block;">
-          <div style="aspect-ratio:3/2;overflow:hidden;margin-bottom:16px;">
-            <img src="{{ rp.image }}" alt="{{ rp.title }}" style="display:block;width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async">
-          </div>
-          <span style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:rgba(214,194,168,0.6);">{{ rp.location }}</span>
-          <h3 style="font-family:'GE SS Two','Arial',sans-serif;font-size:16px;font-weight:500;color:#FFFFFF;line-height:1.3;margin:8px 0 0;text-wrap:balance;">{{ rp.title }}</h3>
-        </a>
-      </sc-for>
-    </div>
+  </div>
+  <nav class="pn-strip" aria-label="الأعمال">
+    <sc-for list="{{ strip }}" as="s" hint-placeholder-count="10">
+      <a class="pn-s" href="{{ s.href }}" data-state="{{ s.state }}" aria-label="{{ s.num }}, {{ s.title }}, {{ s.category }}, {{ s.location }}">
+        <img src="{{ s.image }}" alt="" loading="lazy" decoding="async">
+        <span class="pn-n" aria-hidden="true">{{ s.num }}</span>
+        <span class="pn-v" aria-hidden="true">{{ s.title }}</span>
+        <span class="pn-tag" aria-hidden="true">{{ s.tag }}</span>
+        <span class="pn-c" aria-hidden="true">
+          <span class="pn-meta">{{ s.num }} · {{ s.category }} · {{ s.location }} · تصور</span>
+          <span class="pn-title">{{ s.title }}</span>
+          <span class="pn-go">{{ s.go }} <svg style="transform:scaleX(-1);" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+        </span>
+      </a>
+    </sc-for>
+  </nav>
+  <div class="pn-grid">
+    <div class="pn-foot"><span>أشر إلى أي تصور لفتحه.</span><span><span dir="ltr">{{ projNum }} / {{ projTotal }}</span> · أنت هنا</span></div>
   </div>
 </section>
-</sc-if>
 
-<section data-screen-label="CTA" style="position:relative;overflow:hidden;padding:clamp(64px,8vw,100px) clamp(24px,5vw,80px);">
-  <div style="position:absolute;inset:0;">
-    <img src="uploads/penthouse-wadi-double-height-living-riyadh-2752.webp" srcset="uploads/penthouse-wadi-double-height-living-riyadh-1280.webp 1280w, uploads/penthouse-wadi-double-height-living-riyadh-1920.webp 1920w, uploads/penthouse-wadi-double-height-living-riyadh-2752.webp 2752w" sizes="100vw" alt="" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async">
-  </div>
-  <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,15,10,0.88) 0%,rgba(20,15,10,0.72) 45%,rgba(20,15,10,0.5) 100%);pointer-events:none;"></div>
-
-  <div style="position:relative;z-index:1;max-width:1440px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(40px,6vw,96px);align-items:center;">
-    <div>
-      <div style="display:flex;align-items:center;gap:16px;margin-bottom:22px;">
-        <span style="display:block;width:32px;height:1px;background:#D6C2A8;flex-shrink:0;"></span>
-        <span style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:rgba(214,194,168,0.75);">جاهزون للبدء</span>
-      </div>
-      <h2 style="font-family:'GE SS Two','Arial',sans-serif;font-size:clamp(30px,3.6vw,48px);font-weight:600;color:#FFFFFF;line-height:1.3;letter-spacing:normal;margin:0 0 20px;text-wrap:balance;">ابنِ بثقة — من الداخل إلى الخارج.</h2>
-      <p style="font-family:'GE SS Two','Arial',sans-serif;font-size:15px;color:rgba(214,194,168,0.7);margin:0 0 36px;">أفكار واضحة. تنفيذ نظيف. تسليم دون ملاحظات.</p>
-      <div style="border-right:2px solid rgba(214,194,168,0.4);padding-right:22px;max-width:440px;">
-        <p style="font-family:'GE SS Two','Arial',sans-serif;font-size:13.5px;line-height:1.85;color:rgba(232,223,216,0.65);margin:0;">حمّل كتيّبنا الشامل لخدمات الأنظمة الكهروميكانيكية واكتشف كيف تصمم FurnishIQ العمود الفقري غير المرئي للمساحات عالمية المستوى في جميع أنحاء المملكة العربية السعودية.</p>
+<!-- ━━━━━━━━━━━━━━━━━━━━━ CTA BAND ━━━━━━━━━━━━━━━━━━━ -->
+<section data-screen-label="CTA" data-pj-cta dir="rtl" style="background:#3A2D25;color:#F5F2ED;border-top:1px solid rgba(214,194,168,0.12);padding:clamp(64px,8vw,128px) clamp(24px,5vw,80px);overflow:hidden;">
+  <style>
+    [data-pj-cta] .pc-wrap{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(40px,6vw,104px);align-items:center;}
+    [data-pj-cta] .pc-eyebrow{display:flex;align-items:center;gap:16px;margin:0 0 26px;font-family:'GE SS Two','Arial',sans-serif;font-size:12px;letter-spacing:normal;text-transform:uppercase;color:rgba(214,194,168,0.75);}
+    [data-pj-cta] .pc-eyebrow i{display:block;width:32px;height:1px;background:#D6C2A8;}
+    [data-pj-cta] .pc-h2{margin:0;font-family:'GE SS Two','Arial',sans-serif;font-weight:500;font-size:clamp(32px,3.4vw,50px);line-height:1.3;letter-spacing:0;color:#F5F2ED;text-wrap:balance;}
+    [data-pj-cta] .pc-h2 span{display:block;color:#D6C2A8;}
+    [data-pj-cta] .pc-sub{margin:clamp(20px,2.4vw,28px) 0 0;max-width:20em;font-family:'GE SS Two','Arial',sans-serif;font-size:clamp(17px,1.4vw,20px);line-height:1.6;color:rgba(245,242,237,0.66);}
+    [data-pj-cta] .pc-ctas{display:flex;align-items:center;flex-wrap:wrap;gap:16px 28px;margin-top:clamp(30px,3.4vw,44px);}
+    [data-pj-cta] .pc-cta{display:inline-flex;align-items:center;gap:14px;padding:19px 34px;background:#D6C2A8;color:#1F1F1F;border:1px solid #D6C2A8;text-decoration:none;font-family:'GE SS Two','Arial',sans-serif;font-size:13px;letter-spacing:normal;text-transform:uppercase;transition:background 0.4s cubic-bezier(0.25,0.46,0.45,0.94),color 0.4s cubic-bezier(0.25,0.46,0.45,0.94);}
+    [data-pj-cta] .pc-cta:hover,[data-pj-cta] .pc-cta:focus-visible{background:transparent;color:#D6C2A8;}
+    [data-pj-cta] .pc-wa{display:inline-flex;align-items:center;gap:12px;padding-bottom:6px;border-bottom:1px solid rgba(214,194,168,0.45);color:#F5F2ED;text-decoration:none;font-family:'GE SS Two','Arial',sans-serif;font-size:13px;letter-spacing:normal;text-transform:uppercase;transition:color 0.4s cubic-bezier(0.25,0.46,0.45,0.94),border-color 0.4s cubic-bezier(0.25,0.46,0.45,0.94);}
+    [data-pj-cta] .pc-wa:hover,[data-pj-cta] .pc-wa:focus-visible{color:#D6C2A8;border-color:#D6C2A8;}
+    /* a sign-up form in the text column */
+    [data-pj-cta] .pc-form{display:flex;margin-top:clamp(30px,3.4vw,44px);max-width:480px;border:1px solid rgba(214,194,168,0.3);transition:border-color 0.4s cubic-bezier(0.25,0.46,0.45,0.94);}
+    [data-pj-cta] .pc-form:focus-within{border-color:#D6C2A8;}
+    [data-pj-cta] .pc-form input{flex:1;min-width:0;background:transparent;border:0;outline:none;padding:18px 20px;font-family:'GE SS Two','Arial',sans-serif;font-size:15px;color:#F5F2ED;}
+    [data-pj-cta] .pc-form input::placeholder{color:rgba(245,242,237,0.45);}
+    [data-pj-cta] .pc-form button{flex:none;display:inline-flex;align-items:center;gap:12px;padding:0 28px;background:#D6C2A8;border:0;cursor:pointer;font-family:'GE SS Two','Arial',sans-serif;font-size:13px;letter-spacing:normal;text-transform:uppercase;color:#1F1F1F;transition:background 0.4s cubic-bezier(0.25,0.46,0.45,0.94);}
+    [data-pj-cta] .pc-form button:hover,[data-pj-cta] .pc-form button:focus-visible{background:#F5F2ED;}
+    [data-pj-cta] .pc-ok{margin:14px 0 0;font-family:'GE SS Two','Arial',sans-serif;font-size:13px;color:rgba(214,194,168,0.75);}
+    /* the drafting frame */
+    [data-pj-cta] .pc-stage{position:relative;padding-top:26px;}
+    [data-pj-cta] .pc-dim{position:absolute;top:0;left:0;right:0;height:9px;}
+    [data-pj-cta] .pc-dim::before,[data-pj-cta] .pc-dim::after{content:"";position:absolute;top:0;width:1px;height:9px;background:rgba(214,194,168,0.5);}
+    [data-pj-cta] .pc-dim::before{left:0;}
+    [data-pj-cta] .pc-dim::after{right:0;}
+    [data-pj-cta] .pc-dim i{position:absolute;top:4px;left:0;right:0;height:1px;background:rgba(214,194,168,0.5);}
+    [data-pj-cta] .pc-cap{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);padding:0 14px;background:#3A2D25;white-space:nowrap;font-family:'GE SS Two','Arial',sans-serif;font-size:12px;letter-spacing:normal;text-transform:uppercase;color:rgba(214,194,168,0.9);}
+    [data-pj-cta] .pc-frame{position:relative;display:block;margin:0;aspect-ratio:4/3;cursor:pointer;outline:none;}
+    [data-pj-cta] .pc-frame:focus-visible{outline:1px solid #D6C2A8;outline-offset:14px;}
+    [data-pj-cta] .pc-view{position:absolute;inset:0;overflow:hidden;background:#1F1712;box-shadow:0 24px 80px rgba(0,0,0,0.35);}
+    [data-pj-cta] .pc-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;}
+    [data-pj-cta] .pc-img.is-on{opacity:1;}
+    [data-pj-cta] .pc-sheet{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(10px,1.4vw,18px);opacity:0;}
+    [data-pj-cta] .pc-sheet svg.pc-grid{position:absolute;inset:0;width:100%;height:100%;color:rgba(214,194,168,0.07);}
+    /* the sheet fades in as the draw lands on it, and is gone at once when a draw begins */
+    [data-pj-cta] .is-yours .pc-sheet{opacity:1;transition:opacity 0.9s cubic-bezier(0.25,0.46,0.45,0.94);}
+    [data-pj-cta] .pc-eleven{position:relative;font-family:'Lama Sans',sans-serif;font-weight:500;font-size:clamp(96px,11vw,176px);line-height:0.9;letter-spacing:-0.04em;color:#D6C2A8;transform:translateY(14px);opacity:0;transition:opacity 0.9s cubic-bezier(0.25,0.46,0.45,0.94) 0.15s,transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94) 0.15s;}
+    [data-pj-cta] .pc-you{position:relative;font-family:'GE SS Two','Arial',sans-serif;font-size:15px;letter-spacing:normal;text-transform:uppercase;color:#F5F2ED;opacity:0;transition:opacity 0.9s cubic-bezier(0.25,0.46,0.45,0.94) 0.35s;}
+    [data-pj-cta] .pc-svc{position:relative;font-family:'GE SS Two','Arial',sans-serif;font-size:13px;letter-spacing:normal;text-transform:uppercase;color:rgba(214,194,168,0.6);opacity:0;transition:opacity 0.9s cubic-bezier(0.25,0.46,0.45,0.94) 0.5s;text-align:center;padding:0 16px;}
+    [data-pj-cta] .is-yours .pc-eleven{opacity:1;transform:none;}
+    [data-pj-cta] .is-yours .pc-you,[data-pj-cta] .is-yours .pc-svc{opacity:1;}
+    [data-pj-cta] .pc-num{position:absolute;bottom:14px;inset-inline-end:16px;z-index:2;padding:6px 10px;background:rgba(31,31,31,0.62);font-family:'Lama Sans',sans-serif;font-size:11px;letter-spacing:0.2em;color:#F5F2ED;transition:opacity 0.5s cubic-bezier(0.25,0.46,0.45,0.94);}
+    [data-pj-cta] .is-yours .pc-num{opacity:0;}
+    [data-pj-cta] .pc-mark{position:absolute;width:18px;height:18px;border:0 solid #D6C2A8;}
+    [data-pj-cta] .pc-mark--tl{top:-10px;left:-10px;border-width:1px 0 0 1px;}
+    [data-pj-cta] .pc-mark--tr{top:-10px;right:-10px;border-width:1px 1px 0 0;}
+    [data-pj-cta] .pc-mark--bl{bottom:-10px;left:-10px;border-width:0 0 1px 1px;}
+    [data-pj-cta] .pc-mark--br{bottom:-10px;right:-10px;border-width:0 1px 1px 0;}
+    /* one tick per item, and a longer last one for the sheet the draw lands on */
+    [data-pj-cta] .pc-foot{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-top:26px;}
+    [data-pj-cta] .pc-ticks{display:flex;flex:1;gap:4px;margin:0;padding:0;list-style:none;}
+    [data-pj-cta] .pc-ticks li{flex:1;padding-top:10px;border-top:1px solid rgba(214,194,168,0.22);font-family:'Lama Sans',sans-serif;font-size:9px;letter-spacing:0.12em;color:rgba(214,194,168,0.38);text-align:center;transition:color 0.2s,border-color 0.2s;}
+    [data-pj-cta] .pc-ticks li.is-on{color:#F5F2ED;border-color:#F5F2ED;}
+    [data-pj-cta] .pc-ticks li:last-child{flex:1.6;}
+    [data-pj-cta] .is-yours .pc-ticks li:last-child{color:#D6C2A8;border-color:#D6C2A8;}
+    [data-pj-cta] .pc-again{flex:none;display:inline-flex;align-items:center;gap:8px;padding:0;background:none;border:0;cursor:pointer;font-family:'GE SS Two','Arial',sans-serif;font-size:12px;letter-spacing:normal;text-transform:uppercase;color:rgba(214,194,168,0.7);transition:color 0.3s;}
+    [data-pj-cta] .pc-again:hover,[data-pj-cta] .pc-again:focus-visible{color:#F5F2ED;}
+    [data-pj-cta] .pc-again:disabled{opacity:0.35;cursor:default;}
+    @media(max-width:900px){
+      [data-pj-cta] .pc-wrap{grid-template-columns:1fr;}
+      [data-pj-cta] .pc-cta{width:100%;justify-content:center;box-sizing:border-box;}
+      [data-pj-cta] .pc-ticks li{font-size:0;padding-top:8px;}
+      [data-pj-cta] .pc-cap{max-width:calc(100% - 40px);overflow:hidden;text-overflow:ellipsis;}
+    }
+    @media(prefers-reduced-motion:reduce){
+      [data-pj-cta] *{transition:none!important;}
+    }
+  </style>
+  <div class="pc-wrap">
+    <div class="pc-text">
+      <p class="pc-eyebrow"><i></i>ابدأ مشروعاً</p>
+      <h2 class="pc-h2">أعجبك هذا التصور؟<span>التصور التالي لك.</span></h2>
+      <p class="pc-sub">يبدأ كل مشروع من FurnishIQ بورقة بيضاء وحديث.</p>
+      <div class="pc-ctas">
+        <a class="pc-cta" href="/ar/contact" data-pd-similar>احجز استشارة مجانية<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 5 5 12 12 19"/></svg></a>
+        <a class="pc-wa" href="{{ waHref }}" target="_blank" rel="noopener">راسل الاستوديو عبر واتساب</a>
       </div>
     </div>
-
-    <div style="display:flex;flex-direction:column;gap:26px;">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
-        <label style="display:flex;flex-direction:column;gap:8px;">
-          <span style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:rgba(214,194,168,0.55);">الاسم الأول *</span>
-          <input id="bf-first-name" type="text" required placeholder="سارة" style="font-family:'GE SS Two','Arial',sans-serif;font-size:14px;color:#FFFFFF;background:transparent;border:none;border-bottom:1px solid rgba(214,194,168,0.3);padding:6px 0 10px;outline:none;">
-          <span id="bf-first-name-error" style="display:none;font-family:'GE SS Two','Arial',sans-serif;font-size:11px;color:#E86A5C;"></span>
-        </label>
-        <label style="display:flex;flex-direction:column;gap:8px;">
-          <span style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:rgba(214,194,168,0.55);">اسم العائلة *</span>
-          <input id="bf-last-name" type="text" required placeholder="الراشد" style="font-family:'GE SS Two','Arial',sans-serif;font-size:14px;color:#FFFFFF;background:transparent;border:none;border-bottom:1px solid rgba(214,194,168,0.3);padding:6px 0 10px;outline:none;">
-          <span id="bf-last-name-error" style="display:none;font-family:'GE SS Two','Arial',sans-serif;font-size:11px;color:#E86A5C;"></span>
-        </label>
-      </div>
-      <label style="display:flex;flex-direction:column;gap:8px;">
-        <span style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:rgba(214,194,168,0.55);">البريد الإلكتروني *</span>
-        <input id="bf-email" type="email" required placeholder="sarah@company.com" style="font-family:'GE SS Two','Arial',sans-serif;font-size:14px;color:#FFFFFF;background:transparent;border:none;border-bottom:1px solid rgba(214,194,168,0.3);padding:6px 0 10px;outline:none;">
-        <span id="bf-email-error" style="display:none;font-family:'GE SS Two','Arial',sans-serif;font-size:11px;color:#E86A5C;"></span>
-      </label>
-      <label style="display:flex;flex-direction:column;gap:8px;">
-        <span style="font-family:'GE SS Two','Arial',sans-serif;font-size:9px;letter-spacing:normal;text-transform:uppercase;color:rgba(214,194,168,0.55);">رقم الهاتف *</span>
-        <div style="display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(214,194,168,0.3);padding:6px 0 10px;">
-          <span style="font-family:'GE SS Two','Arial',sans-serif;font-size:14px;color:#FFFFFF;">+966</span>
-          <span style="width:1px;height:14px;background:rgba(214,194,168,0.3);"></span>
-          <input id="bf-phone" type="tel" required placeholder="58 033 0627" style="flex:1;font-family:'GE SS Two','Arial',sans-serif;font-size:14px;color:#FFFFFF;background:transparent;border:none;outline:none;">
+    <div class="pc-stage" data-pc-stage data-rounds="2">
+      <div class="pc-dim" aria-hidden="true"><i></i><span class="pc-cap" data-pc-cap>مشروعك · من التصور حتى التسليم</span></div>
+      <figure class="pc-frame" data-pc-frame role="button" tabindex="0" aria-label="اللوحة الحادية عشرة: مشروعك. اختر لإعادة السحب." data-final="مشروعك · من التصور حتى التسليم">
+        <div class="pc-view">
+          <sc-for list="{{ gallery }}" as="shot" hint-placeholder-count="6">
+          <img class="pc-img" data-src="{{ shot.image }}" data-cap="{{ shot.caption }} · تصور" alt="" decoding="async">
+          </sc-for>
+          <div class="pc-sheet" aria-hidden="true">
+            <svg class="pc-grid"><defs><pattern id="pc-grid-ar" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32,0V32M0,32H32" fill="none" stroke="currentColor" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(#pc-grid-ar)"/></svg>
+            <span class="pc-eleven" dir="ltr">11</span>
+            <span class="pc-you">مشروعك</span>
+            <span class="pc-svc">تصميم داخلي · تشطيبات · أنظمة كهروميكانيكية · أثاث</span>
+          </div>
+          <span class="pc-num" data-pc-num dir="ltr" aria-hidden="true">01</span>
         </div>
-        <span id="bf-phone-error" style="display:none;font-family:'GE SS Two','Arial',sans-serif;font-size:11px;color:#E86A5C;"></span>
-      </label>
-      <button type="button" id="id-brochure-btn" style="font-family:'GE SS Two','Arial',sans-serif;font-size:11px;letter-spacing:normal;text-transform:uppercase;color:#1E1610;background:#D6C2A8;border:none;padding:19px 0;display:flex;align-items:center;justify-content:center;gap:10px;cursor:pointer;transition:background 0.3s;margin-top:8px;">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"></path><polyline points="7 10 12 15 17 10"></polyline><path d="M4 19h16"></path></svg>
-        <span id="id-brochure-btn-label">تحميل الكتيّب</span>
-      </button>
+        <i class="pc-mark pc-mark--tl" aria-hidden="true"></i><i class="pc-mark pc-mark--tr" aria-hidden="true"></i><i class="pc-mark pc-mark--bl" aria-hidden="true"></i><i class="pc-mark pc-mark--br" aria-hidden="true"></i>
+      </figure>
+      <div class="pc-foot">
+        <ol class="pc-ticks" aria-hidden="true">
+        <li><span dir="ltr">01</span></li>
+        <li><span dir="ltr">02</span></li>
+        <li><span dir="ltr">03</span></li>
+        <li><span dir="ltr">04</span></li>
+        <li><span dir="ltr">05</span></li>
+        <li><span dir="ltr">06</span></li>
+        <li><span dir="ltr">11</span></li>
+        </ol>
+        <button type="button" class="pc-again" data-pc-again><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>أعد السحب</button>
+      </div>
     </div>
   </div>
 </section>
@@ -1033,6 +1279,8 @@ class Component extends DCLogic {
     ]},
   };
 
+  CHAPTERS = {"مسكن الفناء": [["ثلاثة أجنحة وفناء واحد", 1, "d"], ["جناح المجلس", 0, "d f"], ["لوحة مواد محدودة", 2, "d f"], ["هندسة في فواصل الظل", 5, "m"], ["أثاث مصنوع للغرف", 3, "u"], ["نطاق العمل", 4, "all"]], "مقر المكتب العائلي": [["جدار هادئ نحو الشارع", 0, "d"], ["كل الغرف تطل على الفناء", 3, "d f"], ["البناء النجدي بقراءة جديدة", 5, "d f"], ["قاعة المجلس والمكتبة", 1, "d f"], ["خصوصية تصنعها الهندسة", 2, "m"], ["أثاث يدوم جيلًا", 4, "all"]], "الساحة المركزية": [["الفضاء العام", 0, "d"], ["ساحة مصممة للمناخ", 5, "d m"], ["الممر التجاري والردهة", 1, "d f"], ["قاعة مطاعم لستمئة ضيف", 3, "d f"], ["هندسة بحجم الفضاء العام", 2, "m"], ["عائلة واحدة من الأثاث", 4, "all"]], "دارة شاطئ أبحر": [["ثلاثة مبانٍ على محور واحد", 1, "d"], ["القاعة الكبرى المطلة على البحر", 0, "d f"], ["رواشين من خشب الساج", 2, "d f"], ["لوحة مواد للساحل", 3, "d"], ["مصممة لهواء البحر المالح", 4, "m"], ["أثاث للساحل", 5, "all"]], "منتجع الحجر الصحراوي": [["مسار الضيف", 1, "d"], ["إطلالة واحدة في كل مرة", 0, "d"], ["لوحة مواد من الموقع", 5, "d f"], ["المطعم وشرفة النار", 2, "d f"], ["هندسة للصحراء", 3, "m"], ["أثاث من المكان", 4, "all"]], "الطوابق التنفيذية": [["ثمانية طوابق في تنظيم عمودي", 0, "d"], ["وصول فوق المدينة", 4, "d f"], ["مجلس الإدارة والأجنحة التنفيذية", 1, "d f"], ["سقف خشب الجوز", 5, "f m"], ["طوابق لتسعمئة موظف", 2, "m"], ["أثاث من المواد نفسها", 3, "all"]], "بنتهاوس فوق الوادي": [["في مواجهة الوادي", 0, "d"], ["طابقان: للضيافة وللعائلة", 1, "d f"], ["تضيئه السماء", 2, "d"], ["الدرج", 3, "f u"], ["مناخ خلف الزجاج", 5, "m"], ["جلسات منخفضة", 4, "all"]], "بيت المحمصة — الفرع الرئيسي": [["التحميص على مرأى الضيوف", 0, "d"], ["بار بطول أربعة عشر مترًا", 1, "d f"], ["لوحة مواد من القهوة", 5, "d"], ["الطابق المعلّق", 2, "d f"], ["إبعاد الدخان", 3, "m"], ["أثاث لضيوف يطيلون البقاء", 4, "all"]], "دار المجوهرات": [["خلف حاجز برونزي", 1, "d"], ["الصالون الرئيسي", 0, "d f"], ["الصالونات الخاصة", 3, "d u"], ["مواد تُبرز الجمال", 4, "d"], ["الأمان والضوء", 5, "m"], ["مصنوع للدار", 2, "all"]], "معرض الأثاث": [["تسلسل من الغرف", 1, "d"], ["الردهة", 0, "d f"], ["غرف معروضة كمساحات حقيقية", 3, "d f"], ["استوديو التصميم", 2, "d"], ["صالة عرض تعيش على إضاءتها", 4, "m"], ["العرض كقطعة أثاث", 5, "all"]]};
+
   slugify(t) { return t.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''); }
 
   VIEW_LABELS = {
@@ -1054,7 +1302,33 @@ class Component extends DCLogic {
       .slice(0, 3)
       .map(p => ({ ...p, href: `/ar/project-detail?project=${p.slug}` }));
 
+    // the way on: the whole portfolio as a row of doors, the next concept open and this one marked
+    const at = this.PROJECTS.indexOf(proj);
+    const nextP = this.PROJECTS[(at + 1) % this.PROJECTS.length];
+    const card = (p) => ({ ...p, num: String(this.PROJECTS.indexOf(p) + 1).padStart(2, '0'), href: `/ar/project-detail?project=${p.slug}` });
+    const strip = this.PROJECTS.map((p) => {
+      const state = p === proj ? 'here' : p === nextP ? 'next' : 'other';
+      return { ...card(p), state, tag: state === 'here' ? 'هنا' : state === 'next' ? 'التالي' : '', go: state === 'here' ? 'العودة إلى الأعلى' : 'شاهد التصور' };
+    });
+
+    // the story: each paragraph as a numbered part, paired with the view it describes
+    const gal = (det && det.gallery) || [];
+    const parts = this.CHAPTERS[proj.title] || [];
+    const chapters = (det ? det.paras : []).map((text, i) => {
+      const [title, shot, disc] = parts[i] || ['', i % Math.max(gal.length, 1), 'all'];
+      const view = gal[shot] || {};
+      return { num: String(i + 1).padStart(2, '0'), anchor: 'part-' + (i + 1), title, text, shot, disc, image: view.image || proj.image, caption: view.caption || proj.title, pos: view.pos || 'center' };
+    });
+
     return {
+      chapters,
+      scopeShort: ((det && det.scope) || '').replace('التصميم الداخلي', 'تصميم').replace('التشطيبات', 'تشطيبات').replace('الهندسة الكهروميكانيكية', 'كهروميكانيك').replace('الأثاث المخصص', 'أثاث'),
+      next: card(nextP),
+      strip,
+      waHref: 'https://wa.me/966580330627?text=' + encodeURIComponent('مرحبًا FurnishIQ، شاهدت تصور «' + proj.title + '» على موقعكم وأرغب في مناقشة مشروع مشابه.'),
+      projNum: String(this.PROJECTS.indexOf(proj) + 1).padStart(2, '0'),
+      projTotal: String(this.PROJECTS.length).padStart(2, '0'),
+      firstCaption: chapters.length ? chapters[0].caption : proj.title,
       title: proj.title,
       category: proj.category,
       location: proj.location,
@@ -1151,66 +1425,6 @@ class Component extends DCLogic {
       navCta.addEventListener('mouseleave', () => { navCta.style.background = 'transparent'; syncNav(); });
     }
 
-    const ctaBtn = document.getElementById('id-brochure-btn');
-    if (ctaBtn) {
-      ctaBtn.addEventListener('mouseenter', () => { ctaBtn.style.background = '#FFFFFF'; });
-      ctaBtn.addEventListener('mouseleave', () => { ctaBtn.style.background = '#D6C2A8'; });
-      const bfFieldErrors = ['bf-first-name', 'bf-last-name', 'bf-email', 'bf-phone'];
-      const bfShowError = (id, message) => {
-        const input = document.getElementById(id);
-        const error = document.getElementById(id + '-error');
-        if (input) input.style.borderBottomColor = message ? '#E86A5C' : 'rgba(214,194,168,0.3)';
-        if (error) { error.textContent = message || ''; error.style.display = message ? 'block' : 'none'; }
-      };
-      bfFieldErrors.forEach((id) => {
-        const input = document.getElementById(id);
-        if (input) input.addEventListener('input', () => bfShowError(id, ''));
-      });
-
-      ctaBtn.addEventListener('click', () => {
-        const firstName = (document.getElementById('bf-first-name') || {}).value || '';
-        const lastName = (document.getElementById('bf-last-name') || {}).value || '';
-        const email = (document.getElementById('bf-email') || {}).value || '';
-        const phone = (document.getElementById('bf-phone') || {}).value || '';
-        const btnLabel = document.getElementById('id-brochure-btn-label');
-
-        bfShowError('bf-first-name', firstName.trim() ? '' : 'يرجى إدخال اسمك الأول.');
-        bfShowError('bf-last-name', lastName.trim() ? '' : 'يرجى إدخال اسم العائلة.');
-        bfShowError('bf-email', /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim()) ? '' : 'يرجى إدخال بريد إلكتروني صحيح.');
-        const phoneDigits = phone.replace(/\D/g, '');
-        const isValidPhone = /^5\d{8}$/.test(phoneDigits);
-        bfShowError('bf-phone', !phone.trim() ? 'يرجى إدخال رقم هاتفك.' : (!isValidPhone ? 'يرجى إدخال رقم جوال سعودي صحيح مكوّن من 9 أرقام (مثال: 5XXXXXXXX).' : ''));
-
-        const hasError = !firstName.trim() || !lastName.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim()) || !isValidPhone;
-        if (hasError) return;
-        ctaBtn.disabled = true;
-        if (btnLabel) btnLabel.textContent = 'Sending…';
-        const payload = {
-          formType: 'brochure',
-          name: (firstName + ' ' + lastName).trim(),
-          email: email,
-          phone: `+966 ${phone}`,
-          request: 'كتيّب خدمات الأنظمة الكهروميكانيكية',
-          sourcePage: '/project-detail',
-        };
-        fetch('/api/send-email', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
-          .then((r) => {
-            if (!r.ok) throw new Error('Network error');
-            if (btnLabel) btnLabel.textContent = 'تم الإرسال — شكراً لك';
-            ['bf-first-name', 'bf-last-name', 'bf-email', 'bf-phone'].forEach((id) => {
-              const el = document.getElementById(id);
-              if (el) el.value = '';
-            });
-            setTimeout(() => { if (btnLabel) btnLabel.textContent = 'تحميل الكتيّب'; }, 4000);
-          })
-          .catch(() => {
-            alert('حدث خطأ ما — يرجى المحاولة مرة أخرى أو مراسلتنا مباشرة على info@furnishiq.net');
-            if (btnLabel) btnLabel.textContent = 'تحميل الكتيّب';
-          })
-          .finally(() => { ctaBtn.disabled = false; });
-      });
-    }
-
     document.addEventListener('mouseover', (e) => {
       const el = e.target.closest && (e.target.closest('[data-pd-wa]') || e.target.closest('[data-pd-contact]'));
       if (!el || el.contains(e.relatedTarget)) return;
@@ -1224,6 +1438,121 @@ class Component extends DCLogic {
       if (el.hasAttribute('data-pd-contact')) { el.style.background = 'transparent'; el.style.borderColor = 'rgba(214,194,168,0.4)'; }
     });
 
+
+    // ── TITLE BLOCK: the cells come in once the block is on screen ──
+    (() => {
+      const tb = document.querySelector('[data-pd-tb]');
+      if (!tb) return;
+      new IntersectionObserver((es, o) => { es.forEach((e) => { if (e.isIntersecting) { tb.classList.add('is-in'); o.disconnect(); } }); }, { threshold: 0.2 }).observe(tb);
+    })();
+
+    // ── PROJECT STORY: the viewfinder shows the room each part describes ──
+    (() => {
+      let tries = 0;
+      const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const setup = () => {
+        const sec = document.querySelector('[data-pd-story]');
+        const chs = sec ? Array.from(sec.querySelectorAll('[data-pds-ch]')) : [];
+        if (!chs.length || chs[0].dataset.shot.indexOf('{') !== -1) { if (tries++ < 40) setTimeout(setup, 100); return; }
+        if (sec.dataset.ready) return;
+        sec.dataset.ready = '1';
+        const imgs = Array.from(sec.querySelectorAll('.pds-img'));
+        const ticks = Array.from(sec.querySelectorAll('[data-pds-tick]'));
+        const scope = Array.from(sec.querySelectorAll('[data-pds-d]'));
+        const cap = sec.querySelector('[data-pds-cap]');
+        const count = sec.querySelector('[data-pds-count]');
+        const frame = sec.querySelector('[data-pds-frame]');
+        const pad = (n) => String(n).padStart(2, '0');
+        sec.querySelectorAll('[data-pos]').forEach((im) => { if (im.dataset.pos.indexOf('{') === -1) im.style.objectPosition = im.dataset.pos; });
+        let cur = -1;
+        const set = (k) => {
+          if (k === cur) return;
+          cur = k;
+          chs.forEach((c, j) => c.classList.toggle('is-on', j === k));
+          imgs.forEach((im, j) => im.classList.toggle('is-on', j === k));
+          ticks.forEach((t, j) => { t.classList.toggle('is-on', j === k); t.classList.toggle('is-past', j < k); });
+          const disc = (chs[k].dataset.disc || '').split(' ');
+          scope.forEach((li) => li.classList.toggle('is-on', disc.indexOf('all') !== -1 || disc.indexOf(li.dataset.pdsD) !== -1));
+          if (cap && imgs[k]) cap.textContent = imgs[k].dataset.cap + '، تصور تصميمي';
+          if (count) count.textContent = pad(k + 1) + ' / ' + pad(chs.length);
+        };
+        // the part being read is the last one whose top has passed 45% of the screen
+        const sync = () => {
+          const line = window.innerHeight * 0.45;
+          let k = 0;
+          chs.forEach((c, j) => { if (c.getBoundingClientRect().top < line) k = j; });
+          set(k);
+        };
+        window.addEventListener('scroll', sync, { passive: true });
+        window.addEventListener('resize', sync);
+        sync();
+        ticks.forEach((t, j) => t.addEventListener('click', () => {
+          const y = chs[j].getBoundingClientRect().top + window.scrollY - window.innerHeight * 0.3;
+          window.scrollTo({ top: y, behavior: still ? 'auto' : 'smooth' });
+        }));
+        // the frame opens the same view in the page's lightbox
+        const open = () => {
+          const tile = document.querySelectorAll('.fiq-pd-tile')[+chs[cur].dataset.shot];
+          if (tile) tile.click();
+        };
+        frame.addEventListener('click', open);
+        frame.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
+      };
+      setup();
+    })();
+
+    // ── CLOSING DRAW: THE NEXT ONE IS YOURS ───────────────────────────────
+    {
+      const sec = document.querySelector('[data-pj-cta]');
+      if (sec) {
+        const stage = sec.querySelector('[data-pc-stage]'), frame = sec.querySelector('[data-pc-frame]'), again = sec.querySelector('[data-pc-again]');
+        const imgs = Array.from(sec.querySelectorAll('.pc-img')), ticks = Array.from(sec.querySelectorAll('.pc-ticks li'));
+        const cap = sec.querySelector('[data-pc-cap]'), num = sec.querySelector('[data-pc-num]'), N = imgs.length;
+        const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+        let timer = 0, running = false, ready = null;
+        // the covers are fetched as the section nears, and the draw waits for them (2.5s at most), so it never shuffles blanks
+        const load = () => {
+          if (!ready) {
+            imgs.forEach((im) => { im.src = im.dataset.src; });
+            ready = Promise.race([Promise.all(imgs.map((im) => im.decode().catch(() => {}))), new Promise((r) => setTimeout(r, 2500))]);
+          }
+          return ready;
+        };
+        const R = Math.max(1, +stage.dataset.rounds || 1), S = N * R;   // the items, run through R times
+        const step = (k) => {   // k < S: item k % N on the sheet; k = S: the sheet the draw lands on
+          k = k < S ? k % N : N;
+          imgs.forEach((im, j) => im.classList.toggle('is-on', j === k));
+          ticks.forEach((t, j) => t.classList.toggle('is-on', j <= k));
+          stage.classList.toggle('is-yours', k === N);
+          cap.textContent = k === N ? frame.dataset.final : imgs[k].dataset.cap;
+          num.textContent = String(k + 1).padStart(2, '0');
+        };
+        const settle = () => { clearTimeout(timer); running = false; again.disabled = false; step(S); };
+        // the draw: through the items, quick at first and slowing, and it always comes to rest on the last sheet
+        const draw = async () => {
+          if (running) return;
+          if (still) { load(); settle(); return; }
+          running = true; again.disabled = true;
+          await load();
+          let k = 0, wait = 80;
+          const grow = Math.pow(7, 1 / S);   // the last wait is about seven times the first, however many steps
+          const next = () => {
+            step(k);
+            if (k === S) { running = false; again.disabled = false; return; }
+            k += 1; wait *= grow;
+            timer = setTimeout(next, wait);
+          };
+          next();
+        };
+        step(S);   // until the section is reached, and without script, the last sheet shows
+        new IntersectionObserver((es, o) => { es.forEach((e) => { if (e.isIntersecting) { load(); o.disconnect(); } }); }, { rootMargin: '0px 0px 60% 0px' }).observe(sec);
+        new IntersectionObserver((es, o) => { es.forEach((e) => { if (e.isIntersecting) { draw(); o.disconnect(); } }); }, { threshold: 0.45 }).observe(stage);
+        frame.addEventListener('click', draw);
+        frame.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); draw(); } });
+        again.addEventListener('click', draw);
+        document.addEventListener('visibilitychange', () => { if (document.hidden && running) settle(); });
+      }
+    }
 
     // ── GALLERY LIGHTBOX ─────────────────────────────────────────────────────
     const lightbox = document.getElementById('pd-lightbox');
