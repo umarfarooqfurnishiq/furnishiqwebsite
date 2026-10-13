@@ -160,3 +160,7 @@ The 90-day article's masthead listed `executive-floors-boardroom-walnut-table-12
 ## Arabic pages: take the English CSS, do not hand-copy it (2026-10-08)
 
 `scripts/blog/ar_common.py` turns the English page CSS into Arabic CSS: GE SS Two for Lama Sans, letter-spacing removed, small labels raised to 12px, `transform-origin:left` turned to `right`, and per-rule line-height overrides. The Arabic Insights and article generators use it, so a design change made on the English page reaches Arabic by rerunning the generator. Digits in GE SS Two render as Arabic-Indic numerals; that is the font, not a bug.
+
+## Pop-ups inside a one-screen section get cut off (2026-10-13)
+
+The contact letter's materials list opened below its blank inside `.ct.lw-sec`, a `min-height:100svh` section with `overflow:hidden`, so everything past the first screen was clipped. The background photo already clips itself in `.lw-bg`; the section now uses `overflow-x:clip;overflow-y:visible` with `z-index:2`, and `contact-letter.js` scrolls an opened list into view when it runs past the window. Before giving a section `overflow:hidden`, check whether anything absolutely positioned opens inside it.

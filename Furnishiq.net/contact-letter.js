@@ -292,6 +292,9 @@
       if (!reduced) requestAnimationFrame(function () { menu && menu.classList.add('is-in'); }); else menu.classList.add('is-in');
       var first = menu.querySelector('.lt-opt[aria-pressed="true"]') || menu.querySelector('.lt-opt');
       if (first) first.focus({ preventScroll: true });
+      // a long list (the swatches) can run past the bottom of the window: bring all of it into view
+      var over = a.bottom + 10 + menu.offsetHeight + 24 - window.innerHeight;
+      if (over > 0) window.scrollBy({ top: Math.min(over, a.top - 96), behavior: reduced ? 'auto' : 'smooth' });
     }
     document.addEventListener('click', function (e) {
       if (menu && !menu.contains(e.target) && !(blanks[menuFor] && blanks[menuFor].contains(e.target))) closeMenu();

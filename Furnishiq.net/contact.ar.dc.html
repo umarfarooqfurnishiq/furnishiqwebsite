@@ -580,7 +580,7 @@ input:focus, select:focus, textarea:focus {
     .ct.is-ready .ct-in{opacity:1;transform:none;}
     .rv{opacity:0;transform:translateY(18px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);}
     /* the letter */
-    .ct.lw-sec{position:relative;overflow:hidden;background:#F5F2ED;min-height:100svh;display:flex;flex-direction:column;justify-content:center;}
+    .ct.lw-sec{position:relative;z-index:2;overflow-x:clip;overflow-y:visible;background:#F5F2ED;min-height:100svh;display:flex;flex-direction:column;justify-content:center;}
     .lw-sec .ct-wrap{width:100%;padding-top:clamp(96px,12vh,128px);padding-bottom:clamp(24px,4vh,48px);}
     /* mashrabiya light on limewash: the letter lies in it; the light drifts as slowly as the sun would. The photo has a
        soft vertical shaft of light about 38% across: at 132% wide from the left it falls behind the glass letter, not beside it */
@@ -727,8 +727,8 @@ input:focus, select:focus, textarea:focus {
     .cv{position:relative;overflow:hidden;background:#1E1610;}
     .cv-map-bg{position:absolute;inset:0;z-index:0;}
     /* 150% wide from the left edge puts the map's centre, and the pin, at three quarters of the section's width;
-       160px past the top and bottom keeps Google's place card out of view and the pin centred in height */
-    .cv-map-bg iframe{position:absolute;left:0;top:-160px;width:150%;height:calc(100% + 320px);border:0;filter:grayscale(0.85) sepia(0.22) contrast(0.95);}
+       220px past the top and bottom keeps Google's place card out of view and the pin centred in height */
+    .cv-map-bg iframe{position:absolute;left:0;top:-220px;width:150%;height:calc(100% + 440px);border:0;filter:grayscale(0.85) sepia(0.22) contrast(0.95);}
     .cv-wrap{position:relative;z-index:1;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:32px;align-items:start;padding:clamp(72px,9vw,128px) 0;pointer-events:none;}
     .cv-text{grid-column:1/6;pointer-events:auto;background:rgba(30,22,16,0.66);-webkit-backdrop-filter:blur(18px) saturate(1.1);backdrop-filter:blur(18px) saturate(1.1);border:1px solid rgba(214,194,168,0.22);padding:clamp(32px,3.4vw,52px);box-shadow:0 24px 80px rgba(0,0,0,0.35);}
     .cv .c-label{color:#D6C2A8;}
