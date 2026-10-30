@@ -20,8 +20,8 @@ C = {
         intro="ثلاث نقاط تحقق مدمجة في كل مشروع من مشاريع فيرنيش آي كيو، في اللحظات التي يصعب فيها التراجع عن القرار.",
         stages=["الإحاطة", "التخطيط", "التصميم", "التوريد", "التنفيذ", "التسليم"], gate="نقطة تحقق",
         cards=[
-            ("الحمض النووي الاستراتيجي والتخطيط القائم على الهوية", "قبل رسم أي مخطط",
-             "ندرس كيفية الاستخدام الفعلي للمساحة: حركة الزوار، ومسارات الخدمة، وتنقل الموظفين، وتجربة الضيوف. لتظل الخطة النهائية فعّالة بعد التقاط الصور وبدء الاستخدام اليومي للمساحة."),
+            ("التخطيط الذكي للمساحات بما يتناسب مع هوية المكان", "قبل رسم أي مخطط",
+             "ندرس طريقة استخدام المساحة بشكل عملي قبل البدء في التصميم، مع مراعاة:</p>\n        <ul class=\"gt-list\"><li>حركة الزوار داخل المكان.</li><li>مسارات الخدمات وسهولة الوصول إليها.</li><li>حركة الموظفين وتنقلهم.</li><li>تجربة الضيوف وراحتهم.</li></ul>\n        <p class=\"gt-d\">وذلك لضمان تصميم عملي ومنظم يلبي احتياجات الاستخدام اليومي، ويحقق أفضل استفادة من المساحة."),
             ("يقين بصري واقعي", "قبل أي عملية شراء",
              "يتم تصميم ومراجعة كل مادة وتشطيب ومصدر إضاءة معك قبل أن يتحول إلى أمر شراء، لأن إعادة العمل في مساحة منجزة تكلف أكثر بكثير من تعديل تصور رقمي. تتم الموافقات على الشاشة، لا في الموقع."),
             ("وعد الخلو التام من العيوب", "في كل مرحلة من مراحل التنفيذ",
@@ -67,6 +67,7 @@ def build(lang):
     #edge-gates .gt-when{{font-family:{font};font-size:{small};letter-spacing:{track};text-transform:uppercase;color:#D6C2A8;padding-top:4px;line-height:1.6;}}
     #edge-gates .gt-t{{font-family:{font};font-size:clamp(19px,1.6vw,24px);font-weight:500;line-height:1.3;color:#FFFFFF;margin:0;}}
     #edge-gates .gt-d{{font-family:{font};font-size:{'15px' if ar else '14px'};line-height:1.75;color:rgba(245,242,237,0.66);margin:16px 0 0;}}
+    #edge-gates .gt-list{{font-family:{font};font-size:{'15px' if ar else '14px'};line-height:1.75;color:rgba(245,242,237,0.66);margin:8px 0 0;padding:0 18px 0 0;}}
     #edge-gates .gt-stem{{position:absolute;top:100%;left:50%;width:1px;height:clamp(36px,4vw,56px);background:rgba(214,194,168,0.5);transform:scaleY(0);transform-origin:top;transition:transform 0.6s {EASE} calc(0.35s + var(--i) * 0.8s);}}
     #edge-gates .gt-line{{position:relative;margin-top:clamp(36px,4vw,56px);height:1px;}}
     #edge-gates .gt-line::before{{content:"";position:absolute;inset:0;background:rgba(214,194,168,0.18);}}
